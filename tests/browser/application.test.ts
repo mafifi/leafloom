@@ -431,6 +431,11 @@ it('native font picker previews, restores and commits a safely quoted installed 
     expect(document.documentElement.style.getPropertyValue('--body-font')).toBe(
       '"Installed Face", Georgia, serif',
     );
+    const resize = f.vm.textSize(1);
+    expect(document.documentElement.style.getPropertyValue('--body-font')).toBe(
+      '"Installed Face", Georgia, serif',
+    );
+    await resize;
     expect(f.vm.bodyFontStyle('Odd "Family"\\Name')).toBe('"Odd FamilyName", Georgia, serif');
   } finally {
     await f.close();

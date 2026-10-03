@@ -2440,7 +2440,11 @@ export class Application {
       ...(delta === 0 ? { pageZoom: 1 } : {}) });
     this.libraryGeneration++;
     this.patch({ library: next, ...(delta === 0 ? { zoom: 1 } : {}) });
-    keepReadingPlace(() => applyPresentation(next));
+    keepReadingPlace(() => {
+      applyPresentation(next);
+      this.applyPlatformDropcap();
+      document.documentElement.style.setProperty('--body-font', this.bodyFontStyle(next.fonts.body));
+    });
     const saved = new Promise<void>((resolve, reject) => this.appearanceWaiters.push({ resolve, reject }));
     this.scheduleAppearanceSave();
     this.scheduleMenu();
