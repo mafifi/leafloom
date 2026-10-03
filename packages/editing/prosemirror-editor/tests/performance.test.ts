@@ -26,6 +26,8 @@ it.each([10_000, 100_000])(
       '',
     );
     expect(core.words).toBe(count);
+    const initialSections = core.sections;
+    expect(core.sections).toBe(initialSections);
     core.select('chapter-0', 1);
     const samples: number[] = [];
     for (let index = 0; index < 20; index++) {
@@ -34,6 +36,10 @@ it.each([10_000, 100_000])(
       core.setBookkeeping({ wordCount: core.words });
       samples.push(performance.now() - start);
     }
+    const changedSections = core.sections;
+    expect(changedSections).not.toBe(initialSections);
+    expect(core.sections).toBe(changedSections);
+    expect(changedSections[1].pos).toBe(initialSections[1].pos + 20);
     const version = core.version;
     core.setBookkeeping({ modified: '2026-10-02T18:00:00Z' });
     expect(core.version).toBe(version);
@@ -42,6 +48,7 @@ it.each([10_000, 100_000])(
     expect(core.html('chapter-0')).toBe(chapters[0].html);
     expect(core.words).toBe(count);
     expect(core.canUndo).toBe(false);
+    expect(core.sections[1].pos).toBe(initialSections[1].pos);
     samples.sort((left, right) => left - right);
     console.info(
       JSON.stringify({

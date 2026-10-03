@@ -25,7 +25,7 @@ const nodes = identitySchema.spec.nodes
 export const bookSchema = new Schema({ nodes, marks: identitySchema.spec.marks });
 export type Part = { from: number; to: number };
 export type Location = { parts: Part[]; deleted: boolean; unresolved: boolean };
-export type Section = { node: PMNode; pos: number; index: number };
+export type Section = Readonly<{ node: PMNode; pos: number; index: number }>;
 export type PassageInfo = {
   id: string;
   chapterId: string;
@@ -37,8 +37,14 @@ export type PassageInfo = {
   node: PMNode;
 };
 
-export function sectionsFrom(doc: PMNode): Section[] {
+const sectionCache = new WeakMap<PMNode, readonly Section[]>();
+/** Positions belong to one immutable document, including metadata-only revisions. */
+export function sectionsFrom(doc: PMNode): readonly Section[] {
+  const cached = sectionCache.get(doc);
+  if (cached) return cached;
   const sections: Section[] = [];
-  doc.forEach((node, pos, index) => sections.push({ node, pos, index }));
-  return sections;
+  doc.forEach((node, pos, index) => sections.push(Object.freeze({ node, pos, index })));
+  const result = Object.freeze(sections);
+  sectionCache.set(doc, result);
+  return result;
 }
