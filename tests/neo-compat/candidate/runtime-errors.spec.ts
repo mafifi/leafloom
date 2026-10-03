@@ -13,6 +13,21 @@ test('[NEO-247-A] Leafloom: two unexpected renderer failures reach the real priv
     privateStorageRoot(page),
     reference ? 'neo-errors.log' : 'leafloom-errors.log',
   );
+  // The private full-suite root also retains earlier legitimate host reports.
+  // Preserve that prefix and inspect only reports appended by this author journey.
+  const logPrefix = await readFile(log, 'utf8').catch(() => '');
+  const appendedLog = async () => {
+    const bytes = await readFile(log, 'utf8').catch(() => '');
+    expect(bytes.startsWith(logPrefix)).toBe(true);
+    return bytes.slice(logPrefix.length);
+  };
+  const rendererReports = (bytes: string) =>
+    bytes
+      .trim()
+      .split('\n')
+      .filter(Boolean)
+      .map((line) => JSON.parse(line))
+      .filter((row) => row.source === 'renderer' || row.source === 'promise');
   const hint = reference ? 'details were logged' : 'An unexpected error occurred';
   await page.evaluate((fragment) => {
     const records: string[] = [];
@@ -33,10 +48,10 @@ test('[NEO-247-A] Leafloom: two unexpected renderer failures reach the real priv
   await expect(page.locator('#hint')).toContainText(hint);
   await expect
     .poll(async () => {
-      const text = await readFile(log, 'utf8').catch(() => '');
+      const text = await appendedLog();
       return reference
         ? text.includes('First unexpected private author phrase')
-        : text.trim().split('\n').filter(Boolean).length === 1;
+        : rendererReports(text).length === 1;
     })
     .toBe(true);
   const firstCount = await page.evaluate(
@@ -48,10 +63,10 @@ test('[NEO-247-A] Leafloom: two unexpected renderer failures reach the real priv
   });
   await expect
     .poll(async () => {
-      const text = await readFile(log, 'utf8').catch(() => '');
+      const text = await appendedLog();
       return reference
         ? text.includes('Second unexpected private book title')
-        : text.trim().split('\n').filter(Boolean).length === 2;
+        : rendererReports(text).length === 2;
     })
     .toBe(true);
   expect(
@@ -60,14 +75,9 @@ test('[NEO-247-A] Leafloom: two unexpected renderer failures reach the real priv
     ),
   ).toBe(firstCount);
   if (!reference) {
-    const bytes = await readFile(log, 'utf8');
+    const bytes = await appendedLog();
     expect(bytes).not.toMatch(/private author|private book|stack|message/);
-    expect(
-      bytes
-        .trim()
-        .split('\n')
-        .map((line) => JSON.parse(line).source),
-    ).toEqual(['renderer', 'promise']);
+    expect(rendererReports(bytes).map((row) => row.source)).toEqual(['renderer', 'promise']);
   }
   await c.driver.expectParagraphs([['Alpha beta.', 'Gamma delta.']]);
   await c.driver.select(0, 0, 11);
