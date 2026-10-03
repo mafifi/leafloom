@@ -108,10 +108,16 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
     } catch {
       problems.push('Sidecar bundle provenance missing or invalid');
     }
-  } else if (section === 'documentIO')
+  } else if (section === 'documentIO') {
     for (const [name, value] of moduleFields)
       await check(path.join(root, name), value(receipt ?? {}));
-  else if (section === 'updater') {
+    if (contract?.parser.fixture === 'chapter-roles')
+      for (const name of ['native/chapter-edition-io.mjs', 'shared/chapter-edition-io.mjs'])
+        await check(
+          path.join(root, 'tests/neo-compat', name),
+          receipt.documentIO?.edgeModuleHashes?.[name],
+        );
+  } else if (section === 'updater') {
     await check(
       path.join(root, 'tests/neo-compat/native/updater-fixture.mjs'),
       receipt?.updater?.helperSha256,

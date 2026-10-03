@@ -12,6 +12,10 @@ import {
   inspectEdition,
   importFiles,
 } from '../tests/neo-compat/shared/document-io.mjs';
+import {
+  chapterEditionFixture,
+  inspectChapterEdition,
+} from '../tests/neo-compat/shared/chapter-edition-io.mjs';
 import { inspectPDFLayout } from '../tests/neo-compat/shared/pdf-layout.mjs';
 import { inspectCoverEPUB, coverPNG } from '../tests/neo-compat/shared/io-cover-edge.mjs';
 import { inspectCollection } from '../tests/neo-compat/native/collection-output.mjs';
@@ -45,6 +49,60 @@ export async function inspectDurableSnapshot(readBytes, snapshot) {
     result[name] = actual;
   }
   return result;
+}
+/** Source-confirmed chapter-role edition; actual snapshots supply identity and role evidence. */
+export function inspectChapterEditionSnapshot(files, stage, bookId) {
+  assert.ok(stage === 'before' || stage === 'after', 'Unknown chapter edition stage');
+  const book = SourceBook.parse(JSON.parse(files['manuscript.json'].toString()));
+  const reviews = Reviews.parse(JSON.parse(files['reviews.json'].toString()));
+  assert.equal(book.metadata.id, bookId);
+  assert.equal(reviews.bookId, bookId);
+  assert.equal(reviews.version, book.version);
+  for (const key of ['title', 'subtitle', 'author'])
+    assert.equal(book.metadata[key], chapterEditionFixture.metadata[key]);
+  assert.equal(book.metadata.restartNumbering, true);
+  assert.equal(files['notes.html'].toString(), chapterEditionFixture.notes);
+  assert.equal(files['outline.html'].toString(), '');
+  const ids = book.chapters.map((c) => c.id);
+  const inserted = stage === 'after' ? ids[5] : undefined;
+  if (inserted) assert.ok(!/^ch-(?:[1-9]|10)$/.test(inserted), 'Fresh inserted Part identity');
+  assert.deepEqual(
+    ids,
+    stage === 'before'
+      ? Array.from({ length: 10 }, (_, i) => 'ch-' + (i + 1))
+      : ['ch-1', 'ch-2', 'ch-3', 'ch-6', 'ch-5', inserted, 'ch-7', 'ch-8', 'ch-9', 'ch-10'],
+  );
+  for (const chapter of book.chapters) {
+    const expected =
+      chapter.id === inserted
+        ? '<p><br></p>'
+        : chapterEditionFixture.chapters[Number(chapter.id.slice(3)) - 1].replace(
+            'Alpha ',
+            'Edited Alpha ',
+          );
+    assert.equal(chapter.html, expected, 'Exact durable rich chapter ' + chapter.id);
+    assert.equal(
+      book.metadata.chapterKinds?.[chapter.id] ?? 'chapter',
+      chapter.id === inserted
+        ? 'part'
+        : (chapterEditionFixture.metadata.chapterKinds[chapter.id] ?? 'chapter'),
+    );
+  }
+  assert.equal(book.metadata.chapterTitles?.['ch-8'], 'Interlude');
+  assert.equal(book.metadata.chapterTitles?.['ch-9'], '');
+  const passages = book.chapters.flatMap((c) => c.passages ?? []);
+  assert.ok(passages.length > 0, 'Persisted composed passage identities missing');
+  assert.equal(
+    new Set(passages.map((p) => p.id)).size,
+    passages.length,
+    'Duplicate passage identities',
+  );
+  if (stage === 'after')
+    assert.ok(
+      book.darlings.some((d) => d.html === chapterEditionFixture.chapters[3]),
+      'Full deleted Part remains recoverable',
+    );
+  return { chapterIds: ids, passageIds: passages.map((p) => p.id) };
 }
 /** Artifacts are read beneath their declared evidence directory, including symlink resolution. */
 export async function inspectNativeArtifacts(contract, receipt, options) {
@@ -82,7 +140,54 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
       assert.equal(row.artifactFile, p.file, 'Collection artifact path differs');
     if (p.kind === 'export') return inspectExport(p.format, actual);
     if (p.kind === 'chapter') return inspectChapterExport(p.format, actual);
-    if (p.kind === 'edition') return inspectEdition(p.format, actual);
+    if (p.kind === 'edition') {
+      if (p.fixture === undefined) {
+        assert.equal(row.artifact?.fixture, undefined, 'Unexpected edition fixture');
+        return inspectEdition(p.format, actual);
+      }
+      assert.equal(p.fixture, 'chapter-roles', 'Unknown edition fixture');
+      assert.equal(row.artifact?.fixture, p.fixture, 'Edition fixture differs');
+      assert.equal(row.artifact?.stage, p.stage, 'Edition stage differs');
+      assert.equal(row.artifact?.format, p.format, 'Edition format differs');
+      const output = inspectChapterEdition(p.format, actual, p.stage);
+      const snapshot = row.durableArtifacts?.snapshot;
+      assert.equal(
+        snapshot?.path,
+        'snapshots/chapter-edition/' + p.stage,
+        'Edition snapshot stage differs',
+      );
+      const files = await inspectDurableSnapshot(bytes, snapshot);
+      const durable = inspectChapterEditionSnapshot(files, p.stage, snapshot.bookId);
+      if (p.stage === 'after') {
+        const previousContract = nativeContract('document:chapter-edition:before:' + p.format);
+        const previousRows = io.evidence.filter(
+          (r) => r.id === previousContract.id && r.title === previousContract.title,
+        );
+        assert.equal(
+          previousRows.length,
+          1,
+          'Previous edition identity snapshot missing or duplicated',
+        );
+        const previousSnapshot = previousRows[0].durableArtifacts?.snapshot;
+        assert.equal(previousSnapshot?.path, 'snapshots/chapter-edition/before');
+        assert.equal(previousSnapshot.bookId, snapshot.bookId, 'Edition changed book identity');
+        const previousFiles = await inspectDurableSnapshot(bytes, previousSnapshot);
+        inspectChapterEditionSnapshot(previousFiles, 'before', snapshot.bookId);
+        const beforeBook = SourceBook.parse(
+          JSON.parse(previousFiles['manuscript.json'].toString()),
+        );
+        const afterBook = SourceBook.parse(JSON.parse(files['manuscript.json'].toString()));
+        for (const chapter of beforeBook.chapters.filter((c) => c.id !== 'ch-4')) {
+          const current = afterBook.chapters.find((c) => c.id === chapter.id);
+          assert.deepEqual(
+            current.passages,
+            chapter.passages,
+            'Unchanged chapter passage identities changed: ' + chapter.id,
+          );
+        }
+      }
+      return { ...output, durable };
+    }
     if (p.kind === 'pdf-layout') return inspectPDFLayout(actual);
     return inspectCollection(p.format, actual, { title: p.title, passages: p.passages });
   }

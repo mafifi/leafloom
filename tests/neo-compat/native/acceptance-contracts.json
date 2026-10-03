@@ -437,7 +437,7 @@
         "kind": "collection",
         "format": "epub",
         "file": "anthology.epub",
-        "title": "Collected \u00e9\u6771\u4eac",
+        "title": "Collected é東京",
         "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
       }
     },
@@ -461,7 +461,7 @@
         "kind": "collection",
         "format": "docx",
         "file": "anthology.docx",
-        "title": "Collected \u00e9\u6771\u4eac",
+        "title": "Collected é東京",
         "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
       }
     },
@@ -485,7 +485,7 @@
         "kind": "collection",
         "format": "pdf",
         "file": "anthology.pdf",
-        "title": "Collected \u00e9\u6771\u4eac",
+        "title": "Collected é東京",
         "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
       }
     },
@@ -785,6 +785,120 @@
         "kind": "startup-backup",
         "mode": "partial",
         "file": "partial/manifest.json"
+      }
+    },
+    {
+      "contractId": "document:chapter-edition:before:html",
+      "section": "documentIO",
+      "id": "NEO-053-A",
+      "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native before html edited edition retains reset Contents and unique Part and unnumbered headings",
+      "driverActions": [
+        "Type Edited through actual native manuscript input",
+        "Choose actual Part chapter-number reset",
+        "Choose actual Export HTML",
+        "Supply private native picker destination",
+        "Close and reopen the actual book"
+      ],
+      "assertions": [
+        "Independently parsed output headings agree with source and author order",
+        "Contents links resolve to every actual story including blank unnumbered title fallback",
+        "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+        "Actual durable rich paragraphs, identities, Notes and Outline remain"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "fixture": "chapter-roles",
+        "stage": "before",
+        "format": "html",
+        "file": "chapter-edition-before.html"
+      }
+    },
+    {
+      "contractId": "document:chapter-edition:before:md",
+      "section": "documentIO",
+      "id": "NEO-259-B",
+      "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native before md edited edition retains reset Contents and unique Part and unnumbered headings",
+      "driverActions": [
+        "Type Edited through actual native manuscript input",
+        "Choose actual Part chapter-number reset",
+        "Choose actual Export MD",
+        "Supply private native picker destination",
+        "Close and reopen the actual book"
+      ],
+      "assertions": [
+        "Independently parsed output headings agree with source and author order",
+        "Markdown title is escaped and printed Contents is omitted",
+        "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+        "Actual durable rich paragraphs, identities, Notes and Outline remain"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "fixture": "chapter-roles",
+        "stage": "before",
+        "format": "md",
+        "file": "chapter-edition-before.md"
+      }
+    },
+    {
+      "contractId": "document:chapter-edition:after:html",
+      "section": "documentIO",
+      "id": "NEO-053-A",
+      "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native after html edited edition retains reset Contents and unique Part and unnumbered headings",
+      "driverActions": [
+        "Type Edited through actual native manuscript input",
+        "Choose actual Part chapter-number reset",
+        "Insert Part through actual gap menu",
+        "Deliver actual DOM drag to reorder an existing Part",
+        "Choose Delete for the original Part",
+        "Choose actual Export HTML",
+        "Supply private native picker destination",
+        "Close and reopen the actual book"
+      ],
+      "assertions": [
+        "Independently parsed output headings agree with source and author order",
+        "Contents links resolve to every actual story including blank unnumbered title fallback",
+        "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+        "Actual durable rich paragraphs, identities, Notes and Outline remain"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "fixture": "chapter-roles",
+        "stage": "after",
+        "format": "html",
+        "file": "chapter-edition-after.html"
+      }
+    },
+    {
+      "contractId": "document:chapter-edition:after:md",
+      "section": "documentIO",
+      "id": "NEO-259-B",
+      "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native after md edited edition retains reset Contents and unique Part and unnumbered headings",
+      "driverActions": [
+        "Type Edited through actual native manuscript input",
+        "Choose actual Part chapter-number reset",
+        "Insert Part through actual gap menu",
+        "Deliver actual DOM drag to reorder an existing Part",
+        "Choose Delete for the original Part",
+        "Choose actual Export MD",
+        "Supply private native picker destination",
+        "Close and reopen the actual book"
+      ],
+      "assertions": [
+        "Independently parsed output headings agree with source and author order",
+        "Markdown title is escaped and printed Contents is omitted",
+        "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+        "Actual durable rich paragraphs, identities, Notes and Outline remain"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "fixture": "chapter-roles",
+        "stage": "after",
+        "format": "md",
+        "file": "chapter-edition-after.md"
       }
     }
   ]

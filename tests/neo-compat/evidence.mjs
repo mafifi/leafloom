@@ -50,6 +50,7 @@ export async function evidenceMetadata(driver = 'browser') {
     'scripts/verify-host-backups.mjs',
     'tests/neo-compat/native/backup-clock-preload.mjs',
     'tests/neo-compat/native/backup-fixture.ts',
+    'tests/neo-compat/native/chapter-edition-io.mjs',
     'scripts/native-evidence-types.ts',
     'scripts/verify-macos-quit-restart.mjs',
     'tests/neo-compat/native/updater-fixture.mjs',
