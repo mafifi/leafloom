@@ -20,6 +20,22 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
   await mkdir(join(bundle, 'Contents/MacOS'), { recursive: true });
   await writeFile(executable, '#!/bin/sh\nexit 0\n', { mode: 0o755 });
   await writeFile(join(bundle, 'Contents/version.txt'), 'old disposable bundle\n');
+  const retainTarget = async (stage, names) => {
+    const files = {};
+    await mkdir(join(output, stage), { recursive: true });
+    for (const name of names) {
+      const bytes = await readFile(join(bundle, 'Contents', name));
+      await mkdir(join(output, stage, 'Contents', name.split('/').slice(0, -1).join('/')), {
+        recursive: true,
+      });
+      await writeFile(join(output, stage, 'Contents', name), bytes);
+      files['Contents/' + name] = { sha256: sha(bytes), bytes: bytes.length };
+    }
+    const bytes = Buffer.from(JSON.stringify({ files }, null, 2) + '\n');
+    await writeFile(join(output, stage, 'manifest.json'), bytes);
+    return { directory: stage, manifestSha256: sha(bytes), files };
+  };
+  const previousTarget = await retainTarget('previous', ['version.txt', 'MacOS/fixture']);
   await mkdir(join(incoming, 'Contents/MacOS'), { recursive: true });
   await writeFile(join(incoming, 'Contents/MacOS/fixture'), '#!/bin/sh\nexit 0\n', { mode: 0o755 });
   const installed = Buffer.from('signed private updater fixture 0.2.0\n');
@@ -208,7 +224,14 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
         'Running binary is never replaced',
       );
       assert.equal(sha(await readFile(new URL(import.meta.url))), helperSha256);
+      const installedTarget = await retainTarget('installed', [
+        'version.txt',
+        'payload.bin',
+        'MacOS/fixture',
+      ]);
       const facts = {
+        previousTarget,
+        installedTarget,
         ...preparation,
         contractId: 'updates:signed-quit',
         helperSha256,
