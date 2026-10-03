@@ -55,13 +55,13 @@ it('migrates valid legacy edge roles into durable kinds once, without an author 
   expect(checkpoint.notes).toBe('<p>Private notes.</p>');
   expect(checkpoint.outline).toBe('<p>Private outline.</p>');
 });
-it('discards invalid legacy positions while retaining modern non-edge kinds and pruning removed, default and unknown kinds', () => {
+it('discards invalid legacy positions and prunes removed/default entries while retaining existing modern role metadata', () => {
   const core = open({
     prologue: 'middle',
     epilogue: 'first',
     chapterKinds: { middle: 'prologue', last: 'chapter', missing: 'epilogue', first: 'nonsense' },
   });
-  expect(core.metadata.chapterKinds).toEqual({ middle: 'prologue' });
+  expect(core.metadata.chapterKinds).toEqual({ first: 'nonsense', middle: 'prologue' });
   expect(core.metadata).not.toHaveProperty('prologue');
   expect(core.metadata).not.toHaveProperty('epilogue');
   expect(core.chapters.map((chapter) => chapter.kind)).toEqual(['chapter', 'prologue', 'chapter']);
@@ -86,4 +86,58 @@ it('modern-only metadata keeps explicit default and future kinds unchanged acros
   const reopened = new BookCore(document, saved.book, saved.reviews, saved.notes, saved.outline);
   expect(reopened.metadata.chapterKinds).toEqual(core.metadata.chapterKinds);
   expect(reopened.revision).toBe(3);
+});
+
+it('legacy edge migration preserves existing future kinds through rich checkpoints, author Undo and reopen', () => {
+  const core = open({
+    prologue: 'first',
+    epilogue: 'last',
+    chapterKinds: { middle: 'future-kind' },
+  });
+  const expected = { first: 'prologue', middle: 'future-kind', last: 'epilogue' };
+  expect(core.metadata.chapterKinds).toEqual(expected);
+  expect(core.revision).toBe(4);
+  expect(core.canUndo).toBe(false);
+  const before = core.checkpoint();
+  expect(before.book.metadata).not.toHaveProperty('prologue');
+  expect(before.book.metadata).not.toHaveProperty('epilogue');
+  expect(before.book.chapters.map((ch) => ch.html)).toEqual([
+    '<p><b>Before.</b></p>',
+    '<p><i>Middle.</i></p>',
+    '<p>After.</p>',
+  ]);
+  const passage = core.passageRows('middle')[0]!;
+  core.selectPassage(passage.id, passage.text.length);
+  core.insert('X');
+  core.undo();
+  const saved = core.checkpoint();
+  expect(saved.book.metadata.chapterKinds).toEqual(expected);
+  expect(saved.book.chapters.map((ch) => ch.html)).toEqual(
+    before.book.chapters.map((ch) => ch.html),
+  );
+  expect(saved.book.chapters.map((ch) => ch.passages)).toEqual(
+    before.book.chapters.map((ch) => ch.passages),
+  );
+  expect(saved.notes).toBe(before.notes);
+  expect(saved.outline).toBe(before.outline);
+  const reopened = new BookCore(document, saved.book, saved.reviews, saved.notes, saved.outline);
+  expect(reopened.metadata.chapterKinds).toEqual(expected);
+  expect(reopened.revision).toBe(core.revision);
+  expect(reopened.passageRows('middle')[0]!.id).toBe(passage.id);
+});
+
+it('an existing future edge kind blocks legacy replacement while the other valid edge still migrates', () => {
+  const core = open({
+    prologue: 'first',
+    epilogue: 'last',
+    chapterKinds: { first: 'future-kind' },
+  });
+  expect(core.metadata.chapterKinds).toEqual({ first: 'future-kind', last: 'epilogue' });
+  expect(core.chapters.map((ch) => ch.kind)).toEqual(['chapter', 'chapter', 'epilogue']);
+  const saved = core.checkpoint();
+  expect(saved.book.metadata).not.toHaveProperty('prologue');
+  expect(saved.book.metadata).not.toHaveProperty('epilogue');
+  const reopened = new BookCore(document, saved.book, saved.reviews, saved.notes, saved.outline);
+  expect(reopened.metadata.chapterKinds).toEqual(saved.book.metadata.chapterKinds);
+  expect(reopened.chapters.map((ch) => ch.kind)).toEqual(core.chapters.map((ch) => ch.kind));
 });
