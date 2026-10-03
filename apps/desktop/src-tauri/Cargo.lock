@@ -2515,6 +2515,7 @@ dependencies = [
  "arboard",
  "base64 0.22.1",
  "block2",
+ "dirs",
  "font-kit",
  "image",
  "keyring",

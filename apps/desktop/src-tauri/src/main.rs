@@ -5,6 +5,8 @@ mod updater;
 mod native_menu;
 #[cfg(target_os="macos")]mod edit_menu;
 mod preferences;
+mod startup_diagnostics;
+static STARTUP_PROFILE: std::sync::OnceLock<Option<PathBuf>> = std::sync::OnceLock::new();
 mod secrets;
 mod library_lock;
 mod system_trash;
@@ -1031,18 +1033,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
     }
     let resources = app.path().resource_dir()?;
     let default_root = app.path().document_dir()?.join("Leafloom");
-    let profile_path = app.path().app_config_dir()?.join("host-settings.json");
-    #[cfg(debug_assertions)]
-    let profile_path = match std::env::var_os("LEAFLOOM_FIXTURE_ROOT") {
-        Some(path) => {
-            let path = PathBuf::from(path);
-            if !path.is_absolute() || !path.join(".leafloom-fixture").is_file() {
-                return Err("Fixture root must be an absolute marked disposable directory".into());
-            }
-            path.join(".profile/host-settings.json")
-        }
-        None => profile_path,
-    };
+    let profile_path = startup_diagnostics::profile_path(&app.config().identifier)?;
     let profile = preferences::read(&profile_path)?;
     let root = profile
         .get("libraryDir")
@@ -1179,7 +1170,9 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn startup_failed(message:&str)->! {
-    let code=["INVALID_PROFILE","PROFILE_UNAVAILABLE","LIBRARY_BUSY","LIBRARY_UNAVAILABLE","HOST_UNAVAILABLE"].into_iter().find(|code|message.contains(code)).unwrap_or("STARTUP_UNAVAILABLE");
+    let category = startup_diagnostics::Code::from_message(message);
+    startup_diagnostics::record(STARTUP_PROFILE.get().cloned().flatten(), category);
+    let code = category.label();
     eprintln!("Leafloom startup failed: {code}");
     #[cfg(debug_assertions)]let hidden=std::env::var_os("LEAFLOOM_HIDDEN").is_some();
     #[cfg(not(debug_assertions))]let hidden=false;
@@ -1197,6 +1190,7 @@ fn main() {
     if let Some(root)=std::env::var_os("LEAFLOOM_FIXTURE_ROOT") {
         use std::hash::{Hash,Hasher};let mut hash=std::collections::hash_map::DefaultHasher::new();root.hash(&mut hash);context.config_mut().identifier=format!("org.mafifi.leafloom.fixture{:016x}",hash.finish());
     }
+    let _ = STARTUP_PROFILE.set(startup_diagnostics::profile_path(&context.config().identifier).ok());
     let enable_updater=updater::configure(&mut context).unwrap_or_else(|error|startup_failed(&error));
     let builder = tauri::Builder::default().plugin(tauri_plugin_single_instance::init(|app,_,_|{
         #[cfg(debug_assertions)]
