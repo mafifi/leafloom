@@ -15,6 +15,9 @@ import { evidenceMetadata } from '../tests/neo-compat/evidence.mjs';
 
 const binary = resolve(process.argv[2] ?? 'apps/desktop/src-tauri/target/debug/leafloom-desktop');
 const report = resolve(process.argv[3] ?? '.leafloom/evidence/native-quit-restart.json');
+const withUpdater = process.argv.includes('--updater-fixture');
+if (withUpdater && process.env.LEAFLOOM_NATIVE_UPDATER_ACCEPTANCE !== '1')
+  throw Error('Explicit signed loopback updater fixture opt-in required');
 if (process.platform !== 'darwin' || process.env.LEAFLOOM_NATIVE_QUIT_ACCEPTANCE !== '1')
   throw Error('Explicit macOS hidden acceptance opt-in required');
 // Release builds deliberately ignore LEAFLOOM_HIDDEN. Never launch those here.
@@ -93,7 +96,7 @@ await writeFile(join(fixture, bookId, 'outline.html'), '<p><i>Retained outline.<
 // Validate the actual four-file boundary before starting any native process.
 await new BookFiles(join(fixture, bookId)).load(false);
 const launches = [];
-let quitRestart;
+let quitRestart, updaterFixture;
 async function launch() {
   const socket = createServer();
   socket.listen(0, '127.0.0.1');
@@ -227,6 +230,13 @@ async function capture(stage) {
   return result;
 }
 try {
+  if (withUpdater) {
+    const { prepareUpdaterFixture } =
+      await import('../tests/neo-compat/native/updater-fixture.mjs');
+    updaterFixture = await prepareUpdaterFixture({ fixture, artifacts, binary });
+    if (['prepare', 'inspect', 'close'].some((key) => typeof updaterFixture?.[key] !== 'function'))
+      throw Error('Invalid updater fixture hooks');
+  }
   const first = await launch();
   await first.click('.book[data-book-id="' + bookId + '"]');
   await first.until(
@@ -285,6 +295,7 @@ try {
       ),
     'baseline reopen',
   );
+  if (updaterFixture) await updaterFixture.prepare(first, { bookId, chapterId });
   const before = await capture('before');
   const beforeBook = Manuscript.parse(JSON.parse(before['manuscript.json'].bytes.toString()));
   const beforeReviews = Reviews.parse(JSON.parse(before['reviews.json'].bytes.toString()));
@@ -395,6 +406,9 @@ try {
     ),
   };
   await writeFile(join(artifacts, 'quit.json'), JSON.stringify(quitRestart, null, 2) + '\n');
+  const updater = updaterFixture
+    ? await updaterFixture.inspect({ launches, quitRestart })
+    : undefined;
   await second.script(
     'window.__TAURI__.core.invoke("os_request",{method:"quitApp",payload:{}});return true;',
   );
@@ -421,6 +435,7 @@ try {
     fixtureKind: 'marked disposable private library',
     hiddenWindow: true,
     quitRestart,
+    ...(updater ? { updater } : {}),
   };
   await mkdir(dirname(report), { recursive: true });
   await writeFile(report, JSON.stringify(result, null, 2) + '\n');
@@ -480,5 +495,9 @@ try {
       }
     }
   }
-  await rm(fixture, { recursive: true, force: true });
+  try {
+    await updaterFixture?.close();
+  } finally {
+    await rm(fixture, { recursive: true, force: true });
+  }
 }
