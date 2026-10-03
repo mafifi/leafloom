@@ -9036,6 +9036,63 @@
           "assertions": [
             "Only stories increment Arabic numbering, Parts increment Roman numbering, restart preference persists, generated Contents and exact rich saved order follow the edits."
           ]
+        },
+        {
+          "id": "NEO-053-A",
+          "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native before html edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:before:html",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Choose actual Export HTML",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Contents links resolve to every actual story including blank unnumbered title fallback",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
+        },
+        {
+          "id": "NEO-053-A",
+          "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native after html edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:after:html",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Insert Part through actual gap menu",
+            "Deliver actual DOM drag to reorder an existing Part",
+            "Choose Delete for the original Part",
+            "Choose actual Export HTML",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Contents links resolve to every actual story including blank unnumbered title fallback",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
         }
       ],
       "referenceCases": [
@@ -9049,6 +9106,17 @@
           "assertions": [
             "Only stories increment Arabic numbering, Parts increment Roman numbering, restart preference persists, generated Contents and exact rich saved order follow the edits."
           ]
+        },
+        {
+          "title": "[NEO-053-A][NEO-055-A][NEO-259-B] actual edited edition exports reset Contents and unique Part and unnumbered headings before and after author restructuring",
+          "testFile": "tests/neo-compat/reference/chapter-edition-io.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Type rich opening, choose per-Part chapter-number reset, export actual HTML and Markdown, then insert/reorder/delete Parts and export both formats again; close, restart and reopen."
+          ],
+          "assertions": [
+            "Independently parsed output agrees with source Contents links and numbering, unique Part/custom unnumbered headings, no invented blank heading, escaped Markdown metadata, poetry and author order; exact rich owned book, Notes and deleted Part recovery remain."
+          ]
         }
       ],
       "oracle": {
@@ -9057,7 +9125,8 @@
       },
       "knownGaps": [
         "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
-        "Independently parsed exported Contents before/after these edits remains a separate artifact proof."
+        "Independently parsed exported Contents before/after these edits remains a separate artifact proof.",
+        "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
       ],
       "acceptanceReview": {
         "inventoryThen": "only chapters increment Arabic number and parts Roman number; optional restart per part persists.",
@@ -9069,7 +9138,8 @@
         ],
         "unprovedClauses": [
           "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
-          "Independently parsed exported Contents before/after these edits remains a separate artifact proof."
+          "Independently parsed exported Contents before/after these edits remains a separate artifact proof.",
+          "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
         ],
         "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
       }
@@ -9405,6 +9475,120 @@
           "assertions": [
             "Custom/empty title remains unnumbered; following story number excludes it, rich prose and saved role/title survive."
           ]
+        },
+        {
+          "id": "NEO-053-A",
+          "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native before html edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:before:html",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Choose actual Export HTML",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Contents links resolve to every actual story including blank unnumbered title fallback",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
+        },
+        {
+          "id": "NEO-259-B",
+          "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native before md edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:before:md",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Choose actual Export MD",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Markdown title is escaped and printed Contents is omitted",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
+        },
+        {
+          "id": "NEO-053-A",
+          "title": "[NEO-053-A][NEO-055-A] Leafloom: actual native after html edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:after:html",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Insert Part through actual gap menu",
+            "Deliver actual DOM drag to reorder an existing Part",
+            "Choose Delete for the original Part",
+            "Choose actual Export HTML",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Contents links resolve to every actual story including blank unnumbered title fallback",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
+        },
+        {
+          "id": "NEO-259-B",
+          "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native after md edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:after:md",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Insert Part through actual gap menu",
+            "Deliver actual DOM drag to reorder an existing Part",
+            "Choose Delete for the original Part",
+            "Choose actual Export MD",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Markdown title is escaped and printed Contents is omitted",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
         }
       ],
       "referenceCases": [
@@ -9418,6 +9602,17 @@
           "assertions": [
             "Custom/empty title remains unnumbered; following story number excludes it, rich prose and saved role/title survive."
           ]
+        },
+        {
+          "title": "[NEO-053-A][NEO-055-A][NEO-259-B] actual edited edition exports reset Contents and unique Part and unnumbered headings before and after author restructuring",
+          "testFile": "tests/neo-compat/reference/chapter-edition-io.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Type rich opening, choose per-Part chapter-number reset, export actual HTML and Markdown, then insert/reorder/delete Parts and export both formats again; close, restart and reopen."
+          ],
+          "assertions": [
+            "Independently parsed output agrees with source Contents links and numbering, unique Part/custom unnumbered headings, no invented blank heading, escaped Markdown metadata, poetry and author order; exact rich owned book, Notes and deleted Part recovery remain."
+          ]
         }
       ],
       "oracle": {
@@ -9426,7 +9621,8 @@
       },
       "knownGaps": [
         "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
-        "Actual custom/empty heading text in exported editions remains a separate artifact proof."
+        "Actual custom/empty heading text in exported editions remains a separate artifact proof.",
+        "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
       ],
       "acceptanceReview": {
         "inventoryThen": "display title once and exclude from numbered count.",
@@ -9438,7 +9634,8 @@
         ],
         "unprovedClauses": [
           "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
-          "Actual custom/empty heading text in exported editions remains a separate artifact proof."
+          "Actual custom/empty heading text in exported editions remains a separate artifact proof.",
+          "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
         ],
         "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
       }
@@ -39534,6 +39731,63 @@
           "assertions": [
             "Actual file escaped title/subtitle/byline, singlePart heading, poetryblockquote, bold/italic, front/body/back order, no ghost; live/durable prose unchanged."
           ]
+        },
+        {
+          "id": "NEO-259-B",
+          "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native before md edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:before:md",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Choose actual Export MD",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Markdown title is escaped and printed Contents is omitted",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
+        },
+        {
+          "id": "NEO-259-B",
+          "title": "[NEO-259-B][NEO-055-A] Leafloom: actual native after md edited edition retains reset Contents and unique Part and unnumbered headings",
+          "testFile": "tests/neo-compat/native/chapter-edition-io.mjs",
+          "report": ".leafloom/evidence/closure-native-document.json",
+          "evidenceKind": "native-v1",
+          "driver": "tauri-native-hidden",
+          "section": "documentIO",
+          "contractId": "document:chapter-edition:after:md",
+          "requiredCapabilities": [
+            "native-files",
+            "native-export"
+          ],
+          "driverActions": [
+            "Type Edited through actual native manuscript input",
+            "Choose actual Part chapter-number reset",
+            "Insert Part through actual gap menu",
+            "Deliver actual DOM drag to reorder an existing Part",
+            "Choose Delete for the original Part",
+            "Choose actual Export MD",
+            "Supply private native picker destination",
+            "Close and reopen the actual book"
+          ],
+          "assertions": [
+            "Independently parsed output headings agree with source and author order",
+            "Markdown title is escaped and printed Contents is omitted",
+            "Part headings occur once; custom unnumbered title occurs once and blank unnumbered has no invented heading",
+            "Actual durable rich paragraphs, identities, Notes and Outline remain"
+          ]
         }
       ],
       "referenceCases": [
@@ -39547,6 +39801,17 @@
           "assertions": [
             "Actual file escaped title/subtitle/byline, singlePart heading, poetryblockquote, bold/italic, front/body/back order, no ghost; live/durable prose unchanged."
           ]
+        },
+        {
+          "title": "[NEO-053-A][NEO-055-A][NEO-259-B] actual edited edition exports reset Contents and unique Part and unnumbered headings before and after author restructuring",
+          "testFile": "tests/neo-compat/reference/chapter-edition-io.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Type rich opening, choose per-Part chapter-number reset, export actual HTML and Markdown, then insert/reorder/delete Parts and export both formats again; close, restart and reopen."
+          ],
+          "assertions": [
+            "Independently parsed output agrees with source Contents links and numbering, unique Part/custom unnumbered headings, no invented blank heading, escaped Markdown metadata, poetry and author order; exact rich owned book, Notes and deleted Part recovery remain."
+          ]
         }
       ],
       "oracle": {
@@ -39555,7 +39820,8 @@
       },
       "knownGaps": [
         "Fresh coherent canonical source/candidate reports required before final acceptance review.",
-        "Candidate portable host artifact does not exercise native save picker; original export boundary differs."
+        "Candidate portable host artifact does not exercise native save picker; original export boundary differs.",
+        "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
       ],
       "acceptanceReview": {
         "inventoryThen": "Titleescaped,eachpartheading appearsonce,poetryblockquotesretained andfront/story/back order correct.",
@@ -39566,7 +39832,8 @@
           "Actual file escaped title/subtitle/byline, singlePart heading, poetryblockquote, bold/italic, front/body/back order, no ghost; live/durable prose unchanged."
         ],
         "unprovedClauses": [
-          "Candidate portable host artifact does not exercise native save picker; original export boundary differs."
+          "Candidate portable host artifact does not exercise native save picker; original export boundary differs.",
+          "Edited chapter-edition native callbacks are authored; actual passing runtime/artifact proof and coherent final reports remain required. Physical pointer and OS picker panels remain unproved."
         ]
       }
     },
