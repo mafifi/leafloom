@@ -43,7 +43,9 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
   // Incompressible fixture bytes produce real multiple download progress callbacks.
   await writeFile(join(incoming, 'Contents/payload.bin'), randomBytes(262144));
   const tar = join(fixture, 'private-update.app.tar.gz');
-  await exec('/usr/bin/tar', ['-czf', tar, '-C', stage, 'Disposable.app']);
+  await exec('/usr/bin/tar', ['-czf', tar, '-C', stage, 'Disposable.app'], {
+    env: { ...process.env, COPYFILE_DISABLE: '1' },
+  });
   const key = join(fixture, 'private-update.key');
   // Signer output contains private material: capture it and never print or retain it in artifacts.
   const cli = resolve('node_modules/@tauri-apps/cli/tauri.js');
