@@ -7720,16 +7720,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-050-A] typing does not expose a sole story heading and removing or reordering its second story restores the same heading rule",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Reorder two story rows, remove the second, type in the remaining rich chapter and reopen."
+          ],
+          "assertions": [
+            "Two numbered headings become one suppressed heading; typing leaves it suppressed, exact surviving chapter ID and rich bytes reopen."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-050-A] typing does not expose a sole story heading and removing or reordering its second story restores the same heading rule",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Reorder two story rows, remove the second, type in the remaining rich chapter and reopen."
+          ],
+          "assertions": [
+            "Two numbered headings become one suppressed heading; typing leaves it suppressed, exact surviving chapter ID and rich bytes reopen."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Adding the second story/Prologue/Part from a sole story and checking both headings requires the corresponding insertion clause proof."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "add second story/prologue/part then both headings number correctly.",
+        "driverActions": [
+          "Reorder two story rows, remove the second, type in the remaining rich chapter and reopen."
+        ],
+        "assertions": [
+          "Two numbered headings become one suppressed heading; typing leaves it suppressed, exact surviving chapter ID and rich bytes reopen."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Adding the second story/Prologue/Part from a sole story and checking both headings requires the corresponding insertion clause proof."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-050-B",
@@ -8156,16 +8196,263 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-052-A] copyright conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] dedication conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] epigraph conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] prologue conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] part conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] chapter conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] unnumbered conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] epilogue conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] acknowledgments conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] about conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-052-A] copyright conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] dedication conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] epigraph conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] prologue conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] part conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] chapter conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] unnumbered conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] epilogue conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] acknowledgments conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        },
+        {
+          "title": "[NEO-052-A] about conversion preserves existing rich prose through structural Undo and durable reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+          ],
+          "assertions": [
+            "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Eleven-kind empty Contents conversion/protection and computed page layout are checked separately in the existing chapter-menu matrix; this rich matrix does not invent rich Contents conversion."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "headings and page layouts match kind.",
+        "driverActions": [
+          "Convert an existing rich middle chapter through each of ten editable kinds; Undo, apply again, save and reopen."
+        ],
+        "assertions": [
+          "Exact rich prose, original title, chapter IDs, neighbouring content and Notes survive; kind class and persisted kind match, Undo restores the prior role."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Eleven-kind empty Contents conversion/protection and computed page layout are checked separately in the existing chapter-menu matrix; this rich matrix does not invent rich Contents conversion."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-052-B",
@@ -8464,16 +8751,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-053-A] per-Part chapter resets survive actual Part reorder and deletion while generated Contents follows the same rich story order",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Switch to per-Part numbering, insert and delete an actual Part, drag an existing Part, delete another and reopen."
+          ],
+          "assertions": [
+            "Only stories increment Arabic numbering, Parts increment Roman numbering, restart preference persists, generated Contents and exact rich saved order follow the edits."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-053-A] per-Part chapter resets survive actual Part reorder and deletion while generated Contents follows the same rich story order",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Switch to per-Part numbering, insert and delete an actual Part, drag an existing Part, delete another and reopen."
+          ],
+          "assertions": [
+            "Only stories increment Arabic numbering, Parts increment Roman numbering, restart preference persists, generated Contents and exact rich saved order follow the edits."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Independently parsed exported Contents before/after these edits remains a separate artifact proof."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "only chapters increment Arabic number and parts Roman number; optional restart per part persists.",
+        "driverActions": [
+          "Switch to per-Part numbering, insert and delete an actual Part, drag an existing Part, delete another and reopen."
+        ],
+        "assertions": [
+          "Only stories increment Arabic numbering, Parts increment Roman numbering, restart preference persists, generated Contents and exact rich saved order follow the edits."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Independently parsed exported Contents before/after these edits remains a separate artifact proof."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-053-B",
@@ -8610,16 +8937,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-054-A] legacy first Prologue and last Epilogue migrate to modern kinds without changing rich chapter identity or order",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Open a saved book carrying legacy first Prologue/last Epilogue fields, close, inspect persisted metadata and reopen."
+          ],
+          "assertions": [
+            "Modern role map replaces obsolete fields; exact original chapter IDs/order/rich HTML and visible numbering survive."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-054-A] legacy first Prologue and last Epilogue migrate to modern kinds without changing rich chapter identity or order",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Open a saved book carrying legacy first Prologue/last Epilogue fields, close, inspect persisted metadata and reopen."
+          ],
+          "assertions": [
+            "Modern role map replaces obsolete fields; exact original chapter IDs/order/rich HTML and visible numbering survive."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Newer role placement at non-legacy positions is covered separately by conversion/insertion bodies, not asserted by this legacy fixture."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "migrate to chapterKinds without prose/order loss; newer kinds need not occupy legacy first/last constraints.",
+        "driverActions": [
+          "Open a saved book carrying legacy first Prologue/last Epilogue fields, close, inspect persisted metadata and reopen."
+        ],
+        "assertions": [
+          "Modern role map replaces obsolete fields; exact original chapter IDs/order/rich HTML and visible numbering survive."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Newer role placement at non-legacy positions is covered separately by conversion/insertion bodies, not asserted by this legacy fixture."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-054-B",
@@ -8753,16 +9120,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-055-A] unnumbered custom then empty title remains outside the numbered count through reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Open a custom unnumbered chapter, clear its title, save and reopen."
+          ],
+          "assertions": [
+            "Custom/empty title remains unnumbered; following story number excludes it, rich prose and saved role/title survive."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-055-A] unnumbered custom then empty title remains outside the numbered count through reopen",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Open a custom unnumbered chapter, clear its title, save and reopen."
+          ],
+          "assertions": [
+            "Custom/empty title remains unnumbered; following story number excludes it, rich prose and saved role/title survive."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Actual custom/empty heading text in exported editions remains a separate artifact proof."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "display title once and exclude from numbered count.",
+        "driverActions": [
+          "Open a custom unnumbered chapter, clear its title, save and reopen."
+        ],
+        "assertions": [
+          "Custom/empty title remains unnumbered; following story number excludes it, rich prose and saved role/title survive."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Actual custom/empty heading text in exported editions remains a separate artifact proof."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-056-A",
@@ -8998,16 +9405,77 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-057-A] en copyright starter is localized and repeated kind switches never replace authored legal prose",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an empty chapter to Copyright under English/French UI locale, switch away/back, convert existing rich legal text and reopen."
+          ],
+          "assertions": [
+            "Current year and saved author rights text use the selected locale; repeat conversion never replaces existing legal prose, exact bytes reopen."
+          ]
+        },
+        {
+          "title": "[NEO-057-A] fr copyright starter is localized and repeated kind switches never replace authored legal prose",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Convert an empty chapter to Copyright under English/French UI locale, switch away/back, convert existing rich legal text and reopen."
+          ],
+          "assertions": [
+            "Current year and saved author rights text use the selected locale; repeat conversion never replaces existing legal prose, exact bytes reopen."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-057-A] en copyright starter is localized and repeated kind switches never replace authored legal prose",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an empty chapter to Copyright under English/French UI locale, switch away/back, convert existing rich legal text and reopen."
+          ],
+          "assertions": [
+            "Current year and saved author rights text use the selected locale; repeat conversion never replaces existing legal prose, exact bytes reopen."
+          ]
+        },
+        {
+          "title": "[NEO-057-A] fr copyright starter is localized and repeated kind switches never replace authored legal prose",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Convert an empty chapter to Copyright under English/French UI locale, switch away/back, convert existing rich legal text and reopen."
+          ],
+          "assertions": [
+            "Current year and saved author rights text use the selected locale; repeat conversion never replaces existing legal prose, exact bytes reopen."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "generated current year/author rights text appears; nonempty copyright content preserved.",
+        "driverActions": [
+          "Convert an empty chapter to Copyright under English/French UI locale, switch away/back, convert existing rich legal text and reopen."
+        ],
+        "assertions": [
+          "Current year and saved author rights text use the selected locale; repeat conversion never replaces existing legal prose, exact bytes reopen."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-058-A",
@@ -9069,16 +9537,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-058-A] ordinary Add inserts a focused numbered story before Epilogue and all back matter retaining rich neighbours",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Use ordinary navigation Add with Epilogue/Acknowledgments/About back matter present; type into its focused new story and reopen."
+          ],
+          "assertions": [
+            "The numbered story precedes all back matter, starts with a collapsed writing caret, and exact neighbouring IDs/rich bytes/order survive."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-058-A] ordinary Add inserts a focused numbered story before Epilogue and all back matter retaining rich neighbours",
+          "testFile": "tests/neo-compat/candidate/chapter-role-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Use ordinary navigation Add with Epilogue/Acknowledgments/About back matter present; type into its focused new story and reopen."
+          ],
+          "assertions": [
+            "The numbered story precedes all back matter, starts with a collapsed writing caret, and exact neighbouring IDs/rich bytes/order survive."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "new chapter inserted before back matter and caret focuses it.",
+        "driverActions": [
+          "Use ordinary navigation Add with Epilogue/Acknowledgments/About back matter present; type into its focused new story and reopen."
+        ],
+        "assertions": [
+          "The numbered story precedes all back matter, starts with a collapsed writing caret, and exact neighbouring IDs/rich bytes/order survive."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Shared source/replacement chapter lifecycle bodies, actual command actions, exact saved author bytes, structural Undo and reopen; exported artifacts and physical delivery remain distinct."
+      }
     },
     {
       "id": "NEO-059-A",

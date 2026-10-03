@@ -25,6 +25,7 @@ export default defineConfig({
     '**/candidate/storage-text-refresh.spec.ts',
     '**/candidate/storage-refresh-races.spec.ts',
     '**/candidate/chapter-role-closure.spec.ts',
+    '**/candidate/library-identity-closure.spec.ts',
     '**/reference/document-io.spec.ts',
     '**/reference/io-cover-edge.spec.ts',
     '**/reference/pdf-layout.spec.ts',
