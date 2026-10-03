@@ -130,6 +130,7 @@ export interface LibraryShelfActions {
   shelfDrop(event: DragEvent, index?: number): void;
   bookDrag(event: DragEvent, book: ShelfBook): void;
   bookMenu(event: MouseEvent, book: ShelfBook): void;
+  refreshCover(book: ShelfBook): void;
   pageMenu(event: MouseEvent, book: ShelfBook, label: string): void;
   openBook(book: ShelfBook): void;
   openPage(book: ShelfBook, label: string): void;

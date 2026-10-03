@@ -20,6 +20,23 @@
   const spine = (label: string) =>
     label.length > 17 ? ' longer' : label.length > 12 ? ' long' : '';
   let indicator: HTMLDivElement | null = null;
+  let shelfIndicator: HTMLDivElement | null = null;
+  const removeShelfIndicator = () => shelfIndicator?.remove();
+  const shelfDragOver = (event: DragEvent) => {
+    if (!event.dataTransfer?.types.includes('application/x-neo-shelf')) return;
+    event.preventDefault();
+    const target = event.currentTarget as HTMLElement;
+    if (target.classList.contains('dragging')) return;
+    document.querySelector('.shelf-drop-ind')?.remove();
+    shelfIndicator ??= document.createElement('div');
+    shelfIndicator.className = 'shelf-drop-ind';
+    const rect = target.getBoundingClientRect();
+    const before = event.clientY < rect.top + rect.height / 2;
+    // The drop bar must not move the shelf away from the live pointer.
+    const gap = Number.parseFloat(getComputedStyle(target).marginBottom) || 0;
+    shelfIndicator.style.cssText = `position:relative;margin:0 20px -3px;top:${before ? -14 : 14 - gap}px;pointer-events:none`;
+    target.parentElement?.insertBefore(shelfIndicator, before ? target : target.nextSibling);
+  };
   const removeIndicator = () => {
     indicator?.parentElement?.classList.remove('drag-over');
     indicator?.remove();
@@ -53,10 +70,10 @@
     removeIndicator();
     actions.shelfDrop(event, index);
   };
-  onDestroy(removeIndicator);
+  onDestroy(() => { removeIndicator(); removeShelfIndicator(); });
 </script>
 
-<svelte:window ondragend={removeIndicator} />
+<svelte:window ondragend={() => { removeIndicator(); removeShelfIndicator(); }} />
 
 {#snippet coverTile(book: ShelfBook, collection = false)}
   {@const cover = covers[book.id]}
@@ -90,6 +107,9 @@
           >{/if}</span
       ><span class="b-author">{book.author}</span></span
     >
+    <span class="b-refresh" title={t('New cover')} role="button" tabindex="-1" aria-hidden="true"
+      onclick={(event) => { event.stopPropagation(); actions.refreshCover(book); }}
+      onkeydown={(event) => event.stopPropagation()}>↻</span>
     <div class="b-progress" hidden={!progress.visible}>
       <div style:width={`${progress.percent}%`}></div>
     </div>
@@ -101,9 +121,14 @@
   class:bound
   data-shelf-id={shelf.id}
   aria-label={shelf.name}
-  ondragover={(event) => event.preventDefault()}
+  ondragover={(event) => { event.preventDefault(); shelfDragOver(event); }}
+  ondragleave={(event) => {
+    if (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget)) removeShelfIndicator();
+  }}
+  ondragend={(event) => event.currentTarget.classList.remove('dragging')}
   ondrop={(event) => {
     event.preventDefault();
+    removeShelfIndicator();
     actions.shelfDrop(event);
   }}
 >
@@ -113,7 +138,10 @@
     role="button"
     tabindex="0"
     aria-label={t('Drag to reorder shelf')}
-    ondragstart={actions.shelfDrag}>⠿</span
+    ondragstart={(event) => {
+      event.currentTarget.closest('.shelf')?.classList.add('dragging');
+      actions.shelfDrag(event);
+    }}>⠿</span
   >
   <div
     class="shelf-label"
