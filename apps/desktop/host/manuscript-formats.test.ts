@@ -622,3 +622,43 @@ it('real PDF Contents labels and physical page counts link to actual named chapt
  }finally{await task.destroy();}
  }finally{await f.dispose();}
 });
+
+it('Markdown quotes poetry while retaining nested marks, line breaks and ordinary prose boundaries', async () => {
+  const f = await fixture();
+  try {
+    f.opened.book.chapters[0].html = '<p>Ordinary <strong>bold</strong>.</p><p class="poetry"><strong><em>  Verse </em></strong>line.<br>Second line.</p><p class="scene-break">***</p><p>Afterwards.</p>';
+    const destination = join(f.root, 'poetry.md');
+    await writeFile(destination, await renderManuscript(f.opened, 'md'));
+    const artifact = await readFile(destination, 'utf8');
+    expect(artifact).toContain('\n\nOrdinary **bold**.\n\n');
+    expect(artifact).toContain('\n\n>   ***Verse*** line.  \nSecond line.\n\n');
+    expect(artifact).toContain('\n\n***\n\nAfterwards.');
+    expect(artifact).not.toMatch(/^>.*Ordinary/m);
+    expect(artifact).not.toMatch(/^>.*Afterwards/m);
+  } finally { await f.dispose(); }
+});
+
+it('Markdown edition italicizes escaped subtitle and translated byline without empty front headings', async () => {
+  const f = await fixture();
+  try {
+    f.opened.book.metadata.subtitle = 'A *Small* [Edition]';
+    f.opened.book.metadata.author = 'An *Author*';
+    f.opened.book.metadata.chapterKinds = {front: 'copyright', part: 'part', story: 'chapter', back: 'about'};
+    f.opened.book.chapters = [
+      {id:'front',html:'<p>Rights.</p>'},
+      {id:'part',html:'<p>Movement One</p><p>Part verse.</p>'},
+      {id:'story',html:'<p>Story.</p>'},
+      {id:'back',html:'<p>Biography.</p>'},
+    ];
+    const destination = join(f.root, 'edition.md');
+    await writeFile(destination, await renderManuscript(f.opened, 'md'));
+    const artifact = await readFile(destination, 'utf8');
+    expect(artifact).toContain('*A \\*Small\\* \\[Edition\\]*');
+    expect(artifact).toContain('**by An \\*Author\\***');
+    expect(artifact).not.toMatch(/^##\s*$/m);
+    expect(artifact.match(/^## Part I: Movement One$/gm)).toHaveLength(1);
+    expect(artifact).toContain('## About the Author');
+    expect(artifact.indexOf('Rights.')).toBeLessThan(artifact.indexOf('Movement One'));
+    expect(artifact.indexOf('Story.')).toBeLessThan(artifact.indexOf('Biography.'));
+  } finally { await f.dispose(); }
+});

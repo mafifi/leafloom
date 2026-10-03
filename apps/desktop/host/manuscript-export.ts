@@ -524,13 +524,14 @@ async function renderSections(
   return Buffer.from(
     [
       '# ' + markdownMetadata(opened.book.metadata.title),
-      opened.book.metadata.author,
+      ...(typeof opened.book.metadata.subtitle === 'string' && opened.book.metadata.subtitle ? ['*' + markdownMetadata(opened.book.metadata.subtitle) + '*'] : []),
+      '**' + localize(options.catalog)('by {author}', {author: markdownMetadata(opened.book.metadata.author || localize(options.catalog)('Anonymous'))}) + '**',
       ...chapters.flatMap((ch) => [
-        '## ' + markdownMetadata(ch.title),
+        ...(ch.title ? ['## ' + markdownMetadata(ch.title)] : []),
         ...ch.paragraphs.map((p) =>
           p.kind === 'scene-break'
             ? '***'
-            : p.runs.map(markdownRun)                .join(''),
+            : (p.kind === 'poetry' ? '> ' : '') + p.runs.map(markdownRun).join(''),
         ),
       ]),
     ].join('\n\n') + '\n',
