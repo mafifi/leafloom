@@ -13,7 +13,6 @@
   import type { ShelfBook, LibraryShelfActions } from './lib/library-shelf';
   import { translate } from '@leafloom/language-contracts';
   import { editableText, focusInput } from './lib/editable-text';
-  import { bodyFonts, dropcaps } from './lib/presentation';
   import type { AppActions, AppState } from './lib/application';
   import type { Readable } from 'svelte/store';
   let { presentation, actions: vm }: { presentation: Readable<AppState>; actions: AppActions } =
@@ -21,7 +20,10 @@
   const app = $derived(presentation);
   let step = $state(1);
   let pen = $state('');
-  let pickedBody = $state('Georgia');
+  let pickedBody = $state('');
+  let previewBody = $state('');
+  let previewCap = $state('');
+  const selectedBody = $derived(pickedBody || $app.onboardingFonts.defaultBody);
   let pickedCap = $state('literary');
   let name = $state('');
   let style = $state<'pantser' | 'plotter'>('pantser');
@@ -377,7 +379,7 @@
           <p>{t('Pick a typeface and a drop-cap style.')}</p>
           <div
             id="fr-sample"
-            style={`--body-font:${bodyFonts[pickedBody]};--dropcap-font:${dropcaps[pickedCap]}`}
+            style={`--body-font:${$app.onboardingFonts.bodyStacks[previewBody || selectedBody]};--dropcap-font:${$app.onboardingFonts.dropcaps[previewCap || pickedCap]}`}
           >
             <p id="fr-sample-text">
               It was the best of times, it was the worst of times, it was the age of wisdom, it was
@@ -386,11 +388,16 @@
           </div>
           <p>{t('Body typeface')}</p>
           <div id="fr-bodyfonts" class="fr-fontrow">
-            {#each ['Georgia', 'Palatino', 'Baskerville', 'Hoefler Text', 'Iowan Old Style', 'Jost'] as font}<button
+            {#each $app.onboardingFonts.body as font}<button
                 class="fr-font"
-                class:sel={font === pickedBody}
-                style={`font-family:${bodyFonts[font]}`}
-                onclick={() => (pickedBody = font)}>{font}</button
+                class:sel={font === selectedBody}
+                style={`font-family:${$app.onboardingFonts.bodyStacks[font]}`}
+                onmouseenter={() => (previewBody = font)}
+                onmouseleave={() => (previewBody = '')}
+                onclick={() => {
+                  pickedBody = font;
+                  previewBody = '';
+                }}>{font}</button
               >{/each}
           </div>
           <p>{t('Drop cap')}</p>
@@ -398,11 +405,15 @@
             {#each ['literary', 'fantasy', 'scifi'] as cap}<button
                 class="fr-font"
                 class:sel={cap === pickedCap}
-                onclick={() => (pickedCap = cap)}
-                ><span class="fr-cap" style={`font-family:${dropcaps[cap]}`}>{t('A')}</span>{cap ===
-                'scifi'
-                  ? 'Sci-Fi'
-                  : cap[0].toUpperCase() + cap.slice(1)}</button
+                onmouseenter={() => (previewCap = cap)}
+                onmouseleave={() => (previewCap = '')}
+                onclick={() => {
+                  pickedCap = cap;
+                  previewCap = '';
+                }}
+                ><span class="fr-cap" style={`font-family:${$app.onboardingFonts.dropcaps[cap]}`}
+                  >{t('A')}</span
+                >{cap === 'scifi' ? 'Sci-Fi' : cap[0].toUpperCase() + cap.slice(1)}</button
               >{/each}
           </div>
           <div style="text-align:right;margin-top:20px">
@@ -410,7 +421,7 @@
               id="fr-done"
               class="btn-gold"
               onclick={() =>
-                run(() => vm.onboard(name, style, pen, { body: pickedBody, dropcap: pickedCap }))}
+                run(() => vm.onboard(name, style, pen, { body: selectedBody, dropcap: pickedCap }))}
               >{t('Start writing')}</button
             >
           </div>
