@@ -1,3 +1,5 @@
+#[cfg(any(not(target_os = "macos"), test))]
+mod system_languages;
 mod external_drop;
 mod native_menu;
 #[cfg(target_os="macos")]mod edit_menu;
@@ -287,7 +289,7 @@ async fn os_request(
                     .collect::<Vec<_>>()
             };
             #[cfg(not(target_os = "macos"))]
-            let languages = vec!["en".to_string()];
+            let languages = system_languages::preferred_languages();
             let fonts = if cfg!(target_os = "macos") {
                 vec![
                     "Georgia",

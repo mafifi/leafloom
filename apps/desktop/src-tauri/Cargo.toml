@@ -38,3 +38,6 @@ trash = "=5.2.9"
 [features]
 default = []
 native-test = ["dep:tauri-plugin-wdio", "dep:tauri-plugin-wdio-webdriver"]
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "=0.61.2", features = ["Win32_Globalization"] }
