@@ -709,6 +709,83 @@
       "parser": {
         "kind": "signed-updater"
       }
+    },
+    {
+      "contractId": "backup:startup:retention",
+      "evidenceKind": "host-startup-v1",
+      "driver": "node-sidecar-startup",
+      "driverPath": "scripts/verify-host-backups.mjs",
+      "section": "startupBackups",
+      "id": "NEO-233-A",
+      "title": "[NEO-233-A] actual startup ZIP retains fourteen UTC dates and exact readable author files with exclusions",
+      "driverActions": [
+        "Launch actual bundled Node sidecar under owned process-only UTC clock",
+        "Await real five-second startup backup timer",
+        "Relaunch same UTC day with no provider request"
+      ],
+      "assertions": [
+        "Four complete author files and library metadata are byte-exact in parsed ZIP",
+        "Only latest fourteen UTC archives remain",
+        "Backups Exports Finder and iCloud placeholders absent",
+        "Same-day archive SHA256 unchanged"
+      ],
+      "capabilities": ["host-files", "host-startup", "host-clock"],
+      "parser": {
+        "kind": "startup-backup",
+        "mode": "retention",
+        "file": "retention/manifest.json"
+      }
+    },
+    {
+      "contractId": "backup:startup:rollover",
+      "evidenceKind": "host-startup-v1",
+      "driver": "node-sidecar-startup",
+      "driverPath": "scripts/verify-host-backups.mjs",
+      "section": "startupBackups",
+      "id": "NEO-233-B",
+      "title": "[NEO-233-B] actual startup keeps same-day ZIP bytes and captures changed author files after UTC rollover",
+      "driverActions": [
+        "Launch actual bundled Node sidecar at controlled UTC late day",
+        "Change real rich prose on private disk and relaunch same day",
+        "Relaunch next UTC day then relaunch that day again"
+      ],
+      "assertions": [
+        "First-day parsed ZIP retains initial exact author snapshot",
+        "Same-day ZIP remains byte-identical",
+        "Next-day parsed ZIP contains exact changed author snapshot once",
+        "Earlier snapshot remains unchanged"
+      ],
+      "capabilities": ["host-files", "host-startup", "host-clock"],
+      "parser": {
+        "kind": "startup-backup",
+        "mode": "rollover",
+        "file": "rollover/manifest.json"
+      }
+    },
+    {
+      "contractId": "backup:startup:partial",
+      "evidenceKind": "host-startup-v1",
+      "driver": "node-sidecar-startup",
+      "driverPath": "scripts/verify-host-backups.mjs",
+      "section": "startupBackups",
+      "id": "NEO-234-A",
+      "title": "[NEO-234-A] actual startup ZIP retains readable author files and reports a real permission-denied input",
+      "driverActions": [
+        "Deny permission on one private supplemental input and verify EACCES",
+        "Launch actual bundled Node sidecar and await real startup backup",
+        "Restore private input permissions after archive capture"
+      ],
+      "assertions": [
+        "Readable four author files and metadata remain exact in parsed ZIP",
+        "Permission-denied file is omitted",
+        "Parsed missed-file report records the actual EACCES input"
+      ],
+      "capabilities": ["host-files", "host-startup", "host-clock"],
+      "parser": {
+        "kind": "startup-backup",
+        "mode": "partial",
+        "file": "partial/manifest.json"
+      }
     }
   ]
 }

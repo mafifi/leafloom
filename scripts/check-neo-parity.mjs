@@ -76,31 +76,31 @@ export function requiresNative(environment) {
   return /native|foreground|macOS|installed.font|capacitor/i.test(environment ?? '');
 }
 
-/** @typedef {import('./native-evidence-types.ts').NativeCase} NativeCase */
+/** @typedef {import('./native-evidence-types.ts').AcceptanceCase} NativeCase */
 /** Schema-aware dispatch retains native receipts; no Playwright rows are synthesized. */
 export async function verifyCandidateEvidence(report, entry, options = {}) {
-  if (entry.evidenceKind === 'native-v1') {
+  if (['native-v1', 'host-startup-v1'].includes(entry.evidenceKind)) {
     if (typeof entry.contractId !== 'string' || !entry.contractId)
       return {
         passed: false,
-        kind: 'native-v1',
+        kind: entry.evidenceKind,
         problems: ['Native case lacks reviewed contract'],
       };
     try {
-      return { ...(await verifyNativeEvidence(report, entry, options)), kind: 'native-v1' };
+      return { ...(await verifyNativeEvidence(report, entry, options)), kind: entry.evidenceKind };
     } catch (error) {
       return {
         passed: false,
-        kind: 'native-v1',
+        kind: entry.evidenceKind,
         problems: ['Malformed native evidence: ' + error.message],
       };
     }
   }
-  if (entry.driver === 'tauri-native-hidden')
+  if (['tauri-native-hidden', 'node-sidecar-startup'].includes(entry.driver))
     return {
       passed: false,
       kind: 'unknown',
-      problems: ['Native driver requires explicit native-v1 dispatch'],
+      problems: ['Native or sidecar driver requires explicit reviewed receipt dispatch'],
     };
   if (entry.evidenceKind && entry.evidenceKind !== 'playwright')
     return { passed: false, kind: 'unknown', problems: ['Unknown evidence kind'] };

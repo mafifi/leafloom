@@ -17,22 +17,24 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   const root = options.root ?? repositoryRoot;
   const contract = entry.contractId ? nativeContract(entry.contractId) : undefined;
   const section = contract?.section ?? 'documentIO';
+  const hostStartup = section === 'startupBackups';
+  const evidenceKind = hostStartup ? 'host-startup-v1' : 'native-v1';
+  const driver = hostStartup ? 'node-sidecar-startup' : 'tauri-native-hidden';
   const problems = [];
   const require = (condition, message) => {
     if (!condition) problems.push(message);
   };
-  require(receipt?.evidenceSchema === 'leafloom/native-v1', 'Native evidence schema missing');
+  require(receipt?.evidenceSchema === 'leafloom/' + evidenceKind, 'Native evidence schema missing');
   require(receipt?.appImplementation === 'leafloom-production' &&
     receipt.referenceCommit === commit, 'Production implementation/provenance missing');
-  require(receipt?.driver === 'tauri-native-hidden' &&
-    receipt.hiddenWindow === true &&
+  require(receipt?.driver === driver &&
+    (hostStartup || receipt.hiddenWindow === true) &&
     /marked.*private|private.*marked/.test(
       receipt.fixtureKind ?? '',
     ), 'Hidden private fixture policy missing');
   require(receipt?.status === 'passed', 'Native run failed or incomplete');
   require(!receipt?.frontendErrors?.length, 'Native frontend errors were recorded');
-  const fingerprint =
-    options.buildSha256 ?? (await evidenceMetadata('tauri-native-hidden')).buildSha256;
+  const fingerprint = options.buildSha256 ?? (await evidenceMetadata(driver)).buildSha256;
   require(receipt?.buildSha256 === fingerprint &&
     receipt?.buildSha256Before === fingerprint &&
     receipt?.buildSha256After === fingerprint, 'Production source changed or receipt is stale');
@@ -55,15 +57,58 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   };
   const binding = receipt?.artifactBinding ?? {};
   const driverPath = contract?.driverPath ?? 'scripts/verify-macos-native.mjs';
-  if (section === 'quitRestart' || section === 'updater')
+  if (hostStartup || section === 'quitRestart' || section === 'updater')
     require(binding.driverPath === driverPath, 'Lifecycle driver differs from reviewed contract');
   await check(path.join(root, driverPath), binding.driverSha256);
-  await check(receipt?.binary ?? '', binding.binarySha256);
+  if (!hostStartup) await check(receipt?.binary ?? '', binding.binarySha256);
   await check(binding.runtimeEntry ?? '', binding.hostMainSha256);
   await check(binding.runtimeExecutable ?? '', binding.nodeSha256);
   require(path.basename(binding.runtimeEntry ?? '') ===
     'main.mjs', 'Unexpected executed host entry');
-  if (section === 'documentIO')
+  if (hostStartup) {
+    require(path.basename(binding.runtimeExecutable ?? '') === 'node' &&
+      path.dirname(binding.runtimeExecutable ?? '') ===
+        path.dirname(
+          binding.runtimeEntry ?? '',
+        ), 'Executed sidecar Node is not the staged entry sibling');
+    await check(
+      path.join(root, 'tests/neo-compat/native/backup-clock-preload.mjs'),
+      binding.clockPreloadSha256,
+    );
+    await check(
+      path.join(root, 'tests/neo-compat/native/backup-fixture.ts'),
+      binding.fixtureSha256,
+    );
+    await check(
+      path.join(path.dirname(binding.runtimeEntry ?? ''), 'host-build.json'),
+      binding.hostBuildSha256,
+    );
+    try {
+      const provenance = JSON.parse(
+        await readFile(
+          await inside(path.join(path.dirname(binding.runtimeEntry), 'host-build.json')),
+          'utf8',
+        ),
+      );
+      require(provenance.formatVersion === 1 &&
+        provenance.target === 'node24' &&
+        provenance.platform === 'node' &&
+        provenance.mainSha256 ===
+          binding.hostMainSha256, 'Executed sidecar bundle provenance differs');
+      require(Array.isArray(provenance.compilerInputs) &&
+        provenance.compilerInputs.some(
+          (i) => i.path === 'apps/desktop/host/main.ts',
+        ), 'Startup entry compiler input missing');
+      for (const input of provenance.compilerInputs ?? []) {
+        require(typeof input.path === 'string' &&
+          !path.isAbsolute(input.path) &&
+          !input.path.split(/[\\/]/).includes('..'), 'Unsafe host compiler input');
+        if (typeof input.path === 'string') await check(path.join(root, input.path), input.sha256);
+      }
+    } catch {
+      problems.push('Sidecar bundle provenance missing or invalid');
+    }
+  } else if (section === 'documentIO')
     for (const [name, value] of moduleFields)
       await check(path.join(root, name), value(receipt ?? {}));
   else if (section === 'updater') {
@@ -79,21 +124,25 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
     );
   }
   const assets = binding.webAssets ?? [];
-  require(Array.isArray(assets) &&
-    assets.some((a) => a.path?.endsWith('.js')) &&
-    assets.some((a) => a.path?.endsWith('.css')), 'Actual served JavaScript/CSS bindings missing');
-  const seen = new Set();
-  for (const asset of Array.isArray(assets) ? assets : []) {
-    require(typeof asset.path === 'string' &&
-      /^\/assets\/[^/]+\.(js|css)$/.test(asset.path), 'Invalid served asset path');
-    require(!seen.has(asset.path), 'Duplicate served asset');
-    seen.add(asset.path);
-    if (typeof asset.path === 'string')
-      await check(
-        path.join(root, 'apps/desktop/dist', asset.path),
-        asset.sha256,
-        path.join(root, 'apps/desktop/dist'),
-      );
+  if (!hostStartup) {
+    require(Array.isArray(assets) &&
+      assets.some((a) => a.path?.endsWith('.js')) &&
+      assets.some((a) =>
+        a.path?.endsWith('.css'),
+      ), 'Actual served JavaScript/CSS bindings missing');
+    const seen = new Set();
+    for (const asset of Array.isArray(assets) ? assets : []) {
+      require(typeof asset.path === 'string' &&
+        /^\/assets\/[^/]+\.(js|css)$/.test(asset.path), 'Invalid served asset path');
+      require(!seen.has(asset.path), 'Duplicate served asset');
+      seen.add(asset.path);
+      if (typeof asset.path === 'string')
+        await check(
+          path.join(root, 'apps/desktop/dist', asset.path),
+          asset.sha256,
+          path.join(root, 'apps/desktop/dist'),
+        );
+    }
   }
   if (section === 'quitRestart' || section === 'updater') {
     const restart = receipt.restartArtifactBinding ?? {};
@@ -111,8 +160,8 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   const io = receipt?.[section];
   if (entry.contractId) {
     require(Boolean(contract), 'Unreviewed native contract');
-    require(entry.evidenceKind === 'native-v1' &&
-      entry.driver === 'tauri-native-hidden', 'Invalid native case dispatch');
+    require(entry.evidenceKind === evidenceKind &&
+      entry.driver === driver, 'Invalid native case dispatch');
     require(entry.section === section, 'Native section differs from reviewed contract');
     for (const key of ['id', 'title', 'driverActions', 'assertions'])
       require(JSON.stringify(entry[key]) === JSON.stringify(contract?.[key]), 'Native case ' +
@@ -137,7 +186,7 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
     ), 'Hidden native evidence cannot prove physical or foreground environment');
   }
   if (section !== 'quitRestart' && section !== 'updater')
-    require(io?.driver === 'tauri-native-hidden', 'Native section driver missing');
+    require(io?.driver === driver, 'Native section driver missing');
   if (section === 'documentIO')
     require(typeof io?.pickerQualification === 'string' &&
       io.pickerQualification.includes('physical'), 'Native picker qualification missing');

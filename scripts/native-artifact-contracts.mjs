@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { inspectBackupArtifacts } from './native-backup-artifacts.mjs';
 import { inspectUpdaterArtifacts } from './native-updater-artifacts.mjs';
 import { readFile, readdir, realpath } from 'node:fs/promises';
 import path from 'node:path';
@@ -68,6 +69,8 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
       ? io
       : io.evidence.find((r) => r.id === contract.id && r.title === contract.title);
   const p = contract.parser;
+  if (p.kind === 'startup-backup')
+    return inspectBackupArtifacts(p, row, bytes, receipt.artifactBinding, { base });
   if (['export', 'chapter', 'edition', 'pdf-layout', 'collection'].includes(p.kind)) {
     const actual = await bytes(p.file);
     assert.equal(
