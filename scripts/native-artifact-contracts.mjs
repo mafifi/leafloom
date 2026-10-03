@@ -75,7 +75,7 @@ export function inspectChapterEditionSnapshot(files, stage, bookId) {
   for (const chapter of book.chapters) {
     const expected =
       chapter.id === inserted
-        ? '<p><br></p>'
+        ? '<p></p>'
         : chapterEditionFixture.chapters[Number(chapter.id.slice(3)) - 1].replace(
             'Alpha ',
             'Edited Alpha ',

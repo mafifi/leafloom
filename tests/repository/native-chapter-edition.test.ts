@@ -27,7 +27,7 @@ function snapshot(stage: 'before' | 'after') {
         id,
         html:
           id === 'inserted-part'
-            ? '<p><br></p>'
+            ? '<p></p>'
             : chapterEditionFixture.chapters[Number(id.slice(3)) - 1].replace(
                 'Alpha ',
                 'Edited Alpha ',
@@ -159,4 +159,21 @@ test('edition dispatch rejects fixture, stage and format substitutions before ac
   } finally {
     await rm(root, { recursive: true, force: true });
   }
+});
+
+// Generated Part shells have no authored hard break. Existing rich fixture bytes remain exact.
+test('generated empty Part rejects hard breaks, filler elements and erased authored scaffolds', () => {
+  const files = snapshot('after');
+  for (const html of ['<p><br></p>', '<p><span></span></p>', '<p> </p>', '<p><i></i></p>']) {
+    const changed = { ...files };
+    const book = JSON.parse(changed['manuscript.json'].toString());
+    book.chapters[5].html = html;
+    changed['manuscript.json'] = Buffer.from(JSON.stringify(book));
+    assert.throws(() => inspectChapterEditionSnapshot(changed, 'after', 'edition-fixture'));
+  }
+  const changed = { ...files };
+  const book = JSON.parse(changed['manuscript.json'].toString());
+  book.chapters.find((c: { id: string }) => c.id === 'ch-3').html = '<p></p>';
+  changed['manuscript.json'] = Buffer.from(JSON.stringify(book));
+  assert.throws(() => inspectChapterEditionSnapshot(changed, 'after', 'edition-fixture'));
 });
