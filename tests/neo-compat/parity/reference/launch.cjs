@@ -106,7 +106,23 @@ function startupFault(name){const message=hostConfig().startupFaults?.[name];if(
 const readDirectoryAtBoundary=fs.readdirSync.bind(fs);
 fs.readdirSync=(folder,...args)=>{if(typeof folder==='string'&&path.resolve(folder)===path.join(source,'locales'))startupFault('locales');return readDirectoryAtBoundary(folder,...args);};
 const forkSpellAtBoundary=utilityProcess.fork.bind(utilityProcess);
-utilityProcess.fork=(modulePath,...args)=>{if(path.resolve(modulePath)===path.join(source,'spell-worker.js'))startupFault('spellFork');return forkSpellAtBoundary(modulePath,...args);};
+utilityProcess.fork=(modulePath,...args)=>{
+  const ownSpell=path.resolve(modulePath)===path.join(source,'spell-worker.js');
+  if(ownSpell)startupFault('spellFork');
+  const child=forkSpellAtBoundary(modulePath,...args);
+  if(ownSpell){const post=child.postMessage.bind(child);child.postMessage=(message,...rest)=>{
+    const selected=hostConfig().spellDictionaryFault;
+    if(message?.type==='load'&&message.language===selected){
+      if(!/^(en-US|en-GB|en-CA|en-AU|fr|es|de|el|nl|pl|pt-BR|ro|ru)$/.test(selected))throw new Error('Invalid private dictionary fault language');
+      const missing=fixturePath(path.join(directory,'missing-spell-dictionary',selected));
+      if(fs.existsSync(missing))throw new Error('Dictionary fault target must be absent');
+      record('spell-dictionary-resource-fault',{language:selected,directory:missing});
+      return post({...message,dir:missing},...rest);
+    }
+    return post(message,...rest);
+  };}
+  return child;
+};
 const buildMenuAtBoundary=Menu.buildFromTemplate.bind(Menu);Menu.buildFromTemplate=(template)=>{const ownTemplate=items=>items.some(item=>item.label==='Spellcheck Pass'||(Array.isArray(item.submenu)&&ownTemplate(item.submenu)));if(ownTemplate(template))startupFault('menu');return buildMenuAtBoundary(template);};
 global.fetch = async (url,options={}) => {
   const config=hostConfig(); const address=String(url);
