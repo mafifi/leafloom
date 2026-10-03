@@ -171,3 +171,39 @@ it('a synchronous presentation subscriber cannot recursively rescan or duplicate
   stop();
   vm.destroy();
 });
+
+it('retains a valid delayed chapter scan when unrelated author metadata changes', async () => {
+  const { editor, vm, request } = fixture();
+  let resolve: (value: Record<string, boolean>) => void = () => {};
+  request.mockImplementation(
+    () =>
+      new Promise((done) => {
+        resolve = done;
+      }),
+  );
+  const before = editor.checkpoint().book.chapters[0].html;
+  const pending = vm.scan('a');
+  editor.updateMetadata({ subtitle: 'Author metadata changed elsewhere' });
+  resolve({ bad: false, 'well-known': true, well: true, known: true, what: true });
+  await pending;
+  expect(editor.checkpoint().book.chapters[0].html).toBe(before);
+  expect(editor.annotations.map((item) => item.message)).toEqual(['bad']);
+  vm.destroy();
+});
+
+it('discards a delayed scan after the author deletes its chapter', async () => {
+  const { editor, vm, request } = fixture();
+  let resolve: (value: Record<string, boolean>) => void = () => {};
+  request.mockImplementation(
+    () =>
+      new Promise((done) => {
+        resolve = done;
+      }),
+  );
+  const pending = vm.scan('a');
+  editor.deleteChapter('a');
+  resolve({ bad: false });
+  await pending;
+  expect(editor.annotations).toEqual([]);
+  vm.destroy();
+});

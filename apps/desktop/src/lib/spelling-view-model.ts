@@ -83,18 +83,25 @@ export class SpellingViewModel {
       previous = this.sections.get(id);
     if (previous === snapshot) return;
     const epoch = this.epoch,
-      language = this.language,
-      revision = editor.revision;
+      language = this.language;
     const generation = (this.generations.get(id) ?? 0) + 1;
     this.generations.set(id, generation);
-    const valid = () =>
-      !this.destroyed &&
-      this.context.enabled() &&
-      this.context.editor() === editor &&
-      this.context.language() === language &&
-      editor.revision === revision &&
-      this.epoch === epoch &&
-      this.generations.get(id) === generation;
+    const valid = () => {
+      const current =
+        !this.destroyed &&
+        this.context.enabled() &&
+        this.context.editor() === editor &&
+        this.context.language() === language &&
+        this.epoch === epoch &&
+        this.generations.get(id) === generation;
+      if (!current) return false;
+      try {
+        // An unrelated chapter or metadata edit cannot invalidate this unchanged section.
+        return editor.spellingPassages(id) === snapshot;
+      } catch {
+        return false; // The section was removed while the dictionary reply was pending.
+      }
+    };
     const tokens = snapshot.flatMap((passage) =>
       passage.runs.map((run) => ({
         passageId: passage.id,
