@@ -1,0 +1,1 @@
+{"extends":"../tsconfig.json","compilerOptions":{"allowImportingTsExtensions":true,"noEmit":true},"include":["./**/*.ts","./**/*.svelte","../src/contracts.ts","../src/document.ts","../src/fixture.ts","../src/editors/prosemirror/mapping.ts"],"exclude":["../node_modules"]}

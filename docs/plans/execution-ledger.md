@@ -1,0 +1,284 @@
+# Execution ledger
+
+## Goal and clock
+
+- Root-owned goal: complete standalone Leafloom rewrite with faithful NEO author UX, extensible contracts, reviewed assistance, durable storage and actual candidate proof.
+- Repository: `/Users/afifim/Development/leafloom`; branch `feature/neo-replacement`; no remote, commit, push or publication authorized by this execution.
+- Authorized effort window: Root goal created 2026-10-02 16:56:40 UTC; the user extended it to twelve hours. Stop work by **2026-10-03 04:55 UTC** (05:55 Europe/London), before the 04:56:40 UTC budget boundary.
+- NEO oracle: commit `ed090e9988d446daf1ebbde91bcebc13b599909b`, 217 pinned files in `tests/reference/neo`.
+
+## State
+
+| Area | Evidence | Required next work |
+|---|---|---|
+| Reference inventory | 304 source features; 444 required desktop scenarios copied | Review each acceptance clause against Leafloom-specific driver and outcome |
+| Architecture | ADR 0001–0003 and live package contract alignment | Maintain docs as actual composition evolves |
+| Upstream provenance | Per-file SHA-256 receipt | Run immutable-byte policy gate on every final run |
+| Old parity bridge | Retained historical comparison | Excluded from production and Leafloom passing coverage |
+| Candidate browser tests | Being authored against actual app UI | Generate actual candidate reports; no scaffold-success claim |
+| Native Tauri proof | Host investigation active | Real signed opt-in fixture run for native-only contracts |
+| Full parity gate | Intentionally unmet until required candidate results exist | Port missing cases, fix genuine failures, freeze/re-run fresh evidence |
+
+## Recording results
+
+Append timestamped verified results with command, artifact/receipt hash and meaningful outcome. Record failures and next action separately. Qualify original upstream defects through source characterization plus candidate output contracts. Missing native access remains unmet; a browser mock is not native proof. Do not turn an effort cutoff into goal completion.
+
+## 2026-10-02 17:21 UTC — foundations and first production probe
+
+- `node scripts/check-repository.mjs`: passed 10 package boundaries and all 217 pinned source hashes.
+- `pnpm exec vitest run tests/repository/policy.test.ts`: repository and evidence rejection tests passed.
+- Shared semantic authoring cases authored for five single/double/triple Enter paths; original-reference native launch is opt-in and has not run.
+- First private browser probe `/tmp/leafloom-initial-authoring.json` found actual auxiliary surface `NOT_FOUND` during new-book rendering. Editor owner repaired the auxiliary section resolver; root repairing initial chapter creation and presentation refresh. This diagnostic is not passing parity evidence.
+- Production ledger remains 0/444 verified; original legacy bridge reports are excluded.
+
+## 2026-10-02 17:55 UTC — production authoring and performance
+
+- Real browser production authoring/poetry: 13 passed (`/tmp/leafloom-authoring-poetry-third.json`). Cases use native typing, DOM selection, Undo/Redo and shelf reopen. They caught and drove repairs for selection timing, double-dispatched Undo, empty poetry stored marks and immediate typing after chapter split.
+- Expanded Search/Darlings/visual run: 6 passed, 7 failed (`/tmp/leafloom-search-darlings.json`), preserving failures for Find Tab caret, replacement Enter, exact hint, Darling restoration panel and collapsed cut. A storage observation failure was traced to worker config re-creating its fixture; the driver now inherits the actual host fixture root.
+- Browser performance: 2 passed (`/tmp/leafloom-performance-first.json`). Ten-thousand-word book: input-to-paint p50 14.4 ms / p95 29.8 ms, save receipt 80.4 ms. Hundred-thousand-word book: p50 17.2 ms / p95 30.5 ms, receipt 105.2 ms. All 10/100 chapter view DOM identities retained across 16 native keypresses; all four receipt hashes matched actual files. Development browser measurements; packaged native performance remains separate.
+- Exact measurement artifacts: `.leafloom/evidence/performance-10000.json` and `performance-100000.json`. Actual production screenshots: `.leafloom/evidence/screenshots/leafloom-{prose,poetry,library}.png`; no original screenshot fidelity comparison yet.
+- Hunspell release tag checked against official upstream Git tree: wrapper commit `63f4605a9185b9fa211910eea68510dea8095d4c`, embedded Hunspell source commit `c5f98152a274e25b5107101104bef632b83a0cc9`. Full selected license and upstream attribution texts staged in `docs/migration/bundled-licenses`; host bundler validates versions and retains them. Release source-distribution obligations remain a packaging gate.
+- Original native reference and candidate Tauri tests have not run through this shared driver. Full 444-case production gate remains unmet; diagnostic browser passes are not full parity.
+
+## 2026-10-02 18:30 UTC — broader author journeys and source fidelity
+
+- Notes rich authoring: 2 passed (`/tmp/leafloom-notes-fourth.json`), including actual clipboard paste, formatting, line breaks, sticky identity, native typing and persisted auxiliary HTML.
+- Onboarding/history/structured Outline: 30 passed, 2 failed (`/tmp/leafloom-outline-onboard-history.json`). The run exposed missing navigation-note editing and opening poetry losing italic marks after metadata refresh. Owners repaired both; opening poetry subsequently passed in `/tmp/leafloom-library-shelves-first.json`.
+- Library identities: 4 passed (`/tmp/leafloom-library-identities-first.json`): author switching, renaming, pen-name addition and author removal preserve real book files and shelf ownership across reload.
+- Shelf creation, Enter, blank rename and Escape/blur cases pass. Shelf reorder remains under native gesture diagnosis: the manual mouse driver emits actual dragstart/dragend and its MIME payload, while drop delivery remains unproved. No synthetic model mutation replaces that action.
+- Painted-cover algorithm fidelity passed in the real browser: all seven original abstract styles and every cover template produce identical artwork PNG, export PNG and layout plan. The oracle is pinned `covers.js` executing in the same browser/font environment. This covers rendering fidelity; cover menus, native image paths and packaged exports require separate author journeys.
+- Added tab identity/default inheritance, nonrenameable tabs, independent scroll/caret and exact ARIA workspace cases; execution in progress.
+- Corrected NEO-006's source contract: blank shelf name restores the previous name (`app.js` inline blur handler), rather than inventing a replacement default. Feature/scenario IDs remain stable.
+- Repository policy passes 15 package boundaries and all pinned NEO hashes; bundled-license material and candidate strict TypeScript checks pass. Full production parity remains unmet until actual complete original/candidate reports and native-only evidence exist.
+
+## 2026-10-02 19:06 UTC — full browser checkpoint and finite-clause audit
+
+- Full current production browser run: **99 passed, 3 failed, 0 skipped, 0 retries** across 102 tests (131 seconds). Report `tests/neo-compat/candidate-results.json`; log `/tmp/leafloom-candidate-full-interim.log`. All real fixture files remain private. Native reference/Tauri results are separate.
+- Failures: NEO083 existing-prose Shift+Enter at beginning, NEO085 poetry continuation and NEO086 nonempty poetry exit. Each starts by typing, selecting the prose beginning and pressing Shift+Enter; actual output behaves as a prose-end split. Retained traces preserve the immediate first-command failure. Editor owner investigating delayed caret/focus tasks; expected source behavior is retained.
+- Native Chromium composition: eight cases pass, including four script commits, cancellation, trusted composing Enter, key229 literal apostrophe and actual heading Enter followed by mouse focus, composition, Undo/Redo and disk reopen. These are Chromium input delivery, not hardware/OS IME qualification.
+- Counters five cases and Goals nine cases pass through actual application controls/files, including all three save/close paths, no-book daily target, writing-day cutoff, thirty-day chart and sprint lifecycle. Cover-context goals and independently counted completion notices remain open clauses.
+- Outline finite role/title probe found `Part I` instead of source `Part I: Journey`. Provider corrected first-body-paragraph title projection; actual UI target and metadata-only/persisted ghost word-count target both pass. English singular oracle corrected using pinned `locales/en.json`.
+- Native shelf-grip before/after drag, actual tab rename/default inheritance, seed refresh and independent Manuscript/Notes scroll now pass. Seven abstract styles/templates have source-algorithm image/plan equality; actual packaged host fidelity remains separate.
+- Ledger maps 99 source-ID case bindings to 69/444 required scenarios. 375 remain unported. `ACCEPTANCE-AUDIT.md` and each authored row record exact actions/assertions and remaining finite clauses. No scenario is promoted to `ported`, and historical bridge tests never count as Leafloom results.
+- Full-run metadata is an interim snapshot: host packaging/source changed during the run, and SearchViewModel extraction began after it ended. Final frozen evidence requires a fresh complete run. No report hashes are rewritten to conceal changes.
+- Added author-facing `docs/HELP.md`. Corrected NEO005 contract to source behavior: Pantser begins at blank title without a chapter until title Enter; Plotter opens Outline with its first story.
+
+## 2026-10-02: native selection, presentation and keyboard expansion
+
+The initial full browser run ended 99 passed / 3 failed. All three failures involved rapid native poetry selection at paragraph start. Read-only event telemetry showed the range move from offset11 to0 and back to11 before Shift-Enter. The provider reproduced ProseMirror's recent-focus selection-reset safeguard and now adopts a valid noncomposing author range before that safeguard. The unchanged poetry, history and real CDP composition subset passed20/20. No hardware IME claim is made.
+
+Search scope expansion passed12/12, including four genuine new cases for styled text-node boundaries, manuscript/Notes/Outline/Darlings scopes, excerpt-only literal Darling highlighting and retained query after tab changes. Presentation expansion passed9/9. Rapid preference keys exposed lost optimistic library updates; font reflow exposed a reading-anchor drift. The application now projects preference state immediately, serializes persistence and uses the source-defined native range/point compensation.
+
+Keyboard expansion initially passed5/8. Actual failures: bottom entry focused Back to shelf instead of active tab, Cmd-/ opened the writing guide, and logical question-mark modifier input opened nothing. A separate pointer check retains a genuine failure: the clicked word counter stays focused. Production fixes are being validated without weakening the source interaction contract. Browser question-mark coverage uses NEO-216-B; physical OS NEO-216-C remains unported.
+
+The ledger now has121 source-ID case bindings covering87 of 444 required scenarios;357 have no production application case binding. No row is ported. Subset reports are retained under /tmp and do not establish a fresh frozen complete acceptance matrix.
+
+Keyboard9 and Sticky14 passed23/23 on production browser in `/tmp/leafloom-keyboard-sticky-final-subset.json`. Source fixes include active-tab priority, focus-only tab arrows, shortcut reference focus/traversal, quiet pointer chrome and chapter red dots. The alternate-question-mark failure was a driver mistake: CDP Meta is4, while8 is Shift; read-only capture/bubble delivery telemetry exposed it and corrected native modifier delivery now passes. Sticky Resolve exposed an NBSP seam defect and actual native cut/paste exposed lost note text. Production fixes now preserve regular seam spaces and note payload/ownership across the browser-native clipboard. Cases cover idle save, immediate shelf flush, blank/selected creation, all three pane-return conditions, visible/offscreen Go to, flag click, orphan/duplicate/moved pairing and candidate-safe unified Undo.
+
+The ledger contains135 source-ID case bindings for96/444 required scenarios;348 remain unported and no scenario is marked ported. Pinned original foreground reference execution remains separate from production Chromium evidence.
+
+The next full browser checkpoint ended136/138 passed in2.9minutes (`/tmp/leafloom-full-browser-checkpoint.json`). Both remaining failures are identity journeys: a pop-up switch detaches before its click; a renamed identity's optimistic chip updates before the immediate raw-file assertion. They remain under source/driver review. Fresh10k/100k performance passed with all100 chapter views retained;100k input-to-painted-frame p50/p95=21.1/35.8ms and durable four-file receipt98.1ms.
+
+The pinned NEO reference now has an explicit hidden renderer mode: private profile/Documents, invisible windows, prohibited activation, denied credential writes/safeStorage operations, blocked outbound effects and native watcher disabled. Exact independently installed Electron43.7.6 matches the stable certificate artifact binary hash. A copied, certificate-verified artifact preserves its existing identity without signing or Keychain calls. The bounded original authoring group passed5/5 in7.5seconds; all five processes exited0 without a signal or safety stop. Source217-file provenance remains unchanged; no Leafloom code is injected. Hidden reports cannot prove native foreground acceptance. Report `/tmp/leafloom-original-hidden-authoring.json`; broader reference execution has not been performed.
+
+### Hidden pinned-source expansion —2026-10-02 20:05UTC
+
+Original authoring5/5; Outline/poetry29/31; onboarding/identities/shelves/counters/tabs22/25; search10/12 before debounce-readiness correction. Actual source differences and two bounded characterization passes are recorded in `docs/migration/HIDDEN-REFERENCE-EVIDENCE.md`. No foreground activation, credential store or signing operation. Candidate014 durable identity poll corrected; editor repaired genuine013 background-work menu dismissal. Native Cover UI callback authored but unexecuted, with loopback and marked-fixture memory credentials explicitly qualified.
+
+### Renderer preservation and native cover checkpoint —2026-10-02 20:21UTC
+
+Candidate38/38 identity/search/Notes/poetry/composition/scene/navigation checkpoint passes. Source-backed query250ms/offscreen search and restore, independent auxiliary scroll and desktop end-caret fixes pass17/17 additional bounded candidate cases. Source chapter-menu14/14 initially passes; nine candidate nonstory headings and missing copyright starter produce ten genuine red cases, with four cases already passing. Root/provider fixes pending. Added readonly-frontmatter heading assertion is being verified against pinned source. Ledger now100 candidate-authored scenarios/155 source-ID case bindings,344 unported,zero promoted to full parity.
+
+Hidden native Cover UI passes with actual compiled binary, served WebView assets, actual child runtime/entry and callback SHA256 bound in `/tmp/leafloom-native-full-hidden-20261002.json`. Actual settings/save/fixture-key lifetime, manual job, continued author writing, durable image bytes and rendered image decoding are observed. The result explicitly excludes encrypted-store proof, physical native dropdown/contextmenu and foreground activation. Fixture credentials stay in a marked debug-only memory store; provider HTTP remains loopback.
+
+### Chapter and binding checkpoint —2026-10-02 20:28UTC
+
+Pinned-source chapter14 and production chapter14 both pass unchanged author oracles. Nine fixed front/back headings, readonly versus story-title fields and copyright starter creation/structural Undo now preserve source UI and durable chapter roles. Six chapter-format chooser controls and Cancel are proved; actual chapter export bytes remain open. Hidden source binding4 passes with three UI-created constituent books, a stationary collection cover, seven ghost pages and three Part seams, cover parking/rebind identity and durable numbering policy. Candidate binding stops at a real shelf popup lifetime failure: unchanged shelf-name blur routes through execute and clears the menu. The interrupted report is retained; no repeated timeout batch. Ledger103 candidate-authored/341 unported/159 source-ID bindings/zero ported; spelling24 mappings remain editor-owned pending terminal.
+
+### 2026-10-02 20:58 UTC — bound shelves and dictionary checkpoint
+
+Root browser checkpoint `/tmp/leafloom-pages-spelling-performance.json`: 38/42 pass, with all ten bound-page/binding cases, twenty-five real dictionary cases and three performance cases passing. Four ordinary Enter emphasis cases remain red against four passing hidden source cases; editor has a targeted provider fix queued for genuine browser rerun. Fresh source poetry continuation confirms roman nonempty ShiftEnter tails versus italic empty end lines (2/2). Library midpoint indicator and index geometry compile cleanly; eight repository tests pass. Migration ledger now binds 126/444 scenarios, with zero marked ported.
+
+### Library and Vim source checkpoints
+
+Source strengthened library7 and candidate7 pass. Root complete browser run now includes fourteen new source-backed Vim cases. The migration ledger binds143/444 scenarios, with zero ported. Original-reference native dialogs/Trash remain restricted to private fixtures, and clipboard/hardware/native accelerator evidence is separate.
+
+### Fresh renderer baseline and bootstrap CI
+
+Production full241 passes235 with six failures (`/tmp/leafloom-full-browser-20261002-current.json`): Part clearing, heading-composition fixture, author-deletion durable-read race, repeated-neighbor identity collision and two Vim line-start cases. Pinned hidden source202 passes192 with ten retained failures (`/tmp/leafloom-original-hidden-full-renderer.json`), separate from foreground/native acceptance. Driver corrections now use two story headings, Help renderer About, actual current neighbor identity and observable disk receipts. Provider issues keep original oracles. Seven new original chapter/Unicode/alignment cases pass; ledger149 candidate-authored/295 unported/245 bindings/zero ported. Full444 scope unchanged.
+
+Added `.github/workflows/checks.yml`: frozen repository checks and full headless journeys; Linux/Windows locked native compile without runtime staging, app launches or signing. The resources override was validated by the host worker on the current macOS compiler; hosted platform runs have not occurred. Browser/native traces now use unique per-run `.leafloom/test-results` paths.
+
+### Automatic typography and complete chapter guards
+
+Source typography49 passes40.2s (`/tmp/leafloom-original-hidden-typography-final.json`); strict candidate test typing passes. Source canonical empty HTML contains its native `<br>` scaffold. Marked replacements, locale quote sets, local/book inference, field handlers, French spacing, dialogue/exclusion rules and rich paste are actual original outcomes. Source modifier-transition Undo bug is characterized explicitly; target author retention follows the approved single-history contract, not a relaxed assertion. Source077full metadata Undo and078emptyfront/Contents cases pass3 (`/tmp/leafloom-original-hidden-chapter-boundaries-complete-fixed.json`). Current ledger162 candidate-authored/282 unported/296bindings/zeroported,444 required preserved. Quebec interface spacing and file import remain explicit clauses.
+
+Source hyphen modifier/composition guards pass4/4 in3.6s (`/tmp/leafloom-original-hidden-typography-guards.json`). Four exact-title bindings added; current ledger162 candidate-authored/282 unported/300bindings/zeroported,444 required preserved. Production guarded-input proof is pending.
+
+Source144 rename/cancel shared cases pass3 (`/tmp/leafloom-original-hidden-tabs-replace-source-valid.json`); its separate167 sequencing failure is retained. Source167 corrected test passes1 (`/tmp/leafloom-original-hidden-replace-source-valid.json`): focus the actual button for structural Undo, characterize unavailable native Redo, reapply via UI before proving no-match adds no structural history. Candidate continues to require editable-prose Undo and unified Redo. Source144 auxiliary-heading refresh and modal Escape fallthrough are explicit contract-output differences; target immediate heading update/editor retention assertions remain. Test TypeScript and repository policy pass. No candidate rerun occurred while editor owned5190.
+
+Production typography causal checkpoint: `/tmp/leafloom-typography-candidate-red.json` records37PASS/5FAIL/11unrun, stopping at the authorized five-failure limit (1.4m). Three plain-field failures retain `A--B` instead of `A—B` (Title/Outline/shelf). Notes receives no text when its blank workspace is clicked, affecting both paired-hyphen and literal-list cases. Locale quote sets, manuscript rich dash ownership, ellipsis Undo, established quote inference, ordinary French spacing, dialogue language rules/exclusions and modifier-transition Undo author retention pass among executed cases. Late rich French NBSP, styled speech paste/fragments, direct modified-Z and guarded-hyphen cases remain unrun. Current production frontend released to root for focused fixes; no scenario promotion.
+
+Typography/structural focused checkpoint: `/tmp/leafloom-typography-alignment-boundaries-fixed.json` records56PASS/6FAIL over62 cases (complete53 typography plus9 alignment/chapter/inline). All9 structural/rich-selection regressions pass, including full metadata Undo and protected Contents. Fixed Title/Notes/Outline/shelf author-field input/caret/durability assertions pass. Four paste failures were a driver target error: events reached the wrapper instead of the production editable child. Corrected target rerun passes4/4 (`/tmp/leafloom-typography-paste-driver-fixed.json`,5.7s), retaining every author-text/format/disk oracle and using the same original contenteditable root. Genuine remaining typography failures: French punctuation after a plain NBSP fails to inherit preceding italic marks; Alt-modified hyphen incorrectly invokes smart em-dash conversion. Ctrl/Meta/229+native composition/directmodified-Z cases pass. All reports retained independently; complete fresh53 proof pending provider fixes. No scenario promotion; ledger444required/162candidate-authored/282unported/300bindings/zeroported.
+
+### Complete typography and diagnostic production checkpoint
+
+Fresh complete production typography53 passes53/53 in48.6s (`/tmp/leafloom-typography-all-fixed.json`), including actual plain-field author input, marked French NBSP ownership, trusted Alt bypass and the four modifier/composition guards. Rich paste targets the real editable child. Nine focused alignment/chapter/inline cases already pass against unchanged source assertions.
+
+Root full production307 records304PASS/3FAIL in6.3m (`/tmp/leafloom-full-browser-20261002-2227.json`). All three failures are newly authored marked-run typography cases. This is diagnostic evidence: host import helper changed during the run, so it is not a frozen release report. Corrected hidden original boundary3 passes3/3 in3.7s (`/tmp/leafloom-original-hidden-typography-mark-boundaries-fixed.json`): original insertion owns the glyph in the preceding bold run while retaining the italic tail, with caret, Undo/Redo and durable reopen assertions. The raw original3FAIL report is retained; candidate correction awaits the editor.
+
+Ledger remains444required/162candidate-authored/282unported/300bindings/zeroported. New real-artifact import/export probes are authored separately and do not establish passed or ported scenarios until their actual source and native outcomes are reviewed.
+
+### Native document IO reference baseline
+
+Pinned original hidden12/12 passes17.2s (`/tmp/leafloom-original-hidden-document-io-full.json`) against real files and shared ZIP/PDFjs/HTML parsers. Six export formats, edition structures, cancellation/write failure and multi-file import/error isolation now have fresh source outcomes. A separately compiled Tauri hidden callback is queued with marked-fixture picker responses and actual binary/host/served-asset hashes. Its results must retain production failures and do not count as ported by this authoring checkpoint.
+
+### Prefix-query regression retained
+
+Source actual-interface spacing2 passes3.5s (`/tmp/leafloom-original-hidden-typography-interface-fixed.json`), after correcting the driver to reopen the book following the genuine language-menu reload. Subsequent candidate69 stops at parent direction after11PASS/12FAIL/1interrupted/45unrun in2.7m. Real composition8/performance3 remain green; marked-prefix, French spacing and existing quote styles regress following the new provider query integration. Candidate5190 explicitly released to the editor. Five new case bindings preserve source3+interface2 semantics; ledger444required/162candidate-authored/282unported/305bindings/zeroported.
+
+First nativeIO callback exposed an invalid seed envelope (composed format with legacy chapter DTOs); actual recovery correctly restored backup. Fixture now validates explicit neo-lifecycle/v1 using production Book.parse. Second native run reaches five passing TXT/MD/HTML/DOCX/EPUB artifacts, then reveals genuine PDF loss of 東京. All artifacts retained, all PDF assertions unchanged. Host owns fallback-glyph fix. Edition/import branches remain unexecuted in this native callback.
+
+### Prefix-query red to green
+
+Public keydown captures the author's original native text-node prefix before SDK input delivery. Unchanged targeted9 passes8.6s, then full69 passes1.0m (`/tmp/leafloom-typography-prefix-capture-full.json`):53typography+3boundary+2actualinterface+8composition+3performance, no retries/skips.5190 explicitly released. Additional pinned source chapter-only artifacts pass6formats; source import-only Spanish dialogue passes1 with preserved spaces and untouched literal typography/input bytes. Fresh source native title/chapter-heading typing history passes2, with prior manuscript text, metadata commit and disk reopen assertions. Production field-history run is next.
+
+### Complete source IO artifact checkpoint
+
+Fresh hidden original20/20 passes28.8s (`/tmp/leafloom-original-hidden-document-io-complete.json`), no retries/skips. Exact source author actions and file parsers cover wholebook6/chapter-only6, edition3, cancel/writefailure, multifile/error-isolation import, actualSpanishdialogue and PDFdropcapgeometry. Details and remaining production clauses: `docs/migration/DOCUMENT-IO-EVIDENCE.md`. Candidate/reference strictTS and15-package policy pass. All source/native/browser runners explicitly released; native callback refrozen awaiting actualPDFglyphfix.
+
+### Native custom-cover/UUID and export failure
+
+Source independent custom-coverUUID/realEACCES2 passes5.1s. Native actual15 export artifacts and denied-write preservation pass; picked custom PNG/EPUBbytes/manifest also pass, then durablemetadata.uuid isundefined. Strong source-derived identity assertion retained; root plans lease-owned Core initialization, host plans serializedURI fix, nextproof awaitsfreshfrontendbuild. Currentnativecallback/helperfiles frozen. BoundedartifactOnly mode explicitly excludes import branches.
+
+Source focusedmetadataautosave4 passes14.2s with real no-blur title/subtitle/author durability+nativeUndoRedo and chapterheadingcommit-only-blur checkpoint contrast. Candidate nativehistory/other93 passes1.6m; candidateautosave4 exposesseparatelivecommitgaps forroot. No newscenario promotion or full444claim.
+
+### Focused live metadata and title-page navigation
+
+Production focused metadata autosave4 plus native field history2 passes6/6 in16.9s (`/tmp/leafloom-field-autosave-fixed.json`). Source no-blur title/subtitle/author durability, native Undo/Redo and commit-only chapter-heading contrast remain unchanged. The broader104 production regressions are running; no final result is claimed here. Provider checkpoints own provisional live metadata; one public validated MetadataFieldStep records the completed field edit into the master history.
+
+Pinned original title/subtitle Enter4 passes4/4 in5.2s (`/tmp/leafloom-original-hidden-title-enter.json`). Each field skips copyright/dedication to the first prologue and places the caret at its text end; when no story exists it creates an empty ordinary chapter before About. Rich front/back prose, existing chapter IDs, metadata and reopened content remain unchanged. The same production cases are authored in `tests/neo-compat/candidate/title-enter.spec.ts`; candidate execution is queued after the editor releases5190.
+
+Root real-filesystem Application21 passes, including bound/single-book UUID identity, rename/reopen and unchanged actual OPF identifier. Native custom-cover UUID proof still requires the newly built frontend: the retained old-build UUID failure remains evidence until that run passes.
+
+### Current metadata regression and bounded navigation checkpoint
+
+Broader production104 passes104/104 in1.9m (`/tmp/leafloom-live-metadata-regressions.json`), covering fields, publication pages, keyboard, Sticky gestures, typography, composition and performance. Production title/subtitle Enter4 passes4/4 in6.0s (`/tmp/leafloom-title-enter-current.json`). Hidden source custom-cover Set/Replace/Remove passes1/1 in2.2s (`/tmp/leafloom-original-hidden-cover-controls.json`); actual replacement PNG bytes, menu state, removal metadata and rich author prose are checked. Fresh native callback now uses source Set cover art… and includes replacement/removal checks; all four callback/helper files are frozen pending the host run.
+
+Root default checkCI passes458 CPU cases with three explicitly optional native-codec skips, strict/Svelte0/0 and pinned217-file policy (`/tmp/leafloom-check-ci-20261002-2325.log`); default frontend `index-BTCRiYBY.js`. Native host is compiling that actual snapshot. Acceptance audit identifies real remaining external-file conflict/reading-anchor, stronger PDF navigation/layout and email attachment journeys; complete444-scenario proof remains unmet.
+
+The four titleEnter cases are now registered as authored under049A, with the additional Part fixture and fresh canonical reports left as known gaps. Current ledger444required/163candidate-authored/281unported/309bindings/zeroported. Native fresh full run reaches all15 artifact stages, denied-write, durable UUID repeat/reopen, picked and replacement PNGs. Its cover-removal failure exposed a test representation assumption: production removeCover stores a null tombstone to suppress legacy-image fallback. The corrected oracle accepts absent file or literal null while retaining no-image metadata, Set-only menu and exact prose requirements. Raw failure remains retained; native callback refrozen for next run.
+
+### Coherent source artifacts and genuine PDF link regression
+
+At23:32:57UTC, the frozen hidden originalIO24 baseline starts and passes24/24 in35.6s (`/tmp/leafloom-original-hidden-document-io-current24.json`), with zero skips/retries. Its receipt binds every shared parser plus the reference/candidate harness tree. A read-only comparison confirms that receipt matches the current reference fingerprint. Twenty established IO cases, three custom-cover/write-failure cases and the PDF layout case are included.
+
+The fresh native CMN build binds actual launched binary, child entry/executable, served assets and five executed callback/parser hashes. It passes the first15 artifact stages plus PDF chapter bookmarks and body footer checks, then fails missing genuine Contents link annotations (`/tmp/leafloom-native-document-io-layout-full-20261003.json.failure.json`). Actual PDF retained in `.leafloom/evidence/native-document-io-1790983992342/edition-layout.pdf`. Host owns actual PDF destination/annotation repair; the source-valid parser remains unchanged. No crash or frontend errors are reported. Earlier sequential-stage results support finite output observations but are not passing result rows in the current parity gate.
+
+### Source reading-place clamp and structural Undo routing
+
+Hidden pinned original resume2 plus Part-strengthened title/subtitle Enter4 passes6/6 in8.5s (`/tmp/leafloom-original-hidden-resume-part.json`). Excessive saved paragraph/offset lands at final paragraph end; a real saved caret clamps to the end of shortened closed-file prose. Subsequent native typing, actual disk bytes and reopened rich content are checked. Production clamp proof awaits the provider/Application integration; scroll-only and visible one-third viewport clauses remain explicit gaps.
+
+Production structural Undo route plus the same four Part fixtures passes5/5 in6.5s (`/tmp/leafloom-undo-part-current.json`). Native typing Undo retains the scene; after keyboard-focusing the actual word counter, structural Undo restores original rich prose and author caret before save/reopen. Source route independently passes. These are authored bindings with focused receipts; current canonical full reports remain necessary for parity promotion.
+
+The current production resume2 + structural Undo1 + Part/title4 checkpoint passes7/7 in9.7s with no skips/retries (`/tmp/leafloom-resume-undo-part-valid-fixture.json`). A prior6/7 report retains a closed-file fixture error: optional Reviews was supplied as an array rather than null; correction changes no author action or expectation. Current ledger165 candidate-authored,279 unported,312 bindings, zero ported. Source/production reading-place clamp now has genuine focused proof; canonical fresh reports and scroll-only/visible reading-anchor clauses remain outstanding.
+
+Provider external-only changes overlapped or closely followed the focused seven-case run. Its seven observed author outcomes remain retained as interim evidence; final promotion requires a subsequent frozen source/production batch. No recorded fingerprint is rewritten.
+
+The native-v1 validator now has passing byte-binding/rejection unit cases. It accepts the native receipt schema directly and requires actual output artifact hashes, exact reviewed finite actions/assertions, unchanged before/after source and current executable/module/served asset bytes. Failed whole callbacks remain rejected. The migration registry stays unpromoted pending a completed native callback and current complete acceptance evidence.
+
+### Freeze preparation
+
+Root reports mounted external-change3 green after valid remote identity and fresh-lease integration. The causal background menu regression and its library/alignment checks pass13/13 (`/tmp/leafloom-background-library-menus-fixed.json`); polling is classified as background activity rather than an author command that dismisses menus. Root's real-filesystem Application25 checks are pending terminal confirmation.
+
+The native evidence validator is included in the production fingerprint before the next coherent source34 checkpoint and full production/native runs. No native case is automatically promoted. Test, shared parser and evidence files freeze after this checkpoint; documentation can retain execution milestones separately.
+
+The coherent hidden pinned-original checkpoint passes34/34 in48.0s with no failures, skips or retries (`/tmp/leafloom-original-hidden-coherent34.json`): external3, resume2, structural Undo1, Part/title4 and real IO24. A post-run read-only comparison confirms current harness/source fingerprints match the report. Original renderer/file/output behavior is proved under the hidden private reference boundary; foreground/native credential and physical picker claims remain separately scoped. Scripts/tests/shared parsers/evidence stay frozen for the production/native checkpoint.
+
+### Native I/O completed and independently validated
+
+The full hidden native-v1 callback passes23 finite rows with no unexecuted clauses (`/tmp/leafloom-native-document-io-final-titles-20261003.json`). Actual artifacts remain at `.leafloom/evidence/native-document-io-1790987481440`. Executed binary, managed child, served frontend assets and all callback/parser hashes are bound; production before/after fingerprints agree. Six whole-book formats, six chapter-only formats, three edition formats, actual PDF links/bookmarks/footer/glyph layout, real denied write, custom image/UUID/repeat/reopen, Set/Replace/Remove, cancellation and valid/malformed/Spanish imports execute. Physical picker panels, hidden context-menu pointer delivery and ordinary credential storage remain separate proof boundaries.
+
+Read-only validation constructs reviewed contracts from authored callback clauses rather than trusting receipt rows as their own oracle, re-parses the retained output files, and checks native-v1 hashes. Twenty-two of23 contracts validate; the cancellation contract retains its stale write-failure known-gap, while the separate actual denied-write row passes. Result: `.leafloom/evidence/native-finite-acceptance-validation.json`. The failed prior title selectors remain retained; the successful callback finds presentation-normalized titles and requires exact durable author metadata on every imported book.
+
+Recommend complete finite support for262-B custom-cover/UUID/navigation/order/poetry,263-B actual PDF navigation/footer/geometry, and257-A original-input protection after malformed import. Broader scenario promotion requires the complete reviewed acceptance contract. Current025 cancel/reopened thumbnail,065 protected front/empty scope,250/251 negative heuristics and131 word-count clauses are not proved by these native rows. Import dialogue conversion does not alone prove121 rich mark-boundary preservation. Source app8052–8065 exports a custom image when present, otherwise the seeded procedural abstract from NeoCovers.renderFull. AI-generated cover-art paintings stay on the shelf. Production mode:image plus generatedCover follows that distinction; cover.jpg alone does not identify an AI painting or establish an output difference.
+
+### Completed frozen production checkpoint
+
+The full production browser run passes326/326 in391.1s, with no failures, skips or retries (`/tmp/leafloom-full-browser-20261003-0026.json`). Its fingerprint is667d0aacbf9b0984628f9e5e75b5af2161e4b63a045ea1fd571add096f5d14ce, verified current by root. The coherent hidden original34 receipt remains current. Root confirms Application26/26 and495 passing CPU CI cases with three explicitly optional codec skips. These complete current authored suites; the444 required migration scenarios retain separate complete-clause mapping and promotion requirements.
+
+The exported cover distinction is confirmed from original app8052–8065: custom writer image first, otherwise seeded procedural abstract rendered by NeoCovers at export size. AI cover-art paintings remain on the shelf. Production image-only cover reads and generated procedural fallback follow that policy; the earlier blanket cover.jpg difference inference is corrected. Current native-v1 callback passes23 rows; independent acceptance validation accepts22 and retains the stale cancellation known-gap. No automatic scenario promotion occurs.
+
+All owned documentation is settled before final release-input freeze. No further repository docs edits are scheduled after the builder captures the release source manifest.
+
+### 2026-10-03 — final bounded author proof and traceability freeze
+
+Pinned-original coherent 55 passes 55/55 in 84.5 seconds with no failures, skips or retries (`/tmp/leafloom-original-hidden-coherent55.json`); canonical `tests/neo-compat/reference-results.json` is copied from that unchanged receipt after a live harness-hash comparison. This adds the source-defined Notes guard and cross-chapter Vim midpoint directions, plus whole-folder replacement with unchanged original-aside bytes, full rich companions and two durable author continuations. Root's preceding complete browser 343 checkpoint passes 343/343; subsequent bounded production changes require fresh complete candidate/native receipts rather than relabeling that report.
+
+Traceability is frozen at 335 literal browser case bindings over 175/444 required scenarios, with 269 lacking browser bindings and zero marked `ported`. Exact source/candidate titles and finite assertions remain linked, and unproved clauses remain explicit. Native delivery 29 independently validates 23 document contracts and six parsed collection outputs (`.leafloom/evidence/native-delivery29-document-validation.json`, `.leafloom/evidence/native-delivery29-collection-validation.json`); those receipts retain their original runtime hashes and hidden physical-input/picker qualifications. Final refreshed native receipts will be validated separately after the settled runtime build.
+
+The twelve-hour approved effort began 2026-10-02 16:56:40UTC; the safe stop remains2026-10-03 04:55UTC (05:55London). No signing, private credentials or foreground native author sessions were invoked by this reference worker. All registry/scripts/test bodies and owned docs are now frozen for final release-input capture.
+
+### Frozen production checkpoint — 2026-10-03 03:14 UTC
+
+The final repository gate passes strict TypeScript/Svelte, policy for15 packages and the217-file pinned oracle,530 CPU tests and the default frontend build (`/tmp/leafloom-final-frozen-ci-20261003.log`). Three optional native-codec cases remain explicitly skipped in this CPU environment; separate actual-binary codec evidence owns that boundary.
+
+The complete candidate browser suite passes347/347 in448.3seconds, without failures, skips or retries (`/tmp/leafloom-final-frozen-browser-20261003.json`, copied unchanged to `tests/neo-compat/candidate-results.json`). A live fingerprint comparison confirms `de8d7629ede69db5032a5e85cf9397b855cb52616243f11965c755bb831a2f52`. This includes the paired whole-folder replacement, cross-chapter Vim directions and Notes no-op guard. The original coherent55 receipt remains separately bound.
+
+Actual browser typing-to-frame p95 is14.9ms for10,000words,27.5ms for100,000words across100chapters, and23.2ms for100,000words in4,000paragraphs. All mounted editor views remain retained. Save receipts take64.3ms,94.6ms and139.3ms respectively. Full fixture receipts remain attached to the browser report; the concise summary is `.leafloom/evidence/final-browser-performance-summary.json`.
+
+Whole-folder replacement also passes the actual hidden native WebView callback (`/tmp/leafloom-native-directory-ready-delivery-20261003.json`), independently validated against retained files and exact helper/runtime/asset hashes in `.leafloom/evidence/native-directory-delivery-validation.json`. Incoming rich text and subsequent native X/Y writing durably reopen; identity, companions and every original-aside byte remain intact. The earlier native failure is retained: its test fixture copied before the opening save settled and appended HTML without updating passage identities. The corrected setup uses validated fixture identities and a real Saved receipt; production code and outcome assertions are unchanged.
+
+The full parity gate remains deliberately unsuccessful:0/444 complete scenarios and1019 unmet checks (`.leafloom/evidence/parity-status.json`). The335 literal browser bindings span175 scenarios with remaining clauses, not175 completed scenarios. The rewrite remains a substantial working preview pending complete source-clause and native/platform acceptance.
+
+### 2026-10-03 03:32 UTC — last bounded writing proof and final refreeze
+
+- Pinned hidden original writing checks: 3/3 pass in4.1s, `/tmp/leafloom-original-hidden-writing-recovery3.json`; Leafloom unchanged counterparts:3/3 pass in6.5s, `/tmp/leafloom-writing-recovery3.json`. No runtime patch required.
+- Literal complete clauses reviewed for NEO-072-A inert scene Enter, NEO-073-A ordinary dedication triple Enter and NEO-142-A complete rich deleted-chapter archive/restoration despite2000-character summary. Only these3 are ported;338 actual browser bindings/178 bound scenarios/266 unbound/441 unported of444.
+- Tests/reference configs/registry frozen. Fresh coherent pinned-original58 running `/tmp/leafloom-original-hidden-coherent58.json`; final350 candidate and final native receipts must capture this new fingerprint. Prior347 and acknowledged a148 native evidence remain unchanged historical receipts.
+
+### 2026-10-03 03:33 UTC — coherent source58 terminal
+
+Pinned original58/58 PASS89.5s, zero failed/skipped/flaky, `/tmp/leafloom-original-hidden-coherent58.json` copied unchanged to canonical reference-results.json. Recorded/live reference harness bothca6e6fc3febf577fbfe5f89a96409083faa3cdae1a201eec3fbbab0ea8e8040b. Final production evidence fingerprint2638eab04e10d2b58c7d82f2d3f8cc7e067788b7c4e4faf24392be7bda2f7a38. All owned docs/tests/reference configs/registry frozen; next work is read-only receipt validation.
+
+Final scoped review: NEO-049-A four title/subtitle/Part fixtures fulfil the complete literal clause and are ported subject to canonical reports. Total4ported/440unported;338bindings/178bound/266unbound unchanged. NEO-093-A remains candidate-authored with explicit missing immediate consecutive-break Undo route. No other promotion or gap waiver. Registry/docs final frozen after this review.
+
+### Final recovery distinction and source-clause review
+
+The wider native edition export exposed a genuine watcher regression: unrelated rename events re-announced a recovery condition already acknowledged at open, blocking the next author save/export. An actual-filesystem RED retains the original behavior (`/tmp/leafloom-known-recovery-host-red-20261003.log`). The watcher now compares the acknowledged current recovery condition as well as the four hashes; the first open reply still reports restoration. The private baseline records the post-restoration condition, so subsequent corruption is reported even when recovered logical content hashes are identical. Actual filesystem contrasts, directory replacement, foreign ownership, SIGKILL, catalog and fatal-error regressions pass38/38; no new DTO or state machine was added.
+
+The final default repository gate passes532 CPU tests with three optional codec skips, strict TypeScript/Svelte and policy (`/tmp/leafloom-release-final-ci-20261003.log`). The additional full-rich deleted-chapter recovery, scene Enter guard and dedication triple-Enter guard pass original NEO3/3 and Leafloom3/3 without runtime changes. The coherent pinned original now passes58/58 in89.5seconds with a matching live harness (`tests/neo-compat/reference-results.json`).
+
+Literal clause review completes only049-A,072-A,073-A and142-A. The338 browser bindings span178 scenarios;266 have no browser binding, and440 remain unported. NEO093-A retains its concrete immediate-Undo-before-typing gap. These statuses preserve the complete444-scenario requirement.
+
+All four refreshed native receipts pass at final fingerprint `12daf8d58d145273bc92f1f884dbcec522d1d83619479cf0a905adf972e8084d`: `/tmp/leafloom-release-final-folder-20261003.json`, `...final29...json`, `...final-performance...json` and `...final-recovery...json`. Independent validation passes23 document contracts, six collection contracts and the whole-folder contract against actual retained files, parsers, runtime, driver and served WebView hashes. Validation artifacts are `.leafloom/evidence/release-final29-document-validation.json`, `release-final29-collection-validation.json` and `release-final-folder-validation.json`.
+
+Dense native100,000-word/4,000-paragraph input keeps the mounted editor, opens in576ms, records p95 input-to-DOM6ms and dispatch12.2ms, and verifies all four durable hashes plus content-free checkpoint telemetry. Hidden WebView paint and physical keyboard timing remain unproved. Actual host SIGKILL recovery retains unsaved writing in a separate reopened book, preserves original bytes and denies old leases. Menu filtering and ambient Node-environment isolation pass. The final03:39UTC crash audit finds no Leafloom dump newer than the retained Oct2 20:12UTC dump.
+
+### Final application proof and release-input freeze — 03:44 UTC
+
+The complete frozen browser suite passes350/350 in459.4 seconds, without failures, skips or retries. `tests/neo-compat/candidate-results.json` is copied unchanged from `/tmp/leafloom-release-final-browser-20261003.json` after comparison with the live12daf8 fingerprint. Original58, final native29+folder1, performance and recovery receipts are coherent with their own current runtime/driver boundaries.
+
+Final browser typing-to-frame p95 is29.1ms for10,000words,37.0ms for100,000words across100chapters, and36.2ms for100,000words in4,000paragraphs. All mounted views remain retained; actual save receipts take55.8ms,88.5ms and140.3ms. The concise artifact summary is `.leafloom/evidence/release-final-browser-performance-summary.json`.
+
+The complete parity gate now verifies4/444 scenarios and retains1012 unmet checks (`/tmp/leafloom-release-final-parity-20261003.log`, `.leafloom/evidence/parity-status.json`). All304 inventoried NEO features and444 required scenarios remain present. A passing350-case application suite is a substantial preview, not complete444-scenario parity. Agent execution remains deferred; review contracts are retained for later integration.
+
+Source, tests, configuration, registry, scripts and repository documentation freeze here before the source-bound release builder. Further assembly receipts and clean-machine handover belong under ignored `release/`, retaining exact signing, notarization and install state without changing the captured source.
+
+### 2026-10-03 04:08 UTC — bounded corrections after the first signed preview
+
+The first signed `Leafloom-preview-arm64` package and its source archive remain intact. A read-only capability audit identified three narrow defects with source-derived reproductions: single-em-space Shift+Tab did nothing; ordinary chapter-heading Enter moved focus into the manuscript; and a malformed first dropped import prevented later valid files. Original behavior and genuine failing candidate tests were retained before correcting these paths.
+
+Shift+Tab now removes one or two preceding em spaces. The unchanged mounted candidate passes after the actual single-space RED; 85 focused CPU tests cover zero/one/two/three spaces, rich marks, Undo/Redo and existing boundaries. Chapter-heading Enter now blurs the field and stops propagation; its unchanged native selection/focus/prose/durable-reopen assertions pass against both pinned original and candidate. Dropped imports now isolate each failure and continue the batch; actual filesystem tests verify the following valid TXT, exact reopened prose and both source buffers unchanged. The full Application suite passes33/33.
+
+The final repository gate passes537 CPU tests across59 files, strict TypeScript/Svelte and policy; three optional codec CPU cases remain skipped and own separate assembled-binary checks (`/tmp/leafloom-final352-ci.log`). The final default asset is `index-B5MvIwpy.js`. Coherent pinned-original60/60 passes96.1seconds without failures/skips/flaky cases; the report is copied unchanged to canonical `reference-results.json`, with matching recorded/live harness. Registry status is340 source-ID browser bindings across180 scenarios;264 remain unbound. Only4 complete scenarios remain ported;440 remain unported. The two new bindings retain all additional untested clauses and cause no promotion.
+
+Fresh actual hidden native whole-folder1, document23 and collection6 receipts pass and independently validate against retained bytes, parsers, runtime, helper and served assets. Final native performance/recovery also pass: dense100,000-word/4,000-paragraph open615ms, input-to-DOM p95 6ms, dispatch12.5ms and durable receipt1236ms; visible paint/physical keyboard are unproved. Actual host SIGKILL preserves unsaved writing in a separately reopened fresh copy, original bytes and lease ownership. All four receipts bind `affb5c14b6071ccf00e9a608225f50d7f771251f6a64e657d18e6e7509592cf5` before/after. The04:08UTC crash audit reports no new Leafloom dump. Full352 browser capture remains in progress before the final release-input freeze.
+
+### Final corrected-source release freeze — 2026-10-03 04:14 UTC
+
+The full candidate suite passes352/352 in458.032seconds without failed/skipped/flaky/retried cases. The unchanged canonical report and live production fingerprint both bind `affb5c14b6071ccf00e9a608225f50d7f771251f6a64e657d18e6e7509592cf5`. Coherent pinned-original60/60 retains matching `c35035652620b7d7cd083badfbe26bbc8a1d84ecda54aa2bf118b72316ca943f` harness. Fresh native23document+6collection+1folder validations and performance/recovery retain this corrected source.
+
+Measured browser typing-to-frame p95 is30.9ms at10,000words,29.0ms at100,000words/100chapters and22.6ms at100,000words/4,000paragraphs. Actual open takes410.2/524.0/990.8ms; receipt61.0/94.3/133.9ms; all mounted views remain retained. The attached reports and concise summary are preserved under ignored `release/evidence`.
+
+The complete parity gate remains4/444 with1010 unmet checks. The304-feature inventory and full444-scenario requirement remain intact. Passing352 production journeys is preview evidence; it does not complete the replacement goal. All tracked source, tests, registry, configuration, scripts and documentation freeze here for the final source-bound macOS package. Further assembly and discussion material belongs under ignored `release/`.

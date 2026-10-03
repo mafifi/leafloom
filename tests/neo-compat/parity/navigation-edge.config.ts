@@ -1,0 +1,2 @@
+import path from 'node:path';import { defineConfig } from '@playwright/test';import { evidenceMetadata } from './evidence';
+export default defineConfig({metadata:evidenceMetadata(),testDir:'./tests',testMatch:'navigation-edge.spec.ts',workers:1,timeout:60_000,expect:{timeout:10_000},outputDir:'./navigation-edge-test-results',reporter:[['list'],['json',{outputFile:path.resolve(process.env.NEO_PARITY_NAVIGATION_EDGE_REPORT??'parity/navigation-edge-results.json')}]],use:{trace:'retain-on-failure'}});

@@ -1,0 +1,1 @@
+{"name":"@leafloom/browser-telemetry","version":"0.1.0","private":true,"type":"module","exports":{".":"./src/index.ts"},"dependencies":{"@leafloom/telemetry-contracts":"workspace:*","@opentelemetry/api":"catalog:","@opentelemetry/sdk-trace-base":"catalog:","@opentelemetry/sdk-metrics":"catalog:"},"leafloom":{"role":"provider","runtime":"browser"}}

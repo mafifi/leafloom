@@ -1,0 +1,14 @@
+{
+  "name": "@leafloom/painted-covers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "leafloom": {
+    "role": "provider",
+    "runtime": "browser"
+  },
+  "dependencies": {
+    "@leafloom/cover-contracts": "workspace:*"
+  }
+}

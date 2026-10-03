@@ -1,0 +1,194 @@
+{
+  "baselineCommit": "ed090e9988d446daf1ebbde91bcebc13b599909b",
+  "platform": "darwin",
+  "sourceCssSha256": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d",
+  "fontResourceManifestSha256": "bd8a25a007e7f603b5dcc93a92b408bf592c719fb80d191dcf70544752279f88",
+  "signatures": {
+    "actual cover title": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Oswald",
+            "postScriptName": "Oswald-Bold",
+            "isCustomFont": true,
+            "glyphCount": 10
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "\"NEO Oswald\", \"NEO Anton\", sans-serif",
+          "weight": "700",
+          "style": "normal"
+        }
+      ]
+    },
+    "actual book title": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Bold",
+            "isCustomFont": false,
+            "glyphCount": 11
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "700",
+          "style": "normal"
+        }
+      ]
+    },
+    "actual book subtitle": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Italic",
+            "isCustomFont": false,
+            "glyphCount": 13
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "italic"
+        }
+      ]
+    },
+    "actual chapter title": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 19
+          }
+        ],
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia-Italic",
+            "isCustomFont": false,
+            "glyphCount": 11
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        }
+      ]
+    },
+    "actual body": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Didot",
+            "postScriptName": "Didot",
+            "isCustomFont": false,
+            "glyphCount": 1
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 16
+          }
+        ],
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 17
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        }
+      ]
+    },
+    "actual dropcap paragraph": {
+      "glyphs": [
+        [
+          {
+            "familyName": "Didot",
+            "postScriptName": "Didot",
+            "isCustomFont": false,
+            "glyphCount": 1
+          },
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 16
+          }
+        ],
+        [
+          {
+            "familyName": "Georgia",
+            "postScriptName": "Georgia",
+            "isCustomFont": false,
+            "glyphCount": 17
+          }
+        ]
+      ],
+      "styles": [
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        },
+        {
+          "family": "Georgia, \"Times New Roman\", serif",
+          "weight": "400",
+          "style": "normal"
+        }
+      ]
+    },
+    "actual first-letter": {
+      "fonts": [
+        {
+          "familyName": "Didot",
+          "postScriptName": "Didot",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Georgia",
+          "postScriptName": "Georgia",
+          "isCustomFont": false,
+          "glyphCount": 16
+        }
+      ],
+      "styles": {
+        "family": "Didot, \"Bodoni 72\", Georgia, serif",
+        "size": "57.8px",
+        "weight": "400"
+      }
+    }
+  }
+}

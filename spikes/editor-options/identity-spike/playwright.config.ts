@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({testDir:'.',testMatch:'browser.spec.ts',outputDir:'../identity-test-results',workers:1,use:{baseURL:'http://localhost:5182',headless:true,viewport:{width:1440,height:1000},trace:'retain-on-failure'},webServer:{command:'npx vite --config vite.config.ts',url:'http://localhost:5182',reuseExistingServer:false},reporter:[['list'],['json',{outputFile:'../identity-test-results/results.json'}]]});

@@ -1,0 +1,3410 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/books.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/books.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+        "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+        "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+        "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+        "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+        "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+        "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+        "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+        "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+      },
+      "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+      "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+      "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/books-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+            "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+            "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+            "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+            "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+            "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+            "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+            "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+            "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+          },
+          "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+          "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+          "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "books.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/books-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "books.spec.ts",
+      "file": "books.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "books.spec.ts",
+          "line": 9,
+          "column": 62,
+          "specs": [
+            {
+              "title": "[NEO-023-A] six seeded art styles render deterministically with accessible real cover title and author",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2898,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:50.583Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-13fd7f98c406ecd6d66e",
+              "file": "books.spec.ts",
+              "line": 13,
+              "column": 2
+            },
+            {
+              "title": "[NEO-024-A] visible cover refresh and context-menu New cover persist fresh seed and artwork",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1650,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:53.502Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d5dfdc86b54af61302b0",
+              "file": "books.spec.ts",
+              "line": 20,
+              "column": 2
+            },
+            {
+              "title": "[NEO-025-A] cover picker copies selected image, cancel retains it and reload shows it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1327,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:55.158Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-58010dd7e2631d7bab51",
+              "file": "books.spec.ts",
+              "line": 21,
+              "column": 2
+            },
+            {
+              "title": "[NEO-026-A] real disk-backed File dropped on cover is copied through original Electron path bridge",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1177,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:56.490Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-771f2711960b21db2463",
+              "file": "books.spec.ts",
+              "line": 22,
+              "column": 2
+            },
+            {
+              "title": "[NEO-027-A] remove custom cover removes its file and renders seeded fallback",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1380,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:57.672Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-3973e3b5f8b963dcd996",
+              "file": "books.spec.ts",
+              "line": 23,
+              "column": 2
+            },
+            {
+              "title": "[NEO-028-A] cover presentation switches between custom image, painting and abstract while retaining both files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1661,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:59:59.057Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-75e094bf4468ea0b4457",
+              "file": "books.spec.ts",
+              "line": 24,
+              "column": 2
+            },
+            {
+              "title": "[NEO-029-A] crossing 1000 words starts one real painting job while further typing stays responsive",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3335,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:00.724Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-1e87d028a71e43aa393d",
+              "file": "books.spec.ts",
+              "line": 25,
+              "column": 2
+            },
+            {
+              "title": "[NEO-030-A] opening imported long story does not paint until eligible explicit refresh request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1574,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:04.065Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d7c88603e36550d42773",
+              "file": "books.spec.ts",
+              "line": 26,
+              "column": 2
+            },
+            {
+              "title": "[NEO-033-A] stale pending painting can be retried, success stores artwork, provider failure leaves abstract fallback",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1930,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:05.644Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-8d11ece49859f4db24e5",
+              "file": "books.spec.ts",
+              "line": 27,
+              "column": 2
+            },
+            {
+              "title": "[NEO-031-A] cover settings reject invalid key, cancel changes, persist models quality and auto preference",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1273,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:07.578Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-f046dc1baeeb00934ce8",
+              "file": "books.spec.ts",
+              "line": 28,
+              "column": 2
+            },
+            {
+              "title": "[NEO-032-A] fake provider key stays outside library and is removed through cover settings",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1160,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:08.856Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d814f5599ba357ae29ff",
+              "file": "books.spec.ts",
+              "line": 29,
+              "column": 2
+            },
+            {
+              "title": "[NEO-034-A] custom image remains preferred over completed painting on reopening",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1297,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:10.022Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ac85f0341d25562229c9",
+              "file": "books.spec.ts",
+              "line": 30,
+              "column": 2
+            },
+            {
+              "title": "[NEO-035-A] binding shelf adds cover and page affordances without replacing constituent books",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2045,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:11.324Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-4fa939b1d5d9f7ba1d9e",
+              "file": "books.spec.ts",
+              "line": 31,
+              "column": 2
+            },
+            {
+              "title": "[NEO-036-A] unbinding parks page files and rebind restores them before original stories",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2131,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:13.375Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7263bc42c03c79b6447c",
+              "file": "books.spec.ts",
+              "line": 32,
+              "column": 2
+            },
+            {
+              "title": "[NEO-037-A] bound title sheet sanitizes multiline paste and Enter advances title subtitle author",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2627,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:15.510Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ae5f060ab8217558e1a4",
+              "file": "books.spec.ts",
+              "line": 33,
+              "column": 2
+            },
+            {
+              "title": "[NEO-038-A] all front ghost pages insert in canonical order before constituent stories",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2813,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:18.143Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-5920c2bd250afd68c568",
+              "file": "books.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-039-A] all back ghost pages insert after constituent stories in canonical order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:20.961Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-80b838392d20d90ac495",
+              "file": "books.spec.ts",
+              "line": 35,
+              "column": 2
+            },
+            {
+              "title": "[NEO-040-A] part seam inserts roman-labelled part immediately before its title and removes duplicate seam",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1694,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:22.811Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-60c24762a11577c5e913",
+              "file": "books.spec.ts",
+              "line": 36,
+              "column": 2
+            },
+            {
+              "title": "[NEO-041-A] bound epigraph paste preserves bold and attribution layout, Escape commits normalized HTML",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1956,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:24.510Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-0d5598fa2e6531a969fb",
+              "file": "books.spec.ts",
+              "line": 37,
+              "column": 2
+            },
+            {
+              "title": "[NEO-042-A] bound prologue and epilogue open story editor and export unnumbered text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1989,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:26.471Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-30b39e5cb42059e76db1",
+              "file": "books.spec.ts",
+              "line": 38,
+              "column": 2
+            },
+            {
+              "title": "[NEO-043-A] bound page removal confirmation trashes page file and revives its ghost slot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1773,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:28.465Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-b3603497b37ce27787d0",
+              "file": "books.spec.ts",
+              "line": 39,
+              "column": 2
+            },
+            {
+              "title": "[NEO-044-A] binding numbering switch changes actual exported chapter sequence and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2068,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:30.243Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7b438334b1593703a96f",
+              "file": "books.spec.ts",
+              "line": 40,
+              "column": 2
+            },
+            {
+              "title": "[NEO-045-A] bound book exports supported DOCX EPUB PDF with all story text and one cover",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3228,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:32.316Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-2375f0e1de942f243678",
+              "file": "books.spec.ts",
+              "line": 41,
+              "column": 2
+            },
+            {
+              "title": "[NEO-046-A] unbound anthology export asks title and retains all constituent stories in supported formats",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3398,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:35.549Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-948a92953e3af91c85e1",
+              "file": "books.spec.ts",
+              "line": 42,
+              "column": 2
+            },
+            {
+              "title": "[NEO-047-A] Unicode book title subtitle and empty-title fallback persist on reopening",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1487,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:38.951Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-0fef0cf65cbe1928a46b",
+              "file": "books.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-048-A] title-page author is independent of shelf identity and exported correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2310,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:40.443Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-e163c2f705b294111546",
+              "file": "books.spec.ts",
+              "line": 44,
+              "column": 2
+            },
+            {
+              "title": "[NEO-049-A] title Enter creates missing story after front matter and before back matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1294,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:42.758Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-4fcc73429e06b6b99166",
+              "file": "books.spec.ts",
+              "line": 45,
+              "column": 2
+            },
+            {
+              "title": "[NEO-050-A] lone story suppresses heading and adding another story enables correct numbering",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:44.057Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-38c30f383c102d1beedf",
+              "file": "books.spec.ts",
+              "line": 46,
+              "column": 2
+            },
+            {
+              "title": "[NEO-051-A] custom chapter title saves on Enter and Shift Enter creates italic poetry under heading",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3012,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:45.625Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-27ce8500d8c3206d8603",
+              "file": "books.spec.ts",
+              "line": 47,
+              "column": 2
+            },
+            {
+              "title": "[NEO-052-A] every original entry kind is selectable and persists its corresponding page layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2327,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:48.641Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-41edabd2970ce2f912b3",
+              "file": "books.spec.ts",
+              "line": 48,
+              "column": 2
+            },
+            {
+              "title": "[NEO-053-A] parts count Roman separately and restart switch renumbers later chapters without numbering front matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1579,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:50.973Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a1f9f71adc7f0edf2f1d",
+              "file": "books.spec.ts",
+              "line": 49,
+              "column": 2
+            },
+            {
+              "title": "[NEO-054-A] legacy first-last prologue epilogue migrate without losing chapter order or prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:52.557Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-c63db8cbdf68a7bcc422",
+              "file": "books.spec.ts",
+              "line": 50,
+              "column": 2
+            },
+            {
+              "title": "[NEO-055-A] unnumbered custom title displays once and does not increment numbered chapters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1397,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:54.708Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-33cf589250e8237f48e2",
+              "file": "books.spec.ts",
+              "line": 51,
+              "column": 2
+            },
+            {
+              "title": "[NEO-056-A] contents protects prose and duplicate tables while generated links navigate actual chapters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1660,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:56.110Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-e537351aaccacec9781f",
+              "file": "books.spec.ts",
+              "line": 52,
+              "column": 2
+            },
+            {
+              "title": "[NEO-057-A] empty copyright conversion inserts current-year rights while nonempty page keeps its text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1693,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:57.775Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ad856156aed0537f686c",
+              "file": "books.spec.ts",
+              "line": 53,
+              "column": 2
+            },
+            {
+              "title": "[NEO-058-A] navigation end button inserts focused chapter before back matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1598,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:00:59.473Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-9827f30995c922897487",
+              "file": "books.spec.ts",
+              "line": 54,
+              "column": 2
+            },
+            {
+              "title": "[NEO-059-A] navigation insertion gaps create requested kind at exact beginning middle and end",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1660,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:01.075Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-217f24e85290fd41aec0",
+              "file": "books.spec.ts",
+              "line": 55,
+              "column": 2
+            },
+            {
+              "title": "[NEO-060-A] nav rows and command-alt arrows focus matching chapters and clamp at boundaries",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1592,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:02.741Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-edded3fb8f19bfd65d30",
+              "file": "books.spec.ts",
+              "line": 56,
+              "column": 2
+            },
+            {
+              "title": "[NEO-061-A] real nav chapter drag persists new order and regenerated numbering contents",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1714,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:04.340Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-3b3dcfdd0211065378a7",
+              "file": "books.spec.ts",
+              "line": 57,
+              "column": 2
+            },
+            {
+              "title": "[NEO-062-A] chapter nav note saves on Enter and appears on its outline line",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2440,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:06.060Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-86fd2fc87b4d247f6779",
+              "file": "books.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-063-A] nonempty chapter deletion archives complete formatted HTML and undo restores file and metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1614,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:08.504Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-45c3864eb517bc4f1aa4",
+              "file": "books.spec.ts",
+              "line": 59,
+              "column": 2
+            },
+            {
+              "title": "[NEO-064-A] removing last empty chapter leaves title and add-story affordance, without empty Darling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1582,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:10.122Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-c4e6d1d803b643ebd5bf",
+              "file": "books.spec.ts",
+              "line": 60,
+              "column": 2
+            },
+            {
+              "title": "[NEO-065-A] chapter menu export appears for nonempty story only and exports selected text in every format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2828,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:11.710Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-0aba21ee9f3f2c4d73ac",
+              "file": "books.spec.ts",
+              "line": 61,
+              "column": 2
+            },
+            {
+              "title": "[NEO-290-A] generated painting is excluded from all exported formats while EPUB retains seeded cover",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3059,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:14.543Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-af9d3de5633a0e00df6d",
+              "file": "books.spec.ts",
+              "line": 62,
+              "column": 2
+            },
+            {
+              "title": "[NEO-291-A] real provider retries retired model but authentication quota and content failures do not retry",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1844,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:17.607Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-3fa772b431eb61191023",
+              "file": "books.spec.ts",
+              "line": 63,
+              "column": 2
+            },
+            {
+              "title": "[NEO-292-A] real brief receives opening 4500 ending 1500 words and painting prompt forbids lettering while overlay retains identity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1479,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:19.456Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7e62e740a50498abe54f",
+              "file": "books.spec.ts",
+              "line": 64,
+              "column": 2
+            },
+            {
+              "title": "[NEO-303-A] multilingual connector words shrink while Unicode long titles retain complete readable cover layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2132,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:20.940Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d2aa86ca4fcb99934951",
+              "file": "books.spec.ts",
+              "line": 65,
+              "column": 2
+            }
+          ]
+        },
+        {
+          "title": "prosemirror",
+          "file": "books.spec.ts",
+          "line": 9,
+          "column": 62,
+          "specs": [
+            {
+              "title": "[NEO-023-A] six seeded art styles render deterministically with accessible real cover title and author",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2734,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:23.077Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-858712f07df3b4281aca",
+              "file": "books.spec.ts",
+              "line": 13,
+              "column": 2
+            },
+            {
+              "title": "[NEO-024-A] visible cover refresh and context-menu New cover persist fresh seed and artwork",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1924,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:25.817Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-655c012e5cdf8924bc36",
+              "file": "books.spec.ts",
+              "line": 20,
+              "column": 2
+            },
+            {
+              "title": "[NEO-025-A] cover picker copies selected image, cancel retains it and reload shows it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1864,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:27.745Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-10be0ea8dc07a76d1e39",
+              "file": "books.spec.ts",
+              "line": 21,
+              "column": 2
+            },
+            {
+              "title": "[NEO-026-A] real disk-backed File dropped on cover is copied through original Electron path bridge",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1576,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:29.614Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-603883159348567e1d5d",
+              "file": "books.spec.ts",
+              "line": 22,
+              "column": 2
+            },
+            {
+              "title": "[NEO-027-A] remove custom cover removes its file and renders seeded fallback",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1597,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:31.195Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-756d475d23f8484ad63d",
+              "file": "books.spec.ts",
+              "line": 23,
+              "column": 2
+            },
+            {
+              "title": "[NEO-028-A] cover presentation switches between custom image, painting and abstract while retaining both files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1941,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:32.797Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-fc096aa4f15492bc8f65",
+              "file": "books.spec.ts",
+              "line": 24,
+              "column": 2
+            },
+            {
+              "title": "[NEO-029-A] crossing 1000 words starts one real painting job while further typing stays responsive",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3500,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:34.743Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-15465bc4407fa8eeee22",
+              "file": "books.spec.ts",
+              "line": 25,
+              "column": 2
+            },
+            {
+              "title": "[NEO-030-A] opening imported long story does not paint until eligible explicit refresh request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1693,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:38.249Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-03b87395a5fa39c5ba42",
+              "file": "books.spec.ts",
+              "line": 26,
+              "column": 2
+            },
+            {
+              "title": "[NEO-033-A] stale pending painting can be retried, success stores artwork, provider failure leaves abstract fallback",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2263,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:39.946Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-383c3aa14fc0728e5a61",
+              "file": "books.spec.ts",
+              "line": 27,
+              "column": 2
+            },
+            {
+              "title": "[NEO-031-A] cover settings reject invalid key, cancel changes, persist models quality and auto preference",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1540,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:42.215Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-df4db6a965718b52e5f4",
+              "file": "books.spec.ts",
+              "line": 28,
+              "column": 2
+            },
+            {
+              "title": "[NEO-032-A] fake provider key stays outside library and is removed through cover settings",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1396,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:43.760Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-dccdb8562d33ffe55d8c",
+              "file": "books.spec.ts",
+              "line": 29,
+              "column": 2
+            },
+            {
+              "title": "[NEO-034-A] custom image remains preferred over completed painting on reopening",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1532,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:45.160Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-89a4c0ffea4c7449e94f",
+              "file": "books.spec.ts",
+              "line": 30,
+              "column": 2
+            },
+            {
+              "title": "[NEO-035-A] binding shelf adds cover and page affordances without replacing constituent books",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2293,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:46.697Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-545bdc5ca930c2630102",
+              "file": "books.spec.ts",
+              "line": 31,
+              "column": 2
+            },
+            {
+              "title": "[NEO-036-A] unbinding parks page files and rebind restores them before original stories",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2330,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:48.996Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-db916e132f16a4ef8599",
+              "file": "books.spec.ts",
+              "line": 32,
+              "column": 2
+            },
+            {
+              "title": "[NEO-037-A] bound title sheet sanitizes multiline paste and Enter advances title subtitle author",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2946,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:51.332Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a7af3fa3f9f7fe40a1f6",
+              "file": "books.spec.ts",
+              "line": 33,
+              "column": 2
+            },
+            {
+              "title": "[NEO-038-A] all front ghost pages insert in canonical order before constituent stories",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3078,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:54.283Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a3b716a4e4ef033a9950",
+              "file": "books.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-039-A] all back ghost pages insert after constituent stories in canonical order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2176,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:57.366Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a98ede161bdb5136d9a9",
+              "file": "books.spec.ts",
+              "line": 35,
+              "column": 2
+            },
+            {
+              "title": "[NEO-040-A] part seam inserts roman-labelled part immediately before its title and removes duplicate seam",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1947,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:01:59.547Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-27b44f53f2127bf22d2e",
+              "file": "books.spec.ts",
+              "line": 36,
+              "column": 2
+            },
+            {
+              "title": "[NEO-041-A] bound epigraph paste preserves bold and attribution layout, Escape commits normalized HTML",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2161,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:01.499Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ba7c8bdd21712626e570",
+              "file": "books.spec.ts",
+              "line": 37,
+              "column": 2
+            },
+            {
+              "title": "[NEO-042-A] bound prologue and epilogue open story editor and export unnumbered text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2433,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:03.666Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a17eff31335c619aba0f",
+              "file": "books.spec.ts",
+              "line": 38,
+              "column": 2
+            },
+            {
+              "title": "[NEO-043-A] bound page removal confirmation trashes page file and revives its ghost slot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2109,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:06.104Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a1d92a6a3b1639bb20d2",
+              "file": "books.spec.ts",
+              "line": 39,
+              "column": 2
+            },
+            {
+              "title": "[NEO-044-A] binding numbering switch changes actual exported chapter sequence and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2476,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:08.218Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a266404349419a936ae0",
+              "file": "books.spec.ts",
+              "line": 40,
+              "column": 2
+            },
+            {
+              "title": "[NEO-045-A] bound book exports supported DOCX EPUB PDF with all story text and one cover",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3413,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:10.700Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-c63faaeae64160a13ff7",
+              "file": "books.spec.ts",
+              "line": 41,
+              "column": 2
+            },
+            {
+              "title": "[NEO-046-A] unbound anthology export asks title and retains all constituent stories in supported formats",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3562,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:14.117Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-59a33ddcc8117695f95c",
+              "file": "books.spec.ts",
+              "line": 42,
+              "column": 2
+            },
+            {
+              "title": "[NEO-047-A] Unicode book title subtitle and empty-title fallback persist on reopening",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1638,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:17.685Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-00c592d952568065f04d",
+              "file": "books.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-048-A] title-page author is independent of shelf identity and exported correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2512,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:19.328Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-e92eeea4ac804647c720",
+              "file": "books.spec.ts",
+              "line": 44,
+              "column": 2
+            },
+            {
+              "title": "[NEO-049-A] title Enter creates missing story after front matter and before back matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1560,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:21.845Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-a1240cd82c38de2ce7f3",
+              "file": "books.spec.ts",
+              "line": 45,
+              "column": 2
+            },
+            {
+              "title": "[NEO-050-A] lone story suppresses heading and adding another story enables correct numbering",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1827,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:23.410Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-c0adfab7c93a149ab645",
+              "file": "books.spec.ts",
+              "line": 46,
+              "column": 2
+            },
+            {
+              "title": "[NEO-051-A] custom chapter title saves on Enter and Shift Enter creates italic poetry under heading",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3300,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:25.242Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-53c55e9a7aeb0608e7c9",
+              "file": "books.spec.ts",
+              "line": 47,
+              "column": 2
+            },
+            {
+              "title": "[NEO-052-A] every original entry kind is selectable and persists its corresponding page layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2562,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:28.547Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-6f1556a047cc95c14968",
+              "file": "books.spec.ts",
+              "line": 48,
+              "column": 2
+            },
+            {
+              "title": "[NEO-053-A] parts count Roman separately and restart switch renumbers later chapters without numbering front matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1828,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:31.114Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-9d88c8bbcf444df77103",
+              "file": "books.spec.ts",
+              "line": 49,
+              "column": 2
+            },
+            {
+              "title": "[NEO-054-A] legacy first-last prologue epilogue migrate without losing chapter order or prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2331,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:32.947Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d160828b856deeb149aa",
+              "file": "books.spec.ts",
+              "line": 50,
+              "column": 2
+            },
+            {
+              "title": "[NEO-055-A] unnumbered custom title displays once and does not increment numbered chapters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1606,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:35.283Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-e58a42c60866219b00c0",
+              "file": "books.spec.ts",
+              "line": 51,
+              "column": 2
+            },
+            {
+              "title": "[NEO-056-A] contents protects prose and duplicate tables while generated links navigate actual chapters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1846,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:36.894Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ead3782a5fa642147e4a",
+              "file": "books.spec.ts",
+              "line": 52,
+              "column": 2
+            },
+            {
+              "title": "[NEO-057-A] empty copyright conversion inserts current-year rights while nonempty page keeps its text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1897,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:38.745Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7de730f5da2588be4855",
+              "file": "books.spec.ts",
+              "line": 53,
+              "column": 2
+            },
+            {
+              "title": "[NEO-058-A] navigation end button inserts focused chapter before back matter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1812,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:40.647Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7689bb2a3e415b13e3fc",
+              "file": "books.spec.ts",
+              "line": 54,
+              "column": 2
+            },
+            {
+              "title": "[NEO-059-A] navigation insertion gaps create requested kind at exact beginning middle and end",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1911,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:42.465Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-aaf2d4225627c2ff3fa4",
+              "file": "books.spec.ts",
+              "line": 55,
+              "column": 2
+            },
+            {
+              "title": "[NEO-060-A] nav rows and command-alt arrows focus matching chapters and clamp at boundaries",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1847,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:44.381Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ff243763dfc3dffa50b1",
+              "file": "books.spec.ts",
+              "line": 56,
+              "column": 2
+            },
+            {
+              "title": "[NEO-061-A] real nav chapter drag persists new order and regenerated numbering contents",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1942,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:46.233Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-4ed35d6119f0a126f51a",
+              "file": "books.spec.ts",
+              "line": 57,
+              "column": 2
+            },
+            {
+              "title": "[NEO-062-A] chapter nav note saves on Enter and appears on its outline line",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2662,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:48.181Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-ea2cd1efe332613e2fd2",
+              "file": "books.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-063-A] nonempty chapter deletion archives complete formatted HTML and undo restores file and metadata",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1923,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:50.848Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-57db72d1fdd118de0210",
+              "file": "books.spec.ts",
+              "line": 59,
+              "column": 2
+            },
+            {
+              "title": "[NEO-064-A] removing last empty chapter leaves title and add-story affordance, without empty Darling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1866,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:52.776Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-b7df0deaf8b15639343a",
+              "file": "books.spec.ts",
+              "line": 60,
+              "column": 2
+            },
+            {
+              "title": "[NEO-065-A] chapter menu export appears for nonempty story only and exports selected text in every format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3047,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:54.647Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-38d0bdff9a55fb06160a",
+              "file": "books.spec.ts",
+              "line": 61,
+              "column": 2
+            },
+            {
+              "title": "[NEO-290-A] generated painting is excluded from all exported formats while EPUB retains seeded cover",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3229,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:02:57.699Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-8398b3eb4fe6519b4a94",
+              "file": "books.spec.ts",
+              "line": 62,
+              "column": 2
+            },
+            {
+              "title": "[NEO-291-A] real provider retries retired model but authentication quota and content failures do not retry",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1954,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:00.932Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-f8cc79eb2dd8380a479d",
+              "file": "books.spec.ts",
+              "line": 63,
+              "column": 2
+            },
+            {
+              "title": "[NEO-292-A] real brief receives opening 4500 ending 1500 words and painting prompt forbids lettering while overlay retains identity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1749,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:02.891Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-7e04c6af4a414283544e",
+              "file": "books.spec.ts",
+              "line": 64,
+              "column": 2
+            },
+            {
+              "title": "[NEO-303-A] multilingual connector words shrink while Unicode long titles retain complete readable cover layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2209,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:04.644Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e273644fa03595d2d8c7-d2b9112a97a937002a56",
+              "file": "books.spec.ts",
+              "line": 65,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T08:59:49.377Z",
+    "duration": 197494.491,
+    "expected": 94,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

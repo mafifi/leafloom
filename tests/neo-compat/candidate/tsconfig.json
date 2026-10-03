@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","compilerOptions":{"allowJs":true,"checkJs":false},"include":["./**/*.ts","../reference/**/*.ts","../evidence.mjs"],"exclude":["../parity","../../reference","../../../node_modules"]}

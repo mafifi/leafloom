@@ -1,0 +1,19 @@
+{
+  "name": "@leafloom/filesystem-documents",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@leafloom/document-contracts": "workspace:*",
+    "@leafloom/editor-contracts": "workspace:*",
+    "zod": "catalog:",
+    "@opentelemetry/api": "catalog:"
+  },
+  "leafloom": {
+    "role": "provider",
+    "runtime": "node"
+  }
+}

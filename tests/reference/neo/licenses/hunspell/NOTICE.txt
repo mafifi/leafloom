@@ -1,0 +1,41 @@
+Hunspell spellchecking engine
+
+NEO checks spelling with Hunspell 1.7.3, compiled to WebAssembly and
+distributed inside the npm package @farscrl/hunspell-wasm 1.0.1 (its
+JavaScript wrapper is MIT-licensed; see its LICENSE file in app.asar under
+node_modules/@farscrl/hunspell-wasm).
+
+Hunspell is tri-licensed under the Mozilla Public License 1.1, the GNU
+General Public License 2.0 or later, and the GNU Lesser General Public
+License 2.1 or later. NEO distributes it under the MPL 1.1 option. The full
+license text is in MPL-1.1.txt beside this notice. NEO's MIT license does
+not replace Hunspell's license, and NEO does not remove the alternatives.
+
+Source availability
+
+NEO does not modify Hunspell. The exact source compiled into the package
+is Hunspell at commit c5f98152a274e25b5107101104bef632b83a0cc9:
+  https://github.com/hunspell/hunspell/tree/c5f98152a274e25b5107101104bef632b83a0cc9
+It is pinned as a submodule of the wrapper's repository at the release
+tag @farscrl/hunspell-wasm@1.0.1:
+  https://github.com/farscrl/hunspell-wasm/tree/%40farscrl/hunspell-wasm%401.0.1
+The npm package itself:
+  https://registry.npmjs.org/@farscrl/hunspell-wasm/-/hunspell-wasm-1.0.1.tgz
+
+MPL 1.1 Exhibit A notice
+
+The contents of this software are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use this software except in
+compliance with the License. You may obtain a copy of the License at
+https://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+
+The Original Code is Hunspell, based on MySpell. The Initial Developers
+of the Original Code are Kevin Hendricks (MySpell) and Németh László
+(Hunspell). Portions created by the Initial Developers are Copyright (C)
+2002-2022 the Initial Developers. All Rights Reserved. Contributors are
+listed in the AUTHORS and THANKS files of the source linked above.

@@ -1,0 +1,534 @@
+{
+  "formatVersion": 1,
+  "packages": [
+    {
+      "ecosystem": "npm",
+      "name": "is-reference",
+      "version": "3.0.3",
+      "license": "MIT",
+      "revision": "8bb053129bfabe2f6a7d7ed050159d67ebe82829",
+      "files": [
+        {
+          "file": "npm_is-reference_3.0.3/README.md",
+          "sha256": "daf005969aac8cb4283b3777361f0244f4cce898b9a983a60b7f0d9e96f559bf",
+          "source": "https://raw.githubusercontent.com/Rich-Harris/is-reference/8bb053129bfabe2f6a7d7ed050159d67ebe82829/README.md",
+          "extractedLicenseSection": true
+        },
+        {
+          "file": "npm_is-reference_3.0.3/MIT-TERMS.txt",
+          "sha256": "5c9434b523842dfe701277ce1efdc1e2707db409cc77e90b8959aa3118fe336f",
+          "source": "https://registry.npmjs.org/is-reference/3.0.3",
+          "material": "upstream author and license metadata with standard MIT permission terms; source notices preserved in shipped code"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "name": "locate-character",
+      "status": "downloaded",
+      "repository": "git+https://gitlab.com/Rich-Harris/locate-character.git",
+      "ecosystem": "npm",
+      "version": "3.0.0",
+      "license": "MIT",
+      "revision": "4f08a59ec248121f7002abd02ee7b94e8eda06bc",
+      "files": [
+        {
+          "file": "npm_locate-character_3.0.0/README.md",
+          "sha256": "daf005969aac8cb4283b3777361f0244f4cce898b9a983a60b7f0d9e96f559bf",
+          "source": "https://raw.githubusercontent.com/Rich-Harris/locate-character/4f08a59ec248121f7002abd02ee7b94e8eda06bc/README.md",
+          "extractedLicenseSection": true
+        },
+        {
+          "file": "npm_locate-character_3.0.0/MIT-TERMS.txt",
+          "sha256": "92b68c626f49e66a5d0d02dc8d5d3100cfd363878c8a772c6b48e9f424968fd1",
+          "source": "https://registry.npmjs.org/locate-character/3.0.0",
+          "material": "upstream author and license metadata with standard MIT permission terms; source notices preserved in shipped code"
+        }
+      ]
+    },
+    {
+      "ecosystem": "npm",
+      "name": "isarray",
+      "version": "1.0.0",
+      "license": "MIT",
+      "revision": "2a23a281f369e9ae06394c0fb4d2381355a6ba33",
+      "files": [
+        {
+          "file": "npm_isarray_1.0.0/README.md",
+          "sha256": "66aa9feab8bb39aceebd69f2a357015d57ceab486d3c7a19ff8d3d4110a6d101",
+          "source": "https://raw.githubusercontent.com/juliangruber/isarray/2a23a281f369e9ae06394c0fb4d2381355a6ba33/README.md",
+          "extractedLicenseSection": true
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "npm",
+      "name": "saxes",
+      "version": "6.0.0",
+      "license": "ISC",
+      "revision": "211fa0ebec9b628affc09219199639887174bfc3",
+      "files": [
+        {
+          "file": "npm_saxes_6.0.0/LICENSE",
+          "sha256": "0fac2374380621b22e6b50451057721a9c52935b02d16d106a9f04897f061d0e",
+          "source": "https://raw.githubusercontent.com/lddubeau/saxes/211fa0ebec9b628affc09219199639887174bfc3/LICENSE"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "npm",
+      "name": "fontkit",
+      "version": "2.0.4",
+      "license": "MIT",
+      "revision": "fbf3b9ef21eebd219eb73e666faed573af0fba09",
+      "files": [
+        {
+          "file": "npm_fontkit_2.0.4/README.md",
+          "sha256": "daf005969aac8cb4283b3777361f0244f4cce898b9a983a60b7f0d9e96f559bf",
+          "source": "https://raw.githubusercontent.com/foliojs/fontkit/fbf3b9ef21eebd219eb73e666faed573af0fba09/README.md",
+          "extractedLicenseSection": true
+        },
+        {
+          "file": "npm_fontkit_2.0.4/MIT-TERMS.txt",
+          "sha256": "e8650b2671801f66d1b384efba43d4a14899dddf69b7c01b0510465b44caf801",
+          "source": "https://registry.npmjs.org/fontkit/2.0.4",
+          "material": "upstream author and license metadata with standard MIT permission terms; source notices preserved in shipped code"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "npm",
+      "name": "brotli",
+      "version": "1.3.3",
+      "license": "MIT",
+      "revision": "e36051345f6d27a56e5f39ea70d2f789b8574046",
+      "files": [
+        {
+          "file": "npm_brotli_1.3.3/MIT-TERMS.txt",
+          "sha256": "1797123ae2596452d1f07523be4e968b8dca561c5baddf60a45529c06c5b2e07",
+          "source": "https://registry.npmjs.org/brotli/1.3.3",
+          "material": "upstream author and license metadata with standard MIT permission terms; source notices preserved in shipped code"
+        },
+        {
+          "file": "npm_brotli_1.3.3/APACHE-2.0.txt",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "source": "https://www.apache.org/licenses/LICENSE-2.0",
+          "material": "Full Apache2.0 terms for retained Google decoder copyright headers"
+        }
+      ],
+      "status": "terms and metadata retained"
+    },
+    {
+      "ecosystem": "npm",
+      "name": "dfa",
+      "version": "1.2.0",
+      "license": "MIT",
+      "revision": "3f5e603e5082caedabefefdf53e8a6ca3111e966",
+      "files": [
+        {
+          "file": "npm_dfa_1.2.0/README.md",
+          "sha256": "daf005969aac8cb4283b3777361f0244f4cce898b9a983a60b7f0d9e96f559bf",
+          "source": "https://raw.githubusercontent.com/devongovett/dfa/3f5e603e5082caedabefefdf53e8a6ca3111e966/README.md",
+          "extractedLicenseSection": true
+        },
+        {
+          "file": "npm_dfa_1.2.0/MIT-TERMS.txt",
+          "sha256": "de5914c64debc70505eae5bb922d85292b2b6967b4df70a7c22b957e30c574f9",
+          "source": "https://registry.npmjs.org/dfa/1.2.0",
+          "material": "upstream author and license metadata with standard MIT permission terms; source notices preserved in shipped code"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-app-kit",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-app-kit_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "block2",
+      "version": "0.6.2",
+      "license": "MIT",
+      "revision": "b4167b582b2f75f9a1be75495c41b765344fd03c",
+      "files": [
+        {
+          "file": "cargo_block2_0.6.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/b4167b582b2f75f9a1be75495c41b765344fd03c/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2",
+      "version": "0.6.4",
+      "license": "MIT",
+      "revision": "8852b424193ca41602281b3d7540d7c8ed51e49a",
+      "files": [
+        {
+          "file": "cargo_objc2_0.6.4/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-encode",
+      "version": "4.1.0",
+      "license": "MIT",
+      "revision": "8d214f5477365ffcbcbb7de058c86ed9a518efb7",
+      "files": [
+        {
+          "file": "cargo_objc2-encode_4.1.0/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/8d214f5477365ffcbcbb7de058c86ed9a518efb7/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-exception-helper",
+      "version": "0.1.1",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "8d214f5477365ffcbcbb7de058c86ed9a518efb7",
+      "files": [
+        {
+          "file": "cargo_objc2-exception-helper_0.1.1/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/8d214f5477365ffcbcbb7de058c86ed9a518efb7/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-cloud-kit",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-cloud-kit_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-foundation",
+      "version": "0.3.2",
+      "license": "MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-foundation_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-foundation",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-foundation_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "dispatch2",
+      "version": "0.3.1",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "8852b424193ca41602281b3d7540d7c8ed51e49a",
+      "files": [
+        {
+          "file": "cargo_dispatch2_0.3.1/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-data",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-data_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-graphics",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-graphics_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-io-surface",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-io-surface_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-image",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-image_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-text",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-text_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-core-video",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-core-video_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-quartz-core",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-quartz-core_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-web-kit",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-web-kit_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "alloc-stdlib",
+      "version": "0.2.4",
+      "license": "BSD-3-Clause",
+      "revision": "ae42d22078b98549e987d2f03d12df7b984fde47",
+      "files": [
+        {
+          "file": "cargo_alloc-stdlib_0.2.4/LICENSE",
+          "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae",
+          "source": "https://raw.githubusercontent.com/dropbox/rust-alloc-no-stdlib/ae42d22078b98549e987d2f03d12df7b984fde47/LICENSE"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "selectors",
+      "version": "0.36.1",
+      "license": "MPL-2.0",
+      "revision": "635e1a19d02960588a00e189bd4bd5bdb150ec3d",
+      "files": [
+        {
+          "file": "cargo_selectors_0.36.1/README.md",
+          "sha256": "cfae6fbe85507f30bab8ebb4a85d95e390ee3201ec09945cbc9422847fca89d7",
+          "source": "https://raw.githubusercontent.com/servo/stylo/635e1a19d02960588a00e189bd4bd5bdb150ec3d/README.md",
+          "extractedLicenseSection": true
+        },
+        {
+          "file": "cargo_selectors_0.36.1/MPL-2.0.txt",
+          "sha256": "fb72181dd02473b6e42749e14362ede6ba6202540dcc2ce98299ed9051fbde61",
+          "source": "https://www.mozilla.org/en-US/MPL/2.0/",
+          "material": "Full MPL2.0 license accompanying pinned upstream source repository"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "defmt-parser",
+      "version": "1.0.0",
+      "license": "MIT OR Apache-2.0",
+      "revision": "4a8cdb44891ed57b8ff5a023b6bec7137c48708f",
+      "files": [
+        {
+          "file": "cargo_defmt-parser_1.0.0/LICENSE-MIT",
+          "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+          "source": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-MIT"
+        },
+        {
+          "file": "cargo_defmt-parser_1.0.0/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "source": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-APACHE"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "unic-ucd-ident",
+      "version": "0.9.0",
+      "license": "MIT/Apache-2.0",
+      "revision": "8a6ce83063d90b91ae2ce59eddb803edd393fca9",
+      "files": [
+        {
+          "file": "cargo_unic-ucd-ident_0.9.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/8a6ce83063d90b91ae2ce59eddb803edd393fca9/LICENSE-MIT"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "unic-char-property",
+      "version": "0.9.0",
+      "license": "MIT/Apache-2.0",
+      "revision": "5878605364af97a3358368a6eaef02104af2e016",
+      "files": [
+        {
+          "file": "cargo_unic-char-property_0.9.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "unic-char-range",
+      "version": "0.9.0",
+      "license": "MIT/Apache-2.0",
+      "revision": "5878605364af97a3358368a6eaef02104af2e016",
+      "files": [
+        {
+          "file": "cargo_unic-char-range_0.9.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "unic-ucd-version",
+      "version": "0.9.0",
+      "license": "MIT/Apache-2.0",
+      "revision": "5878605364af97a3358368a6eaef02104af2e016",
+      "files": [
+        {
+          "file": "cargo_unic-ucd-version_0.9.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "unic-common",
+      "version": "0.9.0",
+      "license": "MIT/Apache-2.0",
+      "revision": "5878605364af97a3358368a6eaef02104af2e016",
+      "files": [
+        {
+          "file": "cargo_unic-common_0.9.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+        }
+      ],
+      "status": "downloaded"
+    }
+  ]
+}

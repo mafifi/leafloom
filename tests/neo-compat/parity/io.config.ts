@@ -1,0 +1,2 @@
+import {evidenceMetadata}from './evidence';
+import {defineConfig} from '@playwright/test';import path from 'node:path';import{readFileSync}from 'node:fs';import{createHash}from 'node:crypto';export default defineConfig({metadata:evidenceMetadata(),testDir:'./tests',testMatch:'io.spec.ts',workers:1,retries:0,timeout:60000,outputDir:'./io-artifacts',reporter:[['list'],['json',{outputFile:path.resolve('parity/io-results.json')}]],use:{trace:'retain-on-failure'}});

@@ -1,0 +1,297 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/canonical.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/canonical.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "adcf8400ace0e5e42444c80707e47ef5c542bee9b9eb2c00847c09807d91f98f",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+        "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "45430cf4ded5dbf37ba4f86718e09a342afbc42e3d84f0acaf2d7df4ebf7eead",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "a69f12b940069b04f39f73b05671e18af59b2b043a7483a2fd8dff4ec464d5f3",
+      "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+      "proofBuildSha256": "aade1cc841c44fedfb43d1219456e29be1e23f1a42f723681bcec4a4bc6fb8f5",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/canonical-original-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "adcf8400ace0e5e42444c80707e47ef5c542bee9b9eb2c00847c09807d91f98f",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+            "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "45430cf4ded5dbf37ba4f86718e09a342afbc42e3d84f0acaf2d7df4ebf7eead",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "a69f12b940069b04f39f73b05671e18af59b2b043a7483a2fd8dff4ec464d5f3",
+          "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+          "proofBuildSha256": "aade1cc841c44fedfb43d1219456e29be1e23f1a42f723681bcec4a4bc6fb8f5",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "canonical.spec.ts"
+        ],
+        "timeout": 40000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "parity/canonical-original-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "canonical.spec.ts",
+      "file": "canonical.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[NEO-231-B] original: chapter autosave and reopen retain empty paragraphs and atomic flags without PM artifacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 757,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:25:59.555Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0200fbf9500c478c05a-26819ccee21ffedb1d54",
+          "file": "canonical.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "[NEO-145-B] original: Notes flush and reopen retain native line breaks empty paragraphs atomic flags and italic without PM artifacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:00.326Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "actual-notes-html",
+                      "contentType": "text/html",
+                      "body": "PHA+PGk+QWxwaGE8L2k+PHNwYW4gY2xhc3M9InBoLW1hcmsiIGRhdGEtc2lkPSJzdGlja3ktb25lIiBjb250ZW50ZWRpdGFibGU9ImZhbHNlIj7impE8L3NwYW4+PC9wPjxwPlNvZnQKbGluZTwvcD48cD48YnI+PC9wPg=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0200fbf9500c478c05a-b4ba2c3c9aa1f716516f",
+          "file": "canonical.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "[NEO-041-B] original: bound page sheet save and reopen retain native line breaks empty paragraphs atomic flags without PM artifacts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:01.191Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "actual-page-html",
+                      "contentType": "text/html",
+                      "body": "PHA+PGk+QWxwaGE8L2k+PHNwYW4gY2xhc3M9InBoLW1hcmsiIGRhdGEtc2lkPSJzdGlja3ktb25lIiBjb250ZW50ZWRpdGFibGU9ImZhbHNlIj7impE8L3NwYW4+PC9wPjxwPlNvZnQ8YnI+bGluZTwvcD48cD48YnI+PC9wPg=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0200fbf9500c478c05a-e0ba94b15fc04aa5953b",
+          "file": "canonical.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T07:25:59.334Z",
+    "duration": 2817.005,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

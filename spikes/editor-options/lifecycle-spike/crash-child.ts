@@ -1,0 +1,2 @@
+import { BookFiles } from './files';
+const [root,target]=process.argv.slice(2);const store=new BookFiles(root,async stage=>{if(stage===target){process.send?.({stage});await new Promise(()=>{});}});await store.acquire();const opened=await store.load();const book={...opened.book,revision:1,metadata:{...opened.book.metadata,title:'Committed change'}};const receipt=await store.save('manuscript',book,opened.versions.manuscript,1);process.send?.({receipt});await new Promise(()=>{});

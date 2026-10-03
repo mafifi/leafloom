@@ -1,0 +1,149 @@
+{
+  "name": "neo",
+  "productName": "NEO",
+  "version": "1.2.4",
+  "description": "A word processor for authors. Distraction-free by default.",
+  "homepage": "https://github.com/hughhowey/neo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test:spellcheck": "node --test scripts/spellcheck.test.js",
+    "test:dashes": "node --test scripts/dashes.test.js",
+    "package": "electron-builder --mac",
+    "package:win": "electron-builder --win",
+    "package:linux": "electron-builder --linux",
+    "package:all": "electron-builder --mac --win --linux"
+  },
+  "build": {
+    "appId": "com.hughhowey.neo",
+    "productName": "NEO",
+    "publish": {
+      "provider": "github",
+      "owner": "hughhowey",
+      "repo": "neo"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "notarize": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "Office",
+      "synopsis": "A distraction-free word processor for authors",
+      "desktop": {
+        "entry": {
+          "Comment": "A word processor for authors. Distraction-free by default.",
+          "Keywords": "writing;writer;novel;book;author;manuscript;wordprocessor;"
+        }
+      },
+      "maintainer": "Hugh Howey <hughhowey@gmail.com>"
+    },
+    "nsis": {
+      "oneClick": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "asarUnpack": [
+      "node_modules/dictionary-ro/**",
+      "node_modules/dictionary-pt/**"
+    ],
+    "extraResources": [
+      {
+        "from": "licenses/dictionary-ro",
+        "to": "app.asar.unpacked/node_modules/dictionary-ro"
+      },
+      {
+        "from": "licenses/dictionary-pt",
+        "to": "app.asar.unpacked/node_modules/dictionary-pt"
+      },
+      {
+        "from": "licenses/hunspell",
+        "to": "licenses/hunspell"
+      }
+    ],
+    "files": [
+      "**/*",
+      "!pocket/**",
+      "!dist/**",
+      "!Backups/**",
+      "!*.md",
+      "!.github/**",
+      "!scripts/**",
+      "!licenses/**",
+      "!locales/_template.json",
+      "!node_modules/koffi/build/koffi/{freebsd,linux,musl,openbsd,win32}_*/**",
+      "!node_modules/koffi/{src,vendor,doc}/**"
+    ]
+  },
+  "author": "Hugh Howey",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "@farscrl/hunspell-wasm": "1.0.1",
+    "dictionary-de": "^3.0.0",
+    "dictionary-el": "^4.0.0",
+    "dictionary-en-au": "^3.0.0",
+    "dictionary-en-ca": "^3.0.0",
+    "dictionary-en-gb": "^3.0.0",
+    "dictionary-en-us": "^2.2.1",
+    "dictionary-es": "^4.0.0",
+    "dictionary-fr": "^3.0.0",
+    "dictionary-nl": "^2.0.0",
+    "dictionary-pl": "^2.0.0",
+    "dictionary-pt": "4.0.0",
+    "dictionary-ro": "3.0.0",
+    "dictionary-ru": "^3.0.0",
+    "electron-updater": "^6.3.9",
+    "jszip": "^3.10.1",
+    "koffi": "2.16.3"
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}

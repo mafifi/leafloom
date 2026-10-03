@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "scenarios": [
+    {
+      "scenarioId": "NEO-092-B",
+      "featureId": "NEO-092",
+      "testFile": "parity/tests/adapter-regressions.spec.ts",
+      "driverActions": [
+        "openEditingFixture(engine,{chapters:['<p>Original.</p>']})",
+        "selectText(c.page,0,0,9)",
+        "c.page.keyboard.press('x')",
+        "menu(c.app,['Format','Align Paragraph','Center'])",
+        "menu(c.app,['Edit','Undo'])",
+        "menu(c.app,['Edit','Redo'])",
+        "reopen(c.page)"
+      ],
+      "assertions": [
+        "expect(c.page.locator('.chapter-body p').first()).toHaveCSS('text-align','center')",
+        "assertTexts(c.page,[['Original.']])",
+        "assertTexts(c.page,[['Original.x']])",
+        "expect(await savedParagraphs(c.page,c.bookdir)).toEqual(['Original.x'])"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "adapter-regressions-results.json",
+          "title": "[NEO-092-B] paragraph alignment preserves preceding typed prose undo and redo",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "adapter-regressions-results.json",
+            "title": "[NEO-092-B] paragraph alignment preserves preceding typed prose undo and redo",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-228-B",
+      "featureId": "NEO-228",
+      "testFile": "parity/tests/adapter-regressions.spec.ts",
+      "driverActions": [
+        "openEditingFixture(engine,{chapters:[`<p>${original}</p>`]})",
+        "menu(c.app,['View','Vim Keys'])",
+        "selectText(c.page,0,0,0)",
+        "c.page.keyboard.press('Escape')",
+        "c.page.keyboard.press('x')",
+        "menu(c.app,['Edit','Undo'])",
+        "menu(c.app,['Edit','Redo'])",
+        "reopen(c.page)"
+      ],
+      "assertions": [
+        "assertTexts(c.page,[[deleted]])",
+        "assertTexts(c.page,[[original]])",
+        "expect(await savedParagraphs(c.page,c.bookdir)).toEqual([deleted])",
+        "expect(await readFile(path.join(c.bookdir,'chapters','ch-1.html'),'utf8')).not.toContain('\\uFFFD')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "adapter-regressions-results.json",
+          "title": "[NEO-228-B] Vim x deletes emoji grapheme with undo redo and saved prose",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "adapter-regressions-results.json",
+          "title": "[NEO-228-B] Vim x deletes combining grapheme with undo redo and saved prose",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "adapter-regressions-results.json",
+          "title": "[NEO-228-B] Vim x deletes ZWJ grapheme with undo redo and saved prose",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "adapter-regressions-results.json",
+            "title": "[NEO-228-B] Vim x deletes emoji grapheme with undo redo and saved prose",
+            "engine": "original"
+          },
+          {
+            "report": "adapter-regressions-results.json",
+            "title": "[NEO-228-B] Vim x deletes combining grapheme with undo redo and saved prose",
+            "engine": "original"
+          },
+          {
+            "report": "adapter-regressions-results.json",
+            "title": "[NEO-228-B] Vim x deletes ZWJ grapheme with undo redo and saved prose",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-246-B",
+      "featureId": "NEO-246",
+      "testFile": "parity/tests/adapter-regressions.spec.ts",
+      "driverActions": [
+        "openEditingFixture(engine,{chapters:[`\\n  <p>${first}</p>\\n\\t<p class=\"poetry\"><i>${second}</i></p>\\n`]})",
+        "selectText(c.page,0,1,second.length)",
+        "c.page.keyboard.type(' Added.')",
+        "reopen(c.page)"
+      ],
+      "assertions": [
+        "assertTexts(c.page,[[first,second]])",
+        "expect(c.page.locator('.chapter-body > p')).toHaveCount(2)",
+        "expect(rects.every(r=>r.height>0)).toBe(true)",
+        "expect(rects[1].top).toBeGreaterThanOrEqual(rects[0].bottom)",
+        "expect(c.page.locator('.chapter-body > p').nth(1)).toHaveClass(/poetry/)",
+        "expect(c.page.locator('.chapter-body > p').nth(1).locator('i, em')).toHaveText(second)",
+        "assertTexts(c.page,[[first,second+' Added.']])",
+        "expect(await savedParagraphs(c.page,c.bookdir)).toEqual([first,second+' Added.'])"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "adapter-regressions-results.json",
+          "title": "[NEO-246-B] structural HTML whitespace creates no extra paragraphs and preserves inline author spacing",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "adapter-regressions-results.json",
+            "title": "[NEO-246-B] structural HTML whitespace creates no extra paragraphs and preserves inline author spacing",
+            "engine": "original"
+          }
+        ]
+      }
+    }
+  ]
+}

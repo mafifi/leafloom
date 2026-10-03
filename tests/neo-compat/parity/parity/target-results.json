@@ -1,0 +1,158 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/target.config.ts",
+      "--grep",
+      "NEO-092"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/target.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/target-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "target.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "parity/target-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "target.spec.ts",
+      "file": "target.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[NEO-092-A] native typing undo and redo restores the ProseMirror paragraph and caret",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16197,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"History survives.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"History proof\" class=\"chapter-body ProseMirror cap-off\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"History survives.\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"History survives.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"History proof\" class=\"chapter-body ProseMirror cap-off\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"History survives.\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/target.spec.ts:26:118",
+                    "location": {
+                      "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/target.spec.ts",
+                      "column": 118,
+                      "line": 26
+                    },
+                    "snippet": "  24 |   await page.locator('.new-book').first().click();await page.locator('#tp-title').click();await page.keyboard.type('History proof');await page.keyboard.press('Enter');\n  25 |   const body=page.locator('.chapter-body').first();await expect(body).toHaveClass(/ProseMirror/);await body.click();await page.keyboard.type('History survives.');\n> 26 |   await expect(body).toHaveText('History survives.');await page.keyboard.press('ControlOrMeta+z');await expect(body).toHaveText('');\n     |                                                                                                                      ^\n  27 |   await page.keyboard.press('ControlOrMeta+Shift+z');await expect(body).toHaveText('History survives.');\n  28 |   await page.keyboard.type(' Again.');await expect(body).toHaveText('History survives. Again.');\n  29 |  }finally{await app?.close();await removeReferenceDirectory(directory);}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/target.spec.ts",
+                        "column": 118,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: \u001b[31m\"History survives.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"History proof\" class=\"chapter-body ProseMirror cap-off\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"History survives.\"\u001b[22m\n\n\n  24 |   await page.locator('.new-book').first().click();await page.locator('#tp-title').click();await page.keyboard.type('History proof');await page.keyboard.press('Enter');\n  25 |   const body=page.locator('.chapter-body').first();await expect(body).toHaveClass(/ProseMirror/);await body.click();await page.keyboard.type('History survives.');\n> 26 |   await expect(body).toHaveText('History survives.');await page.keyboard.press('ControlOrMeta+z');await expect(body).toHaveText('');\n     |                                                                                                                      ^\n  27 |   await page.keyboard.press('ControlOrMeta+Shift+z');await expect(body).toHaveText('History survives.');\n  28 |   await page.keyboard.type(' Again.');await expect(body).toHaveText('History survives. Again.');\n  29 |  }finally{await app?.close();await removeReferenceDirectory(directory);}\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/target.spec.ts:26:118"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T03:55:27.583Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/target-test-results/target--NEO-092-A-native-t-49caf-eMirror-paragraph-and-caret/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/target-test-results/target--NEO-092-A-native-t-49caf-eMirror-paragraph-and-caret/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/target.spec.ts",
+                    "column": 118,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0ff1946d855ac8cd33e1-cac5bfb832a101db02d1",
+          "file": "target.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T03:55:27.291Z",
+    "duration": 16520.354000000003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

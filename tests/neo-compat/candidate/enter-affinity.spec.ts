@@ -1,0 +1,6 @@
+import {test,expect} from './author-fixture';
+import {existingBook} from './book-fixture';
+import {persistedBook} from './storage-probe';
+for(const anchor of ['bold-end','italic-start'] as const)test(`[NEO-068-A] Leafloom: Enter at native ${anchor} mark boundary continues immediate typing in split italic tail`,async({page})=>{
+ const c=await existingBook(page,{chapters:['<p><b>Alpha </b><i>beta.</i></p>']});await c.driver.select(0,0,6);if(anchor==='italic-start')await page.locator('.chapter-body').first().locator('i,em').evaluate(el=>{const range=document.createRange();range.setStart(el.firstChild!,0);range.collapse(true);const selection=window.getSelection()!;selection.removeAllRanges();selection.addRange(range);});await page.keyboard.press('Enter');await page.keyboard.type('Next');await c.driver.expectParagraphs([['Alpha ','Nextbeta.']]);const second=page.locator('.chapter-body p').nth(1);await test.info().attach('native-mark-affinity',{body:await second.innerHTML(),contentType:'text/html'});await expect(second.locator('i,em')).toContainText('Next');await c.driver.shelf();const saved=await persistedBook(page,c.title,c.id);expect(saved.chapters[0].html).toMatch(/<(?:i|em)>Next/);
+});

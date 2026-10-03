@@ -1,0 +1,1196 @@
+{
+  "schemaVersion": "neo-glyph-golden/1",
+  "baselineCommit": "ed090e9988d446daf1ebbde91bcebc13b599909b",
+  "platform": "darwin",
+  "sourceCssSha256": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d",
+  "fontResourceSha256": {
+    "abril-fatface-latin-400-normal.woff2": "edf7a1f3bc22e815ea426b102fa0493d20af482b242066e689a1263ebb2eeb68",
+    "alegreya-latin-400-italic.otf": "a309df39a1dd414bce7473977e73c97995f8bd5fa055f82730568027b43ef090",
+    "alegreya-latin-400-normal.otf": "a19a3a5de693727692ca6616ae497bd6ddc9b16bcbb8a80ab0d022ace34d6b1e",
+    "alegreya-latin-700-italic.otf": "bbce71963f29f954b60d2eacfecf6f5bbc56d4a58549a91d2d58d1cdc99d704f",
+    "alegreya-latin-700-normal.otf": "76cc505bbd6d3d611451082b16224196b5be3c9e127d5dec8e2311a9792f7496",
+    "anton-latin-400-normal.woff2": "d0fa07ff63dd60cbc0e2f58e29c802dca2a5ae0276c999f59c6111ab7bbaec3b",
+    "bebas-neue-latin-400-normal.woff2": "a7c90c89240c134f7fdd33d40c000ec90b79d675ea53e8cc5a6d423c073de412",
+    "cinzel-latin-900-normal.woff2": "87128561fd042f0283e7b852af5d074154779eff37b9ad8600b331ad0ce4a6b7",
+    "forum-cyrillic-400-normal.woff2": "d3440e242c8a3edd35c4a5190bd2754ff99a4cd140a1f7a8d166d9279dcd78f6",
+    "gelasio-latin-400-italic.ttf": "1d8bda4ff258bb8251eae4f7d7500c8d97d084136192bb264bc2305168765d1b",
+    "gelasio-latin-400-normal.ttf": "48c797fbe0e07c48a18cb962e7bdfa23f19618327dddf54093265328dc9eb39d",
+    "gelasio-latin-700-italic.ttf": "aa87e21b46aef3dcb50a68dc6e1946f0c0a9819d067e4be6a98a6daa8f5b3c16",
+    "gelasio-latin-700-normal.ttf": "e0ef3addf1acf35f5c6aef2be00d0a2c01363bf70a5950e16650976051a0c462",
+    "josefin-sans-latin-600-normal.woff2": "56c4c27838da388e0b669e99a58034dc17c42ca551d4ae97fe904d00a728c2e9",
+    "josefin-sans-latin-700-normal.woff2": "a3c6a58cd814957f4d0f30bd99afae615e74cba87dbef88a276593bcb3b3568b",
+    "jost-latin-400-italic.ttf": "ded4a63a31d1fac4a69a1fa87bafd614902703cbb16972b4ec4abd0d36e634a3",
+    "jost-latin-400-normal.ttf": "60de951651870fd2dbbd099a96f9321f183171cd7d73047905787f37d2ec2a13",
+    "jost-latin-700-italic.ttf": "2e874b6153688fb6fec3e15804b67883abab97e1d1ece35079ca33041435d552",
+    "jost-latin-700-normal.ttf": "1a2bc42d83ee2debd2c1b528a7eb29f977f226ea586d232edef478aa8aa0e87f",
+    "libre-baskerville-latin-400-italic.ttf": "b6482799f4959aa3e79a46678118c156669d391874d733f308580602299346eb",
+    "libre-baskerville-latin-400-normal.ttf": "da4d29043de90af40a2f91d2e7da58526afed6e1327a6c21db728b6178b81c8d",
+    "libre-baskerville-latin-700-normal.ttf": "51eaa0f0f8d3248c52b25e4d6b63c410fd6ad745869c532301646c0ec1fdd1ab",
+    "libre-baskerville-latin-700-normal.woff2": "96fa63376eed93029fa2514a02f5cb80276b016e239426858787de6e794d8619",
+    "libre-bodoni-latin-400-italic.otf": "0a2d4960edcc0b19619432600ea1cd2308867aa22791bfe47aada93d71a3c82d",
+    "libre-bodoni-latin-400-normal.otf": "97d0731a2c5e35bb98913d2f6e3cb4bbd9395caf5ce79773f0b916d5e9da486b",
+    "libre-bodoni-latin-700-normal.otf": "47fc68e80d03ac98024935d66360dfc6b81894141853d9b9f7615ee1bca6f8b6",
+    "lora-cyrillic-400-italic.woff2": "aaeb039ba0ecdbc75108a6f66ee9f6745315412de78a4061cc90365b513fc4a3",
+    "lora-cyrillic-400-normal.woff2": "d1f41090bba5100d2857cf974e2ae542d4be61556febbb2b5afd072c2e42fdea",
+    "lora-cyrillic-700-italic.woff2": "c93438a8fdf02ba93ad58850832beab11ee4bce90b7840517aeeb575e5556e2c",
+    "lora-cyrillic-700-normal.woff2": "f0550b4dae0b9c17427d61f42edd6b5f44b1b7b0aca53788505fe1dce5c3a022",
+    "marck-script-cyrillic-400-normal.woff2": "457f5ae9dd211fb276e605a4ce3ecb35cbe1aee8bb1a54698c81d7834873ed06",
+    "merriweather-cyrillic-400-italic.woff2": "eebc9ffab88fde9ed42d37d671758db5eb7a79d13bc151ea82d8f94cc21723e2",
+    "merriweather-cyrillic-400-normal.woff2": "4c5c4aa05a2596e8ebb1b4dc0d62028c5780da6cf7c2c828985555b0bbf0c615",
+    "merriweather-cyrillic-700-italic.woff2": "7279082427a8a16b1db6711f9605df3e133bc2c510dbceafdfdc915ce03374d1",
+    "merriweather-cyrillic-700-normal.woff2": "d01fe36bedbfdde43c9b8f9bde6d3fa4f872310bc1d220227d00a2e9219277e7",
+    "old-standard-tt-cyrillic-400-italic.woff2": "035b7c25a72ff663c5feaab8602dfe18689803bbe73103f2fbc09c77e2f6840f",
+    "old-standard-tt-cyrillic-400-normal.woff2": "49d5afd6386bf3f22660a6a7633c70505c5011dc8a1ab7ff5da1515604028a36",
+    "old-standard-tt-cyrillic-700-normal.woff2": "46b2eddd9d4344e4c3221fe26f766595c02734362a4915a2c1bf3fbd9f4a5e22",
+    "oswald-cyrillic-500-normal.woff2": "b1b3edd595075432adf5b5a73a6cb0bcf496ebff2efd341c1857bce34441326c",
+    "oswald-cyrillic-700-normal.woff2": "92867238f947d9b25b2d22c0ef38916e10824f5482f6ba078190738e392c1246",
+    "oswald-latin-700-normal.woff2": "aae665c75af89ea7cb7d8ccc8b0911ea72267442ebcd84f6e3efa041ad3b3c16",
+    "playfair-display-cyrillic-900-italic.woff2": "0e80befde5bc9610e11316740ef93d9bdca4e7fb772b792412d38d284e12c8ce",
+    "playfair-display-cyrillic-900-normal.woff2": "38c753e420a2d809f8693cb5312c78c55256476c66cc5eb0260a0b56cad95a67",
+    "playfair-display-latin-400-italic.woff2": "eabce94d4a69e439cd050755c31f9894ac8a78f93e58b063c6c01f370474e1de",
+    "playfair-display-latin-700-normal.woff2": "28453852ea165c47b5a941be00e418402e1407002ed87507f062a1e316328fe6",
+    "playfair-display-latin-900-italic.woff2": "35e6e930a56da13dfeea438ee1f0434c7338ad003cb3b5cdb5f0dee6e15cdaa2",
+    "playfair-display-latin-900-normal.woff2": "2772c56b28bec10f310634732b0554dd6cced8ad0f723bbdf73f6abc53829ad0",
+    "prata-cyrillic-400-normal.woff2": "3392de5a383deac60effcad2beb8b847f40eb0eb200ffd4888c3e13d6e40845f",
+    "russo-one-cyrillic-400-normal.woff2": "ae0eadf1b084ac50848e104486c8e929b4b702d8103a1ee064aa3d223dca7ed5",
+    "source-serif-pro-latin-400-italic.otf": "c4153dd7349c4fcc50eb6f4a3e235b8a499cc163e16da865bb7baa44027dac89",
+    "source-serif-pro-latin-400-normal.otf": "5bea07b9360400b9a1b21f6bd1a7c11b0d9fd7ed520cb2947b08e043254dc760",
+    "source-serif-pro-latin-700-italic.otf": "1840355d74636fc9c357e1b4d21d45491819db0f87a7b76fe783b02d055acb76",
+    "source-serif-pro-latin-700-normal.otf": "7b52209c44831436db149909a140d574731f4c2384f73d6bf12c944fd7d04b0d",
+    "texgyrechorus-latin-400-normal.otf": "b26e0f8edc4c56d881be73c871fb3fbeed045873f9a3202ccad967256d192e65",
+    "texgyrepagella-latin-400-italic.otf": "069bb27f48eb98a741715227fc6e4b7baf3639c29fc13925f70d1ed8884ac29a",
+    "texgyrepagella-latin-400-normal.otf": "44e64260716d8f2bbe412baa1ee99b7c995190ac4573177c24def0b9200438c7",
+    "texgyrepagella-latin-700-italic.otf": "556fd64655a92bd9f5485ae2c03f7b9cdaf745a27a91d7edb3c3abde997206d2",
+    "texgyrepagella-latin-700-normal.otf": "dd4f9b69f0b24f1fb9be8634abf1fce2009e5c68a30842a3e9f5d6e535900abd"
+  },
+  "glyphSignatures": [
+    {
+      "family": "NEO Anton",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Anton",
+          "postScriptName": "Anton-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Anton",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Russo One",
+          "postScriptName": "RussoOne-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Bebas",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Bebas Neue",
+          "postScriptName": "BebasNeue-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Bebas",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Oswald Medium",
+          "postScriptName": "Oswald-Medium",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Oswald",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Oswald",
+          "postScriptName": "Oswald-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Oswald",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Oswald",
+          "postScriptName": "Oswald-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Abril",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Abril Fatface",
+          "postScriptName": "AbrilFatface-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Abril",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Playfair Display Black",
+          "postScriptName": "PlayfairDisplay-Black",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "900",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Playfair Display Black",
+          "postScriptName": "PlayfairDisplay-Black",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "900",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Playfair Display Black",
+          "postScriptName": "PlayfairDisplay-Black",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "900",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Playfair Display Black",
+          "postScriptName": "PlayfairDisplay-BlackItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "900",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Playfair Display Black",
+          "postScriptName": "PlayfairDisplay-BlackItalic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Playfair Display",
+          "postScriptName": "PlayfairDisplay-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Playfair Display",
+          "postScriptName": "PlayfairDisplay-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Playfair",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Italic",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Cinzel",
+      "weight": "900",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Cinzel Black",
+          "postScriptName": "Cinzel-Black",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Cinzel",
+      "weight": "900",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Forum",
+          "postScriptName": "Forum",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "NEO Josefin",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Josefin Sans Thin",
+          "postScriptName": "JosefinSansThin-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Josefin",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Bold",
+          "isCustomFont": true,
+          "glyphCount": 7
+        },
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    {
+      "family": "NEO Josefin",
+      "weight": "600",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Josefin Sans Thin SemiBold",
+          "postScriptName": "JosefinSansThin-SemiBold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Josefin",
+      "weight": "600",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Bold",
+          "isCustomFont": true,
+          "glyphCount": 7
+        },
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    {
+      "family": "NEO Baskerville",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Baskerville",
+          "postScriptName": "LibreBaskerville-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "NEO Baskerville",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Gelasio",
+          "postScriptName": "Gelasio-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Merriweather Light 18pt",
+          "postScriptName": "MerriweatherLight18pt-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Gelasio",
+          "postScriptName": "Gelasio-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Merriweather Light 18pt",
+          "postScriptName": "MerriweatherLight18pt-Italic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Gelasio",
+          "postScriptName": "Gelasio-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Merriweather Light 18pt",
+          "postScriptName": "MerriweatherLight18pt-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "700",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Gelasio",
+          "postScriptName": "Gelasio-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Gelasio",
+      "weight": "700",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Merriweather Light 18pt",
+          "postScriptName": "MerriweatherLight18pt-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "TeX Gyre Pagella",
+          "postScriptName": "TeXGyrePagella-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Lora",
+          "postScriptName": "Lora-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "TeX Gyre Pagella",
+          "postScriptName": "TeXGyrePagella-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Lora",
+          "postScriptName": "Lora-Italic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "TeX Gyre Pagella",
+          "postScriptName": "TeXGyrePagella-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Lora",
+          "postScriptName": "Lora-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "700",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "TeX Gyre Pagella",
+          "postScriptName": "TeXGyrePagella-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Pagella",
+      "weight": "700",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Lora",
+          "postScriptName": "Lora-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Baskerville",
+          "postScriptName": "LibreBaskerville-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Old Standard TT",
+          "postScriptName": "OldStandardTT-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Baskerville",
+          "postScriptName": "LibreBaskerville-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Old Standard TT",
+          "postScriptName": "OldStandardTT-Italic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Baskerville",
+          "postScriptName": "LibreBaskerville-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Baskerville",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Old Standard TT",
+          "postScriptName": "OldStandardTT-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Italic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "700",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Alegreya",
+      "weight": "700",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Alegreya",
+          "postScriptName": "Alegreya-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-It",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-It",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-Bold",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "700",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-BoldIt",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Source Serif Pro",
+      "weight": "700",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Source Serif Pro",
+          "postScriptName": "SourceSerifPro-BoldIt",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Bodoni",
+          "postScriptName": "LibreBodoni-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Prata",
+          "postScriptName": "Prata-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Bodoni",
+          "postScriptName": "LibreBodoni-Italic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Italic",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Libre Bodoni",
+          "postScriptName": "LibreBodoni-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Libre Bodoni",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Chorus",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "TeX Gyre Chorus",
+          "postScriptName": "TeXGyreChorus-MediumItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "TeX Gyre Chorus",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Marck Script",
+          "postScriptName": "MarckScript-Regular",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "400",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Book",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "400",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Roman",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Book",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "400",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-BookItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "400",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Italic",
+          "isCustomFont": false,
+          "glyphCount": 1
+        },
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-BookItalic",
+          "isCustomFont": true,
+          "glyphCount": 7
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "700",
+      "style": "normal",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Bold",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "700",
+      "style": "normal",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-Bold",
+          "isCustomFont": true,
+          "glyphCount": 7
+        },
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-Bold",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "700",
+      "style": "italic",
+      "script": "latin",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ]
+    },
+    {
+      "family": "Jost",
+      "weight": "700",
+      "style": "italic",
+      "script": "cyrillic",
+      "fonts": [
+        {
+          "familyName": "Jost*",
+          "postScriptName": "Jost-BoldItalic",
+          "isCustomFont": true,
+          "glyphCount": 7
+        },
+        {
+          "familyName": "Times",
+          "postScriptName": "Times-BoldItalic",
+          "isCustomFont": false,
+          "glyphCount": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1465 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/presentation.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "presentation.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "parity/presentation-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "presentation.spec.ts",
+      "file": "presentation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "presentation.spec.ts",
+          "line": 21,
+          "column": 34,
+          "specs": [
+            {
+              "title": "[NEO-200][NEO-274] Night page and room menu state persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1220,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:10.034Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-842abbbda1d157e7a069",
+              "file": "presentation.spec.ts",
+              "line": 22,
+              "column": 85
+            },
+            {
+              "title": "[NEO-200][NEO-274] Paper page and room menu state persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1349,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:11.272Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-7a30f959bcc941602a79",
+              "file": "presentation.spec.ts",
+              "line": 22,
+              "column": 85
+            },
+            {
+              "title": "[NEO-200][NEO-274] Light page and room menu state persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1320,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:12.627Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-b06b2fcdea6fa3943d73",
+              "file": "presentation.spec.ts",
+              "line": 22,
+              "column": 85
+            },
+            {
+              "title": "[NEO-201] host platform font Georgia sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1228,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:13.954Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-5fe17e520fee62131283",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-201] host platform font Palatino sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1322,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:15.189Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-10f8d9a9d3ab6035cb45",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-201] host platform font Baskerville sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1299,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:16.516Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-aa4e51013aecd915c930",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-201] host platform font Hoefler Text sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1343,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:17.825Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-479f476dd70a76ac9d06",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-201] host platform font Iowan Old Style sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1357,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:19.173Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-70e3c21f416efa43f959",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-201] host platform font Jost sets actual manuscript style and persists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1377,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:20.534Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-921f141be7fe45160323",
+              "file": "presentation.spec.ts",
+              "line": 27,
+              "column": 32
+            },
+            {
+              "title": "[NEO-203] Literary drop cap setting and prose glyph",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1218,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:21.917Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-8169208a57015b8829b8",
+              "file": "presentation.spec.ts",
+              "line": 30,
+              "column": 110
+            },
+            {
+              "title": "[NEO-203] Fantasy drop cap setting and prose glyph",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1337,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:23.142Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-ae151541d83424e31aeb",
+              "file": "presentation.spec.ts",
+              "line": 30,
+              "column": 110
+            },
+            {
+              "title": "[NEO-203] Sci-Fi drop cap setting and prose glyph",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1332,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:24.484Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-fdc0f8310f8ee1dafe7f",
+              "file": "presentation.spec.ts",
+              "line": 30,
+              "column": 110
+            },
+            {
+              "title": "[NEO-203] Off drop cap setting and prose glyph",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1290,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:25.820Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-b63b98a624bb9a24aaef",
+              "file": "presentation.spec.ts",
+              "line": 30,
+              "column": 110
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface Normal remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1246,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:27.114Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-bb1fa22875dca992921a",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface 125% remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:28.363Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-78eddb32989220b6f325",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface 150% remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1245,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:29.615Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-24454b37f89f3fa3c1a4",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface 200% remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1283,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:30.865Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-739da8184e8b15893e0d",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface 250% remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1285,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:32.152Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-addec5d6224e348291c3",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-207][NEO-274] interface 300% remains independent of page zoom",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1270,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:33.441Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-a2005549137c28e03061",
+              "file": "presentation.spec.ts",
+              "line": 34,
+              "column": 114
+            },
+            {
+              "title": "[NEO-204][NEO-205][NEO-206] text size bounds and actual page zoom buttons, wheel, clamps and reset",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1217,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m22\u001b[27mpx\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m17\u001b[27mpx\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m22\u001b[27mpx\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m17\u001b[27mpx\"\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:38:166\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 166,
+                          "line": 38
+                        },
+                        "snippet": "  36 |  }));\n  37 |  test('[NEO-204][NEO-205][NEO-206] text size bounds and actual page zoom buttons, wheel, clamps and reset',async()=>fixture(engine,async(app,page,directory)=>{\n> 38 |   await page.keyboard.type('The reading place stays visible.');for(let i=0;i<12;i++)await menu(app,['Format','Larger Text']);expect(await css(page,'--editor-size')).toBe('22px');for(let i=0;i<12;i++)await menu(app,['Format','Smaller Text']);expect(await css(page,'--editor-size')).toBe('14px');\n     |                                                                                                                                                                      ^\n  39 |   await page.locator('#zoom-in').click();await expect(page.locator('#zoom-level')).toHaveText('110%');await page.locator('#zoom-out').click();await expect(page.locator('#zoom-level')).toHaveText('100%');\n  40 |   await page.locator('#zoom-control').hover();await page.mouse.wheel(0,-2000);await expect(page.locator('#zoom-level')).toHaveText('300%');await page.mouse.wheel(0,2000);await expect(page.locator('#zoom-level')).toHaveText('75%');\n  41 |   await page.locator('#zoom-level').click();await expect(page.locator('#zoom-level')).toHaveText('100%');await page.locator('#zoom-in').click();await menu(app,['Format','Reset Text Size']);expect(await css(page,'--editor-size')).toBe('17px');expect(await css(page,'--page-zoom')).toBe('1');await expect.poll(async()=>(await library(directory)).editorFontSize).toBe(17);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 166,
+                            "line": 38
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7m22\u001b[27mpx\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7m17\u001b[27mpx\"\u001b[39m\n\n  36 |  }));\n  37 |  test('[NEO-204][NEO-205][NEO-206] text size bounds and actual page zoom buttons, wheel, clamps and reset',async()=>fixture(engine,async(app,page,directory)=>{\n> 38 |   await page.keyboard.type('The reading place stays visible.');for(let i=0;i<12;i++)await menu(app,['Format','Larger Text']);expect(await css(page,'--editor-size')).toBe('22px');for(let i=0;i<12;i++)await menu(app,['Format','Smaller Text']);expect(await css(page,'--editor-size')).toBe('14px');\n     |                                                                                                                                                                      ^\n  39 |   await page.locator('#zoom-in').click();await expect(page.locator('#zoom-level')).toHaveText('110%');await page.locator('#zoom-out').click();await expect(page.locator('#zoom-level')).toHaveText('100%');\n  40 |   await page.locator('#zoom-control').hover();await page.mouse.wheel(0,-2000);await expect(page.locator('#zoom-level')).toHaveText('300%');await page.mouse.wheel(0,2000);await expect(page.locator('#zoom-level')).toHaveText('75%');\n  41 |   await page.locator('#zoom-level').click();await expect(page.locator('#zoom-level')).toHaveText('100%');await page.locator('#zoom-in').click();await menu(app,['Format','Reset Text Size']);expect(await css(page,'--editor-size')).toBe('17px');expect(await css(page,'--page-zoom')).toBe('1');await expect.poll(async()=>(await library(directory)).editorFontSize).toBe(17);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:38:166\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:34.715Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--33ef7-tons-wheel-clamps-and-reset/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--33ef7-tons-wheel-clamps-and-reset/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 166,
+                        "line": 38
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-cd56b348c4f1fe8e01ec",
+              "file": "presentation.spec.ts",
+              "line": 37,
+              "column": 2
+            },
+            {
+              "title": "[NEO-196][NEO-197][NEO-198][NEO-299] edge-hover panels hide, pin without changing prose, and persist per book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1648,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:36.186Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-1459cb5ce95f77774e9a",
+              "file": "presentation.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-199][NEO-218] increased contrast/reduced motion and explicit brighter interface preference",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1243,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:37.850Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-46c5035731276cb6c14a",
+              "file": "presentation.spec.ts",
+              "line": 49,
+              "column": 2
+            },
+            {
+              "title": "[NEO-210][NEO-211][NEO-274] paragraph/sentence/off focus tracks real caret without changing prose",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16263,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"First sentence.\",\u001b[39m\n\u001b[31m+   \"Second sentence.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"First sentence.\",\u001b[39m\n\u001b[31m+   \"Second sentence.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:55:322\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 322,
+                          "line": 55
+                        },
+                        "snippet": "  53 |  test('[NEO-210][NEO-211][NEO-274] paragraph/sentence/off focus tracks real caret without changing prose',async()=>fixture(engine,async(app,page,directory)=>{\n  54 |   const text='First sentence. Second sentence.';await page.keyboard.type(text);await menu(app,['View','Focus Mode','Paragraph']);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual([text]);\n> 55 |   await menu(app,['View','Focus Mode','Sentence']);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual(['Second sentence.']);await start(page);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual(['First sentence.']);\n     |                                                                                                                                                                                                                                                                                                                                  ^\n  56 |   await menu(app,['View','Focus Mode','Off']);expect(await page.evaluate(()=>CSS.highlights.has('neo-focus'))).toBe(false);await expect(page.locator('.chapter-body').first()).toHaveText(text);await expect.poll(async()=>(await library(directory)).focus).toBe('off');\n  57 |  }));\n  58 |  test('[NEO-209][NEO-274] typewriter preference/menu state and real writing remain active',async()=>fixture(engine,async(app,page,directory)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 322,
+                            "line": 55
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"First sentence.\",\u001b[39m\n\u001b[31m+   \"Second sentence.\",\u001b[39m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  53 |  test('[NEO-210][NEO-211][NEO-274] paragraph/sentence/off focus tracks real caret without changing prose',async()=>fixture(engine,async(app,page,directory)=>{\n  54 |   const text='First sentence. Second sentence.';await page.keyboard.type(text);await menu(app,['View','Focus Mode','Paragraph']);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual([text]);\n> 55 |   await menu(app,['View','Focus Mode','Sentence']);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual(['Second sentence.']);await start(page);await expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-focus')||[]).map(r=>r.toString()))).toEqual(['First sentence.']);\n     |                                                                                                                                                                                                                                                                                                                                  ^\n  56 |   await menu(app,['View','Focus Mode','Off']);expect(await page.evaluate(()=>CSS.highlights.has('neo-focus'))).toBe(false);await expect(page.locator('.chapter-body').first()).toHaveText(text);await expect.poll(async()=>(await library(directory)).focus).toBe('off');\n  57 |  }));\n  58 |  test('[NEO-209][NEO-274] typewriter preference/menu state and real writing remain active',async()=>fixture(engine,async(app,page,directory)=>{\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:55:322\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:39.098Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--044cf-aret-without-changing-prose/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--044cf-aret-without-changing-prose/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 322,
+                        "line": 55
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-184105d9d256609b21f5",
+              "file": "presentation.spec.ts",
+              "line": 53,
+              "column": 2
+            },
+            {
+              "title": "[NEO-209][NEO-274] typewriter preference/menu state and real writing remain active",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1250,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:55.624Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-a00d0b344f6a1c3539fd",
+              "file": "presentation.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-184][NEO-185][NEO-186] visible book/chapter/selection counts respond to actual text and native selection",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16233,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#word-counter')\nExpected pattern: \u001b[32m/1 selected/\u001b[39m\nReceived string:  \u001b[31m\"ch. 1: 3 words\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#word-counter') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#word-counter')\u001b[22m\n\u001b[2m    34 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"word-counter\" data-i18n-title=\"\" title=\"Click to cycle book / chapter word count\">ch. 1: 3 words</span>\u001b[22m\n\u001b[2m       - unexpected value \"ch. 1: 3 words\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#word-counter')\nExpected pattern: \u001b[32m/1 selected/\u001b[39m\nReceived string:  \u001b[31m\"ch. 1: 3 words\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#word-counter') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#word-counter')\u001b[22m\n\u001b[2m    34 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"word-counter\" data-i18n-title=\"\" title=\"Click to cycle book / chapter word count\">ch. 1: 3 words</span>\u001b[22m\n\u001b[2m       - unexpected value \"ch. 1: 3 words\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:119\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 119,
+                          "line": 63
+                        },
+                        "snippet": "  61 |  test('[NEO-184][NEO-185][NEO-186] visible book/chapter/selection counts respond to actual text and native selection',async()=>fixture(engine,async(_app,page)=>{\n  62 |   await page.keyboard.type('Alpha beta gamma');await expect(page.locator('#word-counter')).toHaveText('3 words');await page.locator('#word-counter').click();await expect(page.locator('#word-counter')).toHaveText(/ch\\. 1: 3 words/);\n> 63 |   await start(page);await page.keyboard.press('Control+Shift+ArrowRight');await expect(page.locator('#word-counter')).toHaveText(/1 selected/);await page.keyboard.press('ArrowRight');await expect(page.locator('#word-counter')).toHaveText(/3 words/);\n     |                                                                                                                       ^\n  64 |  }));\n  65 |  test('[NEO-188][NEO-189][NEO-191][NEO-195] goals fields, 30-day chart, escape persistence and no modal stacking',async()=>fixture(engine,async(app,page,directory)=>{\n  66 |   await page.keyboard.type('Alpha beta gamma');await page.locator('#goal-counter').click();await expect(page.locator('#stats-chart rect')).toHaveCount(30);await expect(page.locator('.modal')).toHaveAttribute('role','dialog');await page.locator('#st-daily').fill('2');await page.locator('#st-book').fill('10');await page.locator('#st-dayends').selectOption('4');await menu(app,['File','Goals…']);await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(0);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 119,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#word-counter')\nExpected pattern: \u001b[32m/1 selected/\u001b[39m\nReceived string:  \u001b[31m\"ch. 1: 3 words\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('#word-counter') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#word-counter')\u001b[22m\n\u001b[2m    34 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"word-counter\" data-i18n-title=\"\" title=\"Click to cycle book / chapter word count\">ch. 1: 3 words</span>\u001b[22m\n\u001b[2m       - unexpected value \"ch. 1: 3 words\"\u001b[22m\n\n\n  61 |  test('[NEO-184][NEO-185][NEO-186] visible book/chapter/selection counts respond to actual text and native selection',async()=>fixture(engine,async(_app,page)=>{\n  62 |   await page.keyboard.type('Alpha beta gamma');await expect(page.locator('#word-counter')).toHaveText('3 words');await page.locator('#word-counter').click();await expect(page.locator('#word-counter')).toHaveText(/ch\\. 1: 3 words/);\n> 63 |   await start(page);await page.keyboard.press('Control+Shift+ArrowRight');await expect(page.locator('#word-counter')).toHaveText(/1 selected/);await page.keyboard.press('ArrowRight');await expect(page.locator('#word-counter')).toHaveText(/3 words/);\n     |                                                                                                                       ^\n  64 |  }));\n  65 |  test('[NEO-188][NEO-189][NEO-191][NEO-195] goals fields, 30-day chart, escape persistence and no modal stacking',async()=>fixture(engine,async(app,page,directory)=>{\n  66 |   await page.keyboard.type('Alpha beta gamma');await page.locator('#goal-counter').click();await expect(page.locator('#stats-chart rect')).toHaveCount(30);await expect(page.locator('.modal')).toHaveAttribute('role','dialog');await page.locator('#st-daily').fill('2');await page.locator('#st-book').fill('10');await page.locator('#st-dayends').selectOption('4');await menu(app,['File','Goals…']);await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(0);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:119\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:17:56.890Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--fad6b-l-text-and-native-selection/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--fad6b-l-text-and-native-selection/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 119,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-04eecb5448dd4018b1ea",
+              "file": "presentation.spec.ts",
+              "line": 61,
+              "column": 2
+            },
+            {
+              "title": "[NEO-188][NEO-189][NEO-191][NEO-195] goals fields, 30-day chart, escape persistence and no modal stacking",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1203,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal')\nExpected: \u001b[32m\"dialog\"\u001b[39m\nError: strict mode violation: locator('.modal') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-asrcfop\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-kkcbkpj\">…</div> aka getByRole('dialog', { name: 'Presentation book — progress' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal')\nExpected: \u001b[32m\"dialog\"\u001b[39m\nError: strict mode violation: locator('.modal') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-asrcfop\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-kkcbkpj\">…</div> aka getByRole('dialog', { name: 'Presentation book — progress' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal')\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:66:193\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 193,
+                          "line": 66
+                        },
+                        "snippet": "  64 |  }));\n  65 |  test('[NEO-188][NEO-189][NEO-191][NEO-195] goals fields, 30-day chart, escape persistence and no modal stacking',async()=>fixture(engine,async(app,page,directory)=>{\n> 66 |   await page.keyboard.type('Alpha beta gamma');await page.locator('#goal-counter').click();await expect(page.locator('#stats-chart rect')).toHaveCount(30);await expect(page.locator('.modal')).toHaveAttribute('role','dialog');await page.locator('#st-daily').fill('2');await page.locator('#st-book').fill('10');await page.locator('#st-dayends').selectOption('4');await menu(app,['File','Goals…']);await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(0);\n     |                                                                                                                                                                                                 ^\n  67 |   await expect.poll(async()=>(await library(directory)).dailyGoal).toBe(2);await expect.poll(async()=>(await library(directory)).dayEndsAt).toBe(4);await expect.poll(async()=>(await meta(directory)).wordGoal).toBe(10);\n  68 |  }));\n  69 |  test('[NEO-192][NEO-193][NEO-194] sprint starts/completes/ends with real author word deltas',async()=>fixture(engine,async(_app,page)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 193,
+                            "line": 66
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal')\nExpected: \u001b[32m\"dialog\"\u001b[39m\nError: strict mode violation: locator('.modal') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-asrcfop\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-kkcbkpj\">…</div> aka getByRole('dialog', { name: 'Presentation book — progress' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal')\u001b[22m\n\n\n  64 |  }));\n  65 |  test('[NEO-188][NEO-189][NEO-191][NEO-195] goals fields, 30-day chart, escape persistence and no modal stacking',async()=>fixture(engine,async(app,page,directory)=>{\n> 66 |   await page.keyboard.type('Alpha beta gamma');await page.locator('#goal-counter').click();await expect(page.locator('#stats-chart rect')).toHaveCount(30);await expect(page.locator('.modal')).toHaveAttribute('role','dialog');await page.locator('#st-daily').fill('2');await page.locator('#st-book').fill('10');await page.locator('#st-dayends').selectOption('4');await menu(app,['File','Goals…']);await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('.modal-backdrop:not([hidden])')).toHaveCount(0);\n     |                                                                                                                                                                                                 ^\n  67 |   await expect.poll(async()=>(await library(directory)).dailyGoal).toBe(2);await expect.poll(async()=>(await library(directory)).dayEndsAt).toBe(4);await expect.poll(async()=>(await meta(directory)).wordGoal).toBe(10);\n  68 |  }));\n  69 |  test('[NEO-192][NEO-193][NEO-194] sprint starts/completes/ends with real author word deltas',async()=>fixture(engine,async(_app,page)=>{\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:66:193\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:18:13.368Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--b9175-tence-and-no-modal-stacking/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--b9175-tence-and-no-modal-stacking/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 193,
+                        "line": 66
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-8e56cf65d5e19ff65567",
+              "file": "presentation.spec.ts",
+              "line": 65,
+              "column": 2
+            },
+            {
+              "title": "[NEO-192][NEO-193][NEO-194] sprint starts/completes/ends with real author word deltas",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16625,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#hint')\nExpected pattern: \u001b[32m/Sprint ended.*1 words/\u001b[39m\nReceived string:  \u001b[31m\"Sprint ended — 1 word in 0 min\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#hint') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#hint')\u001b[22m\n\u001b[2m    12 × locator resolved to <div id=\"hint\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n\u001b[2m    22 × locator resolved to <div id=\"hint\" hidden=\"\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#hint')\nExpected pattern: \u001b[32m/Sprint ended.*1 words/\u001b[39m\nReceived string:  \u001b[31m\"Sprint ended — 1 word in 0 min\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#hint') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#hint')\u001b[22m\n\u001b[2m    12 × locator resolved to <div id=\"hint\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n\u001b[2m    22 × locator resolved to <div id=\"hint\" hidden=\"\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:71:382\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 382,
+                          "line": 71
+                        },
+                        "snippet": "  69 |  test('[NEO-192][NEO-193][NEO-194] sprint starts/completes/ends with real author word deltas',async()=>fixture(engine,async(_app,page)=>{\n  70 |   await page.locator('#goal-counter').click();await page.locator('#st-sprint').fill('2');await page.locator('#st-sprint-btn').click();await expect(page.locator('#goal-counter')).toHaveText(/0 \\/ 2/);await page.locator('.chapter-body').first().click();await page.keyboard.type('Alpha beta ');await expect(page.locator('#hint')).toContainText('Sprint complete');\n> 71 |   await page.locator('#goal-counter').click();await page.locator('#st-sprint').fill('50');await page.locator('#st-sprint-btn').click();await page.locator('.chapter-body').first().click();await page.keyboard.press('End');await page.keyboard.type(' gamma ');await page.locator('#goal-counter').click();await page.locator('#st-sprint-btn').click();await expect(page.locator('#hint')).toContainText(/Sprint ended.*1 words/);\n     |                                                                                                                                                                                                                                                                                                                                                                                              ^\n  72 |  }));\n  73 |  test('[NEO-216][NEO-217][NEO-270][NEO-283] shortcuts and About dialogs own keyboard and remain singular',async()=>fixture(engine,async(app,page)=>{\n  74 |   await page.keyboard.type('Dialog manuscript');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toBeVisible();await expect(page.locator('#keyboard-shortcuts [role=\"dialog\"]')).toHaveAttribute('aria-modal','true');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('#keyboard-shortcuts')).toHaveCount(0);await expect(page.locator('#editor-view')).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 382,
+                            "line": 71
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#hint')\nExpected pattern: \u001b[32m/Sprint ended.*1 words/\u001b[39m\nReceived string:  \u001b[31m\"Sprint ended — 1 word in 0 min\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#hint') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#hint')\u001b[22m\n\u001b[2m    12 × locator resolved to <div id=\"hint\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n\u001b[2m    22 × locator resolved to <div id=\"hint\" hidden=\"\" role=\"status\" aria-live=\"polite\">Sprint ended — 1 word in 0 min</div>\u001b[22m\n\u001b[2m       - unexpected value \"Sprint ended — 1 word in 0 min\"\u001b[22m\n\n\n  69 |  test('[NEO-192][NEO-193][NEO-194] sprint starts/completes/ends with real author word deltas',async()=>fixture(engine,async(_app,page)=>{\n  70 |   await page.locator('#goal-counter').click();await page.locator('#st-sprint').fill('2');await page.locator('#st-sprint-btn').click();await expect(page.locator('#goal-counter')).toHaveText(/0 \\/ 2/);await page.locator('.chapter-body').first().click();await page.keyboard.type('Alpha beta ');await expect(page.locator('#hint')).toContainText('Sprint complete');\n> 71 |   await page.locator('#goal-counter').click();await page.locator('#st-sprint').fill('50');await page.locator('#st-sprint-btn').click();await page.locator('.chapter-body').first().click();await page.keyboard.press('End');await page.keyboard.type(' gamma ');await page.locator('#goal-counter').click();await page.locator('#st-sprint-btn').click();await expect(page.locator('#hint')).toContainText(/Sprint ended.*1 words/);\n     |                                                                                                                                                                                                                                                                                                                                                                                              ^\n  72 |  }));\n  73 |  test('[NEO-216][NEO-217][NEO-270][NEO-283] shortcuts and About dialogs own keyboard and remain singular',async()=>fixture(engine,async(app,page)=>{\n  74 |   await page.keyboard.type('Dialog manuscript');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toBeVisible();await expect(page.locator('#keyboard-shortcuts [role=\"dialog\"]')).toHaveAttribute('aria-modal','true');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('#keyboard-shortcuts')).toHaveCount(0);await expect(page.locator('#editor-view')).toBeVisible();\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:71:382\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:18:14.821Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--0865d-ith-real-author-word-deltas/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--0865d-ith-real-author-word-deltas/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 382,
+                        "line": 71
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-11286a293d8ace4bd872",
+              "file": "presentation.spec.ts",
+              "line": 69,
+              "column": 2
+            },
+            {
+              "title": "[NEO-216][NEO-217][NEO-270][NEO-283] shortcuts and About dialogs own keyboard and remain singular",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1192,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal[role=\"dialog\"]')\nExpected: visible\nError: strict mode violation: locator('.modal[role=\"dialog\"]') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-zypov8q\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-f8wplxr\">…</div> aka getByRole('dialog', { name: 'NEO' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.modal[role=\"dialog\"]') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal[role=\"dialog\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal[role=\"dialog\"]')\nExpected: visible\nError: strict mode violation: locator('.modal[role=\"dialog\"]') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-zypov8q\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-f8wplxr\">…</div> aka getByRole('dialog', { name: 'NEO' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.modal[role=\"dialog\"]') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal[role=\"dialog\"]')\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:75:162\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 162,
+                          "line": 75
+                        },
+                        "snippet": "  73 |  test('[NEO-216][NEO-217][NEO-270][NEO-283] shortcuts and About dialogs own keyboard and remain singular',async()=>fixture(engine,async(app,page)=>{\n  74 |   await page.keyboard.type('Dialog manuscript');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toBeVisible();await expect(page.locator('#keyboard-shortcuts [role=\"dialog\"]')).toHaveAttribute('aria-modal','true');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('#keyboard-shortcuts')).toHaveCount(0);await expect(page.locator('#editor-view')).toBeVisible();\n> 75 |   await menu(app,['Help','About NEO']);await expect(page.locator('.about-version')).toContainText('Version');await expect(page.locator('.modal[role=\"dialog\"]')).toBeVisible();await page.keyboard.press('Escape');await expect(page.locator('.about-version')).toHaveCount(0);\n     |                                                                                                                                                                  ^\n  76 |  }));\n  77 |  test('[NEO-278][NEO-279][NEO-280][NEO-281][NEO-282] keyboard regions, tab focus and Escape return to actual editing caret',async()=>fixture(engine,async(_app,page)=>{\n  78 |   await page.keyboard.type('Keyboard regions.');await page.keyboard.press('F6');await expect(page.locator('#nav-pane')).toHaveClass(/open/);await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();await page.keyboard.press('ArrowRight');await expect(page.locator('.tab[data-tab=\"notes\"]')).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveAttribute('aria-selected','true');await page.keyboard.press('ArrowLeft');await page.keyboard.press('Enter');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.type(' More.');await expect(page.locator('.chapter-body').first()).toContainText(' More.');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 162,
+                            "line": 75
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.modal[role=\"dialog\"]')\nExpected: visible\nError: strict mode violation: locator('.modal[role=\"dialog\"]') resolved to 2 elements:\n    1) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-zypov8q\">…</div> aka getByLabel('Welcome to NEO')\n    2) <div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlg-f8wplxr\">…</div> aka getByRole('dialog', { name: 'NEO' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.modal[role=\"dialog\"]') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal[role=\"dialog\"]')\u001b[22m\n\n\n  73 |  test('[NEO-216][NEO-217][NEO-270][NEO-283] shortcuts and About dialogs own keyboard and remain singular',async()=>fixture(engine,async(app,page)=>{\n  74 |   await page.keyboard.type('Dialog manuscript');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toBeVisible();await expect(page.locator('#keyboard-shortcuts [role=\"dialog\"]')).toHaveAttribute('aria-modal','true');await page.keyboard.press(`${mod}+/`);await expect(page.locator('#keyboard-shortcuts')).toHaveCount(1);await page.keyboard.press('Escape');await expect(page.locator('#keyboard-shortcuts')).toHaveCount(0);await expect(page.locator('#editor-view')).toBeVisible();\n> 75 |   await menu(app,['Help','About NEO']);await expect(page.locator('.about-version')).toContainText('Version');await expect(page.locator('.modal[role=\"dialog\"]')).toBeVisible();await page.keyboard.press('Escape');await expect(page.locator('.about-version')).toHaveCount(0);\n     |                                                                                                                                                                  ^\n  76 |  }));\n  77 |  test('[NEO-278][NEO-279][NEO-280][NEO-281][NEO-282] keyboard regions, tab focus and Escape return to actual editing caret',async()=>fixture(engine,async(_app,page)=>{\n  78 |   await page.keyboard.type('Keyboard regions.');await page.keyboard.press('F6');await expect(page.locator('#nav-pane')).toHaveClass(/open/);await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();await page.keyboard.press('ArrowRight');await expect(page.locator('.tab[data-tab=\"notes\"]')).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveAttribute('aria-selected','true');await page.keyboard.press('ArrowLeft');await page.keyboard.press('Enter');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.type(' More.');await expect(page.locator('.chapter-body').first()).toContainText(' More.');\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:75:162\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:18:31.691Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--ee877-eyboard-and-remain-singular/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--ee877-eyboard-and-remain-singular/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 162,
+                        "line": 75
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-5aa129b9902b3c5120cf",
+              "file": "presentation.spec.ts",
+              "line": 73,
+              "column": 2
+            },
+            {
+              "title": "[NEO-278][NEO-279][NEO-280][NEO-281][NEO-282] keyboard regions, tab focus and Escape return to actual editing caret",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16228,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#editor-view')\nExpected: visible\nReceived: hidden\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#editor-view') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#editor-view')\u001b[22m\n\u001b[2m    34 × locator resolved to <div hidden=\"\" id=\"editor-view\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#editor-view')\nExpected: visible\nReceived: hidden\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#editor-view') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#editor-view')\u001b[22m\n\u001b[2m    34 × locator resolved to <div hidden=\"\" id=\"editor-view\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:78:762\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 762,
+                          "line": 78
+                        },
+                        "snippet": "  76 |  }));\n  77 |  test('[NEO-278][NEO-279][NEO-280][NEO-281][NEO-282] keyboard regions, tab focus and Escape return to actual editing caret',async()=>fixture(engine,async(_app,page)=>{\n> 78 |   await page.keyboard.type('Keyboard regions.');await page.keyboard.press('F6');await expect(page.locator('#nav-pane')).toHaveClass(/open/);await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();await page.keyboard.press('ArrowRight');await expect(page.locator('.tab[data-tab=\"notes\"]')).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveAttribute('aria-selected','true');await page.keyboard.press('ArrowLeft');await page.keyboard.press('Enter');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.type(' More.');await expect(page.locator('.chapter-body').first()).toContainText(' More.');\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  79 |  }));\n  80 |  test('[NEO-219][NEO-220][NEO-221][NEO-222][NEO-224] Vim modes, counted words and line motions use the live caret',async()=>fixture(engine,async(app,page)=>{\n  81 |   const text='Alpha beta gamma delta.';await page.keyboard.type(text);await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveClass(/vim-nav/);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 762,
+                            "line": 78
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#editor-view')\nExpected: visible\nReceived: hidden\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('#editor-view') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#editor-view')\u001b[22m\n\u001b[2m    34 × locator resolved to <div hidden=\"\" id=\"editor-view\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  76 |  }));\n  77 |  test('[NEO-278][NEO-279][NEO-280][NEO-281][NEO-282] keyboard regions, tab focus and Escape return to actual editing caret',async()=>fixture(engine,async(_app,page)=>{\n> 78 |   await page.keyboard.type('Keyboard regions.');await page.keyboard.press('F6');await expect(page.locator('#nav-pane')).toHaveClass(/open/);await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();await page.keyboard.press('ArrowRight');await expect(page.locator('.tab[data-tab=\"notes\"]')).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveAttribute('aria-selected','true');await page.keyboard.press('ArrowLeft');await page.keyboard.press('Enter');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.type(' More.');await expect(page.locator('.chapter-body').first()).toContainText(' More.');\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  79 |  }));\n  80 |  test('[NEO-219][NEO-220][NEO-221][NEO-222][NEO-224] Vim modes, counted words and line motions use the live caret',async()=>fixture(engine,async(app,page)=>{\n  81 |   const text='Alpha beta gamma delta.';await page.keyboard.type(text);await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveClass(/vim-nav/);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:78:762\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:18:33.126Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--3eef4-urn-to-actual-editing-caret/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--3eef4-urn-to-actual-editing-caret/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 762,
+                        "line": 78
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-447e4ece6a1be5823321",
+              "file": "presentation.spec.ts",
+              "line": 77,
+              "column": 2
+            },
+            {
+              "title": "[NEO-219][NEO-220][NEO-221][NEO-222][NEO-224] Vim modes, counted words and line motions use the live caret",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16190,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('body')\nExpected pattern: \u001b[32m/vim-nav/\u001b[39m\nReceived string:  \u001b[31m\"night\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('body') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('body')\u001b[22m\n\u001b[2m    34 × locator resolved to <body class=\"night\">…</body>\u001b[22m\n\u001b[2m       - unexpected value \"night\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('body')\nExpected pattern: \u001b[32m/vim-nav/\u001b[39m\nReceived string:  \u001b[31m\"night\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('body') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('body')\u001b[22m\n\u001b[2m    34 × locator resolved to <body class=\"night\">…</body>\u001b[22m\n\u001b[2m       - unexpected value \"night\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:81:196\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 196,
+                          "line": 81
+                        },
+                        "snippet": "  79 |  }));\n  80 |  test('[NEO-219][NEO-220][NEO-221][NEO-222][NEO-224] Vim modes, counted words and line motions use the live caret',async()=>fixture(engine,async(app,page)=>{\n> 81 |   const text='Alpha beta gamma delta.';await page.keyboard.type(text);await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveClass(/vim-nav/);\n     |                                                                                                                                                                                                    ^\n  82 |   await page.keyboard.press('l');expect((await caret(page))?.before).toBe('A');await page.keyboard.press('h');expect((await caret(page))?.before).toBe('');await page.keyboard.type('2w');expect((await caret(page))?.before).toBe('Alpha beta ');await page.keyboard.press('b');expect((await caret(page))?.before).toBe('Alpha ');await page.keyboard.press('e');expect((await caret(page))?.before).toBe('Alpha bet');await page.keyboard.press('$');expect((await caret(page))?.before).toBe(text);await page.keyboard.press('0');expect((await caret(page))?.before).toBe('');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.press('i');await page.keyboard.type('New ');await expect(page.locator('.chapter-body').first()).toHaveText('New '+text);\n  83 |  }));\n  84 |  test('[NEO-226][NEO-228][NEO-229] Vim insertion, deletion undo and search work in manuscript and Notes',async()=>fixture(engine,async(app,page)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 196,
+                            "line": 81
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('body')\nExpected pattern: \u001b[32m/vim-nav/\u001b[39m\nReceived string:  \u001b[31m\"night\"\u001b[39m\nTimeout: 15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('body') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('body')\u001b[22m\n\u001b[2m    34 × locator resolved to <body class=\"night\">…</body>\u001b[22m\n\u001b[2m       - unexpected value \"night\"\u001b[22m\n\n\n  79 |  }));\n  80 |  test('[NEO-219][NEO-220][NEO-221][NEO-222][NEO-224] Vim modes, counted words and line motions use the live caret',async()=>fixture(engine,async(app,page)=>{\n> 81 |   const text='Alpha beta gamma delta.';await page.keyboard.type(text);await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await expect(page.locator('body')).toHaveClass(/vim-nav/);\n     |                                                                                                                                                                                                    ^\n  82 |   await page.keyboard.press('l');expect((await caret(page))?.before).toBe('A');await page.keyboard.press('h');expect((await caret(page))?.before).toBe('');await page.keyboard.type('2w');expect((await caret(page))?.before).toBe('Alpha beta ');await page.keyboard.press('b');expect((await caret(page))?.before).toBe('Alpha ');await page.keyboard.press('e');expect((await caret(page))?.before).toBe('Alpha bet');await page.keyboard.press('$');expect((await caret(page))?.before).toBe(text);await page.keyboard.press('0');expect((await caret(page))?.before).toBe('');await page.keyboard.press('Escape');await expect(page.locator('#editor-view')).toBeVisible();await page.keyboard.press('i');await page.keyboard.type('New ');await expect(page.locator('.chapter-body').first()).toHaveText('New '+text);\n  83 |  }));\n  84 |  test('[NEO-226][NEO-228][NEO-229] Vim insertion, deletion undo and search work in manuscript and Notes',async()=>fixture(engine,async(app,page)=>{\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:81:196\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:18:49.576Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--96d5c--motions-use-the-live-caret/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--96d5c--motions-use-the-live-caret/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 196,
+                        "line": 81
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-92bba94da653beb4f8b4",
+              "file": "presentation.spec.ts",
+              "line": 80,
+              "column": 2
+            },
+            {
+              "title": "[NEO-226][NEO-228][NEO-229] Vim insertion, deletion undo and search work in manuscript and Notes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16252,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"lpha beta.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mA\u001b[27mlpha beta.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" class=\"chapter-body cap-off\" aria-label=\"Presentation book\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Alpha beta.\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"lpha beta.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mA\u001b[27mlpha beta.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" class=\"chapter-body cap-off\" aria-label=\"Presentation book\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Alpha beta.\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:85:216\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 216,
+                          "line": 85
+                        },
+                        "snippet": "  83 |  }));\n  84 |  test('[NEO-226][NEO-228][NEO-229] Vim insertion, deletion undo and search work in manuscript and Notes',async()=>fixture(engine,async(app,page)=>{\n> 85 |   await page.keyboard.type('Alpha beta.');await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await page.keyboard.press('x');await expect(page.locator('.chapter-body').first()).toHaveText('lpha beta.');await page.keyboard.press(`${mod}+z`);await expect(page.locator('.chapter-body').first()).toHaveText('Alpha beta.');await page.keyboard.press('A');await page.keyboard.type(' Tail.');await expect(page.locator('.chapter-body').first()).toHaveText('Alpha beta. Tail.');await page.keyboard.press('Escape');await page.keyboard.press('/');await expect(page.locator('#searchbar')).toBeVisible();await page.keyboard.press('Escape');\n     |                                                                                                                                                                                                                        ^\n  86 |   await page.locator('.tab[data-tab=\"notes\"]').click();await page.locator('#aux-editor').click();await page.keyboard.type('Note words');await page.keyboard.press('Escape');await page.keyboard.press('0');await page.keyboard.press('a');await page.keyboard.type('X');await expect(page.locator('#aux-editor')).toHaveText('NXote words');\n  87 |  }));\n  88 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 216,
+                            "line": 85
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.chapter-body').first()\nExpected: \u001b[32m\"lpha beta.\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mA\u001b[27mlpha beta.\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.chapter-body').first() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body').first()\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"textbox\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" class=\"chapter-body cap-off\" aria-label=\"Presentation book\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Alpha beta.\"\u001b[22m\n\n\n  83 |  }));\n  84 |  test('[NEO-226][NEO-228][NEO-229] Vim insertion, deletion undo and search work in manuscript and Notes',async()=>fixture(engine,async(app,page)=>{\n> 85 |   await page.keyboard.type('Alpha beta.');await start(page);await menu(app,['View','Vim Keys']);await page.keyboard.press('Escape');await page.keyboard.press('x');await expect(page.locator('.chapter-body').first()).toHaveText('lpha beta.');await page.keyboard.press(`${mod}+z`);await expect(page.locator('.chapter-body').first()).toHaveText('Alpha beta.');await page.keyboard.press('A');await page.keyboard.type(' Tail.');await expect(page.locator('.chapter-body').first()).toHaveText('Alpha beta. Tail.');await page.keyboard.press('Escape');await page.keyboard.press('/');await expect(page.locator('#searchbar')).toBeVisible();await page.keyboard.press('Escape');\n     |                                                                                                                                                                                                                        ^\n  86 |   await page.locator('.tab[data-tab=\"notes\"]').click();await page.locator('#aux-editor').click();await page.keyboard.type('Note words');await page.keyboard.press('Escape');await page.keyboard.press('0');await page.keyboard.press('a');await page.keyboard.type('X');await expect(page.locator('#aux-editor')).toHaveText('NXote words');\n  87 |  }));\n  88 | });\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:85:216\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:17:338)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:19:06.011Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--062a1-ork-in-manuscript-and-Notes/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--062a1-ork-in-manuscript-and-Notes/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 216,
+                        "line": 85
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-887d73d9c403802f68c4",
+              "file": "presentation.spec.ts",
+              "line": 84,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:17:09.731Z",
+    "duration": 132560.784,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  }
+}

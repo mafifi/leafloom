@@ -1,0 +1,2 @@
+import { createFixture } from '../src/fixture';
+export function fixture(size=5){const doc=createFixture();if(size===5)return doc;doc.chapters=[];for(let c=0;c<10;c++)doc.chapters.push({id:`chapter-${c}`,title:`Chapter ${c+1}`,blocks:Array.from({length:Math.ceil(size/10)},(_,p)=>({id:`paragraph-${c}-${p}`,kind:'paragraph' as const,runs:[{text:'Mara watched the sea from the window. The lighthouse held its silence while the morning tide returned. '},{text:'She waited.',italic:true}]}))});return doc;}

@@ -1,0 +1,2 @@
+import { defineConfig } from 'vitest/config';import { svelte } from '@sveltejs/vite-plugin-svelte';import { fileURLToPath } from 'node:url';
+export default defineConfig({root:fileURLToPath(new URL('.',import.meta.url)),base:'./',plugins:[svelte({configFile:fileURLToPath(new URL('../svelte.config.js',import.meta.url))})],build:{outDir:'../lifecycle-dist',emptyOutDir:true},test:{include:['**/*.test.ts'],environment:'node'}});

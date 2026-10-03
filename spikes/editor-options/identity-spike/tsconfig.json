@@ -1,0 +1,1 @@
+{"extends":"../tsconfig.json","compilerOptions":{"noEmit":true},"include":["./**/*.ts","./**/*.svelte","../parity/src/codec.ts","../lifecycle-spike/contracts.ts"],"exclude":["../node_modules"]}

@@ -1,0 +1,41 @@
+{
+  "name": "@leafloom/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "leafloom": {
+    "role": "composition",
+    "runtime": "tauri"
+  },
+  "scripts": {
+    "dev": "vite --configLoader runner --port 5190",
+    "build": "vite build --configLoader runner",
+    "check": "svelte-check --tsconfig tsconfig.json",
+    "tauri": "tauri",
+    "bundle:host": "node ../../scripts/bundle-host.mjs"
+  },
+  "dependencies": {
+    "@leafloom/editor-contracts": "workspace:*",
+    "@leafloom/prosemirror-editor": "workspace:*",
+    "@leafloom/document-contracts": "workspace:*",
+    "@leafloom/review-contracts": "workspace:*",
+    "@leafloom/desktop-host": "workspace:*",
+    "@leafloom/library": "workspace:*",
+    "@leafloom/authoring": "workspace:*",
+    "zod": "catalog:",
+    "@leafloom/browser-telemetry": "workspace:*",
+    "@leafloom/telemetry-contracts": "workspace:*",
+    "@leafloom/cover-contracts": "workspace:*",
+    "@leafloom/painted-covers": "workspace:*",
+    "@leafloom/language-contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "catalog:",
+    "svelte": "catalog:",
+    "vite": "catalog:",
+    "svelte-check": "catalog:",
+    "typescript": "catalog:",
+    "@tauri-apps/cli": "catalog:",
+    "esbuild": "catalog:"
+  }
+}

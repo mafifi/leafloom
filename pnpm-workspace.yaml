@@ -1,0 +1,73 @@
+packages:
+  - apps/*
+  - apps/*/host
+  - packages/*/*
+  - packages/authoring
+  - packages/library
+
+catalog:
+  fontkit: "2.0.4"
+  "@types/fontkit": "2.0.9"
+  prettier: "3.9.9"
+  prettier-plugin-svelte: "4.1.1"
+  pdfkit: "0.20.2"
+  "@types/pdfkit": "0.17.6"
+  "@farscrl/hunspell-wasm": "1.0.1"
+  "@lexical/clipboard": "0.52.0"
+  "@lexical/history": "0.52.0"
+  "@lexical/html": "0.52.0"
+  "@lexical/rich-text": "0.52.0"
+  "@lexical/selection": "0.52.0"
+  "@lexical/utils": "0.52.0"
+  "@noble/hashes": "2.4.0"
+  "@opentelemetry/api": "1.9.1"
+  "@opentelemetry/sdk-metrics": "2.11.0"
+  "@opentelemetry/sdk-trace-base": "2.11.0"
+  "@playwright/test": "1.63.0"
+  "@sveltejs/vite-plugin-svelte": "7.3.1"
+  "@tauri-apps/cli": "2.11.4"
+  "@types/jsdom": "30.0.0"
+  "@types/node": "26.6.4"
+  "dictionary-de": "3.0.0"
+  "dictionary-el": "4.0.0"
+  "dictionary-en-au": "3.0.0"
+  "dictionary-en-ca": "3.0.0"
+  "dictionary-en-gb": "3.0.0"
+  "dictionary-en-us": "2.2.1"
+  "dictionary-es": "4.0.0"
+  "dictionary-fr": "3.0.0"
+  "dictionary-nl": "2.0.0"
+  "dictionary-pl": "2.0.0"
+  "dictionary-pt": "4.0.0"
+  "dictionary-ro": "3.0.0"
+  "dictionary-ru": "3.0.0"
+  "electron": "44.5.1"
+  "electron-reference": "npm:electron@43.7.6"
+  "esbuild": "0.27.4"
+  "jsdom": "30.1.1"
+  "jszip": "3.10.1"
+  "koffi": "2.16.3"
+  "lexical": "0.52.0"
+  "pdfjs-dist": "6.3.289"
+  "prosemirror-commands": "1.7.2"
+  "prosemirror-history": "1.5.1"
+  "prosemirror-keymap": "1.2.3"
+  "prosemirror-model": "1.25.12"
+  "prosemirror-schema-basic": "1.2.5"
+  "prosemirror-state": "1.4.4"
+  "prosemirror-transform": "1.12.2"
+  "prosemirror-view": "1.42.6"
+  "svelte": "5.57.1"
+  "svelte-check": "4.7.6"
+  "tsx": "4.23.15"
+  "typescript": "6.0.3"
+  "vite": "8.3.2"
+  "vitest": "5.0.3"
+  "zod": "4.6.5"
+
+minimumReleaseAgeExclude:
+  - '@types/node@26.6.4'
+
+
+allowBuilds:
+  esbuild: true

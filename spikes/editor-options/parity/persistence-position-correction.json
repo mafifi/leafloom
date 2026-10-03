@@ -1,0 +1,140 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/persistence.config.ts",
+      "--grep",
+      "NEO-244"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "targetBundleSha256": "afbdc1a65806aa533b1c85274a7fe0ee22ee3d082a7957874accf88a56940a22",
+      "hostHarnessSha256": "cdaa6cade4f52713916e4b1306d7d82cb49b6d0f8d21b97c4a3c64fa26a71157",
+      "dependencyLockSha256": "88d76a1fcbe977bd95ee06060d9ee8827347700c1d7f007ff095bb80b245ecf2",
+      "proofBuildSha256": "affa920703504e4afd763bbb96ac6bf68dffb0f8ac64c031a92035fd050de933",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "targetBundleSha256": "afbdc1a65806aa533b1c85274a7fe0ee22ee3d082a7957874accf88a56940a22",
+          "hostHarnessSha256": "cdaa6cade4f52713916e4b1306d7d82cb49b6d0f8d21b97c4a3c64fa26a71157",
+          "dependencyLockSha256": "88d76a1fcbe977bd95ee06060d9ee8827347700c1d7f007ff095bb80b245ecf2",
+          "proofBuildSha256": "affa920703504e4afd763bbb96ac6bf68dffb0f8ac64c031a92035fd050de933",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "persistence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-position-correction.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "persistence.spec.ts",
+          "line": 11,
+          "column": 161,
+          "specs": [
+            {
+              "title": "[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5008,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:35:22.011Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-8430db688069420833a8",
+              "file": "persistence.spec.ts",
+              "line": 30,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:35:21.714Z",
+    "duration": 5329.578,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "leafloom/third-party-source-v1",
+  "wrapper": {
+    "package": "@farscrl/hunspell-wasm",
+    "version": "1.0.1",
+    "repository": "https://github.com/farscrl/hunspell-wasm",
+    "tag": "@farscrl/hunspell-wasm@1.0.1",
+    "commit": "63f4605a9185b9fa211910eea68510dea8095d4c"
+  },
+  "engine": {
+    "version": "1.7.3",
+    "commit": "c5f98152a274e25b5107101104bef632b83a0cc9",
+    "selectedLicense": "MPL-1.1",
+    "source": "https://github.com/hunspell/hunspell/tree/c5f98152a274e25b5107101104bef632b83a0cc9"
+  },
+  "verification": {
+    "upstreamTagTree": "https://api.github.com/repos/farscrl/hunspell-wasm/git/trees/%40farscrl%2Fhunspell-wasm%401.0.1?recursive=1",
+    "submodulePath": "native/vendor/hunspell",
+    "distributionGate": "Compare package versions and preserve complete notices/licenses in actual bundle; release source distribution must be recorded before publication."
+  }
+}

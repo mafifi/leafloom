@@ -1,0 +1,326 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/navigation-edge.config.ts",
+      "--grep",
+      "050-B|059-B"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "2103a96fa0d313dbf1117b5b447212a049ad9526c6569d17f10eacf6f86a5147",
+        "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+        "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+        "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+        "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+      "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+      "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "2103a96fa0d313dbf1117b5b447212a049ad9526c6569d17f10eacf6f86a5147",
+            "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+            "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+            "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+            "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+          "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+          "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "navigation-edge.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-original-corrections.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "navigation-edge.spec.ts",
+      "file": "navigation-edge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "navigation-edge.spec.ts",
+          "line": 4,
+          "column": 158,
+          "specs": [
+            {
+              "title": "[NEO-050-B] adding prologue and part disables solo heading suppression without numbering those entries",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11261,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.ch-num')\nTimeout: 10000ms\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Prologue\",\u001b[39m\n\u001b[2m    \"Part I\",\u001b[22m\n\u001b[31m+   \"Prologue\",\u001b[39m\n\u001b[2m    \"Chapter 1\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.ch-num') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ch-num')\u001b[22m\n\u001b[2m    24 × locator resolved to 3 elements\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.ch-num')\nTimeout: 10000ms\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Prologue\",\u001b[39m\n\u001b[2m    \"Part I\",\u001b[22m\n\u001b[31m+   \"Prologue\",\u001b[39m\n\u001b[2m    \"Chapter 1\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.ch-num') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ch-num')\u001b[22m\n\u001b[2m    24 × locator resolved to 3 elements\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts:14:707",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                          "column": 707,
+                          "line": 14
+                        },
+                        "snippet": "  12 |  test('[NEO-038-B] [NEO-039-B] empty bound page replaces ghost with spine tile and later filled contents reopen from actual stored page',async()=>{await bound(page,directory);for(const[kind,label]of [['dedication','Dedication'],['about','About the Author']]as const){await addPage(page,label);await expect(page.locator('.ghost-page[aria-label=\"'+label+'\"]')).toHaveCount(0);const tile=page.locator('.page-tile.kind-'+kind);await expect(tile).toHaveCount(1);await tile.click();await expect(page.locator('.ps-body')).toBeEmpty();await page.locator('.ps-body').pressSequentially('Stored '+kind+' words.');await closeSheet(page);await page.reload();await page.locator('.page-tile.kind-'+kind).click();await expect(page.locator('.ps-body')).toContainText('Stored '+kind+' words.');await closeSheet(page);}});\n  13 |  test('[NEO-040-B] bound part optional first-line title reopens while empty title still has Roman label',async()=>{await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').pressSequentially('Optional movement title');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toHaveText('Optional movement title');await page.locator('.ps-body').fill('');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toBeEmpty();});\n> 14 |  test('[NEO-050-B] adding prologue and part disables solo heading suppression without numbering those entries',async()=>{await fixture(page,directory,[{id:'one',html:'<p>Solo body.</p>'}]);await expect(page.locator('.chapter-head')).toBeHidden();await navigation(page);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Prologue$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Chapter 1']);await expect(page.locator('.nav-item')).toHaveCount(2);await page.locator('.ng-plus').nth(1).click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Part$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Part I','Chapter 1']);await expect(page.locator('.chapter.solo')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  15 |  test('[NEO-059-B] zero-story navigation beginning and ending insertion gaps create correct kinds and focused story',async()=>{const id=await fixture(page,directory,[]);await navigation(page);await expect(page.locator('.ng-plus')).toHaveCount(1);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Dedication$/}).click();await expect(page.locator('.nav-item')).toHaveCount(1);await expect(page.locator('.ng-plus')).toHaveCount(2);await page.locator('.ng-plus').last().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Chapter$/}).click();await expect(page.locator('.chapter')).toHaveCount(2);await expect.poll(async()=>{const m=await meta(directory,id);return m.chapterKinds?.[m.chapterOrder[0]];}).toBe('dedication');const m=await meta(directory,id);expect(m.chapterKinds?.[m.chapterOrder[0]]).toBe('dedication');expect(m.chapterKinds?.[m.chapterOrder[1]]??'chapter').toBe('chapter');await expect(page.locator('.kind-chapter .chapter-body')).toBeFocused();});\n  16 |  test('[NEO-060-B] navigation brings distant chapter heading into manuscript viewport and highlights destination',async()=>{await fixture(page,directory,[{id:'one',html:Array(80).fill('<p>Long preceding chapter words.</p>').join('')},{id:'two',html:'<p>Destination words.</p>'}]);await navigation(page);await page.locator('.nav-item[data-id=\"two\"] .n-row').click();await expect(page.locator('.chapter[data-id=\"two\"] .chapter-body')).toBeFocused();await expect.poll(()=>page.evaluate(()=>{const head=document.querySelector('.chapter[data-id=\"two\"] .chapter-head')!.getBoundingClientRect(),paper=document.querySelector('#paper-scroll')!.getBoundingClientRect();return head.top>=paper.top-5&&head.top<paper.bottom;})).toBe(true);await expect(page.locator('.nav-item[data-id=\"two\"]')).toHaveClass(/current/);});\n  17 |  test('[NEO-061-B] chapter drag preserves prose and synchronizes Outline order after original DOM rebuild',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Selected words remain.</p>',title:'First'},{id:'two',html:'<p>Other words.</p>',title:'Second'}]);await navigation(page);await selectText(page,0,0,0,8);expect(await page.evaluate(()=>getSelection()!.toString())).toBe('Selected');await page.locator('.nav-item[data-id=\"two\"] .n-row').dragTo(page.locator('.nav-item[data-id=\"one\"]'),{targetPosition:{x:40,y:3}});await expect(page.locator('.chapter[data-id=\"one\"] .chapter-body')).toContainText('Selected words remain.');expect((await meta(directory,id)).chapterOrder).toEqual(['two','one']);await page.locator('.tab[data-tab=\"outline\"]').click();const order=await page.locator('.ol-line[data-ch-id]').evaluateAll(els=>els.map(e=>(e as HTMLElement).dataset.chId));expect(order.filter(x=>x==='one'||x==='two')).toEqual(['two','one']);});"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                            "column": 707,
+                            "line": 14
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.ch-num')\nTimeout: 10000ms\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[32m-   \"Prologue\",\u001b[39m\n\u001b[2m    \"Part I\",\u001b[22m\n\u001b[31m+   \"Prologue\",\u001b[39m\n\u001b[2m    \"Chapter 1\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" locator('.ch-num') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.ch-num')\u001b[22m\n\u001b[2m    24 × locator resolved to 3 elements\u001b[22m\n\n\n  12 |  test('[NEO-038-B] [NEO-039-B] empty bound page replaces ghost with spine tile and later filled contents reopen from actual stored page',async()=>{await bound(page,directory);for(const[kind,label]of [['dedication','Dedication'],['about','About the Author']]as const){await addPage(page,label);await expect(page.locator('.ghost-page[aria-label=\"'+label+'\"]')).toHaveCount(0);const tile=page.locator('.page-tile.kind-'+kind);await expect(tile).toHaveCount(1);await tile.click();await expect(page.locator('.ps-body')).toBeEmpty();await page.locator('.ps-body').pressSequentially('Stored '+kind+' words.');await closeSheet(page);await page.reload();await page.locator('.page-tile.kind-'+kind).click();await expect(page.locator('.ps-body')).toContainText('Stored '+kind+' words.');await closeSheet(page);}});\n  13 |  test('[NEO-040-B] bound part optional first-line title reopens while empty title still has Roman label',async()=>{await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').pressSequentially('Optional movement title');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toHaveText('Optional movement title');await page.locator('.ps-body').fill('');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toBeEmpty();});\n> 14 |  test('[NEO-050-B] adding prologue and part disables solo heading suppression without numbering those entries',async()=>{await fixture(page,directory,[{id:'one',html:'<p>Solo body.</p>'}]);await expect(page.locator('.chapter-head')).toBeHidden();await navigation(page);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Prologue$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Chapter 1']);await expect(page.locator('.nav-item')).toHaveCount(2);await page.locator('.ng-plus').nth(1).click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Part$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Part I','Chapter 1']);await expect(page.locator('.chapter.solo')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  15 |  test('[NEO-059-B] zero-story navigation beginning and ending insertion gaps create correct kinds and focused story',async()=>{const id=await fixture(page,directory,[]);await navigation(page);await expect(page.locator('.ng-plus')).toHaveCount(1);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Dedication$/}).click();await expect(page.locator('.nav-item')).toHaveCount(1);await expect(page.locator('.ng-plus')).toHaveCount(2);await page.locator('.ng-plus').last().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Chapter$/}).click();await expect(page.locator('.chapter')).toHaveCount(2);await expect.poll(async()=>{const m=await meta(directory,id);return m.chapterKinds?.[m.chapterOrder[0]];}).toBe('dedication');const m=await meta(directory,id);expect(m.chapterKinds?.[m.chapterOrder[0]]).toBe('dedication');expect(m.chapterKinds?.[m.chapterOrder[1]]??'chapter').toBe('chapter');await expect(page.locator('.kind-chapter .chapter-body')).toBeFocused();});\n  16 |  test('[NEO-060-B] navigation brings distant chapter heading into manuscript viewport and highlights destination',async()=>{await fixture(page,directory,[{id:'one',html:Array(80).fill('<p>Long preceding chapter words.</p>').join('')},{id:'two',html:'<p>Destination words.</p>'}]);await navigation(page);await page.locator('.nav-item[data-id=\"two\"] .n-row').click();await expect(page.locator('.chapter[data-id=\"two\"] .chapter-body')).toBeFocused();await expect.poll(()=>page.evaluate(()=>{const head=document.querySelector('.chapter[data-id=\"two\"] .chapter-head')!.getBoundingClientRect(),paper=document.querySelector('#paper-scroll')!.getBoundingClientRect();return head.top>=paper.top-5&&head.top<paper.bottom;})).toBe(true);await expect(page.locator('.nav-item[data-id=\"two\"]')).toHaveClass(/current/);});\n  17 |  test('[NEO-061-B] chapter drag preserves prose and synchronizes Outline order after original DOM rebuild',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Selected words remain.</p>',title:'First'},{id:'two',html:'<p>Other words.</p>',title:'Second'}]);await navigation(page);await selectText(page,0,0,0,8);expect(await page.evaluate(()=>getSelection()!.toString())).toBe('Selected');await page.locator('.nav-item[data-id=\"two\"] .n-row').dragTo(page.locator('.nav-item[data-id=\"one\"]'),{targetPosition:{x:40,y:3}});await expect(page.locator('.chapter[data-id=\"one\"] .chapter-body')).toContainText('Selected words remain.');expect((await meta(directory,id)).chapterOrder).toEqual(['two','one']);await page.locator('.tab[data-tab=\"outline\"]').click();const order=await page.locator('.ol-line[data-ch-id]').evaluateAll(els=>els.map(e=>(e as HTMLElement).dataset.chId));expect(order.filter(x=>x==='one'||x==='two')).toEqual(['two','one']);});\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts:14:707"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:40:51.018Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-test-results/navigation-edge-original-N-a46f8-out-numbering-those-entries/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-test-results/navigation-edge-original-N-a46f8-out-numbering-those-entries/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                        "column": 707,
+                        "line": 14
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "4eee10e7f6754a5281bc-c9883a6219b5d34669e5",
+              "file": "navigation-edge.spec.ts",
+              "line": 14,
+              "column": 2
+            },
+            {
+              "title": "[NEO-059-B] zero-story navigation beginning and ending insertion gaps create correct kinds and focused story",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11101,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dedication\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dedication\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts:15:791",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                          "column": 791,
+                          "line": 15
+                        },
+                        "snippet": "  13 |  test('[NEO-040-B] bound part optional first-line title reopens while empty title still has Roman label',async()=>{await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').pressSequentially('Optional movement title');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toHaveText('Optional movement title');await page.locator('.ps-body').fill('');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toBeEmpty();});\n  14 |  test('[NEO-050-B] adding prologue and part disables solo heading suppression without numbering those entries',async()=>{await fixture(page,directory,[{id:'one',html:'<p>Solo body.</p>'}]);await expect(page.locator('.chapter-head')).toBeHidden();await navigation(page);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Prologue$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Chapter 1']);await expect(page.locator('.nav-item')).toHaveCount(2);await page.locator('.ng-plus').nth(1).click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Part$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Part I','Chapter 1']);await expect(page.locator('.chapter.solo')).toHaveCount(0);});\n> 15 |  test('[NEO-059-B] zero-story navigation beginning and ending insertion gaps create correct kinds and focused story',async()=>{const id=await fixture(page,directory,[]);await navigation(page);await expect(page.locator('.ng-plus')).toHaveCount(1);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Dedication$/}).click();await expect(page.locator('.nav-item')).toHaveCount(1);await expect(page.locator('.ng-plus')).toHaveCount(2);await page.locator('.ng-plus').last().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Chapter$/}).click();await expect(page.locator('.chapter')).toHaveCount(2);await expect.poll(async()=>{const m=await meta(directory,id);return m.chapterKinds?.[m.chapterOrder[0]];}).toBe('dedication');const m=await meta(directory,id);expect(m.chapterKinds?.[m.chapterOrder[0]]).toBe('dedication');expect(m.chapterKinds?.[m.chapterOrder[1]]??'chapter').toBe('chapter');await expect(page.locator('.kind-chapter .chapter-body')).toBeFocused();});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  16 |  test('[NEO-060-B] navigation brings distant chapter heading into manuscript viewport and highlights destination',async()=>{await fixture(page,directory,[{id:'one',html:Array(80).fill('<p>Long preceding chapter words.</p>').join('')},{id:'two',html:'<p>Destination words.</p>'}]);await navigation(page);await page.locator('.nav-item[data-id=\"two\"] .n-row').click();await expect(page.locator('.chapter[data-id=\"two\"] .chapter-body')).toBeFocused();await expect.poll(()=>page.evaluate(()=>{const head=document.querySelector('.chapter[data-id=\"two\"] .chapter-head')!.getBoundingClientRect(),paper=document.querySelector('#paper-scroll')!.getBoundingClientRect();return head.top>=paper.top-5&&head.top<paper.bottom;})).toBe(true);await expect(page.locator('.nav-item[data-id=\"two\"]')).toHaveClass(/current/);});\n  17 |  test('[NEO-061-B] chapter drag preserves prose and synchronizes Outline order after original DOM rebuild',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Selected words remain.</p>',title:'First'},{id:'two',html:'<p>Other words.</p>',title:'Second'}]);await navigation(page);await selectText(page,0,0,0,8);expect(await page.evaluate(()=>getSelection()!.toString())).toBe('Selected');await page.locator('.nav-item[data-id=\"two\"] .n-row').dragTo(page.locator('.nav-item[data-id=\"one\"]'),{targetPosition:{x:40,y:3}});await expect(page.locator('.chapter[data-id=\"one\"] .chapter-body')).toContainText('Selected words remain.');expect((await meta(directory,id)).chapterOrder).toEqual(['two','one']);await page.locator('.tab[data-tab=\"outline\"]').click();const order=await page.locator('.ol-line[data-ch-id]').evaluateAll(els=>els.map(e=>(e as HTMLElement).dataset.chId));expect(order.filter(x=>x==='one'||x==='two')).toEqual(['two','one']);});\n  18 |  test('[NEO-063-B] deleting numbered middle chapter updates surviving headings before undo restores original numbers',async()=>{await fixture(page,directory,[{id:'one',html:'<p>First.</p>'},{id:'two',html:'<p>Second.</p>'},{id:'three',html:'<p>Third.</p>'}]);await navigation(page);await chapterChoice(page,'two','Delete');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Chapter 2']);await expect(page.locator('.chapter[data-id=\"three\"] .ch-num')).toHaveText('Chapter 2');await page.keyboard.press('Meta+z');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Chapter 2','Chapter 3']);});"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                            "column": 791,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dedication\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  13 |  test('[NEO-040-B] bound part optional first-line title reopens while empty title still has Roman label',async()=>{await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').pressSequentially('Optional movement title');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toHaveText('Optional movement title');await page.locator('.ps-body').fill('');await closeSheet(page);await expect(page.locator('.page-tile.kind-part .pt-label')).toHaveText('Part I');await page.locator('.page-tile.kind-part').click();await expect(page.locator('.ps-body')).toBeEmpty();});\n  14 |  test('[NEO-050-B] adding prologue and part disables solo heading suppression without numbering those entries',async()=>{await fixture(page,directory,[{id:'one',html:'<p>Solo body.</p>'}]);await expect(page.locator('.chapter-head')).toBeHidden();await navigation(page);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Prologue$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Chapter 1']);await expect(page.locator('.nav-item')).toHaveCount(2);await page.locator('.ng-plus').nth(1).click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Part$/}).click();await expect(page.locator('.ch-num')).toHaveText(['Prologue','Part I','Chapter 1']);await expect(page.locator('.chapter.solo')).toHaveCount(0);});\n> 15 |  test('[NEO-059-B] zero-story navigation beginning and ending insertion gaps create correct kinds and focused story',async()=>{const id=await fixture(page,directory,[]);await navigation(page);await expect(page.locator('.ng-plus')).toHaveCount(1);await page.locator('.ng-plus').first().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Dedication$/}).click();await expect(page.locator('.nav-item')).toHaveCount(1);await expect(page.locator('.ng-plus')).toHaveCount(2);await page.locator('.ng-plus').last().click({force:true});await page.locator('.pop-menu button').filter({hasText:/^Chapter$/}).click();await expect(page.locator('.chapter')).toHaveCount(2);await expect.poll(async()=>{const m=await meta(directory,id);return m.chapterKinds?.[m.chapterOrder[0]];}).toBe('dedication');const m=await meta(directory,id);expect(m.chapterKinds?.[m.chapterOrder[0]]).toBe('dedication');expect(m.chapterKinds?.[m.chapterOrder[1]]??'chapter').toBe('chapter');await expect(page.locator('.kind-chapter .chapter-body')).toBeFocused();});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  16 |  test('[NEO-060-B] navigation brings distant chapter heading into manuscript viewport and highlights destination',async()=>{await fixture(page,directory,[{id:'one',html:Array(80).fill('<p>Long preceding chapter words.</p>').join('')},{id:'two',html:'<p>Destination words.</p>'}]);await navigation(page);await page.locator('.nav-item[data-id=\"two\"] .n-row').click();await expect(page.locator('.chapter[data-id=\"two\"] .chapter-body')).toBeFocused();await expect.poll(()=>page.evaluate(()=>{const head=document.querySelector('.chapter[data-id=\"two\"] .chapter-head')!.getBoundingClientRect(),paper=document.querySelector('#paper-scroll')!.getBoundingClientRect();return head.top>=paper.top-5&&head.top<paper.bottom;})).toBe(true);await expect(page.locator('.nav-item[data-id=\"two\"]')).toHaveClass(/current/);});\n  17 |  test('[NEO-061-B] chapter drag preserves prose and synchronizes Outline order after original DOM rebuild',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Selected words remain.</p>',title:'First'},{id:'two',html:'<p>Other words.</p>',title:'Second'}]);await navigation(page);await selectText(page,0,0,0,8);expect(await page.evaluate(()=>getSelection()!.toString())).toBe('Selected');await page.locator('.nav-item[data-id=\"two\"] .n-row').dragTo(page.locator('.nav-item[data-id=\"one\"]'),{targetPosition:{x:40,y:3}});await expect(page.locator('.chapter[data-id=\"one\"] .chapter-body')).toContainText('Selected words remain.');expect((await meta(directory,id)).chapterOrder).toEqual(['two','one']);await page.locator('.tab[data-tab=\"outline\"]').click();const order=await page.locator('.ol-line[data-ch-id]').evaluateAll(els=>els.map(e=>(e as HTMLElement).dataset.chId));expect(order.filter(x=>x==='one'||x==='two')).toEqual(['two','one']);});\n  18 |  test('[NEO-063-B] deleting numbered middle chapter updates surviving headings before undo restores original numbers',async()=>{await fixture(page,directory,[{id:'one',html:'<p>First.</p>'},{id:'two',html:'<p>Second.</p>'},{id:'three',html:'<p>Third.</p>'}]);await navigation(page);await chapterChoice(page,'two','Delete');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Chapter 2']);await expect(page.locator('.chapter[data-id=\"three\"] .ch-num')).toHaveText('Chapter 2');await page.keyboard.press('Meta+z');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Chapter 2','Chapter 3']);});\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts:15:791"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:41:02.518Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-test-results/navigation-edge-original-N-d677f-ect-kinds-and-focused-story/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/navigation-edge-test-results/navigation-edge-original-N-d677f-ect-kinds-and-focused-story/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/navigation-edge.spec.ts",
+                        "column": 791,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "4eee10e7f6754a5281bc-d9621640505e9a60c33b",
+              "file": "navigation-edge.spec.ts",
+              "line": 15,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T05:40:50.728Z",
+    "duration": 22926.078,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

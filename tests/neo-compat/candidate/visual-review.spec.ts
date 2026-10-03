@@ -1,0 +1,28 @@
+import {test,expect} from './author-fixture';
+import {writing} from './editing-helpers';
+import {persistedBook} from './storage-probe';
+import {mkdir} from 'node:fs/promises';
+import path from 'node:path';
+import {root} from '../evidence.mjs';
+test('Leafloom real author UI: library, prose and poetry review artifacts',async({page})=>{
+ const driver=await writing(page);
+ await driver.title('The Lantern Garden');
+ await expect.poll(async()=>{try{return (await persistedBook(page,'The Lantern Garden')).metadata.title;}catch{return null;}}).toBe('The Lantern Garden');
+ const bookId=(await persistedBook(page,'The Lantern Garden')).metadata.id;
+ if(typeof bookId!=='string')throw Error('Missing actual saved book identity');
+ await driver.select(0,0,0);
+ await driver.type('The garden waited beyond the gate. Mara held the lantern close and listened.');
+ await driver.key('Enter');
+ await driver.type('Somewhere beneath the leaves, a small bell rang.');
+ await driver.expectParagraphs([['The garden waited beyond the gate. Mara held the lantern close and listened.','Somewhere beneath the leaves, a small bell rang.']]);
+ const folder=path.join(root,'.leafloom/evidence/screenshots');await mkdir(folder,{recursive:true});
+ await page.screenshot({path:path.join(folder,'leafloom-prose.png'),fullPage:true,animations:'disabled'});
+ await driver.select(0,1,0);await driver.key('Shift+Enter');
+ await expect(page.locator('.chapter-body p.poetry')).toHaveCount(1);
+ await page.screenshot({path:path.join(folder,'leafloom-poetry.png'),fullPage:true,animations:'disabled'});
+ await driver.shelf();
+ await expect(page.locator('.book[data-book-id="'+bookId+'"]')).toBeVisible();
+ expect((await persistedBook(page,'The Lantern Garden',bookId)).metadata.title).toBe('The Lantern Garden');
+ await page.screenshot({path:path.join(folder,'leafloom-library.png'),fullPage:true,animations:'disabled'});
+ for(const name of ['prose','poetry','library'])await test.info().attach(name,{path:path.join(folder,`leafloom-${name}.png`),contentType:'image/png'});
+});

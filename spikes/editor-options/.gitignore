@@ -1,0 +1,21 @@
+node_modules/
+dist/
+electron-dist/
+test-results/
+playwright-report/
+.data/
+
+browser-test-results/
+test-results-electron/
+screenshots/
+reference-test-results/
+parity/target-results.json
+parity/reference-results.json
+parity-dist/
+target-test-results/
+
+# Generated parity evidence; retain specs and registry in source.
+parity/*-results.json
+parity/parity/
+parity/*-artifacts/
+parity/*-test-results/

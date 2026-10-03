@@ -1,0 +1,41 @@
+{
+  "name": "leafloom",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=24.20.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @leafloom/desktop dev",
+    "build": "pnpm --filter @leafloom/desktop build",
+    "check": "tsc --noEmit -p tsconfig.json && pnpm --filter @leafloom/desktop check",
+    "test": "vitest run",
+    "test:browser": "pnpm run test:neo-candidate",
+    "check:ci": "pnpm run check:policy && pnpm run check && pnpm run test && pnpm run build",
+    "check:policy": "node scripts/check-repository.mjs",
+    "tauri:build": "pnpm --filter @leafloom/desktop tauri build",
+    "test:neo-candidate": "playwright test --config tests/neo-compat/candidate/playwright.config.ts",
+    "check:parity": "node scripts/check-neo-parity.mjs",
+    "format": "prettier --write apps/desktop/src packages/authoring/src packages/library/src"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "svelte": "catalog:",
+    "svelte-check": "catalog:",
+    "@sveltejs/vite-plugin-svelte": "catalog:",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "jsdom": "catalog:",
+    "@types/jsdom": "catalog:",
+    "esbuild": "catalog:",
+    "@tauri-apps/cli": "catalog:",
+    "prettier": "catalog:",
+    "prettier-plugin-svelte": "catalog:",
+    "pdfjs-dist": "catalog:",
+    "jszip": "catalog:"
+  }
+}

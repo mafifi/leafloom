@@ -1,0 +1,722 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "scenarios": [
+    {
+      "scenarioId": "NEO-131-A",
+      "featureId": "NEO-131",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Export a draft with a ghost paragraph and inline placeholder through all six native formats"
+      ],
+      "assertions": [
+        "All six real outputs exclude ghosts, flags and data-sid while the editable manuscript retains them"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-258-A] [NEO-131-A] real txt export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "io-results.json",
+          "title": "[NEO-259-A] [NEO-131-A] real md export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "io-results.json",
+          "title": "[NEO-260-A] [NEO-131-A] real html export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "io-results.json",
+          "title": "[NEO-261-A] [NEO-131-A] real docx export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "io-results.json",
+          "title": "[NEO-262-A] [NEO-131-A] real epub export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "io-results.json",
+          "title": "[NEO-263-A] [NEO-131-A] real pdf export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-258-A] [NEO-131-A] real txt export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          },
+          {
+            "report": "io-results.json",
+            "title": "[NEO-259-A] [NEO-131-A] real md export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          },
+          {
+            "report": "io-results.json",
+            "title": "[NEO-260-A] [NEO-131-A] real html export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          },
+          {
+            "report": "io-results.json",
+            "title": "[NEO-261-A] [NEO-131-A] real docx export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          },
+          {
+            "report": "io-results.json",
+            "title": "[NEO-262-A] [NEO-131-A] real epub export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          },
+          {
+            "report": "io-results.json",
+            "title": "[NEO-263-A] [NEO-131-A] real pdf export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-248-A",
+      "featureId": "NEO-248",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Choose a real Markdown file through the native Import picker"
+      ],
+      "assertions": [
+        "New persisted book contains ordered chapters with bold and italic text; source file unchanged"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-248-A] [NEO-250-A] native import Markdown.md parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-248-A] [NEO-250-A] native import Markdown.md parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-249-A",
+      "featureId": "NEO-249",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import a real DOCX ZIP with inherited styles and explicit run cancellation"
+      ],
+      "assertions": [
+        "Rendered and persisted runs retain inherited italic, explicit roman and true bold without phantom format"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-249-A] DOCX inherited style and explicit cancellation survive real import",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-249-A] DOCX inherited style and explicit cancellation survive real import",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-250-A",
+      "featureId": "NEO-250",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import blank-line separated Markdown with emphasis and scene marker"
+      ],
+      "assertions": [
+        "Rendered chapter/paragraph structure, bold and italic match independent expected arrays"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-248-A] [NEO-250-A] native import Markdown.md parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-248-A] [NEO-250-A] native import Markdown.md parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-251-A",
+      "featureId": "NEO-251",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import Roman numeral ladder containing a sentence beginning Part"
+      ],
+      "assertions": [
+        "Numbered boundaries become chapters and sentence-like heading remains prose"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-251-A] native import Numbers.txt parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-251-A] native import Numbers.txt parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-252-A",
+      "featureId": "NEO-252",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import Chapter plus Markdown heading pairs"
+      ],
+      "assertions": [
+        "Consecutive headings refine titles without extra empty chapters"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-252-A] native import Refinement.md parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-252-A] native import Refinement.md parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-253-A",
+      "featureId": "NEO-253",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import isolated star, fleurons and dash scene markers"
+      ],
+      "assertions": [
+        "Scene lines normalize to *** and all surrounding prose remains ordered"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-253-A] native import Markers.txt parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-253-A] native import Markers.txt parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-254-A",
+      "featureId": "NEO-254",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import a DOCX with excessive page-break confetti"
+      ],
+      "assertions": [
+        "One intact chapter retains every independent prose line"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-254-A] excessive DOCX page breaks collapse to one intact chapter",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-254-A] excessive DOCX page breaks collapse to one intact chapter",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-255-A",
+      "featureId": "NEO-255",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import decomposed filename with French byline and ordinary Von sentence"
+      ],
+      "assertions": [
+        "NFC title and author harvested while ordinary sentence remains body text"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-255-A] native import Cafe\u0301.txt parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-255-A] native import Cafe\u0301.txt parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-256-A",
+      "featureId": "NEO-256",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Import prologue, middle chapter and epilogue"
+      ],
+      "assertions": [
+        "Real book metadata assigns first/last roles and all three chapter bodies remain intact"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-256-A] native import Roles.txt parses real file and persists chapters",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-256-A] native import Roles.txt parses real file and persists chapters",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-257-A",
+      "featureId": "NEO-257",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Choose a malformed DOCX and valid TXT together"
+      ],
+      "assertions": [
+        "Valid book imports; bad source bytes unchanged; real error log records failure"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-257-A] malformed DOCX cannot prevent another selected manuscript import",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-257-A] malformed DOCX cannot prevent another selected manuscript import",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-258-A",
+      "featureId": "NEO-258",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native TXT export to a temporary path"
+      ],
+      "assertions": [
+        "Actual TXT includes ordered title/headings and all edited prose, omits annotations, preserves source draft"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-258-A] [NEO-131-A] real txt export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-258-A] [NEO-131-A] real txt export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-259-A",
+      "featureId": "NEO-259",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native Markdown export"
+      ],
+      "assertions": [
+        "Actual Markdown includes bold, italic, poetry and headings with all edited prose, omits annotations"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-259-A] [NEO-131-A] real md export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-259-A] [NEO-131-A] real md export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-260-A",
+      "featureId": "NEO-260",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native HTML export"
+      ],
+      "assertions": [
+        "Actual standalone HTML retains Unicode, styled runs, font rules and poetry while excluding annotations"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-260-A] [NEO-131-A] real html export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-260-A] [NEO-131-A] real html export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-261-A",
+      "featureId": "NEO-261",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native DOCX export"
+      ],
+      "assertions": [
+        "Actual ZIP document/styles XML retain bold/italic, chapter page-break styles and every prose line"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-261-A] [NEO-131-A] real docx export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-261-A] [NEO-131-A] real docx export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-262-A",
+      "featureId": "NEO-262",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native EPUB export"
+      ],
+      "assertions": [
+        "Actual EPUB has first uncompressed mimetype, OPF/nav/XHTML and styled prose without annotations"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-262-A] [NEO-131-A] real epub export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-262-A] [NEO-131-A] real epub export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-263-A",
+      "featureId": "NEO-263",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Edit styled Unicode prose and invoke native PDF export"
+      ],
+      "assertions": [
+        "PDF.js extracts all independent expected prose from real multi-page PDF and finds actual outline bookmarks"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-263-A] [NEO-131-A] real pdf export preserves edited Unicode prose and excludes annotations",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-263-A] [NEO-131-A] real pdf export preserves edited Unicode prose and excludes annotations",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-264-A",
+      "featureId": "NEO-264",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Toggle actual native custom-title preference and export Markdown"
+      ],
+      "assertions": [
+        "Disk library preference persists; output uses Opening rather than Chapter 1"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-264-A] native custom chapter title preference changes actual export headings",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-264-A] native custom chapter title preference changes actual export headings",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-265-A",
+      "featureId": "NEO-265",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Cancel save then select an unwritable destination"
+      ],
+      "assertions": [
+        "Cancellation writes no output; failed write gives hint and error log; manuscript remains identical"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-265-A] save cancellation and write failure preserve manuscript and report failure",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-265-A] save cancellation and write failure preserve manuscript and report failure",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-266-A",
+      "featureId": "NEO-266",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Select Jost then export HTML and EPUB"
+      ],
+      "assertions": [
+        "HTML embeds base64 font program; EPUB contains no fonts and declares original reader serif fallback"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-266-A] HTML embeds bundled Jost and EPUB uses reader serif fallback",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-266-A] HTML embeds bundled Jost and EPUB uses reader serif fallback",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-267-A",
+      "featureId": "NEO-267",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Use email settings dialog to enter address and choose Gmail"
+      ],
+      "assertions": [
+        "Real library metadata persists exact address and method with visible confirmation"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-267-A] email settings dialog persists address and chosen method",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-267-A] email settings dialog persists address and chosen method",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-268-A",
+      "featureId": "NEO-268",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Configure Gmail then invoke actual Email Draft menu"
+      ],
+      "assertions": [
+        "Real PDF snapshot exists under private Exports; captured compose URL recipient/hash matches independently calculated text"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-268-A] real Gmail snapshot contains provenance hash and reveals actual PDF",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-268-A] real Gmail snapshot contains provenance hash and reveals actual PDF",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-269-A",
+      "featureId": "NEO-269",
+      "testFile": "parity/tests/io.spec.ts",
+      "driverActions": [
+        "Cancel missing-email dialog then configure unavailable Mail"
+      ],
+      "assertions": [
+        "No cancelled snapshot; real fallback PDF remains readable, draft script handoff attempted, hint and reveal preserve prose"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "io-results.json",
+          "title": "[NEO-269-A] cancelled email configuration and unavailable Mail preserve draft",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "io-results.json",
+            "title": "[NEO-269-A] cancelled email configuration and unavailable Mail preserve draft",
+            "engine": "original"
+          }
+        ]
+      }
+    }
+  ]
+}

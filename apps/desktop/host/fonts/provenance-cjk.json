@@ -1,0 +1,17 @@
+{
+  "family": "Noto Serif CJK JP",
+  "version": "2.003",
+  "repository": "https://github.com/notofonts/noto-cjk",
+  "tag": "Serif2.003",
+  "revision": "9b0f1436e455d902de067a2501422e5dc71ad16b",
+  "directory": "Serif/OTF/Japanese",
+  "license": "SIL Open Font License 1.1",
+  "licensePath": "Serif/LICENSE",
+  "files": {
+    "NotoSerifCJKjp-Regular.otf": "d9854c7a8ef170b5a7932558856fd64eb8de0b007cd823fed6f9f514ad2803d3",
+    "NotoSerifCJKjp-Bold.otf": "861a2b2c0e24b23745c262be8c3fdef63f12628f0492fb120ee51aa55c503af8",
+    "LICENSE.NotoSerifCJK": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "NOTICE.NotoSerifCJK.txt": "43d0f4ae840366363596af431411ae1db61dca273ff1f5606d6b469adeabf464"
+  },
+  "noticePath": "Serif/README-third_party.md"
+}

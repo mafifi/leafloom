@@ -1,0 +1,535 @@
+{
+  "renderer": [
+    {
+      "name": "editor.transaction",
+      "traceId": "22764a664629baa153c8d5e897cc6469",
+      "spanId": "ea76213cc6ac7fc9",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.6
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "bde1f18ae611e8aad468581f511c4743",
+      "spanId": "aeb623bde976d746",
+      "parentSpanId": "791b70e5bab4d19d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.7
+    },
+    {
+      "name": "ui.input",
+      "traceId": "bde1f18ae611e8aad468581f511c4743",
+      "spanId": "791b70e5bab4d19d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.8
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "788d2be0ee5953471a0aa2b8c722cb5b",
+      "spanId": "379b80c538ba1754",
+      "parentSpanId": "2fc99c80a6a02a3c",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "ui.input",
+      "traceId": "788d2be0ee5953471a0aa2b8c722cb5b",
+      "spanId": "2fc99c80a6a02a3c",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "4552f204c60712a96b2f0203b9860057",
+      "spanId": "0fa1d04575cd99f0",
+      "parentSpanId": "93933be992e0493d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "ui.input",
+      "traceId": "4552f204c60712a96b2f0203b9860057",
+      "spanId": "93933be992e0493d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "13cce5480877a7d53f7f4433588fa185",
+      "spanId": "13fefce36bc7cd20",
+      "parentSpanId": "13893b720a7fc8f3",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "13cce5480877a7d53f7f4433588fa185",
+      "spanId": "13893b720a7fc8f3",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "a046fbae98fe87fa61865f41f7d0f7ed",
+      "spanId": "9974c2afa7da854c",
+      "parentSpanId": "7116cee0b6ce2b9c",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "a046fbae98fe87fa61865f41f7d0f7ed",
+      "spanId": "7116cee0b6ce2b9c",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "a277cd60b090f9354fda4669a6fa734f",
+      "spanId": "39b367362347f7d9",
+      "parentSpanId": "901bb2416de30afa",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "a277cd60b090f9354fda4669a6fa734f",
+      "spanId": "901bb2416de30afa",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "388d413d76e48ef5830be54d61409ea5",
+      "spanId": "da66f1ec82dd3cd1",
+      "parentSpanId": "0fd2052c02dc4554",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "ui.input",
+      "traceId": "388d413d76e48ef5830be54d61409ea5",
+      "spanId": "0fd2052c02dc4554",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "1e9d850bd2fdb6a7ffd6a4b3d4079afb",
+      "spanId": "688e5ec4eac0867b",
+      "parentSpanId": "7ecdf9bcd6501dd1",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "1e9d850bd2fdb6a7ffd6a4b3d4079afb",
+      "spanId": "7ecdf9bcd6501dd1",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "c18de5eb279ddbeacb740dc4fb533123",
+      "spanId": "db5d835b8a1c680c",
+      "parentSpanId": "67db876b7b78d4ed",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "ui.input",
+      "traceId": "c18de5eb279ddbeacb740dc4fb533123",
+      "spanId": "67db876b7b78d4ed",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "3c723675161488aca89fea2141eb39b4",
+      "spanId": "fc957c4cdfc5e698",
+      "parentSpanId": "321194d86495fd1d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0
+    },
+    {
+      "name": "ui.input",
+      "traceId": "3c723675161488aca89fea2141eb39b4",
+      "spanId": "321194d86495fd1d",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "b80966c689c984826a3c7d8e33c0bad9",
+      "spanId": "c7c3fee5273eac98",
+      "parentSpanId": "3e055cdf328dfb45",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "b80966c689c984826a3c7d8e33c0bad9",
+      "spanId": "3e055cdf328dfb45",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "a45292b26992b62cf836c081e21a3f52",
+      "spanId": "bc95ee72c419089d",
+      "parentSpanId": "4bbf45c6bba4c60a",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "a45292b26992b62cf836c081e21a3f52",
+      "spanId": "4bbf45c6bba4c60a",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "e227cd5c37c426f9130071dcf4438aa8",
+      "spanId": "6d53febda4a82e60",
+      "parentSpanId": "4a32c6197f62e975",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "ui.input",
+      "traceId": "e227cd5c37c426f9130071dcf4438aa8",
+      "spanId": "4a32c6197f62e975",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.3
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "046202e0e3658f5f4e38898f73772428",
+      "spanId": "d0ac4eb5d31bb00b",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "392419ca3b1e6f62fce40d84bb124083",
+      "spanId": "9039fc7461fa124f",
+      "parentSpanId": "5efb350135ec95e9",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.4
+    },
+    {
+      "name": "ui.input",
+      "traceId": "392419ca3b1e6f62fce40d84bb124083",
+      "spanId": "5efb350135ec95e9",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.4
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "c38abebdaf11102b6281d540bd547ac7",
+      "spanId": "9e4145ef3d4b91b8",
+      "parentSpanId": "2cfb010601498e52",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "c38abebdaf11102b6281d540bd547ac7",
+      "spanId": "2cfb010601498e52",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "a0c66f0c9ea0dd368813de031d76cffe",
+      "spanId": "3e8ac08613366f06",
+      "parentSpanId": "1b6b06efc363f21e",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "a0c66f0c9ea0dd368813de031d76cffe",
+      "spanId": "1b6b06efc363f21e",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "ea2187df1b175ca6b454579d950b5c86",
+      "spanId": "0fcf8e8d0f8522d8",
+      "parentSpanId": "a9d4c832b854f2fd",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "ea2187df1b175ca6b454579d950b5c86",
+      "spanId": "a9d4c832b854f2fd",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "9695f61dc1044ac82c7cc2f926225120",
+      "spanId": "ad7c099b3bf5bea0",
+      "parentSpanId": "e58344acb890e37e",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0
+    },
+    {
+      "name": "ui.input",
+      "traceId": "9695f61dc1044ac82c7cc2f926225120",
+      "spanId": "e58344acb890e37e",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "d0080cad356de1577cb027521eecdfd9",
+      "spanId": "96746f2f936c0485",
+      "parentSpanId": "41ffc047eb16b8fe",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "d0080cad356de1577cb027521eecdfd9",
+      "spanId": "41ffc047eb16b8fe",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "c55cd81dc9b994628ebc8f8943d7d02a",
+      "spanId": "648afd1397bb98ee",
+      "parentSpanId": "110ba59bbe75c877",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "c55cd81dc9b994628ebc8f8943d7d02a",
+      "spanId": "110ba59bbe75c877",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "b73d131eb8e0669a179c0a0574e48ea8",
+      "spanId": "4a80d794fcc31578",
+      "parentSpanId": "019bdd6cf0e702a4",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "ui.input",
+      "traceId": "b73d131eb8e0669a179c0a0574e48ea8",
+      "spanId": "019bdd6cf0e702a4",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "6b25f3b33f4dd7aa8f14305464905661",
+      "spanId": "0a3e399327bf93d5",
+      "parentSpanId": "46ba9f99c8bd0131",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "6b25f3b33f4dd7aa8f14305464905661",
+      "spanId": "46ba9f99c8bd0131",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.2
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "cb4ab97bf844f69831b47991a6e09c02",
+      "spanId": "1cd976b9d151d121",
+      "parentSpanId": "d89ba6b6b784688a",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "ui.input",
+      "traceId": "cb4ab97bf844f69831b47991a6e09c02",
+      "spanId": "d89ba6b6b784688a",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.1
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "8f7fd3b3f82d53e862a1cdcb01533986",
+      "spanId": "e0e83757ea129340",
+      "parentSpanId": "99039e951fa6b5fc",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.7
+    },
+    {
+      "name": "ui.input",
+      "traceId": "8f7fd3b3f82d53e862a1cdcb01533986",
+      "spanId": "99039e951fa6b5fc",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.7
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "30f75a9d34d9a5c04972816de0f67a23",
+      "spanId": "9c8e77e24f9bafad",
+      "parentSpanId": "15eb1cc8cd249994",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0
+    },
+    {
+      "name": "ui.input",
+      "traceId": "30f75a9d34d9a5c04972816de0f67a23",
+      "spanId": "15eb1cc8cd249994",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "04530db971520d4fba63823289fcdb35",
+      "spanId": "5eed5de63b683a2c",
+      "parentSpanId": "1497f735a2ba5f56",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.4
+    },
+    {
+      "name": "ui.command",
+      "traceId": "04530db971520d4fba63823289fcdb35",
+      "spanId": "1497f735a2ba5f56",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.9
+    },
+    {
+      "name": "editor.transaction",
+      "traceId": "d14a0826c9496281936db43d6949e16b",
+      "spanId": "502e76882309b02f",
+      "parentSpanId": "158cdf68434e7bd8",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.5
+    },
+    {
+      "name": "ui.command",
+      "traceId": "d14a0826c9496281936db43d6949e16b",
+      "spanId": "158cdf68434e7bd8",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 0.7
+    },
+    {
+      "name": "ui.command",
+      "traceId": "efe15b1a211de3cce2e16602eb35d5be",
+      "spanId": "dbfa2cb05332ddcb",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 4.1
+    },
+    {
+      "name": "editor.snapshot",
+      "traceId": "943a0e41f15c6abd191abed9dbd65c8d",
+      "spanId": "5d2aa8b9c8aafe06",
+      "parentSpanId": "569b086f548e2637",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 3.9
+    },
+    {
+      "name": "ui.save",
+      "traceId": "943a0e41f15c6abd191abed9dbd65c8d",
+      "spanId": "569b086f548e2637",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 66.5
+    }
+  ],
+  "host": {
+    "ok": true,
+    "value": [
+      {
+        "name": "ipc.open",
+        "traceId": "6d88a2d71b347c181054cffae87337f4",
+        "spanId": "8cfbaed092f2b781",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 9.158292
+      },
+      {
+        "name": "storage.checkpoint",
+        "traceId": "943a0e41f15c6abd191abed9dbd65c8d",
+        "spanId": "6863a795457961b6",
+        "parentSpanId": "c5d461c00ed15387",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 58.631542
+      },
+      {
+        "name": "ipc.save",
+        "traceId": "943a0e41f15c6abd191abed9dbd65c8d",
+        "spanId": "c5d461c00ed15387",
+        "parentSpanId": "569b086f548e2637",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 58.729125
+      }
+    ]
+  }
+}

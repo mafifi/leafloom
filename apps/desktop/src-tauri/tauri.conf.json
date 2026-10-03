@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Leafloom",
+  "version": "0.1.0",
+  "identifier": "org.mafifi.leafloom",
+  "build": {
+    "beforeBuildCommand": "pnpm run build && pnpm run bundle:host",
+    "beforeDevCommand": "pnpm run dev",
+    "devUrl": "http://localhost:5190",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' ipc: http://ipc.localhost; img-src 'self' data: blob:; media-src 'self' blob:; frame-src 'none'",
+      "capabilities": [
+        "main"
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "app"
+    ],
+    "resources": {
+      "binaries/host/": "host/"
+    },
+    "macOS": {
+      "minimumSystemVersion": "14.0",
+      "entitlements": "Entitlements.plist",
+      "infoPlist": "Info.plist"
+    },
+    "icon": [
+      "icons/icon.png",
+      "icons/Leafloom.icns"
+    ]
+  }
+}

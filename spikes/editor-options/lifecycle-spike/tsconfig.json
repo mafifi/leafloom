@@ -1,0 +1,1 @@
+{"extends":"../tsconfig.json","compilerOptions":{"noEmit":true},"include":["./**/*.ts","./**/*.cts","./**/*.svelte","../parity/src/codec.ts"],"exclude":["../node_modules"]}

@@ -1,0 +1,88 @@
+{
+  "renderer": [
+    {
+      "name": "ui.open",
+      "traceId": "0aa579e92845085386980bebac6b9301",
+      "spanId": "7c81292a4e3b40c9",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 26.5
+    },
+    {
+      "name": "ui.save",
+      "traceId": "9f7ae666b2158e124a273e1d3324f61a",
+      "spanId": "fd040ab07434686e",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 27
+    },
+    {
+      "name": "ui.save",
+      "traceId": "5d22fe746cac22ac0f0e750b58606f3b",
+      "spanId": "777f8ec29bd8887f",
+      "attributes": {},
+      "status": 0,
+      "milliseconds": 20.5
+    }
+  ],
+  "main": {
+    "ok": true,
+    "value": [
+      {
+        "name": "ipc.open",
+        "traceId": "0aa579e92845085386980bebac6b9301",
+        "spanId": "73768ebcb63a25b5",
+        "parentSpanId": "7c81292a4e3b40c9",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 11.786958
+      },
+      {
+        "name": "storage.save",
+        "traceId": "9f7ae666b2158e124a273e1d3324f61a",
+        "spanId": "2dde427ff8b09226",
+        "parentSpanId": "e0f6e1fe0e120f8f",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 26.114583
+      },
+      {
+        "name": "ipc.save",
+        "traceId": "9f7ae666b2158e124a273e1d3324f61a",
+        "spanId": "e0f6e1fe0e120f8f",
+        "parentSpanId": "fd040ab07434686e",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 26.187833
+      },
+      {
+        "name": "storage.save",
+        "traceId": "5d22fe746cac22ac0f0e750b58606f3b",
+        "spanId": "34bf1c6535f461cb",
+        "parentSpanId": "8ac519a38dbd10fd",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 19.9995
+      },
+      {
+        "name": "ipc.save",
+        "traceId": "5d22fe746cac22ac0f0e750b58606f3b",
+        "spanId": "8ac519a38dbd10fd",
+        "parentSpanId": "777f8ec29bd8887f",
+        "attributes": {},
+        "status": 0,
+        "milliseconds": 20.090833
+      },
+      {
+        "name": "ipc.save",
+        "traceId": "17dee5ddb563f96a3435834ae1f78fb8",
+        "spanId": "326812a0da7460f0",
+        "attributes": {
+          "failure.code": "UNAUTHORIZED"
+        },
+        "status": 2,
+        "milliseconds": 0.1895
+      }
+    ]
+  }
+}

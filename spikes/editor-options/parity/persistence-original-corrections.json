@@ -1,0 +1,247 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/persistence.config.ts",
+      "--grep",
+      "NEO-230|NEO-240|NEO-244"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "targetBundleSha256": "afbdc1a65806aa533b1c85274a7fe0ee22ee3d082a7957874accf88a56940a22",
+      "hostHarnessSha256": "cdaa6cade4f52713916e4b1306d7d82cb49b6d0f8d21b97c4a3c64fa26a71157",
+      "dependencyLockSha256": "88d76a1fcbe977bd95ee06060d9ee8827347700c1d7f007ff095bb80b245ecf2",
+      "proofBuildSha256": "affa920703504e4afd763bbb96ac6bf68dffb0f8ac64c031a92035fd050de933",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "targetBundleSha256": "afbdc1a65806aa533b1c85274a7fe0ee22ee3d082a7957874accf88a56940a22",
+          "hostHarnessSha256": "cdaa6cade4f52713916e4b1306d7d82cb49b6d0f8d21b97c4a3c64fa26a71157",
+          "dependencyLockSha256": "88d76a1fcbe977bd95ee06060d9ee8827347700c1d7f007ff095bb80b245ecf2",
+          "proofBuildSha256": "affa920703504e4afd763bbb96ac6bf68dffb0f8ac64c031a92035fd050de933",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "persistence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-original-corrections.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "persistence.spec.ts",
+          "line": 11,
+          "column": 161,
+          "specs": [
+            {
+              "title": "[NEO-230-A] plain library JSON chapter HTML auxiliary HTML and side JSON are real readable compatible files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1467,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:34:28.210Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-238d749fb07ad122ef53",
+              "file": "persistence.spec.ts",
+              "line": 16,
+              "column": 2
+            },
+            {
+              "title": "[NEO-240-A] external added renamed reordered removed chapters and side metadata are adopted without losing unsaved words",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3062,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:34:29.693Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-5924159bb419dfe035e0",
+              "file": "persistence.spec.ts",
+              "line": 26,
+              "column": 2
+            },
+            {
+              "title": "[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12460,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ch\": \"one\",\u001b[22m\n\u001b[32m-   \"off\": 2,\u001b[39m\n\u001b[32m-   \"p\": 3,\u001b[39m\n\u001b[31m+   \"off\": 4,\u001b[39m\n\u001b[31m+   \"p\": 1,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ch\": \"one\",\u001b[22m\n\u001b[32m-   \"off\": 2,\u001b[39m\n\u001b[32m-   \"p\": 3,\u001b[39m\n\u001b[31m+   \"off\": 4,\u001b[39m\n\u001b[31m+   \"p\": 1,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts:30:1004",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                          "column": 1004,
+                          "line": 30
+                        },
+                        "snippet": "  28 |  test('[NEO-242-A] completed local save crossing delayed disk read prevents stale text adoption',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Alpha.</p>'}]);await external(directory,id,'one','<p>Stale incoming.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:1000}}});await refresh(page);await readStarted(directory,'one');await caret(page,'one',0,6);await page.keyboard.type(' Latest local');await blur(page);await diskContains(directory,id,'Latest local');await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='chapter:read').length).toBeGreaterThan(0);await expect(page.locator('.chapter-body')).toContainText('Latest local');await expect(page.locator('.chapter')).toHaveCount(1);expect(await readChapter(directory,id)).not.toContain('Stale incoming');await page.locator('#back-to-shelf').click();await host(directory,{ipcLog:true,ipcDelays:{'library:read':{after:900}}});const starts=(await events(directory)).filter(e=>e.kind==='ipc-start'&&e.channel==='library:read').length;const completes=(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='library:read').length;await refresh(page);await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-start'&&e.channel==='library:read').length).toBeGreaterThan(starts);await page.locator('.shelf-label').first().fill('Latest local shelf');await page.locator('.shelf-label').first().press('Enter');await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='library:read').length).toBeGreaterThan(completes);await expect(page.locator('.shelf-label').first()).toHaveText('Latest local shelf');expect(JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8')).shelves[0].name).toBe('Latest local shelf');});\n  29 |  test('[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book',async()=>{const first=await fixture(page,directory,[{id:'one',html:'<p>First book.</p>'}]);await page.locator('#back-to-shelf').click();const second=await book(page,'Second Identity');await page.locator(`[data-book-id=\"${first}\"]`).click();await external(directory,first,'one','<p>Old incoming must stay old.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:600}}});await refresh(page);await readStarted(directory,'one');await page.locator('#back-to-shelf').click();await page.locator(`[data-book-id=\"${second.bookId}\"]`).click();await expect(page.locator('#tp-title')).toHaveText('Second Identity');await expect(page.locator('.chapter-body')).not.toContainText('Old incoming');expect((await meta(directory,second.bookId)).chapterOrder).toEqual([second.chapterId]);expect(await json(directory,second.bookId,'stickies')).toEqual([]);});\n> 30 |  test('[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>First line.</p><p>Second line.</p>'}],{lastPosition:{chapterId:'one',pIdx:0,off:0,at:0}});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:9,off:4,at:Date.now()-130_000};});await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:4});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:3,off:2,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(1);await external(directory,id,'one','<p>First line.</p><p>Second line.</p><p>Third line.</p><p>Fourth arriving line.</p>');await refresh(page);await expect(page.locator('.chapter-body')).toContainText('Fourth arriving line.');console.log('REMOTE244',JSON.stringify({meta:await meta(directory,id),spot:await spot(page)}));await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:3,off:2});const earlier=Date.now();await caret(page,'one',0,1);await page.keyboard.type('X');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:2,at:earlier};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(0);await nativeMenu(app,'Cover Art');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:3,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);await expect(page.locator('#ca-key')).toBeFocused();await page.locator('.m-cancel').click();await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:3});});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^\n  31 |  test('[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Before poll.</p>'}]);await external(directory,id,'one','<p>Visibility arrival.</p>');await refresh(page,'visibilitychange');await expect(page.locator('.chapter-body')).toContainText('Visibility arrival.');await external(directory,id,'one','<p>Periodic arrival.</p>');await expect(page.locator('.chapter-body')).toContainText('Periodic arrival.',{timeout:32_000});await expect(page.locator('#tp-title')).toHaveText('Structure Fixture');await page.locator('#back-to-shelf').click();const scroll=await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop);const lib=JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8'));lib.shelves[0].name='Remote shelf name';await writeFile(path.join(libraryPath(directory),'library.json'),JSON.stringify(lib));await refresh(page);await expect(page.locator('.shelf-label').first()).toHaveText('Remote shelf name');expect(await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop)).toBe(scroll);});\n  32 |  test('[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p><span class=\"spell-error\">Legacy&nbsp;words</span><span class=\"ph-mark\" data-sid=\"legacy\">?</span></p><p class=\"poetry\"><i>Poetry stays.</i></p><p class=\"scene-break\" style=\"text-align:center\">Ordinary prose.</p>'}]);await expect(page.locator('.ph-mark')).toHaveText('⚑');await expect(page.locator('.chapter-body p').last()).not.toHaveClass(/scene-break/);await expect(page.locator('.poetry')).toContainText('Poetry stays.');await caret(page,'one',0,6);await page.keyboard.type(' edited');await blur(page);await diskContains(directory,id,'edited');const saved=await readChapter(directory,id);expect(saved).not.toContain('&nbsp;');expect(saved).not.toContain('spell-error');expect(saved).not.toContain('?');expect(saved).toContain('poetry');expect(saved).toMatch(/<(i|em)>Poetry stays/);expect(saved).toContain('data-sid=\"legacy\"');});\n  33 |  test('[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Original safe.</p>'}]);await page.evaluate(()=>{const notifications:string[]=[];(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications=notifications;new MutationObserver(()=>{const text=document.querySelector('#hint')!.textContent!;if(text.includes('details were logged'))notifications.push(text);}).observe(document.querySelector('#hint')!,{childList:true,subtree:true,characterData:true});});await host(directory,{ipcFailures:{'chapter:write':'Fixture write denied'}});await caret(page,'one',0,14);await page.keyboard.type(' Unsaved survives');await blur(page);await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Fixture write denied');await expect(page.locator('#hint')).toContainText('details were logged');await page.evaluate(()=>window.dispatchEvent(new ErrorEvent('error',{message:'Second fixture renderer error',filename:'fixture.ts',lineno:1})));await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Second fixture renderer error');expect(await page.evaluate(()=>(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications)).toHaveLength(1);expect(await readChapter(directory,id)).not.toContain('Unsaved survives');await expect(page.locator('.chapter-body')).toContainText('Unsaved survives');await host(directory,{});await blur(page);await diskContains(directory,id,'Unsaved survives');});"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                            "column": 1004,
+                            "line": 30
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"ch\": \"one\",\u001b[22m\n\u001b[32m-   \"off\": 2,\u001b[39m\n\u001b[32m-   \"p\": 3,\u001b[39m\n\u001b[31m+   \"off\": 4,\u001b[39m\n\u001b[31m+   \"p\": 1,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  28 |  test('[NEO-242-A] completed local save crossing delayed disk read prevents stale text adoption',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Alpha.</p>'}]);await external(directory,id,'one','<p>Stale incoming.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:1000}}});await refresh(page);await readStarted(directory,'one');await caret(page,'one',0,6);await page.keyboard.type(' Latest local');await blur(page);await diskContains(directory,id,'Latest local');await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='chapter:read').length).toBeGreaterThan(0);await expect(page.locator('.chapter-body')).toContainText('Latest local');await expect(page.locator('.chapter')).toHaveCount(1);expect(await readChapter(directory,id)).not.toContain('Stale incoming');await page.locator('#back-to-shelf').click();await host(directory,{ipcLog:true,ipcDelays:{'library:read':{after:900}}});const starts=(await events(directory)).filter(e=>e.kind==='ipc-start'&&e.channel==='library:read').length;const completes=(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='library:read').length;await refresh(page);await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-start'&&e.channel==='library:read').length).toBeGreaterThan(starts);await page.locator('.shelf-label').first().fill('Latest local shelf');await page.locator('.shelf-label').first().press('Enter');await expect.poll(async()=>(await events(directory)).filter(e=>e.kind==='ipc-complete'&&e.channel==='library:read').length).toBeGreaterThan(completes);await expect(page.locator('.shelf-label').first()).toHaveText('Latest local shelf');expect(JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8')).shelves[0].name).toBe('Latest local shelf');});\n  29 |  test('[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book',async()=>{const first=await fixture(page,directory,[{id:'one',html:'<p>First book.</p>'}]);await page.locator('#back-to-shelf').click();const second=await book(page,'Second Identity');await page.locator(`[data-book-id=\"${first}\"]`).click();await external(directory,first,'one','<p>Old incoming must stay old.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:600}}});await refresh(page);await readStarted(directory,'one');await page.locator('#back-to-shelf').click();await page.locator(`[data-book-id=\"${second.bookId}\"]`).click();await expect(page.locator('#tp-title')).toHaveText('Second Identity');await expect(page.locator('.chapter-body')).not.toContainText('Old incoming');expect((await meta(directory,second.bookId)).chapterOrder).toEqual([second.chapterId]);expect(await json(directory,second.bookId,'stickies')).toEqual([]);});\n> 30 |  test('[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>First line.</p><p>Second line.</p>'}],{lastPosition:{chapterId:'one',pIdx:0,off:0,at:0}});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:9,off:4,at:Date.now()-130_000};});await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:4});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:3,off:2,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(1);await external(directory,id,'one','<p>First line.</p><p>Second line.</p><p>Third line.</p><p>Fourth arriving line.</p>');await refresh(page);await expect(page.locator('.chapter-body')).toContainText('Fourth arriving line.');console.log('REMOTE244',JSON.stringify({meta:await meta(directory,id),spot:await spot(page)}));await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:3,off:2});const earlier=Date.now();await caret(page,'one',0,1);await page.keyboard.type('X');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:2,at:earlier};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(0);await nativeMenu(app,'Cover Art');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:3,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);await expect(page.locator('#ca-key')).toBeFocused();await page.locator('.m-cancel').click();await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:3});});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^\n  31 |  test('[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Before poll.</p>'}]);await external(directory,id,'one','<p>Visibility arrival.</p>');await refresh(page,'visibilitychange');await expect(page.locator('.chapter-body')).toContainText('Visibility arrival.');await external(directory,id,'one','<p>Periodic arrival.</p>');await expect(page.locator('.chapter-body')).toContainText('Periodic arrival.',{timeout:32_000});await expect(page.locator('#tp-title')).toHaveText('Structure Fixture');await page.locator('#back-to-shelf').click();const scroll=await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop);const lib=JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8'));lib.shelves[0].name='Remote shelf name';await writeFile(path.join(libraryPath(directory),'library.json'),JSON.stringify(lib));await refresh(page);await expect(page.locator('.shelf-label').first()).toHaveText('Remote shelf name');expect(await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop)).toBe(scroll);});\n  32 |  test('[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p><span class=\"spell-error\">Legacy&nbsp;words</span><span class=\"ph-mark\" data-sid=\"legacy\">?</span></p><p class=\"poetry\"><i>Poetry stays.</i></p><p class=\"scene-break\" style=\"text-align:center\">Ordinary prose.</p>'}]);await expect(page.locator('.ph-mark')).toHaveText('⚑');await expect(page.locator('.chapter-body p').last()).not.toHaveClass(/scene-break/);await expect(page.locator('.poetry')).toContainText('Poetry stays.');await caret(page,'one',0,6);await page.keyboard.type(' edited');await blur(page);await diskContains(directory,id,'edited');const saved=await readChapter(directory,id);expect(saved).not.toContain('&nbsp;');expect(saved).not.toContain('spell-error');expect(saved).not.toContain('?');expect(saved).toContain('poetry');expect(saved).toMatch(/<(i|em)>Poetry stays/);expect(saved).toContain('data-sid=\"legacy\"');});\n  33 |  test('[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Original safe.</p>'}]);await page.evaluate(()=>{const notifications:string[]=[];(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications=notifications;new MutationObserver(()=>{const text=document.querySelector('#hint')!.textContent!;if(text.includes('details were logged'))notifications.push(text);}).observe(document.querySelector('#hint')!,{childList:true,subtree:true,characterData:true});});await host(directory,{ipcFailures:{'chapter:write':'Fixture write denied'}});await caret(page,'one',0,14);await page.keyboard.type(' Unsaved survives');await blur(page);await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Fixture write denied');await expect(page.locator('#hint')).toContainText('details were logged');await page.evaluate(()=>window.dispatchEvent(new ErrorEvent('error',{message:'Second fixture renderer error',filename:'fixture.ts',lineno:1})));await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Second fixture renderer error');expect(await page.evaluate(()=>(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications)).toHaveLength(1);expect(await readChapter(directory,id)).not.toContain('Unsaved survives');await expect(page.locator('.chapter-body')).toContainText('Unsaved survives');await host(directory,{});await blur(page);await diskContains(directory,id,'Unsaved survives');});\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts:30:1004"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "REMOTE244 {\"meta\":{\"id\":\"book-muqgy9ho-qgrqn\",\"title\":\"Structure Fixture\",\"subtitle\":\"\",\"series\":\"\",\"author\":\"Library Writer\",\"wordGoal\":0,\"created\":\"2026-10-02T04:34:33.229Z\",\"modified\":\"2026-10-02T04:34:34.200Z\",\"chapterOrder\":[\"one\"],\"tabNames\":{\"notes\":\"Notes\",\"outline\":\"Outline\"},\"chapterTitles\":{},\"chapterNotes\":{},\"wordCount\":3,\"dailyCounts\":{\"2026-10-02\":{\"start\":0,\"end\":3}},\"lastPosition\":{\"chapterId\":\"one\",\"pIdx\":9,\"off\":4,\"at\":1790915543404,\"scroll\":639},\"chapterKinds\":{}},\"spot\":{\"ch\":\"one\",\"p\":1,\"off\":4}}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T04:34:32.763Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results/persistence-original-NEO-2-4b25e--and-open-modal-block-jumps/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results/persistence-original-NEO-2-4b25e--and-open-modal-block-jumps/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                        "column": 1004,
+                        "line": 30
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-8430db688069420833a8",
+              "file": "persistence.spec.ts",
+              "line": 30,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:34:27.918Z",
+    "duration": 17326.62,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,73 @@
+import {test,expect} from './author-fixture';
+import {existingBook} from './book-fixture';
+import {persistedBook,persistedLibrary} from './storage-probe';
+const mod=process.platform==='darwin'?'Meta':'Control';
+async function writing(page:Parameters<typeof existingBook>[0],language='en',html='<p><br></p>'){
+ const c=await existingBook(page,{chapters:[html],library:{spellLanguage:language}});await c.driver.select(0,0,0);return c;
+}
+const quoteCases=[['en','“Hello”'],['nl','“Hello”'],['pt','“Hello”'],['pt-PT','«Hello»'],['fr','«\u202fHello\u202f»'],['es','«Hello»'],['it','«Hello»'],['de','„Hello“'],['pl','„Hello”'],['ro','„Hello”'],['ru','«Hello»'],['el','«Hello»'],['en-AU','“Hello”']] as const;
+for(const [language,result] of quoteCases)test(`[NEO-113-A] Leafloom: ${language} writing preference selects exact quote glyphs and retains them after disk reopen`,async({page})=>{
+ const c=await writing(page,language);await page.keyboard.type('"Hello"');await c.driver.expectParagraphs([[result]]);expect(await c.driver.caret()).toMatchObject({offset:result.length});await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).toContain(result);expect((await persistedLibrary(page)).spellLanguage).toBe(language);await c.driver.selectBook(c.title);await c.driver.expectParagraphs([[result]]);
+});
+for(const [language,result] of [['en','‘Hello’ don’t'],['nl','‘Hello’ don’t'],['pt','‘Hello’ don’t'],['es','’Hello’ don’t']] as const)test(`[NEO-112-A] Leafloom: ${language} distinguishes opening single quotes and apostrophes without changing ordinary words`,async({page})=>{
+ const c=await writing(page,language);await page.keyboard.type("'Hello' don't");await c.driver.expectParagraphs([[result]]);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).toContain(result);
+});
+test('[NEO-111-A] Leafloom: paragraph quote balance opens after brackets and unquoted dashes but closes interrupted dialogue',async({page})=>{
+ const c=await writing(page);await page.keyboard.type('("Hello") "Wait--" --"Again"');await c.driver.expectParagraphs([['(“Hello”) “Wait—” —“Again”']]);await c.driver.reopen();await c.driver.expectParagraphs([['(“Hello”) “Wait—” —“Again”']]);
+});
+test('[NEO-109-A] Leafloom: em dash replaces the previous bold hyphen without inheriting neighboring italic prose',async({page})=>{
+ const c=await writing(page,'en','<p><i>Alpha </i><b>-</b></p>');await c.driver.select(0,0,7);await page.keyboard.press('-');await c.driver.expectParagraphs([['Alpha —']]);await expect(page.locator('.chapter-body p b,.chapter-body p strong')).toHaveText('—');await expect(page.locator('.chapter-body p i,.chapter-body p em')).toHaveText('Alpha ');expect(await c.driver.caret()).toMatchObject({offset:7});await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).toMatch(/<(?:b|strong)>—<\/(?:b|strong)>/);
+});
+for(const field of ['title','notes','outline','shelf'] as const)test(`[NEO-109-A] Leafloom: ${field} author field converts paired hyphens through its actual focused keyboard handler`,async({page})=>{
+ const c=await writing(page);let target=page.locator('#tp-title');if(field==='notes'){await page.locator('.tab[data-tab="notes"]').click();target=page.locator('#aux-editor');await target.click();}else if(field==='outline'){await page.locator('.tab[data-tab="outline"]').click();target=page.locator('.ol-text').first();await target.fill('');}else if(field==='shelf'){await c.driver.shelf();target=page.locator('.shelf-label').first();await target.fill('');}else await target.fill('');await target.click();await page.keyboard.type('A--B');await expect(target).toHaveText('A—B');expect(await target.evaluate(el=>{const sel=getSelection();if(!sel?.anchorNode||!el.contains(sel.anchorNode))return null;const r=document.createRange();r.selectNodeContents(el);r.setEnd(sel.anchorNode,sel.anchorOffset);return {offset:r.toString().length,collapsed:sel.isCollapsed};})).toEqual({offset:3,collapsed:true});if(field==='shelf'){await target.press('Enter');await expect.poll(async()=>(await persistedLibrary(page)).shelves[0].name).toBe('A—B');}else{await c.driver.shelf();const saved=await persistedBook(page,field==='title'?'A—B':c.title,c.id);if(field==='notes')expect(saved.notes).toContain('A—B');else if(field==='outline')expect(saved.metadata.chapterNotes['ch-1']).toBe('A—B');else expect(saved.metadata.title).toBe('A—B');}
+});
+test('[NEO-110-A] Leafloom: ellipsis replacement retains bold styling and native Undo restores the previous two dots with its caret',async({page})=>{
+ const c=await writing(page,'en','<p><b>Wait..</b></p>');await c.driver.select(0,0,6);await page.keyboard.press('.');await c.driver.expectParagraphs([['Wait…']]);await expect(page.locator('.chapter-body p b,.chapter-body p strong')).toHaveText('Wait…');expect(await c.driver.caret()).toMatchObject({offset:5});await c.driver.undo();await c.driver.expectParagraphs([['Wait..']]);expect(await c.driver.caret()).toMatchObject({offset:6});await c.driver.redo();await c.driver.expectParagraphs([['Wait…']]);await c.driver.reopen();await c.driver.expectParagraphs([['Wait…']]);
+});
+for(const [style,chapters,chapter,result] of [['local reverse',['<p>»Earlier« </p>'],0,'»Earlier« »Again«'],['local forward',['<p>«Earlier» </p>'],0,'«Earlier» «Again»'],['book fallback',['<p>»Earlier«</p>','<p><br></p>'],1,'»Again«']] as const)test(`[NEO-114-A] Leafloom: ${style} established manuscript quotes override default German style without editing earlier prose`,async({page})=>{
+ const c=await existingBook(page,{chapters:[...chapters],library:{spellLanguage:'de'}});const offset=chapter===0?chapters[0].replace(/<[^>]*>/g,'').length:0;await c.driver.select(chapter,0,offset);await page.keyboard.type('"Again"');await expect(page.locator('.chapter-body').nth(chapter).locator('p').first()).toHaveText(result);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[chapter].html).toContain(result);
+});
+test('[NEO-115-A] Leafloom: French punctuation replaces only the immediately preceding ordinary or NBSP space with narrow spacing',async({page})=>{
+ const c=await writing(page,'fr');await page.keyboard.type('Oui ; non : quoi ! pourquoi ?');await c.driver.expectParagraphs([['Oui\u202f; non\u202f: quoi\u202f! pourquoi\u202f?']]);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).toContain('\u202f');
+});
+for(const [language,input,result] of [['pt','-Olá','— Olá'],['ru','-Hello','— Hello'],['es','- Hola','—Hola'],['en','- Hello','— Hello'],['en','-Hello','—Hello']] as const)test(`[NEO-116-A] Leafloom: ${language} opening speech ${JSON.stringify(input)} follows source language spacing and persists`,async({page})=>{
+ const c=await writing(page,language);await page.keyboard.type(input);await c.driver.expectParagraphs([[result]]);await c.driver.reopen();await c.driver.expectParagraphs([[result]]);
+});
+for(const [language,result] of [['en','Alpha – beta'],['pt','Alpha — beta'],['ru','Alpha — beta'],['es','Alpha — beta']] as const)test(`[NEO-117-A] Leafloom: ${language} standalone middle hyphen converts on following space and preserves surrounding text`,async({page})=>{
+ const c=await writing(page,language);await page.keyboard.type('Alpha - beta');await c.driver.expectParagraphs([[result]]);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).toContain(result);
+});
+for(const text of ['-5','guarda-chuva','pré- e pós-'])test(`[NEO-118-A] Leafloom: typed ${JSON.stringify(text)} meaningful hyphens and all-dash lines stay literal`,async({page})=>{
+ const c=await writing(page,'pt');await page.keyboard.type(text);await c.driver.expectParagraphs([[text]]);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html.replace(/<[^>]*>/g,'')).toBe(text);
+});
+test('[NEO-119-A] Leafloom: modifier-transition Undo records original lost letter and preserves candidate author input',async({page})=>{
+ const c=await writing(page,'es');await page.keyboard.type('-H');await c.driver.expectParagraphs([['—H']]);await page.keyboard.press(mod+'+z');const expected=process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference'?'-':'-H';await c.driver.expectParagraphs([[expected]]);const caret=await c.driver.caret();await test.info().attach('modifier-transition-undo-caret',{body:JSON.stringify(caret),contentType:'application/json'});expect(caret).toMatchObject({offset:process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference'?0:expected.length});await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html.replace(/<[^>]*>/g,'')).toBe(expected);
+});
+for(const field of ['notes','outline'] as const)test(`[NEO-120-A] Leafloom: opening ${field} list hyphen stays literal while the Spanish manuscript speech dash converts`,async({page})=>{
+ const c=await writing(page,'es');await page.keyboard.type('-Hola');await c.driver.expectParagraphs([['—Hola']]);await page.locator('.tab[data-tab="'+field+'"]').click();const target=page.locator(field==='notes'?'#aux-editor':'.ol-text').first();if(field==='outline')await target.fill('');await target.click();await page.keyboard.type('- Lista');await expect(target).toHaveText('- Lista');await c.driver.shelf();const saved=await persistedBook(page,c.title,c.id);if(field==='notes')expect(saved.notes).toContain('- Lista');else expect(saved.metadata.chapterNotes['ch-1']).toBe('- Lista');
+});
+
+async function paste(page:Parameters<typeof existingBook>[0],text:string,html=''){
+ await page.locator('.chapter-body').first().evaluate((el,payload)=>{const data=new DataTransfer();data.setData('text/plain',payload.text);if(payload.html)data.setData('text/html',payload.html);const editable=el.querySelector<HTMLElement>('[contenteditable="true"]')??el;editable.dispatchEvent(new ClipboardEvent('paste',{bubbles:true,cancelable:true,clipboardData:data}));},{text,html});
+}
+test('[NEO-118-A] Leafloom: pasted all-dash scene text stays literal through the real clipboard-event boundary',async({page})=>{
+ const c=await writing(page,'pt');await paste(page,'---');await c.driver.expectParagraphs([['---']]);await c.driver.reopen();await c.driver.expectParagraphs([['---']]);
+});
+test('[NEO-115-A] Leafloom: French punctuation replaces a rich-run NBSP immediately before the caret without changing preceding italic prose',async({page})=>{
+ const c=await writing(page,'fr','<p><i>Oui</i> </p>');await c.driver.select(0,0,4);await page.keyboard.press(';');await c.driver.expectParagraphs([['Oui ;']]);await expect(page.locator('.chapter-body p i,.chapter-body p em')).toHaveText('Oui\u202f;');await c.driver.reopen();await c.driver.expectParagraphs([['Oui ;']]);
+});
+test('[NEO-121-A] Leafloom: pasted styled speech dash keeps both rich run boundaries and every author word',async({page})=>{
+ const c=await writing(page,'es');await paste(page,'-Hola','<p><b>-</b><i>Hola</i></p>');await c.driver.expectParagraphs([['—Hola']]);await expect(page.locator('.chapter-body p b,.chapter-body p strong')).toHaveText('—');await expect(page.locator('.chapter-body p i,.chapter-body p em')).toHaveText('Hola');await c.driver.shelf();const saved=await persistedBook(page,c.title,c.id);expect(saved.chapters[0].html).toMatch(/<(?:b|strong)>—<\/(?:b|strong)>/);expect(saved.chapters[0].html).toMatch(/<(?:i|em)>Hola<\/(?:i|em)>/);await c.driver.selectBook(c.title);await c.driver.expectParagraphs([['—Hola']]);
+});
+for(const [prefix,result] of [['Lead','Lead-Hola'],['Lead ','Lead -Hola']] as const)test(`[NEO-118-A] Leafloom: pasted speech fragment after ${JSON.stringify(prefix)} respects actual paragraph edges and preceding spacing`,async({page})=>{
+ const c=await writing(page,'es','<p>'+prefix+'tail</p>');await c.driver.select(0,0,prefix.length,prefix.length+4);await paste(page,'-Hola');await c.driver.expectParagraphs([[result]]);await c.driver.reopen();await c.driver.expectParagraphs([[result]]);
+});
+
+test('[NEO-119-A] Leafloom: directly delivered trusted modified-Z retains the just-typed speech letter when restoring its hyphen',async({page})=>{
+ const c=await writing(page,'es');await page.keyboard.type('-H');await c.driver.expectParagraphs([['—H']]);const session=await page.context().newCDPSession(page);try{for(const type of ['keyDown','keyUp'] as const)await session.send('Input.dispatchKeyEvent',{type,key:'z',code:'KeyZ',windowsVirtualKeyCode:90,nativeVirtualKeyCode:90,modifiers:process.platform==='darwin'?4:2});}finally{await session.detach();}await c.driver.expectParagraphs([['-H']]);expect(await c.driver.caret()).toMatchObject({offset:2});await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html.replace(/<[^>]*>/g,'')).toBe('-H');
+});
+for(const [name,modifiers,expected] of [['Alt',1,'--'],['Control',2,'-'],['Meta',4,'-']] as const)test(`[NEO-109-A] Leafloom: trusted ${name} modified hyphen bypasses smart em-dash conversion without changing previous bold styling`,async({page})=>{
+ const c=await writing(page,'en','<p><b>-</b></p>');await c.driver.select(0,0,1);const session=await page.context().newCDPSession(page);try{for(const type of ['keyDown','keyUp'] as const)await session.send('Input.dispatchKeyEvent',{type,key:'-',code:'Minus',windowsVirtualKeyCode:189,nativeVirtualKeyCode:189,modifiers,text:type==='keyDown'?'-':'',unmodifiedText:'-'});}finally{await session.detach();}await c.driver.expectParagraphs([[expected]]);await expect(page.locator('.chapter-body p b,.chapter-body p strong')).toHaveText(expected);await c.driver.shelf();expect((await persistedBook(page,c.title,c.id)).chapters[0].html).not.toContain('—');
+});
+test('[NEO-109-A] Leafloom: trusted key229 and actual native composition keep literal hyphens and bold marks through commit and disk reopen',async({page})=>{
+ const c=await writing(page,'en','<p><b>-</b></p>');await c.driver.select(0,0,1);const session=await page.context().newCDPSession(page);try{await session.send('Input.dispatchKeyEvent',{type:'keyDown',key:'-',code:'Minus',windowsVirtualKeyCode:229,nativeVirtualKeyCode:229,text:'-',unmodifiedText:'-'});await session.send('Input.dispatchKeyEvent',{type:'keyUp',key:'-',code:'Minus',windowsVirtualKeyCode:229,nativeVirtualKeyCode:229});await c.driver.expectParagraphs([['--']]);await session.send('Input.imeSetComposition',{text:'-',selectionStart:1,selectionEnd:1});await session.send('Input.insertText',{text:'--'});}finally{await session.detach();}await c.driver.expectParagraphs([['----']]);await expect(page.locator('.chapter-body p b,.chapter-body p strong')).toHaveText('----');await c.driver.reopen();await c.driver.expectParagraphs([['----']]);
+});

@@ -1,0 +1,1513 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/persistence.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+        "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+        "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+        "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+        "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+        "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+        "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+        "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+        "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+      },
+      "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+      "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+      "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+            "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+            "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+            "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+            "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+            "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+            "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+            "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+            "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+          },
+          "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+          "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+          "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "persistence.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "persistence.spec.ts",
+      "file": "persistence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "persistence.spec.ts",
+          "line": 11,
+          "column": 161,
+          "specs": [
+            {
+              "title": "[NEO-230-A] plain library JSON chapter HTML auxiliary HTML and side JSON are real readable compatible files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3855,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:22.386Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-238d749fb07ad122ef53",
+              "file": "persistence.spec.ts",
+              "line": 16,
+              "column": 2
+            },
+            {
+              "title": "[NEO-231-A] immediate shelf blur and close flush chapter notes and sticky text into their original book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3795,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:26.270Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-fd6bed14ec5eaa07f611",
+              "file": "persistence.spec.ts",
+              "line": 17,
+              "column": 2
+            },
+            {
+              "title": "[NEO-231-D] deferred real open-frame resume characterizes source caret theft and candidate preserves author typing disk and history",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1813,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:30.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-1096f54be6ffb4a420b9",
+              "file": "persistence.spec.ts",
+              "line": 18,
+              "column": 2
+            },
+            {
+              "title": "[NEO-232-A] later chapter writes remain newest when older completed-write reply is delayed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2436,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:31.902Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-53268aed8d4b90fb07d8",
+              "file": "persistence.spec.ts",
+              "line": 33,
+              "column": 2
+            },
+            {
+              "title": "[NEO-233-A] startup daily ZIP retains latest 14 and excludes backup export Finder and cloud placeholder files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3605,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:34.347Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-5d78cb12b9199588d675",
+              "file": "persistence.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-234-A] unreadable backup input is reported while readable manuscripts remain in real ZIP",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2642,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:37.962Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-0877112afe5f364cbb3d",
+              "file": "persistence.spec.ts",
+              "line": 35,
+              "column": 2
+            },
+            {
+              "title": "[NEO-235-A] second desktop process with shared private profile exits and first keeps its sole editing window",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2709,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:40.613Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-c486d9b854248fe00111",
+              "file": "persistence.spec.ts",
+              "line": 36,
+              "column": 2
+            },
+            {
+              "title": "[NEO-236-A] missing and downloading-empty chapter files never replace nonempty visible draft",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3007,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:43.331Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-cac1b81b44ba6a18c4c1",
+              "file": "persistence.spec.ts",
+              "line": 37,
+              "column": 2
+            },
+            {
+              "title": "[NEO-237-A] unmodified external text is adopted once while caret and scroll survive refresh",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2832,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:46.351Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-c57ab148a035a8dfdd4f",
+              "file": "persistence.spec.ts",
+              "line": 38,
+              "column": 2
+            },
+            {
+              "title": "[NEO-238-A] externally removed prose is adopted and complete replaced chapter survives as Darling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2244,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:49.192Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-ab04abf400c5047c035e",
+              "file": "persistence.spec.ts",
+              "line": 39,
+              "column": 2
+            },
+            {
+              "title": "[NEO-239-A] local typing during delayed external read keeps local prose and persists adjacent conflict chapter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3407,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:51.443Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-26ac4ecc34061583dccf",
+              "file": "persistence.spec.ts",
+              "line": 40,
+              "column": 2
+            },
+            {
+              "title": "[NEO-240-A] external added renamed reordered removed chapters and side metadata are adopted without losing unsaved words",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3632,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:54.856Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-5924159bb419dfe035e0",
+              "file": "persistence.spec.ts",
+              "line": 41,
+              "column": 2
+            },
+            {
+              "title": "[NEO-241-A] concurrent structural edits retain incoming and local chapters and clear stale structural undo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4526,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:03:58.493Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-44a7e66da284e1eefcea",
+              "file": "persistence.spec.ts",
+              "line": 42,
+              "column": 2
+            },
+            {
+              "title": "[NEO-242-A] completed local save crossing delayed disk read prevents stale text adoption",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4842,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:03.025Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-dd86d309cbd981a09504",
+              "file": "persistence.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2682,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:07.872Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-7443f830b0c6e806aadf",
+              "file": "persistence.spec.ts",
+              "line": 44,
+              "column": 2
+            },
+            {
+              "title": "[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5431,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:10.559Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-8430db688069420833a8",
+              "file": "persistence.spec.ts",
+              "line": 45,
+              "column": 2
+            },
+            {
+              "title": "[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 32437,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:15.995Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-a312df17d2f17153eae2",
+              "file": "persistence.spec.ts",
+              "line": 46,
+              "column": 2
+            },
+            {
+              "title": "[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1343,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:48.439Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-a0dbb773b3c57318ed9c",
+              "file": "persistence.spec.ts",
+              "line": 47,
+              "column": 2
+            },
+            {
+              "title": "[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:49.790Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-ceb45ea2ffb11f6dda6a",
+              "file": "persistence.spec.ts",
+              "line": 48,
+              "column": 2
+            }
+          ]
+        },
+        {
+          "title": "prosemirror",
+          "file": "persistence.spec.ts",
+          "line": 11,
+          "column": 161,
+          "specs": [
+            {
+              "title": "[NEO-230-A] plain library JSON chapter HTML auxiliary HTML and side JSON are real readable compatible files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3447,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:51.139Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-83e7add45752c55ec223",
+              "file": "persistence.spec.ts",
+              "line": 16,
+              "column": 2
+            },
+            {
+              "title": "[NEO-231-A] immediate shelf blur and close flush chapter notes and sticky text into their original book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3112,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:54.591Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-0735644a9628e087af5f",
+              "file": "persistence.spec.ts",
+              "line": 17,
+              "column": 2
+            },
+            {
+              "title": "[NEO-231-D] deferred real open-frame resume characterizes source caret theft and candidate preserves author typing disk and history",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1766,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:57.709Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-e049babe3c23710f993c",
+              "file": "persistence.spec.ts",
+              "line": 18,
+              "column": 2
+            },
+            {
+              "title": "[NEO-232-A] later chapter writes remain newest when older completed-write reply is delayed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2379,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:04:59.480Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-65bdf7ef703c92d06e58",
+              "file": "persistence.spec.ts",
+              "line": 33,
+              "column": 2
+            },
+            {
+              "title": "[NEO-233-A] startup daily ZIP retains latest 14 and excludes backup export Finder and cloud placeholder files",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:01.865Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-3ec20607046e05f82e3b",
+              "file": "persistence.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-234-A] unreadable backup input is reported while readable manuscripts remain in real ZIP",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2562,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:05.374Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-c58ccf9709a58e122109",
+              "file": "persistence.spec.ts",
+              "line": 35,
+              "column": 2
+            },
+            {
+              "title": "[NEO-235-A] second desktop process with shared private profile exits and first keeps its sole editing window",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2721,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:07.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-792519ada68153efd11a",
+              "file": "persistence.spec.ts",
+              "line": 36,
+              "column": 2
+            },
+            {
+              "title": "[NEO-236-A] missing and downloading-empty chapter files never replace nonempty visible draft",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2973,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:10.668Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-c864f3ca5bd4fc233d73",
+              "file": "persistence.spec.ts",
+              "line": 37,
+              "column": 2
+            },
+            {
+              "title": "[NEO-237-A] unmodified external text is adopted once while caret and scroll survive refresh",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2816,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:13.646Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-170ba5f362897c4cc91d",
+              "file": "persistence.spec.ts",
+              "line": 38,
+              "column": 2
+            },
+            {
+              "title": "[NEO-238-A] externally removed prose is adopted and complete replaced chapter survives as Darling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2253,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:16.467Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-6569756be57b99d2c79a",
+              "file": "persistence.spec.ts",
+              "line": 39,
+              "column": 2
+            },
+            {
+              "title": "[NEO-239-A] local typing during delayed external read keeps local prose and persists adjacent conflict chapter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3553,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:18.727Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-9b661c8d005ec1185344",
+              "file": "persistence.spec.ts",
+              "line": 40,
+              "column": 2
+            },
+            {
+              "title": "[NEO-240-A] external added renamed reordered removed chapters and side metadata are adopted without losing unsaved words",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3720,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:22.285Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-3b77c0b4dda260fdda78",
+              "file": "persistence.spec.ts",
+              "line": 41,
+              "column": 2
+            },
+            {
+              "title": "[NEO-241-A] concurrent structural edits retain incoming and local chapters and clear stale structural undo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4602,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:26.011Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-23bc7693773f4f9143c5",
+              "file": "persistence.spec.ts",
+              "line": 42,
+              "column": 2
+            },
+            {
+              "title": "[NEO-242-A] completed local save crossing delayed disk read prevents stale text adoption",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5063,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:30.618Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-43726d6faffb459e8779",
+              "file": "persistence.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3020,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:35.688Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-f70c5cf2a05d3d02f3d9",
+              "file": "persistence.spec.ts",
+              "line": 44,
+              "column": 2
+            },
+            {
+              "title": "[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5600,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:38.715Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-7fc90b74f1887d23115b",
+              "file": "persistence.spec.ts",
+              "line": 45,
+              "column": 2
+            },
+            {
+              "title": "[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "interrupted",
+                      "duration": 23283,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.chapter-body')\nExpected substring: \u001b[32m\"\u001b[7mPeriodic\u001b[27m arrival.\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7mVisibility\u001b[27m arrival.\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.chapter-body') with timeout 32000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body')\u001b[22m\n\u001b[2m    46 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"Structure Fixture\" class=\"chapter-body ProseMirror\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Visibility arrival.\"\u001b[22m\n\u001b[2m  - Target page, context or browser has been closed\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.chapter-body')\nExpected substring: \u001b[32m\"\u001b[7mPeriodic\u001b[27m arrival.\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7mVisibility\u001b[27m arrival.\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.chapter-body') with timeout 32000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body')\u001b[22m\n\u001b[2m    46 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"Structure Fixture\" class=\"chapter-body ProseMirror\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Visibility arrival.\"\u001b[22m\n\u001b[2m  - Target page, context or browser has been closed\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts:46:504",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                          "column": 504,
+                          "line": 46
+                        },
+                        "snippet": "  44 |  test('[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book',async()=>{const first=await fixture(page,directory,[{id:'one',html:'<p>First book.</p>'}]);await page.locator('#back-to-shelf').click();const second=await book(page,'Second Identity');await page.locator(`[data-book-id=\"${first}\"]`).click();await external(directory,first,'one','<p>Old incoming must stay old.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:600}}});await refresh(page);await readStarted(directory,'one');await page.locator('#back-to-shelf').click();await page.locator(`[data-book-id=\"${second.bookId}\"]`).click();await expect(page.locator('#tp-title')).toHaveText('Second Identity');await expect(page.locator('.chapter-body')).not.toContainText('Old incoming');expect((await meta(directory,second.bookId)).chapterOrder).toEqual([second.chapterId]);expect(await json(directory,second.bookId,'stickies')).toEqual([]);});\n  45 |  test('[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>First line.</p><p>Second line.</p>'}],{lastPosition:{chapterId:'one',pIdx:0,off:0,at:0}});await page.waitForTimeout(1000);await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:9,off:4,at:Date.now()-130_000};});await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:4});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:3,off:2,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(1);await external(directory,id,'one','<p>First line.</p><p>Second line.</p><p>Third line.</p><p>Fourth arriving line.</p>');await refresh(page);await expect(page.locator('.chapter-body')).toContainText('Fourth arriving line.');await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:3,off:2});const earlier=Date.now();await caret(page,'one',0,1);await page.keyboard.type('X');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:2,at:earlier};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(0);await nativeMenu(app,'Cover Art');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:3,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);await expect(page.locator('#ca-key')).toBeFocused();await page.locator('.m-cancel').click();await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:3});});\n> 46 |  test('[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Before poll.</p>'}]);await external(directory,id,'one','<p>Visibility arrival.</p>');await refresh(page,'visibilitychange');await expect(page.locator('.chapter-body')).toContainText('Visibility arrival.');await external(directory,id,'one','<p>Periodic arrival.</p>');await expect(page.locator('.chapter-body')).toContainText('Periodic arrival.',{timeout:32_000});await expect(page.locator('#tp-title')).toHaveText('Structure Fixture');await page.locator('#back-to-shelf').click();const scroll=await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop);const lib=JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8'));lib.shelves[0].name='Remote shelf name';await writeFile(path.join(libraryPath(directory),'library.json'),JSON.stringify(lib));await refresh(page);await expect(page.locator('.shelf-label').first()).toHaveText('Remote shelf name');expect(await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop)).toBe(scroll);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^\n  47 |  test('[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p><span class=\"spell-error\">Legacy&nbsp;words</span><span class=\"ph-mark\" data-sid=\"legacy\">?</span></p><p class=\"poetry\"><i>Poetry stays.</i></p><p class=\"scene-break\" style=\"text-align:center\">Ordinary prose.</p>'}]);await expect(page.locator('.ph-mark')).toHaveText('⚑');await expect(page.locator('.chapter-body p').last()).not.toHaveClass(/scene-break/);await expect(page.locator('.poetry')).toContainText('Poetry stays.');await caret(page,'one',0,6);await page.keyboard.type(' edited');await blur(page);await diskContains(directory,id,'edited');const saved=await readChapter(directory,id);expect(saved).not.toContain('&nbsp;');expect(saved).not.toContain('spell-error');expect(saved).not.toContain('?');expect(saved).toContain('poetry');expect(saved).toMatch(/<(i|em)>Poetry stays/);expect(saved).toContain('data-sid=\"legacy\"');});\n  48 |  test('[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Original safe.</p>'}]);await page.evaluate(()=>{const notifications:string[]=[];(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications=notifications;new MutationObserver(()=>{const text=document.querySelector('#hint')!.textContent!;if(text.includes('details were logged'))notifications.push(text);}).observe(document.querySelector('#hint')!,{childList:true,subtree:true,characterData:true});});await host(directory,{ipcFailures:{'chapter:write':'Fixture write denied'}});await caret(page,'one',0,14);await page.keyboard.type(' Unsaved survives');await blur(page);await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Fixture write denied');await expect(page.locator('#hint')).toContainText('details were logged');await page.evaluate(()=>window.dispatchEvent(new ErrorEvent('error',{message:'Second fixture renderer error',filename:'fixture.ts',lineno:1})));await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Second fixture renderer error');expect(await page.evaluate(()=>(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications)).toHaveLength(1);expect(await readChapter(directory,id)).not.toContain('Unsaved survives');await expect(page.locator('.chapter-body')).toContainText('Unsaved survives');await host(directory,{});await blur(page);await diskContains(directory,id,'Unsaved survives');});\n  49 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                            "column": 504,
+                            "line": 46
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.chapter-body')\nExpected substring: \u001b[32m\"\u001b[7mPeriodic\u001b[27m arrival.\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[7mVisibility\u001b[27m arrival.\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.chapter-body') with timeout 32000ms\u001b[22m\n\u001b[2m  - waiting for locator('.chapter-body')\u001b[22m\n\u001b[2m    46 × locator resolved to <div role=\"textbox\" translate=\"no\" spellcheck=\"false\" aria-multiline=\"true\" contenteditable=\"true\" aria-label=\"Structure Fixture\" class=\"chapter-body ProseMirror\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"Visibility arrival.\"\u001b[22m\n\u001b[2m  - Target page, context or browser has been closed\u001b[22m\n\n\n  44 |  test('[NEO-243-A] switching books during delayed refresh cannot attach old chapter or side data to new book',async()=>{const first=await fixture(page,directory,[{id:'one',html:'<p>First book.</p>'}]);await page.locator('#back-to-shelf').click();const second=await book(page,'Second Identity');await page.locator(`[data-book-id=\"${first}\"]`).click();await external(directory,first,'one','<p>Old incoming must stay old.</p>');await host(directory,{ipcLog:true,ipcDelays:{'chapter:read':{after:600}}});await refresh(page);await readStarted(directory,'one');await page.locator('#back-to-shelf').click();await page.locator(`[data-book-id=\"${second.bookId}\"]`).click();await expect(page.locator('#tp-title')).toHaveText('Second Identity');await expect(page.locator('.chapter-body')).not.toContainText('Old incoming');expect((await meta(directory,second.bookId)).chapterOrder).toEqual([second.chapterId]);expect(await json(directory,second.bookId,'stickies')).toEqual([]);});\n  45 |  test('[NEO-244-A] newer remote caret resumes after arrival while active typing and open modal block jumps',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>First line.</p><p>Second line.</p>'}],{lastPosition:{chapterId:'one',pIdx:0,off:0,at:0}});await page.waitForTimeout(1000);await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:9,off:4,at:Date.now()-130_000};});await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:4});await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:3,off:2,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(1);await external(directory,id,'one','<p>First line.</p><p>Second line.</p><p>Third line.</p><p>Fourth arriving line.</p>');await refresh(page);await expect(page.locator('.chapter-body')).toContainText('Fourth arriving line.');await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:3,off:2});const earlier=Date.now();await caret(page,'one',0,1);await page.keyboard.type('X');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:2,at:earlier};});await refresh(page);await page.waitForTimeout(500);expect((await spot(page)).p).toBe(0);await nativeMenu(app,'Cover Art');await changeMeta(directory,id,m=>{m.lastPosition={chapterId:'one',pIdx:1,off:3,at:Date.now()+100};});await refresh(page);await page.waitForTimeout(500);await expect(page.locator('#ca-key')).toBeFocused();await page.locator('.m-cancel').click();await refresh(page);await expect.poll(()=>spot(page)).toMatchObject({ch:'one',p:1,off:3});});\n> 46 |  test('[NEO-245-A] focus visibility and periodic polling refresh real disk while preserving shelf scroll and book identity',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Before poll.</p>'}]);await external(directory,id,'one','<p>Visibility arrival.</p>');await refresh(page,'visibilitychange');await expect(page.locator('.chapter-body')).toContainText('Visibility arrival.');await external(directory,id,'one','<p>Periodic arrival.</p>');await expect(page.locator('.chapter-body')).toContainText('Periodic arrival.',{timeout:32_000});await expect(page.locator('#tp-title')).toHaveText('Structure Fixture');await page.locator('#back-to-shelf').click();const scroll=await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop);const lib=JSON.parse(await readFile(path.join(libraryPath(directory),'library.json'),'utf8'));lib.shelves[0].name='Remote shelf name';await writeFile(path.join(libraryPath(directory),'library.json'),JSON.stringify(lib));await refresh(page);await expect(page.locator('.shelf-label').first()).toHaveText('Remote shelf name');expect(await page.locator('#bookshelf-view').evaluate(el=>el.scrollTop)).toBe(scroll);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^\n  47 |  test('[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p><span class=\"spell-error\">Legacy&nbsp;words</span><span class=\"ph-mark\" data-sid=\"legacy\">?</span></p><p class=\"poetry\"><i>Poetry stays.</i></p><p class=\"scene-break\" style=\"text-align:center\">Ordinary prose.</p>'}]);await expect(page.locator('.ph-mark')).toHaveText('⚑');await expect(page.locator('.chapter-body p').last()).not.toHaveClass(/scene-break/);await expect(page.locator('.poetry')).toContainText('Poetry stays.');await caret(page,'one',0,6);await page.keyboard.type(' edited');await blur(page);await diskContains(directory,id,'edited');const saved=await readChapter(directory,id);expect(saved).not.toContain('&nbsp;');expect(saved).not.toContain('spell-error');expect(saved).not.toContain('?');expect(saved).toContain('poetry');expect(saved).toMatch(/<(i|em)>Poetry stays/);expect(saved).toContain('data-sid=\"legacy\"');});\n  48 |  test('[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery',async()=>{const id=await fixture(page,directory,[{id:'one',html:'<p>Original safe.</p>'}]);await page.evaluate(()=>{const notifications:string[]=[];(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications=notifications;new MutationObserver(()=>{const text=document.querySelector('#hint')!.textContent!;if(text.includes('details were logged'))notifications.push(text);}).observe(document.querySelector('#hint')!,{childList:true,subtree:true,characterData:true});});await host(directory,{ipcFailures:{'chapter:write':'Fixture write denied'}});await caret(page,'one',0,14);await page.keyboard.type(' Unsaved survives');await blur(page);await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Fixture write denied');await expect(page.locator('#hint')).toContainText('details were logged');await page.evaluate(()=>window.dispatchEvent(new ErrorEvent('error',{message:'Second fixture renderer error',filename:'fixture.ts',lineno:1})));await expect.poll(()=>readFile(path.join(libraryPath(directory),'neo-errors.log'),'utf8')).toContain('Second fixture renderer error');expect(await page.evaluate(()=>(window as unknown as {fixtureNotifications:string[]}).fixtureNotifications)).toHaveLength(1);expect(await readChapter(directory,id)).not.toContain('Unsaved survives');await expect(page.locator('.chapter-body')).toContainText('Unsaved survives');await host(directory,{});await blur(page);await diskContains(directory,id,'Unsaved survives');});\n  49 | });\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts:46:504"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T09:05:44.322Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results/persistence-prosemirror-NE-9fbf1-lf-scroll-and-book-identity/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/persistence-test-results/persistence-prosemirror-NE-9fbf1-lf-scroll-and-book-identity/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/persistence.spec.ts",
+                        "column": 504,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-d0600850202776b3ba6a",
+              "file": "persistence.spec.ts",
+              "line": 46,
+              "column": 2
+            },
+            {
+              "title": "[NEO-246-A] legacy NBSP marker spell wrappers and stained scene break normalize without corrupting poetry and marks",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-cb0a39f35ab33165d84e",
+              "file": "persistence.spec.ts",
+              "line": 47,
+              "column": 2
+            },
+            {
+              "title": "[NEO-247-A] renderer and write failures log real details once, retain unsaved prose and retry after recovery",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a5ef73a4e2a1baaea746-03835b7f6ff812e0a22d",
+              "file": "persistence.spec.ts",
+              "line": 48,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T09:03:20.051Z",
+    "duration": 167583.588,
+    "expected": 35,
+    "skipped": 3,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

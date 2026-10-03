@@ -1,0 +1,23 @@
+{
+  "appId": "com.hughhowey.neopocket",
+  "appName": "NEO Pocket",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "backgroundColor": "#191919",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "native",
+      "style": "DARK",
+      "hidden": true
+    },
+    "Keyboard": {
+      "resize": "none"
+    }
+  },
+  "ios": {
+    "contentInset": "never",
+    "allowsLinkPreview": false
+  }
+}

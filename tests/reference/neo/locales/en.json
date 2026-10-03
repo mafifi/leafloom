@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "name": "English"
+  },
+  "{n} books imported onto “{shelf}” — chapters and scene breaks detected": {
+    "one": "{n} book imported onto “{shelf}” — chapters and scene breaks detected",
+    "other": "{n} books imported onto “{shelf}” — chapters and scene breaks detected"
+  },
+  "{n} chapters": {
+    "one": "{n} chapter",
+    "other": "{n} chapters"
+  },
+  "{n} words": {
+    "one": "{n} word",
+    "other": "{n} words"
+  },
+  "{n} words · exported from NEO on {date}": {
+    "one": "{n} word · exported from NEO on {date}",
+    "other": "{n} words · exported from NEO on {date}"
+  },
+  "{name}: {n} words": {
+    "one": "{name}: {n} word",
+    "other": "{name}: {n} words"
+  },
+  "Anthology of {n} works exported: {file}": {
+    "one": "Anthology of {n} work exported: {file}",
+    "other": "Anthology of {n} works exported: {file}"
+  },
+  "ch. {ch}: {n} words": {
+    "one": "ch. {ch}: {n} word",
+    "other": "ch. {ch}: {n} words"
+  },
+  "Collect its {n} works, in shelf order, into a single book with a table of contents.": {
+    "one": "Collect its {n} work, in shelf order, into a single book with a table of contents.",
+    "other": "Collect its {n} works, in shelf order, into a single book with a table of contents."
+  },
+  "Draft snapshot of “{title}” — {n} words.": {
+    "one": "Draft snapshot of “{title}” — {n} word.",
+    "other": "Draft snapshot of “{title}” — {n} words."
+  },
+  "from {label} · {date} · {n} words": {
+    "one": "from {label} · {date} · {n} word",
+    "other": "from {label} · {date} · {n} words"
+  },
+  "NEO draft — {title} — {n} words — {date}": {
+    "one": "NEO draft — {title} — {n} word — {date}",
+    "other": "NEO draft — {title} — {n} words — {date}"
+  },
+  "Sprint complete — {n} words. Well earned.": {
+    "one": "Sprint complete — {n} word. Well earned.",
+    "other": "Sprint complete — {n} words. Well earned."
+  },
+  "Sprint ended — {n} words in {min} min": {
+    "one": "Sprint ended — {n} word in {min} min",
+    "other": "Sprint ended — {n} words in {min} min"
+  }
+}

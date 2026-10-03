@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "platformQualifications": [
+    "The explicitly enabled native key coordinator targets the observed macOS fixture. No disabled/skipped run proves an OS accelerator."
+  ],
+  "scenarios": [
+    {
+      "scenarioId": "NEO-170-C",
+      "featureId": "NEO-170",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')??[]).length)",
+        "osKeys(identity,'spell-on',['CMD',';'])",
+        "page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')??[]).map(r=>r.toString()))",
+        "osKeys(identity,'spell-off',['CMD',';'])"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect(await page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')??[]).length)).toBe(0)",
+        "expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')??[]).map(r=>r.toString()))).toEqual(['helo'])",
+        "expect.poll(()=>page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')??[]).length)).toBe(0)",
+        "expect(page.locator('.chapter-body')).toHaveText('helo native author prose.')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-results.json",
+          "title": "[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-216-C",
+      "featureId": "NEO-216",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "osKeys(identity,'help-open',['CMD','/'])",
+        "osKeys(identity,'help-close',['ESC'])",
+        "page.keyboard.type('X')"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect(page.locator('#keyboard-shortcuts')).toBeVisible()",
+        "expect(page.locator('#keyboard-shortcuts')).toHaveCount(1)",
+        "expect(page.locator('#keyboard-shortcuts')).toBeHidden()",
+        "expect(page.locator('.chapter-body')).toBeFocused()",
+        "expect(page.locator('.chapter-body')).toHaveText('heloX native author prose.')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-results.json",
+          "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-214-B",
+      "featureId": "NEO-214",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "osKeys(identity,'help-open',['CMD','/'])",
+        "osKeys(identity,'help-close',['ESC'])",
+        "page.keyboard.type('X')",
+        "osKeys(identity,'fullscreen-menu',['CMD','SHIFT','F'])",
+        "app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())",
+        "osKeys(identity,'fullscreen-escape',['ESC'])",
+        "osKeys(identity,'fullscreen-renderer',['CMD','ENTER'])",
+        "osKeys(identity,'fullscreen-renderer-off',['CMD','ENTER'])"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect(page.locator('#keyboard-shortcuts')).toBeVisible()",
+        "expect(page.locator('#keyboard-shortcuts')).toHaveCount(1)",
+        "expect(page.locator('#keyboard-shortcuts')).toBeHidden()",
+        "expect(page.locator('.chapter-body')).toBeFocused()",
+        "expect(page.locator('.chapter-body')).toHaveText('heloX native author prose.')",
+        "expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true)",
+        "expect(page.locator('body')).toHaveClass(/full-screen/)",
+        "expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(false)",
+        "expect(page.locator('#editor-view')).toBeVisible()",
+        "expect(page.locator('.chapter-body')).toHaveText('helo native author prose.')",
+        "Physical Cmd+Enter source paragraph counts2 then3, scene-break count1 and exact helo*** native author prose. are characterized; candidate retains paragraph1, scene-break0 and exact original manuscript."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-results.json",
+          "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "native-shortcuts-final-results.json",
+          "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+            "engine": "original"
+          },
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+            "engine": "original"
+          }
+        ]
+      },
+      "sourceCharacterizations": [
+        "Genuine physical OS Cmd+Enter toggles native fullscreen in original NEO but also reaches author Enter handlers: first shortcut creates paragraph2 and second creates paragraph3 with one scene break and text helo*** native author prose. Candidate consumes the fullscreen chord before paragraph/scene handlers and preserves the one-paragraph manuscript. NEO-212-D independently exercises typing Undo/Redo and disk under the same source defect."
+      ]
+    },
+    {
+      "scenarioId": "NEO-205-C",
+      "featureId": "NEO-205",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "menu(app,['Format','Body Font','Jost'])",
+        "menu(app,['View','Interface Size','150%'])",
+        "page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--ui-zoom').trim())",
+        "app.evaluate(({Menu,BrowserWindow})=>{const format=Menu.getApplicationMenu()!.items.find(i=>i.label==='Format')!;const item=format.submenu!.items.find(i=>i.label==='Larger Text')!;item.click(item,BrowserWindow.getAllWindows()[0],{} as Electron.KeyboardEvent);})",
+        "item.click(item,BrowserWindow.getAllWindows()[0],{} as Electron.KeyboardEvent)",
+        "page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--editor-size').trim())",
+        "page.locator('#zoom-in').click()",
+        "selectText(page,0,0,4)",
+        "osKeys(identity,'reset-typography',['CMD','0'])",
+        "page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--body-font').trim())"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect.poll(()=>page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--ui-zoom').trim())).toBe('1.5')",
+        "expect.poll(()=>page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--editor-size').trim())).toBe('18px')",
+        "expect(page.locator('#zoom-level')).toHaveText('110%')",
+        "expect.poll(()=>page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--editor-size').trim())).toBe('17px')",
+        "expect(page.locator('#zoom-level')).toHaveText('100%')",
+        "expect(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--ui-zoom').trim())).toBe('1.5')",
+        "expect(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--body-font').trim())).toContain('Jost')",
+        "expect(page.locator('.chapter-body')).toHaveText('helo native author prose.')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-results.json",
+          "title": "[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font",
+            "engine": "original"
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "NEO-212-B",
+      "featureId": "NEO-212",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "osKeys(identity,'fullscreen-menu',['CMD','SHIFT','F'])",
+        "app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())",
+        "osKeys(identity,'fullscreen-escape',['ESC'])",
+        "osKeys(identity,'fullscreen-renderer',['CMD','ENTER'])",
+        "osKeys(identity,'fullscreen-renderer-off',['CMD','ENTER'])"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true)",
+        "expect(page.locator('body')).toHaveClass(/full-screen/)",
+        "expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(false)",
+        "expect(page.locator('#editor-view')).toBeVisible()",
+        "expect(page.locator('.chapter-body')).toHaveText('helo native author prose.')",
+        "Physical Cmd+Enter source paragraph counts2 then3, scene-break count1 and exact helo*** native author prose. are characterized; candidate retains paragraph1, scene-break0 and exact original manuscript."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-final-results.json",
+          "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+            "engine": "original"
+          }
+        ]
+      },
+      "sourceCharacterizations": [
+        "Genuine physical OS Cmd+Enter toggles native fullscreen in original NEO but also reaches author Enter handlers: first shortcut creates paragraph2 and second creates paragraph3 with one scene break and text helo*** native author prose. Candidate consumes the fullscreen chord before paragraph/scene handlers and preserves the one-paragraph manuscript. NEO-212-D independently exercises typing Undo/Redo and disk under the same source defect."
+      ]
+    },
+    {
+      "scenarioId": "NEO-267-B",
+      "featureId": "NEO-267",
+      "testFile": "parity/tests/native-shortcuts.spec.ts",
+      "driverActions": [
+        "Enable NEO_NATIVE_OS_DRIVER=1; coordinator observes the exact Electron app path, process ID and unique window title before native keys. The bounded request/acknowledgment records actual native driver actions; disabled skips provide no evidence.",
+        "osKeys(identity,'email-setup',['CMD','E'])",
+        "osKeys(identity,'email-cancel',['ESC'])"
+      ],
+      "assertions": [
+        "Acknowledgment matches observed title/PID, engine, nonce, requested keys and action; native CUA log is present and the following real UI/main-handler outcomes must pass.",
+        "expect(page.locator('.modal-backdrop:visible h2')).toHaveText('Email drafts to')",
+        "expect(page.locator('.modal-backdrop:visible input')).toBeFocused()",
+        "expect(page.locator('.modal-backdrop:visible')).toHaveCount(0)",
+        "expect(page.locator('.chapter-body')).toHaveText('helo native author prose.')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "native-shortcuts-final-results.json",
+          "title": "[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "native-shortcuts-results.json",
+            "title": "[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending",
+            "engine": "original"
+          }
+        ]
+      }
+    }
+  ]
+}

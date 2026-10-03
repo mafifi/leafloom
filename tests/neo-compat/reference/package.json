@@ -1,0 +1,27 @@
+{
+  "name": "leafloom-neo-reference-host",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@farscrl/hunspell-wasm": "1.0.1",
+    "dictionary-de": "3.0.0",
+    "dictionary-el": "4.0.0",
+    "dictionary-en-au": "3.0.0",
+    "dictionary-en-ca": "3.0.0",
+    "dictionary-en-gb": "3.0.0",
+    "dictionary-en-us": "2.2.1",
+    "dictionary-es": "4.0.0",
+    "dictionary-fr": "3.0.0",
+    "dictionary-nl": "2.0.0",
+    "dictionary-pl": "2.0.0",
+    "dictionary-pt": "4.0.0",
+    "dictionary-ro": "3.0.0",
+    "dictionary-ru": "3.0.0",
+    "electron-updater": "6.3.9",
+    "jszip": "3.10.1",
+    "koffi": "2.16.3"
+  },
+  "devDependencies": {
+    "electron-reference": "npm:electron@43.7.6"
+  }
+}

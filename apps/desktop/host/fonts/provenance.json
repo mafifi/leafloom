@@ -1,0 +1,14 @@
+{
+  "family": "Noto Serif",
+  "repository": "https://github.com/notofonts/noto-fonts",
+  "revision": "ffebf8c1ee449e544955a7e813c54f9b73848eac",
+  "directory": "hinted/ttf/NotoSerif",
+  "license": "SIL Open Font License 1.1",
+  "files": {
+    "NotoSerif-Regular.ttf": "c8f669ceb2c9c60ccf55198b305e08a997ffca79a38cc7eeb551e643cbe66505",
+    "NotoSerif-Bold.ttf": "3b2086a869bcded2aeb4416fc281ceec9d6ce3c06756cda19f8f763636204e7d",
+    "NotoSerif-Italic.ttf": "0ea81d6b54fc8aa5dff0fd6ebe7cfa431e9e6cf747a8d4aa33581fa0aaccffea",
+    "NotoSerif-BoldItalic.ttf": "4fb8737145b4a503d548af4b517afdfc532e44a96ac15378257e825741334eec",
+    "LICENSE.NotoSerif": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "parity/modal-families.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "9a6200dd18e5df458bf117d29976c2cf10788990586cf2e096227beb2d2e89be",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+        "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "548951b576b417d23c1cc3990a9b05a0113d6701b7c11557cbe0b8e6e3267ffa",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "ce18332b1680740575221d39c4d4d151b19a21ea304b0e1d75766896b125c187",
+      "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+      "proofBuildSha256": "6f95a4149cfa68085655e3450488f18ed53c9d3c33b65b04adc21399da46c811",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "9a6200dd18e5df458bf117d29976c2cf10788990586cf2e096227beb2d2e89be",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+            "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "548951b576b417d23c1cc3990a9b05a0113d6701b7c11557cbe0b8e6e3267ffa",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "ce18332b1680740575221d39c4d4d151b19a21ea304b0e1d75766896b125c187",
+          "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+          "proofBuildSha256": "6f95a4149cfa68085655e3450488f18ed53c9d3c33b65b04adc21399da46c811",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "modal-families.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-original-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "modal-families.spec.ts",
+      "file": "modal-families.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "modal-families.spec.ts",
+          "line": 14,
+          "column": 159,
+          "specs": [
+            {
+              "title": "[NEO-217-C][NEO-283-C] first-run named dialog keeps unanswered onboarding and ordinary input Tab order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [
+                    {
+                      "type": "source-initial-focus",
+                      "description": "BODY"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:41.154Z",
+                      "annotations": [
+                        {
+                          "type": "source-initial-focus",
+                          "description": "BODY"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-21b8f42230cad0d42ef4",
+              "file": "modal-families.spec.ts",
+              "line": 15,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] cover settings focus key traverse buttons and Escape cancels unsaved changes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 737,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:41.759Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-1b2cdc119e93d181b906",
+              "file": "modal-families.spec.ts",
+              "line": 24,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] book progress backdrop focus Tab goals Escape saves and keyboard sprint starts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1575,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:42.500Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-30057f1ebf6820eb3603",
+              "file": "modal-families.spec.ts",
+              "line": 27,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] shelf Goals dialog has no book fields and Done Enter saves keyboard edits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 759,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:44.079Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-1b01217163623f5c99d3",
+              "file": "modal-families.spec.ts",
+              "line": 32,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] installed font dialog focuses search traverses filtered face and Escape cancels Enter selects",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 9546,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#zoom-level')\nExpected: focused\nReceived: inactive\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('#zoom-level') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('#zoom-level')\u001b[22m\n\u001b[2m    20 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"zoom-level\" data-i18n-title=\"\" title=\"Click to reset to 100%\">100%</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#zoom-level')\nExpected: focused\nReceived: inactive\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('#zoom-level') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('#zoom-level')\u001b[22m\n\u001b[2m    20 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"zoom-level\" data-i18n-title=\"\" title=\"Click to reset to 100%\">100%</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts:39:467",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts",
+                          "column": 467,
+                          "line": 39
+                        },
+                        "snippet": "  37 |    // Permission seam admits the genuine installed-font API, no fabricated font list.\n  38 |    await c.app.evaluate(({BrowserWindow})=>{const session=BrowserWindow.getAllWindows()[0].webContents.session;session.setPermissionCheckHandler((_wc,p)=>p==='local-fonts');session.setPermissionRequestHandler((_wc,p,callback)=>callback(p==='local-fonts'));});\n> 39 |    await anchor(c.page);await menu(c.app,['Format','Body Font','Other Font…']);let box=await named(c.page,'Other font');await expect(box.locator('input')).toBeFocused();await box.locator('input').fill('Georgia');await expect(box.locator('.font-list button')).toHaveCount(1);await adjacent(c.page,box.locator('input'),box.locator('.font-list button'));await c.page.keyboard.press('Escape');await expect(box).toHaveCount(0);await expect(c.page.locator('#zoom-level')).toBeFocused();expect((await library(c.directory)).fonts.body).toBe('Georgia');\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  40 |    await menu(c.app,['Format','Body Font','Other Font…']);box=await named(c.page,'Other font');await box.locator('input').fill('Georgia');await c.page.keyboard.press('Enter');await expect(box).toHaveCount(0);expect((await library(c.directory)).fonts.body).toBe('Georgia');await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);\n  41 |   }finally{await c.close();}\n  42 |  });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts",
+                            "column": 467,
+                            "line": 39
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#zoom-level')\nExpected: focused\nReceived: inactive\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('#zoom-level') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('#zoom-level')\u001b[22m\n\u001b[2m    20 × locator resolved to <span tabindex=\"0\" role=\"button\" id=\"zoom-level\" data-i18n-title=\"\" title=\"Click to reset to 100%\">100%</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  37 |    // Permission seam admits the genuine installed-font API, no fabricated font list.\n  38 |    await c.app.evaluate(({BrowserWindow})=>{const session=BrowserWindow.getAllWindows()[0].webContents.session;session.setPermissionCheckHandler((_wc,p)=>p==='local-fonts');session.setPermissionRequestHandler((_wc,p,callback)=>callback(p==='local-fonts'));});\n> 39 |    await anchor(c.page);await menu(c.app,['Format','Body Font','Other Font…']);let box=await named(c.page,'Other font');await expect(box.locator('input')).toBeFocused();await box.locator('input').fill('Georgia');await expect(box.locator('.font-list button')).toHaveCount(1);await adjacent(c.page,box.locator('input'),box.locator('.font-list button'));await c.page.keyboard.press('Escape');await expect(box).toHaveCount(0);await expect(c.page.locator('#zoom-level')).toBeFocused();expect((await library(c.directory)).fonts.body).toBe('Georgia');\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  40 |    await menu(c.app,['Format','Body Font','Other Font…']);box=await named(c.page,'Other font');await box.locator('input').fill('Georgia');await c.page.keyboard.press('Enter');await expect(box).toHaveCount(0);expect((await library(c.directory)).fonts.body).toBe('Georgia');await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);\n  41 |   }finally{await c.close();}\n  42 |  });\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts:39:467"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:44.843Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-test-results/modal-families-original-NE-f126c-scape-cancels-Enter-selects/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-test-results/modal-families-original-NE-f126c-scape-cancels-Enter-selects/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts",
+                        "column": 467,
+                        "line": 39
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-c96169ad95f27abcff6a",
+              "file": "modal-families.spec.ts",
+              "line": 35,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] email input owns Enter and mandatory method dialog keeps Escape until keyboard choice",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 739,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:54.610Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-6a9dbf3316b8f3e14171",
+              "file": "modal-families.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] help traps its two Tab controls restores actual caret and About returns keyboard focus",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8681,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Alpha beta.\",\u001b[39m\n\u001b[31m+     \"Alpha   beta.\",\u001b[39m\n\u001b[2m      \"Gamma delta.\",\u001b[22m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Alpha beta.\",\u001b[39m\n\u001b[31m+     \"Alpha   beta.\",\u001b[39m\n\u001b[2m      \"Gamma delta.\",\u001b[22m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts:48:278",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Alpha beta.\",\u001b[39m\n\u001b[31m+     \"Alpha   beta.\",\u001b[39m\n\u001b[2m      \"Gamma delta.\",\u001b[22m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/modal-families.spec.ts:48:278"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:38:55.362Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-test-results/modal-families-original-NE-7049f-bout-returns-keyboard-focus/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/modal-families-test-results/modal-families-original-NE-7049f-bout-returns-keyboard-focus/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-1f72ef22a63e7705518a",
+              "file": "modal-families.spec.ts",
+              "line": 46,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] title and content page sheets expose names focus fields and save through Enter or Escape",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2219,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:39:04.261Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-5ed68d4e3c5354c916b9",
+              "file": "modal-families.spec.ts",
+              "line": 51,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] author shelf anthology and book goal reuse named choice and input dialogs without altering cancelled data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 908,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:39:06.496Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-09cf7eb08f735eb4bfe0",
+              "file": "modal-families.spec.ts",
+              "line": 56,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] release update dialog owns backdrop focus Later Tab and Escape returns without changing manuscript",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 658,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:39:07.409Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-3a5093e99d41de8eae45",
+              "file": "modal-families.spec.ts",
+              "line": 62,
+              "column": 2
+            },
+            {
+              "title": "[NEO-217-C][NEO-283-C] update notice owns OK Enter and characterizes legacy unnamed explicit-role dialog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 698,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:39:08.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "947c312a74fffcba0759-d6f53838e359499b5417",
+              "file": "modal-families.spec.ts",
+              "line": 65,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T06:38:40.859Z",
+    "duration": 27927.914999999997,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

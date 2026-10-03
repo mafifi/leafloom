@@ -1,0 +1,704 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/native-shortcuts.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/native-shortcuts.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+        "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+        "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+        "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+        "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+        "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+        "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+        "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+        "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+      },
+      "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+      "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+      "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+      "nativeOsDriver": "root-coordinated-cua-native-app",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/native-shortcuts-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "signedHostIdentitySha256": "dc4e182c6efbc5da5d0de7ba2509c9bfee360aafd1a897afada362362c04f1cd",
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "0da3cc2fd4e991cf83267e4ec394adb5cc9216970fa4cc9a0ef8d0163ef328ac",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+            "parity/tests/modifier-shortcuts.spec.ts": "567bcfb65320a77f956dc43b5cd1f1c62e85985a26fe3c3b2d435fe8c0d084c9",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "31adaed53dcaa570e37e7b2b029132f8587b65b67c3810ffd7cfa4fc961c15d6",
+            "parity/tests/native.spec.ts": "832a289f5100578242ab70b9389517569f465858a9a468204956155cd1276849",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "59429873796034ed6e465d9371090abe588c7c5fe90cd59257617405c8591ef2",
+            "parity/tests/presentation.spec.ts": "9c8dcbf24278c3d772a2b6782d93cfce4909a2d3aaf31b3715b6ec0310d75329",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+            "parity/reference/harness.ts": "10b14b16fa8da9f39c11a485cf1d7bbddb61bc7549194de28e6ae562ff53b5dd",
+            "parity/evidence.ts": "f018c52c330fc1df74e9032335539398c3737b3d385689abd227625b385e2fcf",
+            "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3",
+            "parity/macos-host-identity.cjs": "89c45f2106420cfa5f260f68f94967de8fa914e95cd78118f193f17069a2af65",
+            "parity/macos-host-identity.d.cts": "a0f91de9cfb225608240053e7268503bebcb307584152bca9a488bdd2e49a178"
+          },
+          "targetBundleSha256": "40fe39f7bd7d57bb31cad635ad7dc3a0ed2300aaf70410afc8f55670128bfb5d",
+          "hostHarnessSha256": "bab55b010d8b40f607b1fe7df054b626c85ca657a9a9409a0fd113563dec335a",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "ca9723a42dfed3478049d9933711b74a2fee4a987340fefe888f0ebf1e18f527",
+          "proofBuildSha256": "670adb6fa7ccf7d65c5fd52d76fc9c279c2f17c279275c7d99238ee6a76c990c",
+          "nativeOsDriver": "root-coordinated-cua-native-app",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "native-shortcuts.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/native-shortcuts-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-shortcuts.spec.ts",
+      "file": "native-shortcuts.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "native-shortcuts.spec.ts",
+          "line": 40,
+          "column": 34,
+          "specs": [
+            {
+              "title": "[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 55284,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"f98926a2-4267-48ff-8042-a2055c62d8b9\",\"action\":\"spell-on\",\"keys\":[\"CMD\",\";\"],\"engine\":\"original\",\"nonce\":\"ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"windowTitle\":\"NEO OS original 29874 ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"mainPid\":29874,\"rendererPid\":29878,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 29874 ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"observedPid\":29874,\"deadline\":1790931026264,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"d8c5bee1-370a-4b3c-af79-281057b6d90c\",\"action\":\"spell-off\",\"keys\":[\"CMD\",\";\"],\"engine\":\"original\",\"nonce\":\"ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"windowTitle\":\"NEO OS original 29874 ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"mainPid\":29874,\"rendererPid\":29878,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 29874 ef01ec63-e15a-4b71-ad46-f63fb8b8552f\",\"observedPid\":29874,\"deadline\":1790931059205,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:47:24.978Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-spell-on",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImY5ODkyNmEyLTQyNjctNDhmZi04MDQyLWEyMDU1YzYyZDhiOSIsCiAgICAiYWN0aW9uIjogInNwZWxsLW9uIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIjsiCiAgICBdLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiZWYwMWVjNjMtZTE1YS00YjcxLWFkNDYtZjYzZmI4Yjg1NTJmIiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMjk4NzQgZWYwMWVjNjMtZTE1YS00YjcxLWFkNDYtZjYzZmI4Yjg1NTJmIiwKICAgICJtYWluUGlkIjogMjk4NzQsCiAgICAicmVuZGVyZXJQaWQiOiAyOTg3OCwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24tcmVmZXJlbmNlL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAyOTg3NCBlZjAxZWM2My1lMTVhLTRiNzEtYWQ0Ni1mNjNmYjhiODU1MmYiLAogICAgIm9ic2VydmVkUGlkIjogMjk4NzQsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMDI2MjY0LAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0xNzAtQ10gT1MgQ21kIHNlbWljb2xvbiBkaXNwYXRjaGVzIHJlYWwgc3BlbGwgcGFzcyBvbmNlIGFuZCBvZmYgY2xlYXJzIG1hcmtzIiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiZjk4OTI2YTItNDI2Ny00OGZmLTgwNDItYTIwNTVjNjJkOGI5IiwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogImVmMDFlYzYzLWUxNWEtNGI3MS1hZDQ2LWY2M2ZiOGI4NTUyZiIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMjk4NzQgZWYwMWVjNjMtZTE1YS00YjcxLWFkNDYtZjYzZmI4Yjg1NTJmIiwKICAgICJvYnNlcnZlZFBpZCI6IDI5ODc0LAogICAgImFjdGlvbiI6ICJzcGVsbC1vbiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICI7IgogICAgXSwKICAgICJkcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiLAogICAgInRpbWVzdGFtcCI6ICIyMDI2LTEwLTAyVDA4OjQ3OjQ4LjY2NVoiLAogICAgImxvZyI6IFsKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkV2luZG93IjogIk5FTyBPUyBvcmlnaW5hbCAyOTg3NCBlZjAxZWM2My1lMTVhLTRiNzEtYWQ0Ni1mNjNmYjhiODU1MmYiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLnByZXNzS2V5IiwKICAgICAgICAia2V5IjogInN1cGVyK3NlbWljb2xvbiIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkQWZ0ZXIiOiAiU3BlbGxjaGVjayBvbiB0b2FzdCwgYWN0dWFsIHdyaXRpbmcgZm9jdXMgcmV0YWluZWQiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        },
+                        {
+                          "name": "native-os-spell-off",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImQ4YzViZWUxLTM3MGEtNGIzYy1hZjc5LTI4MTA1N2I2ZDkwYyIsCiAgICAiYWN0aW9uIjogInNwZWxsLW9mZiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICI7IgogICAgXSwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogImVmMDFlYzYzLWUxNWEtNGI3MS1hZDQ2LWY2M2ZiOGI4NTUyZiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDI5ODc0IGVmMDFlYzYzLWUxNWEtNGI3MS1hZDQ2LWY2M2ZiOGI4NTUyZiIsCiAgICAibWFpblBpZCI6IDI5ODc0LAogICAgInJlbmRlcmVyUGlkIjogMjk4NzgsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uLXJlZmVyZW5jZS9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMjk4NzQgZWYwMWVjNjMtZTE1YS00YjcxLWFkNDYtZjYzZmI4Yjg1NTJmIiwKICAgICJvYnNlcnZlZFBpZCI6IDI5ODc0LAogICAgImRlYWRsaW5lIjogMTc5MDkzMTA1OTIwNSwKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMTcwLUNdIE9TIENtZCBzZW1pY29sb24gZGlzcGF0Y2hlcyByZWFsIHNwZWxsIHBhc3Mgb25jZSBhbmQgb2ZmIGNsZWFycyBtYXJrcyIsCiAgICAiZXhwZWN0ZWREcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiCiAgfSwKICAiYWNrIjogewogICAgImlkIjogImQ4YzViZWUxLTM3MGEtNGIzYy1hZjc5LTI4MTA1N2I2ZDkwYyIsCiAgICAiZW5naW5lIjogIm9yaWdpbmFsIiwKICAgICJub25jZSI6ICJlZjAxZWM2My1lMTVhLTRiNzEtYWQ0Ni1mNjNmYjhiODU1MmYiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDI5ODc0IGVmMDFlYzYzLWUxNWEtNGI3MS1hZDQ2LWY2M2ZiOGI4NTUyZiIsCiAgICAib2JzZXJ2ZWRQaWQiOiAyOTg3NCwKICAgICJhY3Rpb24iOiAic3BlbGwtb2ZmIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIjsiCiAgICBdLAogICAgImRyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIsCiAgICAidGltZXN0YW1wIjogIjIwMjYtMTAtMDJUMDg6NDg6MTAuNDkyWiIsCiAgICAibG9nIjogWwogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRXaW5kb3ciOiAiTkVPIE9TIG9yaWdpbmFsIDI5ODc0IGVmMDFlYzYzLWUxNWEtNGI3MS1hZDQ2LWY2M2ZiOGI4NTUyZiIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAucHJlc3NLZXkiLAogICAgICAgICJrZXkiOiAic3VwZXIrc2VtaWNvbG9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJTcGVsbGNoZWNrIG9mZiB0b2FzdCBhbmQgd3JpdGluZyBmb2N1cyIKICAgICAgfQogICAgXQogIH0KfQ=="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-3d1156fd9ea83c5c7d74",
+              "file": "native-shortcuts.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 50300,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"99585bd4-ca11-4e2f-b324-dd2e7564f2ff\",\"action\":\"help-open\",\"keys\":[\"CMD\",\"/\"],\"engine\":\"original\",\"nonce\":\"21021e53-d6d9-4f24-965d-3544413570ff\",\"windowTitle\":\"NEO OS original 30710 21021e53-d6d9-4f24-965d-3544413570ff\",\"mainPid\":30710,\"rendererPid\":30715,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 30710 21021e53-d6d9-4f24-965d-3544413570ff\",\"observedPid\":30710,\"deadline\":1790931081543,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"764d0be3-fd1c-4212-9a3f-5ee5e56a7875\",\"action\":\"help-close\",\"keys\":[\"ESC\"],\"engine\":\"original\",\"nonce\":\"21021e53-d6d9-4f24-965d-3544413570ff\",\"windowTitle\":\"NEO OS original 30710 21021e53-d6d9-4f24-965d-3544413570ff\",\"mainPid\":30710,\"rendererPid\":30715,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 30710 21021e53-d6d9-4f24-965d-3544413570ff\",\"observedPid\":30710,\"deadline\":1790931108485,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:48:20.279Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-help-open",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjk5NTg1YmQ0LWNhMTEtNGUyZi1iMzI0LWRkMmU3NTY0ZjJmZiIsCiAgICAiYWN0aW9uIjogImhlbHAtb3BlbiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICIvIgogICAgXSwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjIxMDIxZTUzLWQ2ZDktNGYyNC05NjVkLTM1NDQ0MTM1NzBmZiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDMwNzEwIDIxMDIxZTUzLWQ2ZDktNGYyNC05NjVkLTM1NDQ0MTM1NzBmZiIsCiAgICAibWFpblBpZCI6IDMwNzEwLAogICAgInJlbmRlcmVyUGlkIjogMzA3MTUsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uLXJlZmVyZW5jZS9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzA3MTAgMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMwNzEwLAogICAgImRlYWRsaW5lIjogMTc5MDkzMTA4MTU0MywKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMjE2LUNdW05FTy0yMTQtQl0gT1MgQ21kIHNsYXNoIG9wZW5zIGhlbHAgYW5kIEVzY2FwZSByZXR1cm5zIGFjdHVhbCB3cml0aW5nIGNhcmV0IiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiOTk1ODViZDQtY2ExMS00ZTJmLWIzMjQtZGQyZTc1NjRmMmZmIiwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjIxMDIxZTUzLWQ2ZDktNGYyNC05NjVkLTM1NDQ0MTM1NzBmZiIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzA3MTAgMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMwNzEwLAogICAgImFjdGlvbiI6ICJoZWxwLW9wZW4iLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiLyIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo0ODozNy40ODhaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1Mgb3JpZ2luYWwgMzA3MTAgMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJzdXBlcitzbGFzaCIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkQWZ0ZXIiOiAiS2V5Ym9hcmQgc2hvcnRjdXRzIGFuZCBXcml0aW5nIHJlZmVyZW5jZSBvcGVuZWQiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        },
+                        {
+                          "name": "native-os-help-close",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjc2NGQwYmUzLWZkMWMtNDIxMi05YTNmLTVlZTVlNTZhNzg3NSIsCiAgICAiYWN0aW9uIjogImhlbHAtY2xvc2UiLAogICAgImtleXMiOiBbCiAgICAgICJFU0MiCiAgICBdLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzA3MTAgMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIiwKICAgICJtYWluUGlkIjogMzA3MTAsCiAgICAicmVuZGVyZXJQaWQiOiAzMDcxNSwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24tcmVmZXJlbmNlL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMDcxMCAyMTAyMWU1My1kNmQ5LTRmMjQtOTY1ZC0zNTQ0NDEzNTcwZmYiLAogICAgIm9ic2VydmVkUGlkIjogMzA3MTAsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMTA4NDg1LAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0yMTYtQ11bTkVPLTIxNC1CXSBPUyBDbWQgc2xhc2ggb3BlbnMgaGVscCBhbmQgRXNjYXBlIHJldHVybnMgYWN0dWFsIHdyaXRpbmcgY2FyZXQiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICI3NjRkMGJlMy1mZDFjLTQyMTItOWEzZi01ZWU1ZTU2YTc4NzUiLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiMjEwMjFlNTMtZDZkOS00ZjI0LTk2NWQtMzU0NDQxMzU3MGZmIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMDcxMCAyMTAyMWU1My1kNmQ5LTRmMjQtOTY1ZC0zNTQ0NDEzNTcwZmYiLAogICAgIm9ic2VydmVkUGlkIjogMzA3MTAsCiAgICAiYWN0aW9uIjogImhlbHAtY2xvc2UiLAogICAgImtleXMiOiBbCiAgICAgICJFU0MiCiAgICBdLAogICAgImRyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIsCiAgICAidGltZXN0YW1wIjogIjIwMjYtMTAtMDJUMDg6NDk6MDAuNDY0WiIsCiAgICAibG9nIjogWwogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRXaW5kb3ciOiAiTkVPIE9TIG9yaWdpbmFsIDMwNzEwIDIxMDIxZTUzLWQ2ZDktNGYyNC05NjVkLTM1NDQ0MTM1NzBmZiIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAucHJlc3NLZXkiLAogICAgICAgICJrZXkiOiAiRXNjYXBlIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJIZWxwIGNsb3NlZCBhbmQgbWFudXNjcmlwdCBwYW5lcyByZXN0b3JlZCIKICAgICAgfQogICAgXQogIH0KfQ=="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-f1e9cebe9401db23d690",
+              "file": "native-shortcuts.spec.ts",
+              "line": 48,
+              "column": 2
+            },
+            {
+              "title": "[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 27432,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"804c70e7-7c76-4f46-94c3-d9080929f019\",\"action\":\"reset-typography\",\"keys\":[\"CMD\",\"0\"],\"engine\":\"original\",\"nonce\":\"81d189ef-5305-43a2-84f3-0171b4cb3356\",\"windowTitle\":\"NEO OS original 31007 81d189ef-5305-43a2-84f3-0171b4cb3356\",\"mainPid\":31007,\"rendererPid\":31017,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 31007 81d189ef-5305-43a2-84f3-0171b4cb3356\",\"observedPid\":31007,\"deadline\":1790931131935,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:49:10.587Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-reset-typography",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjgwNGM3MGU3LTdjNzYtNGY0Ni05NGMzLWQ5MDgwOTI5ZjAxOSIsCiAgICAiYWN0aW9uIjogInJlc2V0LXR5cG9ncmFwaHkiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiMCIKICAgIF0sCiAgICAiZW5naW5lIjogIm9yaWdpbmFsIiwKICAgICJub25jZSI6ICI4MWQxODllZi01MzA1LTQzYTItODRmMy0wMTcxYjRjYjMzNTYiLAogICAgIndpbmRvd1RpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMTAwNyA4MWQxODllZi01MzA1LTQzYTItODRmMy0wMTcxYjRjYjMzNTYiLAogICAgIm1haW5QaWQiOiAzMTAwNywKICAgICJyZW5kZXJlclBpZCI6IDMxMDE3LAogICAgImFwcFBhdGgiOiAiL1VzZXJzL2FmaWZpbS9EZXZlbG9wbWVudC9uZW8vc3Bpa2VzL2VkaXRvci1vcHRpb25zL25vZGVfbW9kdWxlcy8ubmVvLXBhcml0eS1ob3N0cy9lbGVjdHJvbi1yZWZlcmVuY2UvTkVPIFBhcml0eS5hcHAiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDMxMDA3IDgxZDE4OWVmLTUzMDUtNDNhMi04NGYzLTAxNzFiNGNiMzM1NiIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzMTAwNywKICAgICJkZWFkbGluZSI6IDE3OTA5MzExMzE5MzUsCiAgICAicmVxdWVzdFBhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24iLAogICAgImFja1BhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24uYWNrLmpzb24iLAogICAgInRlc3RUaXRsZSI6ICJbTkVPLTIwNS1DXSBPUyBDbWQgemVybyBkaXNwYXRjaCByZXNldHMgdGV4dDE3L3BhZ2UxIHByZXNlcnZpbmcgaW50ZXJmYWNlL2ZvbnQiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICI4MDRjNzBlNy03Yzc2LTRmNDYtOTRjMy1kOTA4MDkyOWYwMTkiLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiODFkMTg5ZWYtNTMwNS00M2EyLTg0ZjMtMDE3MWI0Y2IzMzU2IiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMTAwNyA4MWQxODllZi01MzA1LTQzYTItODRmMy0wMTcxYjRjYjMzNTYiLAogICAgIm9ic2VydmVkUGlkIjogMzEwMDcsCiAgICAiYWN0aW9uIjogInJlc2V0LXR5cG9ncmFwaHkiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiMCIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo0OToyNS45NzFaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1Mgb3JpZ2luYWwgMzEwMDcgODFkMTg5ZWYtNTMwNS00M2EyLTg0ZjMtMDE3MWI0Y2IzMzU2IgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJzdXBlciswIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJab29tMTEwJSB0bzEwMCUgd2l0aCBtYW51c2NyaXB0IGZvY3VzIgogICAgICB9CiAgICBdCiAgfQp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-a29a164f2f7772700cbe",
+              "file": "native-shortcuts.spec.ts",
+              "line": 52,
+              "column": 2
+            },
+            {
+              "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 103231,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"cf3620d7-f3aa-44da-a1a7-dfe1f8d23419\",\"action\":\"fullscreen-menu\",\"keys\":[\"CMD\",\"SHIFT\",\"F\"],\"engine\":\"original\",\"nonce\":\"6e831d15-b3e8-4585-a011-219866b24b9f\",\"windowTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"mainPid\":32564,\"rendererPid\":32568,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"observedPid\":32564,\"deadline\":1790931159424,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"bde7e5f3-a548-45f5-967f-ea677af2006e\",\"action\":\"fullscreen-escape\",\"keys\":[\"ESC\"],\"engine\":\"original\",\"nonce\":\"6e831d15-b3e8-4585-a011-219866b24b9f\",\"windowTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"mainPid\":32564,\"rendererPid\":32568,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"observedPid\":32564,\"deadline\":1790931187347,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"fac0ff60-240c-4d1c-bdf3-4ce7af9f3e2e\",\"action\":\"fullscreen-renderer\",\"keys\":[\"CMD\",\"ENTER\"],\"engine\":\"original\",\"nonce\":\"6e831d15-b3e8-4585-a011-219866b24b9f\",\"windowTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"mainPid\":32564,\"rendererPid\":32568,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"observedPid\":32564,\"deadline\":1790931212273,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"dccb66e9-aee2-4408-b5b3-fd562b86dd68\",\"action\":\"fullscreen-renderer-off\",\"keys\":[\"CMD\",\"ENTER\"],\"engine\":\"original\",\"nonce\":\"6e831d15-b3e8-4585-a011-219866b24b9f\",\"windowTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"mainPid\":32564,\"rendererPid\":32568,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 32564 6e831d15-b3e8-4585-a011-219866b24b9f\",\"observedPid\":32564,\"deadline\":1790931240184,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:49:38.026Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-fullscreen-menu",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImNmMzYyMGQ3LWYzYWEtNDRkYS1hMWE3LWRmZTFmOGQyMzQxOSIsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tbWVudSIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICJTSElGVCIsCiAgICAgICJGIgogICAgXSwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDMyNTY0IDZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAibWFpblBpZCI6IDMyNTY0LAogICAgInJlbmRlcmVyUGlkIjogMzI1NjgsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uLXJlZmVyZW5jZS9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImRlYWRsaW5lIjogMTc5MDkzMTE1OTQyNCwKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMjEyLUJdW05FTy0yMTQtQl0gT1MgU2hpZnQgQ21kIEYgYW5kIENtZCBFbnRlciB0b2dnbGUgcmVhbCBmdWxsc2NyZWVuIGFuZCBFc2NhcGUgZXhpdHMgYmVmb3JlIHNoZWxmIiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiY2YzNjIwZDctZjNhYS00NGRhLWExYTctZGZlMWY4ZDIzNDE5IiwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImFjdGlvbiI6ICJmdWxsc2NyZWVuLW1lbnUiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiU0hJRlQiLAogICAgICAiRiIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo0OTo1NC42MDRaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJzdXBlcitzaGlmdCtmIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJOYXRpdmUgd2luZG93IGNvbnRyb2xzIHJlbW92ZWQ7IG1hbnVzY3JpcHQgZm9jdXMiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        },
+                        {
+                          "name": "native-os-fullscreen-escape",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImJkZTdlNWYzLWE1NDgtNDVmNS05NjdmLWVhNjc3YWYyMDA2ZSIsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tZXNjYXBlIiwKICAgICJrZXlzIjogWwogICAgICAiRVNDIgogICAgXSwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDMyNTY0IDZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAibWFpblBpZCI6IDMyNTY0LAogICAgInJlbmRlcmVyUGlkIjogMzI1NjgsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uLXJlZmVyZW5jZS9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImRlYWRsaW5lIjogMTc5MDkzMTE4NzM0NywKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMjEyLUJdW05FTy0yMTQtQl0gT1MgU2hpZnQgQ21kIEYgYW5kIENtZCBFbnRlciB0b2dnbGUgcmVhbCBmdWxsc2NyZWVuIGFuZCBFc2NhcGUgZXhpdHMgYmVmb3JlIHNoZWxmIiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiYmRlN2U1ZjMtYTU0OC00NWY1LTk2N2YtZWE2NzdhZjIwMDZlIiwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImFjdGlvbiI6ICJmdWxsc2NyZWVuLWVzY2FwZSIsCiAgICAia2V5cyI6IFsKICAgICAgIkVTQyIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo1MDoxOS4xOTlaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJFc2NhcGUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIkFjdHVhbCBFc2NhcGUgZGlzcGF0Y2hlZCwgbmF0aXZlIHdyaXRpbmcgZm9jdXMgcHJlc2VydmVkIgogICAgICB9CiAgICBdCiAgfQp9"
+                        },
+                        {
+                          "name": "native-os-fullscreen-renderer",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImZhYzBmZjYwLTI0MGMtNGQxYy1iZGYzLTRjZTdhZjlmM2UyZSIsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tcmVuZGVyZXIiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiRU5URVIiCiAgICBdLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJtYWluUGlkIjogMzI1NjQsCiAgICAicmVuZGVyZXJQaWQiOiAzMjU2OCwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24tcmVmZXJlbmNlL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMjU2NCA2ZTgzMWQxNS1iM2U4LTQ1ODUtYTAxMS0yMTk4NjZiMjRiOWYiLAogICAgIm9ic2VydmVkUGlkIjogMzI1NjQsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMjEyMjczLAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0yMTItQl1bTkVPLTIxNC1CXSBPUyBTaGlmdCBDbWQgRiBhbmQgQ21kIEVudGVyIHRvZ2dsZSByZWFsIGZ1bGxzY3JlZW4gYW5kIEVzY2FwZSBleGl0cyBiZWZvcmUgc2hlbGYiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICJmYWMwZmY2MC0yNDBjLTRkMWMtYmRmMy00Y2U3YWY5ZjNlMmUiLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzMjU2NCA2ZTgzMWQxNS1iM2U4LTQ1ODUtYTAxMS0yMTk4NjZiMjRiOWYiLAogICAgIm9ic2VydmVkUGlkIjogMzI1NjQsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tcmVuZGVyZXIiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiRU5URVIiCiAgICBdLAogICAgImRyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIsCiAgICAidGltZXN0YW1wIjogIjIwMjYtMTAtMDJUMDg6NTA6NDcuNTAwWiIsCiAgICAibG9nIjogWwogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRXaW5kb3ciOiAiTkVPIE9TIG9yaWdpbmFsIDMyNTY0IDZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAucHJlc3NLZXkiLAogICAgICAgICJrZXkiOiAic3VwZXIrUmV0dXJuIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJTb3VyY2UgZnVsbHNjcmVlbiBhbHNvIGluc2VydHMgcGFyYWdyYXBoLCBvYnNlcnZlZCBpbiBBWCIKICAgICAgfQogICAgXQogIH0KfQ=="
+                        },
+                        {
+                          "name": "native-os-fullscreen-renderer-off",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImRjY2I2NmU5LWFlZTItNDQwOC1iNWIzLWZkNTYyYjg2ZGQ2OCIsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tcmVuZGVyZXItb2ZmIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIkVOVEVSIgogICAgXSwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDMyNTY0IDZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAibWFpblBpZCI6IDMyNTY0LAogICAgInJlbmRlcmVyUGlkIjogMzI1NjgsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uLXJlZmVyZW5jZS9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImRlYWRsaW5lIjogMTc5MDkzMTI0MDE4NCwKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMjEyLUJdW05FTy0yMTQtQl0gT1MgU2hpZnQgQ21kIEYgYW5kIENtZCBFbnRlciB0b2dnbGUgcmVhbCBmdWxsc2NyZWVuIGFuZCBFc2NhcGUgZXhpdHMgYmVmb3JlIHNoZWxmIiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiZGNjYjY2ZTktYWVlMi00NDA4LWI1YjMtZmQ1NjJiODZkZDY4IiwKICAgICJlbmdpbmUiOiAib3JpZ2luYWwiLAogICAgIm5vbmNlIjogIjZlODMxZDE1LWIzZTgtNDU4NS1hMDExLTIxOTg2NmIyNGI5ZiIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIiwKICAgICJvYnNlcnZlZFBpZCI6IDMyNTY0LAogICAgImFjdGlvbiI6ICJmdWxsc2NyZWVuLXJlbmRlcmVyLW9mZiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICJFTlRFUiIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo1MToxMS4wNjJaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1Mgb3JpZ2luYWwgMzI1NjQgNmU4MzFkMTUtYjNlOC00NTg1LWEwMTEtMjE5ODY2YjI0YjlmIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJzdXBlcitSZXR1cm4iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIlNvdXJjZSByZXBlYXRlZCBzaG9ydGN1dCBpbnNlcnRzKioqc2NlbmUgc2VwYXJhdG9yIGFzIGNoYXJhY3Rlcml6ZWQiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-f9029e78d70cca99ace7",
+              "file": "native-shortcuts.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 45389,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"5cf5d228-2a3e-49f9-8d25-afbd25d2605a\",\"action\":\"email-setup\",\"keys\":[\"CMD\",\"E\"],\"engine\":\"original\",\"nonce\":\"4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"windowTitle\":\"NEO OS original 34241 4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"mainPid\":34241,\"rendererPid\":34255,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 34241 4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"observedPid\":34241,\"deadline\":1790931262571,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"d986711a-9da4-4f10-9ecd-d2fea9e95b8c\",\"action\":\"email-cancel\",\"keys\":[\"ESC\"],\"engine\":\"original\",\"nonce\":\"4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"windowTitle\":\"NEO OS original 34241 4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"mainPid\":34241,\"rendererPid\":34255,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron-reference/NEO Parity.app\",\"observedTitle\":\"NEO OS original 34241 4d548fd2-c1e5-4b85-a5fd-2b33154b460c\",\"observedPid\":34241,\"deadline\":1790931285496,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:51:21.263Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-email-setup",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjVjZjVkMjI4LTJhM2UtNDlmOS04ZDI1LWFmYmQyNWQyNjA1YSIsCiAgICAiYWN0aW9uIjogImVtYWlsLXNldHVwIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIkUiCiAgICBdLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiNGQ1NDhmZDItYzFlNS00Yjg1LWE1ZmQtMmIzMzE1NGI0NjBjIiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1Mgb3JpZ2luYWwgMzQyNDEgNGQ1NDhmZDItYzFlNS00Yjg1LWE1ZmQtMmIzMzE1NGI0NjBjIiwKICAgICJtYWluUGlkIjogMzQyNDEsCiAgICAicmVuZGVyZXJQaWQiOiAzNDI1NSwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24tcmVmZXJlbmNlL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzNDI0MSA0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiLAogICAgIm9ic2VydmVkUGlkIjogMzQyNDEsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMjYyNTcxLAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0yNjctQl0gT1MgQ21kIEUgb3BlbnMgcmVhbCBlbWFpbC1hZGRyZXNzIHNldHVwIGFuZCBFc2NhcGUgY2FuY2VscyB3aXRob3V0IHNlbmRpbmciLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICI1Y2Y1ZDIyOC0yYTNlLTQ5ZjktOGQyNS1hZmJkMjVkMjYwNWEiLAogICAgImVuZ2luZSI6ICJvcmlnaW5hbCIsCiAgICAibm9uY2UiOiAiNGQ1NDhmZDItYzFlNS00Yjg1LWE1ZmQtMmIzMzE1NGI0NjBjIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzNDI0MSA0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiLAogICAgIm9ic2VydmVkUGlkIjogMzQyNDEsCiAgICAiYWN0aW9uIjogImVtYWlsLXNldHVwIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIkUiCiAgICBdLAogICAgImRyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIsCiAgICAidGltZXN0YW1wIjogIjIwMjYtMTAtMDJUMDg6NTE6MzUuNTg2WiIsCiAgICAibG9nIjogWwogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRXaW5kb3ciOiAiTkVPIE9TIG9yaWdpbmFsIDM0MjQxIDRkNTQ4ZmQyLWMxZTUtNGI4NS1hNWZkLTJiMzMxNTRiNDYwYyIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAucHJlc3NLZXkiLAogICAgICAgICJrZXkiOiAic3VwZXIrZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkQWZ0ZXIiOiAiRW1haWwgc2V0dXAgaW5wdXQgZm9jdXNlZCBpbiBuYXRpdmUgZGlhbG9nIgogICAgICB9CiAgICBdCiAgfQp9"
+                        },
+                        {
+                          "name": "native-os-email-cancel",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImQ5ODY3MTFhLTlkYTQtNGYxMC05ZWNkLWQyZmVhOWU5NWI4YyIsCiAgICAiYWN0aW9uIjogImVtYWlsLWNhbmNlbCIsCiAgICAia2V5cyI6IFsKICAgICAgIkVTQyIKICAgIF0sCiAgICAiZW5naW5lIjogIm9yaWdpbmFsIiwKICAgICJub25jZSI6ICI0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiLAogICAgIndpbmRvd1RpdGxlIjogIk5FTyBPUyBvcmlnaW5hbCAzNDI0MSA0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiLAogICAgIm1haW5QaWQiOiAzNDI0MSwKICAgICJyZW5kZXJlclBpZCI6IDM0MjU1LAogICAgImFwcFBhdGgiOiAiL1VzZXJzL2FmaWZpbS9EZXZlbG9wbWVudC9uZW8vc3Bpa2VzL2VkaXRvci1vcHRpb25zL25vZGVfbW9kdWxlcy8ubmVvLXBhcml0eS1ob3N0cy9lbGVjdHJvbi1yZWZlcmVuY2UvTkVPIFBhcml0eS5hcHAiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDM0MjQxIDRkNTQ4ZmQyLWMxZTUtNGI4NS1hNWZkLTJiMzMxNTRiNDYwYyIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNDI0MSwKICAgICJkZWFkbGluZSI6IDE3OTA5MzEyODU0OTYsCiAgICAicmVxdWVzdFBhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24iLAogICAgImFja1BhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24uYWNrLmpzb24iLAogICAgInRlc3RUaXRsZSI6ICJbTkVPLTI2Ny1CXSBPUyBDbWQgRSBvcGVucyByZWFsIGVtYWlsLWFkZHJlc3Mgc2V0dXAgYW5kIEVzY2FwZSBjYW5jZWxzIHdpdGhvdXQgc2VuZGluZyIsCiAgICAiZXhwZWN0ZWREcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiCiAgfSwKICAiYWNrIjogewogICAgImlkIjogImQ5ODY3MTFhLTlkYTQtNGYxMC05ZWNkLWQyZmVhOWU5NWI4YyIsCiAgICAiZW5naW5lIjogIm9yaWdpbmFsIiwKICAgICJub25jZSI6ICI0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIG9yaWdpbmFsIDM0MjQxIDRkNTQ4ZmQyLWMxZTUtNGI4NS1hNWZkLTJiMzMxNTRiNDYwYyIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNDI0MSwKICAgICJhY3Rpb24iOiAiZW1haWwtY2FuY2VsIiwKICAgICJrZXlzIjogWwogICAgICAiRVNDIgogICAgXSwKICAgICJkcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiLAogICAgInRpbWVzdGFtcCI6ICIyMDI2LTEwLTAyVDA4OjUxOjU2LjkzOFoiLAogICAgImxvZyI6IFsKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkV2luZG93IjogIk5FTyBPUyBvcmlnaW5hbCAzNDI0MSA0ZDU0OGZkMi1jMWU1LTRiODUtYTVmZC0yYjMzMTU0YjQ2MGMiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLnByZXNzS2V5IiwKICAgICAgICAia2V5IjogIkVzY2FwZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkQWZ0ZXIiOiAiRW1haWwgY2FuY2VsbGVkLCBzaGVsZiByZXN0b3JlZCBhcyBzb3VyY2UgYmVoYXZpb3IiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-16eadb9ebfa48b9b488c",
+              "file": "native-shortcuts.spec.ts",
+              "line": 66,
+              "column": 2
+            }
+          ]
+        },
+        {
+          "title": "prosemirror",
+          "file": "native-shortcuts.spec.ts",
+          "line": 40,
+          "column": 34,
+          "specs": [
+            {
+              "title": "[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 57519,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"bd757835-bbee-4c5c-969e-2dd752afc9a9\",\"action\":\"spell-on\",\"keys\":[\"CMD\",\";\"],\"engine\":\"prosemirror\",\"nonce\":\"b8bb21c5-05ed-4459-b195-55cdda51341e\",\"windowTitle\":\"NEO OS prosemirror 35269 b8bb21c5-05ed-4459-b195-55cdda51341e\",\"mainPid\":35269,\"rendererPid\":35279,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 35269 b8bb21c5-05ed-4459-b195-55cdda51341e\",\"observedPid\":35269,\"deadline\":1790931310155,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"fb2022ab-80d0-4585-8ea9-72c142f50b47\",\"action\":\"spell-off\",\"keys\":[\"CMD\",\";\"],\"engine\":\"prosemirror\",\"nonce\":\"b8bb21c5-05ed-4459-b195-55cdda51341e\",\"windowTitle\":\"NEO OS prosemirror 35269 b8bb21c5-05ed-4459-b195-55cdda51341e\",\"mainPid\":35269,\"rendererPid\":35279,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 35269 b8bb21c5-05ed-4459-b195-55cdda51341e\",\"observedPid\":35269,\"deadline\":1790931341098,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-170-C] OS Cmd semicolon dispatches real spell pass once and off clears marks\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:52:06.658Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-spell-on",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImJkNzU3ODM1LWJiZWUtNGM1Yy05NjllLTJkZDc1MmFmYzlhOSIsCiAgICAiYWN0aW9uIjogInNwZWxsLW9uIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIjsiCiAgICBdLAogICAgImVuZ2luZSI6ICJwcm9zZW1pcnJvciIsCiAgICAibm9uY2UiOiAiYjhiYjIxYzUtMDVlZC00NDU5LWIxOTUtNTVjZGRhNTEzNDFlIiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzUyNjkgYjhiYjIxYzUtMDVlZC00NDU5LWIxOTUtNTVjZGRhNTEzNDFlIiwKICAgICJtYWluUGlkIjogMzUyNjksCiAgICAicmVuZGVyZXJQaWQiOiAzNTI3OSwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24vTkVPIFBhcml0eS5hcHAiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1MjY5IGI4YmIyMWM1LTA1ZWQtNDQ1OS1iMTk1LTU1Y2RkYTUxMzQxZSIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNTI2OSwKICAgICJkZWFkbGluZSI6IDE3OTA5MzEzMTAxNTUsCiAgICAicmVxdWVzdFBhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24iLAogICAgImFja1BhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24uYWNrLmpzb24iLAogICAgInRlc3RUaXRsZSI6ICJbTkVPLTE3MC1DXSBPUyBDbWQgc2VtaWNvbG9uIGRpc3BhdGNoZXMgcmVhbCBzcGVsbCBwYXNzIG9uY2UgYW5kIG9mZiBjbGVhcnMgbWFya3MiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICJiZDc1NzgzNS1iYmVlLTRjNWMtOTY5ZS0yZGQ3NTJhZmM5YTkiLAogICAgImVuZ2luZSI6ICJwcm9zZW1pcnJvciIsCiAgICAibm9uY2UiOiAiYjhiYjIxYzUtMDVlZC00NDU5LWIxOTUtNTVjZGRhNTEzNDFlIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNTI2OSBiOGJiMjFjNS0wNWVkLTQ0NTktYjE5NS01NWNkZGE1MTM0MWUiLAogICAgIm9ic2VydmVkUGlkIjogMzUyNjksCiAgICAiYWN0aW9uIjogInNwZWxsLW9uIiwKICAgICJrZXlzIjogWwogICAgICAiQ01EIiwKICAgICAgIjsiCiAgICBdLAogICAgImRyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIsCiAgICAidGltZXN0YW1wIjogIjIwMjYtMTAtMDJUMDg6NTI6MzEuOTE5WiIsCiAgICAibG9nIjogWwogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRXaW5kb3ciOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1MjY5IGI4YmIyMWM1LTA1ZWQtNDQ1OS1iMTk1LTU1Y2RkYTUxMzQxZSIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAucHJlc3NLZXkiLAogICAgICAgICJrZXkiOiAic3VwZXIrc2VtaWNvbG9uIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJTcGVsbGNoZWNrIG9uIHRvYXN0IGFuZCBtYW51c2NyaXB0IGZvY3VzIgogICAgICB9CiAgICBdCiAgfQp9"
+                        },
+                        {
+                          "name": "native-os-spell-off",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImZiMjAyMmFiLTgwZDAtNDU4NS04ZWE5LTcyYzE0MmY1MGI0NyIsCiAgICAiYWN0aW9uIjogInNwZWxsLW9mZiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICI7IgogICAgXSwKICAgICJlbmdpbmUiOiAicHJvc2VtaXJyb3IiLAogICAgIm5vbmNlIjogImI4YmIyMWM1LTA1ZWQtNDQ1OS1iMTk1LTU1Y2RkYTUxMzQxZSIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1MjY5IGI4YmIyMWM1LTA1ZWQtNDQ1OS1iMTk1LTU1Y2RkYTUxMzQxZSIsCiAgICAibWFpblBpZCI6IDM1MjY5LAogICAgInJlbmRlcmVyUGlkIjogMzUyNzksCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNTI2OSBiOGJiMjFjNS0wNWVkLTQ0NTktYjE5NS01NWNkZGE1MTM0MWUiLAogICAgIm9ic2VydmVkUGlkIjogMzUyNjksCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMzQxMDk4LAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0xNzAtQ10gT1MgQ21kIHNlbWljb2xvbiBkaXNwYXRjaGVzIHJlYWwgc3BlbGwgcGFzcyBvbmNlIGFuZCBvZmYgY2xlYXJzIG1hcmtzIiwKICAgICJleHBlY3RlZERyaXZlciI6ICJjdWEtbmF0aXZlLWFwcCIKICB9LAogICJhY2siOiB7CiAgICAiaWQiOiAiZmIyMDIyYWItODBkMC00NTg1LThlYTktNzJjMTQyZjUwYjQ3IiwKICAgICJlbmdpbmUiOiAicHJvc2VtaXJyb3IiLAogICAgIm5vbmNlIjogImI4YmIyMWM1LTA1ZWQtNDQ1OS1iMTk1LTU1Y2RkYTUxMzQxZSIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzUyNjkgYjhiYjIxYzUtMDVlZC00NDU5LWIxOTUtNTVjZGRhNTEzNDFlIiwKICAgICJvYnNlcnZlZFBpZCI6IDM1MjY5LAogICAgImFjdGlvbiI6ICJzcGVsbC1vZmYiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiOyIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo1Mjo1NC4yNzZaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzUyNjkgYjhiYjIxYzUtMDVlZC00NDU5LWIxOTUtNTVjZGRhNTEzNDFlIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJzdXBlcitzZW1pY29sb24iCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIlNwZWxsY2hlY2sgb2ZmIHRvYXN0IG9ic2VydmVkIgogICAgICB9CiAgICBdCiAgfQp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-f9e762227e4bae2ecbba",
+              "file": "native-shortcuts.spec.ts",
+              "line": 43,
+              "column": 2
+            },
+            {
+              "title": "[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 51489,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"b60e7d7b-6235-4856-a934-42ef7cf9449c\",\"action\":\"help-open\",\"keys\":[\"CMD\",\"/\"],\"engine\":\"prosemirror\",\"nonce\":\"0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"windowTitle\":\"NEO OS prosemirror 35765 0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"mainPid\":35765,\"rendererPid\":35769,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 35765 0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"observedPid\":35765,\"deadline\":1790931365677,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"38789879-9fbe-468d-ba82-f60bf8672b92\",\"action\":\"help-close\",\"keys\":[\"ESC\"],\"engine\":\"prosemirror\",\"nonce\":\"0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"windowTitle\":\"NEO OS prosemirror 35765 0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"mainPid\":35765,\"rendererPid\":35769,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 35765 0d79ed1e-ec21-46ef-9946-3d62df1f64c5\",\"observedPid\":35765,\"deadline\":1790931391595,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-216-C][NEO-214-B] OS Cmd slash opens help and Escape returns actual writing caret\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:53:04.187Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-help-open",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImI2MGU3ZDdiLTYyMzUtNDg1Ni1hOTM0LTQyZWY3Y2Y5NDQ5YyIsCiAgICAiYWN0aW9uIjogImhlbHAtb3BlbiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICIvIgogICAgXSwKICAgICJlbmdpbmUiOiAicHJvc2VtaXJyb3IiLAogICAgIm5vbmNlIjogIjBkNzllZDFlLWVjMjEtNDZlZi05OTQ2LTNkNjJkZjFmNjRjNSIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1NzY1IDBkNzllZDFlLWVjMjEtNDZlZi05OTQ2LTNkNjJkZjFmNjRjNSIsCiAgICAibWFpblBpZCI6IDM1NzY1LAogICAgInJlbmRlcmVyUGlkIjogMzU3NjksCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNTc2NSAwZDc5ZWQxZS1lYzIxLTQ2ZWYtOTk0Ni0zZDYyZGYxZjY0YzUiLAogICAgIm9ic2VydmVkUGlkIjogMzU3NjUsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxMzY1Njc3LAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0yMTYtQ11bTkVPLTIxNC1CXSBPUyBDbWQgc2xhc2ggb3BlbnMgaGVscCBhbmQgRXNjYXBlIHJldHVybnMgYWN0dWFsIHdyaXRpbmcgY2FyZXQiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICJiNjBlN2Q3Yi02MjM1LTQ4NTYtYTkzNC00MmVmN2NmOTQ0OWMiLAogICAgImVuZ2luZSI6ICJwcm9zZW1pcnJvciIsCiAgICAibm9uY2UiOiAiMGQ3OWVkMWUtZWMyMS00NmVmLTk5NDYtM2Q2MmRmMWY2NGM1IiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNTc2NSAwZDc5ZWQxZS1lYzIxLTQ2ZWYtOTk0Ni0zZDYyZGYxZjY0YzUiLAogICAgIm9ic2VydmVkUGlkIjogMzU3NjUsCiAgICAiYWN0aW9uIjogImhlbHAtb3BlbiIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICIvIgogICAgXSwKICAgICJkcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiLAogICAgInRpbWVzdGFtcCI6ICIyMDI2LTEwLTAyVDA4OjUzOjIwLjcwOVoiLAogICAgImxvZyI6IFsKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkV2luZG93IjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNTc2NSAwZDc5ZWQxZS1lYzIxLTQ2ZWYtOTk0Ni0zZDYyZGYxZjY0YzUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLnByZXNzS2V5IiwKICAgICAgICAia2V5IjogInN1cGVyK3NsYXNoIgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5nZXRBWFN0YXRlIiwKICAgICAgICAib2JzZXJ2ZWRBZnRlciI6ICJLZXlib2FyZCBzaG9ydGN1dHMgcmVmZXJlbmNlIG9wZW5lZCIKICAgICAgfQogICAgXQogIH0KfQ=="
+                        },
+                        {
+                          "name": "native-os-help-close",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjM4Nzg5ODc5LTlmYmUtNDY4ZC1iYTgyLWY2MGJmODY3MmI5MiIsCiAgICAiYWN0aW9uIjogImhlbHAtY2xvc2UiLAogICAgImtleXMiOiBbCiAgICAgICJFU0MiCiAgICBdLAogICAgImVuZ2luZSI6ICJwcm9zZW1pcnJvciIsCiAgICAibm9uY2UiOiAiMGQ3OWVkMWUtZWMyMS00NmVmLTk5NDYtM2Q2MmRmMWY2NGM1IiwKICAgICJ3aW5kb3dUaXRsZSI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzU3NjUgMGQ3OWVkMWUtZWMyMS00NmVmLTk5NDYtM2Q2MmRmMWY2NGM1IiwKICAgICJtYWluUGlkIjogMzU3NjUsCiAgICAicmVuZGVyZXJQaWQiOiAzNTc2OSwKICAgICJhcHBQYXRoIjogIi9Vc2Vycy9hZmlmaW0vRGV2ZWxvcG1lbnQvbmVvL3NwaWtlcy9lZGl0b3Itb3B0aW9ucy9ub2RlX21vZHVsZXMvLm5lby1wYXJpdHktaG9zdHMvZWxlY3Ryb24vTkVPIFBhcml0eS5hcHAiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1NzY1IDBkNzllZDFlLWVjMjEtNDZlZi05OTQ2LTNkNjJkZjFmNjRjNSIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNTc2NSwKICAgICJkZWFkbGluZSI6IDE3OTA5MzEzOTE1OTUsCiAgICAicmVxdWVzdFBhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24iLAogICAgImFja1BhdGgiOiAiL3RtcC9uZW8tcGFyaXR5LW9zLXNob3J0Y3V0Lmpzb24uYWNrLmpzb24iLAogICAgInRlc3RUaXRsZSI6ICJbTkVPLTIxNi1DXVtORU8tMjE0LUJdIE9TIENtZCBzbGFzaCBvcGVucyBoZWxwIGFuZCBFc2NhcGUgcmV0dXJucyBhY3R1YWwgd3JpdGluZyBjYXJldCIsCiAgICAiZXhwZWN0ZWREcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiCiAgfSwKICAiYWNrIjogewogICAgImlkIjogIjM4Nzg5ODc5LTlmYmUtNDY4ZC1iYTgyLWY2MGJmODY3MmI5MiIsCiAgICAiZW5naW5lIjogInByb3NlbWlycm9yIiwKICAgICJub25jZSI6ICIwZDc5ZWQxZS1lYzIxLTQ2ZWYtOTk0Ni0zZDYyZGYxZjY0YzUiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM1NzY1IDBkNzllZDFlLWVjMjEtNDZlZi05OTQ2LTNkNjJkZjFmNjRjNSIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNTc2NSwKICAgICJhY3Rpb24iOiAiaGVscC1jbG9zZSIsCiAgICAia2V5cyI6IFsKICAgICAgIkVTQyIKICAgIF0sCiAgICAiZHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNi0xMC0wMlQwODo1Mzo0NS40NTFaIiwKICAgICJsb2ciOiBbCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZFdpbmRvdyI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzU3NjUgMGQ3OWVkMWUtZWMyMS00NmVmLTk5NDYtM2Q2MmRmMWY2NGM1IgogICAgICB9LAogICAgICB7CiAgICAgICAgInRvb2wiOiAiY3VhLkFwcC5wcmVzc0tleSIsCiAgICAgICAgImtleSI6ICJFc2NhcGUiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIkhlbHAgY2xvc2VkLCB3cml0aW5nIHBhbmVzIHJlc3RvcmVkIgogICAgICB9CiAgICBdCiAgfQp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-c96ef0586660a305ff14",
+              "file": "native-shortcuts.spec.ts",
+              "line": 48,
+              "column": 2
+            },
+            {
+              "title": "[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 26659,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"216d59cb-9f30-4c48-b6a2-ac685e2426ee\",\"action\":\"reset-typography\",\"keys\":[\"CMD\",\"0\"],\"engine\":\"prosemirror\",\"nonce\":\"1c557396-f528-4c82-9782-5c6597b1c4e4\",\"windowTitle\":\"NEO OS prosemirror 36229 1c557396-f528-4c82-9782-5c6597b1c4e4\",\"mainPid\":36229,\"rendererPid\":36232,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 36229 1c557396-f528-4c82-9782-5c6597b1c4e4\",\"observedPid\":36229,\"deadline\":1790931417251,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-205-C] OS Cmd zero dispatch resets text17/page1 preserving interface/font\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:53:55.682Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-reset-typography",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogIjIxNmQ1OWNiLTlmMzAtNGM0OC1iNmEyLWFjNjg1ZTI0MjZlZSIsCiAgICAiYWN0aW9uIjogInJlc2V0LXR5cG9ncmFwaHkiLAogICAgImtleXMiOiBbCiAgICAgICJDTUQiLAogICAgICAiMCIKICAgIF0sCiAgICAiZW5naW5lIjogInByb3NlbWlycm9yIiwKICAgICJub25jZSI6ICIxYzU1NzM5Ni1mNTI4LTRjODItOTc4Mi01YzY1OTdiMWM0ZTQiLAogICAgIndpbmRvd1RpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNjIyOSAxYzU1NzM5Ni1mNTI4LTRjODItOTc4Mi01YzY1OTdiMWM0ZTQiLAogICAgIm1haW5QaWQiOiAzNjIyOSwKICAgICJyZW5kZXJlclBpZCI6IDM2MjMyLAogICAgImFwcFBhdGgiOiAiL1VzZXJzL2FmaWZpbS9EZXZlbG9wbWVudC9uZW8vc3Bpa2VzL2VkaXRvci1vcHRpb25zL25vZGVfbW9kdWxlcy8ubmVvLXBhcml0eS1ob3N0cy9lbGVjdHJvbi9ORU8gUGFyaXR5LmFwcCIsCiAgICAib2JzZXJ2ZWRUaXRsZSI6ICJORU8gT1MgcHJvc2VtaXJyb3IgMzYyMjkgMWM1NTczOTYtZjUyOC00YzgyLTk3ODItNWM2NTk3YjFjNGU0IiwKICAgICJvYnNlcnZlZFBpZCI6IDM2MjI5LAogICAgImRlYWRsaW5lIjogMTc5MDkzMTQxNzI1MSwKICAgICJyZXF1ZXN0UGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbiIsCiAgICAiYWNrUGF0aCI6ICIvdG1wL25lby1wYXJpdHktb3Mtc2hvcnRjdXQuanNvbi5hY2suanNvbiIsCiAgICAidGVzdFRpdGxlIjogIltORU8tMjA1LUNdIE9TIENtZCB6ZXJvIGRpc3BhdGNoIHJlc2V0cyB0ZXh0MTcvcGFnZTEgcHJlc2VydmluZyBpbnRlcmZhY2UvZm9udCIsCiAgICAiZXhwZWN0ZWREcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiCiAgfSwKICAiYWNrIjogewogICAgImlkIjogIjIxNmQ1OWNiLTlmMzAtNGM0OC1iNmEyLWFjNjg1ZTI0MjZlZSIsCiAgICAiZW5naW5lIjogInByb3NlbWlycm9yIiwKICAgICJub25jZSI6ICIxYzU1NzM5Ni1mNTI4LTRjODItOTc4Mi01YzY1OTdiMWM0ZTQiLAogICAgIm9ic2VydmVkVGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM2MjI5IDFjNTU3Mzk2LWY1MjgtNGM4Mi05NzgyLTVjNjU5N2IxYzRlNCIsCiAgICAib2JzZXJ2ZWRQaWQiOiAzNjIyOSwKICAgICJhY3Rpb24iOiAicmVzZXQtdHlwb2dyYXBoeSIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICIwIgogICAgXSwKICAgICJkcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiLAogICAgInRpbWVzdGFtcCI6ICIyMDI2LTEwLTAyVDA4OjU0OjEwLjcwNloiLAogICAgImxvZyI6IFsKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkV2luZG93IjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNjIyOSAxYzU1NzM5Ni1mNTI4LTRjODItOTc4Mi01YzY1OTdiMWM0ZTQiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLnByZXNzS2V5IiwKICAgICAgICAia2V5IjogInN1cGVyKzAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIlpvb20gcmVzZXQxMDAlLCBtYW51c2NyaXB0IGZvY3VzZWQiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-3752402d3ec03e844051",
+              "file": "native-shortcuts.spec.ts",
+              "line": 52,
+              "column": 2
+            },
+            {
+              "title": "[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "interrupted",
+                      "duration": 56965,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"afb8f932-2e04-4156-b3a9-25290ffc8797\",\"action\":\"fullscreen-menu\",\"keys\":[\"CMD\",\"SHIFT\",\"F\"],\"engine\":\"prosemirror\",\"nonce\":\"12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"windowTitle\":\"NEO OS prosemirror 36505 12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"mainPid\":36505,\"rendererPid\":36508,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 36505 12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"observedPid\":36505,\"deadline\":1790931443816,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        },
+                        {
+                          "text": "NEO_NATIVE_OS_REQUEST {\"id\":\"a4e935cb-fa62-4ee1-9889-99b37d4edc3e\",\"action\":\"fullscreen-escape\",\"keys\":[\"ESC\"],\"engine\":\"prosemirror\",\"nonce\":\"12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"windowTitle\":\"NEO OS prosemirror 36505 12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"mainPid\":36505,\"rendererPid\":36508,\"appPath\":\"/Users/afifim/Development/neo/spikes/editor-options/node_modules/.neo-parity-hosts/electron/NEO Parity.app\",\"observedTitle\":\"NEO OS prosemirror 36505 12cdb0dc-6bb5-458f-a9d2-faa68ce910a6\",\"observedPid\":36505,\"deadline\":1790931468729,\"requestPath\":\"/tmp/neo-parity-os-shortcut.json\",\"ackPath\":\"/tmp/neo-parity-os-shortcut.json.ack.json\",\"testTitle\":\"[NEO-212-B][NEO-214-B] OS Shift Cmd F and Cmd Enter toggle real fullscreen and Escape exits before shelf\",\"expectedDriver\":\"cua-native-app\"}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:54:22.347Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "native-os-fullscreen-menu",
+                          "contentType": "application/json",
+                          "body": "ewogICJyZXF1ZXN0IjogewogICAgImlkIjogImFmYjhmOTMyLTJlMDQtNDE1Ni1iM2E5LTI1MjkwZmZjODc5NyIsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tbWVudSIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICJTSElGVCIsCiAgICAgICJGIgogICAgXSwKICAgICJlbmdpbmUiOiAicHJvc2VtaXJyb3IiLAogICAgIm5vbmNlIjogIjEyY2RiMGRjLTZiYjUtNDU4Zi1hOWQyLWZhYTY4Y2U5MTBhNiIsCiAgICAid2luZG93VGl0bGUiOiAiTkVPIE9TIHByb3NlbWlycm9yIDM2NTA1IDEyY2RiMGRjLTZiYjUtNDU4Zi1hOWQyLWZhYTY4Y2U5MTBhNiIsCiAgICAibWFpblBpZCI6IDM2NTA1LAogICAgInJlbmRlcmVyUGlkIjogMzY1MDgsCiAgICAiYXBwUGF0aCI6ICIvVXNlcnMvYWZpZmltL0RldmVsb3BtZW50L25lby9zcGlrZXMvZWRpdG9yLW9wdGlvbnMvbm9kZV9tb2R1bGVzLy5uZW8tcGFyaXR5LWhvc3RzL2VsZWN0cm9uL05FTyBQYXJpdHkuYXBwIiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNjUwNSAxMmNkYjBkYy02YmI1LTQ1OGYtYTlkMi1mYWE2OGNlOTEwYTYiLAogICAgIm9ic2VydmVkUGlkIjogMzY1MDUsCiAgICAiZGVhZGxpbmUiOiAxNzkwOTMxNDQzODE2LAogICAgInJlcXVlc3RQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uIiwKICAgICJhY2tQYXRoIjogIi90bXAvbmVvLXBhcml0eS1vcy1zaG9ydGN1dC5qc29uLmFjay5qc29uIiwKICAgICJ0ZXN0VGl0bGUiOiAiW05FTy0yMTItQl1bTkVPLTIxNC1CXSBPUyBTaGlmdCBDbWQgRiBhbmQgQ21kIEVudGVyIHRvZ2dsZSByZWFsIGZ1bGxzY3JlZW4gYW5kIEVzY2FwZSBleGl0cyBiZWZvcmUgc2hlbGYiLAogICAgImV4cGVjdGVkRHJpdmVyIjogImN1YS1uYXRpdmUtYXBwIgogIH0sCiAgImFjayI6IHsKICAgICJpZCI6ICJhZmI4ZjkzMi0yZTA0LTQxNTYtYjNhOS0yNTI5MGZmYzg3OTciLAogICAgImVuZ2luZSI6ICJwcm9zZW1pcnJvciIsCiAgICAibm9uY2UiOiAiMTJjZGIwZGMtNmJiNS00NThmLWE5ZDItZmFhNjhjZTkxMGE2IiwKICAgICJvYnNlcnZlZFRpdGxlIjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNjUwNSAxMmNkYjBkYy02YmI1LTQ1OGYtYTlkMi1mYWE2OGNlOTEwYTYiLAogICAgIm9ic2VydmVkUGlkIjogMzY1MDUsCiAgICAiYWN0aW9uIjogImZ1bGxzY3JlZW4tbWVudSIsCiAgICAia2V5cyI6IFsKICAgICAgIkNNRCIsCiAgICAgICJTSElGVCIsCiAgICAgICJGIgogICAgXSwKICAgICJkcml2ZXIiOiAiY3VhLW5hdGl2ZS1hcHAiLAogICAgInRpbWVzdGFtcCI6ICIyMDI2LTEwLTAyVDA4OjU0OjM2Ljc4MloiLAogICAgImxvZyI6IFsKICAgICAgewogICAgICAgICJ0b29sIjogImN1YS5BcHAuZ2V0QVhTdGF0ZSIsCiAgICAgICAgIm9ic2VydmVkV2luZG93IjogIk5FTyBPUyBwcm9zZW1pcnJvciAzNjUwNSAxMmNkYjBkYy02YmI1LTQ1OGYtYTlkMi1mYWE2OGNlOTEwYTYiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLnByZXNzS2V5IiwKICAgICAgICAia2V5IjogInN1cGVyK3NoaWZ0K2YiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidG9vbCI6ICJjdWEuQXBwLmdldEFYU3RhdGUiLAogICAgICAgICJvYnNlcnZlZEFmdGVyIjogIkZ1bGxzY3JlZW4gY29udHJvbHMgZGlzYXBwZWFyZWQ7IEFYIGluaXRpYWwgbWFudXNjcmlwdCBhbHJlYWR5IGhlbG9lIG5hdGl2ZSBhdXRob3IgcHJvc2UiCiAgICAgIH0KICAgIF0KICB9Cn0="
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/native-shortcuts-test-results/native-shortcuts-prosemirr-82a8d-d-Escape-exits-before-shelf/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-5450ece3bfa3715f03d1",
+              "file": "native-shortcuts.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-267-B] OS Cmd E opens real email-address setup and Escape cancels without sending",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a0b04f218e1398944a63-1b51bc5f89bcdca4035d",
+              "file": "native-shortcuts.spec.ts",
+              "line": 66,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T08:47:24.002Z",
+    "duration": 475476.739,
+    "expected": 8,
+    "skipped": 2,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

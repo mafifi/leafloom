@@ -1,0 +1,394 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/io-edge.config.ts",
+      "--grep",
+      "261-B|263-B|268-B|188-B"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "2103a96fa0d313dbf1117b5b447212a049ad9526c6569d17f10eacf6f86a5147",
+        "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+        "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+        "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "151140a7be8aac54ff4d6d179b51f243d1d96fca5616c9e054cfca9df80c18c0",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+        "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+      "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+      "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "2103a96fa0d313dbf1117b5b447212a049ad9526c6569d17f10eacf6f86a5147",
+            "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+            "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+            "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "151140a7be8aac54ff4d6d179b51f243d1d96fca5616c9e054cfca9df80c18c0",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+            "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+          "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+          "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "io-edge.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-original-corrections.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "io-edge.spec.ts",
+      "file": "io-edge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "io-edge.spec.ts",
+          "line": 17,
+          "column": 153,
+          "specs": [
+            {
+              "title": "[NEO-261-B] DOCX paragraph XML retains alignment poetry indent frontmatter order and meaningful chapter page breaks",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 767,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:40:04.104Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6bc903636e37ce64fee4-e94805e5a543eef77c3a",
+              "file": "io-edge.spec.ts",
+              "line": 27,
+              "column": 2
+            },
+            {
+              "title": "[NEO-263-B] actual PDF bookmarks target body pages TOC links and numbers agree and poetry has distinct indentation and italic font",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1804,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts:29:1254",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                          "column": 1254,
+                          "line": 29
+                        },
+                        "snippet": "  27 |  test('[NEO-261-B] DOCX paragraph XML retains alignment poetry indent frontmatter order and meaningful chapter page breaks',async()=>{const c=await openEditingFixture(engine,edition);try{const zip=await JSZip.loadAsync(await readFile(await output(c,'docx')));const xml=await zip.file('word/document.xml')!.async('string');const paragraphs=[...xml.matchAll(/<w:p\\b[\\s\\S]*?<\\/w:p>/g)].map(m=>m[0]);const p=(text:string)=>paragraphs.find(x=>x.includes(text))!;expect(p('Centered opening.')).toContain('<w:jc w:val=\"center\"/>');expect(p('Right edge words.')).toContain('<w:jc w:val=\"right\"/>');expect(p('Verse indented line.')).toContain('<w:ind w:left=\"720\" w:right=\"720\"/>');expect(p('Verse indented line.')).toContain('<w:i/>');expect(p('Ordinary last line.')).toContain('w:firstLine=\"480\"');expect(p('Copyright fixture rights.')).toContain('<w:pageBreakBefore/>');expect(p('For our readers.')).toContain('<w:pageBreakBefore/>');expect(xml.indexOf('Copyright fixture rights.')).toBeLessThan(xml.indexOf('For our readers.'));expect(xml.indexOf('For our readers.')).toBeLessThan(xml.indexOf('Contents'));expect(xml.indexOf('Closing body.')).toBeLessThan(xml.indexOf('Author biography.'));const styles=await zip.file('word/styles.xml')!.async('string');expect(styles).toContain('<w:pageBreakBefore/>');expect(styles).toContain('<w:outlineLvl');expect(paragraphs.find(x=>x.includes('Chapter 1')&&x.includes('w:pStyle'))).toContain('w:pStyle');}finally{await c.close();}});\n  28 |  test('[NEO-262-B] EPUB eligible custom image OPF nav spine front body back ordering and all link destinations are real archive entries',async()=>{const c=await openEditingFixture(engine,edition);try{await c.page.locator('#back-to-shelf').click();await pickImage(c.page,c.directory,'book-editing');await c.page.locator('.book').click();const bytes=await readFile(await output(c,'epub'));const zip=await JSZip.loadAsync(bytes);const opf=await zip.file('OEBPS/content.opf')!.async('string');const parsed=await c.page.evaluate(opf=>{const d=new DOMParser().parseFromString(opf,'application/xml');return{items:[...d.querySelectorAll('manifest item')].map(e=>({id:e.getAttribute('id')!,href:e.getAttribute('href')!,properties:e.getAttribute('properties')})),spine:[...d.querySelectorAll('spine itemref')].map(e=>e.getAttribute('idref')!)};},opf);const image=parsed.items.find(x=>x.properties==='cover-image')!;expect(await zip.file('OEBPS/'+image.href)!.async('nodebuffer')).toEqual(png);for(const id of parsed.spine)expect(zip.file('OEBPS/'+parsed.items.find(x=>x.id===id)!.href)).not.toBeNull();const ordered=await Promise.all(parsed.spine.map(async id=>zip.file('OEBPS/'+parsed.items.find(x=>x.id===id)!.href)!.async('string')));const find=(text:string)=>ordered.findIndex(x=>x.includes(text));expect(find('Copyright fixture rights.')).toBeLessThan(find('For our readers.'));expect(find('For our readers.')).toBeLessThan(parsed.spine.indexOf('nav'));expect(parsed.spine.indexOf('nav')).toBeLessThan(find('Centered opening.'));expect(find('Closing body.')).toBeLessThan(find('Author biography.'));const nav=await zip.file('OEBPS/nav.xhtml')!.async('string');const links=await c.page.evaluate(nav=>[...new DOMParser().parseFromString(nav,'application/xhtml+xml').querySelectorAll('a')].map(e=>e.getAttribute('href')!),nav);for(const link of links)expect(zip.file('OEBPS/'+link.split('#')[0])).not.toBeNull();expect(await zip.file('OEBPS/style.css')!.async('string')).toContain('p.poetry');const uuid=(await meta(c.directory,'book-editing')).uuid;expect(uuid).toBeTruthy();await output(c,'epub','repeat');expect((await meta(c.directory,'book-editing')).uuid).toBe(uuid);}finally{await c.close();}});\n> 29 |  test('[NEO-263-B] actual PDF bookmarks target body pages TOC links and numbers agree and poetry has distinct indentation and italic font',async()=>{const c=await openEditingFixture(engine,edition);try{const file=await output(c,'pdf');const parsed=await parsePdf(file);try{expect(parsed.pdf.numPages).toBeGreaterThanOrEqual(8);const outline=(await parsed.pdf.getOutline())!;const flatten=(items:typeof outline):typeof outline=>items.flatMap(item=>[item,...flatten(item.items)]);const chapters=flatten(outline).filter(x=>/Chapter [12]/.test(x.title));expect(chapters).toHaveLength(2);const bodyPages:number[]=[];for(const entry of chapters){const destination=typeof entry.dest==='string'?await parsed.pdf.getDestination(entry.dest):entry.dest;const index=await parsed.pdf.getPageIndex(destination![0]);bodyPages.push(index+1);expect(parsed.texts[index].map(x=>x.str).join('').replace(/\\s/g,'')).toMatch(/Centeredopening|Closingbody/);expect(parsed.texts[index].some(x=>x.str===String(index+1)&&x.transform[5]<50)).toBe(true);}expect(bodyPages[0]).toBeLessThan(bodyPages[1]);expect(parsed.texts[0].some(x=>x.str==='1'&&x.transform[5]<50)).toBe(false);const tocIndex=parsed.texts.findIndex(items=>items.some(x=>/^Contents$/i.test(x.str)));expect(tocIndex).toBeGreaterThan(0);const annotations=await parsed.pages[tocIndex].getAnnotations();const links=annotations.filter(x=>x.subtype==='Link');expect(links.length).toBeGreaterThanOrEqual(3);for(const number of bodyPages)expect(parsed.texts[tocIndex].some(x=>x.str===String(number))).toBe(true);const bodyIndex=bodyPages[0]-1,items=parsed.texts[bodyIndex];const verse=items.find(x=>x.str.includes('Verse indented line.'))!,plain=items.find(x=>x.str.includes('Ordinary last line.'))!;expect(verse.transform[4]).toBeGreaterThan(plain.transform[4]);expect(verse.fontName).not.toBe(plain.fontName);expect(items.find(x=>x.str.includes('entered opening.'))!.transform[4]).toBeGreaterThan(plain.transform[4]);expect(items.find(x=>x.str.includes('Right edge words.'))!.transform[4]).toBeGreaterThan(verse.transform[4]);}finally{await parsed.close();}}finally{await c.close();}});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^\n  30 |  test('[NEO-266-B] real PDF embeds chosen bundled font program with actual Jost body text resources',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Font embedded prose.</p><p><i>Italic embedded prose.</i></p>'],library:{fonts:{body:'Jost',dropcap:'none'}}});try{const parsed=await parsePdf(await output(c,'pdf'));try{expect(parsed.bytes.toString('latin1')).toMatch(/\\/FontFile[23]\\s+\\d+\\s+0\\s+R/);expect(parsed.bytes.toString('latin1')).toMatch(/Jost/);expect(parsed.text).toContain('Font embedded prose.');const items=parsed.texts.flat();const upright=items.find(x=>x.str.includes('Font embedded prose.'))!,italic=items.find(x=>x.str.includes('Italic embedded prose.'))!;expect(upright.fontName).not.toBe(italic.fontName);}finally{await parsed.close();}}finally{await c.close();}});\n  31 |  test('[NEO-268-B] native menu email handoff attaches actual timestamped PDF with edited text hash recipient and subject to safe Mail host',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Snapshot café words.</p>','<p>Second snapshot chapter.</p>'],library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Draft handed to Mail',{timeout:20_000});const effects:{type:string;payload:{args:string[]}}[]=JSON.parse(await readFile(path.join(c.directory,'intercepted-effects.json'),'utf8'));const script=effects.find(e=>e.type==='mail-draft-script')!.payload.args[1];expect(script).toContain('writer@example.invalid');expect(script).toContain('NEO draft — Editing fixture');const hash=createHash('sha256').update('Editing fixture\\nSnapshot café words.\\nSecond snapshot chapter.').digest('hex');expect(script).toContain(hash);const file=script.match(/POSIX file \"([^\"]+)\"/)![1];expect(file).toMatch(/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/);expect(path.dirname(file)).toBe(path.join(libraryPath(c.directory),'Exports'));expect(script).toContain('make new attachment');const parsed=await parsePdf(file);try{expect(parsed.text.replace(/\\s/g,'')).toContain('Snapshotcaféwords.');expect(parsed.text.replace(/\\s/g,'')).toContain('Secondsnapshotchapter.');expect(parsed.text).toContain('exported from NEO');}finally{await parsed.close();}await assertTexts(c.page,[['Snapshot café words.'],['Second snapshot chapter.']]);}finally{await c.close();}});\n  32 |  test('[NEO-269-B] unavailable Mail retains actual readable snapshot with provenance and shows preparation result without delivered claim',async()=>{const c=await openEditingFixture(engine,{library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true,mailError:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Mail unavailable',{timeout:20_000});await expect(c.page.locator('#hint')).not.toContainText('sent');const files=await readdir(path.join(libraryPath(c.directory),'Exports'));expect(files).toHaveLength(1);const parsed=await parsePdf(path.join(libraryPath(c.directory),'Exports',files[0]));try{expect(parsed.text.replace(/\\s/g,'')).toContain('Alphabeta.');expect(parsed.text.replace(/\\s/g,'')).toContain('Gammadelta.');}finally{await parsed.close();}await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);}finally{await c.close();}});"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                            "column": 1254,
+                            "line": 29
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n\n  27 |  test('[NEO-261-B] DOCX paragraph XML retains alignment poetry indent frontmatter order and meaningful chapter page breaks',async()=>{const c=await openEditingFixture(engine,edition);try{const zip=await JSZip.loadAsync(await readFile(await output(c,'docx')));const xml=await zip.file('word/document.xml')!.async('string');const paragraphs=[...xml.matchAll(/<w:p\\b[\\s\\S]*?<\\/w:p>/g)].map(m=>m[0]);const p=(text:string)=>paragraphs.find(x=>x.includes(text))!;expect(p('Centered opening.')).toContain('<w:jc w:val=\"center\"/>');expect(p('Right edge words.')).toContain('<w:jc w:val=\"right\"/>');expect(p('Verse indented line.')).toContain('<w:ind w:left=\"720\" w:right=\"720\"/>');expect(p('Verse indented line.')).toContain('<w:i/>');expect(p('Ordinary last line.')).toContain('w:firstLine=\"480\"');expect(p('Copyright fixture rights.')).toContain('<w:pageBreakBefore/>');expect(p('For our readers.')).toContain('<w:pageBreakBefore/>');expect(xml.indexOf('Copyright fixture rights.')).toBeLessThan(xml.indexOf('For our readers.'));expect(xml.indexOf('For our readers.')).toBeLessThan(xml.indexOf('Contents'));expect(xml.indexOf('Closing body.')).toBeLessThan(xml.indexOf('Author biography.'));const styles=await zip.file('word/styles.xml')!.async('string');expect(styles).toContain('<w:pageBreakBefore/>');expect(styles).toContain('<w:outlineLvl');expect(paragraphs.find(x=>x.includes('Chapter 1')&&x.includes('w:pStyle'))).toContain('w:pStyle');}finally{await c.close();}});\n  28 |  test('[NEO-262-B] EPUB eligible custom image OPF nav spine front body back ordering and all link destinations are real archive entries',async()=>{const c=await openEditingFixture(engine,edition);try{await c.page.locator('#back-to-shelf').click();await pickImage(c.page,c.directory,'book-editing');await c.page.locator('.book').click();const bytes=await readFile(await output(c,'epub'));const zip=await JSZip.loadAsync(bytes);const opf=await zip.file('OEBPS/content.opf')!.async('string');const parsed=await c.page.evaluate(opf=>{const d=new DOMParser().parseFromString(opf,'application/xml');return{items:[...d.querySelectorAll('manifest item')].map(e=>({id:e.getAttribute('id')!,href:e.getAttribute('href')!,properties:e.getAttribute('properties')})),spine:[...d.querySelectorAll('spine itemref')].map(e=>e.getAttribute('idref')!)};},opf);const image=parsed.items.find(x=>x.properties==='cover-image')!;expect(await zip.file('OEBPS/'+image.href)!.async('nodebuffer')).toEqual(png);for(const id of parsed.spine)expect(zip.file('OEBPS/'+parsed.items.find(x=>x.id===id)!.href)).not.toBeNull();const ordered=await Promise.all(parsed.spine.map(async id=>zip.file('OEBPS/'+parsed.items.find(x=>x.id===id)!.href)!.async('string')));const find=(text:string)=>ordered.findIndex(x=>x.includes(text));expect(find('Copyright fixture rights.')).toBeLessThan(find('For our readers.'));expect(find('For our readers.')).toBeLessThan(parsed.spine.indexOf('nav'));expect(parsed.spine.indexOf('nav')).toBeLessThan(find('Centered opening.'));expect(find('Closing body.')).toBeLessThan(find('Author biography.'));const nav=await zip.file('OEBPS/nav.xhtml')!.async('string');const links=await c.page.evaluate(nav=>[...new DOMParser().parseFromString(nav,'application/xhtml+xml').querySelectorAll('a')].map(e=>e.getAttribute('href')!),nav);for(const link of links)expect(zip.file('OEBPS/'+link.split('#')[0])).not.toBeNull();expect(await zip.file('OEBPS/style.css')!.async('string')).toContain('p.poetry');const uuid=(await meta(c.directory,'book-editing')).uuid;expect(uuid).toBeTruthy();await output(c,'epub','repeat');expect((await meta(c.directory,'book-editing')).uuid).toBe(uuid);}finally{await c.close();}});\n> 29 |  test('[NEO-263-B] actual PDF bookmarks target body pages TOC links and numbers agree and poetry has distinct indentation and italic font',async()=>{const c=await openEditingFixture(engine,edition);try{const file=await output(c,'pdf');const parsed=await parsePdf(file);try{expect(parsed.pdf.numPages).toBeGreaterThanOrEqual(8);const outline=(await parsed.pdf.getOutline())!;const flatten=(items:typeof outline):typeof outline=>items.flatMap(item=>[item,...flatten(item.items)]);const chapters=flatten(outline).filter(x=>/Chapter [12]/.test(x.title));expect(chapters).toHaveLength(2);const bodyPages:number[]=[];for(const entry of chapters){const destination=typeof entry.dest==='string'?await parsed.pdf.getDestination(entry.dest):entry.dest;const index=await parsed.pdf.getPageIndex(destination![0]);bodyPages.push(index+1);expect(parsed.texts[index].map(x=>x.str).join('').replace(/\\s/g,'')).toMatch(/Centeredopening|Closingbody/);expect(parsed.texts[index].some(x=>x.str===String(index+1)&&x.transform[5]<50)).toBe(true);}expect(bodyPages[0]).toBeLessThan(bodyPages[1]);expect(parsed.texts[0].some(x=>x.str==='1'&&x.transform[5]<50)).toBe(false);const tocIndex=parsed.texts.findIndex(items=>items.some(x=>/^Contents$/i.test(x.str)));expect(tocIndex).toBeGreaterThan(0);const annotations=await parsed.pages[tocIndex].getAnnotations();const links=annotations.filter(x=>x.subtype==='Link');expect(links.length).toBeGreaterThanOrEqual(3);for(const number of bodyPages)expect(parsed.texts[tocIndex].some(x=>x.str===String(number))).toBe(true);const bodyIndex=bodyPages[0]-1,items=parsed.texts[bodyIndex];const verse=items.find(x=>x.str.includes('Verse indented line.'))!,plain=items.find(x=>x.str.includes('Ordinary last line.'))!;expect(verse.transform[4]).toBeGreaterThan(plain.transform[4]);expect(verse.fontName).not.toBe(plain.fontName);expect(items.find(x=>x.str.includes('entered opening.'))!.transform[4]).toBeGreaterThan(plain.transform[4]);expect(items.find(x=>x.str.includes('Right edge words.'))!.transform[4]).toBeGreaterThan(verse.transform[4]);}finally{await parsed.close();}}finally{await c.close();}});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^\n  30 |  test('[NEO-266-B] real PDF embeds chosen bundled font program with actual Jost body text resources',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Font embedded prose.</p><p><i>Italic embedded prose.</i></p>'],library:{fonts:{body:'Jost',dropcap:'none'}}});try{const parsed=await parsePdf(await output(c,'pdf'));try{expect(parsed.bytes.toString('latin1')).toMatch(/\\/FontFile[23]\\s+\\d+\\s+0\\s+R/);expect(parsed.bytes.toString('latin1')).toMatch(/Jost/);expect(parsed.text).toContain('Font embedded prose.');const items=parsed.texts.flat();const upright=items.find(x=>x.str.includes('Font embedded prose.'))!,italic=items.find(x=>x.str.includes('Italic embedded prose.'))!;expect(upright.fontName).not.toBe(italic.fontName);}finally{await parsed.close();}}finally{await c.close();}});\n  31 |  test('[NEO-268-B] native menu email handoff attaches actual timestamped PDF with edited text hash recipient and subject to safe Mail host',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Snapshot café words.</p>','<p>Second snapshot chapter.</p>'],library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Draft handed to Mail',{timeout:20_000});const effects:{type:string;payload:{args:string[]}}[]=JSON.parse(await readFile(path.join(c.directory,'intercepted-effects.json'),'utf8'));const script=effects.find(e=>e.type==='mail-draft-script')!.payload.args[1];expect(script).toContain('writer@example.invalid');expect(script).toContain('NEO draft — Editing fixture');const hash=createHash('sha256').update('Editing fixture\\nSnapshot café words.\\nSecond snapshot chapter.').digest('hex');expect(script).toContain(hash);const file=script.match(/POSIX file \"([^\"]+)\"/)![1];expect(file).toMatch(/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/);expect(path.dirname(file)).toBe(path.join(libraryPath(c.directory),'Exports'));expect(script).toContain('make new attachment');const parsed=await parsePdf(file);try{expect(parsed.text.replace(/\\s/g,'')).toContain('Snapshotcaféwords.');expect(parsed.text.replace(/\\s/g,'')).toContain('Secondsnapshotchapter.');expect(parsed.text).toContain('exported from NEO');}finally{await parsed.close();}await assertTexts(c.page,[['Snapshot café words.'],['Second snapshot chapter.']]);}finally{await c.close();}});\n  32 |  test('[NEO-269-B] unavailable Mail retains actual readable snapshot with provenance and shows preparation result without delivered claim',async()=>{const c=await openEditingFixture(engine,{library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true,mailError:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Mail unavailable',{timeout:20_000});await expect(c.page.locator('#hint')).not.toContainText('sent');const files=await readdir(path.join(libraryPath(c.directory),'Exports'));expect(files).toHaveLength(1);const parsed=await parsePdf(path.join(libraryPath(c.directory),'Exports',files[0]));try{expect(parsed.text.replace(/\\s/g,'')).toContain('Alphabeta.');expect(parsed.text.replace(/\\s/g,'')).toContain('Gammadelta.');}finally{await parsed.close();}await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);}finally{await c.close();}});\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts:29:1254"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:40:04.885Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-test-results/io-edge-original-NEO-263-B-68aeb-indentation-and-italic-font/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-test-results/io-edge-original-NEO-263-B-68aeb-indentation-and-italic-font/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                        "column": 1254,
+                        "line": 29
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6bc903636e37ce64fee4-69392612d014dd7fef3c",
+              "file": "io-edge.spec.ts",
+              "line": 29,
+              "column": 2
+            },
+            {
+              "title": "[NEO-268-B] native menu email handoff attaches actual timestamped PDF with edited text hash recipient and subject to safe Mail host",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 863,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/\u001b[39m\nReceived string:  \u001b[31m\"/private/var/folders/9r/mrvfc4ss3lb8n9r2kwm5y3bc0000gn/T/neo-parity-reference-PyTTr2/Documents/NEO Library/Exports/Editing-fixture-2026-10-02T05-40-07.pdf\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/\u001b[39m\nReceived string:  \u001b[31m\"/private/var/folders/9r/mrvfc4ss3lb8n9r2kwm5y3bc0000gn/T/neo-parity-reference-PyTTr2/Documents/NEO Library/Exports/Editing-fixture-2026-10-02T05-40-07.pdf\"\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts:31:1066",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                          "column": 1066,
+                          "line": 31
+                        },
+                        "snippet": "  29 |  test('[NEO-263-B] actual PDF bookmarks target body pages TOC links and numbers agree and poetry has distinct indentation and italic font',async()=>{const c=await openEditingFixture(engine,edition);try{const file=await output(c,'pdf');const parsed=await parsePdf(file);try{expect(parsed.pdf.numPages).toBeGreaterThanOrEqual(8);const outline=(await parsed.pdf.getOutline())!;const flatten=(items:typeof outline):typeof outline=>items.flatMap(item=>[item,...flatten(item.items)]);const chapters=flatten(outline).filter(x=>/Chapter [12]/.test(x.title));expect(chapters).toHaveLength(2);const bodyPages:number[]=[];for(const entry of chapters){const destination=typeof entry.dest==='string'?await parsed.pdf.getDestination(entry.dest):entry.dest;const index=await parsed.pdf.getPageIndex(destination![0]);bodyPages.push(index+1);expect(parsed.texts[index].map(x=>x.str).join('').replace(/\\s/g,'')).toMatch(/Centeredopening|Closingbody/);expect(parsed.texts[index].some(x=>x.str===String(index+1)&&x.transform[5]<50)).toBe(true);}expect(bodyPages[0]).toBeLessThan(bodyPages[1]);expect(parsed.texts[0].some(x=>x.str==='1'&&x.transform[5]<50)).toBe(false);const tocIndex=parsed.texts.findIndex(items=>items.some(x=>/^Contents$/i.test(x.str)));expect(tocIndex).toBeGreaterThan(0);const annotations=await parsed.pages[tocIndex].getAnnotations();const links=annotations.filter(x=>x.subtype==='Link');expect(links.length).toBeGreaterThanOrEqual(3);for(const number of bodyPages)expect(parsed.texts[tocIndex].some(x=>x.str===String(number))).toBe(true);const bodyIndex=bodyPages[0]-1,items=parsed.texts[bodyIndex];const verse=items.find(x=>x.str.includes('Verse indented line.'))!,plain=items.find(x=>x.str.includes('Ordinary last line.'))!;expect(verse.transform[4]).toBeGreaterThan(plain.transform[4]);expect(verse.fontName).not.toBe(plain.fontName);expect(items.find(x=>x.str.includes('entered opening.'))!.transform[4]).toBeGreaterThan(plain.transform[4]);expect(items.find(x=>x.str.includes('Right edge words.'))!.transform[4]).toBeGreaterThan(verse.transform[4]);}finally{await parsed.close();}}finally{await c.close();}});\n  30 |  test('[NEO-266-B] real PDF embeds chosen bundled font program with actual Jost body text resources',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Font embedded prose.</p><p><i>Italic embedded prose.</i></p>'],library:{fonts:{body:'Jost',dropcap:'none'}}});try{const parsed=await parsePdf(await output(c,'pdf'));try{expect(parsed.bytes.toString('latin1')).toMatch(/\\/FontFile[23]\\s+\\d+\\s+0\\s+R/);expect(parsed.bytes.toString('latin1')).toMatch(/Jost/);expect(parsed.text).toContain('Font embedded prose.');const items=parsed.texts.flat();const upright=items.find(x=>x.str.includes('Font embedded prose.'))!,italic=items.find(x=>x.str.includes('Italic embedded prose.'))!;expect(upright.fontName).not.toBe(italic.fontName);}finally{await parsed.close();}}finally{await c.close();}});\n> 31 |  test('[NEO-268-B] native menu email handoff attaches actual timestamped PDF with edited text hash recipient and subject to safe Mail host',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Snapshot café words.</p>','<p>Second snapshot chapter.</p>'],library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Draft handed to Mail',{timeout:20_000});const effects:{type:string;payload:{args:string[]}}[]=JSON.parse(await readFile(path.join(c.directory,'intercepted-effects.json'),'utf8'));const script=effects.find(e=>e.type==='mail-draft-script')!.payload.args[1];expect(script).toContain('writer@example.invalid');expect(script).toContain('NEO draft — Editing fixture');const hash=createHash('sha256').update('Editing fixture\\nSnapshot café words.\\nSecond snapshot chapter.').digest('hex');expect(script).toContain(hash);const file=script.match(/POSIX file \"([^\"]+)\"/)![1];expect(file).toMatch(/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/);expect(path.dirname(file)).toBe(path.join(libraryPath(c.directory),'Exports'));expect(script).toContain('make new attachment');const parsed=await parsePdf(file);try{expect(parsed.text.replace(/\\s/g,'')).toContain('Snapshotcaféwords.');expect(parsed.text.replace(/\\s/g,'')).toContain('Secondsnapshotchapter.');expect(parsed.text).toContain('exported from NEO');}finally{await parsed.close();}await assertTexts(c.page,[['Snapshot café words.'],['Second snapshot chapter.']]);}finally{await c.close();}});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  32 |  test('[NEO-269-B] unavailable Mail retains actual readable snapshot with provenance and shows preparation result without delivered claim',async()=>{const c=await openEditingFixture(engine,{library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true,mailError:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Mail unavailable',{timeout:20_000});await expect(c.page.locator('#hint')).not.toContainText('sent');const files=await readdir(path.join(libraryPath(c.directory),'Exports'));expect(files).toHaveLength(1);const parsed=await parsePdf(path.join(libraryPath(c.directory),'Exports',files[0]));try{expect(parsed.text.replace(/\\s/g,'')).toContain('Alphabeta.');expect(parsed.text.replace(/\\s/g,'')).toContain('Gammadelta.');}finally{await parsed.close();}await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);}finally{await c.close();}});\n  33 |  test('[NEO-188-B] book cover context goal set cancel clamp and remove persist actual progress presentation',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>'+Array(20).fill('word').join(' ')+'</p>'],metadata:{wordCount:20}});try{await c.page.locator('#back-to-shelf').click();await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'100');await expect(c.page.locator('.b-progress')).toBeVisible();await expect(c.page.locator('.b-progress > *')).toHaveAttribute('style',/width: 20%/);expect((await meta(c.directory,'book-editing')).wordGoal).toBe(100);await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await c.page.locator('.m-cancel').click();expect((await meta(c.directory,'book-editing')).wordGoal).toBe(100);await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'10');await expect(c.page.locator('.b-progress > *')).toHaveAttribute('style',/width: 100%/);await c.page.locator('.book').click();await c.page.locator('#goal-counter').click();await expect(c.page.locator('.stats-nums .big').filter({hasText:'100%'})).toHaveCount(1);await c.page.locator('.m-ok').click();await c.page.locator('#back-to-shelf').click();await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'');expect((await meta(c.directory,'book-editing')).wordGoal).toBe(0);await expect(c.page.locator('.b-progress')).toBeHidden();await c.page.reload();await expect(c.page.locator('.b-progress')).toBeHidden();}finally{await c.close();}});\n  34 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                            "column": 1066,
+                            "line": 31
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/\u001b[39m\nReceived string:  \u001b[31m\"/private/var/folders/9r/mrvfc4ss3lb8n9r2kwm5y3bc0000gn/T/neo-parity-reference-PyTTr2/Documents/NEO Library/Exports/Editing-fixture-2026-10-02T05-40-07.pdf\"\u001b[39m\n\n  29 |  test('[NEO-263-B] actual PDF bookmarks target body pages TOC links and numbers agree and poetry has distinct indentation and italic font',async()=>{const c=await openEditingFixture(engine,edition);try{const file=await output(c,'pdf');const parsed=await parsePdf(file);try{expect(parsed.pdf.numPages).toBeGreaterThanOrEqual(8);const outline=(await parsed.pdf.getOutline())!;const flatten=(items:typeof outline):typeof outline=>items.flatMap(item=>[item,...flatten(item.items)]);const chapters=flatten(outline).filter(x=>/Chapter [12]/.test(x.title));expect(chapters).toHaveLength(2);const bodyPages:number[]=[];for(const entry of chapters){const destination=typeof entry.dest==='string'?await parsed.pdf.getDestination(entry.dest):entry.dest;const index=await parsed.pdf.getPageIndex(destination![0]);bodyPages.push(index+1);expect(parsed.texts[index].map(x=>x.str).join('').replace(/\\s/g,'')).toMatch(/Centeredopening|Closingbody/);expect(parsed.texts[index].some(x=>x.str===String(index+1)&&x.transform[5]<50)).toBe(true);}expect(bodyPages[0]).toBeLessThan(bodyPages[1]);expect(parsed.texts[0].some(x=>x.str==='1'&&x.transform[5]<50)).toBe(false);const tocIndex=parsed.texts.findIndex(items=>items.some(x=>/^Contents$/i.test(x.str)));expect(tocIndex).toBeGreaterThan(0);const annotations=await parsed.pages[tocIndex].getAnnotations();const links=annotations.filter(x=>x.subtype==='Link');expect(links.length).toBeGreaterThanOrEqual(3);for(const number of bodyPages)expect(parsed.texts[tocIndex].some(x=>x.str===String(number))).toBe(true);const bodyIndex=bodyPages[0]-1,items=parsed.texts[bodyIndex];const verse=items.find(x=>x.str.includes('Verse indented line.'))!,plain=items.find(x=>x.str.includes('Ordinary last line.'))!;expect(verse.transform[4]).toBeGreaterThan(plain.transform[4]);expect(verse.fontName).not.toBe(plain.fontName);expect(items.find(x=>x.str.includes('entered opening.'))!.transform[4]).toBeGreaterThan(plain.transform[4]);expect(items.find(x=>x.str.includes('Right edge words.'))!.transform[4]).toBeGreaterThan(verse.transform[4]);}finally{await parsed.close();}}finally{await c.close();}});\n  30 |  test('[NEO-266-B] real PDF embeds chosen bundled font program with actual Jost body text resources',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Font embedded prose.</p><p><i>Italic embedded prose.</i></p>'],library:{fonts:{body:'Jost',dropcap:'none'}}});try{const parsed=await parsePdf(await output(c,'pdf'));try{expect(parsed.bytes.toString('latin1')).toMatch(/\\/FontFile[23]\\s+\\d+\\s+0\\s+R/);expect(parsed.bytes.toString('latin1')).toMatch(/Jost/);expect(parsed.text).toContain('Font embedded prose.');const items=parsed.texts.flat();const upright=items.find(x=>x.str.includes('Font embedded prose.'))!,italic=items.find(x=>x.str.includes('Italic embedded prose.'))!;expect(upright.fontName).not.toBe(italic.fontName);}finally{await parsed.close();}}finally{await c.close();}});\n> 31 |  test('[NEO-268-B] native menu email handoff attaches actual timestamped PDF with edited text hash recipient and subject to safe Mail host',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>Snapshot café words.</p>','<p>Second snapshot chapter.</p>'],library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Draft handed to Mail',{timeout:20_000});const effects:{type:string;payload:{args:string[]}}[]=JSON.parse(await readFile(path.join(c.directory,'intercepted-effects.json'),'utf8'));const script=effects.find(e=>e.type==='mail-draft-script')!.payload.args[1];expect(script).toContain('writer@example.invalid');expect(script).toContain('NEO draft — Editing fixture');const hash=createHash('sha256').update('Editing fixture\\nSnapshot café words.\\nSecond snapshot chapter.').digest('hex');expect(script).toContain(hash);const file=script.match(/POSIX file \"([^\"]+)\"/)![1];expect(file).toMatch(/Editing fixture-\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}-\\d{2}\\.pdf$/);expect(path.dirname(file)).toBe(path.join(libraryPath(c.directory),'Exports'));expect(script).toContain('make new attachment');const parsed=await parsePdf(file);try{expect(parsed.text.replace(/\\s/g,'')).toContain('Snapshotcaféwords.');expect(parsed.text.replace(/\\s/g,'')).toContain('Secondsnapshotchapter.');expect(parsed.text).toContain('exported from NEO');}finally{await parsed.close();}await assertTexts(c.page,[['Snapshot café words.'],['Second snapshot chapter.']]);}finally{await c.close();}});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  32 |  test('[NEO-269-B] unavailable Mail retains actual readable snapshot with provenance and shows preparation result without delivered claim',async()=>{const c=await openEditingFixture(engine,{library:{emailAddress:'writer@example.invalid',emailMethod:'mail'}});try{await host(c.directory,{allowEmailDraft:true,mailError:true});await nativeMenu(c.app,'Email Draft to Myself');await expect(c.page.locator('#hint')).toContainText('Mail unavailable',{timeout:20_000});await expect(c.page.locator('#hint')).not.toContainText('sent');const files=await readdir(path.join(libraryPath(c.directory),'Exports'));expect(files).toHaveLength(1);const parsed=await parsePdf(path.join(libraryPath(c.directory),'Exports',files[0]));try{expect(parsed.text.replace(/\\s/g,'')).toContain('Alphabeta.');expect(parsed.text.replace(/\\s/g,'')).toContain('Gammadelta.');}finally{await parsed.close();}await assertTexts(c.page,[['Alpha beta.','Gamma delta.']]);}finally{await c.close();}});\n  33 |  test('[NEO-188-B] book cover context goal set cancel clamp and remove persist actual progress presentation',async()=>{const c=await openEditingFixture(engine,{chapters:['<p>'+Array(20).fill('word').join(' ')+'</p>'],metadata:{wordCount:20}});try{await c.page.locator('#back-to-shelf').click();await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'100');await expect(c.page.locator('.b-progress')).toBeVisible();await expect(c.page.locator('.b-progress > *')).toHaveAttribute('style',/width: 20%/);expect((await meta(c.directory,'book-editing')).wordGoal).toBe(100);await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await c.page.locator('.m-cancel').click();expect((await meta(c.directory,'book-editing')).wordGoal).toBe(100);await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'10');await expect(c.page.locator('.b-progress > *')).toHaveAttribute('style',/width: 100%/);await c.page.locator('.book').click();await c.page.locator('#goal-counter').click();await expect(c.page.locator('.stats-nums .big').filter({hasText:'100%'})).toHaveCount(1);await c.page.locator('.m-ok').click();await c.page.locator('#back-to-shelf').click();await c.page.locator('.book').click({button:'right'});await option(c.page,'Set word goal');await input(c.page,'');expect((await meta(c.directory,'book-editing')).wordGoal).toBe(0);await expect(c.page.locator('.b-progress')).toBeHidden();await c.page.reload();await expect(c.page.locator('.b-progress')).toBeHidden();}finally{await c.close();}});\n  34 | });\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts:31:1066"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:40:06.919Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-test-results/io-edge-original-NEO-268-B-216f0-d-subject-to-safe-Mail-host/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/io-edge-test-results/io-edge-original-NEO-268-B-216f0-d-subject-to-safe-Mail-host/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/io-edge.spec.ts",
+                        "column": 1066,
+                        "line": 31
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6bc903636e37ce64fee4-65a00a0d1b625aeddebb",
+              "file": "io-edge.spec.ts",
+              "line": 31,
+              "column": 2
+            },
+            {
+              "title": "[NEO-188-B] book cover context goal set cancel clamp and remove persist actual progress presentation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1256,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:40:08.011Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6bc903636e37ce64fee4-2a488ae22ce7f5ee2d90",
+              "file": "io-edge.spec.ts",
+              "line": 33,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T05:40:03.811Z",
+    "duration": 5477.487,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

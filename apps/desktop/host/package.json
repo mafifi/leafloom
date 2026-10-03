@@ -1,0 +1,44 @@
+{
+  "name": "@leafloom/host-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@leafloom/desktop-host": "workspace:*",
+    "@leafloom/filesystem-documents": "workspace:*",
+    "@leafloom/editor-contracts": "workspace:*",
+    "@leafloom/document-contracts": "workspace:*",
+    "@farscrl/hunspell-wasm": "catalog:",
+    "dictionary-en-us": "catalog:",
+    "dictionary-en-gb": "catalog:",
+    "dictionary-en-au": "catalog:",
+    "dictionary-en-ca": "catalog:",
+    "dictionary-fr": "catalog:",
+    "dictionary-de": "catalog:",
+    "dictionary-es": "catalog:",
+    "dictionary-el": "catalog:",
+    "dictionary-nl": "catalog:",
+    "dictionary-pl": "catalog:",
+    "dictionary-pt": "catalog:",
+    "dictionary-ro": "catalog:",
+    "dictionary-ru": "catalog:",
+    "zod": "catalog:",
+    "@opentelemetry/api": "catalog:",
+    "@opentelemetry/sdk-trace-base": "catalog:",
+    "@opentelemetry/sdk-metrics": "catalog:",
+    "jszip": "catalog:",
+    "jsdom": "catalog:",
+    "pdfkit": "catalog:",
+    "@leafloom/language-contracts": "workspace:*",
+    "fontkit": "catalog:"
+  },
+  "leafloom": {
+    "role": "composition",
+    "runtime": "node"
+  },
+  "devDependencies": {
+    "@types/pdfkit": "catalog:",
+    "@types/jsdom": "catalog:",
+    "@types/fontkit": "catalog:"
+  }
+}

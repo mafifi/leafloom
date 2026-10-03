@@ -1,0 +1,3 @@
+import { ReviewOutput, type ReviewRequest } from './contracts';
+/** A contract fixture, not a writing assessment or agent. */
+export function deterministicReview(input:ReviewRequest){return ReviewOutput.parse({reviewId:'fixture-'+input.requestId,requestId:input.requestId,items:[{id:'suggestion-'+input.requestId,kind:'suggestion',category:input.category,references:[input.extracts[0].reference.id],message:'Try a more direct verb.',replacement:'said'},{id:'note-'+input.requestId,kind:'note',category:input.category,references:input.extracts.map(e=>e.reference.id),message:'Compare the promise here with its later consequence.'}]});}

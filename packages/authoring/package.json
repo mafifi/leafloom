@@ -1,0 +1,20 @@
+{
+  "name": "@leafloom/authoring",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "leafloom": {
+    "role": "consumer",
+    "runtime": "browser"
+  },
+  "dependencies": {
+    "@leafloom/library": "workspace:*",
+    "@leafloom/editor-contracts": "workspace:*",
+    "@leafloom/document-contracts": "workspace:*",
+    "@leafloom/desktop-host": "workspace:*",
+    "svelte": "catalog:"
+  }
+}

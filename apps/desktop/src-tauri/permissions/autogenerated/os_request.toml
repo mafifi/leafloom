@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-os-request"
+description = "Enables the os_request command without any pre-configured scope."
+commands.allow = ["os_request"]
+
+[[permission]]
+identifier = "deny-os-request"
+description = "Denies the os_request command without any pre-configured scope."
+commands.deny = ["os_request"]

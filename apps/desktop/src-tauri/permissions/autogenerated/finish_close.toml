@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-finish-close"
+description = "Enables the finish_close command without any pre-configured scope."
+commands.allow = ["finish_close"]
+
+[[permission]]
+identifier = "deny-finish-close"
+description = "Denies the finish_close command without any pre-configured scope."
+commands.deny = ["finish_close"]

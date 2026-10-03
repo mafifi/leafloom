@@ -1,0 +1,2 @@
+const {contextBridge,ipcRenderer}:typeof import('electron')=require('electron');
+contextBridge.exposeInMainWorld('compositionHost',{request:(command:unknown,traceparent?:string)=>ipcRenderer.invoke('composition:request',{requestId:crypto.randomUUID(),command,traceparent}),onCloseRequested:(fn:()=>void)=>{const listener=()=>fn();ipcRenderer.on('composition:close-request',listener);return()=>ipcRenderer.removeListener('composition:close-request',listener);}});

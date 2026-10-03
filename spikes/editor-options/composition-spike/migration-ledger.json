@@ -1,0 +1,4515 @@
+{
+  "source": "../parity/feature-inventory.json",
+  "baselineFeatures": 304,
+  "registeredDesktopScenarios": 444,
+  "features": [
+    {
+      "featureId": "NEO-001",
+      "title": "First-run name",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-001-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-001-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-002",
+      "title": "First-run pen name",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-002-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-002-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-003",
+      "title": "First-run writing style",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-003-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-004",
+      "title": "First-run typography preview",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-004-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-004-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-005",
+      "title": "Create a book",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-005-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-006",
+      "title": "Create and rename shelf",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-006-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-006-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-007",
+      "title": "Move shelves",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-007-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-007-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-008",
+      "title": "Move books within shelf",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-008-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-008-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-009",
+      "title": "Move books between shelves",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-009-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-009-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-010",
+      "title": "Shelf drag auto-scroll",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-010-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-010-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-011",
+      "title": "Move book to another author",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-011-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-012",
+      "title": "Undo cross-author shelf move",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-012-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-012-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-013",
+      "title": "Author switching",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-013-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-014",
+      "title": "Rename author",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-014-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-015",
+      "title": "Add pen name",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-015-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-016",
+      "title": "Delete author safely",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-016-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-017",
+      "title": "Remove book from shelf",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-017-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-018",
+      "title": "Trash book",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-018-A",
+          "testFile": "parity/tests/library.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-019",
+      "title": "Reshelve orphan books",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-019-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-019-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-020",
+      "title": "Change library directory",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-020-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-020-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-021",
+      "title": "Library map",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-021-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-021-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-022",
+      "title": "Shelf empty affordances",
+      "category": "Library and authors",
+      "owner": "Library commands and library storage provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-022-A",
+          "testFile": "parity/tests/library.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-022-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-023",
+      "title": "Seeded abstract covers",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-023-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-023-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-024",
+      "title": "Refresh seeded cover",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-024-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-024-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-025",
+      "title": "Custom cover picker",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-025-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-026",
+      "title": "Custom cover drag drop",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-026-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-026-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-027",
+      "title": "Remove custom cover",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-027-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-027-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-028",
+      "title": "Cover mode switching",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-028-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-029",
+      "title": "Paint threshold",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-029-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-030",
+      "title": "Paint explicit request",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-030-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-031",
+      "title": "Paint controls and provider",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-031-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-031-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-032",
+      "title": "Secret storage",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-032-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-032-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-033",
+      "title": "Paint job success/failure/stale",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-033-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-034",
+      "title": "Custom image precedence",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-034-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-035",
+      "title": "Bind shelf",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-035-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-036",
+      "title": "Unbind shelf",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-036-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-036-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-037",
+      "title": "Binding title page",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-037-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-037-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-038",
+      "title": "Bound front pages",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-038-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-038-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-039",
+      "title": "Bound back pages",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-039-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-039-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-040",
+      "title": "Bound parts",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-040-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-040-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-041",
+      "title": "Bound page text editing",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-041-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-041-B",
+          "testFile": "parity/tests/canonical.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-041-C",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-042",
+      "title": "Bound written pages",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-042-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-043",
+      "title": "Bound page removal and new Part insertion",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-043-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-043-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-044",
+      "title": "Binding settings",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-044-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-045",
+      "title": "Bound shelf export",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-045-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-045-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-046",
+      "title": "Shelf anthology export",
+      "category": "Bound shelves and book pages",
+      "owner": "Book presentation and asset provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-046-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-046-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-047",
+      "title": "Title and subtitle editing",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-047-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-047-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-048",
+      "title": "Per-book author",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-048-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-049",
+      "title": "Title Enter",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-049-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-049-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-050",
+      "title": "Single-story heading suppression",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-050-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-050-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-051",
+      "title": "Chapter titles",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-051-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-051-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-052",
+      "title": "All page kinds",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-052-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-052-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-053",
+      "title": "Numbering and part resets",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-053-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-053-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-054",
+      "title": "Prologue and epilogue migration",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-054-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-054-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-055",
+      "title": "Unnumbered chapter",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-055-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-056",
+      "title": "Contents safety",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-056-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-056-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-057",
+      "title": "Copyright starter",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-057-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-058",
+      "title": "Add chapter at end",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-058-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-059",
+      "title": "Insert any entry",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-059-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-059-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-060",
+      "title": "Chapter navigation",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-060-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-060-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-061",
+      "title": "Chapter drag reorder",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-061-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-061-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-062",
+      "title": "Chapter notes in nav",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-062-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-062-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-063",
+      "title": "Delete chapter recoverably",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-063-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-063-B",
+          "testFile": "parity/tests/navigation-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-063-C",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-064",
+      "title": "Delete empty chapter",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-064-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-065",
+      "title": "Chapter export menu",
+      "category": "Manuscript identity and structure",
+      "owner": "Book command provider and editor plugin",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-065-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-065-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-066",
+      "title": "Native text entry",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-066-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-067",
+      "title": "IME composition guard",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-067-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-067-B",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-067-C",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-067-D",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-068",
+      "title": "Single Enter split",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-068-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-068-B",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-069",
+      "title": "Double Enter scene",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-069-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-069-B",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-070",
+      "title": "Triple Enter chapter",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-070-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-071",
+      "title": "Enter sequence interruption",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-071-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-072",
+      "title": "Enter on scene",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-072-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-073",
+      "title": "Enter on nonstory page",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-073-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-074",
+      "title": "Scene Backspace boundary",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-074-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-075",
+      "title": "Scene Delete boundary",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-075-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-076",
+      "title": "Empty chapter Backspace",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-076-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-076-B",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-077",
+      "title": "Chapter-start merge",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-077-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-078",
+      "title": "Chapter-start page boundary",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-078-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-079",
+      "title": "Tab spacing",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-079-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-080",
+      "title": "Space-safe deletion",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-080-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-081",
+      "title": "Inline marker deletion",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-081-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-082",
+      "title": "Paragraph cleanup",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-082-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-083",
+      "title": "Poetry ShiftEnter start",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-083-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-084",
+      "title": "Poetry ShiftEnter mid/end",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-084-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-084-B",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-085",
+      "title": "Poetry continuation",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-085-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-086",
+      "title": "Poetry plain Enter",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-086-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-086-B",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-087",
+      "title": "Poetry Backspace",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-087-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-088",
+      "title": "Poetry heading insertion",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-088-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-089",
+      "title": "Poetry menu selection",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-089-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-090",
+      "title": "Poetry italic override",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-090-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-091",
+      "title": "Typing visibility",
+      "category": "Typing and structural gestures",
+      "owner": "NEO editor plugins, public ProseMirror transactions",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-091-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-092",
+      "title": "Typing undo redo",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-092-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-092-B",
+          "testFile": "parity/tests/adapter-regressions.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-093",
+      "title": "Structural undo routing",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-093-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-094",
+      "title": "DoubleEnter undo grouping",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-094-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-095",
+      "title": "TripleEnter undo sequence",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-095-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-096",
+      "title": "Structural snapshot scope",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-096-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-097",
+      "title": "Structural redo distinction",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-097-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-098",
+      "title": "Undo capacity",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-098-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-098-B",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-099",
+      "title": "Cut copy select-all",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-099-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-100",
+      "title": "Plain paste paragraphs",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-100-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-101",
+      "title": "Styled HTML paste",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-101-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-102",
+      "title": "Unsafe clipboard sanitation",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-102-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-103",
+      "title": "Inline paste",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-103-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-104",
+      "title": "Paste placeholders",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-104-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-105",
+      "title": "Paste match style",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-105-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-106",
+      "title": "Markdown emphasis typing",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-106-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-107",
+      "title": "Markdown immediate undo",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-107-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-108",
+      "title": "Markdown preference",
+      "category": "History and clipboard",
+      "owner": "Book history owner and clipboard provider",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-108-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-109",
+      "title": "Em dash typing",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-109-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-110",
+      "title": "Ellipsis typing",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-110-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-111",
+      "title": "Smart double quotes",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-111-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-112",
+      "title": "Single quotes apostrophes",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-112-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-113",
+      "title": "Locale quote styles",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-113-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-114",
+      "title": "Manuscript quote inference",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-114-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-115",
+      "title": "French spacing",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-115-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-116",
+      "title": "Dialogue opening dashes",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-116-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-117",
+      "title": "Dialogue middle dashes",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-117-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-118",
+      "title": "Hyphen exclusions",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-118-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-119",
+      "title": "Dialogue immediate undo",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-119-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-120",
+      "title": "Notes list hyphens",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-120-A",
+          "testFile": "parity/tests/editing.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-121",
+      "title": "Typography in paste/import",
+      "category": "Language typography",
+      "owner": "NEO editor plugins and typography contracts",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-121-A",
+          "testFile": "parity/tests/editing-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-122",
+      "title": "Insert placeholder",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-122-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-123",
+      "title": "Selected placeholder insertion",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-123-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-124",
+      "title": "Edit sticky note",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-124-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-125",
+      "title": "Return from sticky",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-125-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-126",
+      "title": "Go to placeholder",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-126-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-127",
+      "title": "Resolve placeholder",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-127-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-128",
+      "title": "Placeholder direct click",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-128-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-129",
+      "title": "Placeholder reconciliation",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-129-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-130",
+      "title": "Placeholder deletion undo characterization",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-130-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-131",
+      "title": "Placeholder export suppression",
+      "category": "Placeholders and margin notes",
+      "owner": "Annotation commands and margin ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-131-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-132",
+      "title": "Darling drag cut",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-132-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-133",
+      "title": "Darling keyboard cut",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-133-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-134",
+      "title": "Darling multi-paragraph cut",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-134-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-135",
+      "title": "Darling context anchor",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-135-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-136",
+      "title": "Darling exact inline restore",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-136-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-137",
+      "title": "Darling block restore",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-137-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-138",
+      "title": "Darling fallback restore",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-138-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-139",
+      "title": "Darling delete",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-139-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-140",
+      "title": "Darling history",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-140-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-141",
+      "title": "Legacy Darling anchor characterization",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-141-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-142",
+      "title": "Deleted chapter Darling",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-142-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-143",
+      "title": "Darling list presentation",
+      "category": "Darlings",
+      "owner": "Darling commands and list ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-143-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-144",
+      "title": "Tab identity and rename",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-144-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-145",
+      "title": "Notes authoring",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-145-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-145-B",
+          "testFile": "parity/tests/canonical.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-146",
+      "title": "Outline chapter lines",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-146-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-147",
+      "title": "Outline section lines",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-147-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-148",
+      "title": "Outline Enter direction",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-148-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-149",
+      "title": "Outline arrow navigation",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-149-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-150",
+      "title": "Outline indent",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-150-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-151",
+      "title": "Outline outdent",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-151-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-152",
+      "title": "Outline empty Backspace",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-152-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-153",
+      "title": "Outline context deletion",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-153-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-154",
+      "title": "Ghost rendering",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-154-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-155",
+      "title": "Ghost overwrite",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-155-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-156",
+      "title": "Ghost rename/reorder/delete",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-156-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-157",
+      "title": "Outline persistence",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-157-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-158",
+      "title": "Tab caret/scroll memory",
+      "category": "Outline and Notes",
+      "owner": "Auxiliary editor commands and navigation ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-158-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-159",
+      "title": "Find selected preset",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-159-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-160",
+      "title": "Find literal case insensitive",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-160-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-161",
+      "title": "Search cross-style boundary characterization",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-161-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-162",
+      "title": "Search tab scopes",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-162-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-163",
+      "title": "Search debounce highlights",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-163-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-164",
+      "title": "Search next previous wrap",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-164-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-165",
+      "title": "Search Tab jump",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-165-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-166",
+      "title": "Replace one",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-166-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-167",
+      "title": "Replace all undo",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-167-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-168",
+      "title": "Search close",
+      "category": "Search and replace",
+      "owner": "Search commands and projections",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-168-A",
+          "testFile": "parity/tests/notes.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-169",
+      "title": "Spellcheck initially off",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-169-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-170",
+      "title": "Toggle spell pass",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-170-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-170-B",
+          "testFile": "parity/tests/spelling.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-170-C",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-171",
+      "title": "Lazy chapter scans",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-171-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-172",
+      "title": "Unicode tokenization",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-172-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-173",
+      "title": "Hyphen whole-word pass",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-173-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-174",
+      "title": "Stammer treatment",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-174-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-175",
+      "title": "Suggestion menu",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-175-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-176",
+      "title": "Spelling replacement",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-176-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-177",
+      "title": "Learn word persistently",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-177-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-178",
+      "title": "Spell language selection",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-178-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-179",
+      "title": "Spell language failure",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-179-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-180",
+      "title": "Dictionary asynchronous races",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-180-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-180-B",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-181",
+      "title": "Romanian Unicode spellings",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-181-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-182",
+      "title": "Portuguese compounds",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-182-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-183",
+      "title": "Notes spellcheck",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-183-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-184",
+      "title": "Story word counting",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-184-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-184-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-185",
+      "title": "Book/chapter count toggle",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-185-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-186",
+      "title": "Selected passage count",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-186-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-187",
+      "title": "Scroll current chapter",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-187-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-187-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-188",
+      "title": "Book word goal",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-188-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-188-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-188-C",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-189",
+      "title": "Daily goal",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-189-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-189-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-190",
+      "title": "Writing day cutoff",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-190-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-191",
+      "title": "Thirty-day progress chart",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-191-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-191-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-192",
+      "title": "Sprint start",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-192-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-193",
+      "title": "Sprint completion",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-193-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-193-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-194",
+      "title": "Sprint end",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-194-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-195",
+      "title": "Goals modal close",
+      "category": "Counters and goals",
+      "owner": "Derived counters and goal ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-195-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-195-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-196",
+      "title": "Hover chapter pane",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-196-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-197",
+      "title": "Hover sticky pane",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-197-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-197-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-198",
+      "title": "Pane pinning",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-198-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-198-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-199",
+      "title": "Faded controls",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-199-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-199-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-200",
+      "title": "Page themes",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-200-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-201",
+      "title": "Body fonts",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-201-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-201-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-202",
+      "title": "Other local font picker",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-202-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-203",
+      "title": "Dropcap styles",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-203-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-203-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-203-C",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-204",
+      "title": "Text size bounds",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-204-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-204-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-204-C",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-205",
+      "title": "Reset typography zoom",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-205-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-205-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-205-C",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-206",
+      "title": "Page zoom controls",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-206-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-206-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-207",
+      "title": "Interface zoom",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-207-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-208",
+      "title": "Paragraph alignment",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-208-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-209",
+      "title": "Typewriter scrolling",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-209-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-210",
+      "title": "Focus paragraph",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-210-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-210-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-211",
+      "title": "Focus sentence",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-211-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-211-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-212",
+      "title": "Fullscreen",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-212-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-212-B",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-212-D",
+          "testFile": "parity/tests/modifier-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-213",
+      "title": "Fullscreen focus bottom bar",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-213-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-213-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-214",
+      "title": "Escape route",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-214-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-214-B",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-215",
+      "title": "Resume reading position",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-215-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-215-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-216",
+      "title": "Keyboard shortcut help",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-216-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-216-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-216-C",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-217",
+      "title": "Dialog keyboard ownership",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-217-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-217-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-217-C",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-217-D",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-217-E",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-218",
+      "title": "High contrast and reduced motion",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-218-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-219",
+      "title": "Vim preference/modes",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-219-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-220",
+      "title": "Vim character/line motions",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-220-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-220-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-220-C",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-221",
+      "title": "Vim word motions",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-221-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-221-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-222",
+      "title": "Vim line/sentence/paragraph motions",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-222-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-222-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-223",
+      "title": "Vim chapter motions",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-223-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-224",
+      "title": "Vim counts",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-224-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-225",
+      "title": "Vim half-page",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-225-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-225-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-226",
+      "title": "Vim insertion positions",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-226-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-226-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-227",
+      "title": "Vim visual selection",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-227-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-227-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-228",
+      "title": "Vim delete/find",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-228-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-228-B",
+          "testFile": "parity/tests/adapter-regressions.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-229",
+      "title": "Vim Notes and IME",
+      "category": "Vim mode",
+      "owner": "Keyboard plugin and typed commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-229-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-229-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-230",
+      "title": "Plain-file layout",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-230-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-231",
+      "title": "Continuous autosave",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-231-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-231-B",
+          "testFile": "parity/tests/canonical.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-231-C",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-231-D",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-232",
+      "title": "Serialized chapter writes",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-232-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-233",
+      "title": "Daily ZIP backups",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-233-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-233-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-234",
+      "title": "Partial backup failure",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-234-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-235",
+      "title": "Single-instance safety",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-235-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-235-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-236",
+      "title": "Read errors preserve words",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-236-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-237",
+      "title": "External text adoption",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-237-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-237-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-238",
+      "title": "External drops recovery",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-238-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-239",
+      "title": "Concurrent text conflict",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-239-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-240",
+      "title": "External structure adoption",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-240-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-240-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-241",
+      "title": "Concurrent structure merge",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-241-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-242",
+      "title": "Refresh/write crossing race",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-242-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-243",
+      "title": "Changed-book refresh race",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-243-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-243-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-244",
+      "title": "Remote resume position",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-244-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-245",
+      "title": "Focus/visibility polling",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-245-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-245-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-246",
+      "title": "Legacy HTML cleanup",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-246-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-246-B",
+          "testFile": "parity/tests/adapter-regressions.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-247",
+      "title": "Error notification/log",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-247-A",
+          "testFile": "parity/tests/persistence.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-248",
+      "title": "Import picker and drop",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-248-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-248-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-249",
+      "title": "Import rich DOCX",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-249-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-249-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-250",
+      "title": "Import text Markdown",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-250-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-251",
+      "title": "Import chapter headings",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-251-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-251-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-252",
+      "title": "Import heading refinement",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-252-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-253",
+      "title": "Import scene markers",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-253-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-253-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-254",
+      "title": "Import page-break heuristic",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-254-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-254-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-255",
+      "title": "Import title author Unicode",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-255-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-255-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-256",
+      "title": "Import prologue epilogue roles",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-256-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-256-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-257",
+      "title": "Import failure isolation",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-257-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-258",
+      "title": "TXT export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-258-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-259",
+      "title": "Markdown export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-259-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-259-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-260",
+      "title": "HTML export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-260-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-260-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-261",
+      "title": "DOCX export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-261-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-261-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-262",
+      "title": "EPUB export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-262-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-262-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-263",
+      "title": "PDF export",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-263-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-263-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-264",
+      "title": "Export custom chapter titles",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-264-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-265",
+      "title": "Export cancel/errors",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-265-A",
+          "testFile": "parity/tests/io.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-266",
+      "title": "Export chosen font assets",
+      "category": "Import and export",
+      "owner": "Format providers and library commands",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-266-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-266-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-267",
+      "title": "Email settings",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-267-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-267-B",
+          "testFile": "parity/tests/native-shortcuts.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-268",
+      "title": "Email draft snapshot",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-268-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-268-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-269",
+      "title": "Email cancel/failure",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-269-A",
+          "testFile": "parity/tests/io.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-269-B",
+          "testFile": "parity/tests/io-edge.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-270",
+      "title": "About",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-270-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-271",
+      "title": "Check update",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-271-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-271-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-272",
+      "title": "Install/open release",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-272-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-272-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-273",
+      "title": "Window state/platform menus",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-273-A",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-274",
+      "title": "Menu state synchronization",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-274-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-275",
+      "title": "Interface localization",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-275-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-276",
+      "title": "Offline baseline",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-276-A",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-277",
+      "title": "Mac native edit menu polish",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-277-A",
+          "testFile": "parity/tests/native.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-277-B",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-278",
+      "title": "Pressable shelf controls",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-278-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-278-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-279",
+      "title": "Region cycle",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-279-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-279-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-280",
+      "title": "Return to page",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-280-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-281",
+      "title": "Tab arrow navigation",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-281-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-282",
+      "title": "Nav arrow navigation",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-282-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-282-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-283",
+      "title": "Dialog roles and focus characterization",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-283-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-283-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-283-C",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-283-D",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-283-E",
+          "testFile": "parity/tests/modal-families.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-284",
+      "title": "Pointer selection persistence",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-284-A",
+          "testFile": "parity/tests/native.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-284-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-285",
+      "title": "Zoomed accessibility",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-285-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-285-B",
+          "testFile": "parity/tests/native-accessibility.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-286",
+      "title": "Touch pane gestures",
+      "category": "Pocket variants",
+      "owner": "Separately scoped Pocket host",
+      "acceptanceCases": [],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-287",
+      "title": "Pocket overflow menu",
+      "category": "Pocket variants",
+      "owner": "Separately scoped Pocket host",
+      "acceptanceCases": [],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-288",
+      "title": "Pocket shared storage",
+      "category": "Pocket variants",
+      "owner": "Separately scoped Pocket host",
+      "acceptanceCases": [],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-289",
+      "title": "Pocket keyboard/system bars",
+      "category": "Pocket variants",
+      "owner": "Separately scoped Pocket host",
+      "acceptanceCases": [],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-290",
+      "title": "Generated painting export exclusion",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-290-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-290-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-291",
+      "title": "Provider model fallback",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-291-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-292",
+      "title": "Painting brief excerpt",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-292-A",
+          "testFile": "parity/tests/books.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-293",
+      "title": "Mac held key repeating",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-293-A",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-294",
+      "title": "Background packaged update schedule",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-294-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-295",
+      "title": "Update progress lifecycle",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-295-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-296",
+      "title": "Localization plurals/fallback",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-296-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-296-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-297",
+      "title": "Local font filtering/fallback",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-297-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-297-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-298",
+      "title": "Startup fault resilience",
+      "category": "Persistence and synchronization",
+      "owner": "Document store, lifecycle and synchronization providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-298-A",
+          "testFile": "parity/tests/native.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-298-B",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-299",
+      "title": "Pin without reading jump",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-299-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-299-B",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-300",
+      "title": "Alphabet font companions",
+      "category": "Presentation and navigation",
+      "owner": "Svelte views and navigation ViewModels",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-300-A",
+          "testFile": "parity/tests/native.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-300-B",
+          "testFile": "parity/tests/native.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-301",
+      "title": "Spell interface defaults",
+      "category": "Spellcheck",
+      "owner": "Spellcheck capability provider and decorations",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-301-A",
+          "testFile": "parity/tests/spelling.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-302",
+      "title": "Regional locale resolution",
+      "category": "Email, update and application",
+      "owner": "OS/application capability providers",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-302-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-303",
+      "title": "Cover title language connectors",
+      "category": "Covers",
+      "owner": "Asset provider and cover ViewModel",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-303-A",
+          "testFile": "parity/tests/books.spec.ts"
+        },
+        {
+          "scenarioId": "NEO-303-B",
+          "testFile": "parity/tests/acceptance-gap.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    },
+    {
+      "featureId": "NEO-304",
+      "title": "Forced-colors system theme",
+      "category": "Keyboard access",
+      "owner": "Keyboard routing and accessible Svelte views",
+      "acceptanceCases": [
+        {
+          "scenarioId": "NEO-304-A",
+          "testFile": "parity/tests/presentation.spec.ts"
+        }
+      ],
+      "compositionStatus": "carry-forward acceptance gate; full feature parity is not asserted by the composition spike"
+    }
+  ]
+}

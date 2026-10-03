@@ -1,0 +1,759 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "-c",
+      "parity/adapter-regressions.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+        "parity/tests/adapter-regressions.spec.ts": "252ad44cef704091cdaa4f446676d649e8008b869e215b9d3bb19a1e74782a48",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+        "parity/tests/editing-edge.spec.ts": "011f9b4b7280f96a6ccc40f38076a150915f02bd7b8c9d32890b14641e72ef6a",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/native-accessibility.spec.ts": "7fa64d6c36465057254a45d463d068311ac5d5459342995e91e3161de48ab01d",
+        "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+        "parity/tests/native.spec.ts": "6165ca313a0920b43c8cb6e244805f9610469c75dbae10e36a3672c937edec7e",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "548951b576b417d23c1cc3990a9b05a0113d6701b7c11557cbe0b8e6e3267ffa",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+      "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+      "proofBuildSha256": "b100c57a80b89451bafd58f34fdabb5518b0ce3104addab1969d952cef16d0c8",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+            "parity/tests/adapter-regressions.spec.ts": "252ad44cef704091cdaa4f446676d649e8008b869e215b9d3bb19a1e74782a48",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+            "parity/tests/editing-edge.spec.ts": "011f9b4b7280f96a6ccc40f38076a150915f02bd7b8c9d32890b14641e72ef6a",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/native-accessibility.spec.ts": "7fa64d6c36465057254a45d463d068311ac5d5459342995e91e3161de48ab01d",
+            "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+            "parity/tests/native.spec.ts": "6165ca313a0920b43c8cb6e244805f9610469c75dbae10e36a3672c937edec7e",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "548951b576b417d23c1cc3990a9b05a0113d6701b7c11557cbe0b8e6e3267ffa",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "cf8f770eb4a41fed6a1ec8eb712a7abd64e1fd7ebbb0a556068b3fa6484d6c81",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+          "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+          "proofBuildSha256": "b100c57a80b89451bafd58f34fdabb5518b0ce3104addab1969d952cef16d0c8",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "adapter-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "parity/adapter-regressions-red-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "adapter-regressions.spec.ts",
+      "file": "adapter-regressions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "adapter-regressions.spec.ts",
+          "line": 17,
+          "column": 169,
+          "specs": [
+            {
+              "title": "[NEO-092-B] paragraph alignment preserves preceding typed prose undo and redo",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8676,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:25:44",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:25:44"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:33.853Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-origin-8a9c3-g-typed-prose-undo-and-redo/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-origin-8a9c3-g-typed-prose-undo-and-redo/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-612c34a3faa8ba8688b3",
+              "file": "adapter-regressions.spec.ts",
+              "line": 18,
+              "column": 2
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes emoji grapheme with undo redo and saved prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 764,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:42.744Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-54db051cf0cf8eb689d7",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes combining grapheme with undo redo and saved prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 762,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:43.523Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-4026b28dbd160673a52a",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes ZWJ grapheme with undo redo and saved prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 768,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:44.290Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-408631a4d08e99afb6c7",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-246-B] structural HTML whitespace creates no extra paragraphs and preserves inline author spacing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 774,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:45.064Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "initial-whitespace-geometry",
+                          "contentType": "application/json",
+                          "body": "ewogICJib2R5IjogewogICAgInRvcCI6IDg1OCwKICAgICJib3R0b20iOiA5MzIuNzk2ODc1LAogICAgImhlaWdodCI6IDc0Ljc5Njg3NSwKICAgICJ3aWR0aCI6IDUzNgogIH0sCiAgIndoaXRlU3BhY2UiOiAibm9ybWFsIiwKICAiZm9udCI6ICIxN3B4IC8gMjkuNzVweCBHZW9yZ2lhLCBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZiIsCiAgImxpbmVIZWlnaHQiOiAiMjkuNzVweCIsCiAgImNoaWxkcmVuIjogWwogICAgewogICAgICAidHlwZSI6IDMsCiAgICAgICJ0ZXh0IjogIlxuICAiLAogICAgICAidGFnIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAxLAogICAgICAidGV4dCI6ICIgIEFscGhhICBiZXRhLiAiLAogICAgICAidGFnIjogIlAiCiAgICB9LAogICAgewogICAgICAidHlwZSI6IDMsCiAgICAgICJ0ZXh0IjogIlxuXHQiLAogICAgICAidGFnIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAxLAogICAgICAidGV4dCI6ICJWZXJzZSAgd29yZHMuIiwKICAgICAgInRhZyI6ICJQIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAzLAogICAgICAidGV4dCI6ICJcbiIsCiAgICAgICJ0YWciOiBudWxsCiAgICB9CiAgXSwKICAicGFyYWdyYXBocyI6IFsKICAgIHsKICAgICAgInRleHQiOiAiICBBbHBoYSAgYmV0YS4gIiwKICAgICAgInJlY3QiOiB7CiAgICAgICAgInRvcCI6IDg1OCwKICAgICAgICAiYm90dG9tIjogODg3Ljc1LAogICAgICAgICJoZWlnaHQiOiAyOS43NSwKICAgICAgICAid2lkdGgiOiA1MzYKICAgICAgfSwKICAgICAgIm1hcmdpblRvcCI6ICIwcHgiLAogICAgICAibWFyZ2luQm90dG9tIjogIjBweCIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlZlcnNlICB3b3Jkcy4iLAogICAgICAicmVjdCI6IHsKICAgICAgICAidG9wIjogOTAzLjA0Njg3NSwKICAgICAgICAiYm90dG9tIjogOTMyLjc5Njg3NSwKICAgICAgICAiaGVpZ2h0IjogMjkuNzUsCiAgICAgICAgIndpZHRoIjogNDUxCiAgICAgIH0sCiAgICAgICJtYXJnaW5Ub3AiOiAiMTUuM3B4IiwKICAgICAgIm1hcmdpbkJvdHRvbSI6ICIwcHgiCiAgICB9CiAgXQp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-57f855fa7340d5fbb9e6",
+              "file": "adapter-regressions.spec.ts",
+              "line": 50,
+              "column": 2
+            }
+          ]
+        },
+        {
+          "title": "prosemirror",
+          "file": "adapter-regressions.spec.ts",
+          "line": 17,
+          "column": 169,
+          "specs": [
+            {
+              "title": "[NEO-092-B] paragraph alignment preserves preceding typed prose undo and redo",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8839,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:25:44",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \"Original.\",\u001b[39m\n\u001b[31m+     \"Original. New words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:25:44"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:45.844Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-fa336-g-typed-prose-undo-and-redo/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-fa336-g-typed-prose-undo-and-redo/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-af153f6b764b582be8be",
+              "file": "adapter-regressions.spec.ts",
+              "line": 18,
+              "column": 2
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes emoji grapheme with undo redo and saved prose",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8844,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\ude3a intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\ude3a intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\ude3a intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:01:54.889Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-d8e67-h-undo-redo-and-saved-prose/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-d8e67-h-undo-redo-and-saved-prose/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-a20c0f805a630b03ef73",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes combining grapheme with undo redo and saved prose",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8833,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"́ intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"́ intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"́ intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:02:03.946Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-f27e0-h-undo-redo-and-saved-prose/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-f27e0-h-undo-redo-and-saved-prose/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-5723472daeac191eecfd",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-228-B] Vim x deletes ZWJ grapheme with undo redo and saved prose",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8858,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\udc69‍💻 intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\udc69‍💻 intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[32m-     \" intact words.\",\u001b[39m\n\u001b[31m+     \"\udc69‍💻 intact words.\",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:42:10"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:02:12.994Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-ece3f-h-undo-redo-and-saved-prose/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-ece3f-h-undo-redo-and-saved-prose/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-abc27b237209649333f2",
+              "file": "adapter-regressions.spec.ts",
+              "line": 36,
+              "column": 36
+            },
+            {
+              "title": "[NEO-246-B] structural HTML whitespace creates no extra paragraphs and preserves inline author spacing",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8770,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+   \",\u001b[39m\n\u001b[2m      \"  Alpha  beta. \",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \t\",\u001b[39m\n\u001b[2m      \"Verse  words.\",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+   \",\u001b[39m\n\u001b[2m      \"  Alpha  beta. \",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \t\",\u001b[39m\n\u001b[2m      \"Verse  words.\",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:60:10",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                          "column": 99,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mediting-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                            "column": 99,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Array [\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+   \",\u001b[39m\n\u001b[2m      \"  Alpha  beta. \",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \t\",\u001b[39m\n\u001b[2m      \"Verse  words.\",\u001b[22m\n\u001b[31m+     \"\u001b[39m\n\u001b[31m+ \",\u001b[39m\n\u001b[2m    ],\u001b[22m\n\u001b[2m  ]\u001b[22m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate\n\n   at editing-helpers.ts:27\n\n  25 | export const paragraphs=(page:Page)=>page.locator('.chapter-body').evaluateAll(bs=>bs.map(b=>[...b.querySelectorAll('p')].map(p=>({text:(p.textContent??'').replace(/\\u00a0/g,' '),poetry:p.classList.contains('poetry'),scene:p.classList.contains('scene-break'),html:p.innerHTML}))));\n  26 | export async function texts(page:Page){return(await paragraphs(page)).map(ch=>ch.map(p=>p.text));}\n> 27 | export async function assertTexts(page:Page,wanted:string[][]){await expect.poll(()=>texts(page)).toEqual(wanted);}\n     |                                                                                                   ^\n  28 | export async function caretState(page:Page){return page.evaluate(()=>{const s=window.getSelection();if(!s?.rangeCount)return null;const r=s.getRangeAt(0),n=r.startContainer.nodeType===Node.TEXT_NODE?r.startContainer.parentElement:r.startContainer as Element,p=n?.closest('p'),b=n?.closest('.chapter-body');if(!p||!b)return null;const pre=document.createRange();pre.selectNodeContents(p);pre.setEnd(r.startContainer,r.startOffset);return{chapter:[...document.querySelectorAll('.chapter-body')].indexOf(b),paragraph:[...b.querySelectorAll('p')].indexOf(p),offset:pre.toString().length,collapsed:s.isCollapsed};});}\n  29 | export async function menu(app:ElectronApplication,labels:string[]){await app.evaluate(({Menu,BrowserWindow},labels)=>{let items=Menu.getApplicationMenu()!.items,item;for(const label of labels){item=items.find(x=>x.label.replace(/&/g,'').split('\\t')[0]===label.split('\\t')[0]);if(!item)throw Error(`Native menu missing ${label}`);items=item.submenu?.items??[];}const win=BrowserWindow.getAllWindows()[0];win.focus();win.webContents.focus();const role=item!.role;const commands:Record<string,string>={undo:'undo',redo:'redo',cut:'cut',copy:'copy',paste:'paste',pasteandmatchstyle:'pasteAndMatchStyle',selectall:'selectAll'};const command=role?commands[role.toLowerCase()]:undefined;if(command){(win.webContents as any)[command]();}else item!.click(item!,win,{} as any);},labels);}\n  30 | export async function clipboard(app:ElectronApplication,text:string,html?:string){await app.evaluate(async({app,clipboard,ClipboardItem,BrowserWindow},d)=>{\n    at assertTexts (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts:27:99)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/adapter-regressions.spec.ts:60:10"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T06:02:22.063Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "initial-whitespace-geometry",
+                          "contentType": "application/json",
+                          "body": "ewogICJib2R5IjogewogICAgInRvcCI6IDg1OCwKICAgICJib3R0b20iOiAxMTI2LjU5Mzc1LAogICAgImhlaWdodCI6IDI2OC41OTM3NSwKICAgICJ3aWR0aCI6IDUzNgogIH0sCiAgIndoaXRlU3BhY2UiOiAicHJlLXdyYXAiLAogICJmb250IjogIjE3cHggLyAyOS43NXB4IEdlb3JnaWEsIFwiVGltZXMgTmV3IFJvbWFuXCIsIHNlcmlmIiwKICAibGluZUhlaWdodCI6ICIyOS43NXB4IiwKICAiY2hpbGRyZW4iOiBbCiAgICB7CiAgICAgICJ0eXBlIjogMSwKICAgICAgInRleHQiOiAiXG4gICIsCiAgICAgICJ0YWciOiAiUCIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogMSwKICAgICAgInRleHQiOiAiICBBbHBoYSAgYmV0YS4gIiwKICAgICAgInRhZyI6ICJQIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAxLAogICAgICAidGV4dCI6ICJcblx0IiwKICAgICAgInRhZyI6ICJQIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAxLAogICAgICAidGV4dCI6ICJWZXJzZSAgd29yZHMuIiwKICAgICAgInRhZyI6ICJQIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAxLAogICAgICAidGV4dCI6ICJcbiIsCiAgICAgICJ0YWciOiAiUCIKICAgIH0KICBdLAogICJwYXJhZ3JhcGhzIjogWwogICAgewogICAgICAidGV4dCI6ICJcbiAgIiwKICAgICAgInJlY3QiOiB7CiAgICAgICAgInRvcCI6IDg1OCwKICAgICAgICAiYm90dG9tIjogOTE3LjUsCiAgICAgICAgImhlaWdodCI6IDU5LjUsCiAgICAgICAgIndpZHRoIjogNTM2CiAgICAgIH0sCiAgICAgICJtYXJnaW5Ub3AiOiAiMHB4IiwKICAgICAgIm1hcmdpbkJvdHRvbSI6ICIwcHgiCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICIgIEFscGhhICBiZXRhLiAiLAogICAgICAicmVjdCI6IHsKICAgICAgICAidG9wIjogOTE3LjUsCiAgICAgICAgImJvdHRvbSI6IDk0Ny4yNSwKICAgICAgICAiaGVpZ2h0IjogMjkuNzUsCiAgICAgICAgIndpZHRoIjogNTM2CiAgICAgIH0sCiAgICAgICJtYXJnaW5Ub3AiOiAiMHB4IiwKICAgICAgIm1hcmdpbkJvdHRvbSI6ICIwcHgiCiAgICB9LAogICAgewogICAgICAidGV4dCI6ICJcblx0IiwKICAgICAgInJlY3QiOiB7CiAgICAgICAgInRvcCI6IDk0Ny4yNSwKICAgICAgICAiYm90dG9tIjogMTAwNi43NSwKICAgICAgICAiaGVpZ2h0IjogNTkuNSwKICAgICAgICAid2lkdGgiOiA1MzYKICAgICAgfSwKICAgICAgIm1hcmdpblRvcCI6ICIwcHgiLAogICAgICAibWFyZ2luQm90dG9tIjogIjBweCIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlZlcnNlICB3b3Jkcy4iLAogICAgICAicmVjdCI6IHsKICAgICAgICAidG9wIjogMTAyMi4wNDY4NzUsCiAgICAgICAgImJvdHRvbSI6IDEwNTEuNzk2ODc1LAogICAgICAgICJoZWlnaHQiOiAyOS43NSwKICAgICAgICAid2lkdGgiOiA0NTEKICAgICAgfSwKICAgICAgIm1hcmdpblRvcCI6ICIxNS4zcHgiLAogICAgICAibWFyZ2luQm90dG9tIjogIjBweCIKICAgIH0sCiAgICB7CiAgICAgICJ0ZXh0IjogIlxuIiwKICAgICAgInJlY3QiOiB7CiAgICAgICAgInRvcCI6IDEwNjcuMDkzNzUsCiAgICAgICAgImJvdHRvbSI6IDExMjYuNTkzNzUsCiAgICAgICAgImhlaWdodCI6IDU5LjUsCiAgICAgICAgIndpZHRoIjogNTM2CiAgICAgIH0sCiAgICAgICJtYXJnaW5Ub3AiOiAiMTUuM3B4IiwKICAgICAgIm1hcmdpbkJvdHRvbSI6ICIwcHgiCiAgICB9CiAgXQp9"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-3a889-erves-inline-author-spacing/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/adapter-regressions-test-results/adapter-regressions-prosem-3a889-erves-inline-author-spacing/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/editing-helpers.ts",
+                        "column": 99,
+                        "line": 27
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2f966c39c5e67eb4bbd0-13ad6ba0cd39e5672eb7",
+              "file": "adapter-regressions.spec.ts",
+              "line": 50,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T06:01:33.593Z",
+    "duration": 57269.478,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

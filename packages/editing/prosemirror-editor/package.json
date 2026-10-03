@@ -1,0 +1,28 @@
+{
+  "name": "@leafloom/prosemirror-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@leafloom/document-contracts": "workspace:*",
+    "@leafloom/editor-contracts": "workspace:*",
+    "@leafloom/review-contracts": "workspace:*",
+    "@noble/hashes": "catalog:",
+    "@opentelemetry/api": "catalog:",
+    "prosemirror-model": "catalog:",
+    "prosemirror-state": "catalog:",
+    "prosemirror-history": "catalog:",
+    "prosemirror-commands": "catalog:",
+    "prosemirror-view": "catalog:",
+    "prosemirror-keymap": "catalog:",
+    "prosemirror-transform": "catalog:",
+    "zod": "catalog:"
+  },
+  "leafloom": {
+    "role": "provider",
+    "runtime": "browser"
+  }
+}

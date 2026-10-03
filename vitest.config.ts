@@ -1,0 +1,1 @@
+import {defineConfig} from 'vitest/config';export default defineConfig({test:{include:['packages/**/*.test.ts','apps/desktop/host/**/*.test.ts','tests/repository/**/*.test.ts','tests/browser/**/*.test.ts'],exclude:['**/node_modules/**','tests/reference/**','spikes/**'],reporters:['default'],testTimeout:15000}});

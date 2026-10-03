@@ -1,0 +1,1672 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/acceptance-gap.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "00e065fc35e4721f4d0184df68a6b8e53763667a9b7f254dbc7449637cddd500",
+        "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+        "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+        "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "e60343d6fca96234670750156e1190e719b3dccbb0e0dfe39ea1cec10acc9d91",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+        "parity/tests/navigation-edge.spec.ts": "3edf8f99bb78d602a989922fb492c0c5a013af8c15a194807be9da05930e6251",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "6580c45ac4e57a292a080fd4f0df06065aca695cb7fda4bf364440fdf2b18a30",
+        "parity/tests/presentation.spec.ts": "ee364e94c19c759a4c2b366d036653318e2641a945e3c2a8a18ddf330ee2e274",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "31b1be2f64d55f70c4063ac64e1f2b8305b49b82ae9535aebeffcbf4a243989e",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+      "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+      "dependencyLockSha256": "35bf2d81e117e56876fe512ecf4be32cbcb2cecaf1245b931ed7a784bf886a91",
+      "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+      "proofBuildSha256": "711de117b7ffa0c9f6ec46df5492e968fd56d2f8c044d983ba7cf8e41f8b7031",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "00e065fc35e4721f4d0184df68a6b8e53763667a9b7f254dbc7449637cddd500",
+            "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+            "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+            "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "e60343d6fca96234670750156e1190e719b3dccbb0e0dfe39ea1cec10acc9d91",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+            "parity/tests/navigation-edge.spec.ts": "3edf8f99bb78d602a989922fb492c0c5a013af8c15a194807be9da05930e6251",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "6580c45ac4e57a292a080fd4f0df06065aca695cb7fda4bf364440fdf2b18a30",
+            "parity/tests/presentation.spec.ts": "ee364e94c19c759a4c2b366d036653318e2641a945e3c2a8a18ddf330ee2e274",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "31b1be2f64d55f70c4063ac64e1f2b8305b49b82ae9535aebeffcbf4a243989e",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+          "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+          "dependencyLockSha256": "35bf2d81e117e56876fe512ecf4be32cbcb2cecaf1245b931ed7a784bf886a91",
+          "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+          "proofBuildSha256": "711de117b7ffa0c9f6ec46df5492e968fd56d2f8c044d983ba7cf8e41f8b7031",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "acceptance-gap.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-original-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "acceptance-gap.spec.ts",
+      "file": "acceptance-gap.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "acceptance-gap.spec.ts",
+          "line": 28,
+          "column": 156,
+          "specs": [
+            {
+              "title": "[NEO-001-B] [NEO-002-B] real and pen identities coexist with separate attribution and selected identity after restart",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 810,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32mArrayContaining [\"Real Writer\", \"Pen Writer\"]\u001b[39m\nReceived: \u001b[31m[\"Real Writer\"]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32mArrayContaining [\"Real Writer\", \"Pen Writer\"]\u001b[39m\nReceived: \u001b[31m[\"Real Writer\"]\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:37:65",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 65,
+                          "line": 37
+                        },
+                        "snippet": "  35 |   await onboard(page,{name:'Real Writer',pen:'Pen Writer'});await expect(page.locator('#author-chip')).toHaveText('Real Writer');\n  36 |   const real=await book(page,'Real attribution');expect((await meta(directory,real.bookId)).author).toBe('Real Writer');\n> 37 |   expect((await readLibrary(directory)).authors.map(a=>a.name)).toEqual(expect.arrayContaining(['Real Writer','Pen Writer']));\n     |                                                                 ^\n  38 |   await authorMenu(page,'Write as Pen Writer');const pen=await book(page,'Pen attribution');expect((await meta(directory,pen.bookId)).author).toBe('Pen Writer');\n  39 |   await expect(page.locator(`[data-book-id=\"${real.bookId}\"]`)).toHaveCount(0);await restart();await expect(page.locator('#firstrun')).toBeHidden();await expect(page.locator('#author-chip')).toHaveText('Pen Writer');await expect(page.locator(`[data-book-id=\"${pen.bookId}\"]`)).toBeVisible();\n  40 |   await authorMenu(page,'Write as Real Writer');await expect(page.locator(`[data-book-id=\"${real.bookId}\"]`)).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 65,
+                            "line": 37
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32mArrayContaining [\"Real Writer\", \"Pen Writer\"]\u001b[39m\nReceived: \u001b[31m[\"Real Writer\"]\u001b[39m\n\n  35 |   await onboard(page,{name:'Real Writer',pen:'Pen Writer'});await expect(page.locator('#author-chip')).toHaveText('Real Writer');\n  36 |   const real=await book(page,'Real attribution');expect((await meta(directory,real.bookId)).author).toBe('Real Writer');\n> 37 |   expect((await readLibrary(directory)).authors.map(a=>a.name)).toEqual(expect.arrayContaining(['Real Writer','Pen Writer']));\n     |                                                                 ^\n  38 |   await authorMenu(page,'Write as Pen Writer');const pen=await book(page,'Pen attribution');expect((await meta(directory,pen.bookId)).author).toBe('Pen Writer');\n  39 |   await expect(page.locator(`[data-book-id=\"${real.bookId}\"]`)).toHaveCount(0);await restart();await expect(page.locator('#firstrun')).toBeHidden();await expect(page.locator('#author-chip')).toHaveText('Pen Writer');await expect(page.locator(`[data-book-id=\"${pen.bookId}\"]`)).toBeVisible();\n  40 |   await authorMenu(page,'Write as Real Writer');await expect(page.locator(`[data-book-id=\"${real.bookId}\"]`)).toBeVisible();\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:37:65"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:31:34.415Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-735fe-cted-identity-after-restart/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-735fe-cted-identity-after-restart/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 65,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-02ac3cc93aaad202f42f",
+              "file": "acceptance-gap.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-004-B] chosen dropcap previews visibly hover another face and leave restores choice before persistence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1219,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:31:35.469Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-55866c05fd42aa944229",
+              "file": "acceptance-gap.spec.ts",
+              "line": 42,
+              "column": 2
+            },
+            {
+              "title": "[NEO-022-B] keyboard activation of add shelf focuses its editable label and commits named shelf",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1992,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:31:36.704Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-eedf10b4a63385f3673e",
+              "file": "acceptance-gap.spec.ts",
+              "line": 49,
+              "column": 2
+            },
+            {
+              "title": "[NEO-027-B] removing custom image reveals retained completed painting and removes only custom file",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 983,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:31:38.701Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-a930655d49743ae678f0",
+              "file": "acceptance-gap.spec.ts",
+              "line": 52,
+              "column": 2
+            },
+            {
+              "title": "[NEO-031-B] cancelling valid changed cover settings restores saved models quality and automatic preference",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 120538,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\n    at configurePaint (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts:40:315)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:56:23",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                          "column": 315,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mbooks-helpers.ts:40\n\n  38 | }\n  39 | export async function exportText(file:string){if(file.endsWith('.docx')){const zip=await JSZip.loadAsync(await readFile(file));return(await zip.file('word/document.xml')!.async('string')).replace(/<[^>]+>/g,' ');}if(file.endsWith('.epub')){const zip=await JSZip.loadAsync(await readFile(file));let text='';for(const name of Object.keys(zip.files))if(/\\.(xhtml|html)$/.test(name))text+=await zip.file(name)!.async('string');return text.replace(/<[^>]+>/g,' ');}return readFile(file,'utf8');}\n> 40 | export async function configurePaint(page:Page,app:ElectronApplication,key='sk-fixture-never-network-0000000000',automatic=true){await nativeMenu(app,'Cover Art');await page.locator('#ca-key').fill(key);await page.locator('#ca-auto').setChecked(automatic);await page.locator('.modal-backdrop:not([hidden]) .m-ok').click();await expect(page.locator('#ca-key')).toHaveCount(0);}\n     |                                                                                                                                                                                                                                                                                                                           ^\n  41 | export const paintResponses = (delayMs=0) => [\n  42 |  {match:'/models',body:{data:[]}},\n  43 |  {match:'/chat/completions',delayMs,body:{choices:[{message:{content:'A quiet lighthouse above a stormy sea, without any lettering.'}}]}},"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                            "column": 315,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\n\n   at books-helpers.ts:40\n\n  38 | }\n  39 | export async function exportText(file:string){if(file.endsWith('.docx')){const zip=await JSZip.loadAsync(await readFile(file));return(await zip.file('word/document.xml')!.async('string')).replace(/<[^>]+>/g,' ');}if(file.endsWith('.epub')){const zip=await JSZip.loadAsync(await readFile(file));let text='';for(const name of Object.keys(zip.files))if(/\\.(xhtml|html)$/.test(name))text+=await zip.file(name)!.async('string');return text.replace(/<[^>]+>/g,' ');}return readFile(file,'utf8');}\n> 40 | export async function configurePaint(page:Page,app:ElectronApplication,key='sk-fixture-never-network-0000000000',automatic=true){await nativeMenu(app,'Cover Art');await page.locator('#ca-key').fill(key);await page.locator('#ca-auto').setChecked(automatic);await page.locator('.modal-backdrop:not([hidden]) .m-ok').click();await expect(page.locator('#ca-key')).toHaveCount(0);}\n     |                                                                                                                                                                                                                                                                                                                           ^\n  41 | export const paintResponses = (delayMs=0) => [\n  42 |  {match:'/models',body:{data:[]}},\n  43 |  {match:'/chat/completions',delayMs,body:{choices:[{message:{content:'A quiet lighthouse above a stormy sea, without any lettering.'}}]}},\n    at configurePaint (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts:40:315)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:56:23"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 7,
+                            "line": 32
+                          },
+                          "message": "\u001b[31mTest timeout of 90000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n  30 |  async function restart(){await app.close();app=await launchReference(directory,engine==='original'?undefined:engine);page=await app.firstWindow();await expect(page.locator('#bookshelf-view')).toBeVisible();}\n  31 |  test.beforeEach(async()=>{directory=await realpath(await createReferenceDirectory());app=await launchReference(directory,engine==='original'?undefined:engine);page=await app.firstWindow();});\n> 32 |  test.afterEach(async()=>{await app?.close();await removeReferenceDirectory(directory);});\n     |       ^\n  33 |\n  34 |  test('[NEO-001-B] [NEO-002-B] real and pen identities coexist with separate attribution and selected identity after restart',async()=>{\n  35 |   await onboard(page,{name:'Real Writer',pen:'Pen Writer'});await expect(page.locator('#author-chip')).toHaveText('Real Writer');\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:32:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:31:39.689Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-31bc6-ty-and-automatic-preference/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-31bc6-ty-and-automatic-preference/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                        "column": 315,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-ea37e2bf224a7ae368ef",
+              "file": "acceptance-gap.spec.ts",
+              "line": 55,
+              "column": 2
+            },
+            {
+              "title": "[NEO-036-B] unbind and rebind restores parked Part before its story and back page last with original words",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2300,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:34:57.975Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-08af1fd83c231ec1eb78",
+              "file": "acceptance-gap.spec.ts",
+              "line": 58,
+              "column": 2
+            },
+            {
+              "title": "[NEO-037-B] bound title subtitle and author edited in sheet all reopen after Escape and restart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2757,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:00.291Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-5ba7ef52575bd9b9c132",
+              "file": "acceptance-gap.spec.ts",
+              "line": 61,
+              "column": 2
+            },
+            {
+              "title": "[NEO-041-C] copyright dedication Part and back sheets retain their kind typography formatted prose and Escape commit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3923,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:03.053Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-4f1ae0ae9d691cb5e821",
+              "file": "acceptance-gap.spec.ts",
+              "line": 64,
+              "column": 2
+            },
+            {
+              "title": "[NEO-045-B] [NEO-046-B] bound and anthology menus expose three formats whose real artifacts retain shelf and chapter order",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 3028,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:84:267",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 267,
+                          "line": 84
+                        },
+                        "snippet": "  82 |     await shelfOption(page,mode==='bound'?'Export the book':'Export shelf as anthology');if(mode==='anthology'){await expect(page.locator('.modal-backdrop:not([hidden]) input')).toHaveCount(1);await input(page,'Ordered anthology');}\n  83 |     await expect(page.locator('.modal-backdrop:not([hidden]) .fr-choice strong')).toHaveText(['EPUB','Word (.docx)','PDF']);await option(page,format==='epub'?'EPUB':format==='docx'?'Word (.docx)':'PDF');\n> 84 |    },mode+'-'+format);const text=(await orderedText(page,file)).replace(/\\s+/g,' ');const values=[1,2,3].flatMap(n=>['Unique opening for story '+n+'.','Unique ending for story '+n+'.']);const positions=values.map(v=>text.indexOf(v));expect(positions.every(n=>n>=0)).toBe(true);expect(positions).toEqual([...positions].sort((a,b)=>a-b));}\n     |                                                                                                                                                                                                                                                                           ^\n  85 |   }\n  86 |  });\n  87 |  test('[NEO-047-B] subtitle reopens and clearing title produces Untitled on real shelf cover and restart',async()=>{"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 267,
+                            "line": 84
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  82 |     await shelfOption(page,mode==='bound'?'Export the book':'Export shelf as anthology');if(mode==='anthology'){await expect(page.locator('.modal-backdrop:not([hidden]) input')).toHaveCount(1);await input(page,'Ordered anthology');}\n  83 |     await expect(page.locator('.modal-backdrop:not([hidden]) .fr-choice strong')).toHaveText(['EPUB','Word (.docx)','PDF']);await option(page,format==='epub'?'EPUB':format==='docx'?'Word (.docx)':'PDF');\n> 84 |    },mode+'-'+format);const text=(await orderedText(page,file)).replace(/\\s+/g,' ');const values=[1,2,3].flatMap(n=>['Unique opening for story '+n+'.','Unique ending for story '+n+'.']);const positions=values.map(v=>text.indexOf(v));expect(positions.every(n=>n>=0)).toBe(true);expect(positions).toEqual([...positions].sort((a,b)=>a-b));}\n     |                                                                                                                                                                                                                                                                           ^\n  85 |   }\n  86 |  });\n  87 |  test('[NEO-047-B] subtitle reopens and clearing title produces Untitled on real shelf cover and restart',async()=>{\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:84:267"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:06.981Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-8b36f-ain-shelf-and-chapter-order/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-8b36f-ain-shelf-and-chapter-order/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 267,
+                        "line": 84
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-0e73e76106680a9059fd",
+              "file": "acceptance-gap.spec.ts",
+              "line": 77,
+              "column": 2
+            },
+            {
+              "title": "[NEO-047-B] subtitle reopens and clearing title produces Untitled on real shelf cover and restart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1525,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:10.233Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-a6b7107967ce12bb10a8",
+              "file": "acceptance-gap.spec.ts",
+              "line": 87,
+              "column": 2
+            },
+            {
+              "title": "[NEO-049-B] title and subtitle Enter focus existing story past front matter without creating duplicate chapter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 844,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:11.773Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-a097a185850460f2daaf",
+              "file": "acceptance-gap.spec.ts",
+              "line": 90,
+              "column": 2
+            },
+            {
+              "title": "[NEO-051-B] chapter heading Enter blurs empty title restores default and Shift Enter poetry accepts words before existing prose",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 30835,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ch-title')\u001b[22m\n\u001b[2m    - locator resolved to <span class=\"ch-title\" spellcheck=\"false\" contenteditable=\"true\"></span>\u001b[22m\n\u001b[2m    - fill(\"New title\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ch-title')\u001b[22m\n\u001b[2m    - locator resolved to <span class=\"ch-title\" spellcheck=\"false\" contenteditable=\"true\"></span>\u001b[22m\n\u001b[2m    - fill(\"New title\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:95:155",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 155,
+                          "line": 95
+                        },
+                        "snippet": "  93 |  });\n  94 |  test('[NEO-051-B] chapter heading Enter blurs empty title restores default and Shift Enter poetry accepts words before existing prose',async()=>{\n> 95 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Original prose.</p>'}]);const title=page.locator('.ch-title');await title.fill('New title');await title.press('Enter');await expect(title).not.toBeFocused();await title.fill('');await page.locator('.chapter-body').click();await expect(page.locator('.chapter-head')).not.toHaveClass(/has-title/);await expect(page.locator('.ch-num')).toHaveText('Chapter 1');await title.click();await page.keyboard.press('Shift+Enter');await page.keyboard.type('Poetry opening');await expect(page.locator('.chapter-body p').first()).toHaveClass(/poetry/);await expect(page.locator('.chapter-body p').first()).toContainText('Poetry opening');await expect(page.locator('.chapter-body p').last()).toHaveText('Original prose.');await page.locator('#back-to-shelf').click();expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Poetry opening');\n     |                                                                                                                                                           ^\n  96 |  });\n  97 |  test('[NEO-053-B] deleting Part renumbers remaining Roman heading and Undo restores numbering and all prose',async()=>{\n  98 |   await onboard(page);await fixture(page,directory,[{id:'p1',kind:'part',html:'<p>Movement one.</p>'},{id:'one',html:'<p>First story.</p>'},{id:'p2',kind:'part',html:'<p>Movement two.</p>'},{id:'two',html:'<p>Second story.</p>'}]);await navigation(page);await chapterChoice(page,'p1','Delete');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Part I','Chapter 2']);await expect(page.locator('[data-id=\"p2\"] .chapter-body')).toHaveText('Movement two.');await page.keyboard.press('Meta+z');await expect(page.locator('.ch-num')).toHaveText(['Part I','Chapter 1','Part II','Chapter 2']);await expect(page.locator('[data-id=\"p1\"] .chapter-body')).toHaveText('Movement one.');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 155,
+                            "line": 95
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.ch-title')\u001b[22m\n\u001b[2m    - locator resolved to <span class=\"ch-title\" spellcheck=\"false\" contenteditable=\"true\"></span>\u001b[22m\n\u001b[2m    - fill(\"New title\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  93 |  });\n  94 |  test('[NEO-051-B] chapter heading Enter blurs empty title restores default and Shift Enter poetry accepts words before existing prose',async()=>{\n> 95 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Original prose.</p>'}]);const title=page.locator('.ch-title');await title.fill('New title');await title.press('Enter');await expect(title).not.toBeFocused();await title.fill('');await page.locator('.chapter-body').click();await expect(page.locator('.chapter-head')).not.toHaveClass(/has-title/);await expect(page.locator('.ch-num')).toHaveText('Chapter 1');await title.click();await page.keyboard.press('Shift+Enter');await page.keyboard.type('Poetry opening');await expect(page.locator('.chapter-body p').first()).toHaveClass(/poetry/);await expect(page.locator('.chapter-body p').first()).toContainText('Poetry opening');await expect(page.locator('.chapter-body p').last()).toHaveText('Original prose.');await page.locator('#back-to-shelf').click();expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Poetry opening');\n     |                                                                                                                                                           ^\n  96 |  });\n  97 |  test('[NEO-053-B] deleting Part renumbers remaining Roman heading and Undo restores numbering and all prose',async()=>{\n  98 |   await onboard(page);await fixture(page,directory,[{id:'p1',kind:'part',html:'<p>Movement one.</p>'},{id:'one',html:'<p>First story.</p>'},{id:'p2',kind:'part',html:'<p>Movement two.</p>'},{id:'two',html:'<p>Second story.</p>'}]);await navigation(page);await chapterChoice(page,'p1','Delete');await expect(page.locator('.ch-num')).toHaveText(['Chapter 1','Part I','Chapter 2']);await expect(page.locator('[data-id=\"p2\"] .chapter-body')).toHaveText('Movement two.');await page.keyboard.press('Meta+z');await expect(page.locator('.ch-num')).toHaveText(['Part I','Chapter 1','Part II','Chapter 2']);await expect(page.locator('[data-id=\"p1\"] .chapter-body')).toHaveText('Movement one.');\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:95:155"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:12.622Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-aff0a-words-before-existing-prose/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-aff0a-words-before-existing-prose/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 155,
+                        "line": 95
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-7ec0690f01a09dfdac33",
+              "file": "acceptance-gap.spec.ts",
+              "line": 94,
+              "column": 2
+            },
+            {
+              "title": "[NEO-053-B] deleting Part renumbers remaining Roman heading and Undo restores numbering and all prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1210,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:43.684Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-f3c350154fdd5e361b45",
+              "file": "acceptance-gap.spec.ts",
+              "line": 97,
+              "column": 2
+            },
+            {
+              "title": "[NEO-056-B] generated contents Part link focuses actual Part body and tracks current navigation row",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1178,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:44.909Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-6422953e99252241f85e",
+              "file": "acceptance-gap.spec.ts",
+              "line": 100,
+              "column": 2
+            },
+            {
+              "title": "[NEO-062-B] nav note blur writes metadata and immediately appears on matching Outline line",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2015,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:46.093Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-397f30e64849fb3fac5e",
+              "file": "acceptance-gap.spec.ts",
+              "line": 103,
+              "column": 2
+            },
+            {
+              "title": "[NEO-063-C] heading and Outline context menus delete real chapter archive formatted prose and Undo restores exact order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 992,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:48.113Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-9dc42f39f22a1a02edad",
+              "file": "acceptance-gap.spec.ts",
+              "line": 106,
+              "column": 2
+            },
+            {
+              "title": "[NEO-065-B] chapter PDF artifact contains selected custom heading and prose while excluding book front matter and other story",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1874,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Selected PDF unique prose.\"\u001b[39m\nReceived string:    \u001b[31m\"Structure Fixture  L I B R A R Y   W R I T E R 2  C   H   A   P   T   E   R   1   —   S   E   L   E   C   T   E   D   H   E   A   D   I   N   G  S elected PDF unique prose.\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Selected PDF unique prose.\"\u001b[39m\nReceived string:    \u001b[31m\"Structure Fixture  L I B R A R Y   W R I T E R 2  C   H   A   P   T   E   R   1   —   S   E   L   E   C   T   E   D   H   E   A   D   I   N   G  S elected PDF unique prose.\"\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:111:467",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 467,
+                          "line": 111
+                        },
+                        "snippet": "  109 |  });\n  110 |  test('[NEO-065-B] chapter PDF artifact contains selected custom heading and prose while excluding book front matter and other story',async()=>{\n> 111 |   await onboard(page);await fixture(page,directory,[{id:'front',kind:'dedication',html:'<p>Excluded dedication unique.</p>'},{id:'one',title:'Selected heading',html:'<p>Selected PDF unique prose.</p>'},{id:'two',html:'<p>Excluded other story unique.</p>'}]);await navigation(page);const file=await exportFile(page,directory,app,'pdf',async()=>{await chapterChoice(page,'one','Export Chapter…');await option(page,'PDF');});const text=await pdfText(file);expect(text).toContain('Selected PDF unique prose.');expect(text.toLowerCase()).toContain('selected heading');expect(text).not.toContain('Excluded dedication unique.');expect(text).not.toContain('Excluded other story unique.');\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  112 |  });\n  113 |  test('[NEO-231-C] chapter words typed immediately before host close flush to original file and reopen after restart',async()=>{\n  114 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Original beginning.</p>'}]);await caret(page,'one',0,19);await page.keyboard.type(' Immediate close tail');await restart();expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Immediate close tail');await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('.chapter-body')).toContainText('Immediate close tail');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 467,
+                            "line": 111
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Selected PDF unique prose.\"\u001b[39m\nReceived string:    \u001b[31m\"Structure Fixture  L I B R A R Y   W R I T E R 2  C   H   A   P   T   E   R   1   —   S   E   L   E   C   T   E   D   H   E   A   D   I   N   G  S elected PDF unique prose.\"\u001b[39m\n\n  109 |  });\n  110 |  test('[NEO-065-B] chapter PDF artifact contains selected custom heading and prose while excluding book front matter and other story',async()=>{\n> 111 |   await onboard(page);await fixture(page,directory,[{id:'front',kind:'dedication',html:'<p>Excluded dedication unique.</p>'},{id:'one',title:'Selected heading',html:'<p>Selected PDF unique prose.</p>'},{id:'two',html:'<p>Excluded other story unique.</p>'}]);await navigation(page);const file=await exportFile(page,directory,app,'pdf',async()=>{await chapterChoice(page,'one','Export Chapter…');await option(page,'PDF');});const text=await pdfText(file);expect(text).toContain('Selected PDF unique prose.');expect(text.toLowerCase()).toContain('selected heading');expect(text).not.toContain('Excluded dedication unique.');expect(text).not.toContain('Excluded other story unique.');\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^\n  112 |  });\n  113 |  test('[NEO-231-C] chapter words typed immediately before host close flush to original file and reopen after restart',async()=>{\n  114 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Original beginning.</p>'}]);await caret(page,'one',0,19);await page.keyboard.type(' Immediate close tail');await restart();expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Immediate close tail');await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('.chapter-body')).toContainText('Immediate close tail');\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:111:467"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:49.111Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-e9f7c-ront-matter-and-other-story/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-e9f7c-ront-matter-and-other-story/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 467,
+                        "line": 111
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-356e9c8e72401b1310ab",
+              "file": "acceptance-gap.spec.ts",
+              "line": 110,
+              "column": 2
+            },
+            {
+              "title": "[NEO-231-C] chapter words typed immediately before host close flush to original file and reopen after restart",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1427,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:51.211Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-6d93f2186965b24e33d8",
+              "file": "acceptance-gap.spec.ts",
+              "line": 113,
+              "column": 2
+            },
+            {
+              "title": "[NEO-237-B] external text refresh preserves nonzero scroll and distant caret and emits one adoption toast",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2187,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:52.653Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-ba2f703bb0702f3771ad",
+              "file": "acceptance-gap.spec.ts",
+              "line": 116,
+              "column": 2
+            },
+            {
+              "title": "[NEO-009-B] dragging book into populated second shelf inserts before target and persists unique placement",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1703,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:54.846Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-c076a0796859011fd9ff",
+              "file": "acceptance-gap.spec.ts",
+              "line": 121,
+              "column": 2
+            },
+            {
+              "title": "[NEO-019-B] Reshelve sorts removed stories by modification date while excluding parked bound pages",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1501,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:56.553Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-c238488573d3b9106241",
+              "file": "acceptance-gap.spec.ts",
+              "line": 124,
+              "column": 2
+            },
+            {
+              "title": "[NEO-043-B] page tile exposes Open and Remove only and inserting a second Part retains first page and both positions",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 31263,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.part-seam').last()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"part-seam\" title=\"Start a part here\" aria-label=\"Start a part here\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.part-seam').last()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"part-seam\" title=\"Start a part here\" aria-label=\"Start a part here\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:131:358",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 358,
+                          "line": 131
+                        },
+                        "snippet": "  129 |  test('[NEO-043-B] page tile exposes Open and Remove only and inserting a second Part retains first page and both positions',async()=>{\n  130 |   await onboard(page);const ids=await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').fill('First movement words');await closeSheet(page);const first=(await shelfMetas(directory)).find(m=>m.kind==='part')!;\n> 131 |   const tile=page.locator(`[data-book-id=\"${first.id}\"]`);expect(await tile.evaluate(el=>(el as HTMLElement).draggable)).toBe(false);await tile.click({button:'right'});await expect(page.locator('.modal-backdrop:not([hidden]) .fr-choice strong')).toHaveText(['Open','Remove page']);await page.keyboard.press('Escape');await page.locator('.part-seam').last().click();await page.locator('.ps-body').fill('Second movement words');await closeSheet(page);const all=await shelfMetas(directory),parts=all.filter(m=>m.kind==='part');expect(parts).toHaveLength(2);expect(all.findIndex(m=>m.id===first.id)+1).toBe(all.findIndex(m=>m.id===ids[0]));expect(all.findIndex(m=>m.id===parts[1].id)+1).toBe(all.findIndex(m=>m.id===ids[2]));expect(await readFile(chapterPath(directory,first.id,first.chapterOrder[0]),'utf8')).toContain('First movement words');await expect(page.locator('.kind-part .pt-label')).toHaveText(['Part I','Part II']);\n      |                                                                                                                                                                                                                                                                                                                                                                      ^\n  132 |  });\n  133 |  test('[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration',async()=>{\n  134 |   await onboard(page);const id=await fixture(page,directory,[{id:'first',kind:'epilogue',html:'<p>Modern epilogue first.</p>'},{id:'middle',kind:'prologue',html:'<p>Modern prologue middle.</p>'},{id:'last',html:'<p>Ordinary last chapter.</p>'}]);await expect(page.locator('.ch-num')).toHaveText(['Epilogue','Prologue','Chapter 1']);await page.locator('#back-to-shelf').click();await restart();await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('[data-id=\"first\"]')).toHaveClass(/kind-epilogue/);await expect(page.locator('[data-id=\"middle\"]')).toHaveClass(/kind-prologue/);expect((await meta(directory,id)).chapterKinds).toEqual({first:'epilogue',middle:'prologue'});"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 358,
+                            "line": 131
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.part-seam').last()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"part-seam\" title=\"Start a part here\" aria-label=\"Start a part here\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"modal-backdrop\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  129 |  test('[NEO-043-B] page tile exposes Open and Remove only and inserting a second Part retains first page and both positions',async()=>{\n  130 |   await onboard(page);const ids=await bound(page,directory);await page.locator('.part-seam').first().click();await page.locator('.ps-body').fill('First movement words');await closeSheet(page);const first=(await shelfMetas(directory)).find(m=>m.kind==='part')!;\n> 131 |   const tile=page.locator(`[data-book-id=\"${first.id}\"]`);expect(await tile.evaluate(el=>(el as HTMLElement).draggable)).toBe(false);await tile.click({button:'right'});await expect(page.locator('.modal-backdrop:not([hidden]) .fr-choice strong')).toHaveText(['Open','Remove page']);await page.keyboard.press('Escape');await page.locator('.part-seam').last().click();await page.locator('.ps-body').fill('Second movement words');await closeSheet(page);const all=await shelfMetas(directory),parts=all.filter(m=>m.kind==='part');expect(parts).toHaveLength(2);expect(all.findIndex(m=>m.id===first.id)+1).toBe(all.findIndex(m=>m.id===ids[0]));expect(all.findIndex(m=>m.id===parts[1].id)+1).toBe(all.findIndex(m=>m.id===ids[2]));expect(await readFile(chapterPath(directory,first.id,first.chapterOrder[0]),'utf8')).toContain('First movement words');await expect(page.locator('.kind-part .pt-label')).toHaveText(['Part I','Part II']);\n      |                                                                                                                                                                                                                                                                                                                                                                      ^\n  132 |  });\n  133 |  test('[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration',async()=>{\n  134 |   await onboard(page);const id=await fixture(page,directory,[{id:'first',kind:'epilogue',html:'<p>Modern epilogue first.</p>'},{id:'middle',kind:'prologue',html:'<p>Modern prologue middle.</p>'},{id:'last',html:'<p>Ordinary last chapter.</p>'}]);await expect(page.locator('.ch-num')).toHaveText(['Epilogue','Prologue','Chapter 1']);await page.locator('#back-to-shelf').click();await restart();await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('[data-id=\"first\"]')).toHaveClass(/kind-epilogue/);await expect(page.locator('[data-id=\"middle\"]')).toHaveClass(/kind-prologue/);expect((await meta(directory,id)).chapterKinds).toEqual({first:'epilogue',middle:'prologue'});\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:131:358"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:35:58.059Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-5db33-rst-page-and-both-positions/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-5db33-rst-page-and-both-positions/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 358,
+                        "line": 131
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-6eb135d50e60ebd3523c",
+              "file": "acceptance-gap.spec.ts",
+              "line": 129,
+              "column": 2
+            },
+            {
+              "title": "[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1523,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-id=\"first\"]')\nExpected pattern: \u001b[32m/kind-epilogue/\u001b[39m\nError: strict mode violation: locator('[data-id=\"first\"]') resolved to 2 elements:\n    1) <div data-id=\"first\" class=\"nav-item kind-epilogue\">…</div> aka locator('div').filter({ hasText: 'Epilogue' }).nth(2)\n    2) <section data-id=\"first\" class=\"chapter sheet kind-epilogue epilogue\">…</section> aka getByText('Epilogue—Modern epilogue')\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-id=\"first\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-id=\"first\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-id=\"first\"]')\nExpected pattern: \u001b[32m/kind-epilogue/\u001b[39m\nError: strict mode violation: locator('[data-id=\"first\"]') resolved to 2 elements:\n    1) <div data-id=\"first\" class=\"nav-item kind-epilogue\">…</div> aka locator('div').filter({ hasText: 'Epilogue' }).nth(2)\n    2) <section data-id=\"first\" class=\"chapter sheet kind-epilogue epilogue\">…</section> aka getByText('Epilogue—Modern epilogue')\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-id=\"first\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-id=\"first\"]')\u001b[22m\n\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:134:495",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 495,
+                          "line": 134
+                        },
+                        "snippet": "  132 |  });\n  133 |  test('[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration',async()=>{\n> 134 |   await onboard(page);const id=await fixture(page,directory,[{id:'first',kind:'epilogue',html:'<p>Modern epilogue first.</p>'},{id:'middle',kind:'prologue',html:'<p>Modern prologue middle.</p>'},{id:'last',html:'<p>Ordinary last chapter.</p>'}]);await expect(page.locator('.ch-num')).toHaveText(['Epilogue','Prologue','Chapter 1']);await page.locator('#back-to-shelf').click();await restart();await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('[data-id=\"first\"]')).toHaveClass(/kind-epilogue/);await expect(page.locator('[data-id=\"middle\"]')).toHaveClass(/kind-prologue/);expect((await meta(directory,id)).chapterKinds).toEqual({first:'epilogue',middle:'prologue'});\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  135 |  });\n  136 |  test('[NEO-240-B] external metadata refresh adopts title author tab names Outline note and both side datasets',async()=>{\n  137 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Retained manuscript words.</p>'}]);await page.waitForTimeout(1000);await page.locator('.tab[data-tab=\"outline\"]').click();const m=await meta(directory,id);Object.assign(m,{title:'External title',subtitle:'External subtitle',author:'External author',chapterNotes:{one:'Remote chapter note'},tabNames:{notes:'Research desk',outline:'Story map'}});await writeFile(metaPath(directory,id),JSON.stringify(m));await writeFile(path.join(libraryPath(directory),id,'stickies.json'),JSON.stringify([{id:'remote-sticky',chapterId:'one',text:'External sticky',resolved:false}]));await writeFile(path.join(libraryPath(directory),id,'darlings.json'),JSON.stringify([{id:'remote-darling',chapterId:'one',html:'<p><i>External saved passage.</i></p>',text:'External saved passage.',date:'2026-01-01T00:00:00Z'}]));await refresh(page);await expect(page.locator('#tp-title')).toHaveText('External title');await expect(page.locator('#tp-subtitle')).toHaveText('External subtitle');await expect(page.locator('#tp-author')).toHaveText('External author');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveText('Research desk');await expect(page.locator('.tab[data-tab=\"outline\"]')).toHaveText('Story map');await expect(page.locator('.ol-line[data-ch-id=\"one\"] .ol-text')).toContainText('Remote chapter note');await expect(page.locator('.sticky textarea')).toHaveValue('External sticky');await page.locator('.tab[data-tab=\"darlings\"]').click();await expect(page.locator('.darling i,.darling em')).toHaveText('External saved passage.');expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Retained manuscript words');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 495,
+                            "line": 134
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-id=\"first\"]')\nExpected pattern: \u001b[32m/kind-epilogue/\u001b[39m\nError: strict mode violation: locator('[data-id=\"first\"]') resolved to 2 elements:\n    1) <div data-id=\"first\" class=\"nav-item kind-epilogue\">…</div> aka locator('div').filter({ hasText: 'Epilogue' }).nth(2)\n    2) <section data-id=\"first\" class=\"chapter sheet kind-epilogue epilogue\">…</section> aka getByText('Epilogue—Modern epilogue')\n\nCall log:\n\u001b[2m  - Expect \"toHaveClass\" locator('[data-id=\"first\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-id=\"first\"]')\u001b[22m\n\n\n  132 |  });\n  133 |  test('[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration',async()=>{\n> 134 |   await onboard(page);const id=await fixture(page,directory,[{id:'first',kind:'epilogue',html:'<p>Modern epilogue first.</p>'},{id:'middle',kind:'prologue',html:'<p>Modern prologue middle.</p>'},{id:'last',html:'<p>Ordinary last chapter.</p>'}]);await expect(page.locator('.ch-num')).toHaveText(['Epilogue','Prologue','Chapter 1']);await page.locator('#back-to-shelf').click();await restart();await page.locator(`[data-book-id=\"${id}\"]`).click();await expect(page.locator('[data-id=\"first\"]')).toHaveClass(/kind-epilogue/);await expect(page.locator('[data-id=\"middle\"]')).toHaveClass(/kind-prologue/);expect((await meta(directory,id)).chapterKinds).toEqual({first:'epilogue',middle:'prologue'});\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^\n  135 |  });\n  136 |  test('[NEO-240-B] external metadata refresh adopts title author tab names Outline note and both side datasets',async()=>{\n  137 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Retained manuscript words.</p>'}]);await page.waitForTimeout(1000);await page.locator('.tab[data-tab=\"outline\"]').click();const m=await meta(directory,id);Object.assign(m,{title:'External title',subtitle:'External subtitle',author:'External author',chapterNotes:{one:'Remote chapter note'},tabNames:{notes:'Research desk',outline:'Story map'}});await writeFile(metaPath(directory,id),JSON.stringify(m));await writeFile(path.join(libraryPath(directory),id,'stickies.json'),JSON.stringify([{id:'remote-sticky',chapterId:'one',text:'External sticky',resolved:false}]));await writeFile(path.join(libraryPath(directory),id,'darlings.json'),JSON.stringify([{id:'remote-darling',chapterId:'one',html:'<p><i>External saved passage.</i></p>',text:'External saved passage.',date:'2026-01-01T00:00:00Z'}]));await refresh(page);await expect(page.locator('#tp-title')).toHaveText('External title');await expect(page.locator('#tp-subtitle')).toHaveText('External subtitle');await expect(page.locator('#tp-author')).toHaveText('External author');await expect(page.locator('.tab[data-tab=\"notes\"]')).toHaveText('Research desk');await expect(page.locator('.tab[data-tab=\"outline\"]')).toHaveText('Story map');await expect(page.locator('.ol-line[data-ch-id=\"one\"] .ol-text')).toContainText('Remote chapter note');await expect(page.locator('.sticky textarea')).toHaveValue('External sticky');await page.locator('.tab[data-tab=\"darlings\"]').click();await expect(page.locator('.darling i,.darling em')).toHaveText('External saved passage.');expect(await readFile(chapterPath(directory,id,'one'),'utf8')).toContain('Retained manuscript words');\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:134:495"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:29.549Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-bc02e-legacy-first-last-migration/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-bc02e-legacy-first-last-migration/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 495,
+                        "line": 134
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-22d41fd8232a5111fbde",
+              "file": "acceptance-gap.spec.ts",
+              "line": 133,
+              "column": 2
+            },
+            {
+              "title": "[NEO-240-B] external metadata refresh adopts title author tab names Outline note and both side datasets",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2778,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:31.301Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-ddb58e4ee087e7652de1",
+              "file": "acceptance-gap.spec.ts",
+              "line": 136,
+              "column": 2
+            },
+            {
+              "title": "[NEO-245-B] external shelf catalog rename preserves nonzero library scroll and stable shelf identity",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1827,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:34.093Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-7bd8a786e820c1959a33",
+              "file": "acceptance-gap.spec.ts",
+              "line": 139,
+              "column": 2
+            },
+            {
+              "title": "[NEO-020-B] selecting populated private library adopts its existing author shelf book and chapter without first run",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1273,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:35.926Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-923ca4815c32830284c8",
+              "file": "acceptance-gap.spec.ts",
+              "line": 142,
+              "column": 2
+            },
+            {
+              "title": "[NEO-052-B] entry kind conversion updates actual chapter headings and visible typography for every original role",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1873,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:37.205Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-607af8138d2abc5c4bce",
+              "file": "acceptance-gap.spec.ts",
+              "line": 146,
+              "column": 2
+            },
+            {
+              "title": "[NEO-303-B] German Italian Dutch Polish Romanian and Greek connectors shrink within complete Unicode stack cover titles",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1222,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:39.083Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-ea977de433ff91c34d83",
+              "file": "acceptance-gap.spec.ts",
+              "line": 152,
+              "column": 2
+            },
+            {
+              "title": "[NEO-032-B] saved provider key never enters actual book JSON HTML or side files and secret encoding follows native safeStorage availability",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 71364,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\n    at configurePaint (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts:40:315)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:159:124",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                          "column": 315,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mbooks-helpers.ts:40\n\n  38 | }\n  39 | export async function exportText(file:string){if(file.endsWith('.docx')){const zip=await JSZip.loadAsync(await readFile(file));return(await zip.file('word/document.xml')!.async('string')).replace(/<[^>]+>/g,' ');}if(file.endsWith('.epub')){const zip=await JSZip.loadAsync(await readFile(file));let text='';for(const name of Object.keys(zip.files))if(/\\.(xhtml|html)$/.test(name))text+=await zip.file(name)!.async('string');return text.replace(/<[^>]+>/g,' ');}return readFile(file,'utf8');}\n> 40 | export async function configurePaint(page:Page,app:ElectronApplication,key='sk-fixture-never-network-0000000000',automatic=true){await nativeMenu(app,'Cover Art');await page.locator('#ca-key').fill(key);await page.locator('#ca-auto').setChecked(automatic);await page.locator('.modal-backdrop:not([hidden]) .m-ok').click();await expect(page.locator('#ca-key')).toHaveCount(0);}\n     |                                                                                                                                                                                                                                                                                                                           ^\n  41 | export const paintResponses = (delayMs=0) => [\n  42 |  {match:'/models',body:{data:[]}},\n  43 |  {match:'/chat/completions',delayMs,body:{choices:[{message:{content:'A quiet lighthouse above a stormy sea, without any lettering.'}}]}},"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                            "column": 315,
+                            "line": 40
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .m-ok')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"m-ok btn-gold\">Save</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\n\n   at books-helpers.ts:40\n\n  38 | }\n  39 | export async function exportText(file:string){if(file.endsWith('.docx')){const zip=await JSZip.loadAsync(await readFile(file));return(await zip.file('word/document.xml')!.async('string')).replace(/<[^>]+>/g,' ');}if(file.endsWith('.epub')){const zip=await JSZip.loadAsync(await readFile(file));let text='';for(const name of Object.keys(zip.files))if(/\\.(xhtml|html)$/.test(name))text+=await zip.file(name)!.async('string');return text.replace(/<[^>]+>/g,' ');}return readFile(file,'utf8');}\n> 40 | export async function configurePaint(page:Page,app:ElectronApplication,key='sk-fixture-never-network-0000000000',automatic=true){await nativeMenu(app,'Cover Art');await page.locator('#ca-key').fill(key);await page.locator('#ca-auto').setChecked(automatic);await page.locator('.modal-backdrop:not([hidden]) .m-ok').click();await expect(page.locator('#ca-key')).toHaveCount(0);}\n     |                                                                                                                                                                                                                                                                                                                           ^\n  41 | export const paintResponses = (delayMs=0) => [\n  42 |  {match:'/models',body:{data:[]}},\n  43 |  {match:'/chat/completions',delayMs,body:{choices:[{message:{content:'A quiet lighthouse above a stormy sea, without any lettering.'}}]}},\n    at configurePaint (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts:40:315)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:159:124"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:36:40.310Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-dcca8-ve-safeStorage-availability/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-dcca8-ve-safeStorage-availability/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/books-helpers.ts",
+                        "column": 315,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-7b4f17c1fdb09d8ebed6",
+              "file": "acceptance-gap.spec.ts",
+              "line": 158,
+              "column": 2
+            },
+            {
+              "title": "[NEO-235-B] second isolated process restores and focuses original minimized window without spawning another editor",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10938,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:162:769",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 769,
+                          "line": 162
+                        },
+                        "snippet": "  160 |  });\n  161 |  test('[NEO-235-B] second isolated process restores and focuses original minimized window without spawning another editor',async()=>{\n> 162 |   await onboard(page);await fixture(page,directory,[{id:'one',html:'<p>Single instance words.</p>'}]);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());const child=spawn(require('electron')as string,[path.resolve('parity/reference/launch.cjs')],{env:{...process.env,NEO_PARITY_DATA_DIR:directory,NEO_PARITY_ENGINE:engine==='original'?'':engine},stdio:'ignore'});const code=await new Promise<number|null>((resolve,reject)=>{const timer=setTimeout(()=>{child.kill();reject(Error('Second process remained alive'));},10_000);child.once('exit',code=>{clearTimeout(timer);resolve(code);});child.once('error',reject);});expect(code).toBe(0);await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);expect(app.windows()).toHaveLength(1);await expect(page.locator('.chapter-body')).toContainText('Single instance words.');\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^\n  163 |  });\n  164 |  test('[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting',async()=>{\n  165 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Cover export manuscript.</p>'}],{coverMode:'painted',coverArt:{status:'done',file:'art-private.png'}});await writeFile(path.join(libraryPath(directory),id,'art-private.png'),png);const file=await exportFile(page,directory,app,'pdf',()=>nativeMenu(app,'PDF (.pdf)'));const raw=(await readFile(file)).toString('latin1');const images=[...raw.matchAll(/\\/Subtype\\s*\\/Image\\b[\\s\\S]*?\\/Width\\s+(\\d+)[\\s\\S]*?\\/Height\\s+(\\d+)/g)].map(m=>({width:Number(m[1]),height:Number(m[2])}));expect(images.length).toBeGreaterThan(0);expect(images.every(image=>image.width>1&&image.height>1)).toBe(true);expect(await pdfText(file)).toContain('Cover export manuscript.');expect(await readFile(path.join(libraryPath(directory),id,'art-private.png'))).toEqual(png);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 769,
+                            "line": 162
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  160 |  });\n  161 |  test('[NEO-235-B] second isolated process restores and focuses original minimized window without spawning another editor',async()=>{\n> 162 |   await onboard(page);await fixture(page,directory,[{id:'one',html:'<p>Single instance words.</p>'}]);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());const child=spawn(require('electron')as string,[path.resolve('parity/reference/launch.cjs')],{env:{...process.env,NEO_PARITY_DATA_DIR:directory,NEO_PARITY_ENGINE:engine==='original'?'':engine},stdio:'ignore'});const code=await new Promise<number|null>((resolve,reject)=>{const timer=setTimeout(()=>{child.kill();reject(Error('Second process remained alive'));},10_000);child.once('exit',code=>{clearTimeout(timer);resolve(code);});child.once('error',reject);});expect(code).toBe(0);await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);expect(app.windows()).toHaveLength(1);await expect(page.locator('.chapter-body')).toContainText('Single instance words.');\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^\n  163 |  });\n  164 |  test('[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting',async()=>{\n  165 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Cover export manuscript.</p>'}],{coverMode:'painted',coverArt:{status:'done',file:'art-private.png'}});await writeFile(path.join(libraryPath(directory),id,'art-private.png'),png);const file=await exportFile(page,directory,app,'pdf',()=>nativeMenu(app,'PDF (.pdf)'));const raw=(await readFile(file)).toString('latin1');const images=[...raw.matchAll(/\\/Subtype\\s*\\/Image\\b[\\s\\S]*?\\/Width\\s+(\\d+)[\\s\\S]*?\\/Height\\s+(\\d+)/g)].map(m=>({width:Number(m[1]),height:Number(m[2])}));expect(images.length).toBeGreaterThan(0);expect(images.every(image=>image.width>1&&image.height>1)).toBe(true);expect(await pdfText(file)).toContain('Cover export manuscript.');expect(await readFile(path.join(libraryPath(directory),id,'art-private.png'))).toEqual(png);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:162:769"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:37:51.895Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-49838-out-spawning-another-editor/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-49838-out-spawning-another-editor/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 769,
+                        "line": 162
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-8966cc12440c1665aed8",
+              "file": "acceptance-gap.spec.ts",
+              "line": 161,
+              "column": 2
+            },
+            {
+              "title": "[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1436,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Cover export manuscript.\"\u001b[39m\nReceived string:    \u001b[31m\" Structure Fixture  L I B R A R Y   W R I T E R 3  C over export manuscript.\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Cover export manuscript.\"\u001b[39m\nReceived string:    \u001b[31m\" Structure Fixture  L I B R A R Y   W R I T E R 3  C over export manuscript.\"\u001b[39m\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:165:693",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                          "column": 693,
+                          "line": 165
+                        },
+                        "snippet": "  163 |  });\n  164 |  test('[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting',async()=>{\n> 165 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Cover export manuscript.</p>'}],{coverMode:'painted',coverArt:{status:'done',file:'art-private.png'}});await writeFile(path.join(libraryPath(directory),id,'art-private.png'),png);const file=await exportFile(page,directory,app,'pdf',()=>nativeMenu(app,'PDF (.pdf)'));const raw=(await readFile(file)).toString('latin1');const images=[...raw.matchAll(/\\/Subtype\\s*\\/Image\\b[\\s\\S]*?\\/Width\\s+(\\d+)[\\s\\S]*?\\/Height\\s+(\\d+)/g)].map(m=>({width:Number(m[1]),height:Number(m[2])}));expect(images.length).toBeGreaterThan(0);expect(images.every(image=>image.width>1&&image.height>1)).toBe(true);expect(await pdfText(file)).toContain('Cover export manuscript.');expect(await readFile(path.join(libraryPath(directory),id,'art-private.png'))).toEqual(png);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  166 |  });\n  167 |  test('[NEO-024-B] keyboard selection of New cover in real cover menu persists seed and retained title author',async()=>{\n  168 |   await onboard(page);const made=await book(page,'Keyboard cover');const seed=(await meta(directory,made.bookId)).coverSeed;await page.locator(`[data-book-id=\"${made.bookId}\"]`).click({button:'right'});const choice=page.locator('.modal-backdrop:not([hidden]) .fr-choice').filter({has:page.locator('strong',{hasText:'New cover'})});await choice.focus();await page.keyboard.press('Enter');await expect.poll(async()=>(await meta(directory,made.bookId)).coverSeed).not.toBe(seed);await expect(page.locator('.b-author')).toHaveText('Library Writer');await restart();await expect(page.locator('.book')).toHaveAttribute('aria-label',/^Keyboard cover,/);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                            "column": 693,
+                            "line": 165
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Cover export manuscript.\"\u001b[39m\nReceived string:    \u001b[31m\" Structure Fixture  L I B R A R Y   W R I T E R 3  C over export manuscript.\"\u001b[39m\n\n  163 |  });\n  164 |  test('[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting',async()=>{\n> 165 |   await onboard(page);const id=await fixture(page,directory,[{id:'one',html:'<p>Cover export manuscript.</p>'}],{coverMode:'painted',coverArt:{status:'done',file:'art-private.png'}});await writeFile(path.join(libraryPath(directory),id,'art-private.png'),png);const file=await exportFile(page,directory,app,'pdf',()=>nativeMenu(app,'PDF (.pdf)'));const raw=(await readFile(file)).toString('latin1');const images=[...raw.matchAll(/\\/Subtype\\s*\\/Image\\b[\\s\\S]*?\\/Width\\s+(\\d+)[\\s\\S]*?\\/Height\\s+(\\d+)/g)].map(m=>({width:Number(m[1]),height:Number(m[2])}));expect(images.length).toBeGreaterThan(0);expect(images.every(image=>image.width>1&&image.height>1)).toBe(true);expect(await pdfText(file)).toContain('Cover export manuscript.');expect(await readFile(path.join(libraryPath(directory),id,'art-private.png'))).toEqual(png);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^\n  166 |  });\n  167 |  test('[NEO-024-B] keyboard selection of New cover in real cover menu persists seed and retained title author',async()=>{\n  168 |   await onboard(page);const made=await book(page,'Keyboard cover');const seed=(await meta(directory,made.bookId)).coverSeed;await page.locator(`[data-book-id=\"${made.bookId}\"]`).click({button:'right'});const choice=page.locator('.modal-backdrop:not([hidden]) .fr-choice').filter({has:page.locator('strong',{hasText:'New cover'})});await choice.focus();await page.keyboard.press('Enter');await expect.poll(async()=>(await meta(directory,made.bookId)).coverSeed).not.toBe(seed);await expect(page.locator('.b-author')).toHaveText('Library Writer');await restart();await expect(page.locator('.book')).toHaveAttribute('aria-label',/^Keyboard cover,/);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:165:693"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:38:03.066Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-85c7b-ne-pixel-generated-painting/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-85c7b-ne-pixel-generated-painting/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts",
+                        "column": 693,
+                        "line": 165
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-910296dfec669967816c",
+              "file": "acceptance-gap.spec.ts",
+              "line": 164,
+              "column": 2
+            },
+            {
+              "title": "[NEO-024-B] keyboard selection of New cover in real cover menu persists seed and retained title author",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1467,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:38:04.742Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-8cc350b8bbfa6d986b48",
+              "file": "acceptance-gap.spec.ts",
+              "line": 167,
+              "column": 2
+            },
+            {
+              "title": "[NEO-233-B] controlled host UTC day creates one real backup then next day captures new manuscript in another ZIP",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2291,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:38:06.225Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-618714baf069914f7219",
+              "file": "acceptance-gap.spec.ts",
+              "line": 170,
+              "column": 2
+            },
+            {
+              "title": "[NEO-243-B] delayed real external side-file reply cannot leak first books stickies or Darlings into newly opened book",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6032,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:38:08.522Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-cdc4cb211caf39f6d256",
+              "file": "acceptance-gap.spec.ts",
+              "line": 173,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T05:31:34.075Z",
+    "duration": 400501.31799999997,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 10,
+    "flaky": 0
+  }
+}

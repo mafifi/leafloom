@@ -1,0 +1,999 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/native.config.ts"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/native.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "adcf8400ace0e5e42444c80707e47ef5c542bee9b9eb2c00847c09807d91f98f",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+        "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "45430cf4ded5dbf37ba4f86718e09a342afbc42e3d84f0acaf2d7df4ebf7eead",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "a69f12b940069b04f39f73b05671e18af59b2b043a7483a2fd8dff4ec464d5f3",
+      "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+      "proofBuildSha256": "aade1cc841c44fedfb43d1219456e29be1e23f1a42f723681bcec4a4bc6fb8f5",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/native-original-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "819d8bd6d7fbdb8928666c33e7c11c66bb1bf50ab7353ad72df68566a8e7334f",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "8c8961491d43181fa70b666f52635ea1b89e02b721bed69c3b0a46a5f9ea99a5",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "adcf8400ace0e5e42444c80707e47ef5c542bee9b9eb2c00847c09807d91f98f",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "c2c82fa006e8568d0f9fa1e07059b0af491575ef62fe8da4333aa296b6e61052",
+            "parity/tests/native.spec.ts": "f2b7a2fcf67b2aa0fb0ddc7a53a7740c624c1ed761d415410796e3b17e477837",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "45430cf4ded5dbf37ba4f86718e09a342afbc42e3d84f0acaf2d7df4ebf7eead",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "a69f12b940069b04f39f73b05671e18af59b2b043a7483a2fd8dff4ec464d5f3",
+          "hostHarnessSha256": "b98856d307813b0505f40d620aa8829b5eb25ad3eee980586ec19667b9ecce66",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "31f01330a5696c4fe3cb3702bdc9edf82d8d674393dc5568f0f944b2250ccb7e",
+          "proofBuildSha256": "aade1cc841c44fedfb43d1219456e29be1e23f1a42f723681bcec4a4bc6fb8f5",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "native.spec.ts"
+        ],
+        "timeout": 40000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "parity/native-original-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native.spec.ts",
+      "file": "native.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "[NEO-273-A] original: real native resize and move bounds persist across application restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1035,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:06.587Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-332ad0960482451d737a",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-273-A] original: unplugged monitor position uses current display while preserving useful size",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:07.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-38a894bf325f280e6276",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-273-A] original: invalid saved size restores minimum useful editor window",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 576,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:08.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-ff2d5fcdf7b7555c4fff",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-273-A] original: native menu roles match current desktop platform",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:08.808Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-638ce0460ea9263e09b1",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-276-A] original: offline renderer writes, checks packaged dictionary, exports and imports locally",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 996,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:09.407Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-452329edd58721521efd",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-284-A] original: mouse chrome activation releases button focus without repeat activation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:10.408Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-9ee9cd76c9d72202677b",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-284-A] original: keyboard chrome focus survives activation and remains visibly keyboard focused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 659,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:11.108Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-9586737293338fe90536",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-293-A] original: macOS held-key preference contract requests repeat and suppresses duplicate native tools",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:11.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-d2cfb4577ad01b1b07b2",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-293-A] original: native Electron repeat-key driver inserts exact letters without hidden duplicates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:12.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-90a15da3025816a57ef7",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-A] original: unreadable library directory does not prevent native window creation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:13.041Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-94f5a29bc600da10adba",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-A] original: invalid library JSON preserves native window and corrupt bytes without inventing onboarding recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:13.503Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-cc37126bba28b92bdced",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[UPSTREAM277] original: declared runtime leaves foreign AppKit item visible without process crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:13.956Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-da2c1f0bd4402dad4487",
+          "file": "native.spec.ts",
+          "line": 39,
+          "column": 24
+        },
+        {
+          "title": "[NEO-277-A] original: real native Electron action safety net keeps copy action visible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 578,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:14.705Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-c41ef84c4cc725e84761",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-A] original: native menu API startup failure leaves visible functional editor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:15.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-86b985118499dfda4e33",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-A] original: catastrophic loadFile failure records native error and diagnostic log",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:16.062Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-1cb213aea6dcb301b7ab",
+          "file": "native.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "[NEO-300-A] original: actual Chromium glyph signature preserves bundled companions and original fallback faces",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [
+                {
+                  "type": "font-glyph-golden-sha256",
+                  "description": "bd8a25a007e7f603b5dcc93a92b408bf592c719fb80d191dcf70544752279f88"
+                },
+                {
+                  "type": "font-glyph-cases",
+                  "description": "[{\"family\":\"NEO Anton\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Anton\",\"postScriptName\":\"Anton-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Anton\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Russo One\",\"postScriptName\":\"RussoOne-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Bebas\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Bebas Neue\",\"postScriptName\":\"BebasNeue-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Bebas\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Oswald Medium\",\"postScriptName\":\"Oswald-Medium\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Oswald\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Oswald\",\"postScriptName\":\"Oswald-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Oswald\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Oswald\",\"postScriptName\":\"Oswald-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Abril\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Abril Fatface\",\"postScriptName\":\"AbrilFatface-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Abril\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-BlackItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-BlackItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display\",\"postScriptName\":\"PlayfairDisplay-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display\",\"postScriptName\":\"PlayfairDisplay-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"NEO Cinzel\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Cinzel Black\",\"postScriptName\":\"Cinzel-Black\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Cinzel\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Forum\",\"postScriptName\":\"Forum\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Josefin\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Josefin Sans Thin\",\"postScriptName\":\"JosefinSansThin-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Josefin\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"NEO Josefin\",\"weight\":\"600\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Josefin Sans Thin SemiBold\",\"postScriptName\":\"JosefinSansThin-SemiBold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Josefin\",\"weight\":\"600\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"NEO Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-It\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-It\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-BoldIt\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-BoldIt\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Prata\",\"postScriptName\":\"Prata-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Chorus\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Chorus\",\"postScriptName\":\"TeXGyreChorus-MediumItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Chorus\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Marck Script\",\"postScriptName\":\"MarckScript-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Book\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Roman\",\"isCustomFont\":false,\"glyphCount\":1},{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Book\",\"isCustomFont\":true,\"glyphCount\":7}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BookItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":1},{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BookItalic\",\"isCustomFont\":true,\"glyphCount\":7}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-BoldItalic\",\"isCustomFont\":false,\"glyphCount\":1}]}]"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:16.508Z",
+                  "annotations": [
+                    {
+                      "type": "font-glyph-golden-sha256",
+                      "description": "bd8a25a007e7f603b5dcc93a92b408bf592c719fb80d191dcf70544752279f88"
+                    },
+                    {
+                      "type": "font-glyph-cases",
+                      "description": "[{\"family\":\"NEO Anton\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Anton\",\"postScriptName\":\"Anton-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Anton\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Russo One\",\"postScriptName\":\"RussoOne-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Bebas\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Bebas Neue\",\"postScriptName\":\"BebasNeue-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Bebas\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Oswald Medium\",\"postScriptName\":\"Oswald-Medium\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Oswald\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Oswald\",\"postScriptName\":\"Oswald-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Oswald\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Oswald\",\"postScriptName\":\"Oswald-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Abril\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Abril Fatface\",\"postScriptName\":\"AbrilFatface-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Abril\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-Black\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-BlackItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"900\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Playfair Display Black\",\"postScriptName\":\"PlayfairDisplay-BlackItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display\",\"postScriptName\":\"PlayfairDisplay-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"NEO Playfair\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Playfair Display\",\"postScriptName\":\"PlayfairDisplay-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Playfair\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"NEO Cinzel\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Cinzel Black\",\"postScriptName\":\"Cinzel-Black\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Cinzel\",\"weight\":\"900\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Forum\",\"postScriptName\":\"Forum\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"NEO Josefin\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Josefin Sans Thin\",\"postScriptName\":\"JosefinSansThin-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Josefin\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"NEO Josefin\",\"weight\":\"600\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Josefin Sans Thin SemiBold\",\"postScriptName\":\"JosefinSansThin-SemiBold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Josefin\",\"weight\":\"600\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"NEO Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"NEO Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Gelasio\",\"postScriptName\":\"Gelasio-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Gelasio\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Merriweather Light 18pt\",\"postScriptName\":\"MerriweatherLight18pt-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Pagella\",\"postScriptName\":\"TeXGyrePagella-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Pagella\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Lora\",\"postScriptName\":\"Lora-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Baskerville\",\"postScriptName\":\"LibreBaskerville-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Baskerville\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Old Standard TT\",\"postScriptName\":\"OldStandardTT-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Italic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Alegreya\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Alegreya\",\"postScriptName\":\"Alegreya-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-It\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-It\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-Bold\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-BoldIt\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Source Serif Pro\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Source Serif Pro\",\"postScriptName\":\"SourceSerifPro-BoldIt\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Regular\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Prata\",\"postScriptName\":\"Prata-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Italic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"Libre Bodoni\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Libre Bodoni\",\"postScriptName\":\"LibreBodoni-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Libre Bodoni\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":8}]},{\"family\":\"TeX Gyre Chorus\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"TeX Gyre Chorus\",\"postScriptName\":\"TeXGyreChorus-MediumItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"TeX Gyre Chorus\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Marck Script\",\"postScriptName\":\"MarckScript-Regular\",\"isCustomFont\":true,\"glyphCount\":8}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Book\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Roman\",\"isCustomFont\":false,\"glyphCount\":1},{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Book\",\"isCustomFont\":true,\"glyphCount\":7}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BookItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"400\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Times\",\"postScriptName\":\"Times-Italic\",\"isCustomFont\":false,\"glyphCount\":1},{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BookItalic\",\"isCustomFont\":true,\"glyphCount\":7}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"normal\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-Bold\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-Bold\",\"isCustomFont\":false,\"glyphCount\":1}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"latin\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":4}]},{\"family\":\"Jost\",\"weight\":\"700\",\"style\":\"italic\",\"script\":\"cyrillic\",\"fonts\":[{\"familyName\":\"Jost*\",\"postScriptName\":\"Jost-BoldItalic\",\"isCustomFont\":true,\"glyphCount\":7},{\"familyName\":\"Times\",\"postScriptName\":\"Times-BoldItalic\",\"isCustomFont\":false,\"glyphCount\":1}]}]"
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-6c6d1b330b574050bdb1",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-273-A] original: macOS native hide and show retain the writing window",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:17.390Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-ef6c72ca2e69f8adfa8e",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-273-A] original: macOS close retains app and activation signal creates a usable new window",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:18.042Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-36a771735b8f99b253b2",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-B] original: real backup directory failure logs and leaves editing operational",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:19.059Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-9ec8e6379dcbd5332463",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-B] original: actual scheduled packaged updater rejection logs without losing pending draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:19.842Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-025476553038c0838a3f",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-300-B] original: actual cover title body chapter title and first-letter glyph contexts preserve original signatures",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [
+                {
+                  "type": "actual-font-context-golden-sha256",
+                  "description": "8ebd14c21d33edebca0641f9f8b5d034ed28ef9e0b1439dd37e624dd81d28681"
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:20.625Z",
+                  "annotations": [
+                    {
+                      "type": "actual-font-context-golden-sha256",
+                      "description": "8ebd14c21d33edebca0641f9f8b5d034ed28ef9e0b1439dd37e624dd81d28681"
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "actual-dropcap-glyph-context",
+                      "contentType": "application/json",
+                      "body": "eyJmaXJzdExldHRlciI6eyJmYW1pbHkiOiJEaWRvdCwgXCJCb2RvbmkgNzJcIiwgR2VvcmdpYSwgc2VyaWYiLCJzaXplIjoiNTcuOHB4Iiwid2VpZ2h0IjoiNDAwIn0sImZpcnN0R2x5cGhzIjpbeyJmYW1pbHlOYW1lIjoiRGlkb3QiLCJwb3N0U2NyaXB0TmFtZSI6IkRpZG90IiwiaXNDdXN0b21Gb250IjpmYWxzZSwiZ2x5cGhDb3VudCI6MX0seyJmYW1pbHlOYW1lIjoiR2VvcmdpYSIsInBvc3RTY3JpcHROYW1lIjoiR2VvcmdpYSIsImlzQ3VzdG9tRm9udCI6ZmFsc2UsImdseXBoQ291bnQiOjE2fV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-7f0075c9f4e26d6aae7a",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-B] original: real locales startup resource failure preserves window and writing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:21.408Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-6a9c3703f2d62c56d163",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        },
+        {
+          "title": "[NEO-298-B] original: real spellFork startup resource failure preserves window and writing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 40000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 780,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T07:26:22.173Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dadda6b3ddfdf57c4974-e3861a46ca5ebeeefa2f",
+          "file": "native.spec.ts",
+          "line": 19,
+          "column": 96
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T07:26:06.374Z",
+    "duration": 16593.734,
+    "expected": 23,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

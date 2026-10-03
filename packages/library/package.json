@@ -1,0 +1,16 @@
+{
+  "name": "@leafloom/library",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "leafloom": {
+    "role": "contract",
+    "runtime": "portable"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  }
+}

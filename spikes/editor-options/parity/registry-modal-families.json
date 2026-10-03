@@ -1,0 +1,703 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "scenarios": [
+    {
+      "scenarioId": "NEO-217-C",
+      "featureId": "NEO-217",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "first.focus()",
+        "page.keyboard.press('Tab')",
+        "page.keyboard.press('Shift+Tab')",
+        "page.locator('#zoom-level').focus()",
+        "createReferenceDirectory()",
+        "launchReference(directory,engine==='original'?undefined:engine)",
+        "app.firstWindow()",
+        "named(page,'Welcome to NEO')",
+        "page.evaluate(()=>document.activeElement?.id||document.activeElement?.tagName||'none')",
+        "adjacent(page,page.locator('#fr-name'),page.locator('#fr-pen'))",
+        "page.locator('#fr-name').fill('Modal Writer')",
+        "page.keyboard.press('Escape')",
+        "page.keyboard.press('Enter')",
+        "page.locator('.fr-choice[data-style=\"pantser\"]').focus()",
+        "page.locator('#fr-done').focus()",
+        "library(directory)",
+        "app.close()",
+        "removeReferenceDirectory(directory)",
+        "openEditingFixture(engine)",
+        "anchor(c.page)",
+        "library(c.directory)",
+        "menu(c.app,['File','Cover Art\u2026'])",
+        "named(c.page,'Cover art')",
+        "adjacent(c.page,box.locator('.m-cancel'),box.locator('.m-ok'))",
+        "box.locator('.m-ok').focus()",
+        "c.page.keyboard.press('Tab')",
+        "box.evaluate(el=>el.contains(document.activeElement))",
+        "c.page.keyboard.press('Shift+Tab')",
+        "box.locator('#ca-auto').uncheck()",
+        "box.locator('#ca-key').focus()",
+        "c.page.keyboard.press('Enter')",
+        "c.page.keyboard.press('Escape')",
+        "assertTexts(c.page,[['Alpha beta.','Gamma delta.']])",
+        "c.close()",
+        "menu(c.app,['File','Goals\u2026'])",
+        "named(c.page,'Editing fixture \u2014 progress')",
+        "adjacent(c.page,box.locator('#st-daily'),box.locator('#st-book'))",
+        "box.locator('#st-daily').fill('321')",
+        "box.locator('#st-book').fill('654')",
+        "box.locator('#st-sprint').fill('50')",
+        "adjacent(c.page,box.locator('#st-sprint'),box.locator('#st-sprint-btn'))",
+        "box.locator('#st-sprint-btn').focus()",
+        "c.page.locator('#back-to-shelf').click()",
+        "named(c.page,'Goals')",
+        "adjacent(c.page,box.locator('#st-daily'),box.locator('#st-dayends'))",
+        "box.locator('#st-daily').fill('123')",
+        "c.page.locator('.book').first().click()",
+        "c.app.evaluate(({BrowserWindow})=>{const session=BrowserWindow.getAllWindows()[0].webContents.session;session.setPermissionCheckHandler((_wc,p)=>p==='local-fonts');session.setPermissionRequestHandler((_wc,p,callback)=>callback(p==='local-fonts'));})",
+        "menu(c.app,['Format','Body Font','Other Font\u2026'])",
+        "named(c.page,'Other font')",
+        "box.locator('input').fill('Georgia')",
+        "box.evaluate(el=>(el.closest('.modal-backdrop') as HTMLElement & {_returnFocus?:HTMLElement})._returnFocus?.id||'BODY')",
+        "adjacent(c.page,box.locator('input'),box.locator('.font-list button'))",
+        "menu(c.app,['File','Email Settings\u2026'])",
+        "named(c.page,'Email drafts to')",
+        "adjacent(c.page,box.locator('input'),box.locator('.m-cancel'))",
+        "box.locator('input').fill('dialog@example.invalid')",
+        "named(c.page,'How should NEO email your drafts?')",
+        "adjacent(c.page,box.locator('[data-m=\"gmail\"]'),box.locator('[data-m=\"mail\"]'))",
+        "selectText(c.page,0,0,5)",
+        "caretState(c.page)",
+        "menu(c.app,['View','Keyboard Shortcuts\u2026'])",
+        "named(c.page,'Keyboard shortcuts')",
+        "menu(c.app,['Help','About NEO'])",
+        "named(c.page,'NEO')",
+        "bound(c.page,c.directory)",
+        "c.page.locator('.bound-cover').click()",
+        "named(c.page,'Title Page')",
+        "adjacent(c.page,box.locator('.tp-t'),box.locator('.tp-s'))",
+        "box.locator('.tp-t').fill('Modal Collection')",
+        "box.locator('.tp-s').fill('Subtitle retained')",
+        "c.page.locator('.ghost-page[aria-label=\"Dedication\"]').click()",
+        "named(c.page,'Dedication')",
+        "box.locator('.ps-body').fill('For keyboard writers')",
+        "shelfMetas(c.directory)",
+        "c.page.locator('.kind-dedication').click()",
+        "box.locator('.ps-done').focus()",
+        "c.page.locator('#author-chip').focus()",
+        "named(c.page,'Writing as Parity Writer')",
+        "adjacent(c.page,box.locator('.fr-choice').first(),box.locator('.fr-choice').nth(1))",
+        "box.locator('.fr-choice').first().focus()",
+        "named(c.page,'Author name')",
+        "box.locator('input').fill('Cancelled rename')",
+        "c.page.locator('.shelf-label').first().click({button:'right'})",
+        "named(c.page,'Shelf \u201cEditing\u201d')",
+        "box.locator('.fr-choice').nth(1).focus()",
+        "named(c.page,'Anthology title')",
+        "named(c.page,'Export the anthology as\u2026')",
+        "c.page.locator('.book').first().click({button:'right'})",
+        "named(c.page,'\u201cEditing fixture\u201d')",
+        "option(c.page,'Set word goal')",
+        "named(c.page,'Word count goal for \u201cEditing fixture\u201d')",
+        "box.locator('input').fill('999')",
+        "writeFile(path.join(c.directory,'.neo-parity-host.json'),JSON.stringify({httpResponses:[{match:'api.github.com',body:{tag_name:'v999.9.9',html_url:'https://github.com/hughhowey/neo/releases/tag/v999.9.9'}}]}))",
+        "menu(c.app,['Help','Check for Update\u2026'])",
+        "named(c.page,'NEO 999.9.9 is available')",
+        "Installed-font Escape: await genuine later fullscreenEscape response; original source asynchronous shelf fallthrough is observed, then reopen the genuine book before testing font Enter selection; candidate retains editor return focus."
+      ],
+      "assertions": [
+        "expect(box).toBeVisible()",
+        "expect(box).toHaveAttribute('aria-modal','true')",
+        "expect(box).toHaveAccessibleName(name)",
+        "expect(second).toBeFocused()",
+        "expect(first).toBeFocused()",
+        "expect(page.locator('#zoom-level')).toBeFocused()",
+        "expect(page.locator('#firstrun')).toBeVisible()",
+        "expect(page.locator('#fr-step1')).toBeVisible()",
+        "expect(page.locator('#fr-step2')).toBeVisible()",
+        "expect(page.locator('#firstrun')).toBeHidden()",
+        "expect((await library(directory)).authorName).toBe('Modal Writer')",
+        "expect(box.locator('#ca-key')).toBeFocused()",
+        "expect(await box.evaluate(el=>el.contains(document.activeElement))).toBe(false)",
+        "expect(box.locator('.m-ok')).toBeFocused()",
+        "expect(box).toHaveCount(0)",
+        "expect(c.page.locator('#zoom-level')).toBeFocused()",
+        "expect((await library(c.directory)).coverArt).toEqual(before)",
+        "expect(c.page.locator('.modal-backdrop:visible')).toBeFocused()",
+        "expect(box.locator('#st-daily')).toBeFocused()",
+        "expect((await library(c.directory)).dailyGoal).toBe(321)",
+        "expect.poll(async()=>JSON.parse(await readFile(path.join(c.bookdir,'book.json'),'utf8')).wordGoal).toBe(654)",
+        "expect(c.page.locator('#hint')).toContainText('Sprint started')",
+        "expect(box.locator('#st-book, #st-sprint')).toHaveCount(0)",
+        "expect((await library(c.directory)).dailyGoal).toBe(123)",
+        "expect(box.locator('input')).toBeFocused()",
+        "expect(box.locator('.font-list button')).toHaveCount(1)",
+        "expect.poll(()=>c.page.evaluate(()=>document.activeElement?.id||document.activeElement?.tagName)).toBe(returnId)",
+        "expect((await library(c.directory)).fonts.body).toBe('Georgia')",
+        "expect(box.locator('[data-m=\"gmail\"]')).toBeFocused()",
+        "expect(box.locator('.m-cancel, .m-ok')).toHaveCount(0)",
+        "expect((await library(c.directory)).emailAddress).toBe('dialog@example.invalid')",
+        "expect((await library(c.directory)).emailMethod).toBe('gmail')",
+        "expect(box.locator('.shortcuts-content')).toBeFocused()",
+        "expect(c.page.locator('.chapter-body').first()).toBeFocused()",
+        "expect(await caretState(c.page)).toEqual(caret)",
+        "expect(box.locator('.tp-t')).toBeFocused()",
+        "expect(box.locator('.tp-s')).toBeFocused()",
+        "expect(box.locator('.tp-a')).toBeFocused()",
+        "expect(c.page.locator('.shelf-label')).toHaveText('Modal Collection')",
+        "expect(box.locator('.ps-body')).toBeFocused()",
+        "expect(await readFile(chapterPath(c.directory,dedication.id,dedication.chapterOrder[0]),'utf8')).toContain('For keyboard writers')",
+        "expect(box.locator('.ps-body')).toHaveText('For keyboard writers')",
+        "expect(box.locator('.fr-choice').first()).toBeFocused()",
+        "expect((await library(c.directory)).authors[0].name).toBe('Parity Writer')",
+        "expect(c.page.locator('#author-chip')).toBeFocused()",
+        "expect((await library(c.directory)).shelves[0].name).toBe('Editing')",
+        "expect(JSON.parse(await readFile(path.join(c.bookdir,'book.json'),'utf8')).wordGoal).toBeUndefined()",
+        "expect(box.locator('.m-cancel')).toBeFocused()",
+        "Installed-font Escape cancellation is verified after genuine native IPC completion, rather than premature synchronous dialog removal/focus. Original source bookshelf fallthrough is preserved as explicit characterization; candidate persistent editor/focus preservation is separately required by supplemental E."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] first-run named dialog keeps unanswered onboarding and ordinary input Tab order",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] cover settings focus key traverse buttons and Escape cancels unsaved changes",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] book progress backdrop focus Tab goals Escape saves and keyboard sprint starts",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] shelf Goals dialog has no book fields and Done Enter saves keyboard edits",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] installed font dialog focuses search traverses filtered face and Escape cancels Enter selects",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] email input owns Enter and mandatory method dialog keeps Escape until keyboard choice",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] help traps its two Tab controls restores actual caret and About returns keyboard focus",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] title and content page sheets expose names focus fields and save through Enter or Escape",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] author shelf anthology and book goal reuse named choice and input dialogs without altering cancelled data",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] release update dialog owns backdrop focus Later Tab and Escape returns without changing manuscript",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] first-run named dialog keeps unanswered onboarding and ordinary input Tab order",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] cover settings focus key traverse buttons and Escape cancels unsaved changes",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] book progress backdrop focus Tab goals Escape saves and keyboard sprint starts",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] shelf Goals dialog has no book fields and Done Enter saves keyboard edits",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] installed font dialog focuses search traverses filtered face and Escape cancels Enter selects",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] email input owns Enter and mandatory method dialog keeps Escape until keyboard choice",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] help traps its two Tab controls restores actual caret and About returns keyboard focus",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] title and content page sheets expose names focus fields and save through Enter or Escape",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] author shelf anthology and book goal reuse named choice and input dialogs without altering cancelled data",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] release update dialog owns backdrop focus Later Tab and Escape returns without changing manuscript",
+            "engine": "original"
+          }
+        ]
+      },
+      "supplementalScenarioIds": [
+        "NEO-217-E"
+      ]
+    },
+    {
+      "scenarioId": "NEO-283-C",
+      "featureId": "NEO-283",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "first.focus()",
+        "page.keyboard.press('Tab')",
+        "page.keyboard.press('Shift+Tab')",
+        "page.locator('#zoom-level').focus()",
+        "createReferenceDirectory()",
+        "launchReference(directory,engine==='original'?undefined:engine)",
+        "app.firstWindow()",
+        "named(page,'Welcome to NEO')",
+        "page.evaluate(()=>document.activeElement?.id||document.activeElement?.tagName||'none')",
+        "adjacent(page,page.locator('#fr-name'),page.locator('#fr-pen'))",
+        "page.locator('#fr-name').fill('Modal Writer')",
+        "page.keyboard.press('Escape')",
+        "page.keyboard.press('Enter')",
+        "page.locator('.fr-choice[data-style=\"pantser\"]').focus()",
+        "page.locator('#fr-done').focus()",
+        "library(directory)",
+        "app.close()",
+        "removeReferenceDirectory(directory)",
+        "openEditingFixture(engine)",
+        "anchor(c.page)",
+        "library(c.directory)",
+        "menu(c.app,['File','Cover Art\u2026'])",
+        "named(c.page,'Cover art')",
+        "adjacent(c.page,box.locator('.m-cancel'),box.locator('.m-ok'))",
+        "box.locator('.m-ok').focus()",
+        "c.page.keyboard.press('Tab')",
+        "box.evaluate(el=>el.contains(document.activeElement))",
+        "c.page.keyboard.press('Shift+Tab')",
+        "box.locator('#ca-auto').uncheck()",
+        "box.locator('#ca-key').focus()",
+        "c.page.keyboard.press('Enter')",
+        "c.page.keyboard.press('Escape')",
+        "assertTexts(c.page,[['Alpha beta.','Gamma delta.']])",
+        "c.close()",
+        "menu(c.app,['File','Goals\u2026'])",
+        "named(c.page,'Editing fixture \u2014 progress')",
+        "adjacent(c.page,box.locator('#st-daily'),box.locator('#st-book'))",
+        "box.locator('#st-daily').fill('321')",
+        "box.locator('#st-book').fill('654')",
+        "box.locator('#st-sprint').fill('50')",
+        "adjacent(c.page,box.locator('#st-sprint'),box.locator('#st-sprint-btn'))",
+        "box.locator('#st-sprint-btn').focus()",
+        "c.page.locator('#back-to-shelf').click()",
+        "named(c.page,'Goals')",
+        "adjacent(c.page,box.locator('#st-daily'),box.locator('#st-dayends'))",
+        "box.locator('#st-daily').fill('123')",
+        "c.page.locator('.book').first().click()",
+        "c.app.evaluate(({BrowserWindow})=>{const session=BrowserWindow.getAllWindows()[0].webContents.session;session.setPermissionCheckHandler((_wc,p)=>p==='local-fonts');session.setPermissionRequestHandler((_wc,p,callback)=>callback(p==='local-fonts'));})",
+        "menu(c.app,['Format','Body Font','Other Font\u2026'])",
+        "named(c.page,'Other font')",
+        "box.locator('input').fill('Georgia')",
+        "box.evaluate(el=>(el.closest('.modal-backdrop') as HTMLElement & {_returnFocus?:HTMLElement})._returnFocus?.id||'BODY')",
+        "adjacent(c.page,box.locator('input'),box.locator('.font-list button'))",
+        "menu(c.app,['File','Email Settings\u2026'])",
+        "named(c.page,'Email drafts to')",
+        "adjacent(c.page,box.locator('input'),box.locator('.m-cancel'))",
+        "box.locator('input').fill('dialog@example.invalid')",
+        "named(c.page,'How should NEO email your drafts?')",
+        "adjacent(c.page,box.locator('[data-m=\"gmail\"]'),box.locator('[data-m=\"mail\"]'))",
+        "selectText(c.page,0,0,5)",
+        "caretState(c.page)",
+        "menu(c.app,['View','Keyboard Shortcuts\u2026'])",
+        "named(c.page,'Keyboard shortcuts')",
+        "menu(c.app,['Help','About NEO'])",
+        "named(c.page,'NEO')",
+        "bound(c.page,c.directory)",
+        "c.page.locator('.bound-cover').click()",
+        "named(c.page,'Title Page')",
+        "adjacent(c.page,box.locator('.tp-t'),box.locator('.tp-s'))",
+        "box.locator('.tp-t').fill('Modal Collection')",
+        "box.locator('.tp-s').fill('Subtitle retained')",
+        "c.page.locator('.ghost-page[aria-label=\"Dedication\"]').click()",
+        "named(c.page,'Dedication')",
+        "box.locator('.ps-body').fill('For keyboard writers')",
+        "shelfMetas(c.directory)",
+        "c.page.locator('.kind-dedication').click()",
+        "box.locator('.ps-done').focus()",
+        "c.page.locator('#author-chip').focus()",
+        "named(c.page,'Writing as Parity Writer')",
+        "adjacent(c.page,box.locator('.fr-choice').first(),box.locator('.fr-choice').nth(1))",
+        "box.locator('.fr-choice').first().focus()",
+        "named(c.page,'Author name')",
+        "box.locator('input').fill('Cancelled rename')",
+        "c.page.locator('.shelf-label').first().click({button:'right'})",
+        "named(c.page,'Shelf \u201cEditing\u201d')",
+        "box.locator('.fr-choice').nth(1).focus()",
+        "named(c.page,'Anthology title')",
+        "named(c.page,'Export the anthology as\u2026')",
+        "c.page.locator('.book').first().click({button:'right'})",
+        "named(c.page,'\u201cEditing fixture\u201d')",
+        "option(c.page,'Set word goal')",
+        "named(c.page,'Word count goal for \u201cEditing fixture\u201d')",
+        "box.locator('input').fill('999')",
+        "writeFile(path.join(c.directory,'.neo-parity-host.json'),JSON.stringify({httpResponses:[{match:'api.github.com',body:{tag_name:'v999.9.9',html_url:'https://github.com/hughhowey/neo/releases/tag/v999.9.9'}}]}))",
+        "menu(c.app,['Help','Check for Update\u2026'])",
+        "named(c.page,'NEO 999.9.9 is available')",
+        "Installed-font Escape: await genuine later fullscreenEscape response; original source asynchronous shelf fallthrough is observed, then reopen the genuine book before testing font Enter selection; candidate retains editor return focus."
+      ],
+      "assertions": [
+        "expect(box).toBeVisible()",
+        "expect(box).toHaveAttribute('aria-modal','true')",
+        "expect(box).toHaveAccessibleName(name)",
+        "expect(second).toBeFocused()",
+        "expect(first).toBeFocused()",
+        "expect(page.locator('#zoom-level')).toBeFocused()",
+        "expect(page.locator('#firstrun')).toBeVisible()",
+        "expect(page.locator('#fr-step1')).toBeVisible()",
+        "expect(page.locator('#fr-step2')).toBeVisible()",
+        "expect(page.locator('#firstrun')).toBeHidden()",
+        "expect((await library(directory)).authorName).toBe('Modal Writer')",
+        "expect(box.locator('#ca-key')).toBeFocused()",
+        "expect(await box.evaluate(el=>el.contains(document.activeElement))).toBe(false)",
+        "expect(box.locator('.m-ok')).toBeFocused()",
+        "expect(box).toHaveCount(0)",
+        "expect(c.page.locator('#zoom-level')).toBeFocused()",
+        "expect((await library(c.directory)).coverArt).toEqual(before)",
+        "expect(c.page.locator('.modal-backdrop:visible')).toBeFocused()",
+        "expect(box.locator('#st-daily')).toBeFocused()",
+        "expect((await library(c.directory)).dailyGoal).toBe(321)",
+        "expect.poll(async()=>JSON.parse(await readFile(path.join(c.bookdir,'book.json'),'utf8')).wordGoal).toBe(654)",
+        "expect(c.page.locator('#hint')).toContainText('Sprint started')",
+        "expect(box.locator('#st-book, #st-sprint')).toHaveCount(0)",
+        "expect((await library(c.directory)).dailyGoal).toBe(123)",
+        "expect(box.locator('input')).toBeFocused()",
+        "expect(box.locator('.font-list button')).toHaveCount(1)",
+        "expect.poll(()=>c.page.evaluate(()=>document.activeElement?.id||document.activeElement?.tagName)).toBe(returnId)",
+        "expect((await library(c.directory)).fonts.body).toBe('Georgia')",
+        "expect(box.locator('[data-m=\"gmail\"]')).toBeFocused()",
+        "expect(box.locator('.m-cancel, .m-ok')).toHaveCount(0)",
+        "expect((await library(c.directory)).emailAddress).toBe('dialog@example.invalid')",
+        "expect((await library(c.directory)).emailMethod).toBe('gmail')",
+        "expect(box.locator('.shortcuts-content')).toBeFocused()",
+        "expect(c.page.locator('.chapter-body').first()).toBeFocused()",
+        "expect(await caretState(c.page)).toEqual(caret)",
+        "expect(box.locator('.tp-t')).toBeFocused()",
+        "expect(box.locator('.tp-s')).toBeFocused()",
+        "expect(box.locator('.tp-a')).toBeFocused()",
+        "expect(c.page.locator('.shelf-label')).toHaveText('Modal Collection')",
+        "expect(box.locator('.ps-body')).toBeFocused()",
+        "expect(await readFile(chapterPath(c.directory,dedication.id,dedication.chapterOrder[0]),'utf8')).toContain('For keyboard writers')",
+        "expect(box.locator('.ps-body')).toHaveText('For keyboard writers')",
+        "expect(box.locator('.fr-choice').first()).toBeFocused()",
+        "expect((await library(c.directory)).authors[0].name).toBe('Parity Writer')",
+        "expect(c.page.locator('#author-chip')).toBeFocused()",
+        "expect((await library(c.directory)).shelves[0].name).toBe('Editing')",
+        "expect(JSON.parse(await readFile(path.join(c.bookdir,'book.json'),'utf8')).wordGoal).toBeUndefined()",
+        "expect(box.locator('.m-cancel')).toBeFocused()",
+        "Installed-font Escape cancellation is verified after genuine native IPC completion, rather than premature synchronous dialog removal/focus. Original source bookshelf fallthrough is preserved as explicit characterization; candidate persistent editor/focus preservation is separately required by supplemental E."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] first-run named dialog keeps unanswered onboarding and ordinary input Tab order",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] cover settings focus key traverse buttons and Escape cancels unsaved changes",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] book progress backdrop focus Tab goals Escape saves and keyboard sprint starts",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] shelf Goals dialog has no book fields and Done Enter saves keyboard edits",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] installed font dialog focuses search traverses filtered face and Escape cancels Enter selects",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] email input owns Enter and mandatory method dialog keeps Escape until keyboard choice",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] help traps its two Tab controls restores actual caret and About returns keyboard focus",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] title and content page sheets expose names focus fields and save through Enter or Escape",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] author shelf anthology and book goal reuse named choice and input dialogs without altering cancelled data",
+          "engine": "prosemirror"
+        },
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-C][NEO-283-C] release update dialog owns backdrop focus Later Tab and Escape returns without changing manuscript",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] first-run named dialog keeps unanswered onboarding and ordinary input Tab order",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] cover settings focus key traverse buttons and Escape cancels unsaved changes",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] book progress backdrop focus Tab goals Escape saves and keyboard sprint starts",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] shelf Goals dialog has no book fields and Done Enter saves keyboard edits",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] installed font dialog focuses search traverses filtered face and Escape cancels Enter selects",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] email input owns Enter and mandatory method dialog keeps Escape until keyboard choice",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] help traps its two Tab controls restores actual caret and About returns keyboard focus",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] title and content page sheets expose names focus fields and save through Enter or Escape",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] author shelf anthology and book goal reuse named choice and input dialogs without altering cancelled data",
+            "engine": "original"
+          },
+          {
+            "report": "modal-families-results.json",
+            "title": "[NEO-217-C][NEO-283-C] release update dialog owns backdrop focus Later Tab and Escape returns without changing manuscript",
+            "engine": "original"
+          }
+        ]
+      },
+      "supplementalScenarioIds": [
+        "NEO-283-E"
+      ]
+    },
+    {
+      "scenarioId": "NEO-217-D",
+      "featureId": "NEO-217",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "first.focus()",
+        "page.keyboard.press('Tab')",
+        "page.keyboard.press('Shift+Tab')",
+        "page.locator('#zoom-level').focus()",
+        "openEditingFixture(engine)",
+        "writeFile(path.join(c.directory,'.neo-parity-host.json'),JSON.stringify({httpResponses:[{match:'api.github.com',body:{tag_name:'v0.0.0'}}]}))",
+        "anchor(c.page)",
+        "menu(c.app,['Help','Check for Update\u2026'])",
+        "c.page.keyboard.press('Enter')",
+        "assertTexts(c.page,[['Alpha beta.','Gamma delta.']])",
+        "c.close()"
+      ],
+      "assertions": [
+        "expect(box).toBeVisible()",
+        "expect(box).toHaveAttribute('aria-modal','true')",
+        "expect(box).toHaveAccessibleName(name)",
+        "expect(second).toBeFocused()",
+        "expect(first).toBeFocused()",
+        "expect(page.locator('#zoom-level')).toBeFocused()",
+        "expect(box.locator('h2')).toHaveText('NEO is up to date')",
+        "expect(box).toHaveAccessibleName(engine==='original'?'':'NEO is up to date')",
+        "expect(box.locator('.m-ok')).toBeFocused()",
+        "expect(box).toHaveCount(0)"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-D][NEO-283-D] update notice owns OK Enter and labels legacy unnamed explicit-role dialog",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "contract-output",
+        "sourceEvidence": "app.js8725\u20138745 gives update notices role=dialog, aria-modal=true, a visible h2, initially focused OK, and Enter/Escape dismissal. app.js8999 dialogify returns for any explicit role before deriving aria-labelledby, so declared original Electron43 notice has an empty accessible name. Candidate preserves keyboard/draft behavior and assigns its existing h2 as accessible name through the narrow TypeScript dialog-label hook; actual original empty-name characterization is separately retained."
+      },
+      "baselineDefectCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-D][NEO-283-D] update notice owns OK Enter and labels legacy unnamed explicit-role dialog",
+          "engine": "original"
+        }
+      ]
+    },
+    {
+      "scenarioId": "NEO-283-D",
+      "featureId": "NEO-283",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "first.focus()",
+        "page.keyboard.press('Tab')",
+        "page.keyboard.press('Shift+Tab')",
+        "page.locator('#zoom-level').focus()",
+        "openEditingFixture(engine)",
+        "writeFile(path.join(c.directory,'.neo-parity-host.json'),JSON.stringify({httpResponses:[{match:'api.github.com',body:{tag_name:'v0.0.0'}}]}))",
+        "anchor(c.page)",
+        "menu(c.app,['Help','Check for Update\u2026'])",
+        "c.page.keyboard.press('Enter')",
+        "assertTexts(c.page,[['Alpha beta.','Gamma delta.']])",
+        "c.close()"
+      ],
+      "assertions": [
+        "expect(box).toBeVisible()",
+        "expect(box).toHaveAttribute('aria-modal','true')",
+        "expect(box).toHaveAccessibleName(name)",
+        "expect(second).toBeFocused()",
+        "expect(first).toBeFocused()",
+        "expect(page.locator('#zoom-level')).toBeFocused()",
+        "expect(box.locator('h2')).toHaveText('NEO is up to date')",
+        "expect(box).toHaveAccessibleName(engine==='original'?'':'NEO is up to date')",
+        "expect(box.locator('.m-ok')).toBeFocused()",
+        "expect(box).toHaveCount(0)"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-D][NEO-283-D] update notice owns OK Enter and labels legacy unnamed explicit-role dialog",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "contract-output",
+        "sourceEvidence": "app.js8725\u20138745 gives update notices role=dialog, aria-modal=true, a visible h2, initially focused OK, and Enter/Escape dismissal. app.js8999 dialogify returns for any explicit role before deriving aria-labelledby, so declared original Electron43 notice has an empty accessible name. Candidate preserves keyboard/draft behavior and assigns its existing h2 as accessible name through the narrow TypeScript dialog-label hook; actual original empty-name characterization is separately retained."
+      },
+      "baselineDefectCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-D][NEO-283-D] update notice owns OK Enter and labels legacy unnamed explicit-role dialog",
+          "engine": "original"
+        }
+      ]
+    },
+    {
+      "scenarioId": "NEO-217-E",
+      "featureId": "NEO-217",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "Grant actual local-font permission, open native Format/Body Font/Other Font menu, filter the genuine installed Georgia family and press Escape while search input owns focus.",
+        "Await a later explicit genuine fullscreenEscape request as an IPC response completion barrier; observe recorded original main-handler results without substituting a response."
+      ],
+      "assertions": [
+        "Font dialog has accessible name Other font and search input focus; filtering produces one genuine Georgia family.",
+        "The original font Escape falls through to a second genuine fullscreen:escape invocation; both replies are false and source ends on the bookshelf.",
+        "The candidate makes only the deliberate barrier IPC request, keeps the editor visible and bookshelf hidden, and preserves the captured return focus.",
+        "Original book reopened after characterization and candidate retain exact Alpha beta./Gamma delta. prose and saved Georgia font."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-E][NEO-283-E] font search Escape completes genuine fullscreen IPC without leaving the manuscript",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "contract-output",
+        "sourceEvidence": "app.js7253\u20137256 font input Escape calls done(null), removing its backdrop synchronously without stopping propagation. The global document Escape handler atapp.js3885\u20133890 then invokes genuine fullscreenEscape and falls through to backToShelf after false. Candidate must consume the font dialog Escape while retaining genuine native fullscreen handling for editor Escape; the original asynchronous shelf fallthrough is characterized separately."
+      },
+      "baselineDefectCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-E][NEO-283-E] font search Escape completes genuine fullscreen IPC without leaving the manuscript",
+          "engine": "original"
+        }
+      ]
+    },
+    {
+      "scenarioId": "NEO-283-E",
+      "featureId": "NEO-283",
+      "testFile": "parity/tests/modal-families.spec.ts",
+      "driverActions": [
+        "Grant actual local-font permission, open native Format/Body Font/Other Font menu, filter the genuine installed Georgia family and press Escape while search input owns focus.",
+        "Await a later explicit genuine fullscreenEscape request as an IPC response completion barrier; observe recorded original main-handler results without substituting a response."
+      ],
+      "assertions": [
+        "Font dialog has accessible name Other font and search input focus; filtering produces one genuine Georgia family.",
+        "The original font Escape falls through to a second genuine fullscreen:escape invocation; both replies are false and source ends on the bookshelf.",
+        "The candidate makes only the deliberate barrier IPC request, keeps the editor visible and bookshelf hidden, and preserves the captured return focus.",
+        "Original book reopened after characterization and candidate retain exact Alpha beta./Gamma delta. prose and saved Georgia font."
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-E][NEO-283-E] font search Escape completes genuine fullscreen IPC without leaving the manuscript",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "contract-output",
+        "sourceEvidence": "app.js7253\u20137256 font input Escape calls done(null), removing its backdrop synchronously without stopping propagation. The global document Escape handler atapp.js3885\u20133890 then invokes genuine fullscreenEscape and falls through to backToShelf after false. Candidate must consume the font dialog Escape while retaining genuine native fullscreen handling for editor Escape; the original asynchronous shelf fallthrough is characterized separately."
+      },
+      "baselineDefectCases": [
+        {
+          "report": "modal-families-results.json",
+          "title": "[NEO-217-E][NEO-283-E] font search Escape completes genuine fullscreen IPC without leaving the manuscript",
+          "engine": "original"
+        }
+      ]
+    }
+  ]
+}

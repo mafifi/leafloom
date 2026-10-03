@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "scenarios": [
+    {
+      "scenarioId": "NEO-212-D",
+      "featureId": "NEO-212",
+      "testFile": "parity/tests/modifier-shortcuts.spec.ts",
+      "driverActions": [
+        "openEditingFixture(engine,{chapters:['<p>Original prose.</p>']})",
+        "selectText(c.page,0,0,'Original prose.'.length)",
+        "c.page.keyboard.press(key)",
+        "c.page.keyboard.type('X')",
+        "c.page.keyboard.press(process.platform==='darwin'?'Meta+z':'Control+z')",
+        "c.page.keyboard.press(process.platform==='darwin'?'Meta+Shift+z':'Control+Shift+z')",
+        "c.page.locator('#back-to-shelf').click()"
+      ],
+      "assertions": [
+        "expect.poll(()=>c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true)",
+        "expect.poll(()=>c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true)",
+        "expect.poll(()=>c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(false)",
+        "expect(c.page.locator('.chapter-body p')).toHaveCount(engine==='original'?2:1)",
+        "expect(c.page.locator('.chapter-body p')).toHaveCount(engine==='original'?3:1)",
+        "expect(c.page.locator('.chapter-body .scene-break')).toHaveCount(engine==='original'?1:0)",
+        "expect(c.page.locator('.chapter-body p')).toHaveText(['Original prose.','***',''])",
+        "expect(c.page.locator('.chapter-body')).toHaveText('Original prose.X')",
+        "expect(c.page.locator('.chapter-body')).toHaveText('Original prose.')",
+        "expect.poll(saved).toContain('***')",
+        "expect.poll(saved).toBe('<p>Original prose.X</p>')"
+      ],
+      "reviewed": true,
+      "targetCases": [
+        {
+          "report": "modifier-shortcuts-results.json",
+          "title": "[NEO-212-D] modified Enter toggles real fullscreen source splits and creates scene candidate preserves prose disk and typing history",
+          "engine": "prosemirror"
+        }
+      ],
+      "baselineDefectCases": [
+        {
+          "report": "modifier-shortcuts-results.json",
+          "title": "[NEO-212-D] modified Enter toggles real fullscreen source splits and creates scene candidate preserves prose disk and typing history",
+          "engine": "original"
+        }
+      ],
+      "oracle": {
+        "kind": "contract-output",
+        "sourceEvidence": "app.js4171\u20134176 specifies Meta/Ctrl+Enter toggling fullscreen from anywhere; main.js555\u2013561 toggles the actual BrowserWindow. Original chapter keydown2452 counts every nonShiftEnter, and handleEnter2920/3012/3033 handles modified Enter as author paragraph/scene input before the later document shortcut. Actual OS baseline reported newline then***. Paired scenario characterizes original paragraph2 then paragraph3 withscene1; candidate consumes exactfullscreenmodifiedEnter before authorhandlers, must preserve nativeflags, editor/prose, unchanged paragraphcount and independentactualtyping UndoRedo/disk. CDPkeyboard regression supplements separately retained physical OS shortcuts proof, not a substitute for it."
+      }
+    }
+  ]
+}

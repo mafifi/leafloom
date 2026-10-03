@@ -1,0 +1,13 @@
+# Lexical provider
+
+Disposable provider for `neo-spike/v1`, using the locally pinned Lexical 0.52.0 packages. This is new adapter code; no NEO production editor implementation was copied.
+
+`createEditor` owns the mounted editable root and immutable `EditorState`. `registerRichText` handles native editing commands, and `registerHistory` handles ordinary text history. The adapter uses real Lexical range selections, format commands and HTML import; public mutations request discrete commits so an immediate `read()` observes the committed state.
+
+Chapter elements are custom shadow-root nodes. Their DOM slot places editable paragraphs inside `.chapter-body`, alongside a noneditable `.chapter-title`. All chapters share one root. Paragraph nodes export canonical IDs and paragraph/poetry/scene-break kinds. Clones preserve identities; new native paragraphs mint UUID identities. Text nodes export bold/italic through native format flags and preserve placeholder metadata through cloning and splitting. Placeholder nodes are unmergeable to keep adjacent named placeholders distinct. Scene breaks display `***` in a noneditable paragraph and export empty canonical runs.
+
+The root capture key listener delegates to the shared author's `gesture` callback before Lexical's default key handler, except during composition. Structural Enter/Backspace, snapshot undo, Darlings and agent proposals are shared author-service capabilities. This provider does not implement them independently. Replacement suppresses document-change echoes; revision, title, author and Darlings metadata remain parent-owned.
+
+Paste parses inert HTML and copies text, paragraph boundaries, line breaks and bold/italic into a clean document before invoking Lexical HTML import. Script/style/embed content and arbitrary attributes are discarded. Links become text; lists become paragraphs. This provider does not retain imported layout, tables or arbitrary CSS. Native clipboard paste and the public paste method share this path.
+
+Provider tests exercise actual state serialization, restoration, immutable updates, formatting and placeholder splitting. Root-owned conformance and Playwright scenarios are required for mounted typing, selection, sanitized paste, gesture interception, history and engine switching. Synthetic composition events establish only the interception guard; OS IME input remains a separate test. Same-block selections translate to the canonical contract; cross-block ranges report null. Canonical selection uses ordered offsets and therefore does not retain selection direction. Native undo does not share a single history stack with host structural snapshots.

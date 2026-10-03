@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "neo-parity/1",
+  "scope": "Concrete native accessibility acceptance subcases, authored and awaiting coordinated baseline and target runs.",
+  "scenarios": [
+    {
+      "scenarioId": "NEO-278-B",
+      "featureId": "NEO-278",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await page.locator('#back-to-shelf').click();",
+        "const author=page.locator('#author-chip');await expect(author).toHaveAttribute('role','button');await expect(author).toHaveAttribute('tabindex','0');await page.keyboard.press('Tab');await author.focus();await page.keyboard.press('Enter');await expect(visibleDialog(page)).toBeVisible();await expect.poll(()=>visibleDialog(page).evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(visibleDialog(page)).toHaveCount(0);await expect(author).toBeFocused();",
+        "const cover=page.locator('#bookshelf-view .book').first();await expect(cover).toHaveAttribute('role','button');await expect(cover).toHaveAttribute('tabindex','0');await cover.focus();await page.keyboard.press('Space');await expect(page.locator('.chapter-body').first()).toBeVisible();",
+        "const counter=page.locator('#word-counter');await counter.focus();const before=await counter.textContent();await page.keyboard.press('Enter');expect(await counter.textContent()).not.toBe(before);await expect(counter).toBeFocused();await page.keyboard.press('Space');expect(await counter.textContent()).toBe(before);",
+        "await page.locator('#zoom-level').focus();await page.keyboard.press('Enter');await expect(page.locator('#zoom-level')).toHaveText('100%');await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "assertions": [
+        "const author=page.locator('#author-chip');await expect(author).toHaveAttribute('role','button');await expect(author).toHaveAttribute('tabindex','0');await page.keyboard.press('Tab');await author.focus();await page.keyboard.press('Enter');await expect(visibleDialog(page)).toBeVisible();await expect.poll(()=>visibleDialog(page).evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(visibleDialog(page)).toHaveCount(0);await expect(author).toBeFocused();",
+        "const cover=page.locator('#bookshelf-view .book').first();await expect(cover).toHaveAttribute('role','button');await expect(cover).toHaveAttribute('tabindex','0');await cover.focus();await page.keyboard.press('Space');await expect(page.locator('.chapter-body').first()).toBeVisible();",
+        "const counter=page.locator('#word-counter');await counter.focus();const before=await counter.textContent();await page.keyboard.press('Enter');expect(await counter.textContent()).not.toBe(before);await expect(counter).toBeFocused();await page.keyboard.press('Space');expect(await counter.textContent()).toBe(before);",
+        "await page.locator('#zoom-level').focus();await page.keyboard.press('Enter');await expect(page.locator('#zoom-level')).toHaveText('100%');await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-278-B] prosemirror: author covers counters and zoom expose real keyboard activation",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-278-B] original: author covers counters and zoom expose real keyboard activation",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-279-B",
+      "featureId": "NEO-279",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await selectText(page,0,0,5);const saved=await caretState(page);",
+        "await page.keyboard.press('Shift+F6');await expect(page.locator('.tab.active')).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('#side-pin')).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('.n-row').first()).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(saved);",
+        "await page.locator('#back-to-shelf').click();await page.locator('#bookshelf-view .book').first().focus();await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('#author-chip')).toBeFocused();await page.keyboard.press('Shift+F6');await expect(page.locator('#bookshelf-view .book').first()).toBeFocused();"
+      ],
+      "assertions": [
+        "await page.keyboard.press('Shift+F6');await expect(page.locator('.tab.active')).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('#side-pin')).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('.n-row').first()).toBeFocused();",
+        "await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(saved);",
+        "await page.locator('#back-to-shelf').click();await page.locator('#bookshelf-view .book').first().focus();await page.keyboard.press('Control+Shift+Tab');await expect(page.locator('#author-chip')).toBeFocused();await page.keyboard.press('Shift+F6');await expect(page.locator('#bookshelf-view .book').first()).toBeFocused();"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-279-B] prosemirror: reverse F6 and CtrlTab cycle four source regions and shelf two regions",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-279-B] original: reverse F6 and CtrlTab cycle four source regions and shelf two regions",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-282-B",
+      "featureId": "NEO-282",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await selectText(page,0,0,0);await page.keyboard.press('F6');await page.locator('#nav-pin').focus();await page.keyboard.press('Enter');const rows=page.locator('.n-row');await rows.first().focus();await expect(rows.first()).toBeFocused();await page.keyboard.press('ArrowUp');await expect(rows.first()).toBeFocused();await page.keyboard.press('ArrowDown');await expect(rows.nth(1)).toBeFocused();await page.keyboard.press('ArrowDown');await page.keyboard.press('ArrowDown');await expect(rows.last()).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.chapter-body').nth(2)).toBeFocused();expect(await page.evaluate(()=>{const s=getSelection()!,r=s.getRangeAt(0),e=r.startContainer.nodeType===Node.ELEMENT_NODE?r.startContainer as Element:r.startContainer.parentElement!;return{chapter:Array.from(document.querySelectorAll('.chapter-body')).indexOf(e.closest('.chapter-body')!),collapsed:s.isCollapsed};})).toEqual({chapter:2,collapsed:true});",
+        "await rows.nth(1).click({button:'right'});await expect(page.locator('.pop-menu')).toBeVisible();await page.keyboard.press('ArrowDown');expect(await page.locator('.pop-menu').evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(page.locator('.pop-menu')).toHaveCount(0);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "assertions": [
+        "await selectText(page,0,0,0);await page.keyboard.press('F6');await page.locator('#nav-pin').focus();await page.keyboard.press('Enter');const rows=page.locator('.n-row');await rows.first().focus();await expect(rows.first()).toBeFocused();await page.keyboard.press('ArrowUp');await expect(rows.first()).toBeFocused();await page.keyboard.press('ArrowDown');await expect(rows.nth(1)).toBeFocused();await page.keyboard.press('ArrowDown');await page.keyboard.press('ArrowDown');await expect(rows.last()).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('.chapter-body').nth(2)).toBeFocused();expect(await page.evaluate(()=>{const s=getSelection()!,r=s.getRangeAt(0),e=r.startContainer.nodeType===Node.ELEMENT_NODE?r.startContainer as Element:r.startContainer.parentElement!;return{chapter:Array.from(document.querySelectorAll('.chapter-body')).indexOf(e.closest('.chapter-body')!),collapsed:s.isCollapsed};})).toEqual({chapter:2,collapsed:true});",
+        "await rows.nth(1).click({button:'right'});await expect(page.locator('.pop-menu')).toBeVisible();await page.keyboard.press('ArrowDown');expect(await page.locator('.pop-menu').evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(page.locator('.pop-menu')).toHaveCount(0);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-282-B] prosemirror: chapter arrows clamp focus and Enter activates while pointer context owns menu keys",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-282-B] original: chapter arrows clamp focus and Enter activates while pointer context owns menu keys",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-283-B",
+      "featureId": "NEO-283",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await page.locator('#back-to-shelf').click();const cover=page.locator('.book').first();await cover.focus();await cover.click({button:'right'});let dialog=visibleDialog(page);await expect(dialog).toHaveAttribute('aria-modal','true');const name=await dialog.getAttribute('aria-labelledby');expect(name).toBeTruthy();await expect(page.locator('#'+name)).toBeVisible();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);",
+        "await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);",
+        "await page.locator('#author-chip').focus();await page.keyboard.press('Enter');await visibleDialog(page).getByRole('button',{name:'Add a pen name\u2026'}).click();dialog=visibleDialog(page);const input=dialog.locator('input');await expect(input).toBeFocused();await input.fill('Keyboard-created story');await page.keyboard.press('Tab');expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await input.focus();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(page.locator('.book')).toHaveCount(1);"
+      ],
+      "assertions": [
+        "await page.locator('#back-to-shelf').click();const cover=page.locator('.book').first();await cover.focus();await cover.click({button:'right'});let dialog=visibleDialog(page);await expect(dialog).toHaveAttribute('aria-modal','true');const name=await dialog.getAttribute('aria-labelledby');expect(name).toBeTruthy();await expect(page.locator('#'+name)).toBeVisible();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);",
+        "await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);",
+        "await page.locator('#author-chip').focus();await page.keyboard.press('Enter');await visibleDialog(page).getByRole('button',{name:'Add a pen name\u2026'}).click();dialog=visibleDialog(page);const input=dialog.locator('input');await expect(input).toBeFocused();await input.fill('Keyboard-created story');await page.keyboard.press('Tab');expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await input.focus();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(page.locator('.book')).toHaveCount(1);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-283-B][NEO-217-B] prosemirror: ask-input and choice modal own labels initial focus Enter Escape and return focus",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-283-B][NEO-217-B] original: ask-input and choice modal own labels initial focus Enter Escape and return focus",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-217-B",
+      "featureId": "NEO-217",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await page.locator('#back-to-shelf').click();const cover=page.locator('.book').first();await cover.focus();await cover.click({button:'right'});let dialog=visibleDialog(page);await expect(dialog).toHaveAttribute('aria-modal','true');const name=await dialog.getAttribute('aria-labelledby');expect(name).toBeTruthy();await expect(page.locator('#'+name)).toBeVisible();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);",
+        "await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);",
+        "await page.locator('#author-chip').focus();await page.keyboard.press('Enter');await visibleDialog(page).getByRole('button',{name:'Add a pen name\u2026'}).click();dialog=visibleDialog(page);const input=dialog.locator('input');await expect(input).toBeFocused();await input.fill('Keyboard-created story');await page.keyboard.press('Tab');expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await input.focus();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(page.locator('.book')).toHaveCount(1);"
+      ],
+      "assertions": [
+        "await page.locator('#back-to-shelf').click();const cover=page.locator('.book').first();await cover.focus();await cover.click({button:'right'});let dialog=visibleDialog(page);await expect(dialog).toHaveAttribute('aria-modal','true');const name=await dialog.getAttribute('aria-labelledby');expect(name).toBeTruthy();await expect(page.locator('#'+name)).toBeVisible();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);",
+        "await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);",
+        "await page.locator('#author-chip').focus();await page.keyboard.press('Enter');await visibleDialog(page).getByRole('button',{name:'Add a pen name\u2026'}).click();dialog=visibleDialog(page);const input=dialog.locator('input');await expect(input).toBeFocused();await input.fill('Keyboard-created story');await page.keyboard.press('Tab');expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await input.focus();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);await expect(page.locator('.book')).toHaveCount(1);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-283-B][NEO-217-B] prosemirror: ask-input and choice modal own labels initial focus Enter Escape and return focus",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-283-B][NEO-217-B] original: ask-input and choice modal own labels initial focus Enter Escape and return focus",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-284-B",
+      "featureId": "NEO-284",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await menu(app,['File','Goals\u2026']);const dialog=visibleDialog(page);await expect(dialog).toBeVisible();const input=dialog.locator('input').first();await input.click();await expect(input).toBeFocused();await input.fill('17');await page.keyboard.press('ArrowLeft');await expect(input).toBeFocused();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await dialog.locator('.m-ok').click();await expect(dialog).toHaveCount(0);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "assertions": [
+        "await menu(app,['File','Goals\u2026']);const dialog=visibleDialog(page);await expect(dialog).toBeVisible();const input=dialog.locator('input').first();await input.click();await expect(input).toBeFocused();await input.fill('17');await page.keyboard.press('ArrowLeft');await expect(input).toBeFocused();expect(await dialog.evaluate(el=>el.contains(document.activeElement))).toBe(true);await dialog.locator('.m-ok').click();await expect(dialog).toHaveCount(0);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-284-B] prosemirror: pointer textfield interaction stays editable while modal mouse focus remains owned",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-284-B] original: pointer textfield interaction stays editable while modal mouse focus remains owned",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-199-B",
+      "featureId": "NEO-199",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await page.locator('#back-to-shelf').click();await page.mouse.move(1,1);const grip=page.locator('.shelf-grip').first();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBe(0);await page.locator('.shelf-label').first().hover();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBe(1);",
+        "await page.mouse.move(1,1);await page.keyboard.press('Tab');await page.locator('.shelf-label').first().focus();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBeCloseTo(.6,1);await page.locator('.book').first().focus();expect(await page.locator('.book').first().evaluate(el=>getComputedStyle(el).outlineStyle)).not.toBe('none');"
+      ],
+      "assertions": [
+        "await page.locator('#back-to-shelf').click();await page.mouse.move(1,1);const grip=page.locator('.shelf-grip').first();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBe(0);await page.locator('.shelf-label').first().hover();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBe(1);",
+        "await page.mouse.move(1,1);await page.keyboard.press('Tab');await page.locator('.shelf-label').first().focus();await expect.poll(()=>grip.evaluate(el=>parseFloat(getComputedStyle(el).opacity))).toBeCloseTo(.6,1);await page.locator('.book').first().focus();expect(await page.locator('.book').first().evaluate(el=>getComputedStyle(el).outlineStyle)).not.toBe('none');"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-199-B] prosemirror: quiet shelf grip and chrome become visible on hover or keyboard focus",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-199-B] original: quiet shelf grip and chrome become visible on hover or keyboard focus",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    },
+    {
+      "scenarioId": "NEO-285-B",
+      "featureId": "NEO-285",
+      "testFile": "parity/tests/native-accessibility.spec.ts",
+      "testFiles": [
+        "parity/tests/native-accessibility.spec.ts"
+      ],
+      "driverActions": [
+        "await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].setSize(800,600));await menu(app,['View','Interface Size','300%']);await page.mouse.move(400,300);await page.keyboard.down('Control');await page.mouse.wheel(0,-800);await page.keyboard.up('Control');await expect(page.locator('#zoom-level')).toHaveText('300%');",
+        "await selectText(page,0,0,0);await page.keyboard.press('F6');await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();",
+        "await menu(app,['View','Keyboard Shortcuts\u2026']);await expect(visibleDialog(page)).toBeVisible();await expect.poll(()=>visibleDialog(page).evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(visibleDialog(page)).toHaveCount(0);await menu(app,['View','Interface Size','Normal']);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "assertions": [
+        "await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].setSize(800,600));await menu(app,['View','Interface Size','300%']);await page.mouse.move(400,300);await page.keyboard.down('Control');await page.mouse.wheel(0,-800);await page.keyboard.up('Control');await expect(page.locator('#zoom-level')).toHaveText('300%');",
+        "await selectText(page,0,0,0);await page.keyboard.press('F6');await expect(page.locator('.n-row').first()).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('#side-pin')).toBeFocused();await page.keyboard.press('F6');await expect(page.locator('.tab.active')).toBeFocused();",
+        "await menu(app,['View','Keyboard Shortcuts\u2026']);await expect(visibleDialog(page)).toBeVisible();await expect.poll(()=>visibleDialog(page).evaluate(el=>el.contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(visibleDialog(page)).toHaveCount(0);await menu(app,['View','Interface Size','Normal']);await assertTexts(page,[['Alpha beta.'],['Second chapter.'],['Third chapter.']]);"
+      ],
+      "reviewed": true,
+      "knownGaps": [],
+      "targetCases": [
+        {
+          "report": "parity/native-accessibility-prosemirror-results.json",
+          "title": "[NEO-285-B] prosemirror: minimum native window with enlarged interface and page keeps keyboard controls usable",
+          "engine": "prosemirror"
+        }
+      ],
+      "oracle": {
+        "kind": "neo-reference",
+        "cases": [
+          {
+            "report": "parity/native-accessibility-original-results.json",
+            "title": "[NEO-285-B] original: minimum native window with enlarged interface and page keeps keyboard controls usable",
+            "engine": "original"
+          }
+        ]
+      },
+      "platformQualifications": [
+        "Current macOS trusted native Electron keyboard and window APIs; no physical alternate keyboard layout or other OS appearance claim."
+      ]
+    }
+  ]
+}

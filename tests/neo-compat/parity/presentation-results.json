@@ -1,0 +1,484 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/presentation.config.ts",
+      "--grep",
+      "NEO-197-B|NEO-212-A"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "a79eab4f5469156364b0c271b9c04a99707b57ae110186e54ab5ba5418d93ce2",
+        "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+        "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+        "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+        "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+        "parity/tests/native-shortcuts.spec.ts": "feea4a81e8838e007c377ab4e739f55e8319414e9e317a0caa48cc3e5a9e08d6",
+        "parity/tests/native.spec.ts": "219e434fd05e8f42271174a4959629d971da329ca5e9ada3437f54986c9d7c5e",
+        "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "d742964de194baca26a5b0fd444acb79634c692ecdcfd920574a9637d0fc77f3",
+        "parity/tests/presentation.spec.ts": "41e6ef08df4ff7a837095b8521e17c487af6e33c3d67729d1d29d27bb851217c",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+        "parity/reference/harness.ts": "93cabad50508c6d70823997032bc436b1e38d8353395f298819d71d56f0f8521",
+        "parity/evidence.ts": "a5eea94cb9446d0d1dacbdbc101d60f21751652886dd79ef2bf78b711169bfa6",
+        "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3"
+      },
+      "targetBundleSha256": "ac6d55f0427fb99fbf5cdcbc207be6818bdd297c50e8b810de9b0aa630e3f942",
+      "hostHarnessSha256": "62dc8a700fb642f9c6f6ccaf366b174eb0e597e77e2c80b2846298afd728b4dc",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "f72dcd87c1595863483e9cc889bcc24e664d225bd487cad70cca422cc521621c",
+      "proofBuildSha256": "e2555d63d7e7397b7a6846eead8eb245d5fdb009e3f1e15c5b38e073f8132e51",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "a79eab4f5469156364b0c271b9c04a99707b57ae110186e54ab5ba5418d93ce2",
+            "parity/tests/adapter-regressions.spec.ts": "b6cb3130607cae33f6608757dcd1697881fd2c975c26178cdd14b9735fb06ea4",
+            "parity/tests/books-helpers.ts": "0be412975fa0ea891084baf59b5faf58f596107eef45ae6a15475e595b8d02ad",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "0df8b3f6b3d2adc46d1417ff4f2e3afb24da15d56e30ceee4e32a9ff930427b6",
+            "parity/tests/editing-edge.spec.ts": "2b13e6bec0e7611038208977e047d424acc9120d9396c7a0d1e280a02e1dcaf2",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "89f587e075cb218709184950f2ddbd5e37f13e4e968dfe46cfa6194db6986d0a",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/modal-families.spec.ts": "85f28e3d7e14f6dbddace3e4ce08ca2d496ba137075d91fc15f0e95ea8b01e96",
+            "parity/tests/native-accessibility.spec.ts": "93c2885386efe29c12881e2ec4c018cb1cd0824783b1073c9b92423be0997a6e",
+            "parity/tests/native-shortcuts.spec.ts": "feea4a81e8838e007c377ab4e739f55e8319414e9e317a0caa48cc3e5a9e08d6",
+            "parity/tests/native.spec.ts": "219e434fd05e8f42271174a4959629d971da329ca5e9ada3437f54986c9d7c5e",
+            "parity/tests/navigation-edge.spec.ts": "b23a17fa75e2e574384b8c92d682ee0586c1f9ecc772065662bc2c3e77d2c030",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "d742964de194baca26a5b0fd444acb79634c692ecdcfd920574a9637d0fc77f3",
+            "parity/tests/presentation.spec.ts": "41e6ef08df4ff7a837095b8521e17c487af6e33c3d67729d1d29d27bb851217c",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "05ecc45d2b024b109fec8ace85fc470031554dd28e62d99bc7775ac50323eebd",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b",
+            "parity/reference/harness.ts": "93cabad50508c6d70823997032bc436b1e38d8353395f298819d71d56f0f8521",
+            "parity/evidence.ts": "a5eea94cb9446d0d1dacbdbc101d60f21751652886dd79ef2bf78b711169bfa6",
+            "parity/scripts/prepare-macos-hosts.mjs": "1628348e29f7e8237f90d0d96134e8e6c887afc419f978ec8b393758234754f3"
+          },
+          "targetBundleSha256": "ac6d55f0427fb99fbf5cdcbc207be6818bdd297c50e8b810de9b0aa630e3f942",
+          "hostHarnessSha256": "62dc8a700fb642f9c6f6ccaf366b174eb0e597e77e2c80b2846298afd728b4dc",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "f72dcd87c1595863483e9cc889bcc24e664d225bd487cad70cca422cc521621c",
+          "proofBuildSha256": "e2555d63d7e7397b7a6846eead8eb245d5fdb009e3f1e15c5b38e073f8132e51",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "presentation.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "presentation.spec.ts",
+      "file": "presentation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "presentation.spec.ts",
+          "line": 88,
+          "column": 10,
+          "specs": [
+            {
+              "title": "[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 15973,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:378:685",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 685,
+                          "line": 378
+                        },
+                        "snippet": "  376 |         });\n  377 |         test('[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists',async()=>{\n> 378 |           const ctx=await openEditingFixture(engine,{chapters:['<p>Author <span class=\"ph-mark\" data-sid=\"flag\" contenteditable=\"false\">⚑</span> prose.</p>'],stickies:[{id:'flag',chapterId:'ch-1',text:'Existing note.',resolved:false}]});try{const {app,page}=ctx;await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await page.locator('#sticky-list textarea').fill('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].blur());await expect(page.locator('#side-pane')).not.toHaveClass(/open/);await expect.poll(async()=>JSON.parse(await readFile(path.join(ctx.bookdir,'stickies.json'),'utf8'))[0].text).toBe('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await expect(page.locator('#sticky-list textarea')).toHaveValue('New note retained through blur.');await expect(page.locator('.chapter-body')).toHaveText('Author ⚑ prose.');}finally{await ctx.close();}\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  379 |         });\n  380 |         test('[NEO-187-B] actual mousewheel viewport chapter tracking updates locator/nav without moving focused author caret',async()=>{\n  381 |           const lines=Array.from({length:24},(_,i)=>`<p>Author paragraph ${i} keeps the manuscript readable.</p>`).join('');const ctx=await openEditingFixture(engine,{chapters:[lines,lines,lines]});try{const {page}=ctx;await selectText(page,0,0,5);const before=await caretState(page);await page.locator('#paper-scroll').hover();let reached=false;for(let n=0;n<25&&!reached;n++){await page.mouse.wheel(0,150);await page.waitForTimeout(140);reached=await page.locator('.chapter').evaluateAll(chapters=>{const mid=innerHeight*.4;return chapters[1].getBoundingClientRect().top<mid&&chapters[2].getBoundingClientRect().top>=mid;});}expect(reached).toBe(true);await expect(page.locator('#pos-counter')).toHaveText('chapter 2 of 3');await expect(page.locator('.nav-item.current')).toHaveAttribute('data-id','ch-2');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(before);await expect(page.locator('.chapter-body').nth(1)).toContainText('Author paragraph 23');}finally{await ctx.close();}"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 685,
+                            "line": 378
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  376 |         });\n  377 |         test('[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists',async()=>{\n> 378 |           const ctx=await openEditingFixture(engine,{chapters:['<p>Author <span class=\"ph-mark\" data-sid=\"flag\" contenteditable=\"false\">⚑</span> prose.</p>'],stickies:[{id:'flag',chapterId:'ch-1',text:'Existing note.',resolved:false}]});try{const {app,page}=ctx;await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await page.locator('#sticky-list textarea').fill('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].blur());await expect(page.locator('#side-pane')).not.toHaveClass(/open/);await expect.poll(async()=>JSON.parse(await readFile(path.join(ctx.bookdir,'stickies.json'),'utf8'))[0].text).toBe('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await expect(page.locator('#sticky-list textarea')).toHaveValue('New note retained through blur.');await expect(page.locator('.chapter-body')).toHaveText('Author ⚑ prose.');}finally{await ctx.close();}\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  379 |         });\n  380 |         test('[NEO-187-B] actual mousewheel viewport chapter tracking updates locator/nav without moving focused author caret',async()=>{\n  381 |           const lines=Array.from({length:24},(_,i)=>`<p>Author paragraph ${i} keeps the manuscript readable.</p>`).join('');const ctx=await openEditingFixture(engine,{chapters:[lines,lines,lines]});try{const {page}=ctx;await selectText(page,0,0,5);const before=await caretState(page);await page.locator('#paper-scroll').hover();let reached=false;for(let n=0;n<25&&!reached;n++){await page.mouse.wheel(0,150);await page.waitForTimeout(140);reached=await page.locator('.chapter').evaluateAll(chapters=>{const mid=innerHeight*.4;return chapters[1].getBoundingClientRect().top<mid&&chapters[2].getBoundingClientRect().top>=mid;});}expect(reached).toBe(true);await expect(page.locator('#pos-counter')).toHaveText('chapter 2 of 3');await expect(page.locator('.nav-item.current')).toHaveAttribute('data-id','ch-2');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(before);await expect(page.locator('.chapter-body').nth(1)).toContainText('Author paragraph 23');}finally{await ctx.close();}\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:378:685"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:01:11.900Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--34ec4-edited-real-sticky-persists/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--34ec4-edited-real-sticky-persists/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 685,
+                        "line": 378
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-64c69674fd0c91dcae44",
+              "file": "presentation.spec.ts",
+              "line": 377,
+              "column": 9
+            },
+            {
+              "title": "[NEO-212-A][NEO-213-A][NEO-214-A] native fullscreen reflects real window and Escape keeps manuscript before shelf",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16425,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:1291:112\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:9)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 112,
+                          "line": 1291
+                        },
+                        "snippet": "  1289 |             await page.keyboard.type('A fullscreen manuscript.');\n  1290 |             await app.evaluate(({ BrowserWindow, app }) => { app.focus({ steal: true }); BrowserWindow.getAllWindows()[0].focus(); });\n> 1291 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getFocusedWindow()?.id)).toBe(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].id));\n       |                                                                                                                ^\n  1292 |             await menu(app, ['View', 'Full Screen']);\n  1293 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true);\n  1294 |             await expect(page.locator('body')).toHaveClass(/full-screen/);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 112,
+                            "line": 1291
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  1289 |             await page.keyboard.type('A fullscreen manuscript.');\n  1290 |             await app.evaluate(({ BrowserWindow, app }) => { app.focus({ steal: true }); BrowserWindow.getAllWindows()[0].focus(); });\n> 1291 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getFocusedWindow()?.id)).toBe(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].id));\n       |                                                                                                                ^\n  1292 |             await menu(app, ['View', 'Full Screen']);\n  1293 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true);\n  1294 |             await expect(page.locator('body')).toHaveClass(/full-screen/);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:1291:112\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:9)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:01:28.132Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--b4703-eps-manuscript-before-shelf/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-original-NEO--b4703-eps-manuscript-before-shelf/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 112,
+                        "line": 1291
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-65f8801748e0db2f8c6f",
+              "file": "presentation.spec.ts",
+              "line": 1288,
+              "column": 9
+            }
+          ]
+        },
+        {
+          "title": "prosemirror",
+          "file": "presentation.spec.ts",
+          "line": 88,
+          "column": 10,
+          "specs": [
+            {
+              "title": "[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16211,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:378:685",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 685,
+                          "line": 378
+                        },
+                        "snippet": "  376 |         });\n  377 |         test('[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists',async()=>{\n> 378 |           const ctx=await openEditingFixture(engine,{chapters:['<p>Author <span class=\"ph-mark\" data-sid=\"flag\" contenteditable=\"false\">⚑</span> prose.</p>'],stickies:[{id:'flag',chapterId:'ch-1',text:'Existing note.',resolved:false}]});try{const {app,page}=ctx;await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await page.locator('#sticky-list textarea').fill('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].blur());await expect(page.locator('#side-pane')).not.toHaveClass(/open/);await expect.poll(async()=>JSON.parse(await readFile(path.join(ctx.bookdir,'stickies.json'),'utf8'))[0].text).toBe('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await expect(page.locator('#sticky-list textarea')).toHaveValue('New note retained through blur.');await expect(page.locator('.chapter-body')).toHaveText('Author ⚑ prose.');}finally{await ctx.close();}\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  379 |         });\n  380 |         test('[NEO-187-B] actual mousewheel viewport chapter tracking updates locator/nav without moving focused author caret',async()=>{\n  381 |           const lines=Array.from({length:24},(_,i)=>`<p>Author paragraph ${i} keeps the manuscript readable.</p>`).join('');const ctx=await openEditingFixture(engine,{chapters:[lines,lines,lines]});try{const {page}=ctx;await selectText(page,0,0,5);const before=await caretState(page);await page.locator('#paper-scroll').hover();let reached=false;for(let n=0;n<25&&!reached;n++){await page.mouse.wheel(0,150);await page.waitForTimeout(140);reached=await page.locator('.chapter').evaluateAll(chapters=>{const mid=innerHeight*.4;return chapters[1].getBoundingClientRect().top<mid&&chapters[2].getBoundingClientRect().top>=mid;});}expect(reached).toBe(true);await expect(page.locator('#pos-counter')).toHaveText('chapter 2 of 3');await expect(page.locator('.nav-item.current')).toHaveAttribute('data-id','ch-2');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(before);await expect(page.locator('.chapter-body').nth(1)).toContainText('Author paragraph 23');}finally{await ctx.close();}"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 685,
+                            "line": 378
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  376 |         });\n  377 |         test('[NEO-197-B] native window blur closes unpinned notes pane while newly edited real sticky persists',async()=>{\n> 378 |           const ctx=await openEditingFixture(engine,{chapters:['<p>Author <span class=\"ph-mark\" data-sid=\"flag\" contenteditable=\"false\">⚑</span> prose.</p>'],stickies:[{id:'flag',chapterId:'ch-1',text:'Existing note.',resolved:false}]});try{const {app,page}=ctx;await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await page.locator('#sticky-list textarea').fill('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await expect.poll(()=>app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].isFocused())).toBe(true);await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].blur());await expect(page.locator('#side-pane')).not.toHaveClass(/open/);await expect.poll(async()=>JSON.parse(await readFile(path.join(ctx.bookdir,'stickies.json'),'utf8'))[0].text).toBe('New note retained through blur.');await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await page.mouse.move(await page.evaluate(()=>innerWidth-1),400);await expect(page.locator('#side-pane')).toHaveClass(/open/);await expect(page.locator('#sticky-list textarea')).toHaveValue('New note retained through blur.');await expect(page.locator('.chapter-body')).toHaveText('Author ⚑ prose.');}finally{await ctx.close();}\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  379 |         });\n  380 |         test('[NEO-187-B] actual mousewheel viewport chapter tracking updates locator/nav without moving focused author caret',async()=>{\n  381 |           const lines=Array.from({length:24},(_,i)=>`<p>Author paragraph ${i} keeps the manuscript readable.</p>`).join('');const ctx=await openEditingFixture(engine,{chapters:[lines,lines,lines]});try{const {page}=ctx;await selectText(page,0,0,5);const before=await caretState(page);await page.locator('#paper-scroll').hover();let reached=false;for(let n=0;n<25&&!reached;n++){await page.mouse.wheel(0,150);await page.waitForTimeout(140);reached=await page.locator('.chapter').evaluateAll(chapters=>{const mid=innerHeight*.4;return chapters[1].getBoundingClientRect().top<mid&&chapters[2].getBoundingClientRect().top>=mid;});}expect(reached).toBe(true);await expect(page.locator('#pos-counter')).toHaveText('chapter 2 of 3');await expect(page.locator('.nav-item.current')).toHaveAttribute('data-id','ch-2');await expect(page.locator('.chapter-body').first()).toBeFocused();expect(await caretState(page)).toEqual(before);await expect(page.locator('.chapter-body').nth(1)).toContainText('Author paragraph 23');}finally{await ctx.close();}\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:378:685"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:01:44.813Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-prosemirror-N-d591f-edited-real-sticky-persists/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-prosemirror-N-d591f-edited-real-sticky-persists/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 685,
+                        "line": 378
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-ae15c3eb59cb2a045ea8",
+              "file": "presentation.spec.ts",
+              "line": 377,
+              "column": 9
+            },
+            {
+              "title": "[NEO-212-A][NEO-213-A][NEO-214-A] native fullscreen reflects real window and Escape keeps manuscript before shelf",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16630,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:1291:112\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:9)",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                          "column": 112,
+                          "line": 1291
+                        },
+                        "snippet": "  1289 |             await page.keyboard.type('A fullscreen manuscript.');\n  1290 |             await app.evaluate(({ BrowserWindow, app }) => { app.focus({ steal: true }); BrowserWindow.getAllWindows()[0].focus(); });\n> 1291 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getFocusedWindow()?.id)).toBe(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].id));\n       |                                                                                                                ^\n  1292 |             await menu(app, ['View', 'Full Screen']);\n  1293 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true);\n  1294 |             await expect(page.locator('body')).toHaveClass(/full-screen/);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                            "column": 112,
+                            "line": 1291
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  1289 |             await page.keyboard.type('A fullscreen manuscript.');\n  1290 |             await app.evaluate(({ BrowserWindow, app }) => { app.focus({ steal: true }); BrowserWindow.getAllWindows()[0].focus(); });\n> 1291 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getFocusedWindow()?.id)).toBe(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].id));\n       |                                                                                                                ^\n  1292 |             await menu(app, ['View', 'Full Screen']);\n  1293 |             await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].isFullScreen())).toBe(true);\n  1294 |             await expect(page.locator('body')).toHaveClass(/full-screen/);\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:1291:112\n    at fixture (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts:63:9)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T08:02:01.276Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-prosemirror-N-51b24-eps-manuscript-before-shelf/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/presentation-test-results/presentation-prosemirror-N-51b24-eps-manuscript-before-shelf/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/presentation.spec.ts",
+                        "column": 112,
+                        "line": 1291
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "57a964c83dbf6a737e02-07bf1e5ca43ff731b40e",
+              "file": "presentation.spec.ts",
+              "line": 1288,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T08:01:11.608Z",
+    "duration": 66327.167,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

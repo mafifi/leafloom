@@ -1,0 +1,1 @@
+import type { HostPort } from './contracts';import type { AuthoringViewModel } from './AuthoringViewModel.svelte';declare global{interface Window{compositionHost?:HostPort;compositionSpike:AuthoringViewModel;}}

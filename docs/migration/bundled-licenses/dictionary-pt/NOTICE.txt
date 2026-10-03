@@ -1,0 +1,32 @@
+Brazilian Portuguese spelling dictionary (VERO)
+
+Leafloom distributes the dictionary and affix data from dictionary-pt 4.0.0,
+which is VERO, the Brazilian Portuguese Hunspell dictionary used by
+LibreOffice, under the Mozilla Public License 2.0 option of its
+LGPL-3.0 / MPL license. Leafloom's MIT license does not replace the
+dictionary's license, and Leafloom does not remove the LGPL alternative.
+
+Original dictionary: VERO — Verificador Ortográfico do LibreOffice.
+Copyright (C) 2006-2013 Raimundo Santos Moura and the VERO team.
+The full upstream attribution and license notice is in upstream-license.txt.
+The full selected license is in MPL-2.0.txt.
+
+Source availability
+
+The unmodified dictionary source files index.aff and index.dic and upstream
+license accompany the bundled dictionary package. Packaging retains this
+notice and the selected license beside the third-party license collection.
+
+On macOS, relative to Leafloom.app/Contents/Resources:
+  host/node_modules/dictionary-pt/index.aff
+  host/node_modules/dictionary-pt/index.dic
+  host/licenses/dictionary-pt/NOTICE.txt
+
+The same files are available from the pinned source package:
+https://registry.npmjs.org/dictionary-pt/-/dictionary-pt-4.0.0.tgz
+Package project: https://github.com/wooorm/dictionaries/tree/main/dictionaries/pt
+Dictionary project: https://pt-br.libreoffice.org/projetos/projeto-vero-verificador-ortografico/
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at https://mozilla.org/MPL/2.0/.

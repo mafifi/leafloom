@@ -1,0 +1,1 @@
+import type { LifecyclePort } from './contracts';import type { LifecycleViewModel } from './LifecycleViewModel.svelte';declare global{interface Window{lifecycleHost:LifecyclePort;lifecycleSpike:LifecycleViewModel;}}

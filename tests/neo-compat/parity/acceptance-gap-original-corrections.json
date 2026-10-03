@@ -1,0 +1,529 @@
+{
+  "config": {
+    "argv": [
+      "/Users/afifim/.nvm/versions/node/v24.20.0/bin/node",
+      "/Users/afifim/Development/neo/spikes/editor-options/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "parity/acceptance-gap.config.ts",
+      "--grep",
+      "001-B|031-B|045-B|051-B|065-B|043-B|054-B|235-B|290-B"
+    ],
+    "configFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap.config.ts",
+    "rootDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "referenceElectronVersion": "43.7.6",
+      "targetElectronVersion": "44.5.1",
+      "referenceSourceHashes": {
+        "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+        "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+        "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+        "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+        "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+        "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+        "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+        "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+        "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+        "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+        "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+        "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+      },
+      "integrationSourceHashes": {
+        "parity/tests/acceptance-gap.spec.ts": "8fda631f5abec845b968ffe59afb10597ae1604ef599b8209f637e24e8ee24d6",
+        "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+        "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+        "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+        "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+        "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+        "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+        "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+        "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+        "parity/tests/io-edge.spec.ts": "c07b021033eda3ee91e0dc620ae1c2f8d4f605abec5c370cfe581b15e9b4b376",
+        "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+        "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+        "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+        "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+        "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+        "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+        "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+        "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+        "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+        "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+        "parity/tests/spelling.spec.ts": "b32a2c515d7dbfdadbb6c0e4eb49b5ec3da19a255e748a5d325efcf5558e2e2f",
+        "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+      },
+      "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+      "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+      "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+      "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+      "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "referenceElectronVersion": "43.7.6",
+          "targetElectronVersion": "44.5.1",
+          "referenceSourceHashes": {
+            "app.js": "2a25d66fbf039f947d9c90d09e0cc59bbbdcf1cadd813713598ed69ac5b04ac9",
+            "art.js": "88a4264db4b3545062f325e75955c29740b85ce1dea84d71a5f0092131b19b5c",
+            "covers.js": "533d92a717be51db974423f4bf91ed0edf0abe7aadb8c8cad4cb5f4c0e209738",
+            "i18n.js": "148352766660ff7abe40cab398a12e2512acb041bb55bdaaafda6eefcf38aa73",
+            "index.html": "d603f63a4efc0473b33076d914e0d78544f8f758178d423ec93907224f6e4181",
+            "main.js": "75616bdb315ce1b391df1d61970894d0b657827c18b7ebbc71381c4c18020edb",
+            "package-lock.json": "46a7c27cde7ad9aa5f391c39956120757d155dcd8b571f708c84146a7409c502",
+            "package.json": "e3db4489d09b9b70b5385a5a189eed5a0ff4ab95252ed3da66a895ce721f3b7a",
+            "preload.js": "d2d97cf054bab8363261ae494a269f9c00989b1822c4fafa146e910cfa38eb67",
+            "spell-ro.js": "c4fa97720bf2be69658d0df98c6921ec6430307d44cd9217108a04587f799c42",
+            "spell-worker.js": "bbb587d16f78faa019568809b5c63ea2df3283d736bd01bf00b9f9fc5c98c35a",
+            "styles.css": "bae6e6aae3b3642298289fa25e3c2dcf1c2ded82fa76271f97363f131bf05b2d"
+          },
+          "integrationSourceHashes": {
+            "parity/tests/acceptance-gap.spec.ts": "8fda631f5abec845b968ffe59afb10597ae1604ef599b8209f637e24e8ee24d6",
+            "parity/tests/books-helpers.ts": "4934240169af3f5165c2593a9da2ad2e25243b5554bf4889b58579fd298c551e",
+            "parity/tests/books.spec.ts": "a7798f0dd0cfd8089bfa716c2cd5ef5853ac8c630f824e95f945d140e9ac9199",
+            "parity/tests/canonical.spec.ts": "03676cd3be349a5ad4ab00eeb11689d0d172f554a11022bf111f3b62e59013ed",
+            "parity/tests/codec.spec.ts": "b6174c1146ad59a26b12ff072e609abb8db6f6360b501c7c544ea052c6c637a8",
+            "parity/tests/debug.spec.ts": "5018effbafc806eb568d7f619f25806b9a6386a9a8f11f079f4f350604888a3f",
+            "parity/tests/editing-edge.spec.ts": "3bd696817cbeeffb22a9efb7088a2773f402e6d61fbf05498700f0d92c416dcf",
+            "parity/tests/editing-helpers.ts": "13cbf580f95025e8a6182201c404d0eee984e362ef7be58ec6b267b499f06f57",
+            "parity/tests/editing.spec.ts": "8ba1cd6e14cf8fe417f8afe02d5e872353043a065c56932db612cf54decfeee2",
+            "parity/tests/io-edge.spec.ts": "c07b021033eda3ee91e0dc620ae1c2f8d4f605abec5c370cfe581b15e9b4b376",
+            "parity/tests/io.spec.ts": "1c5385337da3a4d5632bf770d1806dc6f7b5f61352d52efd74c109b4967ee8ef",
+            "parity/tests/library-helpers.ts": "d68dd99d747d1d92fc39c571638b6fb3087578a7d25f350306c5ce069540934f",
+            "parity/tests/library.spec.ts": "fec95085e97146d2d20de156582b12a5ab27a75a75f4cb0993a8ac53af278173",
+            "parity/tests/native.spec.ts": "6d0a21ac52b3c15f480065e0c79e4b398383377d7526e3bc8aac1ed0d9c84b2f",
+            "parity/tests/navigation-edge.spec.ts": "f886198f68e6985485f33d78838bebfe8a6763a084e4ed71b9433fe142dffbb5",
+            "parity/tests/notes.spec.ts": "6726c9a2d4e92d7a005fb47a3d23e9c853dfb764af57885b582520ad28611716",
+            "parity/tests/persistence-helpers.ts": "4b9fe6e5052e0e86e71530ce183b6ff3bd39cb9769f00e4bc11d14cc23626366",
+            "parity/tests/persistence.spec.ts": "5611aac8ed90e1834e98bad556419e8ef5aec6c7fbb042d01aa10db7fa8e58e9",
+            "parity/tests/presentation.spec.ts": "7fa7de361a0b1d3768533f9373eda1355d0f14805810f13e7f02ed0be4b641fa",
+            "parity/tests/reference.spec.ts": "e384c962f38bc1b8a89337e9a3c8f4cf3a8a956f4e2afaa3dca3e9b876a8af0c",
+            "parity/tests/spelling.spec.ts": "b32a2c515d7dbfdadbb6c0e4eb49b5ec3da19a255e748a5d325efcf5558e2e2f",
+            "parity/tests/target.spec.ts": "9514d32942f32e5a7819b5301953d62edbd7ceba2ea8a78f0726e101e029cf2b"
+          },
+          "targetBundleSha256": "435998074333e8d5310f1fd4c19f1efca64178e3e08c08c7784cef87920de8d7",
+          "hostHarnessSha256": "924d920b2c15d5e2095699336288958aca91d8dd60e2edd2b483f0a15a03cddb",
+          "dependencyLockSha256": "c65863fb6a9d54b813d80304fbda1563ee94ba02ef014cf84e9af7ab0e30a2d3",
+          "persistenceBoundarySha256": "acbdfe8022ae163e8e667fbb157ce94c2f14a455fc1e6b7b9316efbf816dda2a",
+          "proofBuildSha256": "6fb3b9a8763df0238039bb15416cdbf32c43f281814fdcf118e68cef54649071",
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "acceptance-gap.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-original-corrections.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "acceptance-gap.spec.ts",
+      "file": "acceptance-gap.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "original",
+          "file": "acceptance-gap.spec.ts",
+          "line": 28,
+          "column": 156,
+          "specs": [
+            {
+              "title": "[NEO-001-B] [NEO-002-B] real and pen identities coexist with separate attribution and selected identity after restart",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 30919,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .fr-choice').filter({ has: locator('strong').filter({ hasText: 'Write as Pen Writer' }) })\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .fr-choice').filter({ has: locator('strong').filter({ hasText: 'Write as Pen Writer' }) })\u001b[22m\n\n    at option (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts:30:125)\n    at authorMenu (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts:32:112)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:38:3",
+                        "location": {
+                          "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts",
+                          "column": 125,
+                          "line": 30
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39mlibrary-helpers.ts:30\n\n  28 | }\n  29 | export async function option(page: Page, text: string) {\n> 30 |   await page.locator('.modal-backdrop:not([hidden]) .fr-choice').filter({ has: page.locator('strong', { hasText: text }) }).click();\n     |                                                                                                                             ^\n  31 | }\n  32 | export async function authorMenu(page: Page, text: string) { await page.locator('#author-chip').click(); await option(page, text); }\n  33 | export async function input(page: Page, value: string) { await page.locator('.modal-backdrop:not([hidden]) input').fill(value); await page.locator('.modal-backdrop:not([hidden]) .m-ok').click(); }"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts",
+                            "column": 125,
+                            "line": 30
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.modal-backdrop:not([hidden]) .fr-choice').filter({ has: locator('strong').filter({ hasText: 'Write as Pen Writer' }) })\u001b[22m\n\n\n   at library-helpers.ts:30\n\n  28 | }\n  29 | export async function option(page: Page, text: string) {\n> 30 |   await page.locator('.modal-backdrop:not([hidden]) .fr-choice').filter({ has: page.locator('strong', { hasText: text }) }).click();\n     |                                                                                                                             ^\n  31 | }\n  32 | export async function authorMenu(page: Page, text: string) { await page.locator('#author-chip').click(); await option(page, text); }\n  33 | export async function input(page: Page, value: string) { await page.locator('.modal-backdrop:not([hidden]) input').fill(value); await page.locator('.modal-backdrop:not([hidden]) .m-ok').click(); }\n    at option (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts:30:125)\n    at authorMenu (/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts:32:112)\n    at /Users/afifim/Development/neo/spikes/editor-options/parity/tests/acceptance-gap.spec.ts:38:3"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:38:54.811Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-735fe-cted-identity-after-restart/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/afifim/Development/neo/spikes/editor-options/parity/acceptance-gap-test-results/acceptance-gap-original-NE-735fe-cted-identity-after-restart/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/afifim/Development/neo/spikes/editor-options/parity/tests/library-helpers.ts",
+                        "column": 125,
+                        "line": 30
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-02ac3cc93aaad202f42f",
+              "file": "acceptance-gap.spec.ts",
+              "line": 34,
+              "column": 2
+            },
+            {
+              "title": "[NEO-031-B] cancelling valid changed cover settings restores saved models quality and automatic preference",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 850,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:25.978Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-ea37e2bf224a7ae368ef",
+              "file": "acceptance-gap.spec.ts",
+              "line": 55,
+              "column": 2
+            },
+            {
+              "title": "[NEO-045-B] [NEO-046-B] bound and anthology menus expose three formats whose real artifacts retain shelf and chapter order",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3870,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:26.844Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-0e73e76106680a9059fd",
+              "file": "acceptance-gap.spec.ts",
+              "line": 77,
+              "column": 2
+            },
+            {
+              "title": "[NEO-051-B] chapter heading Enter blurs empty title restores default and Shift Enter poetry accepts words before existing prose",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 983,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:30.719Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-7ec0690f01a09dfdac33",
+              "file": "acceptance-gap.spec.ts",
+              "line": 94,
+              "column": 2
+            },
+            {
+              "title": "[NEO-065-B] chapter PDF artifact contains selected custom heading and prose while excluding book front matter and other story",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1632,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:31.707Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-356e9c8e72401b1310ab",
+              "file": "acceptance-gap.spec.ts",
+              "line": 110,
+              "column": 2
+            },
+            {
+              "title": "[NEO-043-B] page tile exposes Open and Remove only and inserting a second Part retains first page and both positions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1447,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:33.344Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-6eb135d50e60ebd3523c",
+              "file": "acceptance-gap.spec.ts",
+              "line": 129,
+              "column": 2
+            },
+            {
+              "title": "[NEO-054-B] explicit modern Prologue and Epilogue roles persist in arbitrary positions without legacy first last migration",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1521,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:34.796Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-22d41fd8232a5111fbde",
+              "file": "acceptance-gap.spec.ts",
+              "line": 133,
+              "column": 2
+            },
+            {
+              "title": "[NEO-235-B] second isolated process restores and focuses original minimized window without spawning another editor",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2018,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:36.322Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-8966cc12440c1665aed8",
+              "file": "acceptance-gap.spec.ts",
+              "line": 161,
+              "column": 2
+            },
+            {
+              "title": "[NEO-290-B] exported PDF includes real seeded cover image resources and excludes the one pixel generated painting",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1211,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-02T05:39:38.346Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "54d72ac1de4af5176a8f-910296dfec669967816c",
+              "file": "acceptance-gap.spec.ts",
+              "line": 164,
+              "column": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T05:38:54.511Z",
+    "duration": 45064.252,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
