@@ -2,6 +2,8 @@
 
 Leafloom is a desktop writing app built around the page. Books, chapters, notes and saved fragments share a quiet workspace.
 
+Leafloom is a rewrite derived from [NEO](https://github.com/hughhowey/neo), created by [Hugh Howey](https://github.com/hughhowey). It carries forward NEO’s page-centred author workflow in a Svelte, TypeScript, ProseMirror and Tauri architecture. NEO’s MIT notice and the original asset licences are retained in [LICENSE.neo](LICENSE.neo) and [NOTICE](NOTICE).
+
 ## Develop
 
 Use the pinned Node and pnpm versions in the root manifest.
