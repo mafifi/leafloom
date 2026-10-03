@@ -54,7 +54,10 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
     }
   };
   const binding = receipt?.artifactBinding ?? {};
-  await check(path.join(root, 'scripts/verify-macos-native.mjs'), binding.driverSha256);
+  const driverPath = contract?.driverPath ?? 'scripts/verify-macos-native.mjs';
+  if (section === 'quitRestart')
+    require(binding.driverPath === driverPath, 'Lifecycle driver differs from reviewed contract');
+  await check(path.join(root, driverPath), binding.driverSha256);
   await check(receipt?.binary ?? '', binding.binarySha256);
   await check(binding.runtimeEntry ?? '', binding.hostMainSha256);
   await check(binding.runtimeExecutable ?? '', binding.nodeSha256);
@@ -63,7 +66,7 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   if (section === 'documentIO')
     for (const [name, value] of moduleFields)
       await check(path.join(root, name), value(receipt ?? {}));
-  else {
+  else if (section !== 'quitRestart') {
     const module = section === 'collectionIO' ? 'collection-output.mjs' : 'folder-replacement.mjs';
     await check(
       path.join(root, 'tests/neo-compat/native', module),
@@ -87,6 +90,19 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
         path.join(root, 'apps/desktop/dist'),
       );
   }
+  if (section === 'quitRestart') {
+    const restart = receipt.restartArtifactBinding ?? {};
+    require(restart.driverPath === driverPath, 'Restart driver differs');
+    await check(path.join(root, driverPath), restart.driverSha256);
+    await check(receipt.binary ?? '', restart.binarySha256);
+    await check(restart.runtimeEntry ?? '', restart.hostMainSha256);
+    await check(restart.runtimeExecutable ?? '', restart.nodeSha256);
+    require(JSON.stringify(restart.webAssets) ===
+      JSON.stringify(binding.webAssets), 'Restart served assets differ');
+    require(restart.binarySha256 === binding.binarySha256 &&
+      restart.hostMainSha256 === binding.hostMainSha256 &&
+      restart.nodeSha256 === binding.nodeSha256, 'Restart runtime differs');
+  }
   const io = receipt?.[section];
   if (entry.contractId) {
     require(Boolean(contract), 'Unreviewed native contract');
@@ -103,9 +119,10 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
       new Set(requested).size ===
         requested.length, 'Native required capabilities missing or duplicated');
     require(Array.isArray(requested) &&
-      requested.every((value) =>
-        contract?.capabilities.includes(value),
-      ) && contract?.capabilities.every((value) => requested.includes(value)), 'Hidden receipt lacks required capability');
+      requested.every((value) => contract?.capabilities.includes(value)) &&
+      contract?.capabilities.every((value) =>
+        requested.includes(value),
+      ), 'Hidden receipt lacks required capability');
     if (options.scenarioId)
       require([contract?.id, ...(contract?.title.match(/NEO-\d+-[A-Z]/g) ?? [])].includes(
         options.scenarioId,
@@ -114,13 +131,18 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
       options.environment ?? '',
     ), 'Hidden native evidence cannot prove physical or foreground environment');
   }
-  require(io?.driver === 'tauri-native-hidden', 'Native section driver missing');
+  if (section !== 'quitRestart')
+    require(io?.driver === 'tauri-native-hidden', 'Native section driver missing');
   if (section === 'documentIO')
     require(typeof io?.pickerQualification === 'string' &&
       io.pickerQualification.includes('physical'), 'Native picker qualification missing');
-  const rows = (Array.isArray(io?.evidence) ? io.evidence : []).filter(
-    (row) => row?.id === entry.id && row?.title === entry.title,
-  );
+  const rows = (
+    section === 'quitRestart'
+      ? [{ ...io, driverActions: io?.actions }]
+      : Array.isArray(io?.evidence)
+        ? io.evidence
+        : []
+  ).filter((row) => row?.id === entry.id && row?.title === entry.title);
   require(rows.length === 1, 'Exact finite acceptance row missing or duplicated');
   const row = rows[0];
   require(row?.status === undefined ||

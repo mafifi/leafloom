@@ -583,6 +583,110 @@
         "Original baseline rich HTML bytes unchanged",
         "Every original aside file hash remains unchanged"
       ]
+    },
+    {
+      "contractId": "document:imports",
+      "section": "documentIO",
+      "id": "NEO-248-A",
+      "title": "[NEO-248-A][NEO-250-A][NEO-251-A][NEO-249-B] Leafloom: actual multi-file import parses Markdown numeral chapters and inherited DOCX styles without changing source bytes",
+      "driverActions": [
+        "Cancel actual import picker",
+        "Select actual Markdown/TXT/DOCX fixture paths",
+        "Open each resulting real book",
+        "Close and inspect unchanged inputs"
+      ],
+      "assertions": [
+        "Cancel creates no book",
+        "Three results appear in library",
+        "Source chapter/scene/emphasis/style semantics retained",
+        "Original bytes unchanged"
+      ],
+      "capabilities": ["native-files"],
+      "parser": {
+        "kind": "imports"
+      }
+    },
+    {
+      "contractId": "document:malformed-import",
+      "section": "documentIO",
+      "id": "NEO-257-A",
+      "title": "[NEO-257-A] Leafloom: malformed first DOCX does not prevent the later selected manuscript and preserves every input byte",
+      "driverActions": [
+        "Select malformed DOCX then valid TXT in same actual picker delivery",
+        "Open resulting survivor"
+      ],
+      "assertions": [
+        "Later valid file imports despite earlier failure",
+        "Survivor author prose exact",
+        "Both original inputs byte-identical"
+      ],
+      "capabilities": ["native-files"],
+      "parser": {
+        "kind": "malformed-import"
+      }
+    },
+    {
+      "contractId": "document:spanish-import",
+      "section": "documentIO",
+      "id": "NEO-121-A",
+      "title": "[NEO-121-A] Leafloom: Spanish dialogue conversion is applied by actual file import while quotes ellipsis and originals stay literal",
+      "driverActions": [
+        "Persist private initial Spanish writing preference and reload",
+        "Select real text through isolated native picker",
+        "Open actual imported book"
+      ],
+      "assertions": [
+        "Dialogue dashes converted with source spaces preserved",
+        "Quotes/ellipsis/double hyphens stay literal",
+        "Input bytes unchanged"
+      ],
+      "capabilities": ["native-files"],
+      "parser": {
+        "kind": "spanish-import"
+      }
+    },
+    {
+      "contractId": "document:cover-menu",
+      "section": "documentIO",
+      "id": "NEO-025-A",
+      "title": "[NEO-025-A] Leafloom: real custom cover Set Replace Remove menus follow durable image bytes and preserve author prose",
+      "driverActions": [
+        "Set custom PNG through actual author menu/scoped native picker",
+        "Replace with different real PNG bytes",
+        "Remove through actual author menu"
+      ],
+      "assertions": [
+        "Set/Replace/Remove menu state follows durable metadata",
+        "Exact picked and replacement image bytes preserved",
+        "Removed image payload and metadata are absent; null storage tombstone is valid",
+        "Chapter rich prose/title/author unchanged"
+      ],
+      "capabilities": ["native-files"],
+      "parser": {
+        "kind": "cover-menu"
+      }
+    },
+    {
+      "contractId": "lifecycle:normal-quit",
+      "section": "quitRestart",
+      "id": "NEO-231-C",
+      "title": "NEO-231-C normal quit retains fresh native typing across restart",
+      "driverActions": [
+        "Type fresh tail through actual native author input",
+        "Invoke actual quitApp without blur/save/shelf",
+        "Observe owned process exit",
+        "Restart same private library and reopen book"
+      ],
+      "assertions": [
+        "Just-typed tail durably exists in same chapter",
+        "Other chapter/Notes/Outline/reviews/identity retained",
+        "Restarted actual native DOM displays exact tail"
+      ],
+      "capabilities": ["native-files", "native-lifecycle"],
+      "driverPath": "scripts/verify-macos-quit-restart.mjs",
+      "parser": {
+        "kind": "normal-quit"
+      }
     }
   ]
 }

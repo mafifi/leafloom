@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir, realpath } from 'node:fs/promises';
 import path from 'node:path';
+import { JSDOM } from 'jsdom';
 import { createHash } from 'node:crypto';
 import catalog from '../tests/neo-compat/native/acceptance-contracts.json' with { type: 'json' };
 import {
   inspectExport,
   inspectChapterExport,
   inspectEdition,
+  importFiles,
 } from '../tests/neo-compat/shared/document-io.mjs';
 import { inspectPDFLayout } from '../tests/neo-compat/shared/pdf-layout.mjs';
 import { inspectCoverEPUB, coverPNG } from '../tests/neo-compat/shared/io-cover-edge.mjs';
@@ -60,7 +62,10 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
     assert.ok(resolved.startsWith(base + path.sep), 'Artifact escapes declared evidence directory');
     return readFile(resolved);
   };
-  const row = io.evidence.find((r) => r.id === contract.id && r.title === contract.title);
+  const row =
+    contract.section === 'quitRestart'
+      ? io
+      : io.evidence.find((r) => r.id === contract.id && r.title === contract.title);
   const p = contract.parser;
   if (['export', 'chapter', 'edition', 'pdf-layout', 'collection'].includes(p.kind)) {
     const actual = await bytes(p.file);
@@ -133,6 +138,178 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
       destinationPreserved: true,
       qualification: 'Finite destination/cancel outcome; no physical OS picker claim',
     };
+  }
+  const snapshotBook = async (snapshot) => {
+    const files = await inspectDurableSnapshot(bytes, snapshot);
+    const book = SourceBook.parse(JSON.parse(files['manuscript.json'].toString()));
+    const reviews = Reviews.parse(JSON.parse(files['reviews.json'].toString()));
+    assert.equal(book.metadata.id, snapshot.bookId);
+    assert.equal(reviews.bookId, snapshot.bookId);
+    if ('version' in book) assert.equal(reviews.version, book.version);
+    return { book, files };
+  };
+  const inputBytes = async (input) => {
+    const value = await bytes(input.path);
+    assert.equal(hash(value), input.sha256);
+    assert.equal(value.length, input.bytes);
+    return value;
+  };
+  const paragraphs = (book) =>
+    book.chapters.map((chapter) =>
+      [...new JSDOM(chapter.html).window.document.querySelectorAll('p')].map(
+        (el) => el.textContent,
+      ),
+    );
+  if (p.kind === 'imports') {
+    const expected = await importFiles(),
+      observed = row.durableArtifacts;
+    assert.equal(observed?.length, 3);
+    for (let i = 0; i < 3; i++) {
+      const item = observed[i],
+        { book } = await snapshotBook(item.snapshot),
+        input = await inputBytes(item.input);
+      assert.equal(book.metadata.title, expected[i].title);
+      assert.equal(item.bookId, book.metadata.id);
+      assert.deepEqual(paragraphs(book), expected[i].paragraphs);
+      if (i < 2) assert.deepEqual(input, expected[i].bytes);
+      else {
+        const { default: JSZip } = await import('jszip');
+        const zip = await JSZip.loadAsync(input);
+        assert.ok((await zip.file('word/styles.xml').async('string')).includes('Inherited'));
+        const dom = new JSDOM(book.chapters[0].html).window.document;
+        assert.equal(dom.querySelector('i,em')?.textContent, 'café ');
+        assert.equal(dom.querySelector('b,strong')?.textContent, 'bold');
+      }
+      if (i === 0) {
+        const dom = new JSDOM(book.chapters[0].html).window.document;
+        assert.equal(dom.querySelector('b,strong')?.textContent, 'bold');
+        assert.equal(dom.querySelector('i,em')?.textContent, 'Verse');
+      }
+    }
+    assert.equal(new Set(observed.map((item) => item.bookId)).size, 3);
+    return { imported: 3 };
+  }
+  if (p.kind === 'malformed-import' || p.kind === 'spanish-import') {
+    const data = row.durableArtifacts,
+      { book } = await snapshotBook(data.snapshot);
+    if (p.kind === 'malformed-import') {
+      assert.equal(data.inputs.length, 2);
+      assert.equal((await inputBytes(data.inputs[0])).toString(), 'not a zip');
+      assert.equal((await inputBytes(data.inputs[1])).toString(), 'Good café prose survives.');
+      assert.equal(book.metadata.title, 'Survivor');
+      assert.deepEqual(paragraphs(book), [['Good café prose survives.']]);
+    } else {
+      assert.equal(
+        (await inputBytes(data.input)).toString(),
+        '-Hola - dijo -.\n\n"Literal" ... -- prose.',
+      );
+      assert.equal(book.metadata.title, 'Dialogue');
+      assert.deepEqual(paragraphs(book), [['—Hola — dijo —.', '"Literal" ... -- prose.']]);
+    }
+    return { title: book.metadata.title };
+  }
+  if (p.kind === 'cover-menu') {
+    const data = row.durableArtifacts;
+    assert.deepEqual(await inputBytes(data.images[0]), coverPNG);
+    const replacement = await inputBytes(data.images[1]);
+    assert.deepEqual(
+      replacement,
+      await readFile(
+        path.join(options.root, 'apps/desktop/src-tauri/icons/Leafloom.iconset/icon_16x16.png'),
+      ),
+    );
+    let initial;
+    for (const name of ['before', 'set', 'replace', 'remove']) {
+      const state = data.states[name],
+        { book } = await snapshotBook(state);
+      if (!initial) initial = book;
+      assert.deepEqual(
+        book.chapters.map((c) => ({ id: c.id, html: c.html })),
+        initial.chapters.map((c) => ({ id: c.id, html: c.html })),
+      );
+      assert.equal(book.metadata.title, initial.metadata.title);
+      assert.equal(book.metadata.author, initial.metadata.author);
+      const labels = state.menu;
+      assert.ok(Array.isArray(labels));
+      const custom = name === 'set' || name === 'replace';
+      assert.equal(
+        labels.some((v) => v.includes('Set cover art')),
+        !custom,
+      );
+      assert.equal(
+        labels.some((v) => v.includes('Replace cover art')),
+        custom,
+      );
+      assert.equal(
+        labels.some((v) => v.includes('Remove cover art')),
+        custom,
+      );
+      const cover = state.cover ? JSON.parse((await inputBytes(state.cover)).toString()) : null;
+      if (custom) {
+        assert.equal(cover.mime, 'image/png');
+        assert.deepEqual(
+          Buffer.from(cover.data, 'base64'),
+          name === 'set' ? coverPNG : replacement,
+        );
+      } else {
+        assert.equal(cover, null);
+        assert.ok(!book.metadata.coverImage);
+      }
+    }
+    return { states: 4 };
+  }
+  if (p.kind === 'normal-quit') {
+    const q = io;
+    for (const field of [
+      'firstProcessId',
+      'restartedProcessId',
+      'firstHostProcessId',
+      'restartedHostProcessId',
+    ])
+      assert.ok(Number.isSafeInteger(q[field]) && q[field] > 0);
+    assert.equal(q.quitCommand, 'quitApp');
+    assert.equal(q.processExited, true);
+    assert.equal(q.exitCode, 0);
+    assert.equal(q.unsavedAtQuit, true);
+    assert.equal(q.quitBeforeDebounce, true);
+    assert.ok(q.inputToQuitMs >= 0 && q.inputToQuitMs < 400);
+    assert.notEqual(q.firstProcessId, q.restartedProcessId);
+    assert.notEqual(q.firstHostProcessId, q.restartedHostProcessId);
+    assert.deepEqual(JSON.parse((await bytes('quit.json')).toString()), q);
+    const phases = {};
+    for (const phase of ['before', 'after']) {
+      phases[phase] = {};
+      for (const name of ['manuscript.json', 'reviews.json', 'notes.html', 'outline.html']) {
+        const actual = await bytes(phase + '/' + name);
+        assert.equal(hash(actual), q.files[name][phase + 'Sha256']);
+        phases[phase][name] = actual;
+      }
+    }
+    const before = SourceBook.parse(JSON.parse(phases.before['manuscript.json'])),
+      after = SourceBook.parse(JSON.parse(phases.after['manuscript.json']));
+    assert.equal(after.metadata.id, q.bookId);
+    assert.equal(before.metadata.id, q.bookId);
+    assert.equal(after.chapters[0].id, 'quit-prose');
+    assert.equal(after.chapters[0].html, '<p>Baseline prose. Fresh quit tail.</p>');
+    assert.equal(before.chapters[0].html, '<p>Baseline prose.</p>');
+    assert.equal(q.reopenedText, 'Baseline prose. Fresh quit tail.');
+    for (const key of Object.keys(before.metadata).filter(
+      (k) => !['modified', 'wordCount', 'dailyCounts', 'lastPosition'].includes(k),
+    ))
+      assert.deepEqual(after.metadata[key], before.metadata[key]);
+    assert.deepEqual(
+      after.chapters.slice(1).map((c) => ({ id: c.id, html: c.html, passages: c.passages })),
+      before.chapters.slice(1).map((c) => ({ id: c.id, html: c.html, passages: c.passages })),
+    );
+    assert.deepEqual(after.darlings, before.darlings);
+    const a = Reviews.parse(JSON.parse(phases.after['reviews.json'])),
+      b = Reviews.parse(JSON.parse(phases.before['reviews.json']));
+    assert.equal(a.version, after.version);
+    assert.deepEqual(a.references, b.references);
+    assert.deepEqual(a.items, b.items);
+    for (const name of ['notes.html', 'outline.html'])
+      assert.deepEqual(phases.before[name], phases.after[name]);
+    return { files: 8, normalQuit: true };
   }
   if (p.kind === 'folder') {
     const hashes = async (folder) => {
