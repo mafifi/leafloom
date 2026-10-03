@@ -529,6 +529,46 @@
         }
       ],
       "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "objc2-osa-kit",
+      "version": "0.3.2",
+      "license": "Zlib OR Apache-2.0 OR MIT",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "files": [
+        {
+          "file": "cargo_objc2-osa-kit_0.3.2/LICENSE.md",
+          "sha256": "7f976f7e9cb2d87df7230606feb932c3f21ac0e664045a775b600046ff850c54",
+          "source": "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md"
+        }
+      ],
+      "status": "downloaded"
+    },
+    {
+      "ecosystem": "cargo",
+      "name": "tauri-plugin",
+      "version": "2.6.3",
+      "license": "Apache-2.0 OR MIT",
+      "revision": "6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a",
+      "files": [
+        {
+          "file": "cargo_tauri-plugin_2.6.3/LICENSE_MIT",
+          "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+          "source": "https://raw.githubusercontent.com/tauri-apps/tauri/6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a/LICENSE_MIT"
+        },
+        {
+          "file": "cargo_tauri-plugin_2.6.3/LICENSE_APACHE-2.0",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "source": "https://raw.githubusercontent.com/tauri-apps/tauri/6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a/LICENSE_APACHE-2.0"
+        },
+        {
+          "file": "cargo_tauri-plugin_2.6.3/LICENSE.spdx",
+          "sha256": "5e834fe9788c524210deda859c46a550ffa5aa0cba9ea0572f0d81120e97c008",
+          "source": "https://raw.githubusercontent.com/tauri-apps/tauri/6f6ab1207bb3923c2721fbc67d2fdb1c8deb0c7a/LICENSE.spdx"
+        }
+      ],
+      "status": "downloaded"
     }
   ]
 }

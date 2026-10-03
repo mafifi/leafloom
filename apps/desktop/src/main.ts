@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { resolveExternalDrop } from './lib/external-drop';
 import { runtimeErrors } from './lib/runtime-errors';
 import { installWritingLifecycle } from './lib/background-lifecycle';
@@ -19,9 +20,12 @@ import './style.css';
 import { initializeBrowserTelemetry } from '@leafloom/browser-telemetry';
 const observability = initializeBrowserTelemetry();
 declare const __LEAFLOOM_TELEMETRY_TEST__: boolean;
-if (__LEAFLOOM_TELEMETRY_TEST__) Object.defineProperty(window, '__leafloomTelemetryDiagnostics', {
-  value: () => observability.diagnostics(), writable: false, configurable: false,
-});
+if (__LEAFLOOM_TELEMETRY_TEST__)
+  Object.defineProperty(window, '__leafloomTelemetryDiagnostics', {
+    value: () => observability.diagnostics(),
+    writable: false,
+    configurable: false,
+  });
 const removeQuietChrome = installQuietChrome();
 import.meta.hot?.dispose(removeQuietChrome);
 const vm = new Application(
@@ -43,6 +47,11 @@ const vm = new Application(
   {
     os: window.__TAURI__ ? os : undefined,
     isMac: navigator.platform.includes('Mac'),
+    platformKind: navigator.platform.includes('Mac')
+      ? 'macos'
+      : navigator.platform.includes('Win')
+        ? 'windows'
+        : 'linux',
     panePreferences: new BrowserPanePreferences(),
     async selectImportFiles() {
       const value = await osRequest('selectImportFiles', {});
@@ -93,6 +102,40 @@ mount(App, {
   props: { presentation: vm.state, actions: applicationActions(vm) },
 });
 void vm.initialize();
+if (window.__TAURI__) {
+  const disposers: (() => void)[] = [];
+  let disposed = false;
+  import.meta.hot?.dispose(() => {
+    disposed = true;
+    for (const dispose of disposers) dispose();
+    vm.disposeUpdates();
+  });
+  void (async () => {
+    for (const [event, receive] of [
+      ['leafloom:update', (value: unknown) => vm.updateStatusChanged(value)],
+      ['leafloom:update-wake', () => vm.updateWake()],
+    ] as const) {
+      const dispose = await listenNative(event, receive);
+      if (dispose) {
+        if (disposed) dispose();
+        else disposers.push(dispose);
+      }
+    }
+    const info = z
+      .object({ updaterPackaged: z.boolean() })
+      .passthrough()
+      .parse(await osRequest('platformInfo', {}));
+    if (!disposed) await vm.initializeUpdates(info.updaterPackaged);
+  })().catch(() => {
+    void host
+      .request('reportRuntimeError', {
+        source: 'host',
+        code: 'UNEXPECTED_RUNTIME',
+        at: new Date().toISOString(),
+      })
+      .catch(() => {});
+  });
+}
 
 void listenNative<string>(
   'leafloom:menu-command',
@@ -105,13 +148,10 @@ void listenNative(
   (change) => void vm.background(() => vm.documentChanged(change)),
 );
 
-void listenNative(
-  'leafloom:files-dropped',
-  (files) => {
-    const drop = resolveExternalDrop(document, files);
-    void vm.execute(() => vm.filesDropped(drop));
-  },
-);
+void listenNative('leafloom:files-dropped', (files) => {
+  const drop = resolveExternalDrop(document, files);
+  void vm.execute(() => vm.filesDropped(drop));
+});
 if (import.meta.env.DEV && !window.__TAURI__) {
   const polling = setInterval(
     () =>
@@ -141,10 +181,11 @@ const removeWritingLifecycle = installWritingLifecycle(
 );
 import.meta.hot?.dispose(removeWritingLifecycle);
 
-const errors = runtimeErrors(report => vm.reportRuntimeFailure(report));
+const errors = runtimeErrors((report) => vm.reportRuntimeFailure(report));
 const readingKey = () => vm.readingActivityOccurred();
 const readingPointer = (event: PointerEvent) => {
-  if (event.target instanceof Element && event.target.closest('#chapters')) vm.readingActivityOccurred();
+  if (event.target instanceof Element && event.target.closest('#chapters'))
+    vm.readingActivityOccurred();
 };
 document.addEventListener('keydown', readingKey, true);
 document.addEventListener('pointerdown', readingPointer, true);

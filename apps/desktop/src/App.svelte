@@ -935,6 +935,7 @@
     value={$app.information}
     {t}
     close={() => vm.closeInformation()}
+    restart={() => run(() => vm.restartForUpdate())}
   />{/if}
 
 {#if $app.coverArt}<CoverArt
@@ -997,3 +998,27 @@
       redo: vm.publicationRedo,
     }}
   />{/if}
+
+{#if $app.update?.status === 'ready' && $app.information?.kind !== 'update'}
+  <aside class="update-notice" aria-label={t('Update ready')}>
+    <span>Leafloom {$app.update.latestVersion} {t('is ready to install.')}</span>
+    <button onclick={() => run(() => vm.restartForUpdate())}>{t('Save and restart')}</button>
+  </aside>
+{/if}
+
+<style>
+  .update-notice {
+    position: fixed;
+    right: 16px;
+    bottom: 52px;
+    z-index: 40;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    background: var(--bg, white);
+    color: var(--fg, #222);
+    border: 1px solid currentColor;
+    border-radius: 6px;
+  }
+</style>

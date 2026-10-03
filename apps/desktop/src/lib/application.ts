@@ -1,3 +1,5 @@
+import { defaultSpellLanguage } from '@leafloom/language-contracts';
+import { fontChoices, type FontChoicesValue, type FontPlatform } from './font-choices';
 import {
   parseRemotePosition,
   remotePositionEligibility,
@@ -31,6 +33,7 @@ import type { PanePreferencePort } from './pane-preferences';
 import { keepReadingPlace } from './reading-place';
 import { KeyboardNavigation } from './keyboard-navigation';
 import type { InformationPresentation } from './information';
+import { UpdateViewModel } from './update-view-model';
 import { LibrarySettingsViewModel, type LibrarySettingsPresentation } from './library-settings';
 import { SearchViewModel, type FindMatch } from './search-view-model';
 import { LibraryViewModel, collectionExportChoices } from './library-view-model';
@@ -80,6 +83,7 @@ import {
   PageKinds,
 } from '@leafloom/library';
 import {
+  type UpdateStatusValue,
   DocumentChangeSchema,
   FilesDroppedSchema,
   type DesktopHost,
@@ -111,6 +115,7 @@ export type AppState = {
   goals: GoalsPresentation | null;
   librarySettings: LibrarySettingsPresentation | null;
   information: InformationPresentation | null;
+  update: UpdateStatusValue | null;
   language: LanguageCatalogValue;
   library: LibraryValue;
   books: BookMetadata[];
@@ -130,6 +135,7 @@ export type AppState = {
   positionLabel: string;
   currentChapter: string | null;
   revision: number;
+  onboardingFonts: FontChoicesValue;
   dirty: boolean;
   readOnly: boolean;
   externalChange: DocumentChange | null;
@@ -160,6 +166,7 @@ export type EditorFactory = (
 export interface ApplicationPlatform {
   os?: DesktopOS;
   isMac?: boolean;
+  platformKind?: FontPlatform;
   panePreferences?: PanePreferencePort;
   selectImportFiles(): Promise<string[]>;
   selectExportFile(name: string): Promise<string | null>;
@@ -183,7 +190,9 @@ export class Application {
     goals: null,
     librarySettings: null,
     information: null,
+    update: null,
     language: english,
+    onboardingFonts: fontChoices('macos'),
     library: createLibrary(),
     books: [],
     covers: {},
@@ -269,6 +278,51 @@ export class Application {
   private mountedRoot: HTMLElement | null = null;
   private libraryUndo: LibraryValue[] = [];
   private libraryRedo: LibraryValue[] = [];
+  private updates: UpdateViewModel | null = null;
+  private updateListeners = new Set<(value: unknown) => void>();
+  async initializeUpdates(packaged: boolean) {
+    const os = this.platform?.os;
+    if (!os) return;
+    this.updates ??= new UpdateViewModel(
+      {
+        status: () => os.request('updateStatus', {}),
+        check: () => os.request('checkForUpdates', {}),
+        installPending: () => os.request('installUpdatePending', {}),
+        subscribe: (listener) => {
+          this.updateListeners.add(listener);
+          return () => this.updateListeners.delete(listener);
+        },
+      },
+      (update) =>
+        this.patch({
+          update,
+          ...(this.value.information?.kind === 'update'
+            ? { information: { ...this.value.information, version: update.version, update } }
+            : {}),
+        }),
+      () => {
+        void this.request('reportRuntimeError', {
+          source: 'host',
+          code: 'UNEXPECTED_RUNTIME',
+          at: new Date().toISOString(),
+        }).catch(() => {});
+      },
+    );
+    await this.updates.initialize(packaged);
+  }
+  updateStatusChanged(value: unknown) {
+    for (const listener of this.updateListeners) listener(value);
+  }
+  updateWake() {
+    this.updates?.wake();
+  }
+  disposeUpdates() {
+    this.updates?.dispose();
+  }
+  async restartForUpdate() {
+    if (this.value.update?.status !== 'ready' || !this.platform?.os) return;
+    await this.platform.os.request('restartToUpdate', {});
+  }
   constructor(
     private host: DesktopHost,
     private factory: EditorFactory,
@@ -281,7 +335,12 @@ export class Application {
     typography?: TextTypographyPort,
   ) {
     this.state.subscribe((value) => (this.value = value));
-    this.patch({ nativeMenus: Boolean(this.platform?.os) });
+    this.patch({
+      nativeMenus: Boolean(this.platform?.os),
+      onboardingFonts: fontChoices(
+        this.platform?.platformKind ?? (this.platform?.isMac === false ? 'windows' : 'macos'),
+      ),
+    });
     if (typography)
       this.fieldTypography = new FieldTypographyViewModel({
         provider: typography,
@@ -354,14 +413,14 @@ export class Application {
       request: (method, payload) => this.request(method, payload),
       activeSection: () => this.editor?.activeSection?.id ?? this.editor?.chapters[0]?.id ?? null,
       enabled: () => this.value.spellOn,
-      language: () => String(this.value.library.spellLanguage || 'en-US'),
+      language: () => this.effectiveSpellLanguage,
       error: (error) => this.fail(error),
     });
     this.documentOutputViewModel = new DocumentOutputViewModel({
       snapshot: () => ({
         bookId: this.value.book?.id ?? null,
         title: this.value.book?.title ?? '',
-        language: String(this.value.library.spellLanguage || 'en'),
+        language: this.writingLanguage(),
       }),
       chapter: (id) => {
         const chapter = this.editor?.chapters.find((row) => row.id === id);
@@ -567,6 +626,7 @@ export class Application {
         sidePinned: this.platform?.panePreferences?.read().side ?? this.value.sidePinned,
       });
       applyPresentation(library);
+      this.applyPlatformDropcap();
       this.previewBodyFont(library.fonts.body);
       await this.synchronizeMenu();
       if (this.platform?.os)
@@ -583,10 +643,30 @@ export class Application {
       this.patch({ loading: false });
     }
   }
+  private writingLanguage(preferences = this.value.library) {
+    return typeof preferences.spellLanguage === 'string' && preferences.spellLanguage
+      ? preferences.spellLanguage
+      : this.value.language.locale;
+  }
+  private get effectiveSpellLanguage() {
+    return typeof this.value.library.spellLanguage === 'string' && this.value.library.spellLanguage
+      ? this.value.library.spellLanguage
+      : defaultSpellLanguage(this.value.language.locale);
+  }
   bodyFontStyle(font: string) {
-    return Object.hasOwn(bodyFonts, font)
-      ? bodyFonts[font]
-      : `"${font.replace(/["\\]/g, '')}", Georgia, serif`;
+    return (
+      this.value.onboardingFonts.bodyStacks[font] ??
+      (Object.hasOwn(bodyFonts, font)
+        ? bodyFonts[font]
+        : `"${font.replace(/["\\]/g, '')}", Georgia, serif`)
+    );
+  }
+  private applyPlatformDropcap() {
+    document.documentElement.style.setProperty(
+      '--dropcap-font',
+      this.value.onboardingFonts.dropcaps[this.value.library.fonts.dropcap] ??
+        this.value.onboardingFonts.dropcaps.literary,
+    );
   }
   private previewBodyFont(font: string) {
     keepReadingPlace(() =>
@@ -635,6 +715,7 @@ export class Application {
       const scroll = shelf?.scrollTop;
       this.patch({ library });
       applyPresentation(library);
+      this.applyPlatformDropcap();
       await this.rendered();
       if (shelf && scroll !== undefined) shelf.scrollTop = scroll;
       await this.synchronizeMenu();
@@ -851,6 +932,7 @@ export class Application {
     this.patch({ library: next });
     keepReadingPlace(() => {
       applyPresentation(next);
+      this.applyPlatformDropcap();
       document.documentElement.style.setProperty(
         '--body-font',
         this.bodyFontStyle(next.fonts.body),
@@ -1218,10 +1300,7 @@ export class Application {
     this.progressBaseline = editor.words;
     editor.configureTypography({
       interfaceLanguage: this.value.language.locale,
-      language:
-        typeof this.value.library.spellLanguage === 'string'
-          ? this.value.library.spellLanguage
-          : 'en',
+      language: this.writingLanguage(),
       markdown: !this.value.library.markdownOff,
     });
     this.session = new AuthoringSession(editor, async (checkpoint) => {
@@ -2216,11 +2295,8 @@ export class Application {
     let version = '0.1.0';
     if (this.platform?.os) {
       if (kind === 'update') {
-        const status = z
-          .object({ version: z.string(), status: z.literal('disabled') })
-          .passthrough()
-          .parse(await this.platform.os.request('checkForUpdates', {}));
-        version = status.version;
+        if (!this.updates) await this.initializeUpdates(false);
+        version = this.value.update?.version ?? version;
       } else {
         const raw = await this.platform.os.request('version', {});
         version =
@@ -2234,8 +2310,15 @@ export class Application {
       update: 'Updates',
     };
     this.patch({
-      information: { kind, title: titles[kind], version, vim: Boolean(this.value.library.vimKeys) },
+      information: {
+        kind,
+        title: titles[kind],
+        version,
+        vim: Boolean(this.value.library.vimKeys),
+        ...(kind === 'update' && this.value.update ? { update: this.value.update } : {}),
+      },
     });
+    if (kind === 'update') await this.updates?.check();
   }
   closeInformation() {
     this.patch({ information: null });
@@ -2258,7 +2341,7 @@ export class Application {
       writingStyle: prefs.writingStyle,
       dropcap: prefs.fonts.dropcap,
       language: this.value.language.locale,
-      spellLanguage: typeof prefs.spellLanguage === 'string' ? prefs.spellLanguage : 'en',
+      spellLanguage: this.effectiveSpellLanguage,
       pageTheme: prefs.pageTheme,
       focus: prefs.focusMode === 'sentence' ? 'sentence' : prefs.focusMode ? 'paragraph' : 'off',
       typewriter: Boolean(prefs.typewriter),
@@ -2491,11 +2574,13 @@ export class Application {
       {
         label: target.sectionId ? 'Delete section' : 'Delete chapter',
         run: () => {
-          if (this.writable() && this.editor)
+          if (!this.writable() || !this.editor) return;
+          if (!target.sectionId) this.deleteChapter(target.chapterId);
+          else
             this.focusOutline(
               this.editor.outlineDelete({
                 chapterId: target.chapterId,
-                ...(target.sectionId ? { sectionId: target.sectionId } : {}),
+                sectionId: target.sectionId,
               }),
             );
         },
@@ -2705,7 +2790,7 @@ export class Application {
     const saving = this.updateLibrary(next, false);
     this.editor?.configureTypography({
       interfaceLanguage: this.value.language.locale,
-      language: typeof next.spellLanguage === 'string' ? next.spellLanguage : 'en',
+      language: this.writingLanguage(next),
       markdown: !next.markdownOff,
     });
     this.surfaces?.setVim(Boolean(next.vimKeys ?? next.vimMode));
@@ -2745,10 +2830,7 @@ export class Application {
     if (target.kind !== 'spelling' || !this.editor || !this.value.spellOn) return;
     const editor = this.editor,
       revision = editor.revision;
-    const language =
-      typeof this.value.library.spellLanguage === 'string'
-        ? this.value.library.spellLanguage
-        : 'en-US';
+    const language = this.effectiveSpellLanguage;
     const suggestions = z
       .array(z.string())
       .parse(
@@ -3048,7 +3130,7 @@ export class Application {
   archive() {
     if (!this.writable()) return;
     if (!this.editor) return;
-    if (!this.editor.copySelection().text) {
+    if (!this.editor.copySelection().text.trim()) {
       this.patch({ hint: 'Select the passage first' });
       return;
     }
@@ -3301,6 +3383,7 @@ export type AppActions = Pick<
   | 'publicationRedo'
   | 'removeFromShelf'
   | 'reshelveBook'
+  | 'restartForUpdate'
   | 'showInformation'
   | 'closeInformation'
   | 'libraryFolder'
@@ -3442,6 +3525,7 @@ export function applicationActions(vm: Application): AppActions {
     fontPickerEnter: vm.fontPickerEnter.bind(vm),
     closeFontPicker: vm.closeFontPicker.bind(vm),
     bodyFontStyle: vm.bodyFontStyle.bind(vm),
+    restartForUpdate: vm.restartForUpdate.bind(vm),
     showInformation: vm.showInformation.bind(vm),
     closeInformation: vm.closeInformation.bind(vm),
     libraryFolder: vm.libraryFolder.bind(vm),

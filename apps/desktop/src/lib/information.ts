@@ -1,8 +1,10 @@
+import type { UpdateStatusValue } from '@leafloom/desktop-host';
 export type InformationPresentation = {
   kind: 'help' | 'shortcuts' | 'about' | 'update';
   title: string;
   version: string;
   vim?: boolean;
+  update?: UpdateStatusValue;
 };
 export type HelpBlock = { heading: number; text: string };
 export function helpBlocks(source: string): HelpBlock[] {

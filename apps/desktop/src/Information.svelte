@@ -10,8 +10,14 @@
   let {
     value,
     close,
+    restart,
     t,
-  }: { value: InformationPresentation; close: () => void; t: (key: string) => string } = $props();
+  }: {
+    value: InformationPresentation;
+    close: () => void;
+    restart: () => void;
+    t: (key: string) => string;
+  } = $props();
   const blocks = helpBlocks(help);
   const sections = $derived(
     shortcutSections(navigator.platform.toLowerCase().includes('mac'), Boolean(value.vim)),
@@ -68,9 +74,21 @@
       {:else if value.kind === 'about'}<p>Version {value.version}</p>
         <p>A word processor for authors.</p>
       {:else}<p>Leafloom {value.version}</p>
-        <p>
-          This build uses manual updates. Install a newer Leafloom package to update the app.
-        </p>{/if}
+        {#if !value.update || value.update.status === 'disabled'}
+          <p>This build uses manual updates. Install a newer Leafloom package to update the app.</p>
+        {:else if value.update.status === 'checking'}<p>{t('Checking for updates…')}</p>
+        {:else if value.update.status === 'downloading'}
+          <p>{t('Downloading update…')} {Math.floor(value.update.percent)}%</p>
+          <progress max="100" value={value.update.percent} aria-label={t('Update download')}
+          ></progress>
+        {:else if value.update.status === 'ready'}
+          <p>Leafloom {value.update.latestVersion} {t('is ready to install.')}</p>
+          <button onclick={restart}>{t('Save and restart')}</button>
+        {:else if value.update.status === 'installing'}<p>{t('Installing update…')}</p>
+        {:else if value.update.status === 'error'}<p>
+            {t('The update could not be completed. Please try again later.')}
+          </p>
+        {:else}<p>{t('You have the latest version.')}</p>{/if}{/if}
     </div>
     <div class="modal-actions">
       <button onclick={close}
