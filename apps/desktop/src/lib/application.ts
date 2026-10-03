@@ -1640,7 +1640,11 @@ export class Application {
     if (this.editor || this.publicationPageViewModel.active) await this.save();
   }
   async save() {
-    await this.flushZoom();
+    try {
+      await this.flushZoom();
+    } catch (error) {
+      this.fail(error);
+    }
     if (this.externalReconciliation) await this.externalReconciliation;
     if (this.hostRecoveryViewModel.blocked) throw Error('HOST_RECOVERY_REQUIRED');
     if (this.publicationPageViewModel.active) {
@@ -3301,7 +3305,7 @@ export class Application {
       point,
     );
     if (this.zoomTimer) clearTimeout(this.zoomTimer);
-    this.zoomTimer = setTimeout(() => void this.execute(() => this.flushZoom()), 600);
+    this.zoomTimer = setTimeout(() => void this.background(() => this.flushZoom()), 600);
   }
   private async flushZoom() {
     if (!this.zoomTimer) return;

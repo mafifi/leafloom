@@ -181,10 +181,34 @@ describe('production application commands with real storage', () => {
       core.undo();
       expect(core.passageRows('notes')[0].text).toBe('');
       core.redo();
+      await f.vm.save();
+      // Preference persistence cannot dismiss author menus or prevent manuscript saving.
+      const request = f.provider.request.bind(f.provider);
+      let preferenceWrites = 0;
+      const deniedPreferences = vi
+        .spyOn(f.provider, 'request')
+        .mockImplementation((method, payload, traceparent) => {
+          if (method === 'writeLibrary') {
+            preferenceWrites++;
+            return Promise.reject(Error('DISK_ERROR'));
+          }
+          return request(method, payload, traceparent);
+        });
+      f.vm.zoom(0.1);
+      f.vm.menu(new MouseEvent('contextmenu'), [{ label: 'Author menu', run() {} }]);
+      await vi.waitFor(() => expect(preferenceWrites).toBeGreaterThan(0));
+      expect(get(f.vm.state).menu?.items[0].label).toBe('Author menu');
+      core.select(chapter.id, 1);
+      core.insert('Still safe. ');
+      f.vm.zoom(0.1);
+      await f.vm.save();
+      expect(preferenceWrites).toBeGreaterThan(1);
+      expect(get(f.vm.state).dirty).toBe(false);
+      deniedPreferences.mockRestore();
       await f.vm.closeBook();
       const book = get(f.vm.state).books[0];
       await f.vm.openBook(book.id);
-      expect(f.vm.editor!.passageRows(chapter.id)[0].text).toBe('A story.');
+      expect(f.vm.editor!.passageRows(chapter.id)[0].text).toBe('Still safe. A story.');
       expect(f.vm.editor!.passageRows('notes')[0].text).toBe('Remember the ending.');
       expect(get(f.vm.state).dirty).toBe(false);
     } finally {
