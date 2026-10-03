@@ -20,6 +20,28 @@ export function nativeContract(id) {
   return matches.length === 1 ? matches[0] : undefined;
 }
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+/** Re-read every durable companion and its manifest; a receipt value is never the UUID oracle. */
+export async function inspectDurableSnapshot(readBytes, snapshot) {
+  assert.ok(snapshot && typeof snapshot.path === 'string', 'Durable snapshot missing');
+  const manifestBytes = await readBytes(snapshot.path + '/manifest.json');
+  assert.equal(hash(manifestBytes), snapshot.manifestSha256, 'Durable manifest changed');
+  const manifest = JSON.parse(manifestBytes.toString());
+  assert.deepEqual(manifest, { bookId: snapshot.bookId, files: snapshot.files });
+  assert.deepEqual(Object.keys(snapshot.files).sort(), [
+    'manuscript.json',
+    'notes.html',
+    'outline.html',
+    'reviews.json',
+  ]);
+  const result = {};
+  for (const name of Object.keys(snapshot.files)) {
+    const actual = await readBytes(snapshot.path + '/' + name);
+    assert.equal(hash(actual), snapshot.files[name].sha256, 'Durable companion changed: ' + name);
+    assert.equal(actual.length, snapshot.files[name].bytes);
+    result[name] = actual;
+  }
+  return result;
+}
 /** Artifacts are read beneath their declared evidence directory, including symlink resolution. */
 export async function inspectNativeArtifacts(contract, receipt, options) {
   const io = receipt[contract.section];
@@ -74,6 +96,19 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
       1,
       'UUID changed across actual repeated/reopened EPUBs',
     );
+    const snapshots = row.durableArtifacts?.snapshots;
+    assert.equal(snapshots?.length, 3, 'Each repeated/reopened EPUB requires a durable snapshot');
+    for (let i = 0; i < 3; i++) {
+      const files = await inspectDurableSnapshot(bytes, snapshots[i]);
+      const book = SourceBook.parse(JSON.parse(files['manuscript.json'].toString()));
+      const reviews = Reviews.parse(JSON.parse(files['reviews.json'].toString()));
+      assert.equal(book.metadata.id, snapshots[i].bookId);
+      assert.equal(reviews.bookId, book.metadata.id);
+      assert.equal(parsed[i].identifier, 'urn:uuid:' + book.metadata.uuid);
+    }
+    const source = row.durableArtifacts?.sourceImage;
+    assert.equal(hash(await bytes(source.path)), source.sha256);
+    assert.deepEqual(await bytes(source.path), coverPNG);
     return parsed;
   }
   if (p.kind === 'denied-write' || p.kind === 'cancel') {

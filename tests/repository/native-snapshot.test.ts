@@ -4,6 +4,7 @@ import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
+import { inspectDurableSnapshot } from '../../scripts/native-artifact-contracts.mjs';
 import { retainBookSnapshot } from '../neo-compat/native/document-io.mjs';
 
 test('native capture retains all actual companion bytes and a hash-bound manifest', async () => {
@@ -30,6 +31,11 @@ test('native capture retains all actual companion bytes and a hash-bound manifes
     const manifest = await readFile(path.join(artifacts, captured.path, 'manifest.json'));
     assert.equal(captured.manifestSha256, createHash('sha256').update(manifest).digest('hex'));
     assert.deepEqual(JSON.parse(manifest.toString()), { bookId, files: captured.files });
+    const readBytes = (name: string) => readFile(path.join(artifacts, name));
+    await inspectDurableSnapshot(readBytes, captured);
+    await writeFile(path.join(artifacts, captured.path, 'notes.html'), 'corrupted');
+    await assert.rejects(() => inspectDurableSnapshot(readBytes, captured));
+    await writeFile(path.join(artifacts, captured.path, 'notes.html'), files['notes.html']);
     for (const [name, text] of Object.entries(files)) {
       const bytes = await readFile(path.join(artifacts, captured.path, name));
       assert.equal(bytes.toString(), text);
