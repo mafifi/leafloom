@@ -10,7 +10,15 @@
     type LibraryShelfProps,
     type ShelfBook,
   } from './lib/library-shelf';
-  let { shelf, books, covers, actions, language, hover = true }: LibraryShelfProps = $props();
+  let {
+    shelf,
+    books,
+    covers,
+    actions,
+    language,
+    hover = true,
+    draggedBook = '',
+  }: LibraryShelfProps = $props();
   const bound = $derived(Boolean(shelf.binding?.bound || shelf.bound));
   const tiles = $derived(boundShelfLayout(shelf, books, hover));
   const t = (key: string, args: Record<string, string | number> = {}) =>
@@ -47,7 +55,10 @@
     row.classList.add('drag-over');
     indicator ??= document.createElement('div');
     indicator.className = 'drop-indicator';
-    const candidates = [...row.querySelectorAll<HTMLElement>('.book:not(.dragging)')];
+    const draggedId = draggedBook || event.dataTransfer.getData('application/x-neo-book');
+    const candidates = [...row.querySelectorAll<HTMLElement>('.book:not(.new-book)')].filter(
+      (tile) => tile.dataset.bookId !== draggedId,
+    );
     const index = coverInsertionIndex(
       candidates.map((tile) => tile.getBoundingClientRect()),
       event.clientX,
@@ -64,16 +75,31 @@
       index = 0;
       for (const child of row.children) {
         if (child === indicator) break;
-        if (child.classList.contains('book') && !child.classList.contains('dragging')) index++;
+        if (
+          child instanceof HTMLElement &&
+          child.classList.contains('book') &&
+          !child.classList.contains('new-book') &&
+          child.dataset.bookId !==
+            (draggedBook || event.dataTransfer.getData('application/x-neo-book'))
+        )
+          index++;
       }
     }
     removeIndicator();
     actions.shelfDrop(event, index);
   };
-  onDestroy(() => { removeIndicator(); removeShelfIndicator(); });
+  onDestroy(() => {
+    removeIndicator();
+    removeShelfIndicator();
+  });
 </script>
 
-<svelte:window ondragend={() => { removeIndicator(); removeShelfIndicator(); }} />
+<svelte:window
+  ondragend={() => {
+    removeIndicator();
+    removeShelfIndicator();
+  }}
+/>
 
 {#snippet coverTile(book: ShelfBook, collection = false)}
   {@const cover = covers[book.id]}
@@ -107,9 +133,18 @@
           >{/if}</span
       ><span class="b-author">{book.author}</span></span
     >
-    <span class="b-refresh" title={t('New cover')} role="button" tabindex="-1" aria-hidden="true"
-      onclick={(event) => { event.stopPropagation(); actions.refreshCover(book); }}
-      onkeydown={(event) => event.stopPropagation()}>↻</span>
+    <span
+      class="b-refresh"
+      title={t('New cover')}
+      role="button"
+      tabindex="-1"
+      aria-hidden="true"
+      onclick={(event) => {
+        event.stopPropagation();
+        actions.refreshCover(book);
+      }}
+      onkeydown={(event) => event.stopPropagation()}>↻</span
+    >
     <div class="b-progress" hidden={!progress.visible}>
       <div style:width={`${progress.percent}%`}></div>
     </div>
@@ -121,9 +156,16 @@
   class:bound
   data-shelf-id={shelf.id}
   aria-label={shelf.name}
-  ondragover={(event) => { event.preventDefault(); shelfDragOver(event); }}
+  ondragover={(event) => {
+    event.preventDefault();
+    shelfDragOver(event);
+  }}
   ondragleave={(event) => {
-    if (!(event.relatedTarget instanceof Node) || !event.currentTarget.contains(event.relatedTarget)) removeShelfIndicator();
+    if (
+      !(event.relatedTarget instanceof Node) ||
+      !event.currentTarget.contains(event.relatedTarget)
+    )
+      removeShelfIndicator();
   }}
   ondragend={(event) => event.currentTarget.classList.remove('dragging')}
   ondrop={(event) => {

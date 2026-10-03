@@ -1,5 +1,8 @@
 /** Keep modal keyboard navigation local and return to the invoking control. */
-export function dialogFocus(node: HTMLElement, options: { trap?: boolean } = {}) {
+export function dialogFocus(
+  node: HTMLElement,
+  options: { trap?: boolean; initialFocus?: boolean } = {},
+) {
   const previous = node.ownerDocument.activeElement;
   const controls = () =>
     Array.from(
@@ -10,7 +13,11 @@ export function dialogFocus(node: HTMLElement, options: { trap?: boolean } = {})
       ),
     ).filter((element) => !element.closest('[hidden]'));
   queueMicrotask(() => {
-    if (node.isConnected && !node.contains(node.ownerDocument.activeElement))
+    if (
+      options.initialFocus !== false &&
+      node.isConnected &&
+      !node.contains(node.ownerDocument.activeElement)
+    )
       (controls()[0] ?? node).focus();
   });
   const key = (event: KeyboardEvent) => {
@@ -34,7 +41,7 @@ export function dialogFocus(node: HTMLElement, options: { trap?: boolean } = {})
   };
   node.addEventListener('keydown', key);
   return {
-    update(next: { trap?: boolean }) {
+    update(next: { trap?: boolean; initialFocus?: boolean }) {
       options = next;
     },
     destroy() {

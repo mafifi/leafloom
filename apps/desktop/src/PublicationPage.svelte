@@ -82,7 +82,7 @@
     aria-modal="true"
     aria-label={presentation.label}
     tabindex="-1"
-    use:dialogFocus
+    use:dialogFocus={{ initialFocus: false }}
     onkeydown={(event) => {
       if (event.key === 'Escape') {
         event.preventDefault();

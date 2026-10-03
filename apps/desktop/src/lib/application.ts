@@ -45,7 +45,7 @@ import {
   type LanguageCatalogValue,
 } from '@leafloom/language-contracts';
 import type { CoverProvider, CoverPresentationValue } from '@leafloom/cover-contracts';
-import { applyPresentation, bodyFonts } from './presentation';
+import { applyPresentation, bodyFonts, brighterInterface } from './presentation';
 import type { Telemetry } from '@leafloom/telemetry-contracts';
 import { writable } from 'svelte/store';
 import { z } from 'zod';
@@ -239,6 +239,7 @@ export class Application {
   private spellingViewModel: SpellingViewModel;
   private spellActiveSection: string | null = null;
   private spellLanguageGeneration = 0;
+  private spellingMenuGeneration = 0;
   private documentOutputViewModel: DocumentOutputViewModel;
   private emailDraftViewModel: EmailDraftViewModel;
   private coverArtViewModel: CoverArtViewModel;
@@ -252,6 +253,7 @@ export class Application {
   private nativeMenuSignature = '';
   private nativeMenuPending = false;
   private libraryWrites: Promise<void> = Promise.resolve();
+  private zoomTimer: ReturnType<typeof setTimeout> | null = null;
   private libraryGeneration = 0;
   private pendingLibraryWrites = 0;
   private refreshingLibrary = false;
@@ -694,7 +696,8 @@ export class Application {
       this.refreshingLibrary ||
       this.value.view !== 'library' ||
       this.value.loading ||
-      this.pendingLibraryWrites
+      this.pendingLibraryWrites ||
+      this.zoomTimer
     )
       return;
     this.refreshingLibrary = true;
@@ -828,7 +831,12 @@ export class Application {
     if (!this.coverProvider) return;
     const generation = ++this.coverGeneration;
     const covers: Record<string, CoverPresentationValue> = {};
-    for (const book of this.value.books) {
+    const visible = new Set(
+      this.value.library.shelves
+        .filter((shelf) => shelf.authorId === this.value.library.currentAuthorId)
+        .flatMap((shelf) => shelf.bookIds),
+    );
+    for (const book of this.value.books.filter((book) => visible.has(book.id))) {
       const image =
         book.coverMode === 'abstract'
           ? null
@@ -1632,6 +1640,7 @@ export class Application {
     if (this.editor || this.publicationPageViewModel.active) await this.save();
   }
   async save() {
+    await this.flushZoom();
     if (this.externalReconciliation) await this.externalReconciliation;
     if (this.hostRecoveryViewModel.blocked) throw Error('HOST_RECOVERY_REQUIRED');
     if (this.publicationPageViewModel.active) {
@@ -2194,7 +2203,7 @@ export class Application {
         await this.preference('markdownOff', !this.value.library.markdownOff);
         break;
       case 'ui-bright':
-        await this.preference('uiBright', !this.value.library.uiBright);
+        await this.preference('uiBright', !brighterInterface(this.value.library.uiBright));
         break;
       case 'focus-cycle':
         await this.cycleFocus();
@@ -2375,7 +2384,7 @@ export class Application {
       typewriter: Boolean(prefs.typewriter),
       vim: Boolean(prefs.vimKeys),
       markdownEmphasis: !prefs.markdownOff,
-      uiBright: Boolean(prefs.uiBright),
+      uiBright: brighterInterface(prefs.uiBright),
       interfaceZoom: Number(prefs.uiZoom) || 1,
       poetry: this.editor?.activeFormatting.poetry ?? false,
       align: this.editor?.activeFormatting.align ?? 'left',
@@ -2856,15 +2865,33 @@ export class Application {
   }
   private async spellingMenu(target: Annotation & { text: string; x: number; y: number }) {
     if (target.kind !== 'spelling' || !this.editor || !this.value.spellOn) return;
-    const editor = this.editor,
-      revision = editor.revision;
-    const language = this.effectiveSpellLanguage;
+    const editor = this.editor;
+    const passage = editor.passageRows().find((row) => row.id === target.passageId);
+    if (!passage || passage.text.slice(target.from, target.to) !== target.text) return;
+    const text = passage.text,
+      generation = ++this.spellingMenuGeneration;
+    const language = this.effectiveSpellLanguage,
+      languageGeneration = this.spellLanguageGeneration;
+    const valid = () =>
+      this.editor === editor &&
+      this.value.spellOn &&
+      generation === this.spellingMenuGeneration &&
+      languageGeneration === this.spellLanguageGeneration &&
+      language === this.effectiveSpellLanguage &&
+      editor.passageRows().find((row) => row.id === target.passageId)?.text === text &&
+      editor.annotations.some(
+        (row) =>
+          row.kind === 'spelling' &&
+          row.passageId === target.passageId &&
+          row.from === target.from &&
+          row.to === target.to,
+      );
     const suggestions = z
       .array(z.string())
       .parse(
         await this.request('spellSuggest', { word: normalizeSpellingWord(target.text), language }),
       );
-    if (this.editor !== editor || editor.revision !== revision || !this.value.spellOn) return;
+    if (!valid()) return;
     this.patch({
       menu: {
         allowShortcuts: true,
@@ -2876,14 +2903,14 @@ export class Application {
             label: word,
             localize: false,
             run: () => {
-              if (this.writable() && this.editor === editor && editor.revision === revision)
+              if (this.writable() && valid())
                 editor.replacePassageText(target.passageId, target.from, target.to, word);
             },
           })),
           {
             label: 'Learn “' + target.text + '”',
             run: async () => {
-              if (this.editor !== editor || !this.value.spellOn) return;
+              if (!valid()) return;
               const existing = z.array(z.string()).catch([]).parse(this.value.library.customWords);
               await this.updateLibrary(
                 Library.parse({
@@ -3261,9 +3288,91 @@ export class Application {
     });
   }
   zoom(delta: number) {
-    const zoom = Math.max(0.75, Math.min(3, this.value.zoom + delta));
-    this.patch({ zoom });
-    void this.execute(() => this.updateLibrary({ ...this.value.library, pageZoom: zoom }, false));
+    this.setPageZoom(delta === 0 ? 1 : this.value.zoom + delta);
+  }
+  private setPageZoom(next: number, point?: { x: number; y: number }) {
+    if (!Number.isFinite(next)) return;
+    const zoom = Math.max(0.75, Math.min(3, next));
+    if (zoom === this.value.zoom) return;
+    this.libraryGeneration++;
+    this.patch({ zoom, library: { ...this.value.library, pageZoom: zoom } });
+    keepReadingPlace(
+      () => document.documentElement.style.setProperty('--page-zoom', String(zoom)),
+      point,
+    );
+    if (this.zoomTimer) clearTimeout(this.zoomTimer);
+    this.zoomTimer = setTimeout(() => void this.execute(() => this.flushZoom()), 600);
+  }
+  private async flushZoom() {
+    if (!this.zoomTimer) return;
+    clearTimeout(this.zoomTimer);
+    this.zoomTimer = null;
+    await this.updateLibrary(this.value.library, false);
+  }
+  pageZoomWheel(event: WheelEvent) {
+    if (event.ctrlKey) {
+      event.preventDefault();
+      this.setPageZoom(this.value.zoom * Math.exp(-event.deltaY * 0.005), {
+        x: event.clientX,
+        y: event.clientY,
+      });
+    } else if (
+      event.target instanceof Element &&
+      !event.target.closest('#paper-scroll,#nav-pane,#side-pane')
+    ) {
+      const scroll = document.querySelector<HTMLElement>('#paper-scroll');
+      if (scroll) scroll.scrollTop += event.deltaY;
+    }
+  }
+  zoomControlWheel(event: WheelEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setPageZoom(this.value.zoom * Math.exp(-event.deltaY * 0.002));
+  }
+  systemContrastChanged() {
+    document.body.classList.toggle('bright', brighterInterface(this.value.library.uiBright));
+    this.scheduleMenu();
+  }
+  chapterNavigationKey(event: KeyboardEvent) {
+    const mod = this.platform?.isMac ? event.metaKey : event.ctrlKey;
+    if (
+      event.defaultPrevented ||
+      event.isComposing ||
+      event.keyCode === 229 ||
+      !mod ||
+      !event.altKey ||
+      event.shiftKey ||
+      !['ArrowUp', 'ArrowDown'].includes(event.key) ||
+      this.value.view !== 'editor' ||
+      this.overlayOpen()
+    )
+      return;
+    event.preventDefault();
+    event.stopPropagation();
+    const direction = event.key === 'ArrowDown' ? 1 : -1;
+    const chapters = this.editor?.chapters ?? [];
+    let index = chapters.findIndex((row) => row.id === this.value.currentChapter);
+    if (index < 0) index = direction > 0 ? -1 : chapters.length;
+    const next = Math.max(0, Math.min(chapters.length - 1, index + direction));
+    if (next === index || !chapters[next]) return;
+    const id = chapters[next].id;
+    if (this.value.panel !== 'manuscript') {
+      this.tabPlaces.delete('manuscript');
+      this.setPanel('manuscript');
+    }
+    void this.rendered().then(() => {
+      const first = this.editor?.passageRows(id)[0];
+      if (first) this.editor?.selectPassage(first.id, 0);
+      this.surfaces?.focus({ preventScroll: true });
+      document
+        .querySelector<HTMLElement>(`.chapter[data-chid="${CSS.escape(id)}"]`)
+        ?.scrollIntoView({
+          block: 'start',
+          behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+            ? 'instant'
+            : 'smooth',
+        });
+    });
   }
   showNav(open: boolean) {
     this.patch({ navOpen: open });
@@ -3296,7 +3405,18 @@ export class Application {
       }
       return;
     }
-    if (event.defaultPrevented || event.isComposing || event.keyCode === 229) return;
+    // ProseMirror prevents native Escape/Enter defaults even when its commands stand down.
+    // Vim and modal owners stop propagation; these author-global keys still belong here.
+    const authorGlobalKey =
+      (event.key === 'Escape' ||
+        (event.key === 'Enter' &&
+          (event.metaKey || event.ctrlKey) &&
+          !event.shiftKey &&
+          !event.altKey)) &&
+      event.target instanceof Element &&
+      event.target.closest('.chapter-body,#aux-editor');
+    if ((event.defaultPrevented && !authorGlobalKey) || event.isComposing || event.keyCode === 229)
+      return;
     if (
       !this.value.coverArt &&
       !this.value.fontPicker &&
@@ -3315,11 +3435,13 @@ export class Application {
       else if (this.value.searchOpen) this.closeSearch();
       else if (this.value.view === 'library' && this.libraryViewModel.canUndoMove)
         void this.execute(() => this.undoAuthorMove());
+      else if (this.value.menu) this.dismissMenu();
       else if (this.fullscreen)
         void this.execute(async () => {
           await this.platform?.os?.request('fullscreenEscape', {});
           this.fullscreenChanged({ fullscreen: false });
         });
+      else if (this.value.view === 'editor') void this.execute(() => this.closeBook());
       else this.dismissMenu();
       return;
     }
@@ -3335,6 +3457,11 @@ export class Application {
     if (this.overlayOpen()) return;
     const modifier = event.metaKey || event.ctrlKey;
     if (!modifier) return;
+    if (event.key === 'Enter' && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      void this.execute(() => this.platform?.fullscreen() ?? Promise.resolve());
+      return;
+    }
     if (
       !event.altKey &&
       ((event.shiftKey && event.key === ';') || (event.code === 'Semicolon' && event.key !== ';'))
@@ -3522,6 +3649,9 @@ export type AppActions = Pick<
   | 'closeEmailSettings'
   | 'recoverHost'
   | 'zoom'
+  | 'pageZoomWheel'
+  | 'zoomControlWheel'
+  | 'chapterNavigationKey'
 >;
 export function applicationActions(vm: Application): AppActions {
   return {
@@ -3646,5 +3776,8 @@ export function applicationActions(vm: Application): AppActions {
     cycleWordCounter: vm.cycleWordCounter.bind(vm),
     trackVisibleChapter: vm.trackVisibleChapter.bind(vm),
     zoom: vm.zoom.bind(vm),
+    pageZoomWheel: vm.pageZoomWheel.bind(vm),
+    zoomControlWheel: vm.zoomControlWheel.bind(vm),
+    chapterNavigationKey: vm.chapterNavigationKey.bind(vm),
   };
 }

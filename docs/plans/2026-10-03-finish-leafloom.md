@@ -30,7 +30,7 @@ Clean-machine installation is excluded. Real agents remain deferred. No new spik
 
 ## Goal record
 
-The goal tool cannot replace its existing unfinished record or edit its objective. This plan records the user's revised scope; the existing record must not be marked complete until the revised objective is achieved.
+The user deleted the previous goal record. The revised goal was created on 3 October 2026 at 09:57 UTC and is active with this scope and the original deadline.
 
 ## Status
 

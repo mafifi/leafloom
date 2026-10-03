@@ -145,6 +145,7 @@ export interface LibraryShelfProps {
   actions: LibraryShelfActions;
   language: LanguageCatalogValue;
   hover?: boolean;
+  draggedBook?: string;
 }
 
 export function coverInsertionIndex(

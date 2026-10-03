@@ -97,6 +97,10 @@ const vm = new Application(
   new PaintedCovers(),
   textTypography,
 );
+const systemContrast = window.matchMedia('(prefers-contrast: more)');
+const contrastChanged = () => vm.systemContrastChanged();
+systemContrast.addEventListener('change', contrastChanged);
+import.meta.hot?.dispose(() => systemContrast.removeEventListener('change', contrastChanged));
 mount(App, {
   target: document.getElementById('app')!,
   props: { presentation: vm.state, actions: applicationActions(vm) },

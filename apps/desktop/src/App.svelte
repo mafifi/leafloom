@@ -100,6 +100,26 @@
       names && typeof names === 'object' && !Array.isArray(names) ? names[tab] : undefined;
     return typeof name === 'string' ? name : t(tab[0].toUpperCase() + tab.slice(1));
   };
+  function nonPassiveWheel(node: HTMLElement, handler: (event: WheelEvent) => void) {
+    const listener = (event: WheelEvent) => handler(event);
+    node.addEventListener('wheel', listener, { passive: false });
+    return {
+      update(next: typeof handler) {
+        handler = next;
+      },
+      destroy() {
+        node.removeEventListener('wheel', listener);
+      },
+    };
+  }
+  const closeUnpinnedPanes = () => {
+    if (!$app.navPinned && !draggedChapter) vm.showNav(false);
+    if (!$app.sidePinned) vm.showSide(false);
+  };
+  $effect(() => {
+    document.documentElement.addEventListener('mouseleave', closeUnpinnedPanes);
+    return () => document.documentElement.removeEventListener('mouseleave', closeUnpinnedPanes);
+  });
   const run = (command: () => void | Promise<void>) => void vm.execute(command);
   const stringRecord = (value: unknown): Record<string, string> | undefined => {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return undefined;
@@ -260,8 +280,14 @@
   });
 </script>
 
-<svelte:document onkeydowncapture={(event) => vm.fieldTypographyKey(event)} />
+<svelte:document
+  onkeydowncapture={(event) => {
+    vm.chapterNavigationKey(event);
+    if (!event.defaultPrevented) vm.fieldTypographyKey(event);
+  }}
+/>
 <svelte:window
+  onblur={closeUnpinnedPanes}
   ondragend={() => {
     penRack = false;
     dragged = '';
@@ -337,6 +363,7 @@
           covers={$app.covers}
           language={$app.language}
           actions={shelfActions(shelf)}
+          draggedBook={dragged}
         />
       {/each}
     </main>
@@ -438,15 +465,38 @@
     </div>
   {/if}
 {:else}
-  <div id="editor-view" class:nav-pinned={$app.navPinned} class:side-pinned={$app.sidePinned}>
-    <div id="nav-hotzone" role="presentation" onpointerenter={() => vm.showNav(true)}></div>
+  <div
+    id="editor-view"
+    use:nonPassiveWheel={vm.pageZoomWheel}
+    class:nav-pinned={$app.navPinned}
+    class:side-pinned={$app.sidePinned}
+  >
+    <div
+      id="nav-hotzone"
+      role="presentation"
+      onpointerenter={(event) => {
+        if (!event.buttons) vm.showNav(true);
+      }}
+      onpointerleave={(event) => {
+        if (
+          !$app.navPinned &&
+          !draggedChapter &&
+          !$app.menu &&
+          !(
+            event.relatedTarget instanceof Node &&
+            document.querySelector('#nav-pane')?.contains(event.relatedTarget)
+          )
+        )
+          vm.showNav(false);
+      }}
+    ></div>
     <aside
       id="nav-pane"
       class:open={$app.navOpen || $app.navPinned}
       onpointermove={chapterGapNear}
       onpointerleave={() => {
         nearChapterGap = null;
-        vm.showNav(false);
+        if (!draggedChapter && !$app.menu) vm.showNav(false);
       }}
     >
       <button id="nav-pin" aria-pressed={$app.navPinned} onclick={() => vm.toggleNav()}
@@ -552,7 +602,23 @@
       </nav>
       <button id="nav-add" onclick={() => vm.createChapter()}>＋ Chapter</button>
     </aside>
-    <div id="side-hotzone" role="presentation" onpointerenter={() => vm.showSide(true)}></div>
+    <div
+      id="side-hotzone"
+      role="presentation"
+      onpointerenter={(event) => {
+        if (!event.buttons) vm.showSide(true);
+      }}
+      onpointerleave={(event) => {
+        if (
+          !$app.sidePinned &&
+          !(
+            event.relatedTarget instanceof Node &&
+            document.querySelector('#side-pane')?.contains(event.relatedTarget)
+          )
+        )
+          vm.showSide(false);
+      }}
+    ></div>
     <aside
       id="side-pane"
       class:open={$app.sideOpen || $app.sidePinned}
@@ -859,9 +925,11 @@
       ><span class="save-state"
         >{$app.readOnly ? 'Read only' : $app.dirty ? 'Unsaved' : 'Saved'}</span
       >
-      <div id="zoom-control">
-        <button id="zoom-out" onclick={() => vm.zoom(-0.1)}>−</button><span id="zoom-level"
-          >{Math.round($app.zoom * 100)}%</span
+      <div id="zoom-control" use:nonPassiveWheel={vm.zoomControlWheel}>
+        <button id="zoom-out" onclick={() => vm.zoom(-0.1)}>−</button><button
+          id="zoom-level"
+          aria-label={t('Reset zoom')}
+          onclick={() => vm.zoom(0)}>{Math.round($app.zoom * 100)}%</button
         ><button id="zoom-in" onclick={() => vm.zoom(0.1)}>＋</button>
       </div>
     </footer>

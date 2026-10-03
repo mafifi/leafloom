@@ -1,3 +1,8 @@
+export function brighterInterface(value: unknown): boolean {
+  return value === undefined
+    ? Boolean(window.matchMedia?.('(prefers-contrast: more)').matches)
+    : Boolean(value);
+}
 export const bodyFonts: Record<string, string> = {
   Georgia: 'Georgia, "Times New Roman", serif',
   Palatino: 'Palatino, "Palatino Linotype", serif',
@@ -39,7 +44,7 @@ export function applyPresentation(preferences: {
   body.classList.toggle('no-dropcap', preferences.fonts.dropcap === 'none');
   body.classList.toggle('night', preferences.pageTheme === 'night');
   body.classList.toggle('light', preferences.pageTheme === 'light');
-  body.classList.toggle('bright', Boolean(preferences.uiBright));
+  body.classList.toggle('bright', brighterInterface(preferences.uiBright));
   body.classList.toggle('typewriter', Boolean(preferences.typewriter));
   body.classList.toggle('focus-mode', Boolean(preferences.focusMode));
   root.style.setProperty(
