@@ -1495,3 +1495,34 @@ it('a positioned manuscript drop imports into the chosen shelf rather than the f
     await f.close();
   }
 });
+it('a validated unchanged disk snapshot clears a transient read failure and flushes retained local writing without resetting history', async () => {
+  const f = await fixture();
+  try {
+    await f.vm.onboard('Writer', 'pantser');
+    await f.vm.newBook(get(f.vm.state).library.shelves[0].id);
+    f.vm.createChapter();
+    const core = f.vm.editor!;
+    core.select(core.chapters[0].id, 1);
+    core.insert('Saved original.');
+    await f.vm.save();
+    const id = get(f.vm.state).book!.id;
+    const opened = await new BookFiles(join(f.provider.root, id)).load(false);
+    await f.vm.documentChanged({ bookId: id, code: 'UNAVAILABLE' });
+    core.insert(' Retained draft.');
+    const selection = core.state.selection.toJSON();
+    await expect(f.vm.save()).rejects.toThrow('EXTERNAL_CHANGE');
+    await f.vm.documentChanged({ bookId: id, versions: opened.versions });
+    expect(get(f.vm.state).externalChange).toBeNull();
+    expect(f.vm.editor).toBe(core);
+    expect(core.state.selection.toJSON()).toEqual(selection);
+    expect((await new BookFiles(join(f.provider.root, id)).load(false)).book.chapters[0].html).toContain('Retained draft.');
+    const authored = core.chapters.map(({ id, html }) => ({ id, html }));
+    expect(core.undo()).toBe(true);
+    expect(core.chapters.some(chapter => chapter.html.includes('Retained draft.'))).toBe(false);
+    expect(core.redo()).toBe(true);
+    expect(core.chapters.map(({ id, html }) => ({ id, html }))).toEqual(authored);
+  } finally {
+    if (get(f.vm.state).externalChange) await f.vm.closeBook(false);
+    await f.close();
+  }
+});

@@ -38,7 +38,7 @@ export class LibraryHost {
   private locales = new LocaleProvider();
   private watchers = new Map<
     string,
-    { watcher: FSWatcher | null; timer?: ReturnType<typeof setTimeout>; poll?: ReturnType<typeof setInterval>; signature: string; identity:string; renewed:boolean }
+    { watcher: FSWatcher | null; timer?: ReturnType<typeof setTimeout>; poll?: ReturnType<typeof setInterval>; signature: string; identity:string; renewed:boolean; readError:boolean }
   >();
   private listeners = new Set<(event: DocumentChange) => void>();
   private changes: DocumentChange[] = [];
@@ -53,13 +53,14 @@ export class LibraryHost {
   }
   private async watchBook(bookId: string) {
     const directory=await lstat(await this.checked(this.folder(bookId)),{bigint:true});
-    const state = { watcher: null, signature: '', identity:`${directory.dev}:${directory.ino}`,renewed:false } as {
+    const state = { watcher: null, signature: '', identity:`${directory.dev}:${directory.ino}`,renewed:false,readError:false } as {
       watcher: FSWatcher | null;
       timer?: ReturnType<typeof setTimeout>;
       poll?: ReturnType<typeof setInterval>;
       signature: string;
       identity:string;
       renewed:boolean;
+      readError:boolean;
     };
     const inspect = () => {
       clearTimeout(state.timer);
@@ -81,6 +82,7 @@ export class LibraryHost {
             const opened = await session.files.load(false);
             if (
               !state.renewed &&
+              !state.readError &&
               opened.recovered === session.opened.recovered &&
               Object.entries(session.opened.versions).every(
                 ([name, value]) => opened.versions[name as keyof typeof opened.versions] === value,
@@ -89,12 +91,14 @@ export class LibraryHost {
               state.signature = '';
               return;
             }
+            state.readError = false;
             change = state.renewed
               ? {bookId,code:'RECOVERY_REQUIRED',versions:opened.versions}
               : opened.recovered
               ? { bookId, code: 'RECOVERY_REQUIRED' }
               : { bookId, versions: opened.versions };
           } catch (error) {
+            state.readError = true;
             change = {
               bookId,
               code:

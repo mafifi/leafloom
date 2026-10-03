@@ -1715,8 +1715,21 @@ export class Application {
         ([name, hash]) =>
           this.documentVersions![name as keyof typeof this.documentVersions] === hash,
       )
-    )
+    ) {
+      if (
+        this.value.externalChange?.code === 'UNAVAILABLE' ||
+        this.value.externalChange?.code === 'CORRUPT'
+      ) {
+        // A successful host read verified every original hash. Resume the same
+        // author session rather than rebuilding its document, caret or history.
+        this.patch({
+          externalChange: null,
+          hint: translate(this.value.language, 'Writing resumed'),
+        });
+        if (this.session.dirty) await this.save();
+      }
       return;
+    }
     const editor = this.editor,
       session = this.session,
       id = change.bookId;
