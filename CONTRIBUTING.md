@@ -17,6 +17,8 @@ Repository policy and source provenance run through `node scripts/check-reposito
 
 Do not copy private prompts, research, fixtures or assets into this repository. Drawloom's contract principles are design references; Leafloom builds without a checkout of Drawloom or the projects monorepo.
 
-GitHub checks run repository policy, strict TypeScript/Svelte checks, contract tests, a production build and the complete headless author-journey suite. Linux and Windows jobs compile the Tauri host with the committed Cargo lockfile. They do not launch a desktop window or sign a release. Browser reports and retained failure traces are workflow artifacts.
+GitHub runs one job with a three-minute limit: repository policy, strict TypeScript/Svelte checks and a frontend build. Release tags do not start another workflow.
+
+Run tests locally with `pnpm check:ci` and the complete headless author journeys with `pnpm test:neo-candidate`. The writing benchmarks are included in that suite; run `pnpm test:neo-candidate performance.spec.ts` for a fresh performance fixture. Compile and package the native app locally with the committed Cargo lockfile and release scripts. Retain browser reports, traces, performance measurements and signing receipts with the local release evidence.
 
 `pnpm check:parity` is the full migration acceptance gate. Keep it separate from bootstrap CI until every required scenario has the current production and reference evidence specified by the migration ledger. Passing repository checks never promotes an unported scenario.
