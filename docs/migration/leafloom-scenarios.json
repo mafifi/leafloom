@@ -178,16 +178,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-001-B][NEO-002-B] Leafloom: onboarded real and pen identities retain separately attributed rich books and selected shelves through restart",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Onboard real/pen names, register a distinct pen identity through the author menu, create two attributed rich books, restart under the selected pen and switch back."
+          ],
+          "assertions": [
+            "Both identities and their own shelves coexist; selected identity persists; original rich book files remain unchanged during switching/restart and each attribution reopens correctly."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-001-B][NEO-002-B] Leafloom: onboarded real and pen identities retain separately attributed rich books and selected shelves through restart",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Onboard real/pen names, register a distinct pen identity through the author menu, create two attributed rich books, restart under the selected pen and switch back."
+          ],
+          "assertions": [
+            "Both identities and their own shelves coexist; selected identity persists; original rich book files remain unchanged during switching/restart and each attribution reopens correctly."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Both identities coexist, each book stores its own attribution and selected identity and visible books survive restart.",
+        "driverActions": [
+          "Onboard real/pen names, register a distinct pen identity through the author menu, create two attributed rich books, restart under the selected pen and switch back."
+        ],
+        "assertions": [
+          "Both identities and their own shelves coexist; selected identity persists; original rich book files remain unchanged during switching/restart and each attribution reopens correctly."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-002-A",
@@ -360,16 +398,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-001-B][NEO-002-B] Leafloom: onboarded real and pen identities retain separately attributed rich books and selected shelves through restart",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Use first-run pen name plus the actual Add pen/New author command, write as both identities, reload and switch."
+          ],
+          "assertions": [
+            "Saved pen-name preference, independent authors, exact book/shelf ownership, rich prose and selected identity persist."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-001-B][NEO-002-B] Leafloom: onboarded real and pen identities retain separately attributed rich books and selected shelves through restart",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Use first-run pen name plus the actual Add pen/New author command, write as both identities, reload and switch."
+          ],
+          "assertions": [
+            "Saved pen-name preference, independent authors, exact book/shelf ownership, rich prose and selected identity persist."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Author metadata matches the chosen identity and author shelves remain distinct.",
+        "driverActions": [
+          "Use first-run pen name plus the actual Add pen/New author command, write as both identities, reload and switch."
+        ],
+        "assertions": [
+          "Saved pen-name preference, independent authors, exact book/shelf ownership, rich prose and selected identity persist."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-003-A",
@@ -439,6 +515,30 @@
           "testFile": "tests/neo-compat/candidate/onboarding.spec.ts",
           "report": "tests/neo-compat/candidate-results.json",
           "driver": "browser"
+        },
+        {
+          "title": "[NEO-003-A] Leafloom: later pantser menu default affects only future books and persists while existing rich prose remains",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Close the real rich book to capture its durable full DTO, reopen, change later Pantser/Plotter default through the actual menu, create a future book and reload."
+          ],
+          "assertions": [
+            "Future opening mode and actual prose/planned scene follow the new persisted default; existing composed chapter IDs, passage table/version and rich HTML stay exact."
+          ]
+        },
+        {
+          "title": "[NEO-003-A] Leafloom: later plotter menu default affects only future books and persists while existing rich prose remains",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Close the real rich book to capture its durable full DTO, reopen, change later Pantser/Plotter default through the actual menu, create a future book and reload."
+          ],
+          "assertions": [
+            "Future opening mode and actual prose/planned scene follow the new persisted default; existing composed chapter IDs, passage table/version and rich HTML stay exact."
+          ]
         }
       ],
       "referenceCases": [
@@ -451,6 +551,28 @@
           "title": "[NEO-003-A] Leafloom: plotter onboarding opens a new book in its source writing workspace",
           "testFile": "tests/neo-compat/candidate/onboarding.spec.ts",
           "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-003-A] Leafloom: later pantser menu default affects only future books and persists while existing rich prose remains",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Close the real rich book to capture its durable full DTO, reopen, change later Pantser/Plotter default through the actual menu, create a future book and reload."
+          ],
+          "assertions": [
+            "Future opening mode and actual prose/planned scene follow the new persisted default; existing composed chapter IDs, passage table/version and rich HTML stay exact."
+          ]
+        },
+        {
+          "title": "[NEO-003-A] Leafloom: later plotter menu default affects only future books and persists while existing rich prose remains",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Close the real rich book to capture its durable full DTO, reopen, change later Pantser/Plotter default through the actual menu, create a future book and reload."
+          ],
+          "assertions": [
+            "Future opening mode and actual prose/planned scene follow the new persisted default; existing composed chapter IDs, passage table/version and rich HTML stay exact."
+          ]
         }
       ],
       "oracle": {
@@ -458,24 +580,20 @@
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Changing the writing-style default through the later menu is not exercised.",
-        "A fresh frozen production report must pass every listed case.",
-        "The same semantic author actions/assertions need a fresh opt-in pinned NEO reference report; old bridge evidence is not Leafloom proof."
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
       ],
       "acceptanceReview": {
         "inventoryThen": "new books open in manuscript versus Outline; menu can change future defaults.",
         "driverActions": [
-          "Use first-run name, pen and Pantser/Plotter choices; activate shelf + and press title Enter; reload library."
+          "Close the real rich book to capture its durable full DTO, reopen, change later Pantser/Plotter default through the actual menu, create a future book and reload."
         ],
         "assertions": [
-          "Assert onboarding skips after reload, selected author on title, requested initial tab and first authoring caret."
+          "Future opening mode and actual prose/planned scene follow the new persisted default; existing composed chapter IDs, passage table/version and rich HTML stay exact."
         ],
         "unprovedClauses": [
-          "Changing the writing-style default through the later menu is not exercised.",
-          "A fresh frozen production report must pass every listed case.",
-          "The same semantic author actions/assertions need a fresh opt-in pinned NEO reference report; old bridge evidence is not Leafloom proof."
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
         ],
-        "reviewScope": "Production browser test bodies and source-defined finite clauses; package conformance supports algorithms but does not prove native host or DOM outcomes."
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
       }
     },
     {
@@ -3275,16 +3393,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-021-A][NEO-021-B] Leafloom: author title creation rename move and shelf rename regenerate the actual readable catalog",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Create and rename actual author books, drag one to another shelf, rename the shelf and reload; read the regenerated catalog file."
+          ],
+          "assertions": [
+            "Catalog title/folder/shelf rows follow each author command; original prose and exact owned placement survive."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-021-A][NEO-021-B] Leafloom: author title creation rename move and shelf rename regenerate the actual readable catalog",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Create and rename actual author books, drag one to another shelf, rename the shelf and reload; read the regenerated catalog file."
+          ],
+          "assertions": [
+            "Catalog title/folder/shelf rows follow each author command; original prose and exact owned placement survive."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "regenerated human-readable library map agrees with actual placement.",
+        "driverActions": [
+          "Create and rename actual author books, drag one to another shelf, rename the shelf and reload; read the regenerated catalog file."
+        ],
+        "assertions": [
+          "Catalog title/folder/shelf rows follow each author command; original prose and exact owned placement survive."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-021-B",
@@ -3341,16 +3497,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-021-A][NEO-021-B] Leafloom: author title creation rename move and shelf rename regenerate the actual readable catalog",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Use author title/create/drag/shelf-rename commands and inspect the actual readable catalog before/after reload."
+          ],
+          "assertions": [
+            "Both newly created and moved book rows map the correct folder IDs and current shelf names while saved prose remains unchanged."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-021-A][NEO-021-B] Leafloom: author title creation rename move and shelf rename regenerate the actual readable catalog",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Use author title/create/drag/shelf-rename commands and inspect the actual readable catalog before/after reload."
+          ],
+          "assertions": [
+            "Both newly created and moved book rows map the correct folder IDs and current shelf names while saved prose remains unchanged."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Actual _catalog.txt first contains Destination and then Renamed destination for the book.",
+        "driverActions": [
+          "Use author title/create/drag/shelf-rename commands and inspect the actual readable catalog before/after reload."
+        ],
+        "assertions": [
+          "Both newly created and moved book rows map the correct folder IDs and current shelf names while saved prose remains unchanged."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-022-A",
@@ -3734,16 +3928,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-023-B] Leafloom: seven stored template seeds render real saved title and author overlays consistently through reload",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Create and close seven real saved author books, prepare deterministic stored seeds only on closed private files, render and reload."
+          ],
+          "assertions": [
+            "All seven template classes display actual saved title/author overlays and generated PNG; seeds, URLs and exact prose remain stable after reload."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-023-B] Leafloom: seven stored template seeds render real saved title and author overlays consistently through reload",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Create and close seven real saved author books, prepare deterministic stored seeds only on closed private files, render and reload."
+          ],
+          "assertions": [
+            "All seven template classes display actual saved title/author overlays and generated PNG; seeds, URLs and exact prose remain stable after reload."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "This proves seven stored template overlays; the full seven art-style pixel matrix remains separate."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Each corresponding cover class appears with real title Template proof and author Library Writer.",
+        "driverActions": [
+          "Create and close seven real saved author books, prepare deterministic stored seeds only on closed private files, render and reload."
+        ],
+        "assertions": [
+          "All seven template classes display actual saved title/author overlays and generated PNG; seeds, URLs and exact prose remain stable after reload."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "This proves seven stored template overlays; the full seven art-style pixel matrix remains separate."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-024-A",
@@ -5389,16 +5623,54 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-036-B] Leafloom: unbind restart rebind restores parked Part before second story and final About with exact rich page files",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Bind two actual stories, create a rich Part before the second and an italic About page; Unbind, restart, Rebind and reopen both sheets."
+          ],
+          "assertions": [
+            "Exact owned order, parked Part/About file bytes, titles/rich prose and story contents are restored; no new IDs or normalized byte comparisons."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-036-B] Leafloom: unbind restart rebind restores parked Part before second story and final About with exact rich page files",
+          "testFile": "tests/neo-compat/candidate/library-identity-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Bind two actual stories, create a rich Part before the second and an italic About page; Unbind, restart, Rebind and reopen both sheets."
+          ],
+          "assertions": [
+            "Exact owned order, parked Part/About file bytes, titles/rich prose and story contents are restored; no new IDs or normalized byte comparisons."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Original Part position and back-page order return with both page texts intact.",
+        "driverActions": [
+          "Bind two actual stories, create a rich Part before the second and an italic About page; Unbind, restart, Rebind and reopen both sheets."
+        ],
+        "assertions": [
+          "Exact owned order, parked Part/About file bytes, titles/rich prose and story contents are restored; no new IDs or normalized byte comparisons."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed shared actual author UI, persisted owned IDs/full rich DTOs and independent saved file bytes through close/reload/reopen; closed synthetic seed preparation is explicit."
+      }
     },
     {
       "id": "NEO-037-A",
