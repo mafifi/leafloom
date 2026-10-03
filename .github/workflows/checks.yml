@@ -33,7 +33,7 @@ jobs:
       - run: pnpm check:ci
       - run: pnpm exec playwright install --with-deps chromium
       - name: Production headless author journeys
-        run: pnpm test:neo-candidate
+        run: pnpm test:neo-candidate --grep-invert 'Leafloom production performance:'
       - name: Retain actual browser results
         if: always()
         uses: actions/upload-artifact@v4
@@ -41,6 +41,36 @@ jobs:
           name: headless-author-journeys
           path: |
             .leafloom/ci/candidate-results.json
+            .leafloom/test-results/
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 14
+
+  writing-performance:
+    name: Native typing and durable save performance
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      LEAFLOOM_CANDIDATE_REPORT: .leafloom/ci/performance-results.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.20.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      # Fresh process and synthetic library: previous journey fixtures do not
+      # become background work in the measured writing workload.
+      - run: pnpm test:neo-candidate --grep 'Leafloom production performance:'
+      - name: Retain measured writing results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: writing-performance
+          path: |
+            .leafloom/ci/performance-results.json
             .leafloom/test-results/
           include-hidden-files: true
           if-no-files-found: ignore

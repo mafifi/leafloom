@@ -612,7 +612,7 @@ const CONNECTORS = new Set(
 // letters it covers, so the sample text names a Latin and a Cyrillic one:
 // a Russian title measured before its face arrived would not fill the line.
 const SAMPLE = 'Aя';
-const ready =
+const loadCoverFonts = () =>
   typeof document !== 'undefined' && document.fonts
     ? Promise.all(
         TEMPLATES.map((t) => document.fonts.load(`${t.weight} 20px "${t.family}"`, SAMPLE)),
@@ -620,6 +620,8 @@ const ready =
         .then(() => document.fonts.load('italic 900 20px "NEO Playfair"', SAMPLE))
         .catch(() => null)
     : Promise.resolve();
+const ready = loadCoverFonts();
+let providerReady: Promise<unknown> | undefined;
 
 const measureCtx = document.createElement('canvas').getContext('2d')!;
 function widthAt100(text: string, family: string, weight: number, italic: boolean) {
@@ -993,11 +995,13 @@ export {
 };
 export class PaintedCovers implements CoverProvider {
   async renderFull(raw: CoverMetadataValue) {
-    await ready;
+    await (providerReady ??= loadCoverFonts());
     return renderFull(CoverMetadata.parse(raw)).toDataURL('image/jpeg', 0.92);
   }
   async render(raw: CoverMetadataValue, image?: string) {
-    await ready;
+    // Provider calls begin after the composition root registers application CSS.
+    // Module evaluation can precede that registration in a cold browser load.
+    await (providerReady ??= loadCoverFonts());
     const metadata = CoverMetadata.parse(raw);
     const art = image ? await fitImage('image:' + metadata.id + ':' + image, image) : null;
     return CoverPresentation.parse(plan(metadata, art));
