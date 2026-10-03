@@ -3,7 +3,7 @@ import type { Page } from '@playwright/test';
 import { existingBook } from './book-fixture';
 import { persistedBook, persistedLibrary, privateStorageRoot } from './storage-probe';
 import { clickReferenceMenu } from '../reference/harness';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 const source = process.env.LEAFLOOM_PARITY_DRIVER === 'neo-reference';
 const mod = process.platform === 'darwin' ? 'Meta' : 'Control';
@@ -166,10 +166,17 @@ for (const mutation of ['text', 'chapter', 'toggle', 'language'] as const)
     });
     await c.driver.select(0, 0, 0);
     let completed = false;
+    let oldSpellId: number | undefined;
+    const fixtureRoot = path.resolve(privateStorageRoot(page), '../..');
+    const records = async () =>
+      JSON.parse(await readFile(path.join(fixtureRoot, 'intercepted-effects.json'), 'utf8')) as {
+        type: string;
+        payload: { channel: string; id?: number };
+      }[];
     if (source)
       await writeFile(
         path.join(path.resolve(privateStorageRoot(page), '../..'), '.neo-parity-host.json'),
-        JSON.stringify({ ipcDelays: { 'spell:check': { after: 1200 } } }),
+        JSON.stringify({ ipcLog: true, ipcDelays: { 'spell:check': { after: 1200 } } }),
       );
     else
       await page.route('**/__leafloom/host', async (route) => {
@@ -181,6 +188,24 @@ for (const mutation of ['text', 'chapter', 'toggle', 'language'] as const)
         await route.fulfill({ response });
       });
     await pass(page);
+    if (source) {
+      await expect
+        .poll(
+          async () =>
+            (await records()).filter(
+              (r) => r.type === 'ipc-start' && r.payload.channel === 'spell:check',
+            ).length,
+        )
+        .toBe(1);
+      oldSpellId = (await records()).find(
+        (r) => r.type === 'ipc-start' && r.payload.channel === 'spell:check',
+      )!.payload.id;
+      expect(oldSpellId).toBeDefined();
+      await writeFile(
+        path.join(fixtureRoot, '.neo-parity-host.json'),
+        JSON.stringify({ ipcLog: true }),
+      );
+    }
     if (mutation === 'text') {
       await c.driver.select(0, 0, 0, invented.length);
       await page.keyboard.insertText('hello');
@@ -190,7 +215,24 @@ for (const mutation of ['text', 'chapter', 'toggle', 'language'] as const)
     if (mutation === 'language') await language(page, 'fr');
     // Observe the full real delayed reply window; this is the declared asynchronous oracle.
     await page.waitForTimeout(1450);
-    if (mutation === 'chapter') await expect.poll(() => flags(page)).toEqual([invented]);
+    if (source && mutation === 'language') {
+      const completions = (await records()).filter(
+        (r) => r.type === 'ipc-complete' && r.payload.channel === 'spell:check',
+      );
+      expect(completions).toHaveLength(2);
+      expect(completions[0].payload.id).not.toBe(oldSpellId);
+      expect(completions[1].payload.id).toBe(oldSpellId);
+    }
+    if (source && mutation === 'language') {
+      await expect.poll(() => flags(page)).toEqual(['bonjour']);
+      test
+        .info()
+        .annotations.push({
+          type: 'source-characterization',
+          description:
+            'The completed newer French scan is overwritten by the older English reply; original paints bonjour under the persisted French dictionary. Leafloom must reject that old-language result and retain no flag.',
+        });
+    } else if (mutation === 'chapter') await expect.poll(() => flags(page)).toEqual([invented]);
     else await expect.poll(() => flags(page)).toEqual([]);
     if (source)
       expect(

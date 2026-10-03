@@ -141,6 +141,7 @@ childProcess.execFile=(file,args,...rest)=>{
  }
  return execFile(file,args,...rest);
 };
+let spellTraceSequence=0;
 const handle = ipcMain.handle.bind(ipcMain);
 ipcMain.handle = (channel, listener) => {
   if (['email:draft', 'cover:paint', 'update:check', 'update:install', 'update:openRelease'].includes(channel)) {
@@ -152,13 +153,13 @@ ipcMain.handle = (channel, listener) => {
     });
   }
   return handle(channel, async (...args)=>{
-    const config=hostConfig();const timing=config.ipcDelays?.[channel]??{};
-    if(config.ipcLog&&['chapter:read','chapter:write','book:readMeta','book:writeMeta','library:read','library:write','json:read','json:write','fullscreen:escape'].includes(channel))record('ipc-start',{channel,args:args.slice(1)});
+    const config=hostConfig();const timing=config.ipcDelays?.[channel]??{};const spellTraceId=channel==='spell:check'?++spellTraceSequence:undefined;
+    if(config.ipcLog&&['chapter:read','chapter:write','book:readMeta','book:writeMeta','library:read','library:write','json:read','json:write','fullscreen:escape','spell:check','spell:setLanguage'].includes(channel))record('ipc-start',{channel,...(spellTraceId?{id:spellTraceId}:{}),args:args.slice(1)});
     if(timing.before)await new Promise(resolve=>setTimeout(resolve,timing.before));
     if(config.ipcFailures?.[channel])throw new Error(config.ipcFailures[channel]);
     const result=await listener(...(persistenceBoundary ? persistenceBoundary.persistenceArguments(channel,args) : args));
     if(timing.after)await new Promise(resolve=>setTimeout(resolve,timing.after));
-    if(config.ipcLog&&['chapter:read','chapter:write','book:readMeta','book:writeMeta','library:read','library:write','json:read','json:write','fullscreen:escape'].includes(channel))record('ipc-complete',{channel,...(channel==='fullscreen:escape'?{result}: {})});
+    if(config.ipcLog&&['chapter:read','chapter:write','book:readMeta','book:writeMeta','library:read','library:write','json:read','json:write','fullscreen:escape','spell:check','spell:setLanguage'].includes(channel))record('ipc-complete',{channel,...(spellTraceId?{id:spellTraceId}:{}),...(channel==='fullscreen:escape'?{result}: {})});
     return result;
   });
 };
