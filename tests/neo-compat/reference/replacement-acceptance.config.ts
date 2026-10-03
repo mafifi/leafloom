@@ -22,6 +22,7 @@ export default defineConfig({
     '**/candidate/history-goals-markdown-closure.spec.ts',
     '**/candidate/library-pointer-closure.spec.ts',
     '**/candidate/spelling-closure.spec.ts',
+    '**/candidate/spelling-large-closure.spec.ts',
     '**/candidate/storage-text-refresh.spec.ts',
     '**/candidate/storage-refresh-races.spec.ts',
     '**/candidate/chapter-role-closure.spec.ts',
@@ -29,6 +30,8 @@ export default defineConfig({
     '**/reference/document-io.spec.ts',
     '**/reference/io-cover-edge.spec.ts',
     '**/reference/pdf-layout.spec.ts',
+    '**/reference/backup-startup.spec.ts',
+    '**/reference/chapter-edition-io.spec.ts',
   ],
   timeout: 60_000,
 });

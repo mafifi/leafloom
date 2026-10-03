@@ -23211,6 +23211,18 @@
             "Only coracao, excessão and previlégio are flagged; accepted compounds and stammers retain their exact author bytes."
           ],
           "driver": "browser"
+        },
+        {
+          "title": "[NEO-174-A] Leafloom: English Wh-what and repeated prefix stammers judge the final word while ordinary compounds retain rich author Undo",
+          "testFile": "tests/neo-compat/candidate/spelling-large-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Write English Wh-what, Wh-whut, repeated prefixes and ordinary compounds; change rich prose, Undo, save and reopen."
+          ],
+          "assertions": [
+            "English prefix stammers check the final word; ordinary compounds retain real dictionary checks; Undo and reopen preserve exact rich HTML."
+          ]
         }
       ],
       "referenceCases": [
@@ -23224,6 +23236,17 @@
           "assertions": [
             "Only coracao, excessão and previlégio are flagged; accepted compounds and stammers retain their exact author bytes."
           ]
+        },
+        {
+          "title": "[NEO-174-A] Leafloom: English Wh-what and repeated prefix stammers judge the final word while ordinary compounds retain rich author Undo",
+          "testFile": "tests/neo-compat/candidate/spelling-large-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Write English Wh-what, Wh-whut, repeated prefixes and ordinary compounds; change rich prose, Undo, save and reopen."
+          ],
+          "assertions": [
+            "English prefix stammers check the final word; ordinary compounds retain real dictionary checks; Undo and reopen preserve exact rich HTML."
+          ]
         }
       ],
       "oracle": {
@@ -23231,24 +23254,26 @@
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Fresh coherent canonical source/candidate reports containing every bound case are required before acceptance promotion.",
-        "The new paired Portuguese matrix does not exercise Wh-what; retain the existing candidate prefix case and add its corresponding source proof."
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "English branch supplements existing Portuguese proof; it does not alone establish every language policy."
       ],
       "acceptanceReview": {
         "inventoryThen": "regular hyphenated words still checked.",
         "driverActions": [
           "Use actual Format pass/language controls, trusted renderer shortcut delivery, native author input and flagged-word context menus against real private-fixture Hunspell.",
-          "Select Portuguese through the actual language menu and scan accented compounds plus E-eu and N-não."
+          "Select Portuguese through the actual language menu and scan accented compounds plus E-eu and N-não.",
+          "Write English Wh-what, Wh-whut, repeated prefixes and ordinary compounds; change rich prose, Undo, save and reopen."
         ],
         "assertions": [
           "Assert exact spelling decorations, actual dictionary requests, real suggestion replacement/history, durable global words/language and reload as specified by each listed test.",
-          "Only coracao, excessão and previlégio are flagged; accepted compounds and stammers retain their exact author bytes."
+          "Only coracao, excessão and previlégio are flagged; accepted compounds and stammers retain their exact author bytes.",
+          "English prefix stammers check the final word; ordinary compounds retain real dictionary checks; Undo and reopen preserve exact rich HTML."
         ],
         "unprovedClauses": [
-          "Fresh coherent canonical source/candidate reports containing every bound case are required before acceptance promotion.",
-          "The new paired Portuguese matrix does not exercise Wh-what; retain the existing candidate prefix case and add its corresponding source proof."
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "English branch supplements existing Portuguese proof; it does not alone establish every language policy."
         ],
-        "reviewScope": "Reviewed finite actual renderer actions with real private-fixture dictionaries and durable files. Hidden original menu callbacks and browser controls do not prove physical native OS menus; package conformance is not substituted for mounted proof."
+        "reviewScope": "Shared mounted author journey using actual dictionary requests and original/candidate owned persisted book bytes; no physical keyboard or OS menu claim."
       }
     },
     {
@@ -24349,16 +24374,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-180-B] Leafloom: actual hundred-thousand-word renderer scan cannot paint obsolete rich text after replacement and chapter switch",
+          "testFile": "tests/neo-compat/candidate/spelling-large-closure.spec.ts",
+          "report": "tests/neo-compat/candidate-results.json",
+          "driver": "browser",
+          "driverActions": [
+            "Open a real rich 100,000-word book; hold the actual final provider reply, replace the first chapter, switch to the second and release the obsolete reply."
+          ],
+          "assertions": [
+            "All 100,000 distinct authored words reach the real provider; only current connected flags remain; exact rich prose and Notes persist through reopen."
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-180-B] Leafloom: actual hundred-thousand-word renderer scan cannot paint obsolete rich text after replacement and chapter switch",
+          "testFile": "tests/neo-compat/candidate/spelling-large-closure.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Open a real rich 100,000-word book; hold the actual final provider reply, replace the first chapter, switch to the second and release the obsolete reply."
+          ],
+          "assertions": [
+            "All 100,000 distinct authored words reach the real provider; only current connected flags remain; exact rich prose and Notes persist through reopen."
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Source sends one 100,000-word request; candidate batches at most 10,000 words and can repeat batches after generation restart. Distinct coverage and stale-range safety are proved; identical payload shape is not claimed."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Only current second-chapter wrong text is highlighted, all highlight range endpoints remain connected and both exact prose texts survive stale worker replies.",
+        "driverActions": [
+          "Open a real rich 100,000-word book; hold the actual final provider reply, replace the first chapter, switch to the second and release the obsolete reply."
+        ],
+        "assertions": [
+          "All 100,000 distinct authored words reach the real provider; only current connected flags remain; exact rich prose and Notes persist through reopen."
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Source sends one 100,000-word request; candidate batches at most 10,000 words and can repeat batches after generation restart. Distinct coverage and stale-range safety are proved; identical payload shape is not claimed."
+        ],
+        "reviewScope": "Shared mounted author journey using actual dictionary requests and original/candidate owned persisted book bytes; no physical keyboard or OS menu claim."
+      }
     },
     {
       "id": "NEO-181-A",
@@ -35115,16 +35180,80 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "id": "NEO-233-A",
+          "title": "[NEO-233-A] actual startup ZIP retains fourteen UTC dates and exact readable author files with exclusions",
+          "testFile": "scripts/verify-host-backups.mjs",
+          "report": ".leafloom/evidence/closure-host-backups.json",
+          "evidenceKind": "host-startup-v1",
+          "driver": "node-sidecar-startup",
+          "section": "startupBackups",
+          "contractId": "backup:startup:retention",
+          "requiredCapabilities": [
+            "host-files",
+            "host-startup",
+            "host-clock"
+          ],
+          "driverActions": [
+            "Launch actual bundled Node sidecar under owned process-only UTC clock",
+            "Await real five-second startup backup timer",
+            "Relaunch same UTC day with no provider request"
+          ],
+          "assertions": [
+            "Four complete author files and library metadata are byte-exact in parsed ZIP",
+            "Only latest fourteen UTC archives remain",
+            "Backups Exports Finder and iCloud placeholders absent",
+            "Same-day archive SHA256 unchanged"
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-233-A] actual startup ZIP retains fourteen UTC dates and exact readable author files with exclusions",
+          "testFile": "tests/neo-compat/reference/backup-startup.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Launch pinned original Electron app under owned process-only UTC clock",
+            "Await real five-second startup backup timer",
+            "Relaunch same UTC day with no provider request"
+          ],
+          "assertions": [
+            "All source-format author files and library metadata are byte-exact in parsed ZIP",
+            "Only latest fourteen UTC archives remain",
+            "Backups Exports Finder and iCloud placeholders absent",
+            "Same-day archive SHA256 unchanged"
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": " one ZIP per UTC day, latest14 retained, Backups/Exports excluded along with Finder/iCloud placeholders; inspect archive prose and metadata.",
+        "driverActions": [
+          "Launch actual bundled Node sidecar under owned process-only UTC clock",
+          "Await real five-second startup backup timer",
+          "Relaunch same UTC day with no provider request"
+        ],
+        "assertions": [
+          "Four complete author files and library metadata are byte-exact in parsed ZIP",
+          "Only latest fourteen UTC archives remain",
+          "Backups Exports Finder and iCloud placeholders absent",
+          "Same-day archive SHA256 unchanged"
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+        ],
+        "reviewScope": "Actual staged sidecar process startup and real five-second timer; independently parsed archive CRC, paths and exact author bytes. Controlled UTC clock and marked private permissions fixture are explicit."
+      }
     },
     {
       "id": "NEO-233-B",
@@ -35205,16 +35334,80 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "id": "NEO-233-B",
+          "title": "[NEO-233-B] actual startup keeps same-day ZIP bytes and captures changed author files after UTC rollover",
+          "testFile": "scripts/verify-host-backups.mjs",
+          "report": ".leafloom/evidence/closure-host-backups.json",
+          "evidenceKind": "host-startup-v1",
+          "driver": "node-sidecar-startup",
+          "section": "startupBackups",
+          "contractId": "backup:startup:rollover",
+          "requiredCapabilities": [
+            "host-files",
+            "host-startup",
+            "host-clock"
+          ],
+          "driverActions": [
+            "Launch actual bundled Node sidecar at controlled UTC late day",
+            "Change real rich prose on private disk and relaunch same day",
+            "Relaunch next UTC day then relaunch that day again"
+          ],
+          "assertions": [
+            "First-day parsed ZIP retains initial exact author snapshot",
+            "Same-day ZIP remains byte-identical",
+            "Next-day parsed ZIP contains exact changed author snapshot once",
+            "Earlier snapshot remains unchanged"
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-233-B] actual startup keeps same-day ZIP bytes and captures changed author files after UTC rollover",
+          "testFile": "tests/neo-compat/reference/backup-startup.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Launch pinned original Electron app at controlled UTC late day",
+            "Change real rich prose on private disk and relaunch same day",
+            "Relaunch next UTC day then relaunch that day again"
+          ],
+          "assertions": [
+            "First-day parsed ZIP retains initial exact author snapshot",
+            "Same-day ZIP remains byte-identical",
+            "Next-day parsed ZIP contains exact changed author snapshot once",
+            "Earlier snapshot remains unchanged"
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "One real first-day ZIP remains unchanged and a second-day ZIP captures changed prose exactly once.",
+        "driverActions": [
+          "Launch actual bundled Node sidecar at controlled UTC late day",
+          "Change real rich prose on private disk and relaunch same day",
+          "Relaunch next UTC day then relaunch that day again"
+        ],
+        "assertions": [
+          "First-day parsed ZIP retains initial exact author snapshot",
+          "Same-day ZIP remains byte-identical",
+          "Next-day parsed ZIP contains exact changed author snapshot once",
+          "Earlier snapshot remains unchanged"
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+        ],
+        "reviewScope": "Actual staged sidecar process startup and real five-second timer; independently parsed archive CRC, paths and exact author bytes. Controlled UTC clock and marked private permissions fixture are explicit."
+      }
     },
     {
       "id": "NEO-234-A",
@@ -35288,16 +35481,77 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "id": "NEO-234-A",
+          "title": "[NEO-234-A] actual startup ZIP retains readable author files and reports a real permission-denied input",
+          "testFile": "scripts/verify-host-backups.mjs",
+          "report": ".leafloom/evidence/closure-host-backups.json",
+          "evidenceKind": "host-startup-v1",
+          "driver": "node-sidecar-startup",
+          "section": "startupBackups",
+          "contractId": "backup:startup:partial",
+          "requiredCapabilities": [
+            "host-files",
+            "host-startup",
+            "host-clock"
+          ],
+          "driverActions": [
+            "Deny permission on one private supplemental input and verify EACCES",
+            "Launch actual bundled Node sidecar and await real startup backup",
+            "Restore private input permissions after archive capture"
+          ],
+          "assertions": [
+            "Readable four author files and metadata remain exact in parsed ZIP",
+            "Permission-denied file is omitted",
+            "Parsed missed-file report records the actual EACCES input"
+          ]
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-234-A] actual startup ZIP retains readable author files and reports a real permission-denied input",
+          "testFile": "tests/neo-compat/reference/backup-startup.spec.ts",
+          "report": "tests/neo-compat/reference-results.json",
+          "driverActions": [
+            "Deny permission on one private supplemental input and verify EACCES",
+            "Launch pinned original Electron app and await real startup backup",
+            "Restore private input permissions after archive capture"
+          ],
+          "assertions": [
+            "Readable source-format author files and metadata remain exact in parsed ZIP",
+            "Permission-denied file is omitted",
+            "Parsed missed-file report records the actual EACCES input"
+          ]
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+        "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "backup retains readable books and missed-file report rather than abandoning entire daily backup.",
+        "driverActions": [
+          "Deny permission on one private supplemental input and verify EACCES",
+          "Launch actual bundled Node sidecar and await real startup backup",
+          "Restore private input permissions after archive capture"
+        ],
+        "assertions": [
+          "Readable four author files and metadata remain exact in parsed ZIP",
+          "Permission-denied file is omitted",
+          "Parsed missed-file report records the actual EACCES input"
+        ],
+        "unprovedClauses": [
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance.",
+          "Actual Node sidecar startup is proved; Rust launcher and physical desktop startup remain separate qualifications."
+        ],
+        "reviewScope": "Actual staged sidecar process startup and real five-second timer; independently parsed archive CRC, paths and exact author bytes. Controlled UTC clock and marked private permissions fixture are explicit."
+      }
     },
     {
       "id": "NEO-235-A",
