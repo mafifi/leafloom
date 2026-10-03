@@ -37,7 +37,7 @@ The user deleted the previous goal record. The revised goal was created on 3 Oct
 - [x] Bounded inventory/code review completed; confirmed omissions and regressions fixed in the commits below.
 - [x] Final full existing acceptance capture passes 469/469 on the settled implementation, with one worker and zero retries.
 - [x] Windows/Linux wake handling implemented last.
-- [ ] Updated package and final handover delivered within the deadline.
+- [x] Updated signed/notarized package and final handover delivered within the deadline.
 
 ## Implementation delivered
 
@@ -69,3 +69,11 @@ Fresh repository phases pass: policy, strict TypeScript/Svelte (zero errors/warn
 The full-run 100k-word/100-chapter case retains all 100 views: input-to-paint p50 **23.5ms**, p95 **42.1ms**, durable save **102.3ms**, open **666.1ms**. The 10k-word and dense 100k-word cases also pass the existing performance contract. This is a headless browser result; physical Windows/Linux resume observations remain unexecuted.
 
 Updated signed/notarized packaging follows this settled source. Clean-machine installation and real agent execution remain outside the revised goal.
+
+## Delivery, 12:31 UTC
+
+The production app and installer are available in `release/Leafloom-final-arm64-20261003.{app,dmg}`. Both are signed with Developer ID Application Mostafa Afifi (`QJJ98A74J8`), notarized with accepted submission `0c05a08c-24f2-41d9-b4c3-4c1bb3f40800`, stapled, and accepted by Gatekeeper. The package targets Apple silicon/macOS 14+, retains `org.mafifi.leafloom`, and bundles its Node runtime, fonts and dictionaries. Build/source receipts remain alongside the installer; earlier accepted packages are preserved. The build is bound to commit `86ac2dd`, containing runtime `19a9eef`; subsequent delivery documentation changes no runtime files.
+
+The matching committed source is archived as `release/Leafloom-final-20261003-source.tar.gz`; installation guidance is `release/Leafloom-final-arm64-20261003-README.md`. Fresh acceptance, CPU, build and signing logs are retained under `release/evidence`; earlier failed runs remain there separately. The assembled binary checks cover all six exports, real host/durable-checkpoint operations, dictionaries, bundled fonts and pre/post-startup image codecs without opening a foreground app.
+
+No concrete Leafloom regression remains in the existing full suite. Physical Windows/Linux sleep/resume is still an unexecuted OS validation, despite implemented actual wake hooks, passing Rust tests and pinned API compilation. Clean-machine installation and live agents remain excluded. The three previously recorded original NEO reference failures remain classified separately; no passing result was created by reproducing those defects or promoting evidence labels.
