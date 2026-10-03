@@ -110,6 +110,7 @@ const nodes: Record<string, NodeSpec> = {
   list_item: { ...block('li', 'paragraph block*'), defining: true },
   code_block: {
     ...block('pre', 'text*'),
+    attrs: { ...baseAttrs, codeWrapper: { default: true } },
     code: true,
     marks: '',
     defining: true,
@@ -117,10 +118,16 @@ const nodes: Record<string, NodeSpec> = {
       {
         tag: 'pre',
         preserveWhitespace: 'full',
-        getAttrs: (value) => readAttributes(element(value)),
+        getAttrs: (value) => {
+          const el = element(value);
+          return { ...readAttributes(el), codeWrapper: el.querySelector(':scope > code') !== null };
+        },
       },
     ],
-    toDOM: (node) => ['pre', writeAttributes(node.attrs), ['code', 0]],
+    toDOM: (node) =>
+      node.attrs.codeWrapper
+        ? ['pre', writeAttributes(node.attrs), ['code', 0]]
+        : ['pre', writeAttributes(node.attrs), 0],
   },
   horizontal_rule: { group: 'block', parseDOM: [{ tag: 'hr' }], toDOM: () => ['hr'] },
   text: { group: 'inline' },

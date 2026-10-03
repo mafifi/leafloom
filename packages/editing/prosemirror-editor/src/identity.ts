@@ -26,7 +26,14 @@ export function entries(doc: PMNode) {
   return found;
 }
 export function signature(node: PMNode) {
-  return bytesToHex(sha256(new TextEncoder().encode(JSON.stringify(baseNode(node).toJSON()))));
+  const value = baseNode(node).toJSON();
+  // Wrapper provenance preserves HTML syntax, not passage content. Excluding it
+  // retains passage identities written before the codec recorded plain PREs.
+  if (node.type.name === 'code_block' && value.attrs) {
+    const { codeWrapper: _wrapper, ...attributes } = value.attrs;
+    value.attrs = attributes;
+  }
+  return bytesToHex(sha256(new TextEncoder().encode(JSON.stringify(value))));
 }
 export function runs(fragment: Fragment): InlineContent[] {
   const out: InlineContent[] = [];
