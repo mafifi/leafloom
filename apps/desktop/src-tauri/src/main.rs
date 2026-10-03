@@ -1,3 +1,4 @@
+mod external_drop;
 mod native_menu;
 #[cfg(target_os="macos")]mod edit_menu;
 mod preferences;
@@ -567,19 +568,23 @@ async fn os_request(
                     };
                     #[cfg(not(target_os = "macos"))]
                     let value = {
-                        let text = clipboard
+                        let (text, html) = clipboard
                             .lock()
                             .ok()
                             .and_then(|mut value| {
                                 if value.is_none() {
                                     *value = arboard::Clipboard::new().ok();
                                 }
-                                value
-                                    .as_mut()
-                                    .and_then(|clipboard| clipboard.get_text().ok())
+                                value.as_mut().map(|clipboard| {
+                                    // arboard 3.6.1 reads the native HTML format on
+                                    // Windows/X11/Wayland. Absence keeps plain text.
+                                    let text = clipboard.get_text().unwrap_or_default();
+                                    let html = clipboard.get().html().ok();
+                                    (text, html)
+                                })
                             })
                             .unwrap_or_default();
-                        json!({"text":text,"html":null})
+                        json!({"text":text,"html":html})
                     };
                     let _ = sender.blocking_send(value);
                 })
@@ -1203,34 +1208,18 @@ fn main() {
             if webview.label() != "main" {
                 return;
             }
-            if let tauri::WebviewEvent::DragDrop(tauri::DragDropEvent::Drop { paths, .. }) = event {
+            if let tauri::WebviewEvent::DragDrop(tauri::DragDropEvent::Drop { paths, position }) = event {
                 if let Some(state) = webview.app_handle().try_state::<State>() {
+                    #[cfg(target_os = "windows")]
+                    let (space, scale) = {
+                        let Ok(scale) = webview.window().scale_factor() else { return; };
+                        (external_drop::CoordinateSpace::Physical, scale)
+                    };
+                    #[cfg(not(target_os = "windows"))]
+                    let (space, scale) = (external_drop::CoordinateSpace::Logical, 1.0);
                     if let Ok(mut grants) = state.grants.lock() {
-                        let selected: Vec<PathBuf> = paths
-                            .iter()
-                            .filter(|path| {
-                                let Ok(meta) = std::fs::symlink_metadata(path) else {
-                                    return false;
-                                };
-                                !meta.is_symlink()
-                                    && (meta.is_dir()
-                                        || path
-                                            .extension()
-                                            .and_then(|v| v.to_str())
-                                            .map(|v| {
-                                                ["docx", "txt", "md", "png", "jpg", "jpeg", "webp"]
-                                                    .contains(&v.to_ascii_lowercase().as_str())
-                                            })
-                                            .unwrap_or(false))
-                            })
-                            .cloned()
-                            .collect();
-                        for path in &selected {
-                            grants.insert(path.clone());
-                        }
-                        if !selected.is_empty() {
-                            let _ = webview
-                                .emit("leafloom:files-dropped", json!({ "paths": selected }));
+                        if let Some(drop) = external_drop::prepare_drop(paths, position.x, position.y, space, scale, &mut grants) {
+                            let _ = webview.emit("leafloom:files-dropped", drop);
                         }
                     }
                 }

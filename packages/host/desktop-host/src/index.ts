@@ -205,7 +205,22 @@ export type OsMethod = keyof typeof OsPayloads;
 export type OsPayload<M extends OsMethod> = z.input<(typeof OsPayloads)[M]>;
 export interface DesktopOS { request<M extends OsMethod>(method:M,payload:OsPayload<M>):Promise<unknown>; }
 export const FullscreenChangedSchema = z.strictObject({ fullscreen: z.boolean() });
-export const FilesDroppedSchema = z.strictObject({ paths: z.array(z.string().min(1)).max(1000) });
+export const DropPositionSchema = z.strictObject({
+  x: z.number().finite().min(0).max(1_000_000),
+  y: z.number().finite().min(0).max(1_000_000),
+});
+export const DropTargetSchema = z.discriminatedUnion('kind', [
+  z.strictObject({ kind: z.literal('book'), bookId: Id }),
+  z.strictObject({ kind: z.literal('shelf'), shelfId: z.string().min(1).max(128) }),
+]);
+export type DropTargetValue = z.infer<typeof DropTargetSchema>;
+/** Native positions use logical coordinates relative to the WebView client area. */
+export const FilesDroppedSchema = z.strictObject({
+  paths: z.array(z.string().min(1)).max(1000),
+  position: DropPositionSchema.optional(),
+  target: DropTargetSchema.optional(),
+});
+export type FilesDroppedValue = z.infer<typeof FilesDroppedSchema>;
 export const DocumentChangeSchema = z.strictObject({
   bookId: Id,
   versions: z.record(Name, z.string().regex(/^[0-9a-f]{64}$/)).optional(),

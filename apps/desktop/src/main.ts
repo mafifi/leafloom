@@ -1,3 +1,4 @@
+import { resolveExternalDrop } from './lib/external-drop';
 import { runtimeErrors } from './lib/runtime-errors';
 import { installWritingLifecycle } from './lib/background-lifecycle';
 import { installQuietChrome } from './lib/quiet-chrome';
@@ -106,7 +107,10 @@ void listenNative(
 
 void listenNative(
   'leafloom:files-dropped',
-  (files) => void vm.execute(() => vm.filesDropped(files)),
+  (files) => {
+    const drop = resolveExternalDrop(document, files);
+    void vm.execute(() => vm.filesDropped(drop));
+  },
 );
 if (import.meta.env.DEV && !window.__TAURI__) {
   const polling = setInterval(
