@@ -2440,6 +2440,11 @@ body.night .ol-part-name {
   border-radius: 1px;
   box-shadow: 0 0 8px rgba(201, 168, 106, 0.8);
 }
+.fidelity-notice {
+  font: 12px/1.5 var(--ui-font, sans-serif);
+  margin: 0 0 1rem;
+  opacity: 0.75;
+}
 #nav-list {
   position: relative;
 }

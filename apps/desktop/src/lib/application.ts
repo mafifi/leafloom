@@ -119,6 +119,7 @@ export type AppState = {
   view: 'library' | 'editor';
   panel: string;
   chapters: EditorPort['chapters'];
+  protectedChapterIds: string[];
   outlineRows: EditorPort['outlineRows'];
   contentsRows: ReturnType<EditorPort['contentsRows']>;
   darlings: (EditorPort['darlings'][number] & { preview: string })[];
@@ -190,6 +191,7 @@ export class Application {
     view: 'library',
     panel: 'manuscript',
     chapters: [],
+    protectedChapterIds: [],
     outlineRows: [],
     contentsRows: [],
     darlings: [],
@@ -227,6 +229,7 @@ export class Application {
   private hostRecoveryViewModel: HostRecoveryViewModel;
   private spellingViewModel: SpellingViewModel;
   private spellActiveSection: string | null = null;
+  private spellLanguageGeneration = 0;
   private documentOutputViewModel: DocumentOutputViewModel;
   private emailDraftViewModel: EmailDraftViewModel;
   private coverArtViewModel: CoverArtViewModel;
@@ -1368,6 +1371,9 @@ export class Application {
       positionLabel,
       todayWords: today ? today.end - today.start : 0,
       chapters: editor.chapters,
+      protectedChapterIds: editor.chapters
+        .filter((chapter) => !editor.supported(chapter.id))
+        .map((chapter) => chapter.id),
       outlineRows: editor.outlineRows,
       contentsRows: editor.contentsRows(Boolean(this.value.library.customChapterTitles)),
       darlings: editor.darlings.map((darling) => {
@@ -2636,6 +2642,22 @@ export class Application {
     ]);
   }
   async preference(key: string, value: unknown) {
+    if (key === 'spellLanguage') {
+      const generation = ++this.spellLanguageGeneration;
+      const selected = z.string().min(1).parse(value);
+      try {
+        z.record(z.string(), z.boolean()).parse(
+          await this.request('spellcheck', { words: [], language: selected || 'en' }),
+        );
+      } catch (error) {
+        if (generation === this.spellLanguageGeneration)
+          throw Error(translate(this.value.language, 'That dictionary would not load'), {
+            cause: error,
+          });
+        return;
+      }
+      if (generation !== this.spellLanguageGeneration) return;
+    }
     const next = Library.parse({ ...this.value.library, [key]: value });
     const saving = this.updateLibrary(next, false);
     this.editor?.configureTypography({

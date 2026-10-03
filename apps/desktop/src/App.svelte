@@ -704,6 +704,13 @@
                     }}
                   ></span>{/if}
               </header>
+              {#if $app.protectedChapterIds.includes(chapter.id)}
+                <p class="fidelity-notice" role="note">
+                  {t(
+                    'This chapter is read only to preserve its original formatting. You can export it and keep writing in other chapters.',
+                  )}
+                </p>
+              {/if}
               <div
                 class="chapter-body"
                 data-chid={chapter.id}

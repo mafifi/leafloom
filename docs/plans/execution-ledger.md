@@ -3,8 +3,8 @@
 ## Goal and clock
 
 - Root-owned goal: complete standalone Leafloom rewrite with faithful NEO author UX, extensible contracts, reviewed assistance, durable storage and actual candidate proof.
-- Repository: `/Users/afifim/Development/leafloom`; branch `feature/neo-replacement`; no remote, commit, push or publication authorized by this execution.
-- Authorized effort window: Root goal created 2026-10-02 16:56:40 UTC; the user extended it to twelve hours. Stop work by **2026-10-03 04:55 UTC** (05:55 Europe/London), before the 04:56:40 UTC budget boundary.
+- Repository: `/Users/afifim/Development/leafloom`; branch `feature/neo-replacement`; local implementation commits retained. No remote push or publication authorized by this execution.
+- Root goal created 2026-10-02 16:56:40 UTC. The first twelve-hour effort ended at the requested stop. The user resumed unfinished replacement work on 2026-10-03 with “Set a goal to finish this then please and go”; the earlier stop no longer applies. Goal backend still reports paused and rejects a duplicate unfinished goal; its available mutation cannot resume it. Implementation continues under the user's explicit instruction.
 - NEO oracle: commit `ed090e9988d446daf1ebbde91bcebc13b599909b`, 217 pinned files in `tests/reference/neo`.
 
 ## State
@@ -282,3 +282,12 @@ The full candidate suite passes352/352 in458.032seconds without failed/skipped/f
 Measured browser typing-to-frame p95 is30.9ms at10,000words,29.0ms at100,000words/100chapters and22.6ms at100,000words/4,000paragraphs. Actual open takes410.2/524.0/990.8ms; receipt61.0/94.3/133.9ms; all mounted views remain retained. The attached reports and concise summary are preserved under ignored `release/evidence`.
 
 The complete parity gate remains4/444 with1010 unmet checks. The304-feature inventory and full444-scenario requirement remain intact. Passing352 production journeys is preview evidence; it does not complete the replacement goal. All tracked source, tests, registry, configuration, scripts and documentation freeze here for the final source-bound macOS package. Further assembly and discussion material belongs under ignored `release/`.
+
+## 2026-10-03 — replacement closure resumed
+
+- Plan: `docs/plans/2026-10-03-replacement-closure.md`. Complete 444-scenario acceptance remains required. Previous sealed packages/receipts remain historical and unchanged.
+- Navigation implementation commit `f66c5e5`: atomic indexed entry creation, all insertion kinds, source-compatible proximity reveal, native pointer reorder and cancellation through one editor history. Provider RED 2 failures -> 33/33 pass; mounted absent-controls RED -> 19/19 source and candidate navigation journeys. Headless navigation/chapter-menu/keyboard regressions 42/42 pass. CPU 539 pass and 3 optional native-codec skips; strict TypeScript/Svelte and 15-package policy pass.
+- Navigation cases NEO-059-A/B and NEO-061-A/B are bound as candidate-authored, awaiting coherent refreshed reports and final clause review. No full-goal completion claim.
+- Dictionary failure and stale-choice VM tests reproduced premature preference persistence. Loading now precedes preference/typography changes; an older reply cannot overwrite a newer choice. The real provider rejects an unavailable dictionary; delayed real-host replies and an explicit failed-host response test application ordering separately from missing asset packaging.
+- Fidelity notice mounted RED -> GREEN: unsupported exact chapter bytes stay protected, neighbouring rich writing remains editable, and the reason survives reopen. Spelling/fidelity browser regressions 26/26 pass, including all thirteen real bundled dictionaries.
+- These changes invalidate previous production fingerprints; the final batch must rebuild host/frontend and refresh complete source/candidate/native evidence.
