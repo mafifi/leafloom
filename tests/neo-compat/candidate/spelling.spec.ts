@@ -208,6 +208,9 @@ test('[NEO-175-A] Leafloom: actual flagged-word context menu offers disabled no-
   await page.locator('.chapter-body p').last().click({ button: 'right' });
   await expect(page.getByRole('menu')).toHaveCount(0);
   await page.keyboard.press('Escape');
+  await expect(page.locator('#book')).toBeHidden();
+  await c.driver.selectBook(c.title);
+  await expect.poll(() => flags(page)).toEqual(['qzxvplmnolearn']);
   await rightClickFlag(page, 'qzxvplmnolearn');
   await expect(page.getByRole('menuitem', { name: 'No suggestions', exact: true })).toBeDisabled();
   const rect = await page.getByRole('menu').boundingBox(),

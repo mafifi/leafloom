@@ -34,7 +34,19 @@ The user deleted the previous goal record. The revised goal was created on 3 Oct
 
 ## Status
 
-- [ ] Existing inventory reviewed against production; actual omissions fixed.
+- [x] Bounded inventory/code review completed; confirmed omissions and regressions fixed in the commits below.
 - [ ] Existing acceptance run and genuine regressions resolved.
 - [ ] Windows/Linux wake handling implemented last.
 - [ ] Updated package and final handover delivered within the deadline.
+
+## Implementation delivered
+
+| Owner | Change | Commit |
+|---|---|---|
+| ProseMirror surfaces | Preserve modified Tab and global fullscreen shortcut ownership, including code blocks | `aa49b9a` |
+| Host/library and publication formats | Isolate malformed book folders; source-compatible TXT layout, anonymous attribution and Linux font aliases | `4624c6d` |
+| Application and Svelte Views | Saved ordinary Escape, fullscreen and chapter shortcuts; zoom controls and pointer wheel; system contrast; unpinned pane lifetime; publication focus; visible shelf cover work; stable drag identity; content-bound spelling replies | `a1e4812` |
+| Application persistence | Background zoom persistence retains menus; preference failure cannot block manuscript checkpoint | `6598981` |
+| Existing acceptance fixture | Runtime log assertions retain earlier rows and check the new private failure records | `a3d7726` |
+
+Fresh repository checks at `6598981`: 74 CPU test files pass, 608 tests pass, three existing optional codec cases skip; repository policy, strict TypeScript/Svelte and the default production build pass. Full existing 469-case headless acceptance is running against the frozen implementation. The earlier 462/469 baseline failures supplied the concrete regressions; no scenario-count promotion establishes completion.
