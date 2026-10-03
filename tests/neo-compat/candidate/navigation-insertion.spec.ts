@@ -138,10 +138,11 @@ for (const [kind, label, at] of [
     const saved = await persistedBook(page, fixture.title);
     expect(saved.chapters).toHaveLength(3);
     expect(saved.metadata.chapterKinds?.[saved.chapters[at].id]).toBe(kind);
-    expect(saved.chapters.filter((_, i) => i !== at).map((c) => c.html)).toEqual([
-      '<p>First <b>rich</b> story.</p>',
-      '<p>Second <i>rich</i> story.</p>',
-    ]);
+    expect(
+      saved.chapters
+        .filter((_: unknown, i: number) => i !== at)
+        .map((c: { html: string }) => c.html),
+    ).toEqual(['<p>First <b>rich</b> story.</p>', '<p>Second <i>rich</i> story.</p>']);
     await fixture.driver.selectBook(fixture.title);
     await expect(page.locator('.chapter').nth(at)).toHaveClass(new RegExp(`kind-${kind}`));
   });
@@ -163,7 +164,7 @@ for (const label of ['Copyright', 'Part'])
     await expect(page.locator('.chapter')).toHaveCount(2);
     await fixture.driver.shelf();
     const saved = await persistedBook(page, fixture.title);
-    expect(saved.chapters.map((c) => c.id)).toEqual(['ch-1', 'ch-2']);
+    expect(saved.chapters.map((c: { id: string }) => c.id)).toEqual(['ch-1', 'ch-2']);
     expect(saved.chapters[0].html).toBe('<p>First <b>rich</b> story.</p>');
     expect(Object.values(saved.metadata.chapterKinds ?? {})).not.toContain(label.toLowerCase());
   });

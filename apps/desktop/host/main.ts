@@ -1,11 +1,10 @@
 import { isAbsolute } from 'node:path';
 import { createInterface } from 'node:readline';
-import { CoverArtProvider,CoverProviderError } from './cover-art.ts';
+import { CoverArtProvider } from './cover-art.ts';
 import { BackupProvider } from './backups.ts';
 import { LibraryHost } from './library.ts';
-import { PDFExportError } from './pdf-glyphs.ts';
+import { hostErrorCode } from './error-code.ts';
 import { LifecycleError } from '@leafloom/editor-contracts';
-import { ZodError } from 'zod';
 import {installHostFatalLogging} from './fatal-errors.ts';
 const root = process.env.LEAFLOOM_LIBRARY_ROOT;
 if (!root || !isAbsolute(root)) throw new Error('Library root required');
@@ -61,14 +60,7 @@ for await (const line of lines) {
       }
       process.stdout.write(JSON.stringify({ id, ok: true, value }) + '\n');
     } catch (e) {
-      const code =
-        e instanceof PDFExportError ? e.code : e instanceof CoverProviderError ? e.code : e instanceof LifecycleError
-          ? e.code
-          : e instanceof ZodError || (e instanceof Error && e.message === 'INVALID')
-            ? 'INVALID'
-            : (e as NodeJS.ErrnoException).code === 'ENOSPC'
-              ? 'DISK_FULL'
-              : 'DISK_ERROR';
+      const code = hostErrorCode(e);
       process.stderr.write(JSON.stringify({ event: 'host.failure', code }) + '\n');
       process.stdout.write(JSON.stringify({ id, ok: false, code }) + '\n');
     }

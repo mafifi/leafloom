@@ -1417,3 +1417,81 @@ it('imports a later valid dropped manuscript after malformed DOCX without alteri
     await f.close();
   }
 });
+
+it('a positioned cover drop updates its closed target while another book stays open', async () => {
+  const f = await fixture();
+  try {
+    await f.vm.onboard('Writer', 'pantser');
+    const shelf = get(f.vm.state).library.shelves[0].id;
+    await f.vm.newBook(shelf, 'novel', 'Cover target');
+    const target = f.vm.editor!.metadata.id;
+    await f.vm.closeBook();
+    await f.vm.newBook(shelf, 'novel', 'Current writing');
+    f.vm.createChapter();
+    f.vm.editor!.select(f.vm.editor!.chapters[0].id, 1);
+    f.vm.editor!.insert('Keep my writing and selection.');
+    const current = f.vm.editor!.metadata.id;
+    const checkpoint = f.vm.editor!.checkpoint();
+    const selection = f.vm.editor!.state.selection.toJSON();
+    const image = join(f.provider.root, 'drop-cover.png');
+    await writeFile(
+      image,
+      Buffer.from(
+        'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aN4sAAAAASUVORK5CYII=',
+        'base64',
+      ),
+    );
+    await f.vm.filesDropped({
+      paths: [image],
+      position: { x: 200, y: 100 },
+      target: { kind: 'book', bookId: target },
+    });
+    expect(await f.provider.request('readCover', { bookId: target })).not.toBeNull();
+    expect(await f.provider.request('readCover', { bookId: current })).toBeNull();
+    expect((await f.provider.request('readBookMeta', { bookId: target })).coverMode).toBe('image');
+    expect(f.vm.editor!.checkpoint()).toEqual(checkpoint);
+    expect(f.vm.editor!.state.selection.toJSON()).toEqual(selection);
+    // Background, stale and shelf-only targets never acquire authority over the open book.
+    for (const payload of [
+      { paths: [image], position: { x: 900, y: 900 } },
+      {
+        paths: [image],
+        position: { x: 200, y: 100 },
+        target: { kind: 'book', bookId: 'missing-book' },
+      },
+      { paths: [image], position: { x: 200, y: 100 }, target: { kind: 'shelf', shelfId: shelf } },
+    ])
+      await f.vm.filesDropped(payload);
+    expect(await f.provider.request('readCover', { bookId: current })).toBeNull();
+    expect(f.vm.editor!.checkpoint()).toEqual(checkpoint);
+  } finally {
+    await f.close();
+  }
+});
+
+it('a positioned manuscript drop imports into the chosen shelf rather than the first shelf', async () => {
+  const f = await fixture();
+  try {
+    await f.vm.onboard('Writer', 'pantser');
+    const library = await f.provider.request('readLibrary', {});
+    const shelf = { ...library.shelves[0], id: 'second-shelf', name: 'Dropped here', bookIds: [] };
+    await f.provider.request('writeLibrary', {
+      library: { ...library, shelves: [...library.shelves, shelf] },
+    });
+    await f.vm.initialize();
+    const source = join(f.provider.root, 'chosen-shelf.txt');
+    const original = 'Chapter One\n\nChosen shelf writing.\n';
+    await writeFile(source, original);
+    await f.vm.filesDropped({
+      paths: [source],
+      position: { x: 100, y: 400 },
+      target: { kind: 'shelf', shelfId: shelf.id },
+    });
+    const durable = await f.provider.request('readLibrary', {});
+    expect(durable.shelves[0].bookIds).toEqual([]);
+    expect(durable.shelves[1].bookIds).toEqual([get(f.vm.state).books[0].id]);
+    expect(await readFile(source, 'utf8')).toBe(original);
+  } finally {
+    await f.close();
+  }
+});

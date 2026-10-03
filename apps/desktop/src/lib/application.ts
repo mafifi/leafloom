@@ -1551,7 +1551,27 @@ export class Application {
       this.timer = null;
     }
     this.rememberReadingPosition();
-    await this.session?.flush();
+    try {
+      await this.session?.flush();
+    } catch (error) {
+      // A failed durable write remains dirty. Log only a bounded category;
+      // host messages, file paths and author content never enter diagnostics.
+      if (
+        error instanceof Error &&
+        ['DISK_ERROR', 'DISK_FULL', 'SAVE_UNCERTAIN'].includes(error.message)
+      ) {
+        try {
+          await this.request('reportRuntimeError', {
+            source: 'host',
+            code: 'UNEXPECTED_RUNTIME',
+            at: new Date().toISOString(),
+          });
+        } catch {
+          /* diagnostics must not replace the original save failure */
+        }
+      }
+      throw error;
+    }
     this.patch({ dirty: this.session?.dirty ?? false });
   }
   closeBook(save = true): Promise<void> {
@@ -1832,18 +1852,41 @@ export class Application {
     await this.platform?.showBookFolder?.(id);
   }
   async filesDropped(raw: unknown) {
-    const { paths } = FilesDroppedSchema.parse(raw);
+    const { paths, position, target } = FilesDroppedSchema.parse(raw);
+    // A DOM target identifies intent, not authority. Keep the author's identity
+    // and target fixed while host replies are pending, then validate live membership.
+    const authorId = this.value.library.currentAuthorId;
+    const targetShelf = () => {
+      if (this.value.library.currentAuthorId !== authorId) return undefined;
+      return this.value.library.shelves.find(
+        (shelf) =>
+          shelf.authorId === authorId &&
+          (target?.kind === 'shelf'
+            ? shelf.id === target.shelfId
+            : target?.kind === 'book'
+              ? shelf.bookIds.includes(target.bookId) &&
+                this.value.books.some((book) => book.id === target.bookId)
+              : true),
+      );
+    };
+    const originalOpenBook = this.value.book?.id;
     let imported = 0;
     let failed = 0;
     for (const source of paths) {
       try {
+        const shelf = targetShelf();
+        if (!shelf) throw Error('DROP_TARGET_UNAVAILABLE');
         if (/\.(?:png|jpe?g|webp)$/i.test(source)) {
-          if (!this.value.book) {
-            this.patch({ hint: 'Open a book before adding a cover image' });
-            continue;
-          }
-          await this.request('setCover', { bookId: this.value.book.id, source });
-          await this.updateCoverMetadata(this.value.book.id, {
+          const bookId =
+            target?.kind === 'book'
+              ? target.bookId
+              : !position && !target && this.value.book?.id === originalOpenBook
+                ? originalOpenBook
+                : undefined;
+          if (!bookId || !shelf.bookIds.includes(bookId)) throw Error('DROP_TARGET_UNAVAILABLE');
+          if (this.value.book?.id === bookId && !this.writable()) throw Error('READ_ONLY');
+          await this.request('setCover', { bookId, source });
+          await this.updateCoverMetadata(bookId, {
             coverImage: 'cover.json',
             coverMode: 'image',
           });
@@ -1857,10 +1900,10 @@ export class Application {
           ),
         );
         this.patch({ books: [...this.value.books, metadata] });
-        const shelf = this.value.library.shelves.find(
-          (s) => s.authorId === this.value.library.currentAuthorId,
-        );
-        if (shelf) await this.moveBook(metadata.id, shelf.id);
+        // Never move the imported book into a different author or destination
+        // if the library changed while the import was being decoded.
+        if (targetShelf()?.id !== shelf.id) throw Error('DROP_TARGET_UNAVAILABLE');
+        await this.moveBook(metadata.id, shelf.id);
         imported++;
       } catch {
         failed++;

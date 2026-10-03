@@ -2,6 +2,7 @@ import {defineConfig,type Plugin} from 'vite';
 import {svelte} from '@sveltejs/vite-plugin-svelte';
 import {resolve} from 'node:path';
 import {LibraryHost} from './host/library';
+import {hostErrorCode} from './host/error-code';
 import {readFile} from 'node:fs/promises';
 import {developmentRequestError,readDevelopmentJSON} from './development/request';
 function fixtureHost():Plugin {
@@ -19,7 +20,7 @@ function fixtureHost():Plugin {
    try{
     const {method,payload,traceparent}=await readDevelopmentJSON(req) as {method:string;payload:unknown;traceparent?:string};const value=await host.request(method,payload,traceparent);
     res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,value}));
-   }catch(error){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:false,code:error instanceof Error?error.message:'DISK_ERROR'}));}
+   }catch(error){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:false,code:hostErrorCode(error)}));}
   });
  }};
 }
