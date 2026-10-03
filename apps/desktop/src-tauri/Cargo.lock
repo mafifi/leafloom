@@ -2517,6 +2517,7 @@ dependencies = [
  "block2",
  "dirs",
  "font-kit",
+ "gio",
  "image",
  "keyring",
  "libc",

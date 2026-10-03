@@ -42,4 +42,7 @@ default = []
 native-test = ["dep:tauri-plugin-wdio", "dep:tauri-plugin-wdio-webdriver"]
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows-sys = { version = "=0.61.2", features = ["Win32_Globalization"] }
+windows-sys = { version = "=0.61.2", features = ["Win32_Globalization", "Win32_System_Power", "Win32_UI_WindowsAndMessaging"] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+gio = "=0.18.4"

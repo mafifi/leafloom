@@ -71,6 +71,8 @@ impl Service {
 }
 #[cfg(test)]mod tests{
  use super::*;
+ #[test]fn wake_filters_only_actual_resume(){assert!(windows_resume(18));for event in [4,7,0,u32::MAX]{assert!(!windows_resume(event));}assert!(linux_resume("PrepareForSleep",Some(false)));assert!(!linux_resume("PrepareForSleep",Some(true)));assert!(!linux_resume("PrepareForSleep",None));assert!(!linux_resume("Other",Some(false)));}
+ #[test]fn wake_rejects_stopped_and_previous_connection_callbacks(){assert!(wake_current(true,2,2));assert!(!wake_current(false,2,2));assert!(!wake_current(true,3,2));}
  #[test]fn empty_configuration_stays_disabled(){assert!(!configured(None));assert!(!configured(Some(&json!({"pubkey":"","endpoints":[]}))));}
  #[test]fn unconfigured_service_never_claims_installable_update(){let s=Service::new(Path::new("."),false).unwrap();assert_eq!(s.status(),disabled());assert!(s.state.lock().unwrap().pending.is_none());}
  #[test]fn fixture_rejects_remote_endpoint_and_missing_bundle(){let root=std::env::temp_dir().join(format!("leafloom-updater-{}",uuid::Uuid::new_v4()));std::fs::create_dir_all(&root).unwrap();std::fs::write(root.join(".leafloom-fixture"),"").unwrap();let value=Fixture{endpoint:"https://example.com/update".into(),pubkey:"fixture".into(),executable:root.join("missing")};assert!(validate_fixture(&root,value).is_err());std::fs::remove_dir_all(root).unwrap();}
@@ -87,5 +89,81 @@ mod wake {
  pub fn start(app:tauri::AppHandle){stop();let center=NSWorkspace::sharedWorkspace().notificationCenter();let callback=block2::RcBlock::new(move |_|{let _=app.emit("leafloom:update-wake",());});let token=unsafe{center.addObserverForName_object_queue_usingBlock(Some(NSWorkspaceDidWakeNotification),None,Some(&NSOperationQueue::mainQueue()),&callback)};OBSERVER.with(|value|*value.borrow_mut()=Some(token));}
  pub fn stop(){OBSERVER.with(|value|{if let Some(token)=value.borrow_mut().take(){let center=NSWorkspace::sharedWorkspace().notificationCenter();unsafe{center.removeObserver(AsRef::<objc2::runtime::AnyObject>::as_ref(&*token));}}});}
 }
-pub fn start_wake(app:tauri::AppHandle){#[cfg(target_os="macos")]wake::start(app);#[cfg(not(target_os="macos"))]let _=app;}
-pub fn stop_wake(){#[cfg(target_os="macos")]wake::stop();}
+// Shared exact OS-event predicates keep suspend and interactive-resume duplicates out.
+#[cfg(any(target_os="windows",test))]
+fn windows_resume(event:u32)->bool {event==18}
+#[cfg(any(target_os="linux",test))]
+fn linux_resume(member:&str,sleeping:Option<bool>)->bool {member=="PrepareForSleep"&&sleeping==Some(false)}
+#[cfg(any(target_os="linux",test))]
+fn wake_current(active:bool,current:u64,observed:u64)->bool {active&&current==observed}
+#[cfg(any(target_os="windows",target_os="linux"))]
+fn wake_unavailable(){eprintln!("{{\"event\":\"update.wake-unavailable\",\"code\":\"UPDATE_WAKE_UNAVAILABLE\"}}");}
+
+#[cfg(target_os="windows")]
+mod platform_wake {
+ use super::*;
+ use std::sync::OnceLock;
+ use windows_sys::Win32::{System::Power::{PowerRegisterSuspendResumeNotification,PowerUnregisterSuspendResumeNotification,DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS},UI::WindowsAndMessaging::DEVICE_NOTIFY_CALLBACK};
+ // Process-lifetime context: even an already-running OS callback cannot dereference freed data.
+ struct Observer {app:Option<tauri::AppHandle>,registration:usize}
+ static OBSERVER:OnceLock<Mutex<Observer>>=OnceLock::new();
+ fn observer()->&'static Mutex<Observer>{OBSERVER.get_or_init(||Mutex::new(Observer{app:None,registration:0}))}
+ unsafe extern "system" fn callback(_: *const std::ffi::c_void,event:u32,_: *const std::ffi::c_void)->u32 {
+  let _=std::panic::catch_unwind(||{if windows_resume(event){if let Ok(state)=observer().lock(){if let Some(app)=&state.app{let _=app.emit("leafloom:update-wake",());}}}});0
+ }
+ pub fn start(app:tauri::AppHandle){
+  stop();if let Ok(mut state)=observer().lock(){state.app=Some(app);}
+  let params=DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS{Callback:Some(callback),Context:std::ptr::null_mut()};let mut handle=std::ptr::null_mut();
+  let result=unsafe{PowerRegisterSuspendResumeNotification(DEVICE_NOTIFY_CALLBACK,(&params as *const DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS).cast_mut().cast(),&mut handle)};
+  if result!=0{if let Ok(mut state)=observer().lock(){state.app=None;}wake_unavailable();return;}
+  if let Ok(mut state)=observer().lock(){state.registration=handle as usize;}
+ }
+ pub fn stop(){
+  let registration=observer().lock().map(|mut state|{state.app=None;std::mem::take(&mut state.registration)}).unwrap_or(0);
+  // Never hold the callback mutex while unregister waits on the OS.
+  if registration!=0&&unsafe{PowerUnregisterSuspendResumeNotification(registration as isize)}!=0{wake_unavailable();}
+ }
+}
+
+#[cfg(target_os="linux")]
+mod platform_wake {
+ use super::*;
+ use std::{cell::RefCell,rc::{Rc,Weak},sync::{Arc,atomic::AtomicU64}};
+ use gio::{glib,prelude::*};
+ struct Observer {app:tauri::AppHandle,active:Arc<AtomicBool>,generation:Arc<AtomicU64>,cancel:gio::Cancellable,connection:Option<gio::DBusConnection>,proxy:Option<gio::DBusProxy>,signal:Option<glib::SignalHandlerId>,closed:Option<glib::SignalHandlerId>,retry:Option<glib::SourceId>}
+ thread_local!{static OBSERVER:RefCell<Option<Rc<RefCell<Observer>>>>=const{RefCell::new(None)};}
+ fn active(state:&Weak<RefCell<Observer>>)->Option<Rc<RefCell<Observer>>>{state.upgrade().filter(|s|s.borrow().active.load(Ordering::SeqCst))}
+ fn disconnect(state:&mut Observer){
+  if let Some(proxy)=state.proxy.take(){if let Some(id)=state.signal.take(){proxy.disconnect(id);}}
+  if let Some(connection)=state.connection.take(){if let Some(id)=state.closed.take(){connection.disconnect(id);}}
+ }
+ fn retry(state:&Rc<RefCell<Observer>>){
+  wake_unavailable();let mut value=state.borrow_mut();if !value.active.load(Ordering::SeqCst)||value.retry.is_some(){return;}
+  let weak=Rc::downgrade(state);value.retry=Some(glib::timeout_add_local_once(Duration::from_secs(30),move||{if let Some(state)=active(&weak){state.borrow_mut().retry=None;connect(&state);}}));
+ }
+ fn connect(state:&Rc<RefCell<Observer>>){
+  let generation=state.borrow().generation.fetch_add(1,Ordering::SeqCst).wrapping_add(1);
+  let weak=Rc::downgrade(state);let cancel=state.borrow().cancel.clone();
+  gio::bus_get(gio::BusType::System,Some(&cancel),move|result|{
+   let Some(state)=active(&weak).filter(|s|s.borrow().generation.load(Ordering::SeqCst)==generation)else{return;};let connection=match result{Ok(value)=>value,Err(_)=>{retry(&state);return;}};
+   // Loss of the system bus must not terminate a writing application.
+   connection.set_exit_on_close(false);
+   let weak_closed=Rc::downgrade(&state);
+   let closed=connection.connect_local("closed",false,move |_|{if let Some(state)=active(&weak_closed).filter(|s|s.borrow().generation.load(Ordering::SeqCst)==generation){{let mut value=state.borrow_mut();value.generation.fetch_add(1,Ordering::SeqCst);disconnect(&mut value);}retry(&state);}None});
+   {let mut value=state.borrow_mut();value.connection=Some(connection.clone());value.closed=Some(closed);}
+   let cancel=state.borrow().cancel.clone();let weak=Rc::downgrade(&state);
+   gio::DBusProxy::new(&connection,gio::DBusProxyFlags::DO_NOT_LOAD_PROPERTIES|gio::DBusProxyFlags::DO_NOT_AUTO_START,None,Some("org.freedesktop.login1"),"/org/freedesktop/login1","org.freedesktop.login1.Manager",Some(&cancel),move|result|{
+    let Some(state)=active(&weak).filter(|s|s.borrow().generation.load(Ordering::SeqCst)==generation)else{return;};let proxy=match result{Ok(value)=>value,Err(_)=>{disconnect(&mut state.borrow_mut());retry(&state);return;}};
+    let (app,live,epoch)={let value=state.borrow();(value.app.clone(),Arc::downgrade(&value.active),Arc::downgrade(&value.generation))};
+    // GDBusProxy tracks service owner changes; reject queued signals from a previous owner.
+    let signal=proxy.connect_g_signal(move|proxy,sender,member,parameters|{if live.upgrade().zip(epoch.upgrade()).is_some_and(|(live,epoch)|wake_current(live.load(Ordering::SeqCst),epoch.load(Ordering::SeqCst),generation))&&sender.is_some()&&proxy.name_owner().as_deref()==sender&&linux_resume(member,parameters.get::<(bool,)>().map(|v|v.0)){let _=app.emit("leafloom:update-wake",());}});
+    if proxy.name_owner().is_none(){wake_unavailable();}
+    let mut value=state.borrow_mut();value.signal=Some(signal);value.proxy=Some(proxy);
+   });
+  });
+ }
+ pub fn start(app:tauri::AppHandle){stop();let state=Rc::new(RefCell::new(Observer{app,active:Arc::new(AtomicBool::new(true)),generation:Arc::new(AtomicU64::new(0)),cancel:gio::Cancellable::new(),connection:None,proxy:None,signal:None,closed:None,retry:None}));OBSERVER.with(|v|*v.borrow_mut()=Some(state.clone()));connect(&state);}
+ pub fn stop(){OBSERVER.with(|v|{if let Some(state)=v.borrow_mut().take(){let mut value=state.borrow_mut();value.active.store(false,Ordering::SeqCst);value.cancel.cancel();if let Some(source)=value.retry.take(){source.remove();}disconnect(&mut value);}});}
+}
+pub fn start_wake(app:tauri::AppHandle){#[cfg(target_os="macos")]wake::start(app);#[cfg(any(target_os="windows",target_os="linux"))]platform_wake::start(app);#[cfg(not(any(target_os="macos",target_os="windows",target_os="linux")))]let _=app;}
+pub fn stop_wake(){#[cfg(target_os="macos")]wake::stop();#[cfg(any(target_os="windows",target_os="linux"))]platform_wake::stop();}
