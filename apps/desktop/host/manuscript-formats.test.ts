@@ -127,6 +127,18 @@ it('PDF embeds Unicode font mappings and title/chapter pages; text renderers rem
       expect(extracted.stdout).toContain('Привет');
       expect(extracted.stdout).toContain('Closing words.');
     }
+    f.opened.book.metadata.subtitle = 'Subtitle retained.';
+    f.opened.book.metadata.author = '';
+    const plain = (await renderManuscript(f.opened, 'txt')).toString();
+    expect(plain).toMatch(/^RIVER & STONE\nSubtitle retained\.\nby Anonymous\n\n\n/);
+    expect(plain).toContain('    Καλημέρα\nПривет\n\n');
+    expect(plain).toContain('\n***\n\n');
+    for (const format of ['html', 'docx', 'epub', 'pdf'] as const) {
+      const bytes = await renderManuscript(f.opened, format);
+      const text = format === 'pdf' ? spawnSync('pdftotext', ['-', '-'], {input:bytes,encoding:'utf8'}).stdout : format === 'html' ? bytes.toString() : (await (await JSZip.loadAsync(bytes)).file(format === 'docx' ? 'word/document.xml' : 'OEBPS/title.xhtml')!.async('string'));
+      expect(text).toContain('Anonymous');
+    }
+    expect(f.opened.book.metadata.author).toBe('');
     for (const format of ['txt', 'md', 'html'] as const) {
       const output = (await renderManuscript(f.opened, format)).toString();
       expect(output).toContain('Καλημέρα');
@@ -179,7 +191,7 @@ it('collection exports read actual saved books in supplied order and honor bound
     const { readFile } = await import('node:fs/promises');
     const text = await readFile(destination, 'utf8');
     expect(text.indexOf('Second Work')).toBeLessThan(text.indexOf('First Work'));
-    expect(text).toContain('Chapter 4');
+    expect(text).toContain('CHAPTER 4');
     expect(text).toContain('Second Work saved words 1.');
     await host.request('exportCollection', {
       bookIds: ids,
@@ -314,9 +326,9 @@ it('saved UI locale translates generated output labels independently of manuscri
  const html=await f.host.request('renderPreview',{bookId:metadata.id}) as string;expect(html).toContain('Chapitre 2 — Dusk');expect(html).toContain('Sommaire');
  const collection=join(f.root,'locale-collection.txt');
  const request={bookIds:[metadata.id],title:'Collection',author:'Editor',bound:true,format:'txt' as const,destination:collection};
- await f.host.request('exportCollection',request);expect(await readFile(collection,'utf8')).toContain('Chapitre 1 — Dawn');
+ await f.host.request('exportCollection',request);expect(await readFile(collection,'utf8')).toContain('CHAPITRE 1 — DAWN');
  await f.host.request('writeLibrary',{library:{exportCustomChapterTitles:true}});
- await f.host.request('exportCollection',request);const custom=await readFile(collection,'utf8');expect(custom).toContain('Dawn');expect(custom).not.toContain('Chapitre 1');
+ await f.host.request('exportCollection',request);const custom=await readFile(collection,'utf8');expect(custom).toContain('DAWN');expect(custom).not.toContain('CHAPITRE 1');
 
  }finally{await f.dispose();}
 });
@@ -332,8 +344,8 @@ it('chapter exports preserve only the selected story across six actual formats a
 
 it('whole manuscript exports retain original parts, front matter, explicit contents and custom-title numbering',async()=>{
  const f=await fixture();try{const base={version:'00000000-0000-4000-8000-000000000000',passages:[]};f.opened.book.chapters=[{...base,id:'dedication',html:'<p>For the reader.</p>'},{...base,id:'contents',html:''},{...base,id:'part',html:'<p>First Light</p><p>A verse for morning.</p>'},{...base,id:'one',html:'<p>Opening chapter.</p>'},{...base,id:'two',html:'<p>Closing chapter.</p>'},{...base,id:'about',html:'<p>A writer biography.</p>'}];f.opened.book.metadata.chapterKinds={dedication:'dedication',contents:'contents',part:'part',one:'chapter',two:'chapter',about:'about'};f.opened.book.metadata.chapterTitles={one:'Dawn',two:'Dusk'};
- const text=(await renderManuscript(f.opened,'txt')).toString();expect(text).toContain('Part I: First Light');expect(text).toContain('Chapter 1 — Dawn');expect(text).toContain('Chapter 2 — Dusk');expect(text).toContain('Contents');expect(text).toContain('A writer biography.');expect(text).not.toContain('Chapter 3');
- const custom=(await renderManuscript(f.opened,'txt',{customChapterTitles:true})).toString();expect(custom).toContain('Dawn');expect(custom).not.toContain('Chapter 1');
+ const text=(await renderManuscript(f.opened,'txt')).toString();expect(text).toContain('PART I: FIRST LIGHT');expect(text).toContain('CHAPTER 1 — DAWN');expect(text).toContain('CHAPTER 2 — DUSK');expect(text).not.toContain('Contents');expect(text).toContain('A writer biography.');expect(text).not.toContain('CHAPTER 3');
+ const custom=(await renderManuscript(f.opened,'txt',{customChapterTitles:true})).toString();expect(custom).toContain('DAWN');expect(custom).not.toContain('CHAPTER 1');
  const zip=await JSZip.loadAsync(await renderManuscript(f.opened,'epub'));const nav=await zip.file('OEBPS/nav.xhtml')!.async('string');expect(nav).toContain('Part I: First Light');expect(nav).not.toContain('For the reader.');expect(nav).toContain('Chapter 2 — Dusk');
  }finally{await f.dispose();}
 });
@@ -407,6 +419,7 @@ it('source chapter editions keep solo unnumbered body heading blank and add Cont
 it('chosen writing fonts embed exact HTML bytes and PDF/DOCX family while EPUB retains reader serif fonts',async()=>{
  const f=await fixture();try{
  f.opened.book.metadata.title='River Καλημέρα Привет';
+ for (const [legacy,bundled] of [['Georgia','Gelasio'],['Palatino','TeX Gyre Pagella'],['Baskerville','Libre Baskerville'],['Hoefler Text','Alegreya'],['Iowan Old Style','Source Serif Pro'],['Cambria','Source Serif Pro'],['Constantia','Libre Baskerville']]) { const selected=await exportFonts({bodyFont:legacy},'linux');expect(selected.body).toBe(bundled);expect(selected.variants.Regular).toBeDefined();expect(selected.css).toContain("body{font-family:'"+bundled+"'"); }
  const options={bodyFont:'Gelasio',dropcap:'fantasy'};const html=(await renderManuscript(f.opened,'html',options)).toString();expect(html).toContain("font-family:'Gelasio'");expect(html).toContain(process.platform==='darwin'||process.platform==='win32'?"font-family:'Apple Chancery'":"font-family:'TeX Gyre Chorus'");const bytes=await readFile(new URL('../public/fonts/gelasio-latin-400-normal.ttf',import.meta.url));expect(html).toContain(bytes.toString('base64'));
  const zip=await JSZip.loadAsync(await renderManuscript(f.opened,'epub',options));const epubCSS=await zip.file('OEBPS/style.css')!.async('string');expect(epubCSS).toContain('font-family:serif');expect(epubCSS).not.toContain(bytes.toString('base64'));expect(epubCSS).not.toContain('@font-face');
  const pdf=await renderManuscript(f.opened,'pdf',options);expect(pdf.toString('latin1')).toContain('Gelasio');const text=spawnSync('pdftotext',['-','-'],{input:pdf,encoding:'utf8'}).stdout;expect(text.match(/Καλημέρα/g)).toHaveLength(2);expect(text.match(/Привет/g)).toHaveLength(2);

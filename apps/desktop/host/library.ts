@@ -428,8 +428,12 @@ export class LibraryHost {
         const rows = [];
         for (const entry of await readdir(this.root, { withFileTypes: true })) {
           if (!entry.isDirectory() || !entry.name.startsWith('book-')) continue;
-          const book = await new BookFiles(await this.checked(this.folder(entry.name))).load(false);
-          rows.push(book.book.metadata);
+          try {
+            const book = await new BookFiles(await this.checked(this.folder(entry.name))).load(false);
+            rows.push(book.book.metadata);
+          } catch {
+            // Source listBooks skips unreadable folders; intact books stay reachable.
+          }
         }
         return rows;
       }

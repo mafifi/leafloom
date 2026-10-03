@@ -506,21 +506,25 @@ async function renderSections(
   options: { language?: string;paperCountry?:string;catalog?:LanguageCatalogValue;bodyFont?:string;dropcap?:string; fonts?: string; cover?: { mime: string; data: string } | null },
 ): Promise<Buffer> {
   const language = options.language ?? 'en';
+  const t = localize(options.catalog);
+  // Export identity matches the displayed author without changing saved metadata.
+  opened = {book:{metadata:{...opened.book.metadata,author:opened.book.metadata.author || t('Anonymous')}}};
   if (format === 'docx') return docx(opened, chapters,(await exportFonts(options)).body);
   if (format === 'epub') return epub(opened, chapters, language, options.cover,options.catalog);
   if (format === 'pdf') return pdf(opened, chapters, options.fonts,options);
   if (format === 'html') return Buffer.from(htmlDocument(opened, chapters, language,(await exportFonts(options)).css,options.cover));
-  if (format === 'txt')
-    return Buffer.from(
-      [
-        opened.book.metadata.title,
-        opened.book.metadata.author,
-        ...chapters.flatMap((ch) => [
-          ch.title,
-          ...ch.paragraphs.map((p) => (p.kind === 'scene-break' ? '***' : p.text)),
-        ]),
-      ].join('\n\n') + '\n',
-    );
+  if (format === 'txt') {
+    let text = opened.book.metadata.title.toUpperCase() + '\n';
+    if (opened.book.metadata.subtitle) text += String(opened.book.metadata.subtitle) + '\n';
+    text += t('by {author}', {author:opened.book.metadata.author}) + '\n\n\n';
+    for (const chapter of chapters.filter(chapter=>chapter.kind!=='contents')) {
+      if (chapter.title) text += chapter.title.toUpperCase() + '\n\n';
+      for (const paragraph of chapter.paragraphs)
+        text += paragraph.kind === 'scene-break' ? '\n***\n\n' : (paragraph.kind === 'poetry' ? '    ' : '') + paragraph.text + '\n\n';
+      text += '\n';
+    }
+    return Buffer.from(text);
+  }
   return Buffer.from(
     [
       '# ' + markdownMetadata(opened.book.metadata.title),

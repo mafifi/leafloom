@@ -25,6 +25,10 @@ it('readable catalog maps actual book folders to shelves, includes orphans and a
   try {
     const alpha = await f.host.request('createBook', { title: 'Alpha é東京', author: 'Writer' }) as {id:string;title:string};
     const zulu = await f.host.request('createBook', { title: 'Zulu', author: 'Writer' }) as {id:string;title:string};
+    const incomplete = join(f.root, 'book-incomplete');
+    await mkdir(incomplete);
+    await writeFile(join(incomplete, 'manuscript.json'), '{incomplete private manuscript');
+    expect((await f.host.request('listBooks', {}) as {id:string}[]).map(book=>book.id).sort()).toEqual([alpha.id,zulu.id].sort());
     const catalog = join(f.root, '_catalog.txt');
     expect(await readFile(catalog,'utf8')).toContain('Leafloom LIBRARY CATALOG — which folder is which book');
     const library = {shelves:[{id:'desk',name:'Desk',bookIds:[zulu.id]}]};
@@ -47,6 +51,7 @@ it('readable catalog maps actual book folders to shelves, includes orphans and a
     expect(text).not.toContain('Zulu');
     await f.host.request('deleteBook',{bookId:alpha.id});
     expect(await readFile(catalog,'utf8')).not.toContain(alpha.id);
+    expect(await readFile(join(incomplete,'manuscript.json'),'utf8')).toBe('{incomplete private manuscript');
   } finally { await f.dispose(); }
 });
 it('catalog follows leased title checkpoints while prose-only autosaves keep its existing inode and bytes', async () => {

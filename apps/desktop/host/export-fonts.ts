@@ -11,10 +11,13 @@ export function dropCapTypography(choice='literary',platform:NodeJS.Platform=pro
  const bundled={literary:{family:'Libre Bodoni',stack:"'Libre Bodoni','Didot','Bodoni 72',Georgia,serif"},fantasy:{family:'TeX Gyre Chorus',stack:"'TeX Gyre Chorus','Apple Chancery','Snell Roundhand',cursive"},scifi:{family:'Jost',stack:"'Jost','Futura','Avenir Next','Helvetica Neue',sans-serif"}};
  return {...(platform==='darwin'||platform==='win32'?system:bundled)[kind],fallback:bundled[kind].family};
 }
-export async function exportFonts(options:ExportTypography={}) {
- const body=options.bodyFont&&options.bodyFont.length<=512&&!/[\x00-\x1f\x7f]/.test(options.bodyFont)?options.bodyFont:'Georgia';
+export async function exportFonts(options:ExportTypography={},platform:NodeJS.Platform=process.platform) {
+ const requested=options.bodyFont&&options.bodyFont.length<=512&&!/[\x00-\x1f\x7f]/.test(options.bodyFont)?options.bodyFont:'Georgia';
+ // NEO resolves legacy macOS/Windows family names to its bundled Linux faces.
+ const linuxAliases:Record<string,string>={Georgia:'Gelasio',Palatino:'TeX Gyre Pagella',Baskerville:'Libre Baskerville','Hoefler Text':'Alegreya','Iowan Old Style':'Source Serif Pro',Cambria:'Source Serif Pro',Constantia:'Libre Baskerville'};
+ const body=platform==='linux'&&Object.hasOwn(linuxAliases,requested)?linuxAliases[requested]!:requested;
  const cssFamily=(value:string)=>value.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/</g,'\\3c ');
- const dropcap=dropCapTypography(options.dropcap),cap=dropcap?.family;
+ const dropcap=dropCapTypography(options.dropcap,platform),cap=dropcap?.family;
  const faces=z.array(Face).parse(JSON.parse(await readFile(new URL('./fontfaces.json',moduleURL),'utf8')));
  const asset=async(file:string)=>{try{return await readFile(new URL('./font-assets/'+file,moduleURL));}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;return readFile(new URL('../public/fonts/'+file,moduleURL));}};
  const selected=faces.filter(face=>face.family===body||face.family===cap||face.family===dropcap?.fallback),loaded=await Promise.all(selected.map(async face=>({...face,bytes:await asset(face.file)})));
