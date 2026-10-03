@@ -35,6 +35,13 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     const origin = this.dragOrigin;
     this.dragOrigin = null;
     if (!origin || !origin.doc.content.eq(this.core.state.doc.content)) return false;
+    if (
+      !origin.doc
+        .textBetween(origin.from, origin.to, '', (node) =>
+          node.type.name === 'placeholder' ? '⚑' : '',
+        )
+        .trim()
+    ) return false;
     this.core.dispatch(
       this.core.state.tr.setSelection(
         TextSelection.create(this.core.state.doc, origin.from, origin.to),
