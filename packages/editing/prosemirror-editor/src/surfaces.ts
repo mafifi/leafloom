@@ -251,8 +251,13 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
       this.core.state.doc.resolve(anchor),
       this.core.state.doc.resolve(head),
     );
-    if (!this.core.state.selection.eq(next))
-      this.core.dispatch(this.core.state.tr.setSelection(next), 'selection');
+    if (!this.core.state.selection.eq(next)) {
+      // Native selectionchange may reach us before PM's DOM observer. Preserve
+      // the keyboard origin here so that either event order reveals the caret.
+      const command = this.keyboardNavigation ? 'selection.keyboard' : 'selection';
+      this.keyboardNavigation = false;
+      this.core.dispatch(this.core.state.tr.setSelection(next), command);
+    }
   }
   /** Passage identifiers belong to native paragraph DOM, not a book-sized decoration tree. */
   private passageView(node: PMNode) {

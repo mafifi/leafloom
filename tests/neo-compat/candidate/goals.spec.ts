@@ -2,6 +2,7 @@ import {test,expect} from './author-fixture';
 import {existingBook} from './book-fixture';
 import {persistedBook,persistedLibrary} from './storage-probe';
 import {clickReferenceMenu} from '../reference/harness';
+test.use({timezoneId:'Europe/London'});
 const mod=process.platform==='darwin'?'Meta':'Control';
 async function open(page:import('@playwright/test').Page,noBook=false){if(noBook&&process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference')await clickReferenceMenu(page,['File','Goals…']);else if(noBook)await page.keyboard.press(mod+'+,');else await page.locator('#goal-counter').click();await expect(page.locator('#st-daily')).toBeVisible();}
 async function done(page:import('@playwright/test').Page){await page.getByRole('button',{name:'Done',exact:true}).click();await expect(page.locator('#st-daily')).toHaveCount(0);}
