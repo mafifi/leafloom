@@ -249,7 +249,7 @@ async fn os_request(
             let host=state.host.clone();let resources=state.resources.clone();let root=state.root.clone();let app=window.app_handle().clone();
             tauri::async_runtime::spawn_blocking(move||{let mut current=host.lock().map_err(|_|"HOST_UNAVAILABLE")?;let exited=current.child.lock().map_err(|_|"HOST_UNAVAILABLE")?.try_wait().map_err(|_|"HOST_UNAVAILABLE")?.is_some();if !current.failed.load(Ordering::SeqCst)&&!exited{return Err("BUSY".into());}current.stop();let replacement=start_host(resources,root,app).map_err(|_|"HOST_UNAVAILABLE")?;*current=replacement;Ok(json!({"restarted":true,"rebindRequired":true}))}).await.map_err(|_|"HOST_UNAVAILABLE")?
         }
-        "quitApp" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}state.quitting.store(true,Ordering::SeqCst);window.app_handle().exit(0);Ok(json!(true))}
+        "quitApp" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}state.update_restart.store(false,Ordering::SeqCst);state.quitting.store(true,Ordering::SeqCst);window.app_handle().exit(0);Ok(json!(true))}
         "restartToUpdate" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}if window.app_handle().state::<updater::Service>().status()["status"]!="ready"{return Err("UPDATE_UNAVAILABLE".into());}state.update_restart.store(true,Ordering::SeqCst);state.quitting.store(true,Ordering::SeqCst);window.app_handle().exit(0);Ok(json!(true))}
         "updateStatus" | "checkForUpdates" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}let app=window.app_handle();let service=app.state::<updater::Service>();Ok(if method=="checkForUpdates"{service.check(app).await}else{service.status()})}
         "installUpdatePending" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}if !state.quitting.load(Ordering::SeqCst){return Err("BUSY".into());}let host=state.host.clone();let reply=tauri::async_runtime::spawn_blocking(move||host.lock().map_err(|_|"HOST_UNAVAILABLE")?.request("runtimeState".into(),json!({}),None)).await.map_err(|_|"HOST_UNAVAILABLE")??;let open=reply.pointer("/value/openBooks").and_then(Value::as_u64).ok_or("HOST_PROTOCOL")?;Ok(json!({"installed":window.app_handle().state::<updater::Service>().install(window.app_handle(),open)?}))}
@@ -1262,6 +1262,7 @@ fn main() {
                 if let Some(state) = window.app_handle().try_state::<State>() {
                     if !state.closing.load(Ordering::SeqCst) {
                         api.prevent_close();
+                        state.update_restart.store(false,Ordering::SeqCst);
                         state.quitting.store(false,Ordering::SeqCst);
                         let _ = window.emit("leafloom:close-requested", ());
                     }

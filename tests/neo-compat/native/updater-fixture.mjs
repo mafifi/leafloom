@@ -138,7 +138,7 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
       try {
         await chmod(folder, 0o555);
         await first.type('#aux-editor .ProseMirror', ' Failed-save retained.');
-        await os('quitApp');
+        await os('restartToUpdate');
         await first.until(
           () => first.script('return document.body.innerText.includes("DISK_ERROR")'),
           'real denied save hint',
@@ -204,6 +204,7 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
         ready,
         events,
         failedSaveKeptProcess: true,
+        failedSaveCommand: 'restartToUpdate',
         ordinaryWindowCloseDidNotInstall: true,
         downloadDidNotInstall: true,
       };
