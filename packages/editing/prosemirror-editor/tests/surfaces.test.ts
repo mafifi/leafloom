@@ -2,7 +2,7 @@
 import { it, expect, vi } from 'vitest';
 import { BookCore } from '../src/core';
 import { ProseMirrorSurfaces } from '../src/surfaces';
-const open = () =>
+const open = (html = '<p>Alpha beta.</p>') =>
   new BookCore(
     document,
     {
@@ -10,7 +10,7 @@ const open = () =>
       revision: 0,
       metadata: { id: 'book', title: 'Title', author: 'Writer' },
       chapters: [
-        { id: 'a', html: '<p>Alpha beta.</p>' },
+        { id: 'a', html },
         { id: 'b', html: '<p>Later.</p>' },
       ],
       darlings: [],
@@ -832,7 +832,7 @@ it.each(['ctrlKey', 'altKey', 'metaKey'] as const)(
   'Shift Enter with %s is left to native editing rather than the poetry gesture',
   (modifier) => {
     document.body.innerHTML = '<main></main><aside></aside>';
-    const core = open(),
+    const core = open('<p>Alpha beta.</p><pre>Code</pre>'),
       surfaces = new ProseMirrorSurfaces(core, {
         undo: () => core.undo(),
         redo: () => core.redo(),
@@ -862,6 +862,37 @@ it.each(['ctrlKey', 'altKey', 'metaKey'] as const)(
     expect(key.defaultPrevented).toBe(false);
     expect(core.html('a')).toBe(before);
     expect(core.canUndo).toBe(false);
+    for (const shiftKey of [false, true]) {
+      const tab = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey,
+        [modifier]: true,
+        bubbles: true,
+        cancelable: true,
+      });
+      document.querySelector('main .ProseMirror')!.dispatchEvent(tab);
+      expect(tab.defaultPrevented).toBe(false);
+      expect(core.html('a')).toBe(before);
+      expect(core.canUndo).toBe(false);
+    }
+    if (modifier !== 'altKey') {
+      // The fallback ProseMirror Mod-Enter binding must not exit a code block
+      // before the application's fullscreen shortcut receives the event.
+      core.selectPassage(core.passageRows('a')[1].id, 2);
+      surfaces.focus();
+      const enter = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        [modifier]: true,
+        bubbles: true,
+        cancelable: true,
+      });
+      document.querySelector('main .ProseMirror')!.dispatchEvent(enter);
+      expect(enter.defaultPrevented).toBe(false);
+      expect(core.html('a')).toBe(before);
+      expect(core.canUndo).toBe(false);
+      core.select('a', 1);
+      surfaces.focus();
+    }
     const normal = new KeyboardEvent('keydown', {
       key: 'Enter',
       shiftKey: true,

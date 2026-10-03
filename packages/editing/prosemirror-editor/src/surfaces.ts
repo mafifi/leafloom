@@ -169,7 +169,10 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
       doc,
       selection: TextSelection.between(doc.resolve(from), doc.resolve(to)),
       storedMarks: composing ? null : this.core.inputMarks,
-      plugins: [this.annotationPlugin(id, doc), keymap(baseKeymap)],
+      plugins: [
+        this.annotationPlugin(id, doc),
+        keymap({ ...baseKeymap, 'Mod-Enter': () => false }),
+      ],
     });
   }
   private pageFor(id: string) {
@@ -487,6 +490,10 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         const mod = event.metaKey || event.ctrlKey,
           key = event.key.toLowerCase();
         if (!this.enabled || !this.core.canEdit(id())) return true;
+        if (event.key === 'Enter' && mod && !event.shiftKey && !event.altKey) {
+          this.core.resetEnter();
+          return false;
+        }
         if (event.key === 'Enter' && event.shiftKey && (mod || event.altKey)) {
           this.core.resetEnter();
           return false;
@@ -497,7 +504,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
           return true;
         if (!mod && !event.altKey && event.key === 'Delete' && this.core.deleteForward())
           return true;
-        if (event.key === 'Tab') {
+        if (event.key === 'Tab' && !mod && !event.altKey) {
           this.core.indent(event.shiftKey);
           return true;
         }
