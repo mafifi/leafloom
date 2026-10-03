@@ -3,7 +3,7 @@ import { planExternal } from './external-reconciliation';
 import { ReferenceHistory, cloneLocation } from './reference-history';
 import { Darling, projectDarlings, locateDarlingContext, parseRestorableDarling } from './darlings';
 import { OutlineOperations } from './outline';
-import { removeChapterMetadata } from './metadata';
+import { removeChapterMetadata, settleChapterKinds } from './metadata';
 import {
   MetadataFieldStep,
   metadataField,
@@ -146,7 +146,14 @@ export class BookCore implements EditorPort {
         if (parsed.success) this.trustedBookmarks.add(parsed.data.id);
       }
     this.revision = book.revision;
-    const metadata = book.metadata;
+    const metadata = structuredClone(book.metadata);
+    if (
+      settleChapterKinds(
+        metadata,
+        book.chapters.map((chapter) => chapter.id),
+      )
+    )
+      this.revision++;
     for (const key of ['wordCount', 'dailyCounts', 'lastPosition', 'modified', 'uuid'])
       if (metadata[key] !== undefined) this.bookkeeping[key] = metadata[key];
     this.originalIds = new Set(book.chapters.map((c) => c.id));
