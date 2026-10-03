@@ -342,3 +342,7 @@ The complete parity gate remains4/444 with1010 unmet checks. The304-feature inve
 ## Revised implementation goal completed — 3 October 2026, 12:31 UTC
 
 Production omissions and regressions are fixed in small attributable commits; see `2026-10-03-finish-leafloom.md`. The new complete existing acceptance capture passes 469/469, zero retries; all 74 CPU files pass (608 tests; three existing optional codec skips), with strict/policy/default build passing. Actual Windows/Linux resume hooks are implemented; physical OS validation is recorded as unexecuted. The updated Leafloom-final macOS app and DMG are signed, notarized, stapled and Gatekeeper accepted. No further proof-framework, inventory, agent or architecture work was added. Clean-machine installation remains outside this goal.
+
+## Additional reading fonts — 3 October 2026
+
+Commit `9650b6d` adds unmodified Libron v0.25, Readerly v1.11 and Newsreader 16pt static faces, with all four styles, original OFL notices and pinned release/source hashes. All three are available in onboarding and native font menus on each platform; PDF and HTML embed the selected faces. Focused checks: strict/policy pass, 37 font/export CPU tests pass with one existing optional codec skip, three headless font-preview/loading/persistence cases pass. The 469/469 baseline predates this addition and is not relabelled as a fresh full run. `release/Leafloom-reading-fonts-arm64-20261003.{app,dmg}` are signed, notarized, stapled and Gatekeeper accepted. The app already open during delivery remains the preceding build.
