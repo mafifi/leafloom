@@ -35,7 +35,7 @@ The user deleted the previous goal record. The revised goal was created on 3 Oct
 ## Status
 
 - [x] Bounded inventory/code review completed; confirmed omissions and regressions fixed in the commits below.
-- [x] Existing acceptance run completed and genuine regressions resolved; final full capture follows the corrected Escape/reopen test journey.
+- [ ] Final full existing acceptance capture on the settled implementation; targeted regressions pass.
 - [x] Windows/Linux wake handling implemented last.
 - [ ] Updated package and final handover delivered within the deadline.
 
@@ -49,7 +49,12 @@ The user deleted the previous goal record. The revised goal was created on 3 Oct
 | Application persistence | Background zoom persistence retains menus; preference failure cannot block manuscript checkpoint | `6598981` |
 | Existing acceptance fixture | Runtime log assertions retain earlier rows and check the new private failure records | `a3d7726` |
 | Platform updater | Actual Windows automatic-resume callback and Linux login1 post-sleep signal, with safe disposal/reconnect ownership | `3782dc4` |
+| Application persistence | Retain shelf focus refresh across durable writes with pending host acknowledgements | `58cc859` |
+| ProseMirror sections | Reuse immutable document section indexes without changing chapter positions or Undo | `5e1a596` |
+| Application appearance | Immediate text-size controls with one debounced durable preference batch and Save flush | `ff26ece` |
 
 Fresh repository checks at `6598981`: 74 CPU test files pass, 608 tests pass, three existing optional codec cases skip; repository policy, strict TypeScript/Svelte and the default production build pass. The full existing suite completed at 468/469; its remaining test assumed ordinary Escape kept a book open. `0547eea` preserves Escape, asserts the saved shelf return, reopens the same book and retains every spelling-menu assertion. The affected existing spelling suite passes 34/34. The earlier 462/469 baseline failures supplied the concrete regressions; no scenario-count promotion establishes completion.
 
 The last platform change passes 27 default and 28 native-test locked Rust tests, pinned Windows/Gio API-signature compilation and repository policy. Windows/Linux linked runtime and physical sleep/resume are unexecuted OS observations. No new framework, spike, inventory expansion or foreground run was added. The final fresh CI/full-suite capture and updated signed/notarized package remain before handover.
+
+At 12:01 UTC, the final two regressions have targeted passing results: appearance/keyboard 18/18, existing appearance persistence and shelf-refresh CPU cases 2/2, and the existing 100k-word/100-chapter performance case at 41.8ms p95 against the unchanged 50ms limit. The preceding full run remains recorded as 467/469: rapid-font persistence delayed shelf return, and the 100-chapter performance case exceeded the limit. Neither result is relabelled as passing. Fresh whole-repository and full existing acceptance checks follow the committed fixes.
