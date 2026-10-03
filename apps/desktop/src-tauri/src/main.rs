@@ -1,6 +1,7 @@
 #[cfg(any(not(target_os = "macos"), test))]
 mod system_languages;
 mod external_drop;
+mod updater;
 mod native_menu;
 #[cfg(target_os="macos")]mod edit_menu;
 mod preferences;
@@ -87,6 +88,7 @@ struct State {
     grants: Mutex<HashSet<PathBuf>>,
     closing: AtomicBool,
     quitting: AtomicBool,
+    update_restart: AtomicBool,
     root: PathBuf,
     languages: Vec<(String, String)>,
     default_root: PathBuf,
@@ -248,7 +250,9 @@ async fn os_request(
             tauri::async_runtime::spawn_blocking(move||{let mut current=host.lock().map_err(|_|"HOST_UNAVAILABLE")?;let exited=current.child.lock().map_err(|_|"HOST_UNAVAILABLE")?.try_wait().map_err(|_|"HOST_UNAVAILABLE")?.is_some();if !current.failed.load(Ordering::SeqCst)&&!exited{return Err("BUSY".into());}current.stop();let replacement=start_host(resources,root,app).map_err(|_|"HOST_UNAVAILABLE")?;*current=replacement;Ok(json!({"restarted":true,"rebindRequired":true}))}).await.map_err(|_|"HOST_UNAVAILABLE")?
         }
         "quitApp" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}state.quitting.store(true,Ordering::SeqCst);window.app_handle().exit(0);Ok(json!(true))}
-        "updateStatus" | "checkForUpdates" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}Ok(json!({"version":env!("CARGO_PKG_VERSION"),"channel":"manual","status":"disabled","reason":"release-channel-unconfigured"}))}
+        "restartToUpdate" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}if window.app_handle().state::<updater::Service>().status()["status"]!="ready"{return Err("UPDATE_UNAVAILABLE".into());}state.update_restart.store(true,Ordering::SeqCst);state.quitting.store(true,Ordering::SeqCst);window.app_handle().exit(0);Ok(json!(true))}
+        "updateStatus" | "checkForUpdates" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}let app=window.app_handle();let service=app.state::<updater::Service>();Ok(if method=="checkForUpdates"{service.check(app).await}else{service.status()})}
+        "installUpdatePending" => {if payload.as_object().is_none_or(|v|!v.is_empty()){return Err("INVALID".into());}if !state.quitting.load(Ordering::SeqCst){return Err("BUSY".into());}let host=state.host.clone();let reply=tauri::async_runtime::spawn_blocking(move||host.lock().map_err(|_|"HOST_UNAVAILABLE")?.request("runtimeState".into(),json!({}),None)).await.map_err(|_|"HOST_UNAVAILABLE")??;let open=reply.pointer("/value/openBooks").and_then(Value::as_u64).ok_or("HOST_PROTOCOL")?;Ok(json!({"installed":window.app_handle().state::<updater::Service>().install(window.app_handle(),open)?}))}
         "coverArtJob" => {let id=cover_book_id(&payload)?.to_owned();if payload.as_object().is_none_or(|v|v.len()!=1){return Err("INVALID".into());}let existing=state.jobs.lock().map_err(|_|"HOST_UNAVAILABLE")?.get(&id).cloned();if let Some(job)=existing{return Ok(job);}let host=state.host.clone();let response=tauri::async_runtime::spawn_blocking(move||host.lock().map_err(|_|"HOST_UNAVAILABLE")?.request("readCoverArtJob".into(),json!({"bookId":id}),None)).await.map_err(|_|"HOST_UNAVAILABLE")??;if response.get("ok").and_then(Value::as_bool)!=Some(true){return Err(response.get("code").and_then(Value::as_str).unwrap_or("HOST_UNAVAILABLE").into());}response.get("value").cloned().ok_or("HOST_PROTOCOL".into())}
         "paintCover" => {
             let book=cover_book_id(&payload)?.to_owned();
@@ -319,7 +323,7 @@ async fn os_request(
                 ]
             };
             Ok(
-                json!({"platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,"languages":languages,"bodyFonts":fonts,"theme":if window.theme().map_err(|_|"OS_UNAVAILABLE")?==tauri::Theme::Dark{"dark"}else{"light"}}),
+                json!({"platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,"languages":languages,"bodyFonts":fonts,"packaged":!cfg!(debug_assertions),"updaterPackaged":!cfg!(debug_assertions)||cfg!(all(feature="native-test",debug_assertions))&&state.root.join(".leafloom-updater.json").is_file(),"theme":if window.theme().map_err(|_|"OS_UNAVAILABLE")?==tauri::Theme::Dark{"dark"}else{"light"}}),
             )
         }
         "setTheme" => {
@@ -901,8 +905,9 @@ async fn finish_close(
     let host=state.host.clone();let response=tauri::async_runtime::spawn_blocking(move||host.lock().map_err(|_|"HOST_UNAVAILABLE")?.request("runtimeState".into(),json!({}),None)).await.map_err(|_|"HOST_UNAVAILABLE")??;
     if response.pointer("/value/openBooks").and_then(Value::as_u64)!=Some(0){return Err("BUSY".into());}
     if cfg!(target_os="macos")&&!state.quitting.load(Ordering::SeqCst){window.hide().map_err(|_|"OS_UNAVAILABLE")?;return Ok(());}
+    let installed=if state.quitting.load(Ordering::SeqCst){app.state::<updater::Service>().install(&app,0)?}else{false};
     state.closing.store(true, Ordering::SeqCst);
-    app.exit(0);
+    if installed&&state.update_restart.load(Ordering::SeqCst){app.request_restart();}else{app.exit(0);}
     Ok(())
 }
 
@@ -1085,6 +1090,8 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
         let _=native_menu::set_state(app.handle(), &json!({"language":locale}));
     }
     native_menu::listen(app.handle());
+    let enabled=updater::configured(app.config().plugins.0.get("updater"));
+    app.manage(updater::Service::new(&root,enabled)?);
     app.manage(State {
         host: Arc::new(Mutex::new(host)),
         resources,
@@ -1095,6 +1102,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
         grants: Mutex::new(HashSet::new()),
         closing: AtomicBool::new(false),
         quitting: AtomicBool::new(false),
+        update_restart: AtomicBool::new(false),
         root,
         languages,
         default_root,
@@ -1163,6 +1171,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
     let hidden = std::env::var_os("LEAFLOOM_HIDDEN").is_some();
     #[cfg(not(debug_assertions))]
     let hidden = false;
+    if enabled {updater::start_wake(app.handle().clone());}
     if !hidden {
         window.show()?;
     }
@@ -1188,6 +1197,7 @@ fn main() {
     if let Some(root)=std::env::var_os("LEAFLOOM_FIXTURE_ROOT") {
         use std::hash::{Hash,Hasher};let mut hash=std::collections::hash_map::DefaultHasher::new();root.hash(&mut hash);context.config_mut().identifier=format!("org.mafifi.leafloom.fixture{:016x}",hash.finish());
     }
+    let enable_updater=updater::configure(&mut context).unwrap_or_else(|error|startup_failed(&error));
     let builder = tauri::Builder::default().plugin(tauri_plugin_single_instance::init(|app,_,_|{
         #[cfg(debug_assertions)]
         if std::env::var_os("LEAFLOOM_HIDDEN").is_some(){return;}
@@ -1197,6 +1207,7 @@ fn main() {
     let builder = builder
         .plugin(tauri_plugin_wdio::init())
         .plugin(tauri_plugin_wdio_webdriver::init());
+    let builder=if enable_updater {builder.plugin(tauri_plugin_updater::Builder::new().build())}else{builder};
     let application = builder
         .invoke_handler(tauri::generate_handler![
             host_request,
@@ -1274,6 +1285,7 @@ fn main() {
         #[cfg(target_os="macos")]
         tauri::RunEvent::Reopen{..} => {#[cfg(debug_assertions)]if std::env::var_os("LEAFLOOM_HIDDEN").is_some(){return;}if let Some(window)=app.get_webview_window("main"){let _=window.show();let _=window.set_focus();}}
         tauri::RunEvent::Exit => {
+            updater::stop_wake();
             #[cfg(target_os="macos")]edit_menu::stop();
             if let Some(state) = app.try_state::<State>() {
                 stop_workers(&state);

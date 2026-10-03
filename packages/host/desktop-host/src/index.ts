@@ -27,8 +27,7 @@ export const FontFamilies=z.array(z.string().min(1).max(512).refine(value=>!valu
 export type FontFamiliesValue=z.infer<typeof FontFamilies>;
 export const HostFailed=z.strictObject({code:z.enum(['HOST_UNAVAILABLE','HOST_PROTOCOL']),canRestart:z.literal(true)});
 export const HostRestarted=z.strictObject({restarted:z.literal(true),rebindRequired:z.literal(true)});
-export const UpdateStatus = z.strictObject({version:z.string(),channel:z.literal('manual'),status:z.literal('disabled'),reason:z.literal('release-channel-unconfigured')});
-export interface UpdateProvider {status():Promise<z.infer<typeof UpdateStatus>>;check():Promise<z.infer<typeof UpdateStatus>>;}
+export {UpdateStatus,type UpdateStatusValue,type UpdateProvider} from './updates.ts';
 export const RuntimeErrorReport = z.strictObject({source:z.enum(['renderer','promise','host']),code:z.literal('UNEXPECTED_RUNTIME'),at:z.iso.datetime()});
 export type RuntimeErrorReportValue = z.infer<typeof RuntimeErrorReport>;
 export const HostPayloads = {
@@ -175,6 +174,8 @@ export const OsPayloads = {
   quitApp: Empty,
   updateStatus: Empty,
   checkForUpdates: Empty,
+  installUpdatePending: Empty,
+  restartToUpdate: Empty,
   fullscreenEscape: Empty,
   platformInfo: Empty,
   setTheme: z.strictObject({ theme: z.enum(['dark', 'light', 'system']) }),
