@@ -191,6 +191,7 @@ export function inspectChapterEdition(format, bytes, stage) {
   }
   if (stage === 'after') assert.ok(!body.includes('Movement One'), 'Deleted Part is not exported');
   return {
+    fixture: 'chapter-roles',
     format,
     stage,
     sha256: sha256(bytes),
