@@ -514,7 +514,9 @@ it('PDF carries tagged reading structure, locale paper size and actual Contents 
  f.opened.book=Book.parse({...f.opened.book,chapters:[{id:'toc',html:'<p>Contents</p>'},{id:'first',html:'<p>FIRST SENTINEL</p>'+Array.from({length:100},()=>'<p>'+ 'Long manuscript words '.repeat(15)+'</p>').join('')},{id:'last',html:'<p>LAST SENTINEL</p>'}],metadata:{...f.opened.book.metadata,chapterKinds:{toc:'contents',first:'chapter',last:'chapter'},chapterTitles:{first:'Arrival',last:'Departure'}}});
  const file=join(f.root,'tagged.pdf');await writeFile(file,await renderManuscript(f.opened,'pdf',{paperCountry:'US',language:'en-US'}));
  const info=spawnSync('pdfinfo',[file],{encoding:'utf8'});expect(info.status).toBe(0);expect(info.stdout).toMatch(/Tagged:\s+yes/);expect(info.stdout).toMatch(/Page size:\s+612 x 792 pts/);
- const extracted=spawnSync('pdftotext',['-layout',file,'-'],{encoding:'utf8'});expect(extracted.status).toBe(0);const pages=extracted.stdout.split('\f');const first=pages.findIndex(page=>page.replace(/\s+/g,'').includes('FIRSTSENTINEL'))+1,last=pages.findIndex(page=>page.replace(/\s+/g,'').includes('LASTSENTINEL'))+1;
+ // Poppler versions order the drop-cap opening word differently in layout mode.
+ // Locate both unique words on the same physical page; Contents must match it.
+ const extracted=spawnSync('pdftotext',['-layout',file,'-'],{encoding:'utf8'});expect(extracted.status).toBe(0);const pages=extracted.stdout.split('\f');const first=pages.findIndex(page=>/\bFIRST\b/.test(page)&&/\bSENTINEL\b/.test(page))+1,last=pages.findIndex(page=>/\bLAST\b/.test(page)&&/\bSENTINEL\b/.test(page))+1;
  expect(first,`Extracted opening pages: ${JSON.stringify(pages.slice(0,3))}`).toBeGreaterThan(2);expect(last).toBeGreaterThan(first);
  expect(pages[1]).toMatch(new RegExp('Chapter 1 — Arrival\\s+'+first));expect(pages[1]).toMatch(new RegExp('Chapter 2 — Departure\\s+'+last));
  const bytes=await readFile(file);expect(bytes.toString('latin1')).toContain('/StructTreeRoot');expect(bytes.toString('latin1')).toContain('/S /TOCI');expect(bytes.toString('latin1')).toContain('/S /Reference');
