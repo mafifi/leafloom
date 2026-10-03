@@ -25199,16 +25199,79 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-184-A] Leafloom: Thai word boundaries follow actual browser Intl Segmenter and persist the same count",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "assertions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-184-A] Leafloom: book counter includes every story kind while excluding pages, scenes, ghosts and markers",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "assertions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-184-A] Leafloom: Thai word boundaries follow actual browser Intl Segmenter and persist the same count",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "assertions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-184-A] Leafloom: book counter includes every story kind while excluding pages, scenes, ghosts and markers",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "assertions": [
+            "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Lao/Myanmar/Khmer/Chinese/Japanese matrix and their mode readings remain absent.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Actual Thai, Lao, Myanmar and Khmer use Intl.Segmenter; Chinese/Japanese remain source-defined whitespace counts. Story roles count; auxiliary roles, scenes, ghosts and flags are excluded.",
+        "driverActions": [
+          "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+        ],
+        "assertions": [
+          "Thai actual Intl.Segmenter-derived count visible and durable; all11roles fixture excludes pages/scenes/ghosts/markers and persists story word count."
+        ],
+        "unprovedClauses": [
+          "Lao/Myanmar/Khmer/Chinese/Japanese matrix and their mode readings remain absent.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-185-A",
@@ -25622,16 +25685,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-187-A] Leafloom: real wheel scroll changes current chapter locator without moving the author caret",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+          ],
+          "assertions": [
+            "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-187-A] Leafloom: real wheel scroll changes current chapter locator without moving the author caret",
+          "testFile": "tests/neo-compat/candidate/counters.spec.ts",
+          "driverActions": [
+            "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+          ],
+          "assertions": [
+            "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Wheel is one1800px step, not specified150px steps at40% threshold; exact full text arrays not checked after wheel.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Counter and nav current become chapter two while original caret/focus and every chapter text remain intact.",
+        "driverActions": [
+          "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+        ],
+        "assertions": [
+          "Real wheel changes position counter and current nav to chapter2; caret exact equal."
+        ],
+        "unprovedClauses": [
+          "Wheel is one1800px step, not specified150px steps at40% threshold; exact full text arrays not checked after wheel.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-188-A",
@@ -25971,16 +26074,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress Done saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Four-word book with goal2 renders100%; blank goal removes durable goal."
+          ],
+          "assertions": [
+            "Four-word book with goal2 renders100%; blank goal removes durable goal."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress Done saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Four-word book with goal2 renders100%; blank goal removes durable goal."
+          ],
+          "assertions": [
+            "Four-word book with goal2 renders100%; blank goal removes durable goal."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "The goal is set below existing count; no subsequent author-writing crossing/exceeding transition, and this is Goals dialog rather than closed-cover control.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Progress clamps at one hundred percent and clearing removes the goal.",
+        "driverActions": [
+          "Four-word book with goal2 renders100%; blank goal removes durable goal."
+        ],
+        "assertions": [
+          "Four-word book with goal2 renders100%; blank goal removes durable goal."
+        ],
+        "unprovedClauses": [
+          "The goal is set below existing count; no subsequent author-writing crossing/exceeding transition, and this is Goals dialog rather than closed-cover control.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-189-A",
@@ -26837,16 +26980,79 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-192-A] [NEO-193-A] Leafloom: sprint uses native new-word delta, completes once and then returns to daily counter",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "assertions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-194-A] Leafloom: ending a sprint reports actual net words and rounded elapsed minutes and a new sprint resets baseline",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "assertions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-192-A] [NEO-193-A] Leafloom: sprint uses native new-word delta, completes once and then returns to daily counter",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "assertions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-194-A] Leafloom: ending a sprint reports actual net words and rounded elapsed minutes and a new sprint resets baseline",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "assertions": [
+            "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "No single continuous body starts fresh sprint after that exact delete/retype cycle; second scenario does not prove retained daily history after deletion.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Daily activity remains recorded while fresh sprint baseline resets progress to zero.",
+        "driverActions": [
+          "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+        ],
+        "assertions": [
+          "First body deletes/retypes after completion; daily counter remains4/10. Second body starts later sprint with0/5 then native writing1/5."
+        ],
+        "unprovedClauses": [
+          "No single continuous body starts fresh sprint after that exact delete/retype cycle; second scenario does not prove retained daily history after deletion.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-194-A",
@@ -27039,16 +27245,102 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress Done saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-188-A] Leafloom: progress Escape saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-188-A] Leafloom: progress backdrop saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress Done saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-188-A] Leafloom: progress Escape saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-188-A] Leafloom: progress backdrop saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "assertions": [
+            "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Library daily goal/cutoff writes separately under Escape and backdrop are not tested by these three bodies; no explicit stacked-modal count assertion.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "book and library settings save separately.",
+        "driverActions": [
+          "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+        ],
+        "assertions": [
+          "Each dismissal retains book goal2; reopen shows100%; clearing removes durable goal and exact prose survives reopen."
+        ],
+        "unprovedClauses": [
+          "Library daily goal/cutoff writes separately under Escape and backdrop are not tested by these three bodies; no explicit stacked-modal count assertion.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-195-B",
@@ -27142,16 +27434,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress backdrop saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+          ],
+          "assertions": [
+            "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-188-A] Leafloom: progress backdrop saves and removes book goal with clamped percentage and retained prose",
+          "testFile": "tests/neo-compat/candidate/goals.spec.ts",
+          "driverActions": [
+            "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+          ],
+          "assertions": [
+            "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Backdrop library-goal/cutoff persistence not asserted.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Backdrop closes without losing persisted library or book goal edits.",
+        "driverActions": [
+          "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+        ],
+        "assertions": [
+          "Actual backdrop closes book-goal modal; reopening retains goal; removal persists through book reopen."
+        ],
+        "unprovedClauses": [
+          "Backdrop library-goal/cutoff persistence not asserted.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-196-A",
@@ -28668,16 +29000,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-204-A] Leafloom: trusted text-size shortcuts clamp fourteen through twenty-two without entering prose and persist",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+          ],
+          "assertions": [
+            "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-204-A] Leafloom: trusted text-size shortcuts clamp fourteen through twenty-two without entering prose and persist",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+          ],
+          "assertions": [
+            "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Alternate logical/layout chords and exact once-per-event intermediate sizes are unproved; native OS accelerator not exercised in browser.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Each gesture changes once, preserving expected clamping at supported bounds.",
+        "driverActions": [
+          "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+        ],
+        "assertions": [
+          "Twelve plus/fifteen minus events clamp22/14; prose/caret preserved;14persists through reload."
+        ],
+        "unprovedClauses": [
+          "Alternate logical/layout chords and exact once-per-event intermediate sizes are unproved; native OS accelerator not exercised in browser.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-204-C",
@@ -28964,16 +29336,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-205-A] Leafloom: typography reset restores seventeen and page zoom one while retaining body font and interface size",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+          ],
+          "assertions": [
+            "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-205-A] Leafloom: typography reset restores seventeen and page zoom one while retaining body font and interface size",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+          ],
+          "assertions": [
+            "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Candidate uses keyboard reset, not actual native Reset menu item; native source side uses menu callback only, physical menu qualification remains.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Page/text scale reset while interface scale and selected body font persist.",
+        "driverActions": [
+          "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+        ],
+        "assertions": [
+          "Reset17/page1 retainsPalatino/interface1.5 and saved settings."
+        ],
+        "unprovedClauses": [
+          "Candidate uses keyboard reset, not actual native Reset menu item; native source side uses menu callback only, physical menu qualification remains.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-205-C",
@@ -29796,16 +30208,79 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-210-A] Leafloom: paragraph focus follows actual caret and retains previous manuscript highlight in Notes",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-211-A] Leafloom: native Focus cycle selects punctuated sentence and Off clears highlight without changing prose",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-210-A] Leafloom: paragraph focus follows actual caret and retains previous manuscript highlight in Notes",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-211-A] Leafloom: native Focus cycle selects punctuated sentence and Off clears highlight without changing prose",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Candidate keyboard cycle does not inspect native checked menu values; paragraph and sentence tested in separate fixtures, not exact one continuous Off→Paragraph→Sentence→Off menu sequence.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Paragraph then sentence highlights and checked menu values match the source order; Notes retains manuscript sentence focus until Off clears it.",
+        "driverActions": [
+          "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+        ],
+        "assertions": [
+          "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+        ],
+        "unprovedClauses": [
+          "Candidate keyboard cycle does not inspect native checked menu values; paragraph and sentence tested in separate fixtures, not exact one continuous Off→Paragraph→Sentence→Off menu sequence.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-211-A",
@@ -29995,16 +30470,79 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-210-A] Leafloom: paragraph focus follows actual caret and retains previous manuscript highlight in Notes",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-211-A] Leafloom: native Focus cycle selects punctuated sentence and Off clears highlight without changing prose",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-210-A] Leafloom: paragraph focus follows actual caret and retains previous manuscript highlight in Notes",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-211-A] Leafloom: native Focus cycle selects punctuated sentence and Off clears highlight without changing prose",
+          "testFile": "tests/neo-compat/candidate/presentation.spec.ts",
+          "driverActions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "assertions": [
+            "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Candidate keyboard cycle does not inspect native checked menu values; paragraph and sentence tested in separate fixtures, not exact one continuous Off→Paragraph→Sentence→Off menu sequence.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "Paragraph then sentence highlights and checked menu values match the source order; Notes retains manuscript sentence focus until Off clears it.",
+        "driverActions": [
+          "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+        ],
+        "assertions": [
+          "Paragraph/sentence actual CSS Highlight ranges; Notes retains last manuscript range; Off clears; paragraph mode persisted; no saved CSS decoration leaks."
+        ],
+        "unprovedClauses": [
+          "Candidate keyboard cycle does not inspect native checked menu values; paragraph and sentence tested in separate fixtures, not exact one continuous Off→Paragraph→Sentence→Off menu sequence.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-212-A",
@@ -31804,16 +32342,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-216-A] Leafloom: shortcut reference opens from actual Cmd slash and owns focus, Tab cycle and Escape without losing native selection",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "assertions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-216-A] Leafloom: shortcut reference opens from actual Cmd slash and owns focus, Tab cycle and Escape without losing native selection",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "assertions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Only shortcuts dialog, not every modal or per-dialog Enter/Escape/global-shortcut suppression.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": " proper dialog role, initial focus and focus-return behaviour provided, while actual Tab wrap must be characterized per dialog rather than assumed globally.",
+        "driverActions": [
+          "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+        ],
+        "assertions": [
+          "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+        ],
+        "unprovedClauses": [
+          "Only shortcuts dialog, not every modal or per-dialog Enter/Escape/global-shortcut suppression.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-217-B",
@@ -32862,16 +33440,148 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation e reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation b reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim apostrophe w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim Unicode w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation e reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim punctuation b reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim apostrophe w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        },
+        {
+          "title": "[NEO-221-B] Leafloom: Vim Unicode w reaches source word edge without modifying authored text",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "assertions": [
+            "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Numbers/underscore/whitespace class matrix and cross-paragraph edge remain untested.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "cross-paragraph edge preserved.",
+        "driverActions": [
+          "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+        ],
+        "assertions": [
+          "Real w/e/b on punctuation, curly apostrophe and Unicode reach exact offsets; persisted prose remains."
+        ],
+        "unprovedClauses": [
+          "Numbers/underscore/whitespace class matrix and cross-paragraph edge remain untested.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-221-B",
@@ -33368,16 +34078,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-220-B] Leafloom: Vim character aliases unknown commands and bounded counts preserve exact prose",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+          ],
+          "assertions": [
+            "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-220-B] Leafloom: Vim character aliases unknown commands and bounded counts preserve exact prose",
+          "testFile": "tests/neo-compat/candidate/vim.spec.ts",
+          "driverActions": [
+            "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+          ],
+          "assertions": [
+            "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "3w/12j, pendingg/[ sequences and their repeat semantics unproved.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "bare0 remains line start; unknown key does not type.",
+        "driverActions": [
+          "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+        ],
+        "assertions": [
+          "9999l clamps to999; Backspace/Space aliases;5z unknown command harmless then l moves one; bare0 moves beginning; exact prose remains."
+        ],
+        "unprovedClauses": [
+          "3w/12j, pendingg/[ sequences and their repeat semantics unproved.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-225-A",
@@ -43438,16 +44188,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-282-B] Leafloom: chapter arrows clamp and Enter moves the native author caret into the chosen story",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+          ],
+          "assertions": [
+            "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-282-B] Leafloom: chapter arrows clamp and Enter moves the native author caret into the chosen story",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+          ],
+          "assertions": [
+            "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Context-menu keyboard key/keyboard-only opening is not tested; right-click alone does not prove this clause.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": "menus reachable via keyboard/context key.",
+        "driverActions": [
+          "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+        ],
+        "assertions": [
+          "Actual F6 opens chapter region; ArrowUp/Down clamps first/last row; Enter activates last story and caret end; real right-click opens keyboard-navigable menu; Escape closes it; exact chapter texts unchanged."
+        ],
+        "unprovedClauses": [
+          "Context-menu keyboard key/keyboard-only opening is not tested; right-click alone does not prove this clause.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-282-B",
@@ -43834,16 +44624,56 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "title": "[NEO-216-A] Leafloom: shortcut reference opens from actual Cmd slash and owns focus, Tab cycle and Escape without losing native selection",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "assertions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "driver": "browser",
+          "report": "tests/neo-compat/candidate-results.json"
+        }
+      ],
+      "referenceCases": [
+        {
+          "title": "[NEO-216-A] Leafloom: shortcut reference opens from actual Cmd slash and owns focus, Tab cycle and Escape without losing native selection",
+          "testFile": "tests/neo-compat/candidate/keyboard.spec.ts",
+          "driverActions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "assertions": [
+            "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+          ],
+          "report": "tests/neo-compat/reference-results.json"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
-      ]
+        "Only shortcuts dialog, not every modal or per-dialog Enter/Escape/global-shortcut suppression.",
+        "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+      ],
+      "acceptanceReview": {
+        "inventoryThen": " explicitly characterize Tab/Shift+Tab wrapping because dialogify alone does not install universal Tab trap.",
+        "driverActions": [
+          "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+        ],
+        "assertions": [
+          "One named dialog with focused region; actualTab/ShiftTab reference/Done cycle; Escape closes and caret5/prose preserved."
+        ],
+        "unprovedClauses": [
+          "Only shortcuts dialog, not every modal or per-dialog Enter/Escape/global-shortcut suppression.",
+          "Fresh coherent canonical source/candidate reports and complete literal clause review required before acceptance."
+        ],
+        "reviewScope": "Reviewed actual mounted test bodies as partial clause evidence. All missing actions and outputs remain explicit; no whole-scenario or physical OS promotion."
+      }
     },
     {
       "id": "NEO-283-B",
