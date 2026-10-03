@@ -350,11 +350,18 @@ it('preserves every rapid focus and text-size command in memory and in the real 
     await f.vm.onboard('Writer', 'pantser');
     await Promise.all([f.vm.cycleFocus(), f.vm.cycleFocus()]);
     expect(get(f.vm.state).library.focusMode).toBe('sentence');
+    let sizeWrites = 0;
+    const request = f.host.request.bind(f.host);
+    f.host.request = async (method, payload) => {
+      if (method === 'writeLibrary') sizeWrites++;
+      return request(method, payload);
+    };
     await Promise.all(Array.from({ length: 12 }, () => f.vm.textSize(1)));
     expect(get(f.vm.state).library.editorFontSize).toBe(22);
     const saved = JSON.parse(await readFile(join(f.provider.root, 'library.json'), 'utf8'));
     expect(saved.focusMode).toBe('sentence');
     expect(saved.editorFontSize).toBe(22);
+    expect(sizeWrites).toBe(1);
   } finally {
     await f.close();
   }

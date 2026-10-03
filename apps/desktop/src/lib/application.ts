@@ -253,7 +253,8 @@ export class Application {
   private nativeMenuSignature = '';
   private nativeMenuPending = false;
   private libraryWrites: Promise<void> = Promise.resolve();
-  private zoomTimer: ReturnType<typeof setTimeout> | null = null;
+  private appearanceTimer: ReturnType<typeof setTimeout> | null = null;
+  private appearanceWaiters: { resolve(): void; reject(error: unknown): void }[] = [];
   private libraryGeneration = 0;
   private pendingLibraryWrites = 0;
   private refreshingLibrary = false;
@@ -692,7 +693,8 @@ export class Application {
       if (!this.externalReconciliation && this.tryRemotePosition()) await this.save();
       return;
     }
-    if (this.value.view === 'library' && this.pendingLibraryWrites) {
+    if (this.value.view === 'library' && (this.pendingLibraryWrites || this.appearanceTimer)) {
+      await this.flushAppearance();
       await this.libraryWrites;
       // Keep the focus intent after a durable write whose host reply is still pending.
       // The subsequent fresh read retains the normal generation/view guards.
@@ -703,7 +705,7 @@ export class Application {
       this.value.view !== 'library' ||
       this.value.loading ||
       this.pendingLibraryWrites ||
-      this.zoomTimer
+      this.appearanceTimer
     )
       return;
     this.refreshingLibrary = true;
@@ -1647,7 +1649,7 @@ export class Application {
   }
   async save() {
     try {
-      await this.flushZoom();
+      await this.flushAppearance();
     } catch (error) {
       this.fail(error);
     }
@@ -2432,12 +2434,18 @@ export class Application {
       delta === 0
         ? 17
         : Math.min(22, Math.max(14, (Number(this.value.library.editorFontSize) || 17) + delta));
-    await this.preference('editorFontSize', size);
-    if (delta === 0) {
-      await this.preference('pageZoom', 1);
-      this.patch({ zoom: 1 });
-    }
+    if (size === (Number(this.value.library.editorFontSize) || 17) &&
+        (delta !== 0 || this.value.zoom === 1)) return;
+    const next = Library.parse({ ...this.value.library, editorFontSize: size,
+      ...(delta === 0 ? { pageZoom: 1 } : {}) });
+    this.libraryGeneration++;
+    this.patch({ library: next, ...(delta === 0 ? { zoom: 1 } : {}) });
+    keepReadingPlace(() => applyPresentation(next));
+    const saved = new Promise<void>((resolve, reject) => this.appearanceWaiters.push({ resolve, reject }));
+    this.scheduleAppearanceSave();
+    this.scheduleMenu();
     await this.rendered();
+    await saved;
   }
   async pasteMatchStyle() {
     if (!this.writable() || !this.editor) return;
@@ -3310,14 +3318,24 @@ export class Application {
       () => document.documentElement.style.setProperty('--page-zoom', String(zoom)),
       point,
     );
-    if (this.zoomTimer) clearTimeout(this.zoomTimer);
-    this.zoomTimer = setTimeout(() => void this.background(() => this.flushZoom()), 600);
+    this.scheduleAppearanceSave();
   }
-  private async flushZoom() {
-    if (!this.zoomTimer) return;
-    clearTimeout(this.zoomTimer);
-    this.zoomTimer = null;
-    await this.updateLibrary(this.value.library, false);
+  private scheduleAppearanceSave() {
+    if (this.appearanceTimer) clearTimeout(this.appearanceTimer);
+    this.appearanceTimer = setTimeout(() => void this.background(() => this.flushAppearance()), 600);
+  }
+  private async flushAppearance() {
+    if (!this.appearanceTimer) return;
+    clearTimeout(this.appearanceTimer);
+    this.appearanceTimer = null;
+    const waiters = this.appearanceWaiters.splice(0);
+    try {
+      await this.updateLibrary(this.value.library, false);
+      for (const waiter of waiters) waiter.resolve();
+    } catch (error) {
+      for (const waiter of waiters) waiter.reject(error);
+      throw error;
+    }
   }
   pageZoomWheel(event: WheelEvent) {
     if (event.ctrlKey) {
