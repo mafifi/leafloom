@@ -443,12 +443,20 @@ try {
     JSON.stringify({ status: 'passed', report, artifacts, inputToQuitMs: observed.inputToQuitMs }),
   );
 } catch (error) {
+  // Retain the actual four files even when managed quit or installation stops.
+  // A failure snapshot is diagnostic evidence, never a successful checkpoint claim.
+  const failedFiles = await capture('failed')
+    .then((rows) =>
+      Object.fromEntries(Object.entries(rows).map(([name, row]) => [name, row.sha256])),
+    )
+    .catch(() => null);
   await mkdir(dirname(report), { recursive: true });
   await writeFile(
     report + '.failure.json',
     JSON.stringify(
       {
         status: 'failed',
+        failedFiles,
         buildSha256Before,
         helperSha256,
         artifacts,
