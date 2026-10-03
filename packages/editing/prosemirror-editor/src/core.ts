@@ -1971,20 +1971,57 @@ export class BookCore implements EditorPort {
     );
     return exportHTML(this.document, doc);
   }
-  createChapter(title: string, index?: number) {
+  createChapter(
+    title: string,
+    index?: number,
+    options?: { kind: string; copyrightStarter?: { notice: string; rights: string } },
+  ) {
+    const entry = z
+      .strictObject({
+        kind: ChapterKind,
+        copyrightStarter: z
+          .strictObject({
+            notice: z.string().min(1).max(10000),
+            rights: z.string().min(1).max(10000),
+          })
+          .optional(),
+      })
+      .optional()
+      .parse(options);
+    title = z.string().parse(title);
     const chapters = this.sections.filter((section) => section.node.attrs.role === 'chapter');
     index ??= storyEndIndex(this.chapters);
     if (!Number.isInteger(index) || index < 0 || index > chapters.length)
       throw Error('INVALID_TARGET');
     const id = uuid(),
-      section = this.makeSection(id, 'chapter', '<p></p>', title),
+      kind = entry?.kind ?? 'chapter',
+      emptySection = this.makeSection(id, 'chapter', '<p></p>', title, kind),
+      section =
+        kind === 'copyright' && entry?.copyrightStarter
+          ? emptySection.copy(
+              Fragment.fromArray(
+                [entry.copyrightStarter.notice, entry.copyrightStarter.rights].map((text) =>
+                  bookSchema.nodes.paragraph.create({ pid: uuid() }, bookSchema.text(text)),
+                ),
+              ),
+            )
+          : emptySection,
       position =
         index < chapters.length
           ? chapters[index].pos
           : chapters.length
             ? chapters.at(-1)!.pos + chapters.at(-1)!.node.nodeSize
             : 0;
-    this.dispatch(closeHistory(this.state.tr).insert(position, section), 'chapter.create');
+    const metadata = this.metadata;
+    if (entry)
+      metadata.chapterKinds = {
+        ...z.record(z.string(), z.json()).catch({}).parse(metadata.chapterKinds),
+        [id]: kind,
+      };
+    this.dispatch(
+      closeHistory(this.state.tr).insert(position, section).setDocAttribute('metadata', metadata),
+      'chapter.create',
+    );
     return id;
   }
 

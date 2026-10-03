@@ -300,7 +300,11 @@ export interface EditorPort {
   format(mark: 'bold' | 'italic'): void;
   undo(): boolean;
   redo(): boolean;
-  createChapter(title: string, index?: number): string;
+  createChapter(
+    title: string,
+    index?: number,
+    options?: { kind: string; copyrightStarter?: { notice: string; rights: string } },
+  ): string;
   renameChapter(id: string, title: string): void;
   duplicateChapter(id: string): string;
   deleteChapter(id: string): void;
@@ -380,4 +384,9 @@ export class LifecycleError extends Error {
     this.code = code;
   }
 }
-export { parseRemotePosition, remotePositionEligibility, type RemotePosition, type RemotePositionContext } from './remote-position.ts';
+export {
+  parseRemotePosition,
+  remotePositionEligibility,
+  type RemotePosition,
+  type RemotePositionContext,
+} from './remote-position.ts';

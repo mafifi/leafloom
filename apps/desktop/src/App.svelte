@@ -28,6 +28,57 @@
   let replace = $state('');
   let dragged = $state('');
   let draggedShelf = $state('');
+  let draggedChapter = $state('');
+  let chapterDropIndex = $state<number | null>(null);
+  let nearChapterGap = $state<number | null>(null);
+  const chapterGapNear = (event: PointerEvent) => {
+    if (draggedChapter || event.buttons) return;
+    const gaps = Array.from(
+      (event.currentTarget as HTMLElement).querySelectorAll<HTMLElement>('.nav-gap'),
+    );
+    const distances = gaps.map((gap) => Math.abs(event.clientY - gap.getBoundingClientRect().top));
+    const nearest = distances.indexOf(Math.min(...distances));
+    nearChapterGap = nearest >= 0 && distances[nearest] < 9 ? nearest : null;
+  };
+  const chapterDropBefore = $derived(
+    chapterDropIndex === null
+      ? null
+      : ($app.chapters.filter((chapter) => chapter.id !== draggedChapter)[chapterDropIndex]?.id ??
+          'end'),
+  );
+  const finishChapterDrag = () => {
+    draggedChapter = '';
+    chapterDropIndex = null;
+  };
+  const chapterDragOver = (event: DragEvent) => {
+    if (
+      !draggedChapter ||
+      $app.readOnly ||
+      !event.dataTransfer?.types.includes('application/x-neo-chapter')
+    )
+      return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    const rows = Array.from(
+      (event.currentTarget as HTMLElement).querySelectorAll<HTMLElement>('.nav-item'),
+    ).filter((row) => row.dataset.chid !== draggedChapter);
+    const before = rows.findIndex((row) => {
+      const bounds = row.getBoundingClientRect();
+      return event.clientY < bounds.top + bounds.height / 2;
+    });
+    chapterDropIndex = before < 0 ? rows.length : before;
+  };
+  const chapterDrop = (event: DragEvent) => {
+    const id = event.dataTransfer?.getData('application/x-neo-chapter');
+    if (!id || id !== draggedChapter || chapterDropIndex === null || $app.readOnly) {
+      finishChapterDrag();
+      return;
+    }
+    event.preventDefault();
+    const index = chapterDropIndex;
+    finishChapterDrag();
+    run(() => vm.reorderChapter(id, index));
+  };
   let penRack = $state(false);
   const t = (key: string, args: Record<string, string | number> = {}) =>
     translate($app.language, key, args);
@@ -176,9 +227,12 @@
             ),
         },
         {
-          label: shelf.binding?.bound || shelf.bound ? 'Export the book…' : 'Export shelf as anthology…',
-          run: () => shelf.binding?.bound || shelf.bound
-            ? vm.exportBoundBook(shelf.id) : vm.exportShelfAnthology(shelf.id),
+          label:
+            shelf.binding?.bound || shelf.bound ? 'Export the book…' : 'Export shelf as anthology…',
+          run: () =>
+            shelf.binding?.bound || shelf.bound
+              ? vm.exportBoundBook(shelf.id)
+              : vm.exportShelfAnthology(shelf.id),
         },
         ...(shelf.binding?.bound
           ? [
@@ -235,7 +289,9 @@
           'Anonymous'}</button
       >
       <div class="shelf-actions">
-        {#if !$app.nativeMenus}<button id="file-menu" onclick={(event) => vm.fileMenu(event)}>{t('File')}</button>{/if}
+        {#if !$app.nativeMenus}<button id="file-menu" onclick={(event) => vm.fileMenu(event)}
+            >{t('File')}</button
+          >{/if}
         <button id="import-btn" onclick={() => run(() => vm.importBooks())}>{t('Import')}</button
         ><button id="add-shelf-btn" onclick={() => run(() => vm.newShelf())}
           >{t('New Shelf')}</button
@@ -368,19 +424,46 @@
     <aside
       id="nav-pane"
       class:open={$app.navOpen || $app.navPinned}
-      onpointerleave={() => vm.showNav(false)}
+      onpointermove={chapterGapNear}
+      onpointerleave={() => {
+        nearChapterGap = null;
+        vm.showNav(false);
+      }}
     >
       <button id="nav-pin" aria-pressed={$app.navPinned} onclick={() => vm.toggleNav()}
         >{t('Pin chapters')}</button
       >
-      <nav id="nav-list">
+      <nav
+        id="nav-list"
+        ondragover={chapterDragOver}
+        ondrop={chapterDrop}
+        ondragleave={(event) => {
+          if (
+            !(event.relatedTarget instanceof Node) ||
+            !event.currentTarget.contains(event.relatedTarget)
+          )
+            chapterDropIndex = null;
+        }}
+      >
         {#each $app.chapters as chapter, index (chapter.id)}
+          <div class="nav-gap" class:near={nearChapterGap === index}>
+            <button
+              class="ng-plus"
+              tabindex="-1"
+              aria-label={t('Add')}
+              disabled={$app.readOnly}
+              onclick={(event) => vm.menu(event, vm.chapterInsertionContext(index))}
+              oncontextmenu={(event) => vm.menu(event, vm.chapterInsertionContext(index))}>+</button
+            >
+          </div>
+          {#if chapterDropBefore === chapter.id}<div class="nav-drop-ind"></div>{/if}
           {@const outline = $app.outlineRows.find(
             (row) => row.chapterId === chapter.id && row.kind === 'chapter',
           )}
           <div
             class="nav-item"
             class:current={$app.currentChapter === chapter.id}
+            class:dragging={draggedChapter === chapter.id}
             data-chid={chapter.id}
             data-ch-id={chapter.id}
             oncontextmenu={(event) => vm.menu(event, vm.chapterContext(chapter.id, index))}
@@ -388,6 +471,19 @@
           >
             <button
               class="nav-title n-row"
+              draggable={!$app.readOnly}
+              ondragstart={(event) => {
+                if ($app.readOnly || !event.dataTransfer) {
+                  event.preventDefault();
+                  return;
+                }
+                draggedChapter = chapter.id;
+                chapterDropIndex = null;
+                event.dataTransfer.effectAllowed = 'move';
+                event.dataTransfer.setData('application/x-neo-chapter', chapter.id);
+                vm.showNav(true);
+              }}
+              ondragend={finishChapterDrag}
               onkeydown={(event) => {
                 if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
                   event.preventDefault();
@@ -422,6 +518,18 @@
               ></div>{/if}
           </div>
         {/each}
+        {#if chapterDropBefore === 'end'}<div class="nav-drop-ind"></div>{/if}
+        <div class="nav-gap" class:near={nearChapterGap === $app.chapters.length}>
+          <button
+            class="ng-plus"
+            tabindex="-1"
+            aria-label={t('Add')}
+            disabled={$app.readOnly}
+            onclick={(event) => vm.menu(event, vm.chapterInsertionContext($app.chapters.length))}
+            oncontextmenu={(event) =>
+              vm.menu(event, vm.chapterInsertionContext($app.chapters.length))}>+</button
+          >
+        </div>
       </nav>
       <button id="nav-add" onclick={() => vm.createChapter()}>＋ Chapter</button>
     </aside>
@@ -521,7 +629,8 @@
             role="textbox"
             tabindex="0"
             aria-label="Title"
-            oninput={(event) => vm.editMetadataField('title', event.currentTarget.textContent ?? '')}
+            oninput={(event) =>
+              vm.editMetadataField('title', event.currentTarget.textContent ?? '')}
             onblur={() => vm.finishMetadataField('title')}
             onkeydown={(event) => {
               if (event.key === 'Enter') {
@@ -537,7 +646,8 @@
             role="textbox"
             tabindex="0"
             aria-label="Subtitle"
-            oninput={(event) => vm.editMetadataField('subtitle', event.currentTarget.textContent ?? '')}
+            oninput={(event) =>
+              vm.editMetadataField('subtitle', event.currentTarget.textContent ?? '')}
             onblur={() => vm.finishMetadataField('subtitle')}
             onkeydown={(event) => {
               if (event.key === 'Enter') {
@@ -553,7 +663,8 @@
             role="textbox"
             tabindex="0"
             aria-label="Author"
-            oninput={(event) => vm.editMetadataField('author', event.currentTarget.textContent ?? '')}
+            oninput={(event) =>
+              vm.editMetadataField('author', event.currentTarget.textContent ?? '')}
             onblur={() => vm.finishMetadataField('author')}
           ></div>
         </section>
@@ -749,8 +860,11 @@
           {#each $app.modal.choices as choice}<button
               type="button"
               class="fr-choice"
-              onclick={() => vm.answer(choice.value)}>
-              {#if choice.description}<strong>{choice.localize === false ? choice.label : t(choice.label)}</strong><span>{t(choice.description)}</span>
+              onclick={() => vm.answer(choice.value)}
+            >
+              {#if choice.description}<strong
+                  >{choice.localize === false ? choice.label : t(choice.label)}</strong
+                ><span>{t(choice.description)}</span>
               {:else}{choice.localize === false ? choice.label : t(choice.label)}{/if}
             </button>{/each}
         </div>{:else if $app.modal.input === false}<p>{$app.modal.label}</p>{:else}

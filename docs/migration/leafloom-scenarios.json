@@ -8487,15 +8487,152 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates copyright between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates dedication between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates epigraph between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates contents between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates prologue between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates part between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates chapter between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates unnumbered between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates epilogue between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates acknowledgments between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates about between stable entries",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: gap inserts part at its position with one Undo and durable rich neighbours",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: gap inserts copyright at its position with one Undo and durable rich neighbours",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: gap Copyright insertion disappears entirely with immediate structural Undo",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-A] Leafloom: gap Part insertion disappears entirely with immediate structural Undo",
+          "driver": "browser"
+        }
+      ],
+      "referenceCases": [
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates copyright between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates dedication between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates epigraph between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates contents between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates prologue between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates part between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates chapter between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates unnumbered between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates epilogue between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates acknowledgments between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: mixed-book insertion menu creates about between stable entries"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: gap inserts part at its position with one Undo and durable rich neighbours"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: gap inserts copyright at its position with one Undo and durable rich neighbours"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: gap Copyright insertion disappears entirely with immediate structural Undo"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-A] Leafloom: gap Part insertion disappears entirely with immediate structural Undo"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
+        "Mounted source and candidate navigation journeys pass in isolated bounded runs; coherent current complete reports and final clause review remain required."
       ]
     },
     {
@@ -8565,15 +8702,26 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-059-B] Leafloom: zero-story sole and ending gaps create Dedication then a focused story",
+          "driver": "browser"
+        }
+      ],
+      "referenceCases": [
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-059-B] Leafloom: zero-story sole and ending gaps create Dedication then a focused story"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
+        "Mounted source and candidate navigation journeys pass in isolated bounded runs; coherent current complete reports and final clause review remain required."
       ]
     },
     {
@@ -8787,15 +8935,35 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-061-A] Leafloom: actual chapter drag 3 to 1 preserves rich prose, identities and companions through Undo and reopen",
+          "driver": "browser"
+        },
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-061-A] Leafloom: actual chapter drag 1 to 3 preserves rich prose, identities and companions through Undo and reopen",
+          "driver": "browser"
+        }
+      ],
+      "referenceCases": [
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-061-A] Leafloom: actual chapter drag 3 to 1 preserves rich prose, identities and companions through Undo and reopen"
+        },
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-061-A] Leafloom: actual chapter drag 1 to 3 preserves rich prose, identities and companions through Undo and reopen"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
+        "Mounted source and candidate navigation journeys pass in isolated bounded runs; coherent current complete reports and final clause review remain required."
       ]
     },
     {
@@ -8862,15 +9030,26 @@
           ]
         }
       },
-      "migrationStatus": "unported",
-      "candidateCases": [],
-      "referenceCases": [],
+      "migrationStatus": "candidate-authored",
+      "candidateCases": [
+        {
+          "report": "tests/neo-compat/candidate-results.json",
+          "title": "[NEO-061-B] Leafloom: dragging titled chapters preserves the selected rich prose and Outline order",
+          "driver": "browser"
+        }
+      ],
+      "referenceCases": [
+        {
+          "report": "tests/neo-compat/reference-results.json",
+          "title": "[NEO-061-B] Leafloom: dragging titled chapters preserves the selected rich prose and Outline order"
+        }
+      ],
       "oracle": {
         "kind": "neo-reference",
         "sourceEvidence": null
       },
       "knownGaps": [
-        "Production Leafloom integration port and fresh passing evidence required."
+        "Mounted source and candidate navigation journeys pass in isolated bounded runs; coherent current complete reports and final clause review remain required."
       ]
     },
     {

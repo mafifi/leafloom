@@ -2440,6 +2440,16 @@ body.night .ol-part-name {
   border-radius: 1px;
   box-shadow: 0 0 8px rgba(201, 168, 106, 0.8);
 }
+#nav-list {
+  position: relative;
+}
+#nav-list .nav-drop-ind {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  margin: 0;
+  pointer-events: none;
+}
 .nav-item .n-flag {
   width: 8px;
   height: 8px;

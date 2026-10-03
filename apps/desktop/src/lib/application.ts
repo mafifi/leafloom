@@ -1862,9 +1862,10 @@ export class Application {
     }
     await this.prepareCovers();
     this.patch({
-      hint: imported || failed
-        ? `Imported ${imported} book${imported === 1 ? '' : 's'}${failed ? `; ${failed} failed` : ''}`
-        : 'Imported dropped files',
+      hint:
+        imported || failed
+          ? `Imported ${imported} book${imported === 1 ? '' : 's'}${failed ? `; ${failed} failed` : ''}`
+          : 'Imported dropped files',
     });
   }
   async importBooks() {
@@ -2522,6 +2523,28 @@ export class Application {
     );
     return items;
   }
+  chapterInsertionContext(index: number): MenuItem[] {
+    const names = {
+      copyright: 'Copyright',
+      dedication: 'Dedication',
+      epigraph: 'Epigraph',
+      contents: 'Contents',
+      prologue: 'Prologue',
+      part: 'Part',
+      chapter: 'Chapter',
+      unnumbered: 'Unnumbered Chapter',
+      epilogue: 'Epilogue',
+      acknowledgments: 'Acknowledgments',
+      about: 'About the Author',
+    };
+    return Object.entries(names).map(([kind, label]) => ({
+      label,
+      disabled:
+        this.value.readOnly ||
+        (kind === 'contents' && this.value.chapters.some((c) => c.kind === 'contents')),
+      run: () => this.createChapter(index, kind),
+    }));
+  }
   formatMenu(event: MouseEvent) {
     this.menu(event, [
       { label: 'Bold', run: () => this.format('bold') },
@@ -2844,11 +2867,16 @@ export class Application {
     if (first) this.focusChapter(first.id);
     else this.createChapter();
   }
-  createChapter(index?: number) {
+  createChapter(index?: number, kind?: string) {
     if (!this.writable()) return;
     const editor = this.editor,
-      id = editor?.createChapter('', index);
+      id = editor?.createChapter(
+        '',
+        index,
+        kind ? { kind, ...this.copyrightOptions(kind) } : undefined,
+      );
     if (id && editor) {
+      if (this.value.panel !== 'manuscript') this.setPanel('manuscript');
       editor.select(id, 1);
       this.project();
       void this.rendered().then(() => {
@@ -2879,24 +2907,23 @@ export class Application {
   }
   setChapterKind(id: string, kind: string) {
     if (!this.writable()) return;
-    this.editor?.setChapterKind(
-      id,
-      kind,
-      kind === 'copyright'
-        ? {
-            copyrightStarter: {
-              notice: translate(this.value.language, 'Copyright © {year} {name}', {
-                year: String(new Date().getFullYear()),
-                name:
-                  this.editor.author ||
-                  this.value.library.authorName ||
-                  translate(this.value.language, 'Anonymous'),
-              }),
-              rights: translate(this.value.language, 'All rights reserved.'),
-            },
-          }
-        : undefined,
-    );
+    this.editor?.setChapterKind(id, kind, this.copyrightOptions(kind));
+  }
+  private copyrightOptions(kind: string) {
+    return kind === 'copyright'
+      ? {
+          copyrightStarter: {
+            notice: translate(this.value.language, 'Copyright © {year} {name}', {
+              year: String(new Date().getFullYear()),
+              name:
+                this.editor?.author ||
+                this.value.library.authorName ||
+                translate(this.value.language, 'Anonymous'),
+            }),
+            rights: translate(this.value.language, 'All rights reserved.'),
+          },
+        }
+      : undefined;
   }
   focusChapter(id: string) {
     if (this.value.panel !== 'manuscript') this.setPanel('manuscript');
@@ -3223,6 +3250,8 @@ export type AppActions = Pick<
   | 'moveShelf'
   | 'bindShelf'
   | 'chapterContext'
+  | 'chapterInsertionContext'
+  | 'reorderChapter'
   | 'chooseAuthor'
   | 'closeBook'
   | 'closeSearch'
@@ -3362,6 +3391,8 @@ export function applicationActions(vm: Application): AppActions {
     moveShelf: vm.moveShelf.bind(vm),
     bindShelf: vm.bindShelf.bind(vm),
     chapterContext: vm.chapterContext.bind(vm),
+    chapterInsertionContext: vm.chapterInsertionContext.bind(vm),
+    reorderChapter: vm.reorderChapter.bind(vm),
     chooseAuthor: vm.chooseAuthor.bind(vm),
     closeBook: vm.closeBook.bind(vm),
     closeSearch: vm.closeSearch.bind(vm),

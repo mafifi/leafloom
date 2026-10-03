@@ -19,6 +19,45 @@ const open = (first: string, second: string, metadata: Record<string, unknown> =
     '<p>Notes</p>',
     '<p>Outline</p>',
   );
+it('indexed Copyright creation is one history action and preserves rich neighbours on reopen', () => {
+  const core = open('<p>Alpha <b>bold</b>.</p>', '<p>Beta <i>italic</i>.</p>');
+  const initial = core.checkpoint();
+  const id = core.createChapter('', 0, {
+    kind: 'copyright',
+    copyrightStarter: { notice: 'Copyright © 2026 Writer', rights: 'All rights reserved.' },
+  });
+  expect(core.chapters.map((c) => c.kind)).toEqual(['copyright', 'chapter', 'chapter']);
+  expect(core.passageRows(id).map((p) => p.text)).toEqual([
+    'Copyright © 2026 Writer',
+    'All rights reserved.',
+  ]);
+  expect(core.html('a')).toBe('<p>Alpha <b>bold</b>.</p>');
+  const saved = core.checkpoint();
+  const reopened = new BookCore(document, saved.book, saved.reviews, saved.notes, saved.outline);
+  expect(reopened.chapters.map((c) => c.id)).toEqual([id, 'a', 'b']);
+  expect(reopened.passageRows(id).map((p) => p.text)).toEqual([
+    'Copyright © 2026 Writer',
+    'All rights reserved.',
+  ]);
+  core.undo();
+  expect(core.checkpoint().book.chapters).toEqual(initial.book.chapters);
+  expect(core.checkpoint().book.metadata).toEqual(initial.book.metadata);
+  core.redo();
+  expect(core.chapters.map((c) => c.id)).toEqual([id, 'a', 'b']);
+});
+it('entry creation rejects malformed role, index and starter without changing author state', () => {
+  const core = open('<p>Alpha.</p>', '<p>Beta.</p>');
+  const initial = core.checkpoint();
+  for (const [index, options] of [
+    [-1, { kind: 'part' }],
+    [3, { kind: 'part' }],
+    [1, { kind: 'invalid' }],
+    [1, { kind: 'copyright', copyrightStarter: { notice: '', rights: 'Rights' } }],
+  ] as const) {
+    expect(() => core.createChapter('', index, options)).toThrow();
+    expect(core.checkpoint()).toEqual(initial);
+  }
+});
 it('merging story chapters preserves paragraphs, identities, sticky and section ownership through Undo', () => {
   const core = open(
     '<p>Alpha.</p>',
