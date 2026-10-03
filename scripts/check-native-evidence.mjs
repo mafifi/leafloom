@@ -55,7 +55,7 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   };
   const binding = receipt?.artifactBinding ?? {};
   const driverPath = contract?.driverPath ?? 'scripts/verify-macos-native.mjs';
-  if (section === 'quitRestart')
+  if (section === 'quitRestart' || section === 'updater')
     require(binding.driverPath === driverPath, 'Lifecycle driver differs from reviewed contract');
   await check(path.join(root, driverPath), binding.driverSha256);
   await check(receipt?.binary ?? '', binding.binarySha256);
@@ -66,7 +66,12 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
   if (section === 'documentIO')
     for (const [name, value] of moduleFields)
       await check(path.join(root, name), value(receipt ?? {}));
-  else if (section !== 'quitRestart') {
+  else if (section === 'updater') {
+    await check(
+      path.join(root, 'tests/neo-compat/native/updater-fixture.mjs'),
+      receipt?.updater?.helperSha256,
+    );
+  } else if (section !== 'quitRestart' && section !== 'updater') {
     const module = section === 'collectionIO' ? 'collection-output.mjs' : 'folder-replacement.mjs';
     await check(
       path.join(root, 'tests/neo-compat/native', module),
@@ -90,7 +95,7 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
         path.join(root, 'apps/desktop/dist'),
       );
   }
-  if (section === 'quitRestart') {
+  if (section === 'quitRestart' || section === 'updater') {
     const restart = receipt.restartArtifactBinding ?? {};
     require(restart.driverPath === driverPath, 'Restart driver differs');
     await check(path.join(root, driverPath), restart.driverSha256);
@@ -131,13 +136,13 @@ export async function verifyNativeEvidence(receipt, entry, options = {}) {
       options.environment ?? '',
     ), 'Hidden native evidence cannot prove physical or foreground environment');
   }
-  if (section !== 'quitRestart')
+  if (section !== 'quitRestart' && section !== 'updater')
     require(io?.driver === 'tauri-native-hidden', 'Native section driver missing');
   if (section === 'documentIO')
     require(typeof io?.pickerQualification === 'string' &&
       io.pickerQualification.includes('physical'), 'Native picker qualification missing');
   const rows = (
-    section === 'quitRestart'
+    section === 'quitRestart' || section === 'updater'
       ? [{ ...io, driverActions: io?.actions }]
       : Array.isArray(io?.evidence)
         ? io.evidence

@@ -448,3 +448,69 @@ test('folder parser rejects lost review/title companions even with self-consiste
     await rm(f.root, { recursive: true, force: true });
   }
 });
+
+test('updater dispatch requires reviewed row, helper and both executed launch bindings', async () => {
+  const f = await fixture();
+  try {
+    const contract = JSON.parse(
+      await readFile('tests/neo-compat/native/acceptance-contracts.json', 'utf8'),
+    ).contracts.find((c: { contractId: string }) => c.contractId === 'updates:signed-quit');
+    const driverPath = 'scripts/verify-macos-quit-restart.mjs';
+    const helper = 'tests/neo-compat/native/updater-fixture.mjs';
+    for (const name of [driverPath, helper]) {
+      await mkdir(path.dirname(path.join(f.root, name)), { recursive: true });
+      await writeFile(path.join(f.root, name), name);
+    }
+    const binding = { ...f.receipt.artifactBinding, driverPath, driverSha256: hash(driverPath) };
+    const row = {
+      ...contract,
+      actions: contract.driverActions,
+      artifacts: f.artifacts,
+      helperSha256: hash(helper),
+    };
+    const receipt = {
+      ...f.receipt,
+      artifactBinding: binding,
+      restartArtifactBinding: { ...binding },
+      updater: row,
+    };
+    const entry = {
+      ...f.entry,
+      ...contract,
+      evidenceKind: 'native-v1',
+      driver: 'tauri-native-hidden',
+      requiredCapabilities: contract.capabilities,
+    };
+    const options = { ...f.options, scenarioId: contract.id };
+    const result = await verifyCandidateEvidence(receipt, entry, options);
+    assert.equal(result.passed, false); // No durable updater or quit artifacts: self-claims cannot pass.
+    assert.ok(result.problems.some((p) => p.includes('semantic validation')));
+    assert.ok(!result.problems.some((p) => p.includes('Exact finite acceptance row')));
+    for (const [changed, expected] of [
+      [{ ...receipt, buildSha256After: 'b'.repeat(64) }, 'stale'],
+      [{ ...receipt, updater: { ...row, helperSha256: undefined } }, 'Missing SHA256'],
+      [{ ...receipt, updater: { ...row, actions: [] } }, 'Acceptance driverActions'],
+      [
+        { ...receipt, restartArtifactBinding: { ...binding, driverPath: 'wrong' } },
+        'Restart driver',
+      ],
+      [{ ...receipt, updater: { ...row, unexecutedClauses: [contract.id] } }, 'unexecuted'],
+    ] as const) {
+      const rejected = await verifyCandidateEvidence(changed, entry, options);
+      assert.equal(rejected.passed, false);
+      assert.ok(
+        rejected.problems.some((p) => p.includes(expected)),
+        JSON.stringify(rejected),
+      );
+    }
+    const unsafe = await verifyCandidateEvidence(
+      receipt,
+      { ...entry, requiredCapabilities: [...contract.capabilities, 'physical-keyboard'] },
+      options,
+    );
+    assert.equal(unsafe.passed, false);
+    assert.ok(unsafe.problems.some((p) => p.includes('required capability')));
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
+  }
+});

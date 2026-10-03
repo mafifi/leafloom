@@ -1,3 +1,4 @@
+import catalog from './acceptance-contracts.json' with { type: 'json' };
 /** Private signed loopback package. SDK installs only a disposable bundle, never the running app. */
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
@@ -232,7 +233,15 @@ export async function prepareUpdaterFixture({ fixture, artifacts, binary }) {
         'payload.bin',
         'MacOS/fixture',
       ]);
+      const contract = catalog.contracts.find((c) => c.contractId === 'updates:signed-quit');
+      assert.ok(contract);
       const facts = {
+        id: contract.id,
+        title: contract.title,
+        actions: contract.driverActions,
+        assertions: contract.assertions,
+        driver: 'tauri-native-hidden',
+        status: 'passed',
         previousTarget,
         installedTarget,
         ...preparation,

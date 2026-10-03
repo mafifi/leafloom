@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { inspectUpdaterArtifacts } from './native-updater-artifacts.mjs';
 import { readFile, readdir, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { JSDOM } from 'jsdom';
@@ -63,7 +64,7 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
     return readFile(resolved);
   };
   const row =
-    contract.section === 'quitRestart'
+    contract.section === 'quitRestart' || contract.section === 'updater'
       ? io
       : io.evidence.find((r) => r.id === contract.id && r.title === contract.title);
   const p = contract.parser;
@@ -257,6 +258,15 @@ export async function inspectNativeArtifacts(contract, receipt, options) {
       }
     }
     return { states: 4 };
+  }
+  if (p.kind === 'signed-updater') {
+    const normalQuit = await inspectNativeArtifacts(
+      nativeContract('lifecycle:normal-quit'),
+      receipt,
+      options,
+    );
+    const signedUpdate = await inspectUpdaterArtifacts(bytes, io);
+    return { normalQuit, signedUpdate };
   }
   if (p.kind === 'normal-quit') {
     const q = io;

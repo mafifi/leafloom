@@ -687,6 +687,28 @@
       "parser": {
         "kind": "normal-quit"
       }
+    },
+    {
+      "contractId": "updates:signed-quit",
+      "section": "updater",
+      "id": "NEO-272-A",
+      "title": "NEO-272-A verified signed download installs on saved normal quit",
+      "driverActions": [
+        "Check private signed loopback update through native SDK",
+        "Reject invalid signature then download valid staged package",
+        "Type fresh author tail and quit through managed save",
+        "Restart private library and inspect disposable installed bundle"
+      ],
+      "assertions": [
+        "Invalid signature is rejected before valid ready state",
+        "Retained installed bytes exactly match independently verified signed archive",
+        "Fresh author tail and all durable companions survive normal quit and restart"
+      ],
+      "capabilities": ["native-files", "native-lifecycle", "native-updater"],
+      "driverPath": "scripts/verify-macos-quit-restart.mjs",
+      "parser": {
+        "kind": "signed-updater"
+      }
     }
   ]
 }

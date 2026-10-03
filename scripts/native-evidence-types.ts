@@ -1,7 +1,8 @@
 /** Native reports are retained receipts, never synthesized Playwright outcomes. */
-export type NativeSection = 'documentIO' | 'collectionIO' | 'folderReplacement' | 'quitRestart';
+export type NativeSection =
+  'documentIO' | 'collectionIO' | 'folderReplacement' | 'quitRestart' | 'updater';
 export type NativeCapability =
-  'native-files' | 'native-export' | 'native-watcher' | 'native-lifecycle';
+  'native-files' | 'native-export' | 'native-watcher' | 'native-lifecycle' | 'native-updater';
 export type RequiredNativeCapability =
   | NativeCapability
   | 'foreground'
