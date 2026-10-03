@@ -515,7 +515,7 @@ it('PDF carries tagged reading structure, locale paper size and actual Contents 
  const file=join(f.root,'tagged.pdf');await writeFile(file,await renderManuscript(f.opened,'pdf',{paperCountry:'US',language:'en-US'}));
  const info=spawnSync('pdfinfo',[file],{encoding:'utf8'});expect(info.status).toBe(0);expect(info.stdout).toMatch(/Tagged:\s+yes/);expect(info.stdout).toMatch(/Page size:\s+612 x 792 pts/);
  const extracted=spawnSync('pdftotext',['-layout',file,'-'],{encoding:'utf8'});expect(extracted.status).toBe(0);const pages=extracted.stdout.split('\f');const first=pages.findIndex(page=>page.replace(/\s+/g,'').includes('FIRSTSENTINEL'))+1,last=pages.findIndex(page=>page.replace(/\s+/g,'').includes('LASTSENTINEL'))+1;
- expect(first).toBeGreaterThan(2);expect(last).toBeGreaterThan(first);
+ expect(first,`Extracted opening pages: ${JSON.stringify(pages.slice(0,3))}`).toBeGreaterThan(2);expect(last).toBeGreaterThan(first);
  expect(pages[1]).toMatch(new RegExp('Chapter 1 — Arrival\\s+'+first));expect(pages[1]).toMatch(new RegExp('Chapter 2 — Departure\\s+'+last));
  const bytes=await readFile(file);expect(bytes.toString('latin1')).toContain('/StructTreeRoot');expect(bytes.toString('latin1')).toContain('/S /TOCI');expect(bytes.toString('latin1')).toContain('/S /Reference');
  const a4=join(f.root,'a4.pdf');await writeFile(a4,await renderManuscript(f.opened,'pdf',{paperCountry:'GB'}));expect(spawnSync('pdfinfo',[a4],{encoding:'utf8'}).stdout).toMatch(/Page size:\s+595\.28 x 841\.89 pts/);
