@@ -1,0 +1,588 @@
+{
+  "schema": "leafloom/native-contracts-v1",
+  "contracts": [
+    {
+      "contractId": "document:export:txt",
+      "section": "documentIO",
+      "id": "NEO-258-A",
+      "title": "[NEO-258-A][NEO-131-A] Leafloom: actual txt author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export TXT",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "txt",
+        "file": "author-export.txt"
+      }
+    },
+    {
+      "contractId": "document:chapter:txt",
+      "section": "documentIO",
+      "id": "NEO-258-A",
+      "title": "[NEO-258-A][NEO-065-A] Leafloom: actual txt chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "txt",
+        "file": "one-chapter.txt"
+      }
+    },
+    {
+      "contractId": "document:export:md",
+      "section": "documentIO",
+      "id": "NEO-259-A",
+      "title": "[NEO-259-A][NEO-131-A] Leafloom: actual md author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export MD",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "md",
+        "file": "author-export.md"
+      }
+    },
+    {
+      "contractId": "document:chapter:md",
+      "section": "documentIO",
+      "id": "NEO-259-A",
+      "title": "[NEO-259-A][NEO-065-A] Leafloom: actual md chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "md",
+        "file": "one-chapter.md"
+      }
+    },
+    {
+      "contractId": "document:export:html",
+      "section": "documentIO",
+      "id": "NEO-260-A",
+      "title": "[NEO-260-A][NEO-131-A] Leafloom: actual html author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export HTML",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "html",
+        "file": "author-export.html"
+      }
+    },
+    {
+      "contractId": "document:chapter:html",
+      "section": "documentIO",
+      "id": "NEO-260-A",
+      "title": "[NEO-260-A][NEO-065-A] Leafloom: actual html chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "html",
+        "file": "one-chapter.html"
+      }
+    },
+    {
+      "contractId": "document:export:docx",
+      "section": "documentIO",
+      "id": "NEO-261-A",
+      "title": "[NEO-261-A][NEO-131-A] Leafloom: actual docx author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export DOCX",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "docx",
+        "file": "author-export.docx"
+      }
+    },
+    {
+      "contractId": "document:chapter:docx",
+      "section": "documentIO",
+      "id": "NEO-261-A",
+      "title": "[NEO-261-A][NEO-065-A] Leafloom: actual docx chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "docx",
+        "file": "one-chapter.docx"
+      }
+    },
+    {
+      "contractId": "document:export:epub",
+      "section": "documentIO",
+      "id": "NEO-262-A",
+      "title": "[NEO-262-A][NEO-131-A] Leafloom: actual epub author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export EPUB",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "epub",
+        "file": "author-export.epub"
+      }
+    },
+    {
+      "contractId": "document:chapter:epub",
+      "section": "documentIO",
+      "id": "NEO-262-A",
+      "title": "[NEO-262-A][NEO-065-A] Leafloom: actual epub chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "epub",
+        "file": "one-chapter.epub"
+      }
+    },
+    {
+      "contractId": "document:export:pdf",
+      "section": "documentIO",
+      "id": "NEO-263-A",
+      "title": "[NEO-263-A][NEO-131-A] Leafloom: actual pdf author export preserves current rich Unicode prose and excludes notes ghosts and flags",
+      "driverActions": [
+        "Open existing native book",
+        "Type Edited at real manuscript caret",
+        "Choose Export PDF",
+        "Supply private fixture destination through native picker provider"
+      ],
+      "assertions": [
+        "Parsed output contains current Unicode rich prose and chapter headings",
+        "Ghost/flag/note text absent from artifact",
+        "Live author document and sticky retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "export",
+        "format": "pdf",
+        "file": "author-export.pdf"
+      }
+    },
+    {
+      "contractId": "document:chapter:pdf",
+      "section": "documentIO",
+      "id": "NEO-263-A",
+      "title": "[NEO-263-A][NEO-065-A] Leafloom: actual pdf chapter export includes only the chosen story and preserves both chapters",
+      "driverActions": [
+        "Type Only in actual second story",
+        "Dispatch contextmenu on real navigation row in hidden WebView",
+        "Choose Export Chapter and actual format button",
+        "Provide isolated native picker destination"
+      ],
+      "assertions": [
+        "Only selected story and source heading/title page exported",
+        "First story and annotations excluded",
+        "Both live chapter texts preserved"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "chapter",
+        "format": "pdf",
+        "file": "one-chapter.pdf"
+      }
+    },
+    {
+      "contractId": "document:edition:html",
+      "section": "documentIO",
+      "id": "NEO-260-B",
+      "title": "[NEO-260-B] Leafloom: actual html whole edition retains front body back order navigation and paragraph presentation",
+      "driverActions": [
+        "Open initial edition fixture",
+        "Choose Export HTML",
+        "Supply actual native scoped output destination"
+      ],
+      "assertions": [
+        "Parsed artifact retains front/body/back order",
+        "TOC destinations or chapter styles are real",
+        "Paragraph alignment and poetry remain in actual resources"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "format": "html",
+        "file": "edition.html"
+      }
+    },
+    {
+      "contractId": "document:edition:docx",
+      "section": "documentIO",
+      "id": "NEO-261-B",
+      "title": "[NEO-261-B] Leafloom: actual docx whole edition retains front body back order navigation and paragraph presentation",
+      "driverActions": [
+        "Open initial edition fixture",
+        "Choose Export DOCX",
+        "Supply actual native scoped output destination"
+      ],
+      "assertions": [
+        "Parsed artifact retains front/body/back order",
+        "TOC destinations or chapter styles are real",
+        "Paragraph alignment and poetry remain in actual resources"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "format": "docx",
+        "file": "edition.docx"
+      }
+    },
+    {
+      "contractId": "document:edition:epub",
+      "section": "documentIO",
+      "id": "NEO-262-B",
+      "title": "[NEO-262-B] Leafloom: actual epub whole edition retains front body back order navigation and paragraph presentation",
+      "driverActions": [
+        "Open initial edition fixture",
+        "Choose Export EPUB",
+        "Supply actual native scoped output destination"
+      ],
+      "assertions": [
+        "Parsed artifact retains front/body/back order",
+        "TOC destinations or chapter styles are real",
+        "Paragraph alignment and poetry remain in actual resources"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "edition",
+        "format": "epub",
+        "file": "edition.epub"
+      }
+    },
+    {
+      "contractId": "document:pdf-layout",
+      "section": "documentIO",
+      "id": "NEO-263-B",
+      "title": "[NEO-263-B] Leafloom: real edition PDF bookmarks TOC destinations footers and poetry geometry agree with actual pages",
+      "driverActions": [
+        "Open actual edition",
+        "Choose PDF export and scoped native destination",
+        "Parse actual PDF objects and glyph coordinates"
+      ],
+      "assertions": [
+        "Bookmark body text and Contents page/link destinations agree",
+        "Title footer suppressed and body physical page numbers match",
+        "Poetry italic glyphs and indentation plus right paragraph alignment retained"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "pdf-layout",
+        "file": "edition-layout.pdf"
+      }
+    },
+    {
+      "contractId": "document:cancel",
+      "section": "documentIO",
+      "id": "NEO-265-A",
+      "title": "[NEO-265-A] Leafloom: actual export picker cancellation writes no artifact and a real unwritable destination preserves manuscript",
+      "driverActions": ["Choose Export TXT", "Cancel at isolated native picker boundary"],
+      "assertions": ["No file created", "Visible draft unchanged"],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "cancel"
+      }
+    },
+    {
+      "contractId": "document:denied-write",
+      "section": "documentIO",
+      "id": "NEO-265-A",
+      "title": "[NEO-265-A] Leafloom: actual denied export write preserves existing destination bytes and durable manuscript",
+      "driverActions": [
+        "Choose actual TXT export to existing private read-only file/parent",
+        "Wait real failure presentation",
+        "Inspect actual bytes and close/reopen receipt"
+      ],
+      "assertions": [
+        "Original destination bytes retained",
+        "No partial output in destination directory",
+        "Visible prose, durable chapters/Darlings/title/author unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "denied-write"
+      }
+    },
+    {
+      "contractId": "document:cover-epub",
+      "section": "documentIO",
+      "id": "NEO-262-B",
+      "title": "[NEO-262-B] Leafloom: picked custom cover bytes and durable UUID survive actual EPUB export repeat and book reopen",
+      "driverActions": [
+        "Pick actual cover through debug-only scoped native image picker",
+        "Export real EPUB",
+        "Close/reopen and export twice more"
+      ],
+      "assertions": [
+        "Exact source PNG bytes packaged",
+        "Actual manifest/spine/navigation destinations and fragments resolve",
+        "Durable manuscript UUID equals each actual OPF identifier",
+        "Input PNG unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "cover-epub"
+      }
+    },
+    {
+      "contractId": "collection:anthology:epub",
+      "section": "collectionIO",
+      "id": "NEO-046-A",
+      "title": "[NEO-046-A] Leafloom: actual epub anthology retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Choose anthology and enter Unicode title",
+        "Choose actual EPUB and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "epub",
+        "file": "anthology.epub",
+        "title": "Collected \u00e9\u6771\u4eac",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "collection:anthology:docx",
+      "section": "collectionIO",
+      "id": "NEO-046-A",
+      "title": "[NEO-046-A] Leafloom: actual docx anthology retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Choose anthology and enter Unicode title",
+        "Choose actual Word (.docx) and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "docx",
+        "file": "anthology.docx",
+        "title": "Collected \u00e9\u6771\u4eac",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "collection:anthology:pdf",
+      "section": "collectionIO",
+      "id": "NEO-046-A",
+      "title": "[NEO-046-A] Leafloom: actual pdf anthology retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Choose anthology and enter Unicode title",
+        "Choose actual PDF and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "pdf",
+        "file": "anthology.pdf",
+        "title": "Collected \u00e9\u6771\u4eac",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "collection:bound:epub",
+      "section": "collectionIO",
+      "id": "NEO-045-A",
+      "title": "[NEO-045-A] Leafloom: actual epub bound collection retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Bind the shelf and choose Export the book",
+        "Choose actual EPUB and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "epub",
+        "file": "bound.epub",
+        "title": "Collection shelf",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "collection:bound:docx",
+      "section": "collectionIO",
+      "id": "NEO-045-A",
+      "title": "[NEO-045-A] Leafloom: actual docx bound collection retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Bind the shelf and choose Export the book",
+        "Choose actual Word (.docx) and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "docx",
+        "file": "bound.docx",
+        "title": "Collection shelf",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "collection:bound:pdf",
+      "section": "collectionIO",
+      "id": "NEO-045-A",
+      "title": "[NEO-045-A] Leafloom: actual pdf bound collection retains chosen title and constituent order",
+      "driverActions": [
+        "Create two actual authored books in one shelf",
+        "Bind the shelf and choose Export the book",
+        "Choose actual PDF and private native destination"
+      ],
+      "assertions": [
+        "Parsed file contains exact collection title",
+        "Both constituent paragraphs retain shelf order",
+        "Original author titles and rich chapters unchanged"
+      ],
+      "capabilities": ["native-files", "native-export"],
+      "parser": {
+        "kind": "collection",
+        "format": "pdf",
+        "file": "bound.pdf",
+        "title": "Collection shelf",
+        "passages": ["First opening.", "First ending.", "Second opening.", "Second ending."]
+      }
+    },
+    {
+      "contractId": "folder:replacement",
+      "section": "folderReplacement",
+      "capabilities": ["native-files", "native-watcher"],
+      "parser": {
+        "kind": "folder"
+      },
+      "id": "NEO-245-A",
+      "title": "[NEO-245-A] Leafloom: native whole-folder replacement and later external edit retain rich author writing",
+      "driverActions": [
+        "Replace the actual private book directory without its writer lock",
+        "Wait for actual host event and mounted WebView incoming paragraph",
+        "Type X through public WebDriver, save and reopen",
+        "Write a later external paragraph in the replacement folder, type Y, save and reopen"
+      ],
+      "assertions": [
+        "Actual rich incoming prose adopted with fresh ownership",
+        "Both later native author edits durably reopen with bold and italic marks",
+        "Book/chapter identity and companions retained",
+        "Original baseline rich HTML bytes unchanged",
+        "Every original aside file hash remains unchanged"
+      ]
+    }
+  ]
+}
