@@ -137,8 +137,12 @@
     shelfDrop: (event, index) => {
       draggedShelf = event.dataTransfer?.getData('application/x-neo-shelf') || draggedShelf;
       dragged = event.dataTransfer?.getData('application/x-neo-book') || dragged;
-      if (draggedShelf) run(() => vm.moveShelf(draggedShelf, $app.library.shelves.indexOf(shelf)));
-      else if (dragged) run(() => vm.moveBook(dragged, shelf.id, index));
+      if (draggedShelf) {
+        const section = (event.currentTarget as HTMLElement).closest('.shelf');
+        const bounds = section?.getBoundingClientRect();
+        const after = bounds ? event.clientY >= bounds.top + bounds.height / 2 : false;
+        run(() => vm.dropShelf(draggedShelf, shelf.id, after));
+      } else if (dragged) run(() => vm.moveBook(dragged, shelf.id, index));
       draggedShelf = '';
       dragged = '';
     },
@@ -147,6 +151,10 @@
       event.dataTransfer?.setData('application/x-neo-book', book.id);
       event.dataTransfer?.setData('text/plain', book.id);
     },
+    refreshCover: (book) =>
+      run(() =>
+        book.kind === 'cover' ? vm.regenerateCover(book.id) : vm.openCoverChoices(book.id),
+      ),
     openBook: (book) => run(() => vm.openBook(book.id)),
     openPage: (book, label) => run(() => vm.openPublicationPage(book.id, label, shelf.id)),
     openCover: (book) => run(() => vm.openPublicationPage(book.id, undefined, shelf.id)),

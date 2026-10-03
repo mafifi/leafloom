@@ -971,6 +971,21 @@ export class Application {
   deleteShelf(...args: Parameters<LibraryViewModel['deleteShelf']>) {
     return this.libraryViewModel.deleteShelf(...args);
   }
+  async dropShelf(id: string, targetId: string, after: boolean) {
+    const shelves = this.value.library.shelves;
+    const from = shelves.findIndex((shelf) => shelf.id === id);
+    const target = shelves.findIndex((shelf) => shelf.id === targetId);
+    if (
+      from < 0 ||
+      target < 0 ||
+      from === target ||
+      shelves[from].authorId !== shelves[target].authorId
+    )
+      return;
+    const insertion = target + (after ? 1 : 0);
+    const destination = insertion - (from < insertion ? 1 : 0);
+    if (destination !== from) await this.moveShelf(id, destination);
+  }
   moveShelf(...args: Parameters<LibraryViewModel['moveShelf']>) {
     return this.libraryViewModel.moveShelf(...args);
   }
@@ -3408,6 +3423,7 @@ export type AppActions = Pick<
   | 'modalValue'
   | 'answer'
   | 'addBoundPage'
+  | 'dropShelf'
   | 'moveShelf'
   | 'bindShelf'
   | 'chapterContext'
@@ -3550,6 +3566,7 @@ export function applicationActions(vm: Application): AppActions {
     modalValue: vm.modalValue.bind(vm),
     answer: vm.answer.bind(vm),
     addBoundPage: vm.addBoundPage.bind(vm),
+    dropShelf: vm.dropShelf.bind(vm),
     moveShelf: vm.moveShelf.bind(vm),
     bindShelf: vm.bindShelf.bind(vm),
     chapterContext: vm.chapterContext.bind(vm),

@@ -1515,14 +1515,46 @@ it('a validated unchanged disk snapshot clears a transient read failure and flus
     expect(get(f.vm.state).externalChange).toBeNull();
     expect(f.vm.editor).toBe(core);
     expect(core.state.selection.toJSON()).toEqual(selection);
-    expect((await new BookFiles(join(f.provider.root, id)).load(false)).book.chapters[0].html).toContain('Retained draft.');
+    expect(
+      (await new BookFiles(join(f.provider.root, id)).load(false)).book.chapters[0].html,
+    ).toContain('Retained draft.');
     const authored = core.chapters.map(({ id, html }) => ({ id, html }));
     expect(core.undo()).toBe(true);
-    expect(core.chapters.some(chapter => chapter.html.includes('Retained draft.'))).toBe(false);
+    expect(core.chapters.some((chapter) => chapter.html.includes('Retained draft.'))).toBe(false);
     expect(core.redo()).toBe(true);
     expect(core.chapters.map(({ id, html }) => ({ id, html }))).toEqual(authored);
   } finally {
     if (get(f.vm.state).externalChange) await f.vm.closeBook(false);
+    await f.close();
+  }
+});
+it('shelf drops resolve before and after placement once against current owned order and persist the exact sequence', async () => {
+  const f = await fixture();
+  try {
+    await f.vm.onboard('Writer', 'pantser');
+    const library = get(f.vm.state).library;
+    const shelves = ['first', 'middle', 'last'].map((id) => ({
+      id,
+      name: id,
+      authorId: library.currentAuthorId!,
+      bookIds: [],
+    }));
+    await f.provider.request('writeLibrary', { library: { ...library, shelves } });
+    await f.vm.initialize();
+    await f.vm.dropShelf('first', 'middle', false);
+    expect(get(f.vm.state).library.shelves.map((s) => s.id)).toEqual(['first', 'middle', 'last']);
+    await f.vm.dropShelf('last', 'first', true);
+    expect(get(f.vm.state).library.shelves.map((s) => s.id)).toEqual(['first', 'last', 'middle']);
+    await f.vm.dropShelf('middle', 'first', false);
+    expect(get(f.vm.state).library.shelves.map((s) => s.id)).toEqual(['middle', 'first', 'last']);
+    await f.vm.dropShelf('middle', 'last', true);
+    const expected = ['first', 'last', 'middle'];
+    expect(get(f.vm.state).library.shelves.map((s) => s.id)).toEqual(expected);
+    const saved = JSON.parse(await readFile(join(f.provider.root, 'library.json'), 'utf8'));
+    expect(saved.shelves.map((s: { id: string }) => s.id)).toEqual(expected);
+    await f.vm.dropShelf('missing', 'first', false);
+    expect(get(f.vm.state).library.shelves.map((s) => s.id)).toEqual(expected);
+  } finally {
     await f.close();
   }
 });
