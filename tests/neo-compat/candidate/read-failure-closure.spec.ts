@@ -4,7 +4,7 @@ import { test, expect } from './author-fixture';
 import { existingBook } from './book-fixture';
 import { persistedBook, privateStorageRoot } from './storage-probe';
 const source = () => process.env.LEAFLOOM_PARITY_DRIVER === 'neo-reference';
-for (const failure of ['unreadable', 'missing'] as const) {
+for (const failure of ['unreadable', 'missing', 'empty'] as const) {
   test(`[NEO-236-A] ${failure} incoming manuscript never clears rich writing and restoration resumes durable saves`, async ({
     page,
   }) => {
@@ -31,9 +31,11 @@ for (const failure of ['unreadable', 'missing'] as const) {
     if (failure === 'unreadable') {
       await chmod(file, 0);
       await utimes(file, new Date(), new Date());
-    } else await rename(file, held);
+    } else if (failure === 'missing') await rename(file, held);
+    else await writeFile(file, '');
     try {
-      await expect(readFile(file)).rejects.toThrow();
+      if (failure === 'empty') expect(await readFile(file)).toHaveLength(0);
+      else await expect(readFile(file)).rejects.toThrow();
       await page.evaluate(() => window.dispatchEvent(new Event('focus')));
       if (source())
         await expect
@@ -59,7 +61,8 @@ for (const failure of ['unreadable', 'missing'] as const) {
       await c.driver.expectParagraphs(before);
     } finally {
       if (failure === 'unreadable') await chmod(file, 0o644);
-      else await rename(held, file);
+      else if (failure === 'missing') await rename(held, file);
+      else await writeFile(file, original);
     }
     expect(await readFile(file)).toEqual(original);
     await page.evaluate(() => window.dispatchEvent(new Event('focus')));
