@@ -240,7 +240,7 @@ try {
     const callbackSha256=createHash('sha256').update(await readFile(new URL('../tests/neo-compat/native/document-io.mjs',import.meta.url))).digest('hex');
     documentIOCallbackSha256=callbackSha256;
     documentIOSharedSha256=createHash('sha256').update(await readFile(new URL('../tests/neo-compat/shared/document-io.mjs',import.meta.url))).digest('hex');
-    documentIOEdgeHashes=Object.fromEntries(await Promise.all(['native/io-cover-edge.mjs','shared/io-cover-edge.mjs','shared/pdf-layout.mjs'].map(async file=>[file,createHash('sha256').update(await readFile(new URL('../tests/neo-compat/'+file,import.meta.url))).digest('hex')])));
+    documentIOEdgeHashes=Object.fromEntries(await Promise.all(['native/io-cover-edge.mjs','shared/io-cover-edge.mjs','shared/pdf-layout.mjs','native/chapter-edition-io.mjs','shared/chapter-edition-io.mjs'].map(async file=>[file,createHash('sha256').update(await readFile(new URL('../tests/neo-compat/'+file,import.meta.url))).digest('hex')])));
     const {runDocumentIOUI}=await import('../tests/neo-compat/native/document-io.mjs');
     documentIO=await runDocumentIOUI({script,request,click,type,clear,until,fixture,bookId,session,artifactOnly:process.argv.includes('--document-io-artifacts-only')});
     documentIO.callbackSha256=callbackSha256;
