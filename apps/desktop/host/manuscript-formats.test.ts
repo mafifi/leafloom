@@ -12,6 +12,8 @@ import { LibraryHost } from './library.ts';
 import {systemPDFVariants,exportFonts} from './export-fonts.ts';
 import {generatedCover} from './generated-cover.ts';
 import {Checkpoint,type Opened} from '@leafloom/editor-contracts';
+import { JSDOM } from 'jsdom';
+import { chapterEditionFixture, inspectChapterEdition } from '../../../tests/neo-compat/shared/chapter-edition-io.mjs';
 it('embeds an installed Other Font in PDF and safely quotes custom HTML family names',async()=>{
  if(process.platform!=='darwin')return;
  const f=await fixture();try{
@@ -334,6 +336,72 @@ it('whole manuscript exports retain original parts, front matter, explicit conte
  const custom=(await renderManuscript(f.opened,'txt',{customChapterTitles:true})).toString();expect(custom).toContain('Dawn');expect(custom).not.toContain('Chapter 1');
  const zip=await JSZip.loadAsync(await renderManuscript(f.opened,'epub'));const nav=await zip.file('OEBPS/nav.xhtml')!.async('string');expect(nav).toContain('Part I: First Light');expect(nav).not.toContain('For the reader.');expect(nav).toContain('Chapter 2 — Dusk');
  }finally{await f.dispose();}
+});
+
+it('source chapter editions retain named and blank unnumbered Contents links without inventing body headings', async () => {
+  const f = await fixture();
+  try {
+    f.opened.book = Book.parse({
+      formatVersion: 'neo-lifecycle/v1', revision: 0,
+      metadata: { ...f.opened.book.metadata, ...chapterEditionFixture.metadata, restartNumbering: true },
+      chapters: chapterEditionFixture.chapters.map((html, index) => ({
+        id: `ch-${index + 1}`, html: index === 4 ? html.replace('Alpha ', 'Edited Alpha ') : html,
+      })), darlings: [],
+    });
+    const before = JSON.stringify(f.opened.book);
+    const bytes = await renderManuscript(f.opened, 'html');
+    expect(inspectChapterEdition('html', bytes, 'before').toc).toContain(chapterEditionFixture.metadata.title);
+    const document = new JSDOM(bytes.toString()).window.document;
+    expect(document.querySelector('#ch-8 > h3')?.textContent).toBe('Interlude');
+    expect(document.querySelector('#ch-9 > h1,#ch-9 > h2,#ch-9 > h3')).toBeNull();
+    expect(JSON.stringify(f.opened.book)).toBe(before);
+  } finally { await f.dispose(); }
+});
+
+it('source chapter editions omit printed Contents from Markdown before and after Part restructuring', async () => {
+  const f = await fixture();
+  try {
+    const chapters = chapterEditionFixture.chapters.map((html, index) => ({
+      id: `ch-${index + 1}`, html: index === 4 ? html.replace('Alpha ', 'Edited Alpha ') : html,
+    }));
+    f.opened.book = Book.parse({
+      formatVersion: 'neo-lifecycle/v1', revision: 0,
+      metadata: { ...f.opened.book.metadata, ...chapterEditionFixture.metadata, restartNumbering: true },
+      chapters, darlings: [],
+    });
+    for (const stage of ['before', 'after'] as const) {
+      if (stage === 'after') {
+        f.opened.book.chapters = [chapters[0]!, chapters[1]!, chapters[2]!, chapters[5]!, chapters[4]!,
+          { id: 'new-part', html: '<p><br></p>' }, ...chapters.slice(6)];
+        f.opened.book.metadata.chapterKinds = { ...chapterEditionFixture.metadata.chapterKinds, 'new-part': 'part' };
+      }
+      const before = JSON.stringify(f.opened.book);
+      inspectChapterEdition('md', await renderManuscript(f.opened, 'md'), stage);
+      expect(JSON.stringify(f.opened.book)).toBe(before);
+    }
+  } finally { await f.dispose(); }
+});
+
+it('source chapter editions keep solo unnumbered body heading blank and add Contents only when explicitly requested', async () => {
+  const f = await fixture();
+  try {
+    f.opened.book = Book.parse({
+      formatVersion: 'neo-lifecycle/v1', revision: 0,
+      metadata: { ...f.opened.book.metadata, chapterKinds: { solo: 'unnumbered' }, chapterTitles: { solo: '' } },
+      chapters: [{ id: 'solo', html: '<p>Only <b>authored</b> story.</p>' }], darlings: [],
+    });
+    let document = new JSDOM((await renderManuscript(f.opened, 'html')).toString()).window.document;
+    expect(document.querySelector('.contents')).toBeNull();
+    expect(document.querySelector('#solo > h1,#solo > h2,#solo > h3')).toBeNull();
+    f.opened.book.chapters.unshift({ id: 'toc', html: '<p>Never export this stale Contents body.</p>' });
+    f.opened.book.metadata.chapterKinds = { toc: 'contents', solo: 'unnumbered' };
+    document = new JSDOM((await renderManuscript(f.opened, 'html')).toString()).window.document;
+    expect([...document.querySelectorAll('.contents a')].map(a => [a.getAttribute('href'), a.textContent])).toEqual([
+      ['#solo', f.opened.book.metadata.title],
+    ]);
+    expect(document.querySelector('#solo > h1,#solo > h2,#solo > h3')).toBeNull();
+    expect(document.body.textContent).not.toContain('Never export this stale Contents body.');
+  } finally { await f.dispose(); }
 });
 
 it('chosen writing fonts embed exact HTML bytes and PDF/DOCX family while EPUB retains reader serif fonts',async()=>{
