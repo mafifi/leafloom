@@ -687,10 +687,16 @@ export class Application {
       this.value.publicationPage,
     );
   }
-  async refreshLibraryFromDisk() {
+  async refreshLibraryFromDisk(): Promise<void> {
     if (this.value.view === 'editor') {
       if (!this.externalReconciliation && this.tryRemotePosition()) await this.save();
       return;
+    }
+    if (this.value.view === 'library' && this.pendingLibraryWrites) {
+      await this.libraryWrites;
+      // Keep the focus intent after a durable write whose host reply is still pending.
+      // The subsequent fresh read retains the normal generation/view guards.
+      return this.refreshLibraryFromDisk();
     }
     if (
       this.refreshingLibrary ||

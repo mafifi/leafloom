@@ -1217,6 +1217,29 @@ it('refreshes the closed real library while preserving shelf scroll and rejects 
     expect(get(f.vm.state).library.shelves[0].name).toBe('Newer local shelf');
     expect((await f.provider.request('readLibrary', {})).shelves[0].name).toBe('Newer local shelf');
     expect(shelfElement.scrollTop).toBe(231);
+
+    let writeArrived!: () => void, releaseWrite!: () => void;
+    const committed = new Promise<void>((resolve) => { writeArrived = resolve; });
+    const writeReply = new Promise<void>((resolve) => { releaseWrite = resolve; });
+    f.host.request = async (method, payload) => {
+      const value = await request(method, payload);
+      if (method === 'writeLibrary') { writeArrived(); await writeReply; }
+      return value;
+    };
+    const pendingLocal = structuredClone(get(f.vm.state).library);
+    pendingLocal.shelves[0].name = 'Committed local shelf';
+    const writing = f.vm.updateLibrary(pendingLocal);
+    await committed;
+    const laterRemote = structuredClone(pendingLocal);
+    laterRemote.shelves[0].name = 'Remote after durable local write';
+    await f.provider.request('writeLibrary', { library: laterRemote });
+    const focused = f.vm.refreshLibraryFromDisk();
+    releaseWrite();
+    await Promise.all([writing, focused]);
+    expect(get(f.vm.state).library.shelves[0].name).toBe('Remote after durable local write');
+    expect((await f.provider.request('readLibrary', {})).shelves[0].name)
+      .toBe('Remote after durable local write');
+    expect(shelfElement.scrollTop).toBe(231);
   } finally {
     shelfElement.remove();
     await f.close();
