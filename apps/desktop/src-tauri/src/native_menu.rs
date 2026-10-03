@@ -65,6 +65,9 @@ pub fn install(
             ("Hoefler Text", "Hoefler Text"),
             ("Iowan Old Style", "Iowan Old Style"),
             ("Jost", "Jost"),
+            ("Libron", "Libron"),
+            ("Readerly", "Readerly"),
+            ("Newsreader", "Newsreader"),
         ]
     } else if cfg!(target_os = "windows") {
         vec![
@@ -74,6 +77,9 @@ pub fn install(
             ("Cambria", "Cambria"),
             ("Constantia", "Constantia"),
             ("Jost", "Jost"),
+            ("Libron", "Libron"),
+            ("Readerly", "Readerly"),
+            ("Newsreader", "Newsreader"),
         ]
     } else {
         vec![
@@ -83,6 +89,9 @@ pub fn install(
             ("Alegreya", "Alegreya"),
             ("Source Serif Pro", "Source Serif Pro"),
             ("Jost", "Jost"),
+            ("Libron", "Libron"),
+            ("Readerly", "Readerly"),
+            ("Newsreader", "Newsreader"),
         ]
     };
     let language_values = languages

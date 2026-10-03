@@ -462,5 +462,77 @@
     "ascent-override": "72.1%",
     "descent-override": "24%",
     "line-gap-override": "0%"
+  },
+  {
+    "family": "Libron",
+    "file": "libron-400-normal.ttf",
+    "weight": 400,
+    "style": "normal"
+  },
+  {
+    "family": "Libron",
+    "file": "libron-400-italic.ttf",
+    "weight": 400,
+    "style": "italic"
+  },
+  {
+    "family": "Libron",
+    "file": "libron-700-normal.ttf",
+    "weight": 700,
+    "style": "normal"
+  },
+  {
+    "family": "Libron",
+    "file": "libron-700-italic.ttf",
+    "weight": 700,
+    "style": "italic"
+  },
+  {
+    "family": "Readerly",
+    "file": "readerly-400-normal.ttf",
+    "weight": 400,
+    "style": "normal"
+  },
+  {
+    "family": "Readerly",
+    "file": "readerly-400-italic.ttf",
+    "weight": 400,
+    "style": "italic"
+  },
+  {
+    "family": "Readerly",
+    "file": "readerly-700-normal.ttf",
+    "weight": 700,
+    "style": "normal"
+  },
+  {
+    "family": "Readerly",
+    "file": "readerly-700-italic.ttf",
+    "weight": 700,
+    "style": "italic"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-400-normal.ttf",
+    "weight": 400,
+    "style": "normal"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-400-italic.ttf",
+    "weight": 400,
+    "style": "italic"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-700-normal.ttf",
+    "weight": 700,
+    "style": "normal"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-700-italic.ttf",
+    "weight": 700,
+    "style": "italic"
   }
 ]

@@ -743,3 +743,17 @@ it('Markdown edition italicizes escaped subtitle and translated byline without e
     expect(artifact.indexOf('Story.')).toBeLessThan(artifact.indexOf('Biography.'));
   } finally { await f.dispose(); }
 });
+
+it('bundled reading families preserve all four styles in PDF and embed the selected font bytes in HTML', async () => {
+ const f=await fixture();try{
+ f.opened.book.chapters[0]!.html='<p>Regular reading <strong>bold reading</strong> <em>italic reading</em> <strong><em>bold italic reading</em></strong>.</p>';
+ for(const family of ['Libron','Readerly','Newsreader']){
+  const selected=await exportFonts({bodyFont:family,dropcap:'none'});
+  for(const bytes of Object.values(selected.variants))expect(bytes?.length).toBeGreaterThan(10000);
+  const file=join(f.root,family+'.pdf');await writeFile(file,await renderManuscript(f.opened,'pdf',{bodyFont:family,dropcap:'none'}));
+  const fonts=spawnSync('pdffonts',[file],{encoding:'utf8'});expect(fonts.status).toBe(0);expect(fonts.stdout).toContain(family);expect(fonts.stdout).toMatch(/BoldItalic/);expect(fonts.stdout).toMatch(/Bold/);expect(fonts.stdout).toMatch(/Italic/);expect(fonts.stdout).not.toContain('Georgia');
+  const text=spawnSync('pdftotext',[file,'-'],{encoding:'utf8'});expect(text.status).toBe(0);expect(text.stdout).toContain('bold italic reading');
+  const html=(await renderManuscript(f.opened,'html',{bodyFont:family,dropcap:'none'})).toString();expect(html).toContain(selected.variants.Regular!.toString('base64'));expect(html).toContain(`font-family:'${family}'`);
+ }
+ }finally{await f.dispose();}
+});

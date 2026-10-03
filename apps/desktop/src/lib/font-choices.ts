@@ -6,7 +6,13 @@ export type FontChoicesValue = {
   dropcaps: Readonly<Record<string, string>>;
   defaultBody: string;
 };
+const reading = {
+  Libron: '"Libron", Georgia, serif',
+  Readerly: '"Readerly", Georgia, serif',
+  Newsreader: '"Newsreader", Georgia, serif',
+};
 const common = {
+  ...reading,
   Georgia: 'Georgia, "Times New Roman", serif',
   Palatino: '"Palatino", "Palatino Linotype", serif',
   Baskerville: 'Baskerville, "Baskerville Old Face", Georgia, serif',
@@ -32,12 +38,13 @@ export function fontChoices(platform: FontPlatform): FontChoicesValue {
         ? ['Georgia', 'Palatino', 'Baskerville', 'Hoefler Text', 'Iowan Old Style', 'Jost']
         : ['Georgia', 'Palatino', 'Baskerville', 'Cambria', 'Constantia', 'Jost'];
   return {
-    body,
+    body: [...body, ...Object.keys(reading)],
     defaultBody: platform === 'linux' ? 'Gelasio' : 'Georgia',
     bodyStacks:
       platform === 'linux'
         ? {
             ...linux,
+            ...reading,
             Georgia: linux.Gelasio,
             Palatino: linux['TeX Gyre Pagella'],
             Baskerville: linux['Libre Baskerville'],

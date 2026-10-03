@@ -304,6 +304,9 @@ async fn os_request(
                     "Hoefler Text",
                     "Iowan Old Style",
                     "Jost",
+                    "Libron",
+                    "Readerly",
+                    "Newsreader",
                 ]
             } else if cfg!(target_os = "windows") {
                 vec![
@@ -313,6 +316,9 @@ async fn os_request(
                     "Cambria",
                     "Constantia",
                     "Jost",
+                    "Libron",
+                    "Readerly",
+                    "Newsreader",
                 ]
             } else {
                 vec![
@@ -322,6 +328,9 @@ async fn os_request(
                     "Alegreya",
                     "Source Serif Pro",
                     "Jost",
+                    "Libron",
+                    "Readerly",
+                    "Newsreader",
                 ]
             };
             Ok(

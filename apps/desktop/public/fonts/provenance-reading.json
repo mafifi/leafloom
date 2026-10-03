@@ -1,0 +1,82 @@
+{
+  "lineage": [
+    "Newsreader",
+    "Readerly",
+    "Libron"
+  ],
+  "fonts": [
+    {
+      "family": "Libron",
+      "repository": "https://github.com/nicoverbruggen/libron",
+      "revision": "46cf11c80a3b3a07c5b509b79d14c0e38feb1b35",
+      "version": "v0.25",
+      "license": "SIL Open Font License 1.1",
+      "files": {
+        "libron-400-normal.ttf": "18995ba828982e7a70e92c6a107e182b8358b363aacac887409b8758042c490b",
+        "libron-400-italic.ttf": "1c229bfcffcc08fafd77c7e075b718a78dde7531cb30b5d212373992ffecb282",
+        "libron-700-normal.ttf": "0258c7deb5326bbcde76076a457249d41912ea7b7c4a817a2b617e4a95b24a99",
+        "libron-700-italic.ttf": "cd3466082c63c3a0c03776c4018091711d1b5d45ac1ac41f3ab7b75ad8507904",
+        "LICENSE-libron.txt": "cb452a7a6e43d36823b393e6fa2cb1b60fccb4533bb30dc96d7262df5dbb477e",
+        "COPYRIGHT-libron.txt": "f266cfea9e68f3a159788da9ecda72e3fa14d76816c0fca30442496b6253e12e"
+      },
+      "upstreamPaths": {
+        "libron-400-normal.ttf": "Libron-Regular.ttf",
+        "libron-400-italic.ttf": "Libron-Italic.ttf",
+        "libron-700-normal.ttf": "Libron-Bold.ttf",
+        "libron-700-italic.ttf": "Libron-BoldItalic.ttf",
+        "LICENSE-libron.txt": "LICENSE",
+        "COPYRIGHT-libron.txt": "COPYRIGHT"
+      },
+      "releaseArchive": "https://github.com/nicoverbruggen/libron/releases/download/v0.25/Libron.zip",
+      "releaseArchiveSha256": "a732102b75e6016ae52d39ec22e182bc89365612c906b5898bcd1f8e02b91a57"
+    },
+    {
+      "family": "Readerly",
+      "repository": "https://github.com/nicoverbruggen/readerly",
+      "revision": "8f72824a9d1b3a182fa1aa1e8c3b9fd180c43a73",
+      "version": "v1.11",
+      "license": "SIL Open Font License 1.1",
+      "files": {
+        "readerly-400-normal.ttf": "084259d3b6fc96c4c38f81d885a1c1fc4284862a05b5050e9fc51bc8be0f129d",
+        "readerly-400-italic.ttf": "248223a7bfa1de1a61422f962ad1fd8ad1c184ca9bc1b100e9334f0ce2f0ead6",
+        "readerly-700-normal.ttf": "fbefbf8bb28cebde210efea396239b06fd4c6bd0901b4dd1015ce58d6a2c7254",
+        "readerly-700-italic.ttf": "4e4a303e02a1a329eb9217f8f743af9ff82d76312261c3e1d0354f534e88dfd8",
+        "LICENSE-readerly.txt": "a7cee7e09b70e2bc82c585e2cb0df2c81b822c777342318c000470506a4bb8a7",
+        "COPYRIGHT-readerly.txt": "6a660caa2ba4920c9b6fac86c556b4d12b42837840b8d25b0726faa146b0a909"
+      },
+      "upstreamPaths": {
+        "readerly-400-normal.ttf": "Readerly-Regular.ttf",
+        "readerly-400-italic.ttf": "Readerly-Italic.ttf",
+        "readerly-700-normal.ttf": "Readerly-Bold.ttf",
+        "readerly-700-italic.ttf": "Readerly-BoldItalic.ttf",
+        "LICENSE-readerly.txt": "LICENSE",
+        "COPYRIGHT-readerly.txt": "COPYRIGHT"
+      },
+      "releaseArchive": "https://github.com/nicoverbruggen/readerly/releases/download/v1.11/Readerly.zip",
+      "releaseArchiveSha256": "234d0af549d3897b1c27e98856435275d8344f4b7d6a463eca8a4cffb4af7736"
+    },
+    {
+      "family": "Newsreader",
+      "repository": "https://github.com/productiontype/Newsreader",
+      "revision": "cfcb4f7af0e52c25e8df2a2431814c8e5fe2e155",
+      "version": "16pt static",
+      "license": "SIL Open Font License 1.1",
+      "files": {
+        "newsreader-400-normal.ttf": "0636887c9f72f77ce188f0b31029be58e65adae5a47e6d2887ad5020c2c75036",
+        "newsreader-400-italic.ttf": "292646cbb948153511e308fa80def59959746d70114bd0936ba0a7f67a33181d",
+        "newsreader-700-normal.ttf": "9e3d485293bb2f86d22f1a9bfb8d7213cff188270fa240b5084e27290746aea7",
+        "newsreader-700-italic.ttf": "1bd178872241f5d0e02e9ee3e66e11c4aa76ff9d7614d2e47ccb7b42a3938361",
+        "LICENSE-newsreader.txt": "fdfad38143ec470553cae82a1e45320bdd1b9ec70415d37bd0171051d8a4ded8",
+        "COPYRIGHT-newsreader.txt": "0c6bcaee14360ffe1315e7021365783af7eee16fcf4c680e83795f03cd2e7e63"
+      },
+      "upstreamPaths": {
+        "newsreader-400-normal.ttf": "fonts/static/ttf/Newsreader16pt-Regular.ttf",
+        "newsreader-400-italic.ttf": "fonts/static/ttf/Newsreader16pt-Italic.ttf",
+        "newsreader-700-normal.ttf": "fonts/static/ttf/Newsreader16pt-Bold.ttf",
+        "newsreader-700-italic.ttf": "fonts/static/ttf/Newsreader16pt-BoldItalic.ttf",
+        "LICENSE-newsreader.txt": "OFL.txt",
+        "COPYRIGHT-newsreader.txt": "AUTHORS.txt"
+      }
+    }
+  ]
+}

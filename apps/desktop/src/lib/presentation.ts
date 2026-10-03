@@ -4,6 +4,9 @@ export function brighterInterface(value: unknown): boolean {
     : Boolean(value);
 }
 export const bodyFonts: Record<string, string> = {
+  Libron: '"Libron", Georgia, serif',
+  Readerly: '"Readerly", Georgia, serif',
+  Newsreader: '"Newsreader", Georgia, serif',
   Georgia: 'Georgia, "Times New Roman", serif',
   Palatino: 'Palatino, "Palatino Linotype", serif',
   Baskerville: 'Baskerville, "Baskerville Old Face", Georgia, serif',

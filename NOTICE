@@ -9,3 +9,5 @@ Retained dictionary/Hunspell notices: tests/reference/neo/licenses/**.
 These assets retain their stated licences, including SIL Open Font License and applicable MPL dictionary notices. Leafloom's MIT licence does not replace asset-specific terms.
 
 Drawloom architectural conventions informed Leafloom's independently authored contracts and repository guidance. No Drawloom source or private material is bundled through that reference.
+
+Additional writing fonts: Newsreader (2020 The Newsreader Project Authors), Readerly and Libron (2026 Nico Verbruggen). SIL Open Font License 1.1. Licences and copyright notices: apps/desktop/public/fonts/{LICENSE,COPYRIGHT}-{newsreader,readerly,libron}.txt. Pinned source and release checksums: apps/desktop/public/fonts/provenance-reading.json.

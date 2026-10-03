@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { fontChoices } from '../../apps/desktop/src/lib/font-choices';
-it('offers the source operating-system lists and resolves old Linux aliases without offering them', () => {
+it('offers the source operating-system lists and additional bundled reading families and resolves old Linux aliases without offering them', () => {
   expect(fontChoices('macos').body).toEqual([
     'Georgia',
     'Palatino',
@@ -8,6 +8,9 @@ it('offers the source operating-system lists and resolves old Linux aliases with
     'Hoefler Text',
     'Iowan Old Style',
     'Jost',
+    'Libron',
+    'Readerly',
+    'Newsreader',
   ]);
   expect(fontChoices('windows').body).toEqual([
     'Georgia',
@@ -16,6 +19,9 @@ it('offers the source operating-system lists and resolves old Linux aliases with
     'Cambria',
     'Constantia',
     'Jost',
+    'Libron',
+    'Readerly',
+    'Newsreader',
   ]);
   const linux = fontChoices('linux');
   expect(linux.body).toEqual([
@@ -25,6 +31,9 @@ it('offers the source operating-system lists and resolves old Linux aliases with
     'Alegreya',
     'Source Serif Pro',
     'Jost',
+    'Libron',
+    'Readerly',
+    'Newsreader',
   ]);
   expect(linux.defaultBody).toBe('Gelasio');
   expect(linux.body).not.toContain('Georgia');

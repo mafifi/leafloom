@@ -4253,3 +4253,77 @@ html[lang^='el'] .book.cv-cinzel .b-title {
 
 /* PM preserves authored spaces and native soft breaks on publication sheets too. */
 .ps-body.ProseMirror { white-space: pre-wrap; }
+
+/* OFL reading families: Newsreader → Readerly → Libron. Unmodified upstream fonts. */
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
