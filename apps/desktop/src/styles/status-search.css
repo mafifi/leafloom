@@ -1,0 +1,165 @@
+/* --- Bottom bar --- */
+#bottombar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background: var(--bg);
+  border-top: 1px solid #262626;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 18px;
+  z-index: 80;
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+#bottombar:hover,
+#bottombar.attn {
+  opacity: 1;
+}
+/* full screen plus focus mode: nothing on screen but the page; the bar
+   comes back when the pointer reaches the bottom edge */
+body.full-screen.focus-mode #bottombar:not(:hover):not(.attn) {
+  opacity: 0;
+}
+#back-to-shelf {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+#back-to-shelf:hover {
+  color: var(--accent);
+}
+#tabs {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+.tab {
+  padding: 5px 16px;
+  font-size: 12px;
+  color: var(--muted);
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  user-select: none;
+}
+.tab:hover {
+  color: #ddd;
+}
+.tab.active {
+  color: var(--accent);
+  background: #232323;
+}
+.tab.darlings {
+  margin-left: 18px;
+}
+.tab.drag-over {
+  background: var(--accent);
+  color: var(--bg);
+}
+#counters {
+  display: flex;
+  gap: 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+#counters span {
+  cursor: pointer;
+  user-select: none;
+}
+#counters span:hover {
+  color: #ddd;
+}
+#zoom-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#zoom-control button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+}
+#zoom-control button:hover,
+#zoom-control:hover {
+  color: #ddd;
+}
+
+/* --- Find & replace bar --- */
+#searchbar {
+  position: fixed;
+  top: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #262626;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 300;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+#searchbar input {
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 5px;
+  color: #eee;
+  font-size: 13px;
+  padding: 6px 10px;
+  width: 170px;
+}
+#searchbar input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+/* outside the manuscript Find only finds */
+#searchbar.find-only #replace-input,
+#searchbar.find-only #replace-one,
+#searchbar.find-only #replace-all {
+  display: none;
+}
+#searchbar button {
+  background: none;
+  border: 1px solid #3a3a3a;
+  border-radius: 5px;
+  color: #aaa;
+  font-size: 12px;
+  padding: 5px 9px;
+}
+#searchbar button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+#search-count {
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 52px;
+  text-align: center;
+}
+
+#goal-counter.goal-met {
+  color: var(--accent);
+}
+#import-btn {
+  background: none;
+  border: 1px solid #3a3a3a;
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+}
+#import-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+

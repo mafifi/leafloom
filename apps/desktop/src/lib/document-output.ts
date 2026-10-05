@@ -1,6 +1,7 @@
 import type { DesktopOS, HostMethod, HostPayload } from '@leafloom/desktop-host';
 export const outputFormats = ['txt', 'md', 'html', 'pdf', 'docx', 'epub'] as const;
-export type OutputFormat = (typeof outputFormats)[number];
+export const screenplayOutputFormats = ['fountain','fdx'] as const;
+export type OutputFormat = (typeof outputFormats)[number] | (typeof screenplayOutputFormats)[number];
 export interface DocumentOutputContext {
   snapshot(): { bookId: string | null; title: string; language: string };
   chapter(id: string): { title: string; words: number; kind: string } | null;

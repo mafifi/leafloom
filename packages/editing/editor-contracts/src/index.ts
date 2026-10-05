@@ -1,3 +1,4 @@
+import type { ManuscriptModeValue, ScreenplayElementValue } from '@leafloom/document-contracts';
 import { z } from 'zod';
 import {
   Manuscript,
@@ -217,7 +218,13 @@ export type ActiveFormatting = {
   poetry: boolean;
   align: 'left' | 'center' | 'right' | 'justify';
 };
+export type ScreenplayScene = { chapterId: string; passageId: string; label: string };
 export interface EditorPort {
+  readonly manuscriptMode: ManuscriptModeValue;
+  readonly screenplayScenes: ScreenplayScene[];
+  setManuscriptMode(mode: ManuscriptModeValue): boolean;
+  setScreenplayElement(element: ScreenplayElementValue): boolean;
+  screenplayTab(reverse?: boolean): boolean;
   readonly activeFormatting: ActiveFormatting;
   searchDarlings(query: string): DarlingSearchMatch[];
   searchOutline(query: string): OutlineSearchMatch[];

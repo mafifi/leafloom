@@ -53,3 +53,9 @@ Future assistance providers receive bounded document revisions and return valida
 No production module imports `spikes/`, `tests/reference/neo`, the copied Electron bridge, Drawloom or the projects monorepo. Re-express architectural principles in Leafloom-owned contracts. Preserve upstream MIT and asset notices. Record licences for bundled/transitive dependencies and downloaded models separately.
 
 The original Electron reference adapter, browser candidate adapter and native Tauri candidate adapter remain distinct. The full parity gate accepts only fresh Leafloom-specific integration evidence. Architecture decisions live in `docs/adr`; bounded work and unresolved acceptance live in `docs/plans`.
+
+## Screenplays and source size
+
+[ADR 0004](docs/adr/0004-screenplay-semantics-and-manuscript-v2.md) defines screenplay elements and `leafloom-manuscript/v2`. The storage layout remains unchanged. Typed paragraph semantics survive save and reopen; scene navigation derives from passage identity. Mode and element changes join author history. Exchange codecs validate runs and reject unsupported material.
+
+Application and editor state owners compose bound command facades and focused feature modules. Operation ports access live owner values and methods, retaining one document, history and lifecycle. `check:size` warns at 300–400 lines and blocks owned files at 1,000; policy runs it in the existing lightweight CI job.

@@ -1,3 +1,4 @@
+import { screenplayFromHTML, writeScreenplay } from './screenplay-formats.ts';
 import {webpCoverPNG} from './webp-cover.ts';
 import {exportFonts,systemPDFVariants,type ExportTypography} from './export-fonts.ts';
 import {pdfGlyphFace,pdfGlyphRuns,type PDFGlyphFace} from './pdf-glyphs.ts';
@@ -13,7 +14,7 @@ import type { Opened } from '@leafloom/editor-contracts';
 import {translate,english,type LanguageCatalogValue} from '@leafloom/language-contracts';
 const localize=(catalog:LanguageCatalogValue=english)=>(key:string,args:Record<string,string|number>={})=>translate(catalog,key,args);
 const moduleURL = import.meta.url;
-export type ExportFormat = 'txt' | 'md' | 'html' | 'docx' | 'epub' | 'pdf';
+export type ExportFormat = 'txt' | 'md' | 'html' | 'docx' | 'epub' | 'pdf' | 'fountain' | 'fdx';
 type Run = { text: string; bold: boolean; italic: boolean; break?: boolean;size?:number;caps?:boolean };
 type Paragraph = {
   runs: Run[];
@@ -492,9 +493,11 @@ export async function renderManuscript(
     cover?: { mime: string; data: string } | null;
   } = {},
 ): Promise<Buffer> {
+  if(format==='fountain'||format==='fdx')return Buffer.from(writeScreenplay(screenplayFromHTML(opened.book.chapters.map(ch=>ch.html),{...(opened.book.metadata.screenplayTitle as object || {}),title:opened.book.metadata.title,author:opened.book.metadata.author}),format));
   return renderSections(opened, manuscriptSections(opened,options.customChapterTitles,options.catalog), format, options);
 }
 export async function renderChapter(opened:Opened,chapterId:string,format:ExportFormat,options:{language?:string;catalog?:LanguageCatalogValue;bodyFont?:string;dropcap?:string;customChapterTitles?:boolean;cover?:{mime:string;data:string}|null}={}):Promise<Buffer> {
+ if(format==='fountain'||format==='fdx'){const chapter=opened.book.chapters.find(ch=>ch.id===chapterId);if(!chapter)throw Error('NOT_FOUND');return Buffer.from(writeScreenplay(screenplayFromHTML([chapter.html],{...(opened.book.metadata.screenplayTitle as object || {}),title:opened.book.metadata.title,author:opened.book.metadata.author}),format));}
  const chapter=manuscriptSections(opened,options.customChapterTitles,options.catalog).find(chapter=>chapter.id===chapterId);
  if(!chapter||!["chapter","unnumbered","prologue","epilogue"].includes(chapter.kind)||!chapter.paragraphs.some(p=>p.text.trim()))throw new Error('INVALID');
  return renderSections(opened,[{...chapter,level:0}],format,{...options,cover:format==='epub'?options.cover:null});

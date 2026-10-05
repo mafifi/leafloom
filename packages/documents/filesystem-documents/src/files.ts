@@ -360,7 +360,7 @@ export class BookFiles {
       if (
         name === 'manuscript' &&
         text !== current.text &&
-        JSON.parse(current.text).formatVersion === 'neo-composed/v1' &&
+        ['neo-composed/v1', 'leafloom-manuscript/v2'].includes(JSON.parse(current.text).formatVersion) &&
         JSON.parse(current.text).revision >= revision
       )
         throw new LifecycleError('INVALID');

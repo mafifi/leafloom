@@ -1,0 +1,187 @@
+/* ====================== FIRST-RUN MODAL ====================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+}
+.modal-backdrop:focus {
+  outline: none;
+} /* it holds the keys, it isn't one */
+.modal {
+  background: var(--bg-soft);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 34px 38px;
+  width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.modal h2 {
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.modal p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+.modal label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.modal input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px 12px;
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #eee;
+  font-size: 14px;
+}
+.modal input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* the two button voices every dialog speaks in */
+.btn-gold {
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  color: #191919;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  filter: brightness(1.08);
+}
+.btn-quiet {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.btn-quiet:hover {
+  color: #bbb;
+}
+.fr-choices {
+  display: flex;
+  gap: 12px;
+}
+#fr-sample {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 18px 22px 14px;
+  margin-bottom: 20px;
+}
+#fr-sample-text {
+  font-family: var(--body-font);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+#fr-sample-text::first-letter {
+  font-size: 3.1em;
+  float: left;
+  line-height: 0.8;
+  padding: 3px 7px 0 0;
+  font-family: var(--dropcap-font);
+}
+.fr-fontrow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.fr-font {
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  padding: 8px 13px;
+  color: #ddd;
+  font-size: 14px;
+}
+.fr-font:hover {
+  border-color: #666;
+}
+.fr-font.sel {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.fr-font .fr-cap {
+  font-size: 20px;
+  margin-right: 7px;
+}
+.font-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+.font-list .fr-font {
+  text-align: left;
+  font-size: 16px;
+}
+/* the font picker keeps the page in view, so hovering previews on real text */
+.modal-backdrop.font-picker {
+  background: none;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 44px 20px;
+}
+.font-picker .modal {
+  padding: 24px 26px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+.fr-choice {
+  flex: 1;
+  text-align: left;
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 14px;
+  color: #ddd;
+}
+.fr-choice:hover {
+  border-color: var(--accent);
+}
+.fr-choice strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+.fr-choice span {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.fr-choice.danger {
+  border-color: #6b3a34;
+}
+.fr-choice.danger strong {
+  color: #d97b6c;
+}
+.about-version {
+  color: #999;
+}
+.modal p.about-line {
+  font-size: 13px;
+  color: #777;
+}
+

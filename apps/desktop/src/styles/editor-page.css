@@ -1,0 +1,517 @@
+/* ========================= EDITOR ========================= */
+
+#editor-view {
+  position: absolute;
+  inset: 0;
+  animation: neo-fade 0.25s ease;
+}
+#bookshelf-view {
+  animation: neo-fade 0.25s ease;
+}
+@keyframes neo-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Night page: dark paper for midnight sessions --- */
+body.night {
+  --paper: #232221;
+  --ink: #d6d2c6;
+}
+body.night .sheet,
+body.night #aux-paper {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+  border: 1px solid #2e2d2b;
+}
+body.night .chapter-head,
+body.night #aux-paper h2 {
+  color: #918b7d;
+}
+body.night #tp-subtitle {
+  color: #a09a8c;
+}
+body.night #tp-author {
+  color: #918b7d;
+}
+body.night .chapter-body p.scene-break {
+  color: #7d7768;
+}
+body.night .chapter-body p.ghost {
+  color: #6f6a5e;
+}
+body.night [contenteditable][data-ph]:empty::before,
+body.night #aux-editor:empty::before,
+body.night .darlings-empty {
+  color: #5f5b52;
+}
+body.night .chapter-head .ch-title:empty::before {
+  color: #5f5b52;
+}
+body.night .darling {
+  border-color: #3a3835;
+}
+body.night .ol-num {
+  color: #7d7768;
+}
+body.night .ol-chapter .ol-num {
+  color: #918b7d;
+}
+body.night .ol-text:focus {
+  border-bottom-color: #4a4742;
+}
+body.night .ol-hint {
+  color: #5f5b52;
+}
+/* notes pasted before paste-cleaning existed may carry their own colors */
+body.night #aux-editor * {
+  color: inherit;
+}
+
+/* The scroller is a centered column barely wider than the page, so the
+   scrollbar lives right beside the manuscript — nowhere near the hover
+   zones at the window edges. */
+#paper-scroll {
+  position: absolute;
+  top: 0;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(760px * var(--page-zoom, 1)), 94%);
+  overflow-y: auto;
+}
+
+/* Search highlights — no DOM mutation, no focus theft */
+::highlight(neo-search) {
+  background: rgba(201, 168, 106, 0.35);
+}
+::highlight(neo-search-current) {
+  background: #c9a86a;
+  color: #1c1c1c;
+}
+
+/* Each page of the book is its own sheet of paper */
+#paper {
+  width: calc(680px * var(--page-zoom, 1));
+  max-width: 92%;
+  margin: 40px auto 120px;
+}
+/* typewriter scrolling: room below the last line so it can sit mid-screen
+   (app.js works out how much the last page doesn't already give) */
+body.typewriter #paper {
+  margin-bottom: var(--typewriter-room, 60vh);
+}
+/* focus mode: the manuscript fades back, the neo-focus highlight (set in
+   app.js) repaints the current sentence / paragraph / scene at full ink */
+.chapter-body,
+.chapter-head {
+  transition: color 0.25s ease;
+}
+body.focus-mode .chapter-body,
+body.focus-mode .chapter-head {
+  color: color-mix(in srgb, var(--ink) 28%, var(--paper));
+}
+::highlight(neo-focus) {
+  color: #1c1c1c;
+}
+body.night ::highlight(neo-focus) {
+  color: #d6d2c6;
+}
+/* selected text stays readable at full ink, even where the focus has moved on
+   (dragging a selection into the next paragraph moves the focus with it) */
+body.focus-mode .sheet ::selection {
+  color: #1c1c1c;
+}
+body.focus-mode.night .sheet ::selection {
+  color: #d6d2c6;
+}
+/* the drop cap sits outside the highlight's reach; same selector as the cap
+   itself so no other paragraph grows a ::first-letter */
+body.focus-mode:not(.no-dropcap)
+  .chapter-body.focus-cap:not(.cap-off):not(.no-cap):not(.opens-dialogue)
+  p:not(.poetry):not(p:not(.poetry) ~ p)::first-letter {
+  color: var(--ink);
+}
+.sheet {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 70px 72px 90px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  min-height: 88vh;
+  margin-bottom: 44px;
+}
+#aux-paper {
+  width: calc(680px * var(--page-zoom, 1));
+  max-width: 92%;
+  background: var(--paper);
+  color: var(--ink);
+  margin: 40px auto 120px;
+  padding: 70px 72px 90px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  min-height: 85vh;
+}
+
+/* --- Title page: a sheet of its own --- */
+#title-page {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#tp-title {
+  font-family: var(--body-font);
+  font-size: calc(34px * var(--page-zoom, 1));
+  font-weight: 700;
+  outline: none;
+  min-height: 44px;
+}
+#tp-subtitle {
+  font-family: var(--body-font);
+  font-size: 17px;
+  font-style: italic;
+  color: #555;
+  margin-top: 14px;
+  outline: none;
+  min-height: 24px;
+}
+#tp-author {
+  margin-top: 46px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #444;
+}
+[contenteditable][data-ph]:empty::before {
+  content: attr(data-ph);
+  color: #b9b4a8;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* --- Chapters: each starts on a fresh sheet --- */
+.chapter-head {
+  text-align: center;
+  font-family: var(--body-font);
+  font-size: calc(15px * var(--page-zoom, 1));
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 44px;
+  user-select: none;
+}
+/* single-chapter works are chapterless: the heading waits for chapter two */
+.chapter.solo .chapter-head {
+  display: none;
+}
+.chapter-head .ch-sep {
+  margin: 0 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.chapter-head:hover .ch-sep,
+.chapter-head.has-title .ch-sep {
+  opacity: 0.6;
+}
+.chapter-head .ch-title {
+  outline: none;
+  user-select: text;
+  min-width: 10px;
+  display: inline-block;
+}
+.chapter-head .ch-title:empty::before {
+  content: var(--ph-add-title, 'add a title');
+  color: #c4beb0;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-transform: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.chapter-head:hover .ch-title:empty::before {
+  opacity: 1;
+}
+/* an unnumbered chapter goes by its title alone: no number, no dash, and
+   the "add a title" prompt stays in view until it has one */
+.chapter-head.no-number .ch-num,
+.chapter-head.no-number .ch-sep {
+  display: none;
+}
+.chapter-head.no-number .ch-title:empty::before {
+  opacity: 1;
+}
+.chapter-body {
+  font-family: var(--body-font);
+  font-size: calc(var(--editor-size, 17px) * var(--page-zoom, 1));
+  line-height: 1.75;
+  outline: none;
+  min-height: 60px;
+}
+.sheet ::selection,
+#aux-paper ::selection {
+  background: rgba(201, 168, 106, 0.35);
+}
+/* pre-wrap keeps spaces literal, so the engine's space-collapsing repair
+   pass (the source of duplicated characters on delete) never runs */
+.chapter-body p {
+  text-indent: 2em;
+  margin: 0;
+  white-space: pre-wrap;
+}
+#aux-editor p {
+  white-space: pre-wrap;
+}
+/* the chapter's opening paragraph: the first one that isn't poetry */
+.chapter-body p:not(.poetry):not(p:not(.poetry) ~ p) {
+  text-indent: 0;
+}
+/* Poetry paragraphs (⇧Enter): a quote, a stanza, a POV name, a dateline —
+   pulled in from both margins, italic, no first-line indent, never a drop
+   cap. Consecutive lines make one block; the block breathes above and below.
+   The italic is real markup, laid in when the paragraph is made, so ⌘I
+   takes it off any word the writer wants roman. */
+.chapter-body p.poetry {
+  margin: 0 2.5em;
+  text-indent: 0;
+}
+/* a poetry paragraph is one italic; emphasis inside it stands upright, as
+   typesetters set it (and as every export does, see paraRuns in app.js) */
+.chapter-body i i {
+  font-style: normal;
+}
+.chapter-body i i i {
+  font-style: italic;
+}
+.chapter-body p:not(.poetry) + p.poetry {
+  margin-top: 0.9em;
+}
+.chapter-body p.poetry + p:not(.poetry) {
+  margin-top: 0.9em;
+}
+/* cap-off while the caret is in the first paragraph: the rule must stop
+   MATCHING entirely — a matching first-letter rule, even styled to nothing,
+   makes the engine split the text internally, which corrupts deletes */
+body:not(.no-dropcap)
+  .chapter-body:not(.cap-off):not(.no-cap):not(.opens-dialogue)
+  p:not(.poetry):not(p:not(.poetry) ~ p)::first-letter {
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.8;
+  padding: 4px 8px 0 0;
+  font-family: var(--dropcap-font);
+}
+/* NEO's spellcheck pass: flagged words, painted like search matches */
+::highlight(neo-spell) {
+  text-decoration: underline wavy #cf5c56;
+  text-decoration-skip-ink: none;
+  background-color: rgba(207, 92, 86, 0.12);
+}
+.spell-menu {
+  position: fixed;
+  z-index: 300;
+  min-width: 170px;
+  background: #262626;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.spell-menu button {
+  background: none;
+  border: none;
+  color: #ddd;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+}
+.spell-menu button:hover:not(:disabled) {
+  background: #333;
+}
+.spell-menu button:disabled {
+  color: #777;
+  font-style: italic;
+}
+.spell-menu .sm-sep {
+  height: 1px;
+  background: #3a3a3a;
+  margin: 4px 0;
+}
+body.bright .spell-menu {
+  border-color: #4a4a4a;
+}
+body.bright .spell-menu button {
+  color: #eee;
+}
+
+/* Section breaks: Enter twice for ***, three times for a new chapter */
+.chapter-body p.scene-break {
+  text-align: center;
+  text-indent: 0 !important;
+  letter-spacing: 8px;
+  color: #888;
+  margin: 1.6em 0;
+  user-select: none;
+}
+.chapter-body p.scene-break + p {
+  text-indent: 0;
+}
+/* …except a line of dialogue, there and at a story's opening: it keeps its
+   indent, in line with the speech that follows (marked in app.js). Pages
+   that aren't stories (no-cap) set their lines their own way. */
+.chapter-body.opens-dialogue:not(.no-cap)
+  p:not(.poetry):not(p:not(.poetry) ~ p):not([style*='text-align']),
+.chapter-body:not(.no-cap) p.scene-break + p[data-speech]:not([style*='text-align']) {
+  text-indent: 2em;
+}
+/* centered/right paragraphs drop the first-line indent; justified keep it */
+.chapter-body p[style*='text-align']:not([style*='justify']) {
+  text-indent: 0;
+}
+/* Invisible anchors marking where a darling was cut from */
+.darling-anchor {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+/* Placeholder marks (Cmd+Shift+X) */
+.ph-mark {
+  background: #f6e3b8;
+  border-bottom: 2px solid var(--red);
+  padding: 0 3px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* --- The pages a book carries, in the manuscript, set as they'll print --- */
+.chapter.bookpage {
+  display: flex;
+  flex-direction: column;
+}
+.chapter.bookpage .chapter-body {
+  position: relative;
+}
+.chapter.bookpage .chapter-body p {
+  text-indent: 0;
+}
+/* a page that isn't headed in print wears its name faintly, for the writer */
+.chapter.kind-copyright .chapter-head,
+.chapter.kind-dedication .chapter-head,
+.chapter.kind-epigraph .chapter-head {
+  font-size: calc(11px * var(--page-zoom, 1));
+  letter-spacing: 3px;
+  color: #c4beb0;
+  margin-bottom: 0;
+}
+.chapter-body.blank::before {
+  content: attr(data-ph);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  color: #b9b4a8;
+  font-style: italic;
+  pointer-events: none;
+}
+.chapter-body p[data-attr] {
+  font-style: normal;
+  font-size: 0.72em;
+  letter-spacing: 1.5px;
+  margin-top: 0.9em;
+}
+.chapter.kind-copyright .chapter-body {
+  margin-top: auto;
+  font-size: calc(var(--editor-size, 17px) * 0.66 * var(--page-zoom, 1));
+  line-height: 1.6;
+}
+.chapter.kind-copyright .chapter-body p + p {
+  margin-top: 0.9em;
+}
+.chapter.kind-dedication .chapter-body,
+.chapter.kind-epigraph .chapter-body {
+  margin: auto 0;
+  padding-bottom: 14vh;
+  text-align: center;
+  font-style: italic;
+}
+.chapter.kind-epigraph .chapter-body {
+  margin: auto 3em;
+  font-size: calc(var(--editor-size, 17px) * 0.92 * var(--page-zoom, 1));
+}
+.chapter.kind-dedication .chapter-body i,
+.chapter.kind-epigraph .chapter-body i,
+.chapter.kind-part .chapter-body p:not(:first-child) i {
+  font-style: normal;
+}
+.chapter.kind-part .chapter-head {
+  margin: auto 0 22px;
+}
+.chapter.kind-part .chapter-body {
+  margin-bottom: auto;
+  padding-bottom: 12vh;
+  text-align: center;
+  font-style: italic;
+}
+.chapter.kind-part .chapter-body p {
+  margin: 0 2em;
+}
+.chapter.kind-part .chapter-body p:first-child {
+  font-style: normal;
+  font-size: 1.55em;
+  line-height: 1.3;
+  margin: 0 0 0.9em;
+}
+.chapter.kind-part .chapter-body.blank::before {
+  font-size: 1.55em;
+  line-height: 1.3;
+}
+.chapter.kind-acknowledgments .chapter-body p + p,
+.chapter.kind-about .chapter-body p + p {
+  text-indent: 2em;
+}
+/* the contents: the book's own shape, each line a way there */
+.toc-list {
+  list-style: none;
+  margin: 0 1.5em;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: calc(var(--editor-size, 17px) * 0.94 * var(--page-zoom, 1));
+  line-height: 1.8;
+}
+.toc-list li {
+  cursor: pointer;
+}
+.toc-list li:hover {
+  color: var(--accent);
+}
+.toc-list li.lv1 {
+  margin-left: 1.6em;
+}
+.toc-list li.t-part {
+  margin-top: 0.9em;
+  letter-spacing: 2px;
+  font-variant-caps: all-small-caps;
+  font-size: 1.1em;
+}
+.toc-list li.t-part:first-child {
+  margin-top: 0;
+}
+.toc-list li:not(.t-page) + li.t-page {
+  margin-top: 1.1em;
+}
+body.night .chapter.kind-copyright .chapter-head,
+body.night .chapter.kind-dedication .chapter-head,
+body.night .chapter.kind-epigraph .chapter-head {
+  color: #5f5b52;
+}
+body.night .chapter-body.blank::before {
+  color: #5f5b52;
+}
+

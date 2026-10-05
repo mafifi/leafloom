@@ -32,3 +32,11 @@ test('[NEO135-032-A] Outline cards come from manuscript sections and disappear w
 test('[NEO135-026-A] Existing screenplay opens as a script with Courier typography and scene navigation',async({page})=>{
  const c=await existingBook(page,{metadata:{format:'screenplay'},chapters:['<p class="sp-heading">INT. ROOM - DAY</p><p class="sp-action">Opening action.</p>']});await expect(page.locator('#editor-view')).toHaveClass(/script-mode/);await expect(page.locator('#paper')).toHaveClass(/script/);await expect(page.locator('.chapter-body').first()).toHaveClass(/script-body/);await expect.poll(()=>page.locator('.chapter-body').first().evaluate(e=>getComputedStyle(e).fontFamily)).toContain('Courier Prime');await expect(page.locator('#nav-list .sp-scene .n-label')).toHaveText('INT. ROOM - DAY');await c.driver.reopen();expect((await persistedBook(page,c.title)).metadata.format).toBe('screenplay');await c.driver.expectParagraphs([['INT. ROOM - DAY','Opening action.']]);
 });
+test('[NEO135-026-B] Native screenplay Enter and element shortcuts preserve dialogue through undo redo and reopen',async({page})=>{
+ const c=await existingBook(page,{metadata:{format:'screenplay'},chapters:['<p class="sp-character">KIM</p>']});
+ await c.driver.select(0,0,3);await c.driver.key('Enter');await expect(page.locator('.chapter-body p.sp-dialogue')).toHaveCount(1);
+ await c.driver.type('Hello.');await c.driver.key(mod+'+4');await expect(page.locator('.chapter-body p.sp-paren')).toHaveText('(Hello.)');
+ await c.driver.undo();await c.driver.expectParagraphs([['KIM','Hello.']]);
+ await c.driver.redo();await expect(page.locator('.chapter-body p.sp-paren')).toHaveText('(Hello.)');
+ await c.driver.reopen();await expect(page.locator('.chapter-body p.sp-paren')).toHaveText('(Hello.)');await c.driver.expectParagraphs([['KIM','(Hello.)']]);
+});

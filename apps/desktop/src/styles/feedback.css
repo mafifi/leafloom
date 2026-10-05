@@ -1,0 +1,91 @@
+/* --- Custom cover art: the image IS the cover --- */
+.book.has-cover .b-text {
+  display: none;
+}
+.book.has-cover::before,
+.book.has-cover::after {
+  display: none;
+}
+
+/* --- Brighter interface (View menu) — the quiet default, turned up --- */
+body.bright {
+  --muted: #b4b4b4;
+}
+body.bright #bottombar {
+  opacity: 1;
+}
+body.bright .tab {
+  color: #b4b4b4;
+}
+body.bright .nav-item .n-row {
+  color: #ccc;
+}
+body.bright .nav-item .n-words {
+  color: #a6a6a6;
+}
+body.bright .nav-note {
+  color: #a6a6a6;
+}
+body.bright .shelf-grip {
+  opacity: 1;
+  color: #838383;
+}
+body.bright .book .b-refresh {
+  color: rgba(255, 255, 255, 0.4);
+}
+body.bright .new-book {
+  border-color: #8a8a8a;
+  color: #8a8a8a;
+}
+body.bright #add-shelf-btn,
+body.bright #import-btn {
+  color: #b4b4b4;
+  border-color: #555;
+}
+
+/* --- Hint toast --- */
+#hint {
+  position: fixed;
+  bottom: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b2b2b;
+  color: #bbb;
+  font-size: 12px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  z-index: 200;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* the thumb only paints while the pane is actively scrolling */
+.show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+}
+.show-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+/* bright mode is still a dark theme — thumbs stay light, just more present */
+body.bright .show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.26);
+}
+body.bright .show-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* pinned notes pane: the page column shifts left to clear the pane */
+#editor-view.side-pinned #paper-scroll {
+  left: calc(50% - 125px);
+}
+

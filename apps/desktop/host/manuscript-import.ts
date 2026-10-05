@@ -1,3 +1,5 @@
+import type { ScreenplayScriptValue } from '@leafloom/document-contracts';
+import { readScreenplay, screenplayHTML } from './screenplay-formats.ts';
 /** Manuscript chapterization derived from NEO ed090e9988d446daf1ebbde91bcebc13b599909b, MIT (LICENSE.neo). */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -5,6 +7,7 @@ import JSZip from 'jszip';
 type DocxFormat = { bold?: boolean; italic?: boolean };
 export type ImportParagraph = {
   text?: string;
+  html?: string;
   scene?: boolean;
   pageBreak?: boolean;
   heading?: boolean;
@@ -12,6 +15,8 @@ export type ImportParagraph = {
 };
 export type ImportedChapter = { title: string; paras: ImportParagraph[]; role: string | null };
 export type ImportedManuscript = {
+  format?: 'screenplay';
+  screenplayTitle?: ScreenplayScriptValue['title'];
   name: string;
   title: string | null;
   author: string | null;
@@ -215,10 +220,15 @@ async function boundedZipText(file: JSZip.JSZipObject, limit: number): Promise<s
 }
 
 export async function parseManuscript(fp: string): Promise<ImportedManuscript> {
-  if (!/\.(docx|txt|md)$/i.test(fp)) throw new Error('INVALID');
+  if (!/\.(docx|txt|md|fountain|fdx)$/i.test(fp)) throw new Error('INVALID');
   if (fs.statSync(fp).size > 50_000_000) throw new Error('INVALID');
   const name = path.basename(fp).replace(/\.[^.]+$/, '');
   const ext = path.extname(fp).toLowerCase();
+  if (ext === '.fountain' || ext === '.fdx') {
+    let raw:string;try{raw=new TextDecoder('utf-8',{fatal:true}).decode(fs.readFileSync(fp));}catch{throw Error('INVALID');}
+    const script=readScreenplay(raw,ext.slice(1) as 'fountain'|'fdx');
+    return {name,title:script.title.title||null,author:script.title.author||null,format:'screenplay',screenplayTitle:script.title,chapters:[{title:'',role:null,paras:script.lines.map(line=>({html:screenplayHTML([line])}))}]};
+  }
   let paras: ImportParagraph[] = [];
 
   if (ext === '.docx') {

@@ -1,0 +1,300 @@
+/* ===== Greek typography =====
+   Greek glyph-safe fonts for titles, authors and drop caps.
+   The original NEO display fonts are Latin-only subsets. */
+html[lang^='el'] {
+  --dropcap-font: Georgia, 'Times New Roman', serif;
+}
+
+/* Cover author */
+html[lang^='el'] .book .b-author {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Sans / condensed-style covers */
+html[lang^='el'] .book.cv-stack .b-title,
+html[lang^='el'] .book.cv-bebas .b-title,
+html[lang^='el'] .book.cv-band .b-title,
+html[lang^='el'] .book.cv-oswald .b-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Serif / literary-style covers */
+html[lang^='el'] .book.cv-black .b-title,
+html[lang^='el'] .book.cv-fat .b-title,
+html[lang^='el'] .book.cv-fat .b-line.b-ital,
+html[lang^='el'] .book.cv-cinzel .b-title {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+/* Svelte shell bindings; the manuscript retains NEO's typesetting. */
+#app {
+  height: 100%;
+}
+[hidden] {
+  display: none !important;
+}
+.loading {
+  padding: 3rem;
+  text-align: center;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0008;
+  z-index: 500;
+}
+.modal-box {
+  background: #faf6ef;
+  color: #28241f;
+  padding: 32px;
+  border-radius: 8px;
+  min-width: 320px;
+  box-shadow: 0 10px 60px #0004;
+}
+.modal-box input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+.context-menu {
+  position: fixed;
+  background: #faf6ef;
+  color: #28241f;
+  box-shadow: 0 4px 20px #0004;
+  border-radius: 6px;
+  padding: 6px;
+  z-index: 600;
+}
+.context-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 18px;
+  border: 0;
+  background: transparent;
+}
+.context-menu button:hover {
+  background: #e8dfd1;
+}
+.book-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 12px;
+  height: 100%;
+  background: #486268;
+  color: #fff;
+}
+.book-cover strong {
+  font-family: Georgia, serif;
+  font-size: 22px;
+}
+.book-cover span {
+  font-size: 12px;
+}
+.shelf-actions {
+  display: flex;
+  gap: 12px;
+}
+#fr-choice {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0;
+}
+.selected {
+  outline: 2px solid #486268;
+}
+.add-chapter {
+  display: block;
+  margin: 40px auto;
+}
+.save-state {
+  font-size: 11px;
+  opacity: 0.6;
+}
+.ProseMirror {
+  outline: none;
+  min-height: 1.5em;
+}
+.ProseMirror p:first-child {
+  margin-top: 0;
+}
+.nav-pinned #nav-pane {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+.side-pinned #side-pane {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+#hint {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 700;
+  padding: 12px 20px;
+  background: #302d29;
+  color: white;
+  border-radius: 8px;
+}
+.annotation-spelling {
+  text-decoration: underline wavy #cf5c56;
+  text-underline-offset: 3px;
+}
+.annotation-review {
+  background: #c9a86a33;
+}
+.annotation-search {
+  background: #c9a86a55;
+}
+
+#tabs button.tab {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  padding: 0 14px;
+}
+#tabs button.tab.active {
+  color: var(--accent);
+}
+#zoom-control button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+}
+#nav-list button.nav-item {
+  display: block;
+  background: none;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+}
+#author-chip {
+  border: 0;
+  background: none;
+}
+#import-btn {
+  background: none;
+  border: 1px solid #3a3a3a;
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 5px 12px;
+}
+#nav-hotzone,
+#side-hotzone {
+  width: 24px;
+}
+#format-menu,
+#view-menu {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 11px;
+  padding: 0 8px;
+}
+.sticky .s-ch {
+  background: none;
+  border: 0;
+}
+.pop-menu button:hover {
+  background: #353535;
+}
+.book{position:relative;width:104px;height:150px;border:none;border-radius:3px;padding:0;flex:none;text-align:center}
+
+.toc-list button {border:0;background:none;color:inherit;font:inherit;padding:0;text-align:left;cursor:pointer}
+
+.external-change {position:fixed;top:0;left:0;right:0;padding:12px 24px;background:#503d22;color:#fff;z-index:700;font:13px system-ui;display:flex;gap:16px;align-items:center}
+
+.chapter-body .ProseMirror, #aux-editor .ProseMirror {white-space:pre-wrap}
+.nav-title{border:0;background:none;color:inherit;font:inherit;text-align:left;padding:0;cursor:pointer}
+
+/* PM preserves authored spaces and native soft breaks on publication sheets too. */
+.ps-body.ProseMirror { white-space: pre-wrap; }
+
+/* OFL reading families: Newsreader → Readerly → Libron. Unmodified upstream fonts. */
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Libron';
+  src: url('/fonts/libron-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Readerly';
+  src: url('/fonts/readerly-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-400-normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}

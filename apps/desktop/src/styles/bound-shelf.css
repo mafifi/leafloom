@@ -1,0 +1,180 @@
+/* ---------------- A bound shelf: one book ----------------
+   Its tiles sit close, stitched along the shelf by a gold thread. The cover
+   stands a little taller; the pages a book carries stand beside it as thin
+   leaves of paper. Hovering the shelf shows, faintly, each page it could
+   still have and a seam before each title where a part could begin. */
+.shelf.bound .shelf-books {
+  gap: 6px;
+  position: relative;
+}
+.shelf.bound .shelf-books::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: var(--stitch, 100%);
+  bottom: 3px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 7px, transparent 7px 12px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.shelf-bound-mark {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.8;
+  user-select: none;
+}
+.shelf-bound-mark::before {
+  content: '· ';
+}
+.book.bound-cover {
+  zoom: 1.12;
+  box-shadow:
+    inset 4px 0 8px -3px rgba(0, 0, 0, 0.5),
+    3px 6px 16px rgba(0, 0, 0, 0.6);
+}
+.book.page-tile,
+.ghost-page {
+  width: 34px;
+  height: 150px;
+  flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.book.page-tile {
+  background: #efe9dc;
+  border-radius: 2px 3px 3px 2px;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.4);
+  color: #6f675b;
+}
+.book.page-tile.kind-part {
+  background: #e6dfcf;
+}
+.page-tile .pt-label,
+.ghost-page .pt-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  font-size: 9.5px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+.ghost-page {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.26);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.45);
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    color 0.15s,
+    border-color 0.15s;
+}
+.ghost-page .gp-plus {
+  font-size: 15px;
+  line-height: 1;
+}
+.long .pt-label {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+.longer .pt-label {
+  font-size: 8px;
+  letter-spacing: 0.6px;
+}
+.ghost-page.longer {
+  gap: 8px;
+}
+.page-tile .pt-label,
+.ghost-page .pt-label {
+  max-height: 128px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ghost-page .pt-label {
+  max-height: 112px;
+}
+.part-seam {
+  width: 18px;
+  height: 150px;
+  flex-shrink: 0;
+  margin: 0 -2px;
+  padding: 0;
+  position: relative;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    color 0.15s;
+}
+.part-seam .ps-line {
+  position: absolute;
+  left: 8px;
+  top: 24px;
+  bottom: 0;
+  border-left: 1px dashed rgba(255, 255, 255, 0.3);
+}
+.part-seam .ps-plus {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+.shelf.bound:hover .ghost-page,
+.shelf.bound:hover .part-seam,
+.ghost-page:focus-visible,
+.part-seam:focus-visible {
+  opacity: 1;
+}
+.ghost-page:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.part-seam:hover {
+  color: var(--accent);
+}
+.part-seam:hover .ps-plus {
+  border-color: var(--accent);
+}
+.part-seam:hover .ps-line {
+  border-left-color: var(--accent);
+}
+/* the moment of binding: the tiles settle in and the thread runs along the shelf */
+.shelf.just-bound .shelf-books > * {
+  animation: neo-settle 0.45s ease backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+.shelf.just-bound .shelf-books::after {
+  animation: neo-stitch 1.1s ease 0.25s backwards;
+}
+@keyframes neo-settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes neo-stitch {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+

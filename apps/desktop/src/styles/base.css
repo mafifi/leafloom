@@ -1,0 +1,54 @@
+/* ============================= NEO ============================= */
+/* Dark surround, white page. The writing is the interface.        */
+
+:root {
+  --bg: #191919;
+  --bg-soft: #222;
+  --paper: #fbfaf7;
+  --ink: #1c1c1c;
+  --accent: #c9a86a;
+  --muted: #8a8a8a;
+  --pane: #202020;
+  --red: #c0392b;
+  --body-font: Georgia, 'Times New Roman', serif;
+  --dropcap-font: 'Didot', 'Bodoni 72', Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: #ddd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#dragstrip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  -webkit-app-region: drag;
+  z-index: 500;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+[hidden] {
+  display: none !important;
+}
+.soft {
+  color: var(--muted);
+  font-size: 12px;
+}
+

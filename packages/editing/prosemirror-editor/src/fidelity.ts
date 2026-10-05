@@ -1,3 +1,8 @@
+import {
+  ScreenplayElement,
+  legacyScreenplayClasses,
+  screenplayElementFromLegacyClass,
+} from '@leafloom/document-contracts';
 import { importHTML, exportHTML, schema } from './codec';
 import type { Node as PMNode } from 'prosemirror-model';
 const blocks = new Set([
@@ -33,12 +38,15 @@ const allowed = new Set([
 ]);
 const ephemeral = new Set(['data-attr', 'data-speech']);
 function attrs(el: Element) {
-  return Object.fromEntries(
+  const data = Object.fromEntries(
     Array.from(el.attributes)
       .filter((a) => a.name.startsWith('data-') && !ephemeral.has(a.name))
       .map((a) => [a.name, a.value])
       .sort(([a], [b]) => a.localeCompare(b)),
   );
+  const semantic = screenplayElementFromLegacyClass(el.getAttribute('class') || '');
+  if (semantic && el.tagName === 'P') data['data-screenplay'] ??= semantic;
+  return data;
 }
 /** Independent DOM inventory: text/marks, block boundaries, classes, data and atoms. */
 export function inventory(document: Document, html: string) {
@@ -132,6 +140,19 @@ export function inspectHTML(
     if (!allowed.has(tag)) {
       reason = 'UNSUPPORTED_TAG';
       break;
+    }
+    if (tag === 'P') {
+      const declared = el.getAttribute('data-screenplay'),
+        legacy = screenplayElementFromLegacyClass(el.className);
+      const cues = Object.values(legacyScreenplayClasses).filter((name) =>
+        el.classList.contains(name),
+      );
+      if (
+        (declared !== null && !ScreenplayElement.safeParse(declared).success) ||
+        cues.length > 1 ||
+        (declared && legacy && declared !== legacy)
+      )
+        reason = 'UNSUPPORTED_SCREENPLAY';
     }
     for (const attr of Array.from(el.attributes)) {
       const name = attr.name;

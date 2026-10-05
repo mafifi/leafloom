@@ -859,7 +859,18 @@
           "state": "targeted diagnostic; full feature acceptance pending",
           "title": "[NEO135-026-A] Existing screenplay opens as a script with Courier typography and scene navigation",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json"
+        },
+        {
+          "id": "NEO135-026-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-026-B] Native screenplay Enter and element shortcuts preserve dialogue through undo redo and reopen",
+          "sourceStatus": "passed",
+          "candidateStatus": "passed",
+          "sourceReport": "/tmp/leafloom-screenplay-reference-final.json",
+          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json"
         }
       ]
     },

@@ -25,8 +25,21 @@ export function entries(doc: PMNode) {
   walk(doc, 0, []);
   return found;
 }
-export function signature(node: PMNode) {
+export function signature(node: PMNode, canonical = true) {
   const value = baseNode(node).toJSON();
+  // The semantic attribute is encoded in readable HTML; omit the new default
+  // from content hashes so existing prose passage identities remain stable.
+  if (node.type.name === 'paragraph' && value.attrs) {
+    if (canonical && node.attrs.screenplay) {
+      const data = { ...value.attrs.data, 'data-screenplay': node.attrs.screenplay };
+      value.attrs.data = Object.fromEntries(
+        Object.keys(data)
+          .sort()
+          .map((key) => [key, data[key]]),
+      );
+    }
+    delete value.attrs.screenplay;
+  }
   // Wrapper provenance preserves HTML syntax, not passage content. Excluding it
   // retains passage identities written before the codec recorded plain PREs.
   if (node.type.name === 'code_block' && value.attrs) {
@@ -35,6 +48,8 @@ export function signature(node: PMNode) {
   }
   return bytesToHex(sha256(new TextEncoder().encode(JSON.stringify(value))));
 }
+/** Previous envelopes hashed generic HTML attributes before screenplay semantics existed. */
+export const legacySignature = (node: PMNode) => signature(node, false);
 export function runs(fragment: Fragment): InlineContent[] {
   const out: InlineContent[] = [];
   fragment.forEach((n) => {

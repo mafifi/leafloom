@@ -69,14 +69,14 @@ export const HostPayloads = {
   exportBook: z.strictObject({
     generatedCover:GeneratedCover.optional(),
     bookId: Id,
-    format: z.enum(['txt', 'md', 'html', 'docx', 'epub', 'pdf']),
+    format: z.enum(['txt', 'md', 'html', 'docx', 'epub', 'pdf', 'fountain', 'fdx']),
     destination: z.string().min(1),
     language: z
       .string()
       .regex(/^[a-z]{2}(?:-[A-Z]{2})?$/)
       .default('en'),
   }),
-  exportChapter: z.strictObject({bookId:Id,chapterId:Id,format:z.enum(['txt','md','html','docx','epub','pdf']),destination:z.string().min(1),language:z.string().regex(/^[a-z]{2}(?:-[A-Z]{2})?$/).default('en')}),
+  exportChapter: z.strictObject({bookId:Id,chapterId:Id,format:z.enum(['txt','md','html','docx','epub','pdf','fountain','fdx']),destination:z.string().min(1),language:z.string().regex(/^[a-z]{2}(?:-[A-Z]{2})?$/).default('en')}),
   renderChapterPreview: z.strictObject({bookId:Id,chapterId:Id,language:z.string().regex(/^[a-z]{2}(?:-[A-Z]{2})?$/).default('en')}),
   exportCollection: z.strictObject({
     uuid:z.uuid().optional(),
@@ -86,7 +86,7 @@ export const HostPayloads = {
     author: z.string().max(500).default(''),
     bound: z.boolean().default(false),
     numbering: z.enum(['through', 'restart']).default('through'),
-    format: z.enum(['txt', 'md', 'html', 'docx', 'epub', 'pdf']),
+    format: z.enum(['txt', 'md', 'html', 'docx', 'epub', 'pdf', 'fountain', 'fdx']),
     language: z
       .string()
       .regex(/^[a-z]{2}(?:-[A-Z]{2})?$/)

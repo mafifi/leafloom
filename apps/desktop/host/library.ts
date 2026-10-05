@@ -502,7 +502,7 @@ export class LibraryHost {
               ...current.book,
               metadata: Metadata.parse({ ...p.metadata, modified: new Date().toISOString() }),
             };
-          if (book.formatVersion === 'neo-composed/v1') {
+          if (book.formatVersion === 'neo-composed/v1' || book.formatVersion === 'leafloom-manuscript/v2') {
             const version = randomUUID();
             await files.checkpoint(
               {
@@ -606,9 +606,9 @@ export class LibraryHost {
               id: chapterId,
               html: chapter.paras
                 .map((paragraph) =>
-                  paragraph.scene
+                  paragraph.html ?? (paragraph.scene
                     ? '<p class="scene-break">***</p>'
-                    : '<p>' + inline(paragraph.text ?? '') + '</p>',
+                    : '<p>' + inline(paragraph.text ?? '') + '</p>'),
                 )
                 .join(''),
             };
@@ -623,6 +623,7 @@ export class LibraryHost {
             chapterTitles: titles,
             chapterKinds: kinds,
             kind: 'novel',
+            ...(parsed.format ? {format:parsed.format, screenplayTitle:parsed.screenplayTitle} : {}),
           };
         await mkdir(staging);
         try {

@@ -1,0 +1,157 @@
+/* --- Aux paper (Notes / Outline / Darlings) --- */
+#aux-paper h2 {
+  font-family: var(--body-font);
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 40px;
+}
+#aux-editor {
+  font-family: var(--body-font);
+  font-size: calc(var(--editor-size, 16px) * var(--page-zoom, 1));
+  line-height: 1.7;
+  outline: none;
+  min-height: 50vh;
+}
+#aux-editor:empty::before {
+  content: var(--ph-write-freely, 'Write freely…');
+  color: #b9b4a8;
+  font-style: italic;
+}
+/* vim keys: while moving, the caret becomes a gold block, as in vim, so a
+   writer can see at a glance whether a letter will move or type */
+body.vim-nav .chapter-body,
+body.vim-nav #aux-editor {
+  caret-color: var(--accent);
+  caret-shape: block;
+}
+
+/* --- Structured outline tab --- */
+.ol-line {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 3px 0;
+  font-size: calc(var(--editor-size, 17px) * 15 / 17 * var(--page-zoom, 1));
+}
+.ol-chapter {
+  margin-top: 18px;
+}
+.ol-section {
+  margin-left: 40px;
+}
+.ol-num {
+  font-family: var(--body-font);
+  color: #8d8778;
+  min-width: 24px;
+  text-align: right;
+  user-select: none;
+  flex-shrink: 0;
+}
+.ol-chapter .ol-num {
+  font-weight: 700;
+  color: #6b6455;
+}
+.ol-text {
+  flex: 1;
+  outline: none;
+  font-family: var(--body-font);
+  line-height: 1.5;
+  min-height: 20px;
+  border-bottom: 1px dashed transparent;
+}
+.ol-text:focus {
+  border-bottom-color: #d8d2c2;
+}
+.ol-text:empty::before {
+  color: #b9b4a8;
+  font-style: italic;
+}
+.ol-chapter .ol-text:empty::before {
+  content: var(--ph-ol-chapter, 'What happens in this chapter…');
+}
+.ol-section .ol-text:empty::before {
+  content: var(--ph-ol-section, 'What happens in this section…');
+}
+.ol-part {
+  margin-top: 26px;
+}
+.ol-part .ol-num {
+  font-weight: 700;
+  color: #6b6455;
+}
+.ol-part-name {
+  flex: 1;
+  font-family: var(--body-font);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  color: #6b6455;
+  line-height: 1.5;
+}
+body.night .ol-part .ol-num,
+body.night .ol-part-name {
+  color: #918b7d;
+}
+.ol-hint {
+  margin-top: 40px;
+  color: #b9b4a8;
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Ghost paragraphs: outline notes waiting in the manuscript to become prose */
+.chapter-body p.ghost {
+  color: #a9a294;
+  font-style: italic;
+  text-indent: 0 !important;
+}
+.chapter-body p.ghost::first-letter {
+  font-size: inherit;
+  float: none;
+  padding: 0;
+}
+
+.darling {
+  border: 1px solid #e3ddcf;
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.darling .d-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-family: -apple-system, sans-serif;
+  font-size: 11px;
+  color: #999;
+}
+.darling button {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 3px 10px;
+  color: #777;
+}
+.darling button:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.darlings-empty {
+  text-align: center;
+  color: #b9b4a8;
+  font-style: italic;
+  padding: 60px 0;
+}
+

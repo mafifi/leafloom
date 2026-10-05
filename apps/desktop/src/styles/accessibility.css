@@ -1,0 +1,296 @@
+/* ================================================================== */
+/* ACCESSIBILITY                                                        */
+/* ================================================================== */
+
+/* the progress chart's legend */
+.stats-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #666;
+  padding: 2px 4px;
+}
+.stats-legend .sl-daily {
+  color: #3d8a6a;
+}
+
+/* Where the keyboard is: a gold ring on whatever Tab reaches. The mouse
+   never sees it, and the page itself never gets one. */
+:where(button, [role='button'], [role='tab'], select, summary, a[href]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.book:focus-visible,
+.new-book:focus-visible {
+  outline-offset: 4px;
+  border-radius: 3px 6px 6px 3px;
+}
+.tab:focus-visible {
+  outline-offset: -2px;
+}
+
+/* The quiet chrome wakes for the keyboard as it does for the mouse. */
+#bottombar:has(:focus-visible) {
+  opacity: 1;
+}
+#nav-pane:has(:focus-visible),
+#side-pane:has(:focus-visible) {
+  transform: translateX(0);
+}
+.shelf:has(.shelf-label:focus-visible) .shelf-grip,
+.chapter-head:has(:focus-visible) .ch-sep {
+  opacity: 0.6;
+}
+
+/* Brighter Interface (View menu, or the system's "Increase contrast"):
+   every text, hint and placeholder reads at 4.5:1, on paper and at night,
+   and no interface text is under 12px. The quiet default is untouched;
+   :where() keeps each rule exactly as strong as the one it brightens. */
+:where(body.bright) .btn-quiet {
+  color: #8a8a8a;
+}
+:where(body.bright) #aux-paper h2 {
+  color: #727272;
+}
+:where(body.bright) .ol-num {
+  color: #767165;
+}
+:where(body.bright) .ol-hint {
+  color: #75716a;
+}
+:where(body.bright) .darling .d-meta {
+  font-size: 12px;
+  color: #717171;
+}
+:where(body.bright) .darling button {
+  font-size: 12px;
+  color: #727272;
+}
+:where(body.bright) .darlings-empty {
+  color: #75716a;
+}
+:where(body.bright) .nav-item .n-words {
+  font-size: 12px;
+}
+:where(body.bright) #nav-add {
+  color: #898989;
+}
+:where(body.bright) #side-pin {
+  color: #8a8a8a;
+}
+:where(body.bright) .sticky .s-ch {
+  font-size: 12px;
+  color: #929292;
+}
+:where(body.bright) .sticky .s-actions button {
+  color: #929292;
+  font-size: 12px;
+}
+:where(body.bright) .stickies-empty {
+  color: #8a8a8a;
+}
+:where(body.bright) .sticky textarea::placeholder {
+  color: #929292;
+}
+:where(body.bright) #search-count,
+:where(body.bright) .stats-nums .lbl,
+:where(body.bright) .shortcut-row small,
+:where(body.bright) .shortcut-or {
+  font-size: 12px;
+}
+:where(body.bright) .stats-legend {
+  font-size: 12px;
+  color: #8b8b8b;
+}
+:where(body.bright) .stats-legend .sl-daily {
+  color: #54987c;
+}
+body.night:where(.bright) .darlings-empty,
+body.night:where(.bright) .ol-hint {
+  color: #8d8b84;
+}
+body.night:where(.bright) .ol-num {
+  color: #8f8a7d;
+}
+:where(body.night.bright) .darling .d-meta,
+:where(body.night.bright) .darling button {
+  color: #999;
+}
+body.bright [contenteditable][data-ph]:empty::before,
+body.bright #aux-editor:empty::before,
+body.bright .ol-text:empty::before {
+  color: #75716a;
+}
+body.bright .chapter-head .ch-title:empty::before {
+  color: #747068;
+}
+body.bright .chapter-body p.ghost {
+  color: #767168;
+}
+body.bright .chapter-body p.scene-break {
+  color: #727272;
+}
+body.bright .nav-note:empty::before {
+  color: #919191;
+}
+body.bright.night [contenteditable][data-ph]:empty::before,
+body.bright.night #aux-editor:empty::before,
+body.bright.night .chapter-head .ch-title:empty::before {
+  color: #8d8b84;
+}
+body.bright.night .chapter-body p.ghost {
+  color: #8f8b81;
+}
+body.bright.night .chapter-body p.scene-break {
+  color: #8f8a7d;
+}
+body.bright .book .b-refresh {
+  color: rgba(255, 255, 255, 0.65);
+}
+body.bright .chapter-body.blank::before,
+body.bright .chapter.kind-copyright .chapter-head,
+body.bright .chapter.kind-dedication .chapter-head,
+body.bright .chapter.kind-epigraph .chapter-head {
+  color: #75716a;
+}
+body.bright.night .chapter-body.blank::before,
+body.bright.night .chapter.kind-copyright .chapter-head,
+body.bright.night .chapter.kind-dedication .chapter-head,
+body.bright.night .chapter.kind-epigraph .chapter-head {
+  color: #8d8b84;
+}
+body.bright .nav-gap .ng-plus {
+  color: #b4b4b4;
+  border-color: #6a6a6a;
+}
+body.bright .pop-menu button:disabled {
+  color: #8a8a8a;
+}
+
+/* The system's "Reduce motion": no fades, slides or shimmer. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .book:hover,
+  .new-book:hover {
+    transform: none;
+  }
+}
+
+/* Windows high contrast: the system picks every color; keep what color
+   alone used to say (the open tab, the current chapter, the page's edge). */
+@media (forced-colors: active) {
+  #bottombar {
+    opacity: 1;
+  }
+  .tab.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .nav-item.current {
+    border-left-color: Highlight;
+  }
+  .sheet,
+  #aux-paper {
+    border: 1px solid CanvasText;
+  }
+  .ph-mark {
+    border: 1px solid Highlight;
+  }
+}
+
+/* Interface size (View menu): the shelf, the panes, the bottom bar and the
+   dialogs grow together; the page keeps its own size and zoom. Lengths
+   that meet the page or the window are corrected for the zoom. */
+:root {
+  --ui-zoom: 1;
+}
+#bookshelf-view,
+#nav-pane,
+#side-pane,
+#bottombar,
+#searchbar,
+#hint,
+.modal {
+  zoom: var(--ui-zoom);
+}
+#paper-scroll,
+#nav-hotzone,
+#side-hotzone {
+  bottom: calc(40px * var(--ui-zoom));
+}
+#editor-view.side-pinned #paper-scroll {
+  left: calc(50% - 125px * var(--ui-zoom));
+}
+#editor-view.nav-pinned #paper-scroll {
+  left: calc(50% + 124px * var(--ui-zoom));
+}
+#editor-view.nav-pinned.side-pinned #paper-scroll {
+  left: calc(50% - 1px * var(--ui-zoom));
+}
+.modal {
+  max-height: calc(85vh / var(--ui-zoom));
+  max-width: calc(100vw / var(--ui-zoom) - 32px);
+}
+.font-list {
+  max-height: calc(50vh / var(--ui-zoom));
+}
+.shortcuts-modal {
+  width: min(920px, calc(100vw / var(--ui-zoom) - 48px));
+  height: min(720px, calc(100vh / var(--ui-zoom) - 80px));
+}
+/* An enlarged bottom bar in a small window keeps what matters: the tabs,
+   today's words and the word count. At Normal size nothing is shed. */
+.ui-zoomed #bottombar {
+  container-type: inline-size;
+}
+.ui-zoomed #counters span,
+.ui-zoomed .tab,
+.ui-zoomed #back-to-shelf {
+  white-space: nowrap;
+}
+@container (max-width: 900px) {
+  .ui-zoomed #pos-counter {
+    display: none;
+  }
+  .ui-zoomed .tab {
+    padding: 5px 10px;
+  }
+  .ui-zoomed .tab.darlings {
+    margin-left: 8px;
+  }
+  .ui-zoomed #counters {
+    gap: 12px;
+  }
+}
+@container (max-width: 700px) {
+  .ui-zoomed #zoom-control {
+    display: none;
+  }
+  .ui-zoomed #back-to-shelf span[data-i18n] {
+    display: none;
+  }
+}
+
+/* Help → Check for Update…: the download bar */
+.up-bar {
+  height: 6px;
+  background: #2a2a2a;
+  border-radius: 3px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.up-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+

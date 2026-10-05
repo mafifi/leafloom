@@ -15,3 +15,7 @@ Read `ARCHITECTURE.md`, `DESIGN.md`, the relevant ADR and the closest area guide
 - Run the relevant targeted tests, repository policy, strict typing and UI checks. Report remaining gaps in the execution ledger; a scaffold or passing subset does not complete the rewrite.
 
 Local guides: `.agents/skills/neo-migration/SKILL.md`, `.agents/skills/contract-change/SKILL.md`, `.agents/skills/writing-performance/SKILL.md`. User-authorized work proceeds without additional confirmation gates.
+
+- Owned source warns above 400 lines (300 for `content.ts`) and fails at 1,000. Run `pnpm check:size`; split by responsibility. The check includes tests, CSS and Rust and excludes immutable references and generated bundle resources. Do not introduce a size exemption to grow an existing owner.
+- Application/editor command facades bind feature operations to one live owner through typed ports. Keep host method lookup live so host replacement and race instrumentation use the current provider.
+- Manuscript v2 and screenplay exchange decisions live in ADR 0004. Scene/speaker/research indexes are projections; keep them out of the persisted manuscript.

@@ -1,0 +1,449 @@
+/* ---------------- Cover typography ----------------
+   The art is painted onto the tile's background (see covers.js); the title
+   above it is real text, broken into lines by covers.js with each line sized
+   to run the tile's full width — the title is the design, not a caption.
+   cv-light / cv-dark pick the ink from the art's brightness; cv-scrim adds a
+   veil where the art is busy. */
+@font-face {
+  font-family: 'NEO Anton';
+  src: url('/fonts/anton-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'NEO Bebas';
+  src: url('/fonts/bebas-neue-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'NEO Oswald';
+  src: url('/fonts/oswald-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'NEO Abril';
+  src: url('/fonts/abril-fatface-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-latin-900-normal.woff2') format('woff2');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-latin-900-italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-latin-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'NEO Cinzel';
+  src: url('/fonts/cinzel-latin-900-normal.woff2') format('woff2');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'NEO Josefin';
+  src: url('/fonts/josefin-sans-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'NEO Josefin';
+  src: url('/fonts/josefin-sans-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'NEO Baskerville';
+  src: url('/fonts/libre-baskerville-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+}
+
+/* Body faces for Linux. macOS and Windows use system fonts; these are the
+   names the Format menu and the first-run picker show on Linux. */
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/gelasio-latin-400-normal.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/gelasio-latin-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/gelasio-latin-700-normal.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/gelasio-latin-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/texgyrepagella-latin-400-normal.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/texgyrepagella-latin-400-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/texgyrepagella-latin-700-normal.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/texgyrepagella-latin-700-italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/libre-baskerville-latin-400-normal.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/libre-baskerville-latin-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/libre-baskerville-latin-700-normal.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/alegreya-latin-400-normal.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/alegreya-latin-400-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/alegreya-latin-700-normal.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Alegreya';
+  src: url('/fonts/alegreya-latin-700-italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('/fonts/source-serif-pro-latin-400-normal.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('/fonts/source-serif-pro-latin-400-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('/fonts/source-serif-pro-latin-700-normal.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('/fonts/source-serif-pro-latin-700-italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libre Bodoni';
+  src: url('/fonts/libre-bodoni-latin-400-normal.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Libre Bodoni';
+  src: url('/fonts/libre-bodoni-latin-400-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Libre Bodoni';
+  src: url('/fonts/libre-bodoni-latin-700-normal.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'TeX Gyre Chorus';
+  src: url('/fonts/texgyrechorus-latin-400-normal.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/jost-latin-400-normal.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/jost-latin-400-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/jost-latin-700-normal.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Jost';
+  src: url('/fonts/jost-latin-700-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Russian letters. Most faces above have none, so each such family gets a
+   face of Cyrillic only, under its own name: Oswald and Playfair from their
+   own families, the rest from a Cyrillic face chosen by a Russian reader.
+   Each is scaled (size-adjust) to stand as tall as the Latin letters beside
+   it, and takes the Latin face's line metrics (the overrides) so Russian
+   sits in the line exactly where Latin would. Declared after the Latin
+   faces, so they are the ones tried first for Cyrillic. The range is
+   Fontsource's "cyrillic" subset. Alegreya, Source Serif Pro and Jost have
+   Russian letters of their own. */
+@font-face {
+  font-family: 'NEO Oswald';
+  src: url('/fonts/oswald-cyrillic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-cyrillic-900-normal.woff2') format('woff2');
+  font-weight: 900;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'NEO Playfair';
+  src: url('/fonts/playfair-display-cyrillic-900-italic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* Linux body faces: Gelasio → Merriweather, TeX Gyre Pagella → Lora,
+   Libre Baskerville → Old Standard TT */
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/merriweather-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 87.4%;
+  ascent-override: 106.2%;
+  descent-override: 39.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/merriweather-cyrillic-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 86.5%;
+  ascent-override: 107.2%;
+  descent-override: 39.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/merriweather-cyrillic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 87.4%;
+  ascent-override: 106.2%;
+  descent-override: 39.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Gelasio';
+  src: url('/fonts/merriweather-cyrillic-700-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 86.4%;
+  ascent-override: 107.4%;
+  descent-override: 39.6%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/lora-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 93.8%;
+  ascent-override: 77.4%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/lora-cyrillic-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 94.3%;
+  ascent-override: 77.7%;
+  descent-override: 29.3%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/lora-cyrillic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 94.2%;
+  ascent-override: 76.4%;
+  descent-override: 27.4%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'TeX Gyre Pagella';
+  src: url('/fonts/lora-cyrillic-700-italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 91.8%;
+  ascent-override: 79.1%;
+  descent-override: 29.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/old-standard-tt-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 116.2%;
+  ascent-override: 83.5%;
+  descent-override: 23.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/old-standard-tt-cyrillic-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 118.4%;
+  ascent-override: 81.9%;
+  descent-override: 22.8%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/old-standard-tt-cyrillic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 111.8%;
+  ascent-override: 86.8%;
+  descent-override: 24.1%;
+  line-gap-override: 0%;
+}
+/* drop caps: Libre Bodoni → Prata, TeX Gyre Chorus → Marck Script */
+@font-face {
+  font-family: 'Libre Bodoni';
+  src: url('/fonts/prata-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 94.2%;
+  ascent-override: 98%;
+  descent-override: 34.6%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'TeX Gyre Chorus';
+  src: url('/fonts/marck-script-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 106.4%;
+  ascent-override: 96.5%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+}
+/* cover titles: Anton → Russo One, Bebas Neue → Oswald Medium, Abril Fatface →
+   Playfair Display Black, Cinzel → Forum */
+@font-face {
+  font-family: 'NEO Anton';
+  src: url('/fonts/russo-one-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 122.8%;
+  ascent-override: 95.8%;
+  descent-override: 26.8%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'NEO Bebas';
+  src: url('/fonts/oswald-cyrillic-500-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 86.4%;
+  ascent-override: 104.1%;
+  descent-override: 34.7%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'NEO Abril';
+  src: url('/fonts/playfair-display-cyrillic-900-normal.woff2') format('woff2');
+  font-weight: 400;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 91.7%;
+  ascent-override: 115.4%;
+  descent-override: 31.7%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'NEO Cinzel';
+  src: url('/fonts/forum-cyrillic-400-normal.woff2') format('woff2');
+  font-weight: 900;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 106.1%;
+  ascent-override: 92%;
+  descent-override: 35.1%;
+  line-gap-override: 0%;
+}
+/* Josefin Sans (the band cover, every author line) → Jost */
+@font-face {
+  font-family: 'NEO Josefin';
+  src: url('/fonts/jost-latin-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 105.1%;
+  ascent-override: 71.3%;
+  descent-override: 23.8%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'NEO Josefin';
+  src: url('/fonts/jost-latin-700-normal.ttf') format('truetype');
+  font-weight: 600;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 104%;
+  ascent-override: 72.1%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+

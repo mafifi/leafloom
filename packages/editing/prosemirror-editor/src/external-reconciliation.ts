@@ -46,6 +46,10 @@ export function onlyDrops(page: string, disk: string): boolean {
 export function metadataSignature(book: Book): string {
   const metadata: Record<string, unknown> = {
       ...book.metadata,
+      format:
+        book.formatVersion === 'leafloom-manuscript/v2'
+          ? book.mode
+          : book.metadata.format || 'prose',
       chapterOrder: book.chapters.map((chapter) => chapter.id),
     },
     value: Record<string, unknown> = {};
@@ -124,6 +128,9 @@ export function planExternal(
     metadata = structuredClone(
       restructured && !mine ? incoming.book.metadata : local.book.metadata,
     );
+  const selectedBook = restructured && !mine ? incoming.book : local.book;
+  if (selectedBook.formatVersion === 'leafloom-manuscript/v2' && selectedBook.mode === 'screenplay')
+    metadata.format = 'screenplay';
   // Local position never jumps merely because metadata arrived. Resume is a separate activity-gated action.
   if (local.book.metadata.lastPosition !== undefined)
     metadata.lastPosition = local.book.metadata.lastPosition;

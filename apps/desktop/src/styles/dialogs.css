@@ -1,0 +1,218 @@
+/* --- Stats / goals modal --- */
+.stats-nums {
+  display: flex;
+  gap: 26px;
+  margin: 14px 0 18px;
+}
+.stats-nums div {
+  text-align: center;
+}
+.stats-nums .big {
+  font-size: 26px;
+  color: var(--accent);
+  font-family: Georgia, serif;
+}
+.stats-nums .lbl {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+.stats-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.stats-row input {
+  width: 90px;
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 5px;
+  color: #eee;
+  padding: 6px 9px;
+  font-size: 13px;
+}
+.stats-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.stats-row select {
+  background: var(--bg);
+  border: 1px solid #3a3a3a;
+  border-radius: 5px;
+  color: #eee;
+  padding: 6px 9px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.stats-row select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+/* the goal row: a caption over each box, boxes on one baseline, the
+   day-end choice off to the right on its own */
+.stats-goals {
+  align-items: flex-end;
+}
+.stats-goals label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.stats-goals input,
+.stats-goals select {
+  height: 31px;
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+}
+.stats-goals select {
+  width: 110px;
+}
+.stats-row button {
+  background: var(--accent);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 14px;
+  color: #191919;
+  font-size: 12px;
+}
+#stats-chart {
+  background: #1d1d1d;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+/* --- Keyboard shortcut reference --- */
+.shortcuts-modal {
+  width: min(920px, calc(100vw - 48px));
+  height: min(720px, calc(100vh - 80px));
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+.shortcuts-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid #373737;
+}
+.shortcuts-header h2 {
+  font-size: 23px;
+  margin: 0;
+}
+.shortcuts-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 30px 28px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.shortcuts-content::-webkit-scrollbar-thumb {
+  background: #555;
+}
+.shortcuts-column {
+  flex: 1;
+  min-width: 0;
+}
+.shortcuts-section + .shortcuts-section {
+  margin-top: 24px;
+}
+.shortcuts-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.shortcut-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-bottom: 1px solid #303030;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.shortcut-row dt {
+  min-width: 0;
+}
+.shortcut-row small {
+  display: block;
+  font-size: 11.5px;
+  color: #999;
+  line-height: 1.5;
+  margin-top: 3px;
+}
+.shortcut-row dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  max-width: 48%;
+  flex-shrink: 0;
+}
+.shortcut-row kbd {
+  font:
+    12px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    'Helvetica Neue',
+    sans-serif;
+  white-space: nowrap;
+  color: #eee;
+  background: #2c2c2c;
+  padding: 1px 6px;
+  border: 1px solid #484848;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
+.shortcut-or {
+  font-size: 10px;
+  color: #999;
+}
+.shortcuts-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 30px;
+  border-top: 1px solid #373737;
+}
+.shortcuts-footer span {
+  font-size: 12px;
+  color: #aaa;
+}
+.shortcuts-modal button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.shortcuts-content:focus {
+  outline: none;
+}
+@media (max-width: 760px) {
+  .shortcuts-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+  .shortcuts-column {
+    display: contents;
+  }
+  .shortcuts-section + .shortcuts-section {
+    margin-top: 0;
+  }
+  .shortcuts-footer {
+    flex-wrap: wrap;
+  }
+}
+

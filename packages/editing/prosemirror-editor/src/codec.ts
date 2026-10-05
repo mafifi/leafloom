@@ -1,4 +1,9 @@
 import {
+  ScreenplayElement,
+  screenplayElementFromLegacyClass,
+  legacyScreenplayClasses,
+} from '@leafloom/document-contracts';
+import {
   DOMParser,
   DOMSerializer,
   Schema,
@@ -43,6 +48,19 @@ function writeAttributes(attrs: Attrs): Record<string, string> {
   }
   return out;
 }
+function readParagraphAttributes(el: HTMLElement): Attrs {
+  const attrs = readAttributes(el);
+  const semantic = ScreenplayElement.safeParse(el.getAttribute('data-screenplay'));
+  const screenplay = semantic.success
+    ? semantic.data
+    : screenplayElementFromLegacyClass(el.className);
+  return { ...attrs, screenplay };
+}
+function writeParagraphAttributes(attrs: Attrs): Record<string, string> {
+  const out = writeAttributes(attrs);
+  if (attrs.screenplay) out['data-screenplay'] = ScreenplayElement.parse(attrs.screenplay);
+  return out;
+}
 function block(tag: string, content = 'inline*'): NodeSpec {
   return {
     group: 'block',
@@ -64,9 +82,11 @@ const nodes: Record<string, NodeSpec> = {
   doc: { content: 'block+' },
   paragraph: {
     ...block('p'),
+    attrs: { ...baseAttrs, screenplay: { default: null } },
+    toDOM: (node) => ['p', writeParagraphAttributes(node.attrs), 0],
     parseDOM: ['p', 'div'].map((tag) => ({
       tag,
-      getAttrs: (value) => readAttributes(element(value)),
+      getAttrs: (value) => readParagraphAttributes(element(value)),
     })),
   },
   heading: {

@@ -1,0 +1,497 @@
+/* ================================================================== */
+/* LIGHT (View → Page → Light): the paper page in a light room, and   */
+/* the whole app with it. Text reads at 4.5:1 or better; the hints    */
+/* stay as quiet as they are in the dark, and Brighter Interface      */
+/* turns them up the same way.                                        */
+/* ================================================================== */
+html:has(> body.light) {
+  background: #efede8;
+}
+body.light {
+  --bg: #efede8;
+  --bg-soft: #fbfaf8;
+  --pane: #f5f3ef;
+  --accent: #7c5d26;
+  --muted: #6a665e;
+  color: #2b2926;
+}
+/* the gold that sits under dark text keeps its own light shade */
+body.light .btn-gold,
+body.light .stats-row button {
+  background: #c9a86a;
+  color: #191919;
+}
+
+/* the shelf */
+body.light #author-chip:hover,
+body.light .shelf-label:focus {
+  color: #1c1a17;
+}
+body.light #pen-rack {
+  border-color: #d9d4ca;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.14);
+}
+body.light .pen-slot {
+  border-bottom-color: #d6cab3;
+}
+body.light .pen-slot.over {
+  color: #1c1a17;
+  border-bottom-color: var(--accent);
+  background: rgba(0, 0, 0, 0.04);
+}
+body.light #add-shelf-btn,
+body.light #import-btn {
+  border-color: #cfcac0;
+}
+body.light #add-shelf-btn:hover,
+body.light #import-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light .shelf-grip {
+  color: #b3ada2;
+}
+body.light .shelf-grip:hover {
+  color: var(--accent);
+}
+body.light .shelf-books {
+  border-bottom-color: #d6cab3;
+  box-shadow: 0 10px 14px -12px rgba(0, 0, 0, 0.3);
+}
+body.light .shelf-books.drag-over {
+  background: rgba(124, 93, 38, 0.06);
+}
+body.light .book {
+  box-shadow:
+    inset 3px 0 6px -3px rgba(0, 0, 0, 0.35),
+    2px 3px 8px rgba(0, 0, 0, 0.22);
+}
+body.light .book.bound-cover {
+  box-shadow:
+    inset 4px 0 8px -3px rgba(0, 0, 0, 0.4),
+    3px 6px 16px rgba(0, 0, 0, 0.28);
+}
+body.light .new-book {
+  border-color: #bdb7ac;
+  color: #a59f94;
+  background: rgba(0, 0, 0, 0.015);
+}
+body.light .new-book:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light .book.page-tile {
+  background: #fdfbf6;
+  color: #6f675b;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.07),
+    1px 2px 6px rgba(0, 0, 0, 0.16);
+}
+body.light .book.page-tile.kind-part {
+  background: #f5f0e4;
+}
+body.light .ghost-page {
+  border-color: rgba(0, 0, 0, 0.24);
+  color: rgba(0, 0, 0, 0.45);
+}
+body.light .ghost-page:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light .part-seam {
+  color: rgba(0, 0, 0, 0.5);
+}
+body.light .part-seam .ps-line {
+  border-left-color: rgba(0, 0, 0, 0.25);
+}
+body.light .part-seam .ps-plus {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+body.light .part-seam:hover {
+  color: var(--accent);
+}
+body.light .part-seam:hover .ps-plus {
+  border-color: var(--accent);
+}
+body.light .part-seam:hover .ps-line {
+  border-left-color: var(--accent);
+}
+
+/* a page, open */
+body.light .page-sheet-backdrop {
+  background: rgba(70, 64, 54, 0.3);
+}
+body.light .page-sheet .ps-name {
+  color: #3f3b35;
+}
+body.light .page-sheet .ps-done {
+  border-color: #a39d92;
+  color: #2b2926;
+  background: rgba(255, 255, 255, 0.55);
+}
+body.light .page-sheet .ps-done:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+body.light .ps-paper {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+/* dialogs */
+body.light .modal-backdrop {
+  background: rgba(60, 55, 45, 0.28);
+}
+body.light .modal-backdrop.font-picker {
+  background: none;
+}
+body.light .modal {
+  border-color: #dcd7ce;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+}
+body.light .font-picker .modal {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+}
+body.light .modal input {
+  background: #fff;
+  border-color: #cfcac0;
+  color: #1c1a17;
+}
+body.light .modal input:focus {
+  border-color: var(--accent);
+}
+body.light .btn-quiet {
+  color: #5f5b53;
+}
+body.light .btn-quiet:hover {
+  color: #1c1a17;
+}
+body.light .fr-font,
+body.light .fr-choice {
+  background: #fff;
+  border-color: #d6d1c7;
+  color: #2b2926;
+}
+body.light .fr-font:hover {
+  border-color: #a09a8f;
+}
+body.light .fr-font.sel {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+body.light .fr-choice:hover {
+  border-color: var(--accent);
+}
+body.light .fr-choice.danger {
+  border-color: #e2b9b0;
+}
+body.light .fr-choice.danger strong {
+  color: #a8412f;
+}
+body.light #fr-sample {
+  box-shadow: 0 0 0 1px #e6e1d6;
+}
+body.light .about-version {
+  color: #6a665e;
+}
+body.light .modal p.about-line {
+  color: #77726a;
+}
+body.light .up-bar {
+  background: #e4e0d8;
+}
+
+/* the page's surround */
+body.light .sheet,
+body.light #aux-paper {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 6px 28px rgba(0, 0, 0, 0.1);
+}
+body.light .spell-menu {
+  background: #fff;
+  border-color: #d9d4ca;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+}
+body.light .spell-menu button {
+  color: #2b2926;
+}
+body.light .spell-menu button:hover:not(:disabled) {
+  background: #f0ede7;
+}
+body.light .spell-menu button:disabled {
+  color: #857f75;
+}
+body.light .spell-menu .sm-sep {
+  background: #e6e2da;
+}
+
+/* the panes */
+body.light #nav-pane {
+  border-right-color: #dedad2;
+}
+body.light #side-pane {
+  border-left-color: #dedad2;
+}
+body.light #nav-pin,
+body.light #side-pin {
+  color: #a39d92;
+}
+body.light #nav-pin.pinned,
+body.light #side-pin.pinned {
+  color: var(--accent);
+}
+body.light .nav-item:hover {
+  background: #ebe8e2;
+}
+body.light .nav-item .n-row {
+  color: #4a463f;
+}
+body.light .nav-item:hover .n-row,
+body.light .nav-item.current .n-row {
+  color: #1c1a17;
+}
+body.light .nav-item .n-words {
+  color: #8f8a80;
+}
+body.light .nav-note {
+  color: #6f6b63;
+}
+body.light .nav-note:empty::before {
+  color: #b0aa9f;
+}
+body.light .nav-note:focus {
+  color: #2b2926;
+}
+body.light #nav-add {
+  border-color: #cfcac0;
+  color: #8f8a80;
+}
+body.light #nav-add:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light .sticky {
+  background: #fbf5e3;
+  color: #3a362f;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+body.light .sticky .s-ch {
+  color: #857f73;
+}
+body.light .sticky textarea {
+  color: #2b2926;
+}
+body.light .sticky .s-actions button {
+  color: #857f73;
+}
+body.light .sticky .s-actions button:hover {
+  color: var(--accent);
+}
+body.light .sticky .s-actions .s-sep {
+  color: #c2bcb0;
+}
+body.light .stickies-empty {
+  color: #8f8a80;
+}
+
+/* the bottom bar and the find bar */
+body.light #bottombar {
+  border-top-color: #dcd8d0;
+}
+body.light .tab:not(.active):hover,
+body.light #counters span:hover,
+body.light #zoom-control:hover,
+body.light #zoom-control button:hover {
+  color: #1c1a17;
+}
+body.light .tab.active {
+  background: #e4e0d8;
+}
+body.light #searchbar {
+  background: #fff;
+  border-color: #d9d4ca;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+body.light #searchbar input {
+  background: #faf9f6;
+  border-color: #cfcac0;
+  color: #1c1a17;
+}
+body.light #searchbar input:focus {
+  border-color: var(--accent);
+}
+body.light #searchbar button {
+  border-color: #d6d1c7;
+  color: #5a564e;
+}
+body.light #searchbar button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light #hint {
+  background: #2b2926;
+  color: #f0ede7;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Goals, the shortcuts */
+body.light .stats-row input,
+body.light .stats-row select {
+  background: #fff;
+  border-color: #cfcac0;
+  color: #1c1a17;
+}
+body.light .stats-row input:focus,
+body.light .stats-row select:focus {
+  border-color: var(--accent);
+}
+body.light #stats-chart {
+  background: #f4f2ee;
+}
+body.light #stats-chart path,
+body.light #stats-chart line {
+  stroke: #9b7430;
+}
+body.light .stats-legend {
+  color: #77726a;
+}
+body.light .stats-legend .sl-daily {
+  color: #3d6f59;
+}
+body.light .shortcuts-modal {
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+}
+body.light .shortcuts-header,
+body.light .shortcuts-footer {
+  border-color: #e0dcd4;
+}
+body.light .shortcut-row {
+  border-bottom-color: #ebe7e0;
+}
+body.light .shortcut-row small,
+body.light .shortcut-or {
+  color: #6f6a60;
+}
+body.light .shortcut-row kbd {
+  color: #2b2926;
+  background: #f4f2ee;
+  border-color: #cfcac0;
+}
+body.light .shortcuts-footer span {
+  color: #5a564e;
+}
+body.light .shortcuts-content::-webkit-scrollbar-thumb {
+  background: #c4bfb5;
+}
+body.light .show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+}
+body.light .show-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body.light .nav-gap::before {
+  border-top-color: #d3cec4;
+}
+body.light .nav-gap .ng-plus {
+  border-color: #cfcac0;
+  color: #8f8a80;
+}
+body.light .nav-gap .ng-plus:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+body.light .nav-item.kind-part .n-row {
+  color: #3a362f;
+}
+body.light .pop-menu {
+  background: #fff;
+  border-color: #d9d4ca;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+}
+body.light .pop-menu button {
+  color: #2b2926;
+}
+body.light .pop-menu button:focus {
+  background: #f0ede7;
+}
+body.light .pop-menu button:disabled {
+  color: #aaa49a;
+}
+body.light .pop-menu button.danger {
+  color: #a8412f;
+}
+body.light .pop-menu .pm-sep {
+  background: #e6e2da;
+}
+
+/* Light with Brighter Interface: the quiet parts turned up, dark on light */
+body.light.bright {
+  --muted: #55514a;
+}
+body.light.bright .tab {
+  color: #4f4b44;
+}
+body.light.bright .tab.active {
+  color: var(--accent);
+}
+body.light.bright .nav-item .n-row {
+  color: #2f2c28;
+}
+body.light.bright .nav-item .n-words {
+  color: #5f5b53;
+}
+body.light.bright .nav-note {
+  color: #4f4b44;
+}
+body.light.bright .nav-note:empty::before {
+  color: #6f6a62;
+}
+body.light.bright .shelf-grip {
+  color: #77726a;
+}
+body.light.bright .new-book {
+  border-color: #8f897e;
+  color: #77726a;
+}
+body.light.bright #add-shelf-btn,
+body.light.bright #import-btn {
+  color: var(--muted);
+  border-color: #a39d92;
+}
+body.light.bright #nav-add {
+  color: #5f5b53;
+}
+body.light.bright #nav-pin:not(.pinned),
+body.light.bright #side-pin:not(.pinned) {
+  color: #77726a;
+}
+body.light.bright .sticky .s-ch,
+body.light.bright .sticky .s-actions button,
+body.light.bright .stickies-empty {
+  color: #66615a;
+}
+body.light.bright .sticky textarea::placeholder {
+  color: #77726a;
+}
+body.light.bright .stats-legend {
+  color: #5f5b53;
+}
+body.light.bright .ghost-page {
+  border-color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.62);
+}
+body.light.bright .nav-gap .ng-plus {
+  color: #5f5b53;
+  border-color: #8f897e;
+}
+body.light.bright .pop-menu button:disabled {
+  color: #77726a;
+}
+body.light.bright .show-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+}
+body.light.bright .show-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+

@@ -1,3 +1,4 @@
+import { ScreenplayElement } from '@leafloom/document-contracts';
 import { DOMSerializer, type Node as PMNode } from 'prosemirror-model';
 import { openingPresentation } from './opening-presentation';
 import { ManuscriptPresentation } from './presentation';
@@ -510,10 +511,12 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         if (!mod && !event.altKey && event.key === 'Delete' && this.core.deleteForward())
           return true;
         if (event.key === 'Tab' && !mod && !event.altKey) {
+          if (this.core.screenplayTab(event.shiftKey)) return true;
           this.core.indent(event.shiftKey);
           return true;
         }
         this.core.resetEnter();
+        if (mod && !event.shiftKey && /^[1-7]$/.test(key) && this.core.manuscriptMode === 'screenplay') return this.core.setScreenplayElement(ScreenplayElement.options[Number(key)-1]);
         if (mod && key === 'z') {
           event.stopPropagation();
           event.shiftKey ? this.actions.redo() : this.actions.undo();
