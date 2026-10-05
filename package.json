@@ -18,7 +18,9 @@
     "tauri:build": "pnpm --filter @leafloom/desktop tauri build",
     "test:neo-candidate": "playwright test --config tests/neo-compat/candidate/playwright.config.ts",
     "check:parity": "node scripts/check-neo-parity.mjs",
-    "format": "prettier --write apps/desktop/src packages/authoring/src packages/library/src"
+    "format": "prettier --write apps/desktop/src packages/authoring/src packages/library/src",
+    "test:neo-catchup": "playwright test --config tests/neo-compat/candidate/neo-1.3.5.config.ts",
+    "test:neo-catchup-reference": "playwright test --config tests/neo-compat/reference/neo-1.3.5.config.ts"
   },
   "devDependencies": {
     "typescript": "catalog:",

@@ -9,6 +9,7 @@ import {Library} from '../../../packages/library/src/index';
 export type BookFixture={chapters?:string[];metadata?:Record<string,unknown>;notes?:string;darlings?:unknown[];stickies?:unknown[];library?:Record<string,unknown>};
 /** Existing disk state only. Every action and assertion after open uses production UI/files. */
 export async function existingBook(page:Page,fixture:BookFixture={}){
+ if(process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference'&&process.env.LEAFLOOM_REFERENCE_VERSION==='1.3.5')await expect(page.locator('#firstrun')).toBeVisible();
  const root=privateStorageRoot(page),id='book-'+test.info().testId,title='Outline '+test.info().testId.slice(-8),folder=path.join(root,id);
  const chapters=(fixture.chapters??['<p>Alpha beta.</p><p>Gamma delta.</p>']).map((html,i)=>({id:'ch-'+(i+1),html}));
  const metadata={id,title,author:'Fixture Writer',created:'2026-10-02T10:00:00Z',modified:'2026-10-02T10:00:00Z',tabNames:{notes:'Notes',outline:'Outline'},...fixture.metadata,...(fixture.stickies?{stickies:fixture.stickies}:{})};

@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# macOS
+.DS_Store
+
+# logs
+*.log
+
+# personal maintainer notes — not part of the public repo
+RELEASING.md
+GITHUB-SETUP.md
+
+# NEO Pocket
+pocket/node_modules/
+pocket/www/app.js
+pocket/www/covers.js
+pocket/www/styles.css
+pocket/www/fonts/
+pocket/www/i18n.js
+pocket/www/jszip.min.js
+pocket/www/locales/
+pocket/www/hunspell/
+pocket/www/dict/
+
+# working files beside the repo, never part of it
+Claude outputs/
+docs/sessions/

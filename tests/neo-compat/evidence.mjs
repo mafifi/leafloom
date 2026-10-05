@@ -3,6 +3,11 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+export function referenceTarget(version = process.env.LEAFLOOM_REFERENCE_VERSION ?? '1.2.4') {
+  if(version==='1.2.4')return {version,commit:'ed090e9988d446daf1ebbde91bcebc13b599909b',directory:'neo',receipt:'provenance.json'};
+  if(version==='1.3.5')return {version,commit:'b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0',directory:'neo-1.3.5',receipt:'neo-1.3.5.provenance.json'};
+  throw Error('Unpinned NEO reference version: '+version);
+}
 const skip = new Set([
   'node_modules',
   'target',
@@ -40,7 +45,7 @@ export async function evidenceMetadata(driver = 'browser') {
     'pnpm-lock.yaml',
     'pnpm-workspace.yaml',
     'tsconfig.json',
-    'tests/reference/provenance.json',
+    'tests/reference/'+referenceTarget().receipt,
     'tests/neo-compat/evidence.mjs',
     'scripts/check-neo-parity.mjs',
     'scripts/check-native-evidence.mjs',
@@ -75,13 +80,14 @@ export async function evidenceMetadata(driver = 'browser') {
     appImplementation: 'leafloom-production',
     driver,
     fixturePolicy: 'isolated-synthetic',
-    referenceCommit: 'ed090e9988d446daf1ebbde91bcebc13b599909b',
+    referenceCommit: referenceTarget().commit,
+    referenceVersion: referenceTarget().version,
     sourceHashes: hashes,
     buildSha256: createHash('sha256').update(JSON.stringify(hashes)).digest('hex'),
   };
 }
 export async function referenceMetadata() {
-  const receipt = await readFile(path.join(root, 'tests/reference/provenance.json'));
+  const receipt = await readFile(path.join(root, 'tests/reference',referenceTarget().receipt));
   const names = [
     ...(await walk(path.join(root, 'tests/neo-compat/reference'))),
     ...(await walk(path.join(root, 'tests/neo-compat/candidate'))),
@@ -103,7 +109,8 @@ export async function referenceMetadata() {
         : 'electron-reference',
     nativeWindowPolicy: process.env.LEAFLOOM_REFERENCE_HIDDEN === '1' ? 'hidden' : 'foreground',
     credentialPolicy: process.env.LEAFLOOM_REFERENCE_HIDDEN === '1' ? 'denied' : 'source-native',
-    referenceCommit: 'ed090e9988d446daf1ebbde91bcebc13b599909b',
+    referenceCommit: referenceTarget().commit,
+    referenceVersion: referenceTarget().version,
     referenceSourceSha256: createHash('sha256').update(receipt).digest('hex'),
     referenceHarnessSha256: createHash('sha256').update(JSON.stringify(hashes)).digest('hex'),
   };

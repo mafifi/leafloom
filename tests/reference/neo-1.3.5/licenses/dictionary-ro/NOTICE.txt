@@ -1,0 +1,57 @@
+Romanian spelling dictionary
+
+NEO distributes the dictionary and affix data from dictionary-ro 3.0.0
+under the Mozilla Public License 1.1 option of its upstream
+GPL-2.0-or-later / LGPL-2.1-or-later / MPL-1.1-or-later license notice.
+NEO's MIT license does not replace the dictionary's license.
+
+Original dictionary: Romanian Hunspell package, word list version 3.3.10.
+Copyright (C) 2005-2013 Rospell Team.
+The full upstream attribution and license notice is in upstream-license.txt.
+The full selected license is in MPL-1.1.txt.
+
+Source availability
+
+The dictionary source files index.aff and index.dic are included verbatim
+with every packaged app, together with the upstream license, in the same
+directory as this notice:
+  app.asar.unpacked/node_modules/dictionary-ro/
+
+On macOS this is inside NEO.app/Contents/Resources. On Windows and Linux
+it is inside the application's resources directory. An AppImage can be
+extracted using --appimage-extract.
+
+The same files are available from the pinned source package:
+https://registry.npmjs.org/dictionary-ro/-/dictionary-ro-3.0.0.tgz
+Package project: https://github.com/wooorm/dictionaries/tree/main/dictionaries/ro
+Dictionary project: https://rospell.wordpress.com/
+
+Lookup, updated 2026-09-30
+
+Since NEO 1.2, Hunspell reads index.aff and index.dic exactly as
+distributed; no conversion is applied. Lookup normalizes Romanian
+diacritics (spell-ro.js, in app.asar and in NEO's source repository,
+https://github.com/hughhowey/neo) without altering manuscript text.
+
+MPL 1.1 Exhibit A notice for the dictionary data
+
+The contents of these files are subject to the Mozilla Public License
+Version 1.1 (the "License"); you may not use these files except in
+compliance with the License. You may obtain a copy of the License at
+https://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS"
+basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+License for the specific language governing rights and limitations
+under the License.
+
+The Original Code is the Romanian Hunspell dictionary.
+The Initial Developer of the Original Code is the Rospell Team.
+Portions created by the Rospell Team are Copyright (C) 2005-2013
+Rospell Team. All Rights Reserved.
+Contributors are listed in upstream-license.txt.
+
+Alternatively, the contents of these files may be used under the terms of
+the GNU General Public License Version 2 or later, or the GNU Lesser
+General Public License Version 2.1 or later, as specified in the retained
+upstream license notice. NEO does not remove those alternatives.

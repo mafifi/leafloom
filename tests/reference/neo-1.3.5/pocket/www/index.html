@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- no viewport-fit=cover: Capacitor then insets the webview so Android's bars never sit on top of NEO -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>NEO Pocket</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pocket.css" />
+</head>
+<body>
+  <!-- ======================= BOOKSHELF ======================= -->
+  <div id="bookshelf-view">
+    <header id="shelf-header">
+      <h1>NEO</h1>
+      <div class="shelf-header-right">
+        <span id="author-chip" title="Click to change your author name"></span>
+        <button id="import-btn" hidden>&#8681; Import</button>
+        <button id="add-shelf-btn" title="Add a shelf">+ Shelf</button>
+      </div>
+    </header>
+    <div id="shelves"></div>
+  </div>
+
+  <!-- ======================= FIRST RUN ======================= -->
+  <div id="firstrun" class="modal-backdrop" data-stay="1" hidden>
+    <div class="modal">
+      <div id="fr-step1">
+        <h2>Welcome to NEO</h2>
+        <p>NEO knows you're writing books. A few quick questions and it will never ask anything again.</p>
+        <label>Your name <span class="soft">(appears as the author on every document — leave blank for “Anonymous”)</span>
+          <input id="fr-name" type="text" autocomplete="off" spellcheck="false" />
+        </label>
+        <label>Pen name <span class="soft">(optional — used on title pages if set)</span>
+          <input id="fr-pen" type="text" autocomplete="off" spellcheck="false" />
+        </label>
+        <div class="fr-style">
+          <p>Are you a pantser or a plotter?</p>
+          <div class="fr-choices">
+            <button class="fr-choice" data-style="pantser">
+              <strong>Pantser</strong>
+              <span>I write by the seat of my pants. New books open on a blank page.</span>
+            </button>
+            <button class="fr-choice" data-style="plotter">
+              <strong>Plotter</strong>
+              <span>I outline first. New books open in the Outline tab.</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="fr-step2" hidden>
+        <h2>How should the page look?</h2>
+        <p>Pick a typeface and a drop-cap style. The sample below shows exactly what you'll get. (Changeable anytime in the Format menu.)</p>
+        <div id="fr-sample">
+          <p id="fr-sample-text">It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief…</p>
+        </div>
+        <p style="margin-bottom:6px">Body typeface</p>
+        <div id="fr-bodyfonts" class="fr-fontrow"></div>
+        <p style="margin-bottom:6px">Drop cap</p>
+        <div id="fr-dropcaps" class="fr-fontrow"></div>
+        <div style="text-align:right;margin-top:20px">
+          <button id="fr-done" class="btn-gold">Start writing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= EDITOR ======================= -->
+  <div id="editor-view" hidden>
+
+
+    <!-- Left hover zone: chapter navigation -->
+    <div id="nav-hotzone"></div>
+    <nav id="nav-pane">
+      <div id="nav-head">
+        <span>Chapters</span>
+        <button id="nav-pin" title="Keep this pane open" aria-label="Keep this pane open" aria-pressed="false">&#9737;</button>
+      </div>
+      <div id="nav-list"></div>
+      <button id="nav-add" title="Add a chapter at the end">+ Chapter</button>
+    </nav>
+
+    <!-- Right hover zone: notes & comments -->
+    <div id="side-hotzone"></div>
+    <aside id="side-pane">
+      <div id="side-head">
+        <span>Notes &amp; Comments</span>
+        <button id="side-pin" title="Keep this pane open">&#9737;</button>
+      </div>
+      <div id="sticky-list"></div>
+    </aside>
+
+    <!-- The manuscript -->
+    <main id="paper-scroll">
+      <div id="paper">
+        <div id="title-page" class="sheet">
+          <div id="tp-title" contenteditable="true" spellcheck="false" data-ph="Untitled"></div>
+          <div id="tp-subtitle" contenteditable="true" spellcheck="false" data-ph="Subtitle (optional)"></div>
+          <div id="tp-author" contenteditable="true" spellcheck="false" data-ph="Author"></div>
+        </div>
+        <div id="chapters"></div>
+      </div>
+      <!-- Notes / Outline / Darlings live on the same paper, swapped in -->
+      <div id="aux-paper" hidden>
+        <h2 id="aux-title"></h2>
+        <div id="aux-editor" contenteditable="true" spellcheck="false"></div>
+        <div id="outline-list" hidden></div>
+        <div id="darlings-list" hidden></div>
+      </div>
+    </main>
+
+    <!-- Bottom bar: tabs + counters -->
+    <footer id="bottombar">
+      <button id="pocket-chapters" title="Chapters (long-press: on-screen keyboard)">&#9776;</button>
+      <button id="back-to-shelf" title="Back to your bookshelf">&#8249; Shelf</button>
+      <div id="tabs">
+        <div class="tab active" data-tab="manuscript">Manuscript</div>
+        <div class="tab" data-tab="notes">Notes</div>
+        <div class="tab" data-tab="outline">Outline</div>
+        <div class="tab darlings" data-tab="darlings" title="Drag any selection here. It's saved, not gone.">Darlings</div>
+      </div>
+      <div id="counters">
+        <span id="goal-counter" title="Today's words — click for goals, sprints, and your progress chart"></span>
+        <span id="pos-counter"></span>
+        <span id="word-counter" title="Click to cycle book / chapter word count"></span>
+        <span id="zoom-control" hidden><button id="zoom-out">&#8722;</button><span id="zoom-level">100%</span><button id="zoom-in">+</button></span>
+      </div>
+      <button id="pocket-more" title="Format, focus, goals">&#8943;</button>
+    </footer>
+
+    <!-- Undo / redo, while the on-screen keyboard is up -->
+    <div id="pocket-undo" hidden>
+      <button id="pocket-undo-btn" aria-label="Undo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
+      <button id="pocket-redo-btn" aria-label="Redo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 14 5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg></button>
+    </div>
+
+    <!-- The ⋯ sheet: the desktop's Format and View menus, on one page -->
+    <div id="pocket-menu" hidden>
+      <div id="pocket-menu-sheet"></div>
+    </div>
+
+    <!-- Find & replace -->
+    <div id="searchbar" hidden>
+      <input id="search-input" placeholder="Find" spellcheck="false" />
+      <span id="search-count"></span>
+      <button id="search-prev" title="Previous (⇧Enter)">&#8593;</button>
+      <button id="search-next" title="Next (Enter)">&#8595;</button>
+      <input id="replace-input" placeholder="Replace with" spellcheck="false" />
+      <button id="replace-one">Replace</button>
+      <button id="replace-all">All</button>
+      <button id="search-close" title="Close (Esc)">&#10005;</button>
+    </div>
+
+  </div>
+
+  <!-- Toast — lives at body level so it shows over both views -->
+  <div id="hint" hidden></div>
+
+  <script src="jszip.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="pocket-bridge.js"></script>
+  <script src="covers.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // the ☰ button stands in for the desktop's hover-to-reveal chapter pane
+    // tap ☰ for chapters; long-press it to toggle the on-screen keyboard
+    const menuBtn = document.getElementById('pocket-chapters');
+    let pressTimer = null, longPressed = false;
+    menuBtn.addEventListener('touchstart', () => {
+      longPressed = false;
+      pressTimer = setTimeout(() => { longPressed = true; window.pocketToggleSoftKeyboard(); }, 600);
+    }, { passive: true });
+    menuBtn.addEventListener('touchend', () => clearTimeout(pressTimer));
+    menuBtn.addEventListener('touchcancel', () => clearTimeout(pressTimer));
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (longPressed) { longPressed = false; return; }
+      document.getElementById('side-pane').classList.remove('open');
+      document.getElementById('nav-pane').classList.toggle('open');
+    });
+    // Edge swipes stand in for the desktop's mouse-over: from the left edge
+    // for chapters, from the right edge for Notes & Comments. Swiping a pane
+    // back toward its edge, or touching the page, closes it.
+    const nav = document.getElementById('nav-pane');
+    const side = document.getElementById('side-pane');
+    const EDGE = 28, PULL = 40;
+    let start = null;
+    document.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      start = { x: t.clientX, y: t.clientY, fromLeft: t.clientX < EDGE, fromRight: t.clientX > window.innerWidth - EDGE };
+    }, { passive: true });
+    document.addEventListener('touchmove', (e) => {
+      if (!start) return;
+      const t = e.touches[0];
+      const dx = t.clientX - start.x, dy = Math.abs(t.clientY - start.y);
+      if (Math.abs(dx) < PULL || dy > Math.abs(dx)) return;
+      if (start.fromLeft && dx > 0) nav.classList.add('open');
+      else if (start.fromRight && dx < 0) side.classList.add('open');
+      else if (dx < 0 && nav.classList.contains('open')) nav.classList.remove('open');
+      else if (dx > 0 && side.classList.contains('open')) side.classList.remove('open');
+      start = null;
+    }, { passive: true });
+    // ⋯ opens a sheet of the desktop's Format and View menus. Every row
+    // sends the same message the menu bar would; the page answers as usual.
+    const more = document.getElementById('pocket-more');
+    const menuWrap = document.getElementById('pocket-menu');
+    const sheet = document.getElementById('pocket-menu-sheet');
+    const send = (msg) => { if (window.pocketMenu) window.pocketMenu(msg); };
+    const closeMenu = () => { menuWrap.hidden = true; };
+    function buildMenu() {
+      const lib = (typeof library !== 'undefined' && library) || {};
+      const fonts = lib.fonts || {};
+      const st = window.pocketState || {};
+      const focusNow = (typeof focusLevel !== 'undefined') ? focusLevel : 'off';
+      const seg = (label, opts, current, mk) => `<div class="pm-row"><span class="pm-label">${label}</span><span class="pm-seg">` +
+        opts.map(([v, t]) => `<button class="${v === current ? 'on' : ''}" data-msg='${JSON.stringify(mk(v))}'>${t}</button>`).join('') + '</span></div>';
+      const tick = (label, on, msg) => `<div class="pm-row"><span class="pm-label">${label}</span><span class="pm-seg"><button class="${on ? 'on' : ''}" data-msg='${JSON.stringify(msg)}'>${on ? '✓ On' : 'Off'}</button></span></div>`;
+      const choices = (typeof BODY_FONT_CHOICES !== 'undefined') ? BODY_FONT_CHOICES : ['Georgia'];
+      // a script is set in Courier Prime, its lines are its elements, and it leaves as Fountain
+      const script = typeof book !== 'undefined' && book && typeof isScript === 'function' && isScript();
+      sheet.innerHTML =
+        (script ? '' : `<div class="pm-row pm-fonts"><span class="pm-label">Typeface</span><span class="pm-seg pm-wrap">` +
+          choices.map((f) => `<button class="${fonts.body === f ? 'on' : ''}" data-msg='${JSON.stringify({ type: 'bodyFont', value: f })}' style="font-family:${f}">${f}</button>`).join('') + '</span></div>') +
+        seg('Text size', [[-1, 'Smaller'], [0, 'Reset'], [1, 'Larger']], null, (v) => ({ type: 'fontSize', value: v })) +
+        (script ? '' : seg('Drop cap', [['literary', 'Literary'], ['fantasy', 'Fantasy'], ['scifi', 'Sci-Fi'], ['none', 'Off']], fonts.dropcap || 'literary', (v) => ({ type: 'dropCap', value: v }))) +
+        seg('Page', [['night', 'Night'], ['paper', 'Paper'], ['light', 'Light']], lib.pageTheme || 'night', (v) => ({ type: 'pageTheme', value: v })) +
+        seg('Focus mode', [['off', 'Off'], ['paragraph', 'Paragraph'], ['sentence', 'Sentence']], focusNow, (v) => ({ type: 'focus', value: v })) +
+        tick('Typewriter scrolling', st.typewriter, { type: 'typewriter' }) +
+        tick('Spellcheck', typeof spellOn !== 'undefined' && spellOn, { type: 'spellcheck' }) +
+        // the dictionary, only while spellcheck is on (the desktop's choice comes along in library.json)
+        (typeof spellOn !== 'undefined' && spellOn && window.pocketSpellLanguages
+          ? `<div class="pm-row"><span class="pm-label">Dictionary</span><span class="pm-seg pm-wrap">` +
+            Object.entries(window.pocketSpellLanguages()).map(([code, name]) => `<button class="${code === (lib.spellLanguage || window.pocketSpellLanguage()) ? 'on' : ''}" data-msg='${JSON.stringify({ type: 'spellLanguage', value: code })}'>${name}</button>`).join('') + '</span></div>'
+          : '') +
+        (script ? '' : tick('Flush paragraph  ⇧Enter', st.flush, { type: 'flush' }) +
+        tick('Poetry paragraph  Ctrl+⇧Enter', st.poetry, { type: 'poetry' })) +
+        (window.Capacitor && window.Capacitor.getPlatform && window.Capacitor.getPlatform() === 'ios' ? '' :
+          `<div class="pm-row"><span class="pm-label">On-screen keyboard</span><span class="pm-seg"><button data-act="keyboard">${window.pocketSoftKeyboardOn && !window.pocketSoftKeyboardOn() ? 'Off' : '✓ On'}</button></span></div>`) +
+        (typeof book !== 'undefined' && book
+          ? `<div class="pm-row"><span class="pm-label">Export</span><span class="pm-seg pm-wrap">` +
+            (script ? [['fountain', 'Fountain'], ['fdx', 'Final Draft']] : [['txt', 'Text'], ['md', 'Markdown'], ['html', 'HTML'], ['docx', 'Word'], ['epub', 'EPUB']]).map(([f, l]) => `<button data-msg='${JSON.stringify({ type: 'export', format: f })}'>${l}</button>`).join('') + '</span></div>'
+          : '') +
+        `<div class="pm-row pm-actions"><button data-msg='${JSON.stringify({ type: 'stats' })}'>Goals…</button><button data-msg='${JSON.stringify({ type: 'help' })}'>Keyboard shortcuts</button><button data-act="close">Done</button></div>`;
+    }
+    more.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nav.classList.remove('open'); side.classList.remove('open');
+      buildMenu();
+      menuWrap.hidden = false;
+    });
+    menuWrap.addEventListener('click', (e) => {
+      if (e.target === menuWrap) { closeMenu(); return; }
+      const b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.act === 'close') { closeMenu(); return; }
+      if (b.dataset.act === 'keyboard') { window.pocketToggleSoftKeyboard(); buildMenu(); return; }
+      if (b.dataset.msg) {
+        const msg = JSON.parse(b.dataset.msg);
+        send(msg);
+        if (msg.type === 'stats' || msg.type === 'help' || msg.type === 'export') { closeMenu(); return; }
+        setTimeout(buildMenu, 60); // reflect the new state
+        if (msg.type === 'spellLanguage') setTimeout(buildMenu, 1500); // once the dictionary is in
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menuWrap.hidden) { closeMenu(); return; }
+      // ⌘, (Ctrl+, on Android keyboards) opens the sheet, like Settings on a Mac
+      if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && e.key === ',') {
+        e.preventDefault();
+        if (menuWrap.hidden) more.click(); else closeMenu();
+      }
+    }, true);
+
+    // Undo / redo above the on-screen keyboard. Undo is ⌘Z, so everything
+    // ⌘Z takes back (a capital, a dash, a section break) comes back the same
+    // way; what nothing else claims is the page's own undo. A press keeps
+    // the caret where it is, so the keyboard stays up.
+    const undoBar = document.getElementById('pocket-undo');
+    const undoBtn = document.getElementById('pocket-undo-btn');
+    const redoBtn = document.getElementById('pocket-redo-btn');
+    let keyboardUp = false;
+    const editing = () => {
+      const ae = document.activeElement;
+      return !!(ae && ae.isContentEditable && !document.getElementById('editor-view').hidden);
+    };
+    const refreshUndo = () => {
+      undoBar.hidden = !(keyboardUp && editing());
+      if (undoBar.hidden) return;
+      try {
+        undoBtn.disabled = !document.queryCommandEnabled('undo');
+        redoBtn.disabled = !document.queryCommandEnabled('redo');
+      } catch { undoBtn.disabled = redoBtn.disabled = false; }
+    };
+    const press = (btn, act) => btn.addEventListener('pointerdown', (e) => {
+      e.preventDefault(); // the page keeps the caret, and the keyboard stays
+      if (btn.disabled) return;
+      act();
+      setTimeout(refreshUndo, 30);
+    });
+    press(undoBtn, () => {
+      const target = document.activeElement || document.body;
+      const ev = new KeyboardEvent('keydown', { key: 'z', code: 'KeyZ', ctrlKey: true, bubbles: true, cancelable: true });
+      if (target.dispatchEvent(ev)) document.execCommand('undo');
+    });
+    press(redoBtn, () => document.execCommand('redo'));
+    try {
+      const K = window.Capacitor.Plugins.Keyboard;
+      if (K) {
+        K.addListener('keyboardDidShow', () => { keyboardUp = true; refreshUndo(); });
+        K.addListener('keyboardDidHide', () => { keyboardUp = false; refreshUndo(); });
+      }
+    } catch { /* no keyboard plugin: no bar */ }
+    document.addEventListener('focusin', refreshUndo);
+    document.addEventListener('focusout', () => setTimeout(refreshUndo, 50));
+    document.addEventListener('input', refreshUndo);
+
+    document.getElementById('paper-scroll').addEventListener('touchstart', (e) => {
+      if (e.touches[0].clientX < EDGE || e.touches[0].clientX > window.innerWidth - EDGE) return;
+      nav.classList.remove('open');
+      side.classList.remove('open');
+    }, { passive: true });
+  </script>
+</body>
+</html>

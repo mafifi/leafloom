@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "com.hughhowey.neopocket"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.hughhowey.neopocket"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // CI passes these in (see .github/workflows/pocket.yml); local builds get 1 / "local".
+        versionCode = (System.getenv("POCKET_VERSION_CODE") ?: "1").toInteger()
+        versionName = System.getenv("POCKET_VERSION_NAME") ?: "local"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    // One stable signing key, supplied by CI through env vars, so every build
+    // installs over the last. Without the env vars, release falls back to the
+    // debug key so local builds still work.
+    signingConfigs {
+        pocket {
+            def ksFile = System.getenv("POCKET_KEYSTORE_FILE")
+            if (ksFile && file(ksFile).exists()) {
+                storeFile file(ksFile)
+                storePassword System.getenv("POCKET_KEYSTORE_PASSWORD")
+                keyAlias "neopocket"
+                keyPassword System.getenv("POCKET_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            def ksFile = System.getenv("POCKET_KEYSTORE_FILE")
+            signingConfig = (ksFile && file(ksFile).exists()) ? signingConfigs.pocket : signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.activity:activity:$androidxActivityVersion"
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

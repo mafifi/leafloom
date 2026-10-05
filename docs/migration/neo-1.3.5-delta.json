@@ -1,0 +1,1070 @@
+{
+  "baseline": {
+    "version": "1.2.4",
+    "commit": "ed090e9988d446daf1ebbde91bcebc13b599909b"
+  },
+  "target": {
+    "version": "1.3.5",
+    "commit": "b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0"
+  },
+  "status": "catch-up in progress",
+  "commits": [
+    {
+      "commit": "d35e0a9573971ce8ec56241667a3619eef89f905",
+      "title": "Add AGENTS.md notes for working on NEO.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "2c62b78e3ac37c5f876f8e27c5735f2e183a8a5c",
+      "title": "Run every scripts test file with npm test.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "7e31db93192b54524593dc8b8805af9f7df8463a",
+      "title": "Lint JavaScript with oxlint using Electron's standard-style rules.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "f910ef371c31e143557aab3dc7b673d7553b15bd",
+      "title": "Add package:mac and keep npm run package as that default.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "66fd95381ffbb90af07bb29946482906633975e8",
+      "title": "Merge workbench/npm-lint into the integration branch.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "merge"
+    },
+    {
+      "commit": "c20451eed821a49937168a63f489563609dd62f1",
+      "title": "Merge workbench/package-mac into the integration branch.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "merge"
+    },
+    {
+      "commit": "3ca31fd8685ed120254d2bd8b8c8b3dc07fd151f",
+      "title": "lets add a test coverage script",
+      "details": "",
+      "kind": "change"
+    },
+    {
+      "commit": "3b142330ab7ec58422480323a919e1ea8457383a",
+      "title": "Add filesystem tests before making any changes to it.",
+      "details": "Co-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "5a0975a3fb58d9ff1950d5531fe08f936bf5087b",
+      "title": "Show main.js in the test coverage report.",
+      "details": "Node only attributes a vm script when it is given that file's name, so the report was missing the code these harnesses already run.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "53c27b24f67098c4253e6cc76fec7fbf22c173b5",
+      "title": "Keep session notes out of the repository.",
+      "details": "docs/sessions is local working notes, same as the other maintainer files git already ignores.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "d8e6b034ab572f2a42853cf91dc3fdcd4bea5c36",
+      "title": "Lower window minimum width from 800 to 700",
+      "details": "At 800px NEO can't be snapped to half the screen on a 13\" MacBook Air\n(1470pt wide, so ~735pt per half). The page column already shrinks with\nthe window and the drawers slide over the page, so the extra width only\nenforced empty margin. 700 is the narrowest width where the bottom bar\nstays on one line at Normal and 150% interface sizes.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+      "kind": "change"
+    },
+    {
+      "commit": "3b53cf3db94b8916a923b60a7a307a06f175fe30",
+      "title": "Windows: updates find their installer; a library Windows won't let NEO write is said plainly",
+      "details": "- The installer is now NEO-Setup-<version>.exe and the portable build\n  NEO-<version>-portable.exe. The old \"NEO Setup 1.2.4.exe\" was uploaded\n  as NEO.Setup.1.2.4.exe while latest.yml named NEO-Setup-1.2.4.exe, so\n  Windows updates always failed with a 404. The build now stops if\n  latest.yml names a file that isn't there.\n- Controlled folder access (Defender's ransomware protection) refuses\n  NEO's writes in Documents. NEO now tests the library folder at startup\n  (on Windows, and anywhere before a first library exists) and says what's\n  wrong, with Choose Folder\u2026 / Try Again / Continue, instead of failing at\n  \"Start writing\". A write refused later says so once.\n- Errors that can't be written to the library's log go to the log in\n  NEO's app folder, so they're never lost.\n- README: the Windows downloads, OneDrive, and Controlled folder access.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "cadf1c085de88c8cb0e460e112f4e10a519c8cc9",
+      "title": "Pocket keyboard follows the hardware; spellcheck sees capitals; today never below zero; Linux menu bar on Wayland",
+      "details": "- NEO Pocket on Android: the on-screen keyboard comes up as usual when no\n  physical keyboard is attached, and stays down while one is (Android\n  reports connects and disconnects). Long-press \u2630 still flips it until the\n  keyboard situation changes. The old always-off setting is dropped.\n- Spellcheck underlines a sentence that starts in lowercase (paragraph\n  starts, and after a full stop that isn't an ellipsis or an abbreviation)\n  and, in English, \"i\" for \"I\". Right-click offers the capital. Manuscript\n  prose only; poetry and notes are left alone, and \"Oh! how\", \"Wait!\" he\n  said and \"\u2014 Quanto falta? \u2014 perguntou ele\" aren't flagged.\n- Words cut below where the day began move the day's start down with\n  them: today reads 0, not -10, and what's written after counts in full.\n- Linux: the Mac's hiddenInset title bar is set on Macs only. On Linux it\n  made the window frameless, and on Wayland (KDE Plasma) that took the\n  menu bar with it, so Alt had nothing to show.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "aed64d5fae3cdf191d0c57fd9fd99a1c6b7d9a6c",
+      "title": "1.2.5: iA Writer Quattro; the chapter counter clicks over to the page",
+      "details": "- iA Writer Quattro joins the Body Font choices on every platform, Pocket\n  included. iA's own webfonts, unmodified (SIL Open Font License, which\n  reserves the name \"iA Writer\" for the originals); license in fonts/.\n- Click \"chapter 3 of 40\" for \"page 112 of 312\" and back. Pages are\n  manuscript pages, 250 words each, counted from the story's words before\n  the caret. The choice is kept with the library.\n- Version 1.2.5.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "92ea4a6a891c101248323bb238f6250f33ef548c",
+      "title": "1.2.6: capitals as you type; Pocket undo/redo above the keyboard; Pocket's Chapters pane is for hopping",
+      "details": "- A sentence's first letter is capitalized as it's typed (a paragraph's\n  start, or after a full stop that isn't an ellipsis or an abbreviation),\n  and in English \"i\" on its own becomes \"I\". \u2318Z / Ctrl+Z right after keeps\n  the lowercase. Manuscript prose only; poetry, notes and outline are\n  left alone. Always on, no setting.\n- NEO Pocket: while the on-screen keyboard is up, a small undo/redo pill\n  sits above it at the right edge. Undo is \u2318Z, so a capital, a dash or a\n  section break comes back exactly as with the key.\n- NEO Pocket: the Chapters pane has no + seams and no long-press menu,\n  only chapters to tap (+ Chapter stays at the bottom).\n- \u2318Z right after a dialogue dash, a Markdown mark or a capital works with\n  a real keyboard: pressing \u2318 or Ctrl on its own no longer cleared what\n  \u2318Z was about to take back.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "0ba2b41b2b052a7fd67f810e451c769ee5f51b1a",
+      "title": "Full screen on Windows and Linux: Alt brings up the menu bar",
+      "details": "In full screen the bar was hidden outright, so Alt had nothing to show.\nIt now auto-hides instead: Alt brings it up, and it tucks away again\nafter a choice. Out of full screen it's always there, as before.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "ea65eb73c0c8a294beaf35141c5093c07c750102",
+      "title": "Flush Paragraphs on \u21e7Enter; Poetry Paragraphs move to \u2318\u21e7Enter (Ctrl+Shift+Enter)",
+      "details": "From #192: a report, a list, an email inside the story needs lines with\nno first-line indent.\n\n- \u21e7Enter makes a flush paragraph (no indent, no italics). \u21e7Enter again\n  gives another; Enter steps back into prose; Backspace at its start\n  makes it prose. At the start of a paragraph, \u21e7Enter un-indents it.\n- Format \u2192 Flush Paragraph (ticked when the caret is in one) toggles the\n  paragraphs the selection touches, for lines already written.\n- Poetry Paragraph is \u2318\u21e7Enter (Ctrl+Shift+Enter), from the page and from\n  a chapter title. Inside a poem \u21e7Enter still continues it. Existing poems\n  are unchanged. A paragraph is one or the other.\n- Word, EPUB, PDF and Web Page exports keep flush lines flush.\n- Pocket's \u22ef sheet, the Keyboard Shortcuts window and the tutorial say so.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "267ed7a6f3f67202e8a6d79c69129fd20490b4dc",
+      "title": "Esc in a text prompt no longer closes the book",
+      "details": "Cancelling a prompt with Esc inside a book also closed the book and sent\nthe writer back to the shelf. That happens with Rename tab (double-click\nNotes or Outline), File > Email Settings (also asked the first time a\ndraft is emailed), and Format > Body Font > Other Font. The prompt\nremoves itself before the key bubbles up, so the editor's own Esc found\nnothing open and closed the book. Both prompts now keep their Esc to\nthemselves, as the choice dialogs and menus already do.",
+      "kind": "change"
+    },
+    {
+      "commit": "6048ae7b7f8545e009186b98ce2dac6963b7a6c2",
+      "title": "The shortcuts window shows the Vim keys section",
+      "details": "With View > Vim Keys on, the shortcuts window was meant to list the vim\nkeys in a section of their own, but the window places its sections in\ntwo columns by number, and the new section's number was in neither, so\nit never appeared. It now runs across both columns below them, its rows\nin two columns of their own. In either column alone it would have made\nthat column twice as long as the other.",
+      "kind": "change"
+    },
+    {
+      "commit": "c6a8606c1db391c89ddd7587e965613a2e178579",
+      "title": "Vim keys work on every keyboard layout",
+      "details": "With View > Vim Keys on, a keyboard that types another alphabet left the\nwriter stuck after Esc. On a Russian, Ukrainian, Bulgarian or Greek\nlayout every letter key prints Cyrillic or Greek, which moving mode\nignored, so not even i or a went back to writing. Neither Esc nor a\nclick helped; only switching the system to an English layout, or turning\nVim Keys off, did. Moving keys now count by where they sit on the\nkeyboard, named as on a US one. The key under the right index finger is\nj on every layout, Shift+4 is $, and Ctrl+D and Ctrl+U work there too.\n\nMoving, nothing a keyboard types lands in the text any more. On layouts\nwith dead keys (German, French, Spanish, Portuguese, Dutch, US\nInternational, Greek), a dead key and then a letter put the accented\nletter into the chapter: ^ then e typed \u00ea. On Windows and a Mac, a\ncharacter typed with AltGr or Option did the same. A dead key now counts\nby its place like any other key, and what it composes is taken back\nout; AltGr and Option characters are refused.\n\nOne change for Latin layouts whose letters sit elsewhere. On French\nAZERTY or German QWERTZ, keys went by their printed label and now go by\ntheir place, as on every other layout. Word forward is the key where w\nsits on a US keyboard, which AZERTY labels Z, and digits for counts\nneed no Shift on AZERTY. Writing is unchanged.",
+      "kind": "change"
+    },
+    {
+      "commit": "3f6086c174d3eb01c40a02158d767f7af5c3fab3",
+      "title": "Word counts no longer lose a word at every paragraph break",
+      "details": "From #198: a 5,010-word manuscript of 430 paragraphs showed 4,581 words.\n\nChapter text was read with innerText from a copy of the chapter that is\nnever on screen, and off screen innerText is plain textContent: the\nparagraphs run together, so \"end.</p><p>Next\" was one word. The page\ncounter read the text before the caret with a range's toString, which\ndoes the same.\n\n- chapterText puts a line after each paragraph, so the book and chapter\n  counters, today's words, sprints, the page counter, the shelf's goal\n  bar, the cover-painting threshold and the email draft's subject count\n  every word. So does the page counter for the text before the caret.\n- The cover painter and a deleted chapter's Darlings preview get the\n  paragraphs on lines of their own instead of run together.\n- A book opened earlier on the day of the update shows the words it\n  gains as written today. The next day counts true.\n- The SHA-256 fingerprint in an emailed draft is taken from this text,\n  so a manuscript's fingerprint changes once with this update.\n- npm run test:words: a book imported as a dropped file is, its counts\n  read off the screen.",
+      "kind": "change"
+    },
+    {
+      "commit": "87d68dfd9e33d223a264e684c2f005a5eb834eb6",
+      "title": "A double-clicked word shows \"1 selected\"",
+      "details": "The double click's first click moves the caret, and a moved caret asks\nfor a recount 150 ms later. The word the second click selected got its\ncount, and then the recount put the book's total back over it. Any\nchange of selection now calls off a recount still waiting.",
+      "kind": "change"
+    },
+    {
+      "commit": "1172f21334ad243c12b30ec3670ee319ef6e7676",
+      "title": "Merge PR #220",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "307a113f44fb104c392495975bec74091ca92de8",
+      "title": "Merge PR #222",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "9c3bd3a70f99fa6564c30d0155157e6ded6ac175",
+      "title": "Merge PR #221",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "5c960a52c5e359b55ae243a6fa398bc7e8689468",
+      "title": "Merge PR #209",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "78856104c47f00d8ecc2396cdc1debd23df65347",
+      "title": "Merge PR #189",
+      "details": "# Conflicts:\n#\tpackage.json",
+      "kind": "merge"
+    },
+    {
+      "commit": "428d317bad4f36b2834685576d3b3d9be1cb5d60",
+      "title": "Disk requests keep their own timing while a refused write is reported",
+      "details": "The blocked-write check made every handler async. Electron doesn't mind,\nbut the filesystem tests call handlers directly; sync handlers stay sync.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "3c26b7c40898a6bdcc8dc4fadf5223a4cccd1292",
+      "title": "1.2.7",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "f89a6d97ddb3cb0cb320aebe0c38b12ef659251f",
+      "title": "Section breaks stay centered after justified text",
+      "details": "A break made with Enter twice inherited the paragraph's alignment. A\njustified one set the *** flush left (a one-line justified paragraph is\nleft-aligned). Breaks now carry nothing over from the paragraph they're\nmade in, and are always centered, so breaks already saved that way are\ncentered again too.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "825ff24744aea6d310848f0218c26154dfee469e",
+      "title": "A power cut no longer takes a book off its shelf (#219)",
+      "details": "book.json is rewritten every few seconds while a book is open. The new\nfile was swapped in before its words reached the disk, so a power cut at\nthat moment could leave the swap done and the file empty; an unreadable\nbook.json drops the book from the shelf. Chapters, notes and the outline\nwere written in place, with the same exposure.\n\n- Every library write: a .tmp beside the file, fsync, then the swap.\n- JSON files keep their last whole version as .bak; a read that finds the\n  file unreadable takes the .tmp, then the .bak, and puts it back.\n- A book.json lost with no copy is rebuilt from the chapter files, titled\n  from _catalog.txt; a lost library.json puts every book on one shelf.\n- scripts/power-loss.test.js leaves files the way a cut write can (empty,\n  half-written, gone) and checks the book is still there. The old code\n  fails five of its seven tests.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "7b77d77fad625c78e62617e10b711c6f0f31a9af",
+      "title": "1.2.8",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "3b54a58dc03ad231f109acf954fea09e25dfbc17",
+      "title": "The drop cap sits on a chapter's first paragraph with words, as in the PDF",
+      "details": "A chapter that began with a blank line (or a *** at the top) put its drop\ncap on that empty line, so nothing showed on screen, while the PDF, which\nskips empty paragraphs, set the cap on the opening words. The opening\nparagraph (drop cap, no indent, the caret's cap-off) is now the first one\nwith words, past blank lines, breaks and poetry; it's marked data-first on\nthe screen only and never saved.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "df14afc62fb09b828c9d0b0c9743f5e99633065d",
+      "title": "Backspace below an empty line removes the line, not the chapter break",
+      "details": "Backspace at the start of a paragraph counted as the chapter's start when\nonly empty lines were above it, and merged the whole chapter into the one\nbefore. It now takes the empty line away; only Backspace on a chapter's\nfirst line joins it to the chapter above. Enter three times also leaves\nblank lines at the seam behind, so a new chapter opens on its words.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "ebe52bc78b89e3b41ac00155df6ea0e790754a64",
+      "title": "1.2.9",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "c9f592dee1c1e889227ec1bf2214e04ac41a7fef",
+      "title": "\u21e7Enter through an input method; clicks on the page's empty space place the caret",
+      "details": "- On GNOME (Wayland, IBus) Enter arrives marked as the input method's\n  (keyCode 229) even with nothing being composed, and NEO stood down, so\n  \u21e7Enter and \u2318\u21e7Enter never made a flush or poetry paragraph. Enter now gets\n  through unless a word is truly mid-composition, and a bare line break the\n  engine is about to make becomes the flush paragraph (or next poem line).\n- A click in a page's empty space puts the caret there: below the text, at\n  the end of that chapter (the gap after a page too); beside a line, in the\n  margin or the dark room around the page, on that line; above the first\n  line, at the start.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "429ea7014fef74c11e510ad4428caf1de7fe47be",
+      "title": "Save cover as image",
+      "details": "Right-click a book on the shelf and pick Save cover as image\u2026 to save its\ncover: the writer's own image as given, otherwise a full-size JPEG\n(1600x2560) with the title and author. A painted cover never leaves NEO,\nhere as in the exports, so a book showing one saves its abstract.\n\nFrom Kanav Sethi's NEO Enhanced fork.\n(cherry picked from commit 5a2f0395f023c97996a16cca8c014ab9d19b50c2)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "17f2feec680c50448eff1558143c178d3115852d",
+      "title": "Underline and strikethrough; Read Aloud (\u2318\u21e7U)",
+      "details": "Underline (\u2318U) and strikethrough (\u2318\u21e7S, or ~~\u2026~~ typed or pasted) join\nbold and italic: in the manuscript and Notes, kept when pasting from Google\nDocs, Word or a web page (tags or styles), and carried into every export\n(web page/PDF, EPUB, Word, Markdown as ~~\u2026~~ and <u>). From Kanav Sethi's\nNEO Enhanced; headings, lists and block quotes left out.\n\nRead Aloud: \u2318\u21e7U (Ctrl+Shift+U) reads from the caret in the computer's own\nvoice for the book's language, a sentence at a time, each lit as it's\nread, on into the chapters after. \u2318\u21e7U again, Esc or any key stops it, and\nthe caret is left at the sentence it reached. macOS and Windows voices;\nno keys, no cloud. In the Keyboard Shortcuts window, no menu item.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "cfadd96f0ece5a1aa463d571dc674d440b5260f3",
+      "title": "1.2.10",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "db326f75645c4e51506cf30889cd3bd23fb3dc72",
+      "title": "npm run bundle and npm run release: one line each for Hugh's two routines",
+      "details": "- npm run bundle: takes the newest .bundle in Downloads (or one named),\n  checks it fits, merges it into main and pushes. Says so plainly and\n  changes nothing when it doesn't fit, when it's already in, or when\n  there are uncommitted edits.\n- npm run release: sets the next patch version (or the one given) in\n  package.json and package-lock.json, commits, pushes main and the tag,\n  and prints the commits since the last release as a start on the notes.\n  Finishes a release that stopped halfway instead of skipping a number;\n  refuses a version that isn't newer or a tag that already exists.\n- AGENTS.md tells future sessions to hand Hugh these, not raw git.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "70afc443b0ef5303e02473569d2d5baba43d1f3b",
+      "title": "A library Documents can't hold goes beside it; \"Start writing\" says why it can't save (#244)",
+      "details": "On Windows, a Documents folder redirected to a OneDrive path that isn't\nset up on the computer refuses every write (ENOENT). NEO's launch check\nblamed Windows Security, \"Continue\" led back to a first-run screen whose\n\"Start writing\" button did nothing, and nothing said why.\n\n- A first library (none in the default folder, no folder chosen by the\n  writer) that Documents can't hold goes in the home's Documents folder,\n  or the home itself. The choice is remembered, so a OneDrive that comes\n  back later doesn't swap libraries, and said once after the window is up.\n  An existing library, or a folder the writer picked, is never swapped:\n  they are asked, as before.\n- The warning no longer blames Controlled folder access when the folder\n  simply isn't there.\n- \"Start writing\" shows the folder and the way out (File \u2192 Library\n  Folder\u2026) when the save fails, and works on the next try.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
+      "kind": "change"
+    },
+    {
+      "commit": "c2190c3ade297b3769fe946a66357b2eefee89b9",
+      "title": "Undo: outline changes come back with \u2318Z, hints stay hints, typing is taken back by the pause (#241)",
+      "details": "- \u2318Z in the outline undoes a line added, removed, or turned into a chapter\n  or a section (Enter, Tab, Shift+Tab, Backspace, Delete section). Typing in\n  a line is still undone first, by the engine; the caret returns to the line\n  the writer was on.\n- Shift+Tab on a section now takes the sections after it along, so the\n  plan keeps its order (B in A B C: B and C become the next chapter, A\n  stays). Sections the writer has already written over stay where their\n  prose is.\n- Undoing a deletion in the manuscript no longer turns the last gray outline\n  hint into real text: undo and redo don't count as writing over a hint, and\n  the hint returns with its words.\n- \u2318Z took back one letter at a time because the bottom-bar counters\n  replaced their text node on every keystroke, which ends the engine's undo\n  run. They now change the text in place, and a second's pause ends a run, so\n  an undo takes back a burst of typing, not a letter and not a page.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
+      "kind": "change"
+    },
+    {
+      "commit": "0b7c3b17e5abc9b9b0ce9a141e2dbd78b97a9b16",
+      "title": "Page width: a tablet's page is a page, and a big window's page grows a little (#243, #93)",
+      "details": "- NEO Pocket: from 600px wide up (a tablet, a phone on its side) the page\n  stops at the desktop's width and sits in the middle, instead of spreading\n  across the whole screen. A phone in portrait still fills the fold.\n- Desktop: the page keeps its 680px up to a 1545px window, then grows with\n  the window to at most 760px (about a line of 79 characters), so a\n  maximized window isn't a narrow strip in a wide field. Zoom still scales\n  it. The scroller and the side-pane wake zones follow the same width.\n\nNo setting: the page measures itself.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
+      "kind": "change"
+    },
+    {
+      "commit": "980a67bec951d27bdbe0b3679a568dbef914e10b",
+      "title": "1.3.0",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "a8430638b76a1d64bc032e503e2d7544a6568fad",
+      "title": "Outline: Tab moves to the next line from a section (fixes #240)",
+      "details": "Tab on an outline line converts a chapter to a section. A section cannot indent\nfurther, and Tab there did nothing. It now moves the caret to the end of the\nnext line, chapter included - the way Tab moves on everywhere else. Tab on a\nchapter keeps its convert-to-section meaning, toasts and all.\n\nVerified: node --check app.js, and the arrow-key focus code now shares the same\ncaret helper instead of repeating it.",
+      "kind": "change"
+    },
+    {
+      "commit": "a09690ddd0dd986d65781da22fd4fc05a08adae4",
+      "title": "Format: tick the selected body font, drop cap and alignment (fixes #182)",
+      "details": "The Format menu listed the body fonts, the three drop cap styles and the four\nalignments without showing which one the page uses; only Markdown Emphasis\ncarried a tick. The page now reports those three with its view state - the\nalignment read from the paragraph at the caret - and the menu draws them as\nradio items. An unchanged payload is not sent again, so selection changes do\nnot flood the main process.\n\nVerified: node --check on app.js and main.js.",
+      "kind": "change"
+    },
+    {
+      "commit": "227da91074094987dd3fbd54840d4bf0b0e8032a",
+      "title": "Translations for 1.3.0: the 25 new strings in every language",
+      "details": "Read aloud, underline and strikethrough, flush paragraphs, cover as\nimage, page counts, and the messages for a library folder NEO can't\nwrite to, in French, German, Spanish, Italian, Dutch, Polish,\nPortuguese (Brazil and Portugal), Romanian, Russian, Turkish and Greek.\nEach language keeps its own register and its own Windows Security\nnames; page counts take the language's plural forms.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_016nm7bFa9Ld1bBLxj96NRqH",
+      "kind": "change"
+    },
+    {
+      "commit": "c10667451119fce1b8a01ef6e6fdd61bc6b87516",
+      "title": "Screenplays: scripts on the shelf, set as they print",
+      "details": "Right-click (long-press) a shelf's + for New Script. A script is a book\nwhose book.json says \"format\": \"screenplay\", written in Courier Prime on\nletter paper with real pages, page numbers and a title page.\n\n- Seven elements, typed the Fountain way: INT./EXT. makes a scene heading,\n  a short line in capitals then Enter makes a character, Enter on an empty\n  line changes what it is (Enter twice after a speech: the next speaker).\n  Tab steps through the elements; Cmd/Ctrl+1-7 pick one.\n- Gray suggestions from the script's own names and places (Tab or right\n  arrow takes them); (CONT'D) drawn automatically.\n- The left pane: the elements on top, the scenes beneath with their length\n  in eighths; click to go, drag to move a scene.\n- Counters: page X of Y (click: scene X of Y) and pages plus minutes.\n- Export: PDF on letter, as scripts print, and Fountain. A script pasted as\n  text (Fountain, or from a PDF) comes in as its elements.\n- Cards on the shelf: white stock, the title in Courier, brass brads.\n- Phones: the lines reflow; page breaks show as a rule with the number.\n\nPage breaks, numbers, (CONT'D) and suggestions are screen-only marks that\ncaptureBody strips. Books are untouched.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01Lv7qNWKYEvd6ENsFSisdbT",
+      "kind": "change"
+    },
+    {
+      "commit": "c57bc3055a02875cb742c1e8bb8c689330efd111",
+      "title": "1.3.1",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "e2a67eaff249a8716e79b858a784029150730baa",
+      "title": "Scripts in and out: Fountain and Final Draft files",
+      "details": "- Drop a .fountain or .fdx file on a shelf (or pick one with Import) and\n  it becomes a new script on that shelf, title page included. The contact\n  block fills only if it's still empty.\n- File \u2192 Export \u2192 Final Draft (.fdx), beside PDF and Fountain; Pocket's\n  \u22ef sheet and its book menu offer both too.\n- Fountain read more like a writer means it: a block's lines run on into\n  one paragraph (so a script copied from a PDF comes in whole), page\n  numbers, (MORE) and CONTINUED stay out, a typed (CONT'D) comes off the\n  name, and *italic*, **bold** and _underline_ come in as styling.\n\nFinal Draft files are read and written as plain XML, the same shape the\nopen-source screenplain tool writes. Tests read one of its files and\ncheck it matches the Fountain it came from, and round-trip NEO's own.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01Lv7qNWKYEvd6ENsFSisdbT",
+      "kind": "change"
+    },
+    {
+      "commit": "03511195fe4243d9641dda54c00ffb64d5fc7566",
+      "title": "Screenplays in the README and the tutorial; Tab after INT starts a heading",
+      "details": "INT, EXT, EST or I/E alone on a line, then Tab: a scene heading with its\nperiod, as the tutorial now says (it used to step to Character).\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01Lv7qNWKYEvd6ENsFSisdbT",
+      "kind": "change"
+    },
+    {
+      "commit": "673b9dcec63fe796e37b54fd38018c044fd34d8e",
+      "title": "Update README.md",
+      "details": "",
+      "kind": "change"
+    },
+    {
+      "commit": "d9aa8d8c3ac9f10b0487144c5096b542a384f508",
+      "title": "Update TUTORIAL.md",
+      "details": "",
+      "kind": "change"
+    },
+    {
+      "commit": "b084e63471d17e7e5ae7fc2eb48eab4c7d9878e9",
+      "title": "1.3.2",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "6ff43a8ab3a41eb7f32a9f5948161ad6fd681e6a",
+      "title": "Merge PR #255: Outline: Tab moves to the next line from a section (#240)",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "ee62206b5db6846312c4c216416c83b47589128c",
+      "title": "Merge PR #256: Format menu ticks the body font, drop cap and alignment (#182)",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "4cdf3fc5ee8684ec1d7125ffd56457a6319d13a1",
+      "title": "Merge PR #260: translations for the 1.3.0 strings",
+      "details": "",
+      "kind": "merge"
+    },
+    {
+      "commit": "1a3f1e135067754e69f232c48ee7039a0e1e985a",
+      "title": "Translations for 1.3.0: each string back on its own English line",
+      "details": "PR #260 added the 25 new keys in alphabetical order but filled them in\nanother order, so every language showed the wrong sentence in each place\n(\"Flush Paragraph\" read as the Read Aloud warning, \"{n} pages\" as the\ncan't-save message). The translations themselves were right; this puts\neach one back on the line it translates. European Portuguese had 14\nvalues on 14 keys, 6 of them the wrong ones; it now overrides exactly the\n14 strings that differ from Brazil's and falls back for the rest.\n`node scripts/i18n.js check` is clean (placeholders, plurals) for all 12.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01R6yBdLt36W2NnezWjLERWN",
+      "kind": "change"
+    },
+    {
+      "commit": "081c705d28b3cfa3b27d0303f41e1175c3736bad",
+      "title": "Esc from Find goes back to the page; vim's n and N (#257)",
+      "details": "Esc in the find bar hid the bar with the focus still in it, so the caret\nwent nowhere: vim keys stopped working and the next Esc closed the book.\nEsc now puts the caret back on the page, at the match last gone to, or\nwhere it was before Find opened. That holds from the bar's arrow buttons\ntoo, which take the focus when clicked. With the bar open and the writer\ntyping on the page, Esc still only closes the bar.\n\nA search begun with vim's / goes back to moving, as in vim. n and N go\nto the next and previous match of the last search from the caret,\nacross chapters, round to the top or bottom; they're in the Keyboard\nShortcuts window's Vim section.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01R6yBdLt36W2NnezWjLERWN",
+      "kind": "change"
+    },
+    {
+      "commit": "a40bbef85821b2571e33a25cd25749d83df02573",
+      "title": "Vim keys: the page rests in moving mode; Ctrl+Page Down/Up hop chapters",
+      "details": "With Vim Keys on, a book now opens in moving mode, as vim starts, and\nthe Manuscript and Notes tabs come back in it too; i, a or o to write.\nA click, a title's Enter, or the window coming back to the front leave\nthe mode as it was. Fixes #257.\n\nOn Windows and Linux, Ctrl+Page Down / Ctrl+Page Up go to the next and\nprevious chapter, beside Ctrl+Alt+\u2193/\u2191. GNOME keeps Ctrl+Alt+\u2191\u2193 for\nswitching workspaces, so NEO never heard them there, and some Windows\ngraphics drivers turn the screen with them. The Keyboard Shortcuts\nwindow lists both. The Mac keeps \u2325\u2318\u2193/\u2191 only. Fixes #254.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01R6yBdLt36W2NnezWjLERWN",
+      "kind": "change"
+    },
+    {
+      "commit": "6752b45373e37036803896ca335b586e3f45f706",
+      "title": "1.3.3",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "f42b42e52f7dcb78e1176e8ac2684a1a830fa025",
+      "title": "Scripts: Enter takes the suggestion; a parenthetical inside a speech; bold scene headings",
+      "details": "- Enter accepts the gray suggestion (a name, place, time or transition),\n  as in Final Draft. A name or place already used exactly as typed gets no\n  suggestion (KIM stays KIM next to KIMBERLY), and Esc sends one away\n  until the line changes.\n- \"(\" opening the line after dialogue makes a parenthetical inside the\n  speech; Enter after it returns to the dialogue.\n- Scene headings are bold on the page and in the PDF.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "1fc0b304f8132b31b265490a8e6003d38562c49d",
+      "title": "Pocket: spellcheck, with desktop NEO's Hunspell and dictionaries",
+      "details": "The \u22ef sheet gets a Spellcheck row (and, while it's on, the dictionary).\nA tap on an underlined word opens the same suggestions a right-click does\non the desktop. The checker runs in a web worker (pocket-spell.js), falling\nback to the page on an older web view. scripts/pocket-www.js now assembles\npocket/www for the robot build and for local builds alike.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "cfbbf0c1665978548e415fbbf194a00c60f99af3",
+      "title": "Tutorial and README: Enter takes a script suggestion; parentheticals mid-speech; bold headings",
+      "details": "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "ddbac9c4684c859b21c5b9b477a401a81ee13572",
+      "title": "Scripts: two blank lines above each scene heading; Pocket leaves Greek out",
+      "details": "Two lines above a heading, on screen, in the page count and in the PDF, so\neach scene stands apart. Greek's dictionary is nearly half of Pocket's\nspellcheck download; it stays on the desktop until someone asks.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "aa1ac7ca88cea0204fca7712233fffefc8ced1b7",
+      "title": "Outline cards: the outline as index cards, set like a page; the note walks ahead",
+      "details": "The Outline tab lays the book out as index cards that read left to right,\nline after line: a chapter starts at its numeral and its sections share a\nmat, rounded where the chapter starts and ends, cut square where it wraps.\nParts start a fresh line. Cards come from the manuscript itself, so every\n*** section is a card, outlined or not, showing its first line until it has\na note. Click a card to write on it; Enter makes the next card, and Enter on\nan empty one a new chapter. Dragging a card (mouse or a held finger) moves\nthe writing with it; \u2318Z puts it back. Right-click to make a section a\nchapter or go to it on the page. Loose cards wait in the right-hand pane\nwhile the Outline is up. \u2318\u2212 and \u2318+ size the cards, down to tiles. The list\nstays one click away; scripts keep it.\n\nWriting over a gray ghost no longer loses the note: it rides one line below\nthe paragraph being written, never saved, with a faint Dismiss.\n\nsyncGhosts now leaves a ghost where it stands instead of moving every ghost\nto the end of its chapter.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "1beaa4f7dc8badf0abaabd356799704337b806a7",
+      "title": "Outline cards for scripts: every scene a card",
+      "details": "A script gets its Outline tab back, as cards: one per scene, with its\nheading, its length in eighths, who's in it, and a note (or its first line\nof action). Click a card to write the note or change the heading; Enter\nstarts a new scene after it, so a script can begin as a stack of cards.\nDrag a card to move the scene; a loose card dropped on the board becomes a\nnew scene. Notes live in book.sceneNotes, keyed by an id on the heading.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "0fbedc92ecf5e324a9cc9b0ff8bb0e4ba1fd8b3d",
+      "title": "Outline cards: Enter finishes a card, Tab goes to the next; + makes new cards",
+      "details": "Enter used to start a new card, so a few stray presses made blank cards and\nchapters. Now Enter puts the card down; Tab and \u21e7Tab move through the cards\nthat are there; \u2325Enter (Alt+Enter) makes a new one. A + on the seam after\neach card (on hover) adds a card there, a New card button sits on an open\ncard, and a dashed + Chapter (+ Scene in a script) ends the board. An open\ncard keeps the section's first line in view above the note, so opening it\nnever looks like it wiped the card.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "42274159b561e75abba50a9e13223a9b48a49f87",
+      "title": "1.3.4",
+      "details": "",
+      "kind": "version"
+    },
+    {
+      "commit": "5df0e160e31194c9f995c4cc7216c1232a9ebd6e",
+      "title": "Notes and Darlings no longer show the Outline's cards",
+      "details": "Leaving the Outline hid the old outline list but not the card board, its\nList/Cards switch or its hint, so Notes and Darlings opened with the cards\nstill on them (at page width, until the switch redrew them full width).\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "684208f620f687efb57b92ebaf3580ecde17bb55",
+      "title": "Outline: Enter makes chapters, Tab makes sections; drop a chapter on a chapter; brighter outside the manuscript",
+      "details": "In the List, Enter always makes a new chapter (after the whole chapter,\nfrom a section's line) and Tab always makes a section: a section's line\nstarts a new one below; a chapter's line becomes a section of the chapter\nabove, writing and all. \u21e7Tab still makes a section a chapter again.\n\nOn the cards, a chapter dropped on the middle of another chapter's card\nbecomes its section (the card lights up and says so); a section dropped\nthere goes to that chapter's end. Both use joinChapter: the lines move,\nthe receiving chapter is saved, and only then is the empty one removed.\n\u2318Z puts it back.\n\nBrighter Interface is now remembered twice: while writing (faint unless\nchosen) and on the Outline, Notes and Darlings (bright unless turned\ndown). The View menu changes the one for the tab you're on.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "kind": "change"
+    },
+    {
+      "commit": "b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0",
+      "title": "1.3.5",
+      "details": "",
+      "kind": "version"
+    }
+  ],
+  "features": [
+    {
+      "id": "NEO135-001",
+      "title": "Windows install updates and unwritable-library reporting",
+      "scope": "host",
+      "sourceCommit": "3b53cf3db94b8916a923b60a7a307a06f175fe30",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/3b53cf3db94b8916a923b60a7a307a06f175fe30",
+      "acceptance": [
+        "An installed Windows app finds its updater installer.",
+        "Denied library writes show the failing operation and preserve writing."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-002",
+      "title": "Capitalization spell checks and net daily goals",
+      "scope": "desktop",
+      "sourceCommit": "cadf1c085de88c8cb0e460e112f4e10a519c8cc9",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/cadf1c085de88c8cb0e460e112f4e10a519c8cc9",
+      "acceptance": [
+        "A sentence-start lowercase letter and English standalone i offer a capital correction.",
+        "Poetry, notes, abbreviations and quoted dialogue exclusions retain original spelling.",
+        "Deleting below the day baseline clamps today to zero and counts subsequent writing."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-003",
+      "title": "Quattro font and manuscript page locator",
+      "scope": "desktop",
+      "sourceCommit": "aed64d5fae3cdf191d0c57fd9fd99a1c6b7d9a6c",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/aed64d5fae3cdf191d0c57fd9fd99a1c6b7d9a6c",
+      "acceptance": [
+        "iA Writer Quattro is selectable on desktop and Pocket and survives reopen.",
+        "Click the chapter locator to display 250-word manuscript pages at the caret and persist the choice."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-003-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-003-A] Position counter toggles manuscript pages and retains the preference after restart",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-004",
+      "title": "Automatic capitalization with immediate author undo",
+      "scope": "desktop",
+      "sourceCommit": "92ea4a6a891c101248323bb238f6250f33ef548c",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/92ea4a6a891c101248323bb238f6250f33ef548c",
+      "acceptance": [
+        "Native lowercase input at paragraph and sentence starts becomes uppercase.",
+        "Immediate Undo restores lowercase; poetry, notes, outline, abbreviations and ellipses are excluded.",
+        "English standalone i becomes I at a following word boundary; Undo preserves the boundary character."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-004-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-004-A] Sentence capitalization is author-undoable immediately after the first native letter",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-005",
+      "title": "Fullscreen menu access",
+      "scope": "host",
+      "sourceCommit": "0ba2b41b2b052a7fd67f810e451c769ee5f51b1a",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/0ba2b41b2b052a7fd67f810e451c769ee5f51b1a",
+      "acceptance": [
+        "On Windows and Linux Alt reveals the menu in fullscreen.",
+        "Linux Wayland retains a normal native menu bar."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-006",
+      "title": "Flush paragraph and moved poetry shortcut",
+      "scope": "desktop",
+      "sourceCommit": "ea65eb73c0c8a294beaf35141c5093c07c750102",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/ea65eb73c0c8a294beaf35141c5093c07c750102",
+      "acceptance": [
+        "Shift Enter at start, middle and end creates or converts a flush paragraph without italicizing prose.",
+        "Shift Enter continues a flush paragraph; Enter returns to prose and Backspace at its start converts it without deleting words.",
+        "Cmd/Ctrl Shift Enter creates poetry in the manuscript and beneath a heading; poetry continues with Shift Enter.",
+        "Format toggles selected paragraphs while preserving scene markers, inline marks, undo and actual export geometry."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-006-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-006-A] Shift Enter splits rich prose into a flush paragraph and retains undo and saved formatting",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        },
+        {
+          "id": "NEO135-006-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-006-B] Backspace at the start of a flush paragraph restores prose without losing the line",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        },
+        {
+          "id": "NEO135-006-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-006-C] Modified Shift Enter creates poetry with italic author input under the new shortcut",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-007",
+      "title": "Prompt Escape ownership",
+      "scope": "desktop",
+      "sourceCommit": "267ed7a6f3f67202e8a6d79c69129fd20490b4dc",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/267ed7a6f3f67202e8a6d79c69129fd20490b4dc",
+      "acceptance": [
+        "Escape in a text prompt dismisses that prompt and retains the open book and author caret."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-008",
+      "title": "Vim shortcut documentation and keyboard layouts",
+      "scope": "desktop",
+      "sourceCommit": "c6a8606c1db391c89ddd7587e965613a2e178579",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/c6a8606c1db391c89ddd7587e965613a2e178579",
+      "acceptance": [
+        "Enable Vim and verify movement and insertion on logical characters across keyboard layouts.",
+        "The actual keyboard reference displays Vim commands only when enabled."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-009",
+      "title": "Words separated by paragraph boundaries",
+      "scope": "desktop",
+      "sourceCommit": "3f6086c174d3eb01c40a02158d767f7af5c3fab3",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/3f6086c174d3eb01c40a02158d767f7af5c3fab3",
+      "acceptance": [
+        "Separate single-word paragraphs count as separate words in the book, current chapter and persisted metadata."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-009-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-009-A] Word counting keeps words separated by actual paragraph boundaries",
+          "sourceStatus": "passed",
+          "candidateStatus": "passed"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-010",
+      "title": "Double-click word selection count",
+      "scope": "desktop",
+      "sourceCommit": "87d68dfd9e33d223a264e684c2f005a5eb834eb6",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/87d68dfd9e33d223a264e684c2f005a5eb834eb6",
+      "acceptance": [
+        "A native double-click selects one word and displays 1 selected without counting trailing whitespace."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-011",
+      "title": "Disk request timing and refused write feedback",
+      "scope": "host",
+      "sourceCommit": "428d317bad4f36b2834685576d3b3d9be1cb5d60",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/428d317bad4f36b2834685576d3b3d9be1cb5d60",
+      "acceptance": [
+        "Concurrent reads, saves and failed writes retain their own operation timings.",
+        "A refused write is shown without falsely displaying Saved or discarding the pending author revision."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-012",
+      "title": "Centered scene breaks after justified prose",
+      "scope": "desktop",
+      "sourceCommit": "f89a6d97ddb3cb0cb320aebe0c38b12ef659251f",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/f89a6d97ddb3cb0cb320aebe0c38b12ef659251f",
+      "acceptance": [
+        "Native double Enter after justified text creates a centered scene break, retaining rich neighbors and undo."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-013",
+      "title": "Power-loss recovery",
+      "scope": "storage",
+      "sourceCommit": "825ff24744aea6d310848f0218c26154dfee469e",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/825ff24744aea6d310848f0218c26154dfee469e",
+      "acceptance": [
+        "Metadata and chapter writes stage a sibling temporary file, fsync and replace.",
+        "Unreadable JSON restores a complete tmp or bak without losing author files.",
+        "Missing unrecoverable book metadata rebuilds identity from chapters and catalog; missing library metadata recovers every book."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-014",
+      "title": "Drop cap on first nonempty prose paragraph",
+      "scope": "desktop",
+      "sourceCommit": "3b54a58dc03ad231f109acf954fea09e25dfbc17",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/3b54a58dc03ad231f109acf954fea09e25dfbc17",
+      "acceptance": [
+        "Leading empty paragraphs retain their spacing and the first paragraph with words receives the drop cap on screen and in PDF."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-015",
+      "title": "Backspace under an empty line",
+      "scope": "desktop",
+      "sourceCommit": "df14afc62fb09b828c9d0b0c9743f5e99633065d",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/df14afc62fb09b828c9d0b0c9743f5e99633065d",
+      "acceptance": [
+        "Backspace below an empty paragraph removes that paragraph without consuming the chapter boundary or neighboring prose."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-016",
+      "title": "IME flush input and blank-page caret placement",
+      "scope": "desktop",
+      "sourceCommit": "c9f592dee1c1e889227ec1bf2214e04ac41a7fef",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/c9f592dee1c1e889227ec1bf2214e04ac41a7fef",
+      "acceptance": [
+        "Composed Shift Enter follows flush semantics without splitting a composing character.",
+        "Trusted clicks on blank page space place a native caret without losing existing selection or writing."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-017",
+      "title": "Save cover image",
+      "scope": "host",
+      "sourceCommit": "429ea7014fef74c11e510ad4428caf1de7fe47be",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/429ea7014fef74c11e510ad4428caf1de7fe47be",
+      "acceptance": [
+        "Save the actual cover artwork and lettering as an image through a native destination; cancellation preserves files."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-018",
+      "title": "Underline and strikethrough",
+      "scope": "desktop",
+      "sourceCommit": "17f2feec680c50448eff1558143c178d3115852d",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/17f2feec680c50448eff1558143c178d3115852d",
+      "acceptance": [
+        "Cmd/Ctrl U underlines selected text and Cmd/Ctrl Shift S strikes it; undo, redo and reopen preserve neighboring marks.",
+        "Typed or pasted double tildes become strikethrough without dropping surrounding prose.",
+        "Word/web rich paste and every publication export preserve underline and strike styling."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-018-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-018-A] Native underline preserves selected words through undo redo and reopen",
+          "sourceStatus": "passed",
+          "candidateStatus": "passed"
+        },
+        {
+          "id": "NEO135-018-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-018-B] Native strikethrough preserves selected words through undo redo and reopen",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-019",
+      "title": "Read Aloud",
+      "scope": "desktop",
+      "sourceCommit": "17f2feec680c50448eff1558143c178d3115852d",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/17f2feec680c50448eff1558143c178d3115852d",
+      "acceptance": [
+        "The local voice reads from the sentence containing the caret using the book language.",
+        "Sentence highlights advance across paragraph and chapter boundaries without entering saved HTML.",
+        "Toggle, Escape or typing stops speech and leaves the caret at the reached sentence.",
+        "No installed voice reports a nonblocking explanation without changing writing."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-020",
+      "title": "Library fallback and first-save explanation",
+      "scope": "storage",
+      "sourceCommit": "70afc443b0ef5303e02473569d2d5baba43d1f3b",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/70afc443b0ef5303e02473569d2d5baba43d1f3b",
+      "acceptance": [
+        "An unwritable default Documents library selects the sibling fallback.",
+        "Start writing explains an unavailable save destination and leaves source data recoverable."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-021",
+      "title": "Outline structural undo and typing bursts",
+      "scope": "desktop",
+      "sourceCommit": "c2190c3ade297b3769fe946a66357b2eefee89b9",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/c2190c3ade297b3769fe946a66357b2eefee89b9",
+      "acceptance": [
+        "Undo restores outline additions, removals and conversions with the original author caret.",
+        "Section promotion retains the following sections in order.",
+        "Undo and redo preserve ghosts as notes rather than authored text.",
+        "A paused burst of typing is one author undo operation; counter updates do not split every letter."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-022",
+      "title": "Responsive page width",
+      "scope": "desktop",
+      "sourceCommit": "0b7c3b17e5abc9b9b0ce9a141e2dbd78b97a9b16",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/0b7c3b17e5abc9b9b0ce9a141e2dbd78b97a9b16",
+      "acceptance": [
+        "The desktop manuscript grows from 680px to at most 760px on large windows, with matching scroll and wake zones.",
+        "Tablet Pocket pages remain centered at the desktop width and portrait phones retain full-width pages."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-023",
+      "title": "Outline list Tab navigation",
+      "scope": "desktop",
+      "sourceCommit": "a8430638b76a1d64bc032e503e2d7544a6568fad",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/a8430638b76a1d64bc032e503e2d7544a6568fad",
+      "acceptance": [
+        "Tab on a section follows the latest 1.3.5 list semantics and creates a next section; historical behavior is explicitly superseded."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-024",
+      "title": "Native Format menu selection ticks",
+      "scope": "host",
+      "sourceCommit": "a09690ddd0dd986d65781da22fd4fc05a08adae4",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/a09690ddd0dd986d65781da22fd4fc05a08adae4",
+      "acceptance": [
+        "The native menu ticks the selected body font, drop cap and alignment and updates after author changes."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-025",
+      "title": "New translated labels",
+      "scope": "desktop",
+      "sourceCommit": "227da91074094987dd3fbd54840d4bf0b0e8032a",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/227da91074094987dd3fbd54840d4bf0b0e8032a",
+      "acceptance": [
+        "Every supported language supplies the new 1.3 strings under the exact English keys.",
+        "Fallback and regional overrides keep new menus and dialog controls reachable."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-026",
+      "title": "Screenplay authoring mode",
+      "scope": "desktop",
+      "sourceCommit": "c10667451119fce1b8a01ef6e6fdd61bc6b87516",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/c10667451119fce1b8a01ef6e6fdd61bc6b87516",
+      "acceptance": [
+        "New Script creates a screenplay identity and distinctive shelf presentation.",
+        "Courier Prime pages, title page and scene navigation match actual industry PDF output.",
+        "Native INT/EXT, character, dialogue, parenthetical, transition and action entry preserve semantic element roles.",
+        "Tab and Cmd/Ctrl 1-7 select elements; scene reordering preserves all words, undo and durable identity.",
+        "Continuation marks, suggestions, page decorations and scene lengths never enter canonical author text."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-026-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-026-A] Existing screenplay opens as a script with Courier typography and scene navigation",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-027",
+      "title": "Fountain and Final Draft interchange",
+      "scope": "host",
+      "sourceCommit": "e2a67eaff249a8716e79b858a784029150730baa",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/e2a67eaff249a8716e79b858a784029150730baa",
+      "acceptance": [
+        "Native import and export round-trip Fountain and FDX elements, title-page values and inline marks.",
+        "Multiline dialogue, parentheses and continuation/page artifacts follow the pinned source codecs.",
+        "Independent screenplain fixtures validate interchange rather than only self-round-trip."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-028",
+      "title": "Find Escape and Vim search continuation",
+      "scope": "desktop",
+      "sourceCommit": "081c705d28b3cfa3b27d0303f41e1175c3736bad",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/081c705d28b3cfa3b27d0303f41e1175c3736bad",
+      "acceptance": [
+        "Find Escape restores the page caret; Vim n and N continue the last search in the corresponding direction."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-029",
+      "title": "Vim resting motion mode and chapter navigation",
+      "scope": "desktop",
+      "sourceCommit": "a40bbef85821b2571e33a25cd25749d83df02573",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/a40bbef85821b2571e33a25cd25749d83df02573",
+      "acceptance": [
+        "With Vim enabled the page rests in motion mode; insertion commands and Escape change modes without losing selection.",
+        "Ctrl Page Down/Up navigate chapters and preserve actual writing history."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-030",
+      "title": "Script completion and dialogue refinements",
+      "scope": "desktop",
+      "sourceCommit": "f42b42e52f7dcb78e1176e8ac2684a1a830fa025",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/f42b42e52f7dcb78e1176e8ac2684a1a830fa025",
+      "acceptance": [
+        "Enter accepts character, location, time or transition suggestions without replacing an exact existing name.",
+        "Escape suppresses a suggestion until the line changes.",
+        "An opening parenthesis after dialogue creates a parenthetical; Enter returns to dialogue.",
+        "Scene headings remain bold and have two blank lines above them on screen, page counts and PDF."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-031",
+      "title": "Pocket spelling",
+      "scope": "pocket",
+      "sourceCommit": "1fc0b304f8132b31b265490a8e6003d38562c49d",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/1fc0b304f8132b31b265490a8e6003d38562c49d",
+      "acceptance": [
+        "Pocket toggles Hunspell dictionaries and tapping an underlined word opens suggestions.",
+        "The web worker and older-webview fallback retain equivalent author results.",
+        "Greek remains available on desktop but is omitted from the Pocket download."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-032",
+      "title": "Manuscript-derived outline card board and walking notes",
+      "scope": "desktop",
+      "sourceCommit": "aa1ac7ca88cea0204fca7712233fffefc8ced1b7",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/aa1ac7ca88cea0204fca7712233fffefc8ced1b7",
+      "acceptance": [
+        "Every chapter and actual scene-break section becomes a card, even without an outline note.",
+        "Cards show owned notes or the section first line; chapter groups wrap on a shared mat and Parts start a line.",
+        "Dragging a card moves the complete rich passage and markers; Undo restores it.",
+        "Loose cards remain in the aside; list/card preference and card sizing survive reopen.",
+        "Writing over a ghost keeps its note one line below the author passage until explicit dismissal; decorations never persist as prose.",
+        "Ghost synchronization preserves position instead of moving all ghosts to a chapter end."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": [
+        {
+          "id": "NEO135-032-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "state": "targeted diagnostic; full feature acceptance pending",
+          "title": "[NEO135-032-A] Outline cards come from manuscript sections and disappear when Notes or Darlings opens",
+          "sourceStatus": "passed",
+          "candidateStatus": "missing behavior"
+        }
+      ]
+    },
+    {
+      "id": "NEO135-033",
+      "title": "Screenplay scene cards",
+      "scope": "desktop",
+      "sourceCommit": "1beaa4f7dc8badf0abaabd356799704337b806a7",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/1beaa4f7dc8badf0abaabd356799704337b806a7",
+      "acceptance": [
+        "Scene cards show heading, eighth-page length, cast and note.",
+        "Editing a card updates the actual scene heading or scene-id-owned note.",
+        "Reordering cards reorders real scenes; dropping a loose card creates a scene with undo and persistence."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-034",
+      "title": "Outline card keyboard and insertion seams",
+      "scope": "desktop",
+      "sourceCommit": "0fbedc92ecf5e324a9cc9b0ff8bb0e4ba1fd8b3d",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/0fbedc92ecf5e324a9cc9b0ff8bb0e4ba1fd8b3d",
+      "acceptance": [
+        "Enter finishes an open card; Tab and Shift Tab move through existing cards.",
+        "Alt Enter, seam plus, open-card New card and board-end plus create the intended section or chapter.",
+        "Opening a card keeps the first line visible above its note."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-035",
+      "title": "Outline board tab isolation",
+      "scope": "desktop",
+      "sourceCommit": "5df0e160e31194c9f995c4cc7216c1232a9ebd6e",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/5df0e160e31194c9f995c4cc7216c1232a9ebd6e",
+      "acceptance": [
+        "Leaving Outline hides its board, list/cards switch and hint on Notes and Darlings."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-036",
+      "title": "Latest list chapter/section conversion and card joining",
+      "scope": "desktop",
+      "sourceCommit": "684208f620f687efb57b92ebaf3580ecde17bb55",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/684208f620f687efb57b92ebaf3580ecde17bb55",
+      "acceptance": [
+        "List Enter always inserts a chapter after the containing chapter; Tab always creates or converts a section.",
+        "Shift Tab promotes a section back to a chapter while preserving section ownership and writing.",
+        "Dropping a chapter on another chapter joins it as a section; dropping a section moves it to that chapter end.",
+        "The receiver is saved before deleting the emptied source; Undo restores full rich text and order."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-037",
+      "title": "Separate manuscript and auxiliary-tab brightness",
+      "scope": "desktop",
+      "sourceCommit": "684208f620f687efb57b92ebaf3580ecde17bb55",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/684208f620f687efb57b92ebaf3580ecde17bb55",
+      "acceptance": [
+        "Manuscript and shelf retain their uiBright setting; Outline, Notes and Darlings use uiBrightAside and default bright.",
+        "View brightness changes the current tab group and both choices survive tab switches and restart."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    },
+    {
+      "id": "NEO135-038",
+      "title": "Pocket hardware keyboard and undo access",
+      "scope": "pocket",
+      "sourceCommit": "92ea4a6a891c101248323bb238f6250f33ef548c",
+      "sourceURL": "https://github.com/hughhowey/neo/commit/92ea4a6a891c101248323bb238f6250f33ef548c",
+      "acceptance": [
+        "Android hardware keyboard attachment controls software-keyboard visibility while long-press retains a temporary override.",
+        "Undo/redo controls stay above the software keyboard and preserve immediate typography and structural undo.",
+        "The Chapters pane remains for navigation with a bottom Add Chapter."
+      ],
+      "coverage": "integration cases required",
+      "integrationCases": []
+    }
+  ],
+  "notes": [
+    "The existing 1.2.4 oracle and 470-case regression suite remain historical baseline coverage.",
+    "A declared acceptance clause is not a passing integration test. Unbound clauses remain gaps.",
+    "Pocket and physical OS capabilities are retained in scope with separate execution duties.",
+    "Changed shortcuts and outline semantics supersede historical expectations only for the 1.3.5 target."
+  ],
+  "initialExecution": {
+    "source": {
+      "startTime": "2026-10-05T19:20:12.734Z",
+      "duration": 19583.892,
+      "expected": 10,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "candidate": {
+      "startTime": "2026-10-05T19:20:51.576Z",
+      "duration": 63560.037000000004,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 8,
+      "flaky": 0
+    },
+    "sourceReport": "/tmp/leafloom-neo135-reference-first10-final.json",
+    "candidateReport": "/tmp/leafloom-neo135-candidate-first10-final.json",
+    "scope": "Ten initial cases only; all unbound acceptance clauses remain open."
+  }
+}

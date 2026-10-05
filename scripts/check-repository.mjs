@@ -24,7 +24,21 @@ export function sourceProblems(source,filename,meta,packages){const issues=[];fo
  if(meta.runtime==='portable'&&/\b(?:HTMLElement|HTMLDivElement|HTMLInputElement|HTMLTextAreaElement|HTMLCanvasElement|Window|Document|KeyboardEvent|MouseEvent|ClipboardEvent|MutationObserver)\b/.test(source))issues.push(`portable source exposes browser ambient type in ${filename}`);
  return issues;
 }
-export async function verifyProvenance(){const receipt=JSON.parse(await readFile(path.join(root,'tests/reference/provenance.json'),'utf8'));const issues=[];if(receipt.commit!=='ed090e9988d446daf1ebbde91bcebc13b599909b')issues.push('unexpected upstream revision');for(const [name,expected]of Object.entries(receipt.files)){try{const hash=createHash('sha256').update(await readFile(path.join(root,'tests/reference/neo',name))).digest('hex');if(hash!==expected)issues.push(`modified NEO oracle ${name}`);}catch{issues.push(`missing NEO oracle ${name}`);}}return issues;}
+export async function verifyProvenance(){
+ const issues=[];
+ for(const [receiptFile,directory,commit] of [
+  ['provenance.json','neo','ed090e9988d446daf1ebbde91bcebc13b599909b'],
+  ['neo-1.3.5.provenance.json','neo-1.3.5','b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0'],
+ ]){
+  const receipt=JSON.parse(await readFile(path.join(root,'tests/reference',receiptFile),'utf8'));
+  if(receipt.commit!==commit)issues.push(`unexpected upstream revision ${directory}`);
+  for(const [name,expected]of Object.entries(receipt.files)){
+   try{const hash=createHash('sha256').update(await readFile(path.join(root,'tests/reference',directory,name))).digest('hex');if(hash!==expected)issues.push(`modified NEO oracle ${directory}/${name}`);}
+   catch{issues.push(`missing NEO oracle ${directory}/${name}`);}
+  }
+ }
+ return issues;
+}
 export async function checkRepository(){const problems=[];const packageFiles=[];for(const directory of ['packages','apps']){for(const file of await filesIn(path.join(root,directory)))if(path.basename(file)==='package.json')packageFiles.push(file);}
  const packages=new Map();for(const file of packageFiles){const pkg=JSON.parse(await readFile(file,'utf8'));packages.set(pkg.name,{...pkg,file});}
  for(const pkg of packages.values()){

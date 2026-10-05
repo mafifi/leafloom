@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "name": "Français (Canada)",
+    "translators": [
+      "Sébastien Piconnier"
+    ],
+    "note": "Only what differs from fr.json: Quebec usage (courriel; no space before ; ! ?)."
+  },
+  "Are you a pantser or a plotter?": "Êtes-vous jardinier ou architecte?",
+  "Delete this section?": "Supprimer cette section?",
+  "Email Draft to Myself": "M’envoyer le brouillon par courriel",
+  "Email settings saved": "Réglages du courriel enregistrés",
+  "Email Settings…": "Réglages du courriel…",
+  "How should NEO email your drafts?": "Comment NEO doit-il envoyer vos brouillons?",
+  "How should the page look?": "À quoi doit ressembler la page?",
+  "Move “{title}” to the Recycle Bin?": "Placer « {title} » dans la Corbeille?",
+  "Move “{title}” to the Trash?": "Placer « {title} » dans la Corbeille?",
+  "The PDF snapshot is in the Finder window NEO just opened — drag it into this email before sending.": "L’instantané PDF se trouve dans la fenêtre du Finder que NEO vient d’ouvrir : glissez-le dans ce courriel avant l’envoi.",
+  "What happens here…": "Que se passe-t-il ici?",
+  "What happens in this chapter…": "Que se passe-t-il dans ce chapitre?",
+  "What happens in this section…": "Que se passe-t-il dans cette section?",
+  "What needs doing here?": "Que reste-t-il à faire ici?"
+}

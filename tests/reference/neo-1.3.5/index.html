@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- only NEO's own script files run: nothing pasted or read from a book can -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'" />
+  <title>NEO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Draggable strip so the frameless window can be moved -->
+  <div id="dragstrip"></div>
+
+  <!-- ======================= BOOKSHELF ======================= -->
+  <div id="bookshelf-view">
+    <header id="shelf-header">
+      <h1>NEO</h1>
+      <div class="shelf-header-right">
+        <span id="author-chip" data-i18n-title title="Click to change your author name" role="button" tabindex="0"></span>
+        <button id="import-btn" data-i18n-title title="Import .docx, .txt, or .md manuscripts"><span aria-hidden="true">&#8681;</span> <span data-i18n>Import</span></button>
+        <button id="add-shelf-btn" data-i18n-title title="Add a shelf" data-i18n-label="Add a shelf"><span aria-hidden="true">+</span> <span data-i18n>Shelf</span></button>
+      </div>
+    </header>
+    <div id="shelves" role="main"></div>
+  </div>
+
+  <!-- ======================= FIRST RUN ======================= -->
+  <div id="firstrun" class="modal-backdrop" data-stay="1" hidden>
+    <div class="modal">
+      <div id="fr-step1">
+        <h2 data-i18n>Welcome to NEO</h2>
+        <p data-i18n>NEO knows you're writing books. A few quick questions and it will never ask anything again.</p>
+        <label><span data-i18n>Your name</span> <span class="soft" data-i18n>(appears as the author on every document — leave blank for “Anonymous”)</span>
+          <input id="fr-name" type="text" autocomplete="off" spellcheck="false" />
+        </label>
+        <label><span data-i18n>Pen name</span> <span class="soft" data-i18n>(optional — used on title pages if set)</span>
+          <input id="fr-pen" type="text" autocomplete="off" spellcheck="false" />
+        </label>
+        <div class="fr-style">
+          <p data-i18n>Are you a pantser or a plotter?</p>
+          <div class="fr-choices">
+            <button class="fr-choice" data-style="pantser">
+              <strong data-i18n>Pantser</strong>
+              <span data-i18n>I write by the seat of my pants. New books open on a blank page.</span>
+            </button>
+            <button class="fr-choice" data-style="plotter">
+              <strong data-i18n>Plotter</strong>
+              <span data-i18n>I outline first. New books open in the Outline tab.</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="fr-step2" hidden>
+        <h2 data-i18n>How should the page look?</h2>
+        <p data-i18n>Pick a typeface and a drop-cap style. The sample below shows exactly what you'll get. (Changeable anytime in the Format menu.)</p>
+        <div id="fr-sample">
+          <p id="fr-sample-text" data-i18n>It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief…</p>
+        </div>
+        <p style="margin-bottom:6px" data-i18n>Body typeface</p>
+        <div id="fr-bodyfonts" class="fr-fontrow"></div>
+        <p style="margin-bottom:6px" data-i18n>Drop cap</p>
+        <div id="fr-dropcaps" class="fr-fontrow"></div>
+        <p id="fr-error" role="alert" hidden></p>
+        <div style="text-align:right;margin-top:20px">
+          <button id="fr-done" class="btn-gold" data-i18n>Start writing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= EDITOR ======================= -->
+  <div id="editor-view" hidden>
+
+    <!-- Left hover zone: chapter navigation -->
+    <div id="nav-hotzone"></div>
+    <nav id="nav-pane" data-i18n-label="Chapters">
+      <div id="nav-head">
+        <span data-i18n>Chapters</span>
+        <button id="nav-pin" data-i18n-title title="Keep this pane open" data-i18n-label="Keep this pane open" aria-pressed="false">&#9737;</button>
+      </div>
+      <div id="nav-list"></div>
+      <button id="nav-add" data-i18n-title title="Add a chapter at the end" data-i18n-label="Add a chapter at the end"><span aria-hidden="true">+</span> <span data-i18n>Chapter</span></button>
+    </nav>
+
+    <!-- Right hover zone: notes & comments -->
+    <div id="side-hotzone"></div>
+    <aside id="side-pane" data-i18n-label="Notes &amp; Comments">
+      <div id="side-head">
+        <span data-i18n>Notes &amp; Comments</span>
+        <button id="side-pin" data-i18n-title title="Keep this pane open" data-i18n-label="Keep this pane open" aria-pressed="false">&#9737;</button>
+      </div>
+      <div id="sticky-list"></div>
+    </aside>
+
+    <!-- The manuscript -->
+    <main id="paper-scroll">
+      <div id="paper">
+        <div id="title-page" class="sheet">
+          <div id="tp-title" contenteditable="true" spellcheck="false" data-i18n-ph data-ph="Untitled" role="textbox" data-i18n-label="Title"></div>
+          <div id="tp-subtitle" contenteditable="true" spellcheck="false" data-i18n-ph data-ph="Subtitle (optional)" role="textbox" data-i18n-label="Subtitle (optional)"></div>
+          <div id="tp-author" contenteditable="true" spellcheck="false" data-i18n-ph data-ph="Author" role="textbox" data-i18n-label="Author"></div>
+        </div>
+        <div id="chapters"></div>
+      </div>
+      <!-- Notes / Outline / Darlings live on the same paper, swapped in -->
+      <div id="aux-paper" hidden>
+        <h2 id="aux-title"></h2>
+        <div id="aux-editor" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-labelledby="aux-title"></div>
+        <div id="outline-list" hidden></div>
+        <div id="darlings-list" hidden></div>
+      </div>
+    </main>
+
+    <!-- Bottom bar: tabs + counters -->
+    <footer id="bottombar">
+      <button id="back-to-shelf" data-i18n-title title="Back to your bookshelf" data-i18n-label="Back to your bookshelf"><span aria-hidden="true">&#8676;</span> <span data-i18n>Shelf</span></button>
+      <div id="tabs" role="tablist">
+        <div class="tab active" role="tab" tabindex="0" aria-selected="true" data-tab="manuscript" data-i18n>Manuscript</div>
+        <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="notes" data-i18n>Notes</div>
+        <div class="tab" role="tab" tabindex="0" aria-selected="false" data-tab="outline" data-i18n>Outline</div>
+        <div class="tab darlings" role="tab" tabindex="0" aria-selected="false" data-tab="darlings" data-i18n data-i18n-title title="Drag any selection here. It's saved, not gone.">Darlings</div>
+      </div>
+      <div id="counters">
+        <span id="goal-counter" role="button" tabindex="0" data-i18n-title title="Today's words — click for goals, sprints, and your progress chart"></span>
+        <span id="pos-counter"></span>
+        <span id="word-counter" role="button" tabindex="0" data-i18n-title title="Click to cycle book / chapter word count"></span>
+        <span id="zoom-control" data-i18n-title title="Scroll to zoom, or pinch / Ctrl+Scroll anywhere on the page"><button id="zoom-out" data-i18n-title title="Zoom out" data-i18n-label="Zoom out">&#8722;</button><span id="zoom-level" role="button" tabindex="0" data-i18n-title title="Click to reset to 100%">100%</span><button id="zoom-in" data-i18n-title title="Zoom in" data-i18n-label="Zoom in">+</button></span>
+      </div>
+    </footer>
+
+    <!-- Find & replace -->
+    <div id="searchbar" hidden>
+      <input id="search-input" data-i18n-placeholder placeholder="Find" data-i18n-label="Find" spellcheck="false" />
+      <span id="search-count"></span>
+      <button id="search-prev" data-i18n-title title="Previous (⇧Enter)" data-i18n-label="Previous (⇧Enter)">&#8593;</button>
+      <button id="search-next" data-i18n-title title="Next (Enter)" data-i18n-label="Next (Enter)">&#8595;</button>
+      <input id="replace-input" data-i18n-placeholder placeholder="Replace with" data-i18n-label="Replace with" spellcheck="false" />
+      <button id="replace-one" data-i18n>Replace</button>
+      <button id="replace-all" data-i18n>All</button>
+      <button id="search-close" data-i18n-title title="Close (Esc)" data-i18n-label="Close (Esc)">&#10005;</button>
+    </div>
+
+  </div>
+
+  <!-- Toast — lives at body level so it shows over both views -->
+  <div id="hint" role="status" aria-live="polite" hidden></div>
+
+  <script src="i18n.js"></script>
+  <script src="covers.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

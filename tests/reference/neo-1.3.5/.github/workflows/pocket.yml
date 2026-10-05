@@ -1,0 +1,127 @@
+# Builds the NEO Pocket Android APK, signed with one stable key so every
+# build installs straight over the previous one — no uninstalling.
+#
+# Runs on every push to main that touches Pocket (or the desktop files it
+# borrows), on pocket-v* tags, and by hand from the Actions tab.
+#
+#   push to main  -> refreshes the rolling "pocket-latest" pre-release; the
+#                    APK link stays the same forever, so bookmark it on the phone
+#   pocket-v* tag -> also publishes a numbered release for that version
+#
+# Needs two repo secrets (Settings -> Secrets and variables -> Actions):
+#   POCKET_KEYSTORE_BASE64    the keystore file, base64-encoded
+#   POCKET_KEYSTORE_PASSWORD  its password (store and key use the same one)
+# Without them the build still runs but falls back to a debug-signed APK,
+# which will NOT install over a properly signed one.
+
+name: Build NEO Pocket
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pocket/**'
+      - 'app.js'
+      - 'covers.js'
+      - 'styles.css'
+      - 'fonts/**'
+      - 'i18n.js'
+      - 'locales/**'
+      - 'main.js'
+      - 'scripts/pocket-www.js'
+      - '.github/workflows/pocket.yml'
+    tags:
+      - 'pocket-v*'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pocket-build
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Work out version numbers
+        id: ver
+        run: |
+          # versionCode must climb with every build or Android refuses the update.
+          echo "code=${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+          if [[ "${{ github.ref }}" == refs/tags/pocket-v* ]]; then
+            echo "name=${GITHUB_REF_NAME#pocket-v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=dev-$(date -u +%Y%m%d)-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install and assemble web assets
+        run: |
+          npm install --ignore-scripts
+          node scripts/pocket-www.js
+          cd pocket
+          npm install
+          npx cap sync android
+
+      - name: Restore signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.POCKET_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/neo-pocket.jks"
+            echo "Signing key restored."
+          else
+            echo "::warning::No POCKET_KEYSTORE_BASE64 secret — falling back to debug signing."
+          fi
+
+      - name: Build signed APK
+        env:
+          POCKET_VERSION_CODE: ${{ steps.ver.outputs.code }}
+          POCKET_VERSION_NAME: ${{ steps.ver.outputs.name }}
+          POCKET_KEYSTORE_FILE: ${{ runner.temp }}/neo-pocket.jks
+          POCKET_KEYSTORE_PASSWORD: ${{ secrets.POCKET_KEYSTORE_PASSWORD }}
+        run: |
+          cd pocket/android
+          chmod +x gradlew
+          ./gradlew assembleRelease
+          cp app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/neo-pocket.apk"
+          ls -la "$RUNNER_TEMP/neo-pocket.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: neo-pocket-apk
+          path: ${{ runner.temp }}/neo-pocket.apk
+
+      - name: Refresh the rolling pocket-latest release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: pocket-latest
+          name: NEO Pocket — latest build
+          prerelease: true
+          body: |
+            NEO Pocket is an early alpha. It's an Android companion to NEO for writing on the go.
+
+            This is a rolling build from `main`, and it updates itself every time Pocket changes, so this link is always the newest.
+
+            To try it on your Android phone, download `neo-pocket.apk` below and open it (Android will warn about installing outside the Play Store). On first launch, Pocket asks for All files access so it can read the NEO Library folder. Your books live in `Documents/NEO Library`; to share them with desktop NEO, sync that folder with [Syncthing](https://syncthing.net). Updates install straight over the old version.
+
+            Meant for a hardware keyboard; the on-screen keyboard stays down (long-press ☰ to open it). Swipe from the left edge for chapters, from the right for Notes & Comments. It's rough; please report bugs in [Issues](https://github.com/hughhowey/neo/issues).
+          files: ${{ runner.temp }}/neo-pocket.apk
+
+      - name: Publish numbered release for this tag
+        if: startsWith(github.ref, 'refs/tags/pocket-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: NEO Pocket ${{ steps.ver.outputs.name }}
+          prerelease: true
+          files: ${{ runner.temp }}/neo-pocket.apk

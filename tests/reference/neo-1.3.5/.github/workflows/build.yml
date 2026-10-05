@@ -1,0 +1,167 @@
+# Builds NEO on remote Windows, Linux, and macOS machines whenever a version
+# tag is pushed, and attaches the installers to a draft GitHub release. 
+
+name: Build NEO
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  # The installers are named from package.json, and the updater offers an
+  # update only when latest.yml names a newer version than the one installed.
+  # A tag that disagrees with package.json ships a release that calls itself
+  # the old version, which nobody is ever offered. (v1.2.3 did.) The step
+  # runs on every build and checks only when a tag started it, so the jobs
+  # below can always depend on it.
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag matches package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          pkg=$(node -p "require('./package.json').version")
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$pkg" != "$tag" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME would build as version $pkg. Set \"version\" in package.json (and package-lock.json) to $tag, commit, and tag again."
+            exit 1
+          fi
+          echo "Tag $GITHUB_REF_NAME matches package.json ($pkg)."
+
+  windows:
+    needs: version
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm install electron-builder --save-dev
+      - run: npx electron-builder --win --publish never
+      # The updater downloads the file latest.yml names. GitHub turns spaces
+      # in uploaded names into dots, so a name with a space is one the
+      # updater can never find (Windows updates failed this way through 1.2.4).
+      - name: latest.yml names a file that will upload as named
+        shell: bash
+        run: |
+          want=$(sed -n 's/^path: *//p' dist/latest.yml)
+          if [ -z "$want" ] || [ ! -f "dist/$want" ] || [[ "$want" == *" "* ]]; then
+            echo "::error::latest.yml points at '$want', which isn't a file in dist/ with a space-free name:"; ls dist; exit 1
+          fi
+          echo "latest.yml points at dist/$want"
+      - name: Smoke test — app boots and creates its library
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem dist -Filter "*.exe" | Where-Object { $_.Name -notmatch "Setup" } | Select-Object -First 1
+          Write-Host "Launching $($exe.FullName)"
+          Start-Process $exe.FullName
+          Start-Sleep -Seconds 25
+          $proc = Get-Process | Where-Object { $_.ProcessName -like "*NEO*" }
+          if (-not $proc) { Write-Error "NEO process not running after launch"; exit 1 }
+          if (-not (Test-Path "$env:USERPROFILE\Documents\NEO Library\library.json")) {
+            Write-Error "NEO ran but never created its library — startup is broken"
+            exit 1
+          }
+          Write-Host "NEO booted and built its library. Windows works."
+          $proc | Stop-Process -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            dist/*.exe
+            dist/latest.yml
+            dist/*.blockmap
+      - name: Attach to draft release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            dist/*.exe
+            dist/latest.yml
+            dist/*.blockmap
+
+  mac:
+    needs: version
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm install electron-builder --save-dev
+      # electron-builder's own temp-keychain handling is flaky on current
+      # macOS runners — set the keychain up explicitly and let codesign
+      # discover the identity from it
+      - name: Import signing certificate
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/neo-build.keychain-db"
+          KEYCHAIN_PWD="$(uuidgen)"
+          echo "$CSC_LINK" | base64 --decode > "$RUNNER_TEMP/neo-cert.p12"
+          security create-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PWD" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/neo-cert.p12" -k "$KEYCHAIN" -P "$CSC_KEY_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S "apple-tool:,apple:,codesign:" -s -k "$KEYCHAIN_PWD" "$KEYCHAIN" > /dev/null
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          rm "$RUNNER_TEMP/neo-cert.p12"
+      - name: Build, sign, and notarize
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: npx electron-builder --mac --publish never
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mac-build
+          path: |
+            dist/*.dmg
+            dist/*-mac.zip
+            dist/latest-mac.yml
+            dist/*.blockmap
+      # sequential uploads via the gh CLI: --clobber replaces duplicates, so
+      # re-runs never collide with a half-loaded draft
+      - name: Attach to draft release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --draft --title "NEO $GITHUB_REF_NAME"
+          gh release upload "$GITHUB_REF_NAME" dist/*.dmg dist/*-mac.zip dist/latest-mac.yml dist/*.blockmap --clobber
+
+  linux:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm install electron-builder --save-dev
+      - run: npx electron-builder --linux --publish never
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: |
+            dist/*.AppImage
+            dist/latest-linux.yml
+      - name: Attach to draft release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            dist/*.AppImage
+            dist/latest-linux.yml
