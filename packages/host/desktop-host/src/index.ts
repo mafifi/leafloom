@@ -45,6 +45,8 @@ export const HostPayloads = {
     title: z.string().max(500),
     author: z.string().max(500).default(''),
     kind: z.string().max(64).optional(),
+    format: z.literal('screenplay').optional(),
+    credit: z.string().max(500).optional(),
   }),
   readBookMeta: BookId,
   readCoverArt: BookId,
@@ -126,6 +128,7 @@ export const HostPayloads = {
   diagnostics: Empty,
 } as const;
 export type HostMethod = keyof typeof HostPayloads;
+export {HostOperationError} from './operation-error.ts';
 export type HostPayload<M extends HostMethod> = z.input<(typeof HostPayloads)[M]>;
 export type HostResult<T = unknown> =
   { ok: true; value: T } | { ok: false; code: string; message?: string };
@@ -177,6 +180,7 @@ export const OsPayloads = {
   installUpdatePending: Empty,
   restartToUpdate: Empty,
   fullscreenEscape: Empty,
+  revealNativeMenu: Empty,
   platformInfo: Empty,
   setTheme: z.strictObject({ theme: z.enum(['dark', 'light', 'system']) }),
   fontFamilies: Empty,

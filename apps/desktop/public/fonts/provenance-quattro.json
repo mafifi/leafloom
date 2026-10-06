@@ -1,0 +1,59 @@
+{
+  "family": "iA Writer Quattro",
+  "source": "tests/reference/neo-1.3.5",
+  "sourceProvenance": "tests/reference/neo-1.3.5.provenance.json",
+  "license": "SIL Open Font License 1.1",
+  "modifications": "None; original font bytes and reserved names retained. Asset filenames normalized for the host catalog.",
+  "files": {
+    "ia-writer-quattro-400-normal.woff2": {
+      "source": "fonts/iAWriterQuattroS-Regular.woff2",
+      "sha256": "c8d49e112617397e4565fdd3d2c3b725ffacd0dc52ef18254785aa3d6c1ec1ae"
+    },
+    "ia-writer-quattro-400-italic.woff2": {
+      "source": "fonts/iAWriterQuattroS-Italic.woff2",
+      "sha256": "3e23501bf4389baca37c696fb7485fb43dbfdb6b91d75183e6739c2d5aae801d"
+    },
+    "ia-writer-quattro-700-normal.woff2": {
+      "source": "fonts/iAWriterQuattroS-Bold.woff2",
+      "sha256": "a65d4271cc91ac6d7cc39780dcc35891ce40ce27f6fbb7067a2eff26a67a4571"
+    },
+    "ia-writer-quattro-700-italic.woff2": {
+      "source": "fonts/iAWriterQuattroS-BoldItalic.woff2",
+      "sha256": "11eba6b87f6a1c3521b30bb6fabdc7b60344ff5130096ef492989f6a6f1413af"
+    },
+    "LICENSE-ia-writer-quattro.txt": {
+      "source": "fonts/LICENSE-ia-writer-quattro.txt",
+      "sha256": "2eb84d6d03a9af6e99816f82f50a77c26e7ff6681293f4619cd33a392a8c13b6"
+    }
+  },
+  "upstream": "https://github.com/hughhowey/neo",
+  "revision": "b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0",
+  "pdfFonts": {
+    "repository": "https://github.com/iaolo/iA-Fonts",
+    "revision": "c6588670c71e9ac628acc27b72cde4bf12726b7f",
+    "modifications": "None; original upstream TTF bytes retained.",
+    "files": {
+      "ia-writer-quattro-400-normal.ttf": {
+        "source": "iA Writer Quattro/Static/iAWriterQuattroS-Regular.ttf",
+        "sha256": "6e367e0e00e057d383680ffae7b64f520d06e1f96abd28bddd67d424fee8e8df"
+      },
+      "ia-writer-quattro-400-italic.ttf": {
+        "source": "iA Writer Quattro/Static/iAWriterQuattroS-Italic.ttf",
+        "sha256": "84c19517be57e8c0521f43a1d5c29766b1f0cb9353300e819b193da1b02f47ac"
+      },
+      "ia-writer-quattro-700-normal.ttf": {
+        "source": "iA Writer Quattro/Static/iAWriterQuattroS-Bold.ttf",
+        "sha256": "40dbb1ffed472cdc96a0133073bc777a40782883678b80dfd31677d5963b72b9"
+      },
+      "ia-writer-quattro-700-italic.ttf": {
+        "source": "iA Writer Quattro/Static/iAWriterQuattroS-BoldItalic.ttf",
+        "sha256": "f61aa3c97d611dec01c7414e07b9212a164501b6d1a800af0dcda11acf4eabb0"
+      },
+      "LICENSE-ia-writer-quattro-ttf.txt": {
+        "source": "iA Writer Quattro/LICENSE.md",
+        "sha256": "2eb84d6d03a9af6e99816f82f50a77c26e7ff6681293f4619cd33a392a8c13b6"
+      }
+    },
+    "webfontsMatchPinnedNEO": true
+  }
+}

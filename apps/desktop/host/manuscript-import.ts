@@ -1,4 +1,4 @@
-import type { ScreenplayScriptValue } from '@leafloom/document-contracts';
+import {readFountainDocument,type ScreenplayScriptValue} from '@leafloom/document-contracts';
 import { readScreenplay, screenplayHTML } from './screenplay-formats.ts';
 /** Manuscript chapterization derived from NEO ed090e9988d446daf1ebbde91bcebc13b599909b, MIT (LICENSE.neo). */
 import * as fs from 'node:fs';
@@ -17,6 +17,7 @@ export type ImportedChapter = { title: string; paras: ImportParagraph[]; role: s
 export type ImportedManuscript = {
   format?: 'screenplay';
   screenplayTitle?: ScreenplayScriptValue['title'];
+  importedNotes?: string;
   name: string;
   title: string | null;
   author: string | null;
@@ -226,8 +227,9 @@ export async function parseManuscript(fp: string): Promise<ImportedManuscript> {
   const ext = path.extname(fp).toLowerCase();
   if (ext === '.fountain' || ext === '.fdx') {
     let raw:string;try{raw=new TextDecoder('utf-8',{fatal:true}).decode(fs.readFileSync(fp));}catch{throw Error('INVALID');}
-    const script=readScreenplay(raw,ext.slice(1) as 'fountain'|'fdx');
-    return {name,title:script.title.title||null,author:script.title.author||null,format:'screenplay',screenplayTitle:script.title,chapters:[{title:'',role:null,paras:script.lines.map(line=>({html:screenplayHTML([line])}))}]};
+    const envelope=ext==='.fountain'?readFountainDocument(raw):null;
+    const script=envelope?.script??readScreenplay(raw,'fdx');
+    return {name,...(envelope?.annotations.length?{importedNotes:envelope.annotations.join('\n')}:{}),title:script.title.title||null,author:script.title.author||null,format:'screenplay',screenplayTitle:script.title,chapters:[{title:'',role:null,paras:script.lines.map(line=>({html:screenplayHTML([line])}))}]};
   }
   let paras: ImportParagraph[] = [];
 

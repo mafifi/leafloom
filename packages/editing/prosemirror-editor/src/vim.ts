@@ -6,6 +6,34 @@ import { BookCore, bookSchema } from './core';
 
 const characterClass = (character: string | undefined) =>
   !character || /\s/u.test(character) ? 0 : /[\p{L}\p{M}\p{N}_'’]/u.test(character) ? 1 : 2;
+
+const usKeys: Record<string, readonly [string, string]> = {
+  Space: [' ', ' '],
+  Minus: ['-', '_'],
+  Equal: ['=', '+'],
+  BracketLeft: ['[', '{'],
+  BracketRight: [']', '}'],
+  Backslash: ['\\', '|'],
+  Semicolon: [';', ':'],
+  Quote: ["'", '"'],
+  Backquote: ['`', '~'],
+  Comma: [',', '<'],
+  Period: ['.', '>'],
+  Slash: ['/', '?'],
+};
+for (const letter of 'abcdefghijklmnopqrstuvwxyz')
+  usKeys[`Key${letter.toUpperCase()}`] = [letter, letter.toUpperCase()];
+Array.from(')!@#$%^&*(').forEach((shifted, digit) => {
+  usKeys[`Digit${digit}`] = [String(digit), shifted];
+});
+/** Moving uses US key positions; writing retains the native layout and IME. */
+export function vimKeyOf(event: KeyboardEvent): string {
+  const pair = usKeys[event.code];
+  if (!pair || (event.key.length > 1 && event.key !== 'Dead' && event.key !== 'Process'))
+    return event.key;
+  const caps = event.code.startsWith('Key') && event.getModifierState('CapsLock');
+  return pair[event.shiftKey !== caps ? 1 : 0];
+}
 /** NEO word motions count Unicode characters, punctuation runs and apostrophes. */
 export function wordOffset(text: string, offset: number, key: 'w' | 'b' | 'e'): number {
   const before = Array.from(text.slice(0, offset)),
@@ -58,6 +86,7 @@ export class VimController {
       left: number;
       top: number;
     }) => number | null,
+    private readonly repeatSearch?: (direction: -1 | 1, times: number, visual: boolean) => void,
   ) {}
   get state(): VimState {
     return { enabled: this.enabled, navigation: this.navigation, visual: this.visual };
@@ -70,6 +99,10 @@ export class VimController {
   }
   leaveEditor() {
     if (this.navigation) this.setNavigation(false);
+  }
+  /** Invoke after opening a book or returning to an author tab, once focused. */
+  rest() {
+    if (this.enabled) this.setNavigation(true);
   }
   private publish() {
     this.core.document.body?.classList.toggle('vim-nav', this.navigation);
@@ -236,23 +269,37 @@ export class VimController {
     const scroll = view.dom.closest<HTMLElement>('#paper-scroll');
     if (!scroll) return;
     scroll.scrollTop += (direction * scroll.clientHeight) / 2;
+    const top = scroll.scrollTop;
+    const restoreScroll = (position: number) => {
+      scroll.scrollTop = top;
+      this.core.document.defaultView?.requestAnimationFrame(() => {
+        if (scroll.isConnected && this.core.state.selection.head === position)
+          scroll.scrollTop = top;
+      });
+    };
     const box = scroll.getBoundingClientRect();
     const coords = { left: box.left + box.width / 2, top: box.top + box.height / 2 };
     if (this.manuscriptPositionAt) {
       const position = this.manuscriptPositionAt(coords);
-      if (position !== null) this.select(position);
+      if (position !== null) {
+        this.select(position);
+        // A cross-chapter focus handoff must preserve the half-screen scroll.
+        restoreScroll(position);
+      }
       return;
     }
     const point = view.posAtCoords(coords);
     if (point) {
       const section = this.core.section(this.core.activeSection!.id);
       this.select(point.pos + section.pos + 1);
+      restoreScroll(point.pos + section.pos + 1);
     }
   }
   handle(event: KeyboardEvent, view: EditorView): boolean {
-    if (!this.enabled || event.isComposing || event.keyCode === 229) return false;
-    const key = event.key;
+    if (!this.enabled) return false;
+    const key = this.navigation ? vimKeyOf(event) : event.key;
     if (!this.navigation) {
+      if (event.isComposing || event.keyCode === 229) return false;
       if (
         key === 'Escape' &&
         !event.metaKey &&
@@ -270,9 +317,10 @@ export class VimController {
     if (key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
+      const position = this.visual ? this.core.state.selection.to : this.core.state.selection.head;
       this.visual = false;
       this.count = this.pending = '';
-      this.select(this.core.state.selection.head, false);
+      this.select(position, false);
       this.publish();
       return true;
     }
@@ -282,7 +330,8 @@ export class VimController {
       this.halfPage(view, key === 'd' ? 1 : -1);
       return true;
     }
-    if (event.metaKey || event.ctrlKey || event.altKey) return false;
+    if (event.metaKey || event.ctrlKey || event.altKey || event.getModifierState('AltGraph'))
+      return false;
     if (key.length > 1 && !['Enter', 'Backspace', 'Delete', 'Tab'].includes(key)) return false;
     event.preventDefault();
     event.stopPropagation();
@@ -401,8 +450,13 @@ export class VimController {
         this.openParagraph(true);
         break;
       case '/':
-        this.setNavigation(false);
+        // The Find owner captures the moving state and caret before focus leaves.
         this.hooks().search?.();
+        this.setNavigation(false);
+        break;
+      case 'n':
+      case 'N':
+        this.repeatSearch?.(key === 'n' ? 1 : -1, times, this.visual);
         break;
     }
     return true;

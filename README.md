@@ -6,7 +6,7 @@ Leafloom is a rewrite derived from [NEO](https://github.com/hughhowey/neo), crea
 
 ## Download
 
-[Download Leafloom 0.1.0 for Apple silicon Macs](https://github.com/mafifi/leafloom/releases/download/v0.1.0/Leafloom-0.1.0-macos-arm64.dmg). Requires macOS 14 or later. Open the disk image and drag Leafloom into Applications.
+[Download Leafloom 1.3.5 for Apple silicon Macs](https://github.com/mafifi/leafloom/releases/download/v1.3.5/Leafloom-1.3.5-macos-arm64.dmg). Requires macOS 14 or later. Open the disk image and drag Leafloom into Applications.
 
 ## Develop
 

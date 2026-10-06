@@ -1,4 +1,5 @@
 import {test,expect} from './author-fixture';
+import {dictionaryFlags} from './spelling-observation';
 import {existingBook} from './book-fixture';
 import {persistedBook,privateStorageRoot} from './storage-probe';
 import {clickReferenceMenu} from '../reference/harness';
@@ -7,8 +8,7 @@ import path from 'node:path';
 import type {Page} from '@playwright/test';
 const source=process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference';
 async function flags(page:Page){
- if(source)return page.evaluate(()=>Array.from(CSS.highlights.get('neo-spell')||[]).map(r=>r.toString()).sort());
- return (await page.locator('[data-annotation-kind="spelling"]').allTextContents()).sort();
+ return (await dictionaryFlags(page)).sort();
 }
 async function pass(page:Page){
  if(source)await clickReferenceMenu(page,['Edit','Spellcheck Pass']);

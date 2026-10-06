@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { translate } from '@leafloom/language-contracts';
 import { Metadata } from '@leafloom/document-contracts';
 import {
   Library,
@@ -199,18 +200,26 @@ export class LibraryViewModel {
   async deleteAuthor(id: string) {
     await this.context.writeLibrary(deleteAuthor(this.value.library, id));
   }
-  async newBook(shelfId: string, kind = 'novel', title = 'Untitled') {
+  newBook(shelfId: string, kind = 'novel', title = 'Untitled') {
+    return this.createBook(shelfId, kind, title);
+  }
+  newScript(shelfId: string) {
+    const shelf = this.value.library.shelves.find(row => row.id === shelfId);
+    if (!shelf || shelf.binding?.bound || shelf.bound) return Promise.resolve();
+    return this.createBook(shelfId, 'novel', 'Untitled', true);
+  }
+  private async createBook(shelfId: string, kind: string, title: string, script = false) {
     const author =
       this.value.library.authors.find((a) => a.id === this.value.library.currentAuthorId)?.name ??
       'Anonymous';
     const metadata = Metadata.parse(
-      await this.context.request('createBook', { title, author, kind }),
+      await this.context.request('createBook', { title, author, kind, ...(script ? { format: 'screenplay', credit: translate(this.value.language, 'Written by') } : {}) }),
     );
     const defaults = z
       .record(z.string(), z.string())
       .catch({})
       .parse(this.value.library.tabDefaults);
-    if (Object.keys(defaults).length)
+    if (Object.keys(defaults).length || script)
       Object.assign(
         metadata,
         Metadata.parse(
@@ -220,7 +229,7 @@ export class LibraryViewModel {
               ...metadata,
               tabNames: {
                 notes: defaults.notes ?? 'Notes',
-                outline: defaults.outline ?? 'Outline',
+                outline: script ? 'Outline' : defaults.outline ?? 'Outline',
               },
             },
           }),

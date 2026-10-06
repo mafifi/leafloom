@@ -1,3 +1,6 @@
+import { cardBoardShowing, stepCardWheel } from './outline-card-zoom';
+import { cardZooms } from './outline-board-presentation';
+import { interfaceBrightness } from './interface-brightness';
 import { type HostMethod, type HostPayload } from '@leafloom/desktop-host';
 import { type EditorPort, type SurfacePort } from '@leafloom/editor-contracts';
 import { translate } from '@leafloom/language-contracts';
@@ -125,6 +128,12 @@ export async function scanSpelling(context: ApplicationPreferencesContext): Prom
 }
 
 export function zoom(context: ApplicationPreferencesContext, delta: number): void {
+  if (cardBoardShowing(context.value)) {
+    const now=Math.max(.55,Math.min(1.5,Number(context.value.library.cardZoom)||1));
+    const next=delta===0?1:delta>0?cardZooms.find(z=>z>now+.001)??now:[...cardZooms].reverse().find(z=>z<now-.001)??now;
+    if(next!==now)void context.background(()=>preference(context,'cardZoom',next));
+    return;
+  }
   context.setPageZoom(delta === 0 ? 1 : context.value.zoom + delta);
 }
 
@@ -170,6 +179,7 @@ export async function flushAppearance(context: ApplicationPreferencesContext): P
 export function pageZoomWheel(context: ApplicationPreferencesContext, event: WheelEvent): void {
   if (event.ctrlKey) {
     event.preventDefault();
+    if (cardBoardShowing(context.value)) { stepCardWheel(context, event.deltaY, direction => zoom(context, direction)); return; }
     context.setPageZoom(context.value.zoom * Math.exp(-event.deltaY * 0.005), {
       x: event.clientX,
       y: event.clientY,
@@ -186,10 +196,11 @@ export function pageZoomWheel(context: ApplicationPreferencesContext, event: Whe
 export function zoomControlWheel(context: ApplicationPreferencesContext, event: WheelEvent): void {
   event.preventDefault();
   event.stopPropagation();
+  if (cardBoardShowing(context.value)) { stepCardWheel(context, event.deltaY, direction => zoom(context, direction)); return; }
   context.setPageZoom(context.value.zoom * Math.exp(-event.deltaY * 0.002));
 }
 
 export function systemContrastChanged(context: ApplicationPreferencesContext): void {
-  document.body.classList.toggle('bright', brighterInterface(context.value.library.uiBright));
+  document.body.classList.toggle('bright', interfaceBrightness(context.value.library, context.value.view, context.value.panel, brighterInterface(undefined)));
   context.scheduleMenu();
 }

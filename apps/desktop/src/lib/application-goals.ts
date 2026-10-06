@@ -1,4 +1,4 @@
-import { ProgressTracker, writingDay } from '@leafloom/authoring';
+import { ProgressTracker, writingDay, dailyWordCount } from '@leafloom/authoring';
 import { type EditorPort, type SurfacePort } from '@leafloom/editor-contracts';
 import { translate } from '@leafloom/language-contracts';
 import { Library, type LibraryValue } from '@leafloom/library';
@@ -47,8 +47,7 @@ export function updateProgress(context: ApplicationGoalsContext): void {
       .record(z.string(), z.object({ start: z.number(), end: z.number() }))
       .catch({})
       .parse(context.editor.metadata.dailyCounts);
-    const prior = counts[day];
-    counts[day] = { start: prior?.start ?? words - delta, end: words };
+    counts[day] = dailyWordCount(counts[day], words, before);
     context.editor.setBookkeeping({ dailyCounts: counts, wordCount: words });
     context.patch({ todayWords: words - counts[day].start });
     if (

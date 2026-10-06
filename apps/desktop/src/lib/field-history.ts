@@ -14,3 +14,12 @@ export function executeNativeFieldHistory(direction: 'undo' | 'redo', owner: Doc
   owner.execCommand(direction);
   return true;
 }
+
+/** Native draft fields own their formatting just as they own their typing history. */
+export function executeNativeFieldFormat(command: string, owner: Document = document): boolean {
+  const field = nativeHistoryField(owner.activeElement);
+  if (!field) return false;
+  if ((field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) && (field.readOnly || field.disabled)) return true;
+  owner.execCommand(command);
+  return true;
+}

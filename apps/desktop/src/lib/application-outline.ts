@@ -1,6 +1,7 @@
 import { type EditorPort, type OutlineTarget } from '@leafloom/editor-contracts';
 import { z } from 'zod';
 import type { AppState } from './application';
+import { outlineNativeUndo, outlineStructure } from './outline-history-focus';
 
 
 export interface ApplicationOutlineContext {
@@ -90,6 +91,9 @@ export function outlineKey(
     ...(target.sectionId ? { sectionId: target.sectionId } : {}),
   };
   const element = event.currentTarget as HTMLElement;
+  if (outlineNativeUndo(context, element, event)) return;
+  if (event.isComposing || event.keyCode === 229) return;
+  if (event.key === 'Enter' && (event.shiftKey || event.altKey)) return;
   if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
     event.preventDefault();
     const rows = context.editor.outlineRows.filter((row) => row.kind !== 'part');
@@ -117,16 +121,13 @@ export function outlineKey(
     before = prefix.toString().length === 0;
   }
   context.editOutline(target, element.textContent ?? '');
-  if (event.key === 'Enter') context.focusOutline(context.editor.outlineEnter(target, before));
+  if (event.key === 'Enter') context.focusOutline(outlineStructure(context.editor, target, () => context.editor!.outlineEnter(target, before)));
   else if (event.key === 'Tab') {
-    const result = context.editor.outlineIndent(target, event.shiftKey);
+    const result = outlineStructure(context.editor, target, () => context.editor!.outlineIndent(target, event.shiftKey));
     if (result.notice) context.patch({ hint: result.notice });
     context.focusOutline(result.target);
   } else
     context.focusOutline(
-      context.editor.outlineDelete({
-        chapterId: target.chapterId,
-        ...(target.sectionId ? { sectionId: target.sectionId } : {}),
-      }),
+      outlineStructure(context.editor, target, () => context.editor!.outlineDelete(target)),
     );
 }

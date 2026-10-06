@@ -5,7 +5,8 @@ import {persistedBook} from './storage-probe';
 import {clickReferenceMenu} from '../reference/harness';
 const original=process.env.LEAFLOOM_PARITY_DRIVER==='neo-reference';
 const mod=process.platform==='darwin'?'Meta':'Control';
-const tab=(page:Page,name:string)=>page.locator(`.tab[data-tab="${name}"]`).click();
+const target135=!original||process.env.LEAFLOOM_REFERENCE_VERSION==='1.3.5';
+const tab=async(page:Page,name:string)=>{await page.locator(`.tab[data-tab="${name}"]`).click();if(name==='outline'&&target135)await page.locator('#outline-views button[data-view="list"]').click();};
 async function dropSelected(page:Page){
  // Scoped in-app DragEvent/DataTransfer, never the global OS clipboard. Physical drag delivery is separately unproved.
  await page.evaluate(()=>{const selection=getSelection()!,range=selection.getRangeAt(0),holder=document.createElement('div');holder.append(range.cloneContents());const data=new DataTransfer();data.setData('text/plain',selection.toString());data.setData('text/html',holder.innerHTML);const element=range.startContainer.nodeType===Node.ELEMENT_NODE?range.startContainer as Element:range.startContainer.parentElement!;element.dispatchEvent(new DragEvent('dragstart',{bubbles:true,cancelable:true,dataTransfer:data}));const target=document.querySelector('.tab[data-tab="darlings"]')!;target.dispatchEvent(new DragEvent('dragover',{bubbles:true,cancelable:true,dataTransfer:data}));target.dispatchEvent(new DragEvent('drop',{bubbles:true,cancelable:true,dataTransfer:data}));element.dispatchEvent(new DragEvent('dragend',{bubbles:true,dataTransfer:data}));});
@@ -42,7 +43,7 @@ test('[NEO-149-A] Leafloom: last Outline ArrowDown clamps at line end and ArrowU
  const c=await existingBook(page,{chapters:['<p>Alpha.</p>'],metadata:{chapterNotes:{'ch-1':'Owner'},sectionNotes:{'ch-1':[{id:'a',text:'First'},{id:'b',text:'Last beat'}]}}});await tab(page,'outline');const last=page.locator('.ol-section[data-sec-id="b"] .ol-text');await last.click();await last.press('End');await last.press('ArrowDown');await expect(last).toBeFocused();expect(await page.evaluate(()=>{const s=getSelection()!,r=document.createRange();r.selectNodeContents(document.activeElement!);r.setEnd(s.anchorNode!,s.anchorOffset);return r.toString().length;})).toBe(9);await last.press('ArrowUp');await expect(page.locator('.ol-section[data-sec-id="a"] .ol-text')).toBeFocused();expect(await page.evaluate(()=>{const s=getSelection()!,r=document.createRange();r.selectNodeContents(document.activeElement!);r.setEnd(s.anchorNode!,s.anchorOffset);return r.toString().length;})).toBe(5);await c.driver.reopen();await c.driver.expectParagraphs([['Alpha.','***','First','***','Last beat']]);
 });
 test('[NEO-151-A] Leafloom: Outline outdent reconciles ghosts and moves section text into a new chapter note durably',async({page})=>{
- const c=await existingBook(page,{chapters:['<p>Alpha.</p>'],metadata:{sectionNotes:{'ch-1':[{id:'a',text:'First beat'},{id:'b',text:'Second beat'}]}}});await tab(page,'outline');await page.locator('.ol-section[data-sec-id="a"] .ol-text').click();await page.locator('.ol-chapter .ol-text').click();await tab(page,'manuscript');await expect(page.locator('p.ghost')).toHaveText(['First beat','Second beat']);await tab(page,'outline');await page.locator('.ol-section[data-sec-id="a"] .ol-text').press('Shift+Tab');await expect(page.locator('.ol-chapter .ol-text')).toHaveText(['','First beat']);await tab(page,'manuscript');await expect(page.locator('p.ghost')).toHaveText('Second beat');await expect(page.locator('p[data-sec-id="a"]')).toHaveCount(0);await c.driver.reopen();const saved=await persistedBook(page,c.title,c.id);expect(saved.metadata.chapterNotes[saved.chapters[1].id]).toBe('First beat');expect(saved.metadata.sectionNotes['ch-1']).toEqual([{id:'b',text:'Second beat'}]);
+ const c=await existingBook(page,{chapters:['<p>Alpha.</p>'],metadata:{sectionNotes:{'ch-1':[{id:'a',text:'First beat'},{id:'b',text:'Second beat'}]}}});await tab(page,'outline');await page.locator('.ol-section[data-sec-id="a"] .ol-text').click();await page.locator('.ol-chapter .ol-text').click();await tab(page,'manuscript');await expect(page.locator('p.ghost')).toHaveText(['First beat','Second beat']);await tab(page,'outline');await page.locator('.ol-section[data-sec-id="a"] .ol-text').press('Shift+Tab');await expect(page.locator('.ol-chapter .ol-text')).toHaveText(['','First beat']);await tab(page,'manuscript');await expect(page.locator('p.ghost')).toHaveText('Second beat');await expect(page.locator('p[data-sec-id="a"]')).toHaveCount(0);await c.driver.reopen();const saved=await persistedBook(page,c.title,c.id);expect(saved.metadata.chapterNotes[saved.chapters[1].id]).toBe('First beat');expect(saved.metadata.sectionNotes[target135?saved.chapters[1].id:'ch-1']).toEqual([{id:'b',text:'Second beat'}]);
 });
 test('[NEO-153-A] Leafloom: Outline chapter context delete archives rich prose as a Darling and Undo restores chapter companions',async({page})=>{
  const c=await existingBook(page,{...companion,chapters:['<p><b>Alpha.</b></p><p><i>Beta.</i></p>','<p>Later.</p>']});await tab(page,'outline');await page.locator('.ol-section[data-sec-id="beat"] .ol-text').click();await page.locator('.ol-chapter .ol-text').first().click();await tab(page,'manuscript');await c.driver.expectParagraphs([['Alpha.','Beta.','***','Planned scene'],['Later.']]);await tab(page,'outline');await page.locator('.ol-chapter').first().click({button:'right'});if(original)await page.locator('.pop-menu button').filter({hasText:/^Delete$/}).click();else await page.getByRole('menuitem',{name:'Delete chapter',exact:true}).click();await tab(page,'darlings');await expect(page.locator('.darling')).toHaveCount(1);await expect(page.locator('.darling b,.darling strong')).toHaveText('Alpha.');await expect(page.locator('.darling i,.darling em')).toHaveText('Beta.');await c.driver.undo();await tab(page,'manuscript');await c.driver.expectParagraphs([['Alpha.','Beta.','***','Planned scene'],['Later.']]);await c.driver.reopen();const saved=await persistedBook(page,c.title,c.id);expect(saved.darlings).toEqual([]);expect(saved.metadata.chapterNotes['ch-1']).toBe('Opening plan');expect(saved.metadata.sectionNotes['ch-1']).toEqual([{id:'beat',text:'Planned scene'}]);expect(saved.notes).toContain('Research stays.');
@@ -54,6 +55,40 @@ test('[NEO-156-A] Leafloom: ghost rename and section removal preserve authored p
 test('[NEO-138-A] Leafloom: missing owner in an empty manuscript creates a restorable chapter without losing rich archive',async({page})=>{
  const c=await existingBook(page,{chapters:[],darlings:[legacyDarling('gone')],notes:companion.notes});await restore(page);await c.driver.expectParagraphs(original?[['','Kept.','Again.']]:[['Kept.','Again.']]);if(original)test.info().annotations.push({type:'source-characterization',description:'Original newChapter fallback keeps its initial empty paragraph before restored blocks; candidate replaces that unused shell.'});await expect(page.locator('#hint,#toast')).toContainText('Original spot is gone');await c.driver.reopen();const saved=await persistedBook(page,c.title,c.id);expect(saved.darlings).toEqual([]);expect(saved.chapters).toHaveLength(1);expect(saved.chapters[0].html).toMatch(/<(?:b|strong)>Kept\.<\/(?:b|strong)>/);expect(saved.notes).toContain('Research stays.');
 });
-test('[NEO-156-A] Leafloom: outdent then indent moves a planned section to outline end and ghosts follow relative order without moving written prose',async({page})=>{
- const c=await existingBook(page,{chapters:['<p data-sec-id="a"><b>Written stays.</b></p>'],metadata:{sectionNotes:{'ch-1':[{id:'a',text:'Written plan'},{id:'b',text:'Second beat'},{id:'c',text:'Third beat'}]}}});await tab(page,'outline');await page.locator('.ol-section[data-sec-id="b"] .ol-text').click();await page.locator('.ol-chapter .ol-text').first().click();await page.locator('.ol-section[data-sec-id="b"] .ol-text').press('Shift+Tab');const newChapter=page.locator('.ol-chapter .ol-text').nth(1);await expect(newChapter).toHaveText('Second beat');await newChapter.press('Tab');await expect(page.locator('.ol-section .ol-text')).toHaveText(['Written plan','Third beat','Second beat']);await tab(page,'manuscript');await expect(page.locator('p.ghost')).toHaveText(['Third beat','Second beat']);await expect(page.locator('p[data-sec-id="a"]')).toHaveText('Written stays.');await c.driver.reopen();const saved=await persistedBook(page,c.title,c.id);expect(saved.chapters).toHaveLength(1);expect(saved.metadata.sectionNotes['ch-1'].map((s:{text:string})=>s.text)).toEqual(['Written plan','Third beat','Second beat']);expect(saved.metadata.sectionNotes['ch-1'].map((s:{id:string})=>s.id).slice(0,2)).toEqual(['a','c']);expect(saved.chapters[0].html).toMatch(/<(?:b|strong)>Written stays\.<\/(?:b|strong)>/);
+test('[NEO-156-A] Leafloom: outdent then indent preserves planned section order under the current target without moving written prose',async({page})=>{
+ const c=await existingBook(page,{notes:companion.notes,chapters:['<p data-sec-id="a"><b>Written stays.</b></p>'],metadata:{sectionNotes:{'ch-1':[{id:'a',text:'Written plan'},{id:'b',text:'Second beat'},{id:'c',text:'Third beat'}]}}});
+ await tab(page,'outline');
+ await page.locator('.ol-section[data-sec-id="b"] .ol-text').click();
+ await page.locator('.ol-chapter .ol-text').first().click();
+ await page.locator('.ol-section[data-sec-id="b"] .ol-text').press('Shift+Tab');
+ const newChapter=page.locator('.ol-chapter .ol-text').nth(1);
+ await expect(newChapter).toHaveText('Second beat');
+ await newChapter.press('Tab');
+ await expect(page.locator('.ol-section .ol-text')).toHaveText(target135?['Written plan','Second beat','Third beat']:['Written plan','Third beat','Second beat']);
+ const promotedId=await page.locator('.ol-section').nth(target135?1:2).getAttribute('data-sec-id');
+ expect(promotedId).toBeTruthy();
+ await tab(page,'manuscript');
+ if(target135){
+  test.info().annotations.push({type:'source-characterization',description:'Pinned NEO 1.3.5 createChapterAt retains an initial blank paragraph. After carrying the following planned section, joinChapter assigns the promoted chapter note to that normal blank paragraph; only Third beat remains a ghost. Original 1.2.4 ghost order is retained separately.'});
+  await expect(page.locator(`p[data-sec-id="${promotedId}"]:not(.ghost)`)).toHaveText('');
+ }
+ await expect(page.locator('p.ghost')).toHaveText(target135?['Third beat']:['Third beat','Second beat']);
+ await expect(page.locator('p[data-sec-id="a"]')).toHaveText('Written stays.');
+ await c.driver.reopen();
+ const saved=await persistedBook(page,c.title,c.id);
+ expect(saved.chapters).toHaveLength(1);
+ expect(saved.metadata.sectionNotes['ch-1'].map((s:{text:string})=>s.text)).toEqual(target135?['Written plan','Second beat','Third beat']:['Written plan','Third beat','Second beat']);
+ const ids=saved.metadata.sectionNotes['ch-1'].map((s:{id:string})=>s.id);
+ expect(target135?[ids[0],ids[2]]:ids.slice(0,2)).toEqual(['a','c']);
+ expect(ids[target135?1:2]).toBe(promotedId);
+ expect(saved.chapters[0].html).toMatch(/<(?:b|strong)>Written stays\.<\/(?:b|strong)>/);
+ expect(saved.notes).toContain('Research stays.');
+ if(target135){
+  const ownedBlank=await page.evaluate(({html,id})=>{
+   const body=new DOMParser().parseFromString(html,'text/html');
+   const paragraph=body.querySelector(`p[data-sec-id="${id}"]`);
+   return paragraph?{text:paragraph.textContent,ghost:paragraph.classList.contains('ghost')}:null;
+  },{html:saved.chapters[0].html,id:promotedId});
+  expect(ownedBlank).toEqual({text:'',ghost:false});
+ }
 });

@@ -139,6 +139,9 @@ export class SpellingViewModel {
         message: range.word,
       })),
     );
+    annotations.push(...editor.capitalizationRanges(id, language).map(range => ({
+      ...range, id: 'capital-' + range.passageId + '-' + range.from, kind: 'spelling' as const,
+    })));
     const ids = new Set([...snapshot, ...(previous ?? [])].map((passage) => passage.id));
     this.sections.set(id, snapshot);
     this.scanned.add(id);

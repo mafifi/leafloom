@@ -65,6 +65,7 @@ pub fn install(
             ("Hoefler Text", "Hoefler Text"),
             ("Iowan Old Style", "Iowan Old Style"),
             ("Jost", "Jost"),
+            ("iA Writer Quattro", "iA Writer Quattro"),
             ("Libron", "Libron"),
             ("Readerly", "Readerly"),
             ("Newsreader", "Newsreader"),
@@ -77,6 +78,7 @@ pub fn install(
             ("Cambria", "Cambria"),
             ("Constantia", "Constantia"),
             ("Jost", "Jost"),
+            ("iA Writer Quattro", "iA Writer Quattro"),
             ("Libron", "Libron"),
             ("Readerly", "Readerly"),
             ("Newsreader", "Newsreader"),
@@ -89,6 +91,7 @@ pub fn install(
             ("Alegreya", "Alegreya"),
             ("Source Serif Pro", "Source Serif Pro"),
             ("Jost", "Jost"),
+            ("iA Writer Quattro", "iA Writer Quattro"),
             ("Libron", "Libron"),
             ("Readerly", "Readerly"),
             ("Newsreader", "Newsreader"),
@@ -218,6 +221,10 @@ pub fn install(
         .separator()
         .item(&item(app, "bold", &t("Bold"), Some("CmdOrCtrl+B"))?)
         .item(&item(app, "italic", &t("Italic"), Some("CmdOrCtrl+I"))?)
+        .item(&item(app,"underline",&t("Underline"),Some("CmdOrCtrl+U"))?)
+        .item(&item(app,"strike",&t("Strikethrough"),Some("CmdOrCtrl+Shift+S"))?)
+        .item(&toggle(app,"flush",&t("Flush Paragraph"),false,None)?)
+        .item(&item(app,"read-aloud",&t("Read aloud from the cursor"),Some("CmdOrCtrl+Shift+U"))?)
         .item(&toggle(app, "poetry", &t("Poetry Paragraph"), false, None)?)
         .item(&item(app, "scene-break", &t("Scene Break"), None)?)
         .separator()
@@ -290,6 +297,7 @@ pub fn install(
         .items(&[&application, &file, &edit, &format, &view, &window, &help])
         .build()?;
     app.set_menu(menu)?;
+    if let Some(window)=app.get_window("main"){let _=crate::fullscreen_menu::synchronize(app,window.is_fullscreen().unwrap_or(false),false);}
     #[cfg(target_os="macos")]{
         let title=t("Edit");
         let labels=edit.items()?.into_iter().filter_map(|item|match item{MenuItemKind::MenuItem(item)=>item.text().ok(),MenuItemKind::Check(item)=>item.text().ok(),MenuItemKind::Submenu(item)=>item.text().ok(),MenuItemKind::Predefined(item)=>item.text().ok(),_=>None}).collect();
@@ -300,6 +308,7 @@ pub fn install(
 pub fn listen(app: &tauri::AppHandle) {
     app.on_menu_event(|app, event| {
         if let Some(window) = app.get_webview_window("main") {
+            let _=crate::fullscreen_menu::synchronize(app,window.is_fullscreen().unwrap_or(false),false);
             let _ = window.emit("leafloom:menu-command", event.id().as_ref());
         }
     });
@@ -354,7 +363,7 @@ pub fn set_state(app: &tauri::AppHandle, state: &serde_json::Value) -> tauri::Re
         }
         visit(&menu, prefix, &selected)?;
     }
-    fn ticks(entries:Vec<MenuItemKind<tauri::Wry>>,state:&serde_json::Value)->tauri::Result<()> {for entry in entries {match entry {MenuItemKind::Check(check)=>{let key=match check.id().as_ref(){"typewriter"=>Some("typewriter"),"vim"=>Some("vim"),"markdown-emphasis"=>Some("markdownEmphasis"),"ui-bright"=>Some("uiBright"),"poetry"=>Some("poetry"),_=>None};if let Some(value)=key.and_then(|k|state.get(k)).and_then(serde_json::Value::as_bool){check.set_checked(value)?;}},MenuItemKind::Submenu(menu)=>ticks(menu.items()?,state)?,_=>()}}Ok(())}
+    fn ticks(entries:Vec<MenuItemKind<tauri::Wry>>,state:&serde_json::Value)->tauri::Result<()> {for entry in entries {match entry {MenuItemKind::Check(check)=>{let key=match check.id().as_ref(){"typewriter"=>Some("typewriter"),"vim"=>Some("vim"),"markdown-emphasis"=>Some("markdownEmphasis"),"ui-bright"=>Some("uiBright"),"poetry"=>Some("poetry"),"flush"=>Some("flush"),_=>None};if let Some(value)=key.and_then(|k|state.get(k)).and_then(serde_json::Value::as_bool){check.set_checked(value)?;}},MenuItemKind::Submenu(menu)=>ticks(menu.items()?,state)?,_=>()}}Ok(())}
     ticks(menu.items()?,state)?;
     Ok(())
 }

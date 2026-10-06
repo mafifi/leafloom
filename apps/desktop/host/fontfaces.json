@@ -534,5 +534,33 @@
     "file": "newsreader-700-italic.ttf",
     "weight": 700,
     "style": "italic"
+  },
+  {
+    "family": "iA Writer Quattro",
+    "file": "ia-writer-quattro-400-normal.woff2",
+    "weight": 400,
+    "style": "normal",
+    "pdfFile": "ia-writer-quattro-400-normal.ttf"
+  },
+  {
+    "family": "iA Writer Quattro",
+    "file": "ia-writer-quattro-400-italic.woff2",
+    "weight": 400,
+    "style": "italic",
+    "pdfFile": "ia-writer-quattro-400-italic.ttf"
+  },
+  {
+    "family": "iA Writer Quattro",
+    "file": "ia-writer-quattro-700-normal.woff2",
+    "weight": 700,
+    "style": "normal",
+    "pdfFile": "ia-writer-quattro-700-normal.ttf"
+  },
+  {
+    "family": "iA Writer Quattro",
+    "file": "ia-writer-quattro-700-italic.woff2",
+    "weight": 700,
+    "style": "italic",
+    "pdfFile": "ia-writer-quattro-700-italic.ttf"
   }
 ]

@@ -20,7 +20,7 @@ import {
 } from 'node:fs/promises';
 import { join, resolve, dirname, extname } from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { Book, SourceBook, Metadata } from '@leafloom/document-contracts';
+import { Book, SourceBook, Metadata, manuscriptMetadata } from '@leafloom/document-contracts';
 import { BookFiles, importNeo, hash } from '@leafloom/filesystem-documents';
 import { LifecycleError, type Opened, type CheckpointValue } from '@leafloom/editor-contracts';
 import { z } from 'zod';
@@ -34,6 +34,7 @@ import {generatedCover,rasterDimensions} from './generated-cover.ts';
 import {webpDimensions} from './webp-cover.ts';
 import {translate} from '@leafloom/language-contracts';
 import {reportRuntimeError} from './runtime-errors.ts';
+import {readLibraryJSON, writeLibraryJSON} from './library-json-recovery.ts';
 export class LibraryHost {
   private locales = new LocaleProvider();
   private watchers = new Map<
@@ -286,7 +287,7 @@ export class LibraryHost {
   private async exportPreferences(){
     const library=await this.json(join(this.root,'library.json'),{}) as Record<string,unknown>|null;
     const fonts=library?.fonts&&typeof library.fonts==='object'?library.fonts as Record<string,unknown>:{};
-    return {catalog:await this.dispatch('getLanguage',{}) as Awaited<ReturnType<LocaleProvider['get']>>,customChapterTitles:Boolean(library?.exportCustomChapterTitles),bodyFont:typeof fonts.body==='string'?fonts.body:undefined,dropcap:typeof fonts.dropcap==='string'?fonts.dropcap:undefined};
+    return {catalog:await this.dispatch('getLanguage',{}) as Awaited<ReturnType<LocaleProvider['get']>>,scriptContact:typeof library?.scriptContact==='string'?library.scriptContact:undefined,customChapterTitles:Boolean(library?.exportCustomChapterTitles),bodyFont:typeof fonts.body==='string'?fonts.body:undefined,dropcap:typeof fonts.dropcap==='string'?fonts.dropcap:undefined};
   }
   private async coverArt(bookId:string){
     const folder=await this.checked(this.folder(bookId)),raw=await this.json(join(folder,'art.json'),null);
@@ -375,15 +376,12 @@ export class LibraryHost {
       case 'listBackups':
         return new BackupProvider(this.root).list();
       case 'readLibrary':
-        return this.json(join(this.root, 'library.json'), null);
+        return readLibraryJSON({root:this.root,checked:path=>this.checked(path),atomic:(path,data)=>this.atomic(path,data),books:async()=>await this.dispatch('listBooks',{}) as {id:string;author:string}[]});
       case 'writeLibrary': {
-        await this.json(join(this.root,'library.json'),null);
+        await this.dispatch('readLibrary',{});
         const learned=[...new Set(Object.values(await this.learnedWords()).flat())],incoming=z.record(z.string(),z.json()).parse(p.library);
         const library={...incoming,...(learned.length?{customWords:[...new Set([...z.array(z.string()).parse(incoming.customWords??[]),...learned])]}:{})};
-        await this.atomic(
-          join(this.root, 'library.json'),
-          JSON.stringify(library, null, 2) + '\n',
-        );
+        await writeLibraryJSON({root:this.root,checked:path=>this.checked(path),atomic:(path,data)=>this.atomic(path,data)},library);
         await this.writeCatalog();
         return true;
       }
@@ -430,7 +428,7 @@ export class LibraryHost {
           if (!entry.isDirectory() || !entry.name.startsWith('book-')) continue;
           try {
             const book = await new BookFiles(await this.checked(this.folder(entry.name))).load(false);
-            rows.push(book.book.metadata);
+            rows.push(manuscriptMetadata(book.book));
           } catch {
             // Source listBooks skips unreadable folders; intact books stay reachable.
           }
@@ -453,12 +451,13 @@ export class LibraryHost {
           created: now,
           modified: now,
           tabNames: { notes: 'Notes', outline: 'Outline' },
+          ...(p.format === 'screenplay' ? { format: p.format, credit: p.credit ?? 'Written by' } : {}),
         };
         const book = Book.parse({
           formatVersion: 'neo-lifecycle/v1',
           revision: 0,
           metadata,
-          chapters: [],
+          chapters: p.format === 'screenplay' ? [{ id: 'ch-' + randomUUID(), html: '<p></p>' }] : [],
           darlings: [],
         });
         await mkdir(staging);
@@ -623,7 +622,7 @@ export class LibraryHost {
             chapterTitles: titles,
             chapterKinds: kinds,
             kind: 'novel',
-            ...(parsed.format ? {format:parsed.format, screenplayTitle:parsed.screenplayTitle} : {}),
+            ...(parsed.format ? {format:parsed.format, screenplayTitle:parsed.screenplayTitle,...(parsed.screenplayTitle?.credit?{credit:parsed.screenplayTitle.credit}:{}),...(parsed.screenplayTitle?.draft?{draft:parsed.screenplayTitle.draft}:{})} : {}),
           };
         await mkdir(staging);
         try {
@@ -641,10 +640,11 @@ export class LibraryHost {
               2,
             ) + '\n',
           );
-          await this.atomic(join(staging, 'notes.html'), '');
+          await this.atomic(join(staging, 'notes.html'), parsed.importedNotes === undefined ? '' : '<pre>' + parsed.importedNotes.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>');
           await this.atomic(join(staging, 'outline.html'), '');
           await rename(staging, folder);
           await this.syncDirectory(this.root);
+          if(parsed.screenplayTitle?.contact){const library=await this.json(join(this.root,'library.json'),{}) as Record<string,unknown>;if(!library.scriptContact)await this.atomic(join(this.root,'library.json'),JSON.stringify({...library,scriptContact:parsed.screenplayTitle.contact},null,2)+'\n');}
           await this.writeCatalog();
           return metadata;
         } finally {

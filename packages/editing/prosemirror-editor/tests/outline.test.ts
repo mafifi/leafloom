@@ -46,51 +46,62 @@ it('chapter and section outline rows project portable notes with wrapping labels
   core.undo();
   expect(core.metadata.chapterNotes).toEqual({ a: 'Beginning', b: 'End' });
 });
-it('section Enter adds above or below and chapter Enter inserts at its actual position', () => {
+it('NEO 1.3.5 section Enter always adds a chapter after its containing chapter', () => {
   for (const before of [true, false]) {
-    const core = open(),
-      next = core.outlineEnter({ chapterId: 'a', sectionId: 'one' }, before);
-    expect(
-      core.outlineRows
-        .filter((row) => row.chapterId === 'a' && row.kind === 'section')
-        .map((row) => row.text),
-    ).toEqual(before ? ['', 'First beat', 'Second beat'] : ['First beat', '', 'Second beat']);
-    expect(next.sectionId).toBeDefined();
+    const core = open(), next = core.outlineEnter({ chapterId: 'a', sectionId: 'one' }, before);
+    expect(next.sectionId).toBeUndefined();
+    expect(core.chapters.map((chapter) => chapter.id)).toEqual(['a', next.chapterId, 'b']);
+    expect(core.outlineRows.filter((row) => row.kind === 'section').map((row) => row.text)).toEqual(['First beat', 'Second beat']);
     core.undo();
-    expect(core.outlineRows.filter((row) => row.kind === 'section')).toHaveLength(2);
+    expect(core.chapters.map((chapter) => chapter.id)).toEqual(['a', 'b']);
   }
-  const core = open(),
-    next = core.outlineEnter({ chapterId: 'a' }, true);
+  const core = open(), next = core.outlineEnter({ chapterId: 'a' }, true);
   expect(core.chapters[0].id).toBe(next.chapterId);
-  core.undo();
-  expect(core.chapters.map((chapter) => chapter.id)).toEqual(['a', 'b']);
 });
-it('Tab only converts empty nonfirst story chapters to prior sections as one history command', () => {
-  const core = open('<p>Alpha.</p>', '<p><br></p>');
+it('NEO 1.3.5 Tab joins written chapters into prior sections and preserves rich prose', () => {
+  const core = open('<p>Alpha.</p>', '<p><i>Later.</i></p>');
   expect(core.outlineIndent({ chapterId: 'a' }).notice).toContain('first line');
-  const result = core.outlineIndent({ chapterId: 'b' });
+  const before = core.checkpoint(), result = core.outlineIndent({ chapterId: 'b' });
   expect(core.chapters).toHaveLength(1);
-  expect(core.outlineRows.at(-1)?.text).toBe('End');
   expect(result.target.sectionId).toBeDefined();
-  expect(core.html('a')).toContain('class="ghost"');
+  expect(core.html('a')).toContain('<i>Later.</i>');
+  expect(core.html('a')).toContain('data-sec-id="' + result.target.sectionId + '"');
+  // joinChapter/orderSectionNotes places physical sections before unplaced plans.
+  expect(core.outlineRows.filter((row) => row.kind === 'section').map((row) => row.text)).toEqual(['End', 'First beat', 'Second beat']);
   core.undo();
-  expect(core.chapters).toHaveLength(2);
-  expect(core.metadata.chapterNotes).toEqual({ a: 'Beginning', b: 'End' });
-  const written = open();
-  expect(written.outlineIndent({ chapterId: 'b' }).notice).toContain('already has words');
+  expect(core.checkpoint().book.chapters).toEqual(before.book.chapters);
+  expect(core.metadata.chapterNotes).toEqual(before.book.metadata.chapterNotes);
+  core.redo();
+  expect(core.chapters).toHaveLength(1);
+  expect(core.html('a')).toContain('<i>Later.</i>');
 });
-it('Shift Tab creates a new chapter with section note and preserves written prose', () => {
-  const core = open('<p data-sec-id="one">Written prose.</p>');
+it('NEO 1.3.5 Tab on a section creates the next empty section', () => {
+  const core = open(), before = core.checkpoint(), result = core.outlineIndent({ chapterId: 'a', sectionId: 'one' });
+  expect(result.target.chapterId).toBe('a');
+  expect(core.outlineRows.filter((row) => row.kind === 'section').map((row) => row.text)).toEqual(['First beat', '', 'Second beat']);
+  core.undo();
+  expect(core.checkpoint().book.chapters).toEqual(before.book.chapters);
+  expect(core.metadata.sectionNotes).toEqual(before.book.metadata.sectionNotes);
+});
+it('NEO 1.3.5 Shift Tab carries following planned notes, retaining written prose in its owner', () => {
+  const core = open('<p data-sec-id="one"><i>Written prose.</i></p>');
   const next = core.outlineIndent({ chapterId: 'a', sectionId: 'one' }, true);
   expect(core.chapters.map((chapter) => chapter.id)).toEqual(['a', next.target.chapterId, 'b']);
-  expect(core.outlineRows.find((row) => row.chapterId === next.target.chapterId)?.text).toBe(
-    'First beat',
-  );
-  expect(core.html('a')).toContain('Written prose.');
-  expect(core.outlineRows.some((row) => row.sectionId === 'one')).toBe(false);
+  expect(core.outlineRows.find((row) => row.chapterId === next.target.chapterId)?.text).toBe('First beat');
+  expect(core.html('a')).toContain('<i>Written prose.</i>');
+  expect(core.metadata.sectionNotes).toMatchObject({ a: [], [next.target.chapterId]: [{ id: 'two', text: 'Second beat' }] });
+  expect(core.html(next.target.chapterId)).toContain('class="ghost" data-sec-id="two"');
   core.undo();
   expect(core.chapters).toHaveLength(2);
   expect(core.outlineRows.some((row) => row.sectionId === 'one')).toBe(true);
+});
+it('NEO 1.3.5 Shift Tab leaves every following note when any following section is written', () => {
+  const core = open('<p data-sec-id="one">First prose.</p><p class="scene-break">***</p><p data-sec-id="two"><b>Second prose.</b></p>', undefined, [
+    { id: 'one', text: 'First beat' }, { id: 'two', text: 'Second beat' }, { id: 'three', text: 'Third plan' },
+  ]);
+  core.outlineIndent({ chapterId: 'a', sectionId: 'one' }, true);
+  expect(core.metadata.sectionNotes).toMatchObject({ a: [{ id: 'two', text: 'Second beat' }, { id: 'three', text: 'Third plan' }] });
+  expect(core.html('a')).toContain('<b>Second prose.</b>');
 });
 it('ghost synchronization preserves written references, notes ordering, IDs and owned scene breaks', () => {
   const core = open(),
@@ -199,7 +210,7 @@ it('Outline Part names use the page opening prose and source colon, independent 
   expect(core.outlineRows[0]).toMatchObject({ kind: 'part', label: 'I', text: 'Part I: Journey' });
   expect(core.contentsRows()[0].label).toBe('Part I: Journey');
 });
-it('reconciliation follows outline order while retaining authored paragraphs and their stable references', () => {
+it('NEO 1.3.5 reconciliation retains existing ghost positions and authored paragraph references', () => {
   const core = open(
     '<p class="ghost" data-sec-id="two">Second beat</p><p>Authored afterward.</p><p class="scene-break" data-sec-brk="one">***</p><p class="ghost" data-sec-id="one">First beat</p>',
   );
@@ -211,13 +222,9 @@ it('reconciliation follows outline order while retaining authored paragraphs and
     .map((row) => row.id);
   core.editOutlineRow({ chapterId: 'a', sectionId: 'one' }, 'Revised first beat');
   expect(core.passageRows('a').map((row) => row.text)).toEqual([
-    'Authored afterward.',
-    '***',
-    'Revised first beat',
-    '***',
-    'Second beat',
+    'Second beat', 'Authored afterward.', '***', 'Revised first beat',
   ]);
-  expect(core.passageRows('a')[0].id).toBe(prose.id);
+  expect(core.passageRows('a')[1].id).toBe(prose.id);
   expect(core.resolve(reference.id).status).toBe('current');
   expect(
     new Set(
@@ -247,13 +254,14 @@ it('Outline chapter deletion archives rich authored and planned content and rest
   });
   core.editOutlineRow({ chapterId: 'b', sectionId: 'third' }, 'Planned');
   core.renameChapter('b', 'End title');
+  expect(core.html('b')).not.toContain('scene-break');
   const before = core.checkpoint();
   core.deleteChapter('b');
   expect(core.darlings[0]).toMatchObject({
     chapterId: null,
     chapterLabel: 'deleted Chapter 2',
-    // NEO cleanChapterEl removes ghosts, but retains their scene separators.
-    text: 'Later.\n***',
+    // 1.3.5 syncGhosts retains this existing ghost in place and invents no separator.
+    text: 'Later.',
   });
   expect(core.darlings[0].html).toContain('<i>Later.</i>');
   expect(core.darlings[0].html).toContain('class="ghost"');
@@ -282,4 +290,15 @@ it('chapter reorder moves authored and planned outline rows together without rec
   expect(core.resolve(reference.id).status).toBe('current');
   core.redo();
   expect(core.chapters.map((chapter) => chapter.id)).toEqual(['b', 'a']);
+});
+
+it('NEO 1.3.5 chapter deletion retains an actual persisted ghost separator in the archive text', () => {
+  const core = open('<p>Alpha.</p>', '<p><i>Later.</i></p><p class="scene-break" data-sec-brk="third">***</p><p class="ghost" data-sec-id="third">Planned</p>');
+  core.updateMetadata({ sectionNotes: { b: [{ id: 'third', text: 'Planned' }] } });
+  core.editOutlineRow({ chapterId: 'b', sectionId: 'third' }, 'Planned');
+  core.deleteChapter('b');
+  // cleanChapterEl removes the ghost and preserves the real separator.
+  expect(core.darlings[0].text).toBe('Later.\n***');
+  expect(core.darlings[0].html).toContain('data-sec-brk="third"');
+  expect(core.darlings[0].html).toContain('<i>Later.</i>');
 });

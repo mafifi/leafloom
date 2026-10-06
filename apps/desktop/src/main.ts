@@ -198,3 +198,5 @@ import.meta.hot?.dispose(() => {
   document.removeEventListener('keydown', readingKey, true);
   document.removeEventListener('pointerdown', readingPointer, true);
 });
+
+import.meta.hot?.dispose(() => vm.disposeReadAloud());

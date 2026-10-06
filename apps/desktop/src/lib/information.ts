@@ -101,6 +101,12 @@ export function shortcutSections(IS_MAC: boolean, vimEnabled = false) {
         [K('⌘⇧O', 'Ctrl+Shift+O'), tk('Cycle focus mode'), tk('Off → paragraph → sentence → off.')],
         [K('⌥⌘↓', 'Ctrl+Alt+↓'), tk('Go to the next chapter')],
         [K('⌥⌘↑', 'Ctrl+Alt+↑'), tk('Go to the previous chapter')],
+        ...(!IS_MAC
+          ? [
+              ['Ctrl+Page Down', tk('Go to the next chapter')],
+              ['Ctrl+Page Up', tk('Go to the previous chapter')],
+            ]
+          : []),
         [
           ['F6', K('⌃Tab', 'Ctrl+Tab')],
           tk('Move between the page, the chapters, the notes and the bottom bar'),
@@ -139,7 +145,8 @@ export function shortcutSections(IS_MAC: boolean, vimEnabled = false) {
               ['o O', tk('Write in a new paragraph below or above')],
               ['v', tk('Select'), tk('Move to stretch it, then y to copy or d to cut.')],
               ['x', tk('Delete the letter under the caret')],
-              ['/', tk('Find')],
+              ['/', tk('Find'), tk('Esc returns to moving at the match.')],
+              ['n N', tk('Next or previous match')],
             ],
           },
         ]

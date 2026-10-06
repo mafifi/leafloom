@@ -34,13 +34,19 @@ keyboard / pointer / menu / accepted proposal
       presentation       host persistence
 ```
 
-Typing, formatting, paragraph/chapter operations and accepted review-contract proposals share one document history. Focused metadata fields retain their native field history while editing; committing the field joins document history. External structural reconciliation establishes a new history boundary. [ADR 0003](docs/adr/0003-document-history-and-durability.md) defines these transitions. ViewModels do not maintain a second document or document undo stack. Provider events describe committed outcomes; listeners cannot mutate a document behind the command boundary.
+Typing, formatting, paragraph/chapter operations, outline card edits and moves, and accepted review-contract proposals share one document history. Focused metadata fields retain their native field history while editing; committing the field joins document history. External structural reconciliation establishes a new history boundary. [ADR 0003](docs/adr/0003-document-history-and-durability.md) defines these transitions. ViewModels do not maintain a second document or document undo stack. Provider events describe committed outcomes; listeners cannot mutate a document behind the command boundary.
+
+Outline list rows, chapter/section/scene cards and walking notes derive from the live editor document. Only authored notes and their identities persist; card layout, word counts, excerpts and screenplay measurements remain projections. Measured screenplay line boxes feed the portable 54-line pagination contract, card lengths and counters. The editor renders page markers as decorations; measurement updates leave typing history intact. Svelte card views own transient drafts and pointer/focus state; their actions commit through the editor command port.
+
+Local Read Aloud uses sentence and local-voice ports. The browser provider owns speech and temporary highlights; stopping returns the caret through the mounted editor surface. It consumes no remote voice and writes no speech decoration into the manuscript.
 
 ## Storage
 
 The managed Node child owns durable storage through bundled TypeScript `LibraryHost` and `@leafloom/filesystem-documents`; Rust mediates native services and grants. Packaging pins the Node runtime and records bundled host/resources in its manifest. Runtime diagnostics and native receipts identify and hash the actual child executable, host entry and served WebView assets.
 
 Persist portable author content independently of UI decorations. Import NEO chapter HTML and side data through an explicit codec, preserving identities and unsupported material. The persistence protocol records a four-file save receipt and supports interruption recovery; [ADR 0003](docs/adr/0003-document-history-and-durability.md) owns the required semantics. A read or revision mismatch never silently overwrites newer author work.
+
+Library preferences retain a schema-valid previous copy. Startup restores complete temporary or backup metadata, or builds a shelf from readable manuscripts when the library file is missing. Unreadable metadata bytes remain available in recovery files. Refused host operations retain their identity and pending author revision through retry.
 
 ## Assistance
 
@@ -56,6 +62,6 @@ The original Electron reference adapter, browser candidate adapter and native Ta
 
 ## Screenplays and source size
 
-[ADR 0004](docs/adr/0004-screenplay-semantics-and-manuscript-v2.md) defines screenplay elements and `leafloom-manuscript/v2`. The storage layout remains unchanged. Typed paragraph semantics survive save and reopen; scene navigation derives from passage identity. Mode and element changes join author history. Exchange codecs validate runs and reject unsupported material.
+[ADR 0004](docs/adr/0004-screenplay-semantics-and-manuscript-v2.md) defines screenplay elements and `leafloom-manuscript/v2`. The storage layout remains unchanged. Typed paragraph semantics survive save and reopen; scene navigation derives from passage identity. Mode and element changes join author history. Script credit and draft fields use the metadata field commit boundary. The shared contact block belongs to library preferences; its ViewModel stages typing, coalesces writes and flushes before save or close through the library writer. Concurrent flushes wait for the latest staged value. Exchange codecs validate runs and reject unsupported material.
 
 Application and editor state owners compose bound command facades and focused feature modules. Operation ports access live owner values and methods, retaining one document, history and lifecycle. `check:size` warns at 300–400 lines and blocks owned files at 1,000; policy runs it in the existing lightweight CI job.

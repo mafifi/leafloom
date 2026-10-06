@@ -1,4 +1,5 @@
 import {test,expect} from './author-fixture';
+import {poetryShortcut} from './editing-helpers';
 import {existingBook} from './book-fixture';
 import {persistedBook,persistedLibrary} from './storage-probe';
 const mod=process.platform==='darwin'?'Meta':'Control';
@@ -39,4 +40,46 @@ test('[NEO135-026-B] Native screenplay Enter and element shortcuts preserve dial
  await c.driver.undo();await c.driver.expectParagraphs([['KIM','Hello.']]);
  await c.driver.redo();await expect(page.locator('.chapter-body p.sp-paren')).toHaveText('(Hello.)');
  await c.driver.reopen();await expect(page.locator('.chapter-body p.sp-paren')).toHaveText('(Hello.)');await c.driver.expectParagraphs([['KIM','(Hello.)']]);
+});
+
+test('[NEO135-014-A] Leading blank paragraphs keep their spacing while the first written prose gets the screen-only opening marker',async({page})=>{
+ const c=await existingBook(page,{chapters:['<p><br></p><p> </p><p>Opening words.</p><p>Later words.</p>']});
+ await c.driver.select(0,3,12);await expect(page.locator('.chapter-body p[data-first]')).toHaveText('Opening words.');
+ await c.driver.reopen();await expect(page.locator('.chapter-body p')).toHaveCount(4);await expect(page.locator('.chapter-body p[data-first]')).toHaveText('Opening words.');
+ expect((await persistedBook(page,c.title)).chapters[0].html).not.toContain('data-first');
+});
+test('[NEO135-004-B] English standalone i correction keeps its boundary on immediate Undo while exclusions remain lowercase',async({page})=>{
+ const c=await existingBook(page,{chapters:['<p>We said i</p><p>Dr. </p><p>Wait… </p><p class="poetry">verse </p>'],notes:'<p>Notes. </p>'});
+ await c.driver.select(0,0,9);await c.driver.type(' ');await c.driver.expectParagraphs([['We said I ','Dr. ','Wait… ','verse ']]);await c.driver.undo();await c.driver.expectParagraphs([['We said i ','Dr. ','Wait… ','verse ']]);
+ await c.driver.select(0,1,4);await c.driver.type('smith');await c.driver.select(0,2,6);await c.driver.type('and');await c.driver.select(0,3,6);await c.driver.type('lower');
+ await c.driver.expectParagraphs([['We said i ','Dr. smith','Wait… and','verse lower']]);await c.driver.reopen();await c.driver.expectParagraphs([['We said i ','Dr. smith','Wait… and','verse lower']]);
+});
+test('[NEO135-006-D] Flush continuation and prose exit retain authored italics and Undo at paragraph start',async({page})=>{
+ const c=await existingBook(page,{chapters:['<p><i>Opening words.</i></p>']});await c.driver.select(0,0,0);await c.driver.key('Shift+Enter');await expect(page.locator('.chapter-body p')).toHaveClass(/flush/);await expect(page.locator('.chapter-body i, .chapter-body em')).toHaveText('Opening words.');
+ await c.driver.select(0,0,14);await c.driver.key('Shift+Enter');await expect(page.locator('.chapter-body p').nth(1)).toHaveClass(/flush/);await c.driver.type('More');await c.driver.key('Enter');await expect(page.locator('.chapter-body p').nth(2)).not.toHaveClass(/flush|poetry/);await c.driver.type('Prose');await c.driver.reopen();await c.driver.expectParagraphs([['Opening words.','More','Prose']]);
+});
+test('[NEO135-018-C] Native typed and pasted strike retain nested emphasis, immediate Undo and durable continuation',async({page})=>{
+ const c=await existingBook(page,{chapters:['<p><b>Start </b></p>']});await c.driver.select(0,0,6);await c.driver.type('~~word~~');
+ await c.driver.expectParagraphs([['Start word']]);await expect(page.locator('.chapter-body s, .chapter-body del')).toHaveText('word');
+ await c.driver.undo();await c.driver.expectParagraphs([['Start ~~word~~']]);await c.driver.redo();await c.driver.type(' plain');
+ await expect(page.locator('.chapter-body s, .chapter-body del')).toHaveText('word');await c.driver.reopen();
+ expect((await persistedBook(page,c.title)).chapters[0].html).toMatch(/<(s|del)>word<\/(s|del)>/);
+});
+
+test('[NEO135-006-E] Heading Shift Enter commits the title; modified Shift Enter creates undoable opening poetry', async ({ page }) => {
+ const c = await existingBook(page, { chapters: ['<p>Opening <b>words.</b></p>', '<p>Later.</p>'], metadata: { chapterTitles: { 'ch-1': 'Opening' } } });
+ await page.locator('.ch-title').first().click();
+ await page.keyboard.press('Shift+Enter');
+ await c.driver.expectParagraphs([['Opening words.'], ['Later.']]);
+ await expect(page.locator('.chapter-body p.poetry')).toHaveCount(0);
+ await page.locator('.ch-title').first().click();
+ await page.keyboard.press(poetryShortcut);
+ await c.driver.expectParagraphs([['', 'Opening words.'], ['Later.']]);
+ await expect(page.locator('.chapter-body').first().locator('p').first()).toHaveClass(/poetry/);
+ expect(await c.driver.caret()).toMatchObject({ chapter: 0, paragraph: 0, offset: 0 });
+ await c.driver.undo();
+ await c.driver.expectParagraphs([['Opening words.'], ['Later.']]);
+ await expect(page.locator('.chapter-body b,.chapter-body strong')).toHaveText('words.');
+ await c.driver.reopen();
+ expect((await persistedBook(page, c.title)).metadata.chapterTitles).toMatchObject({ 'ch-1': 'Opening' });
 });

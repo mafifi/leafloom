@@ -91,6 +91,7 @@ it('rejects invalid events without changing pending status, author focus or hint
   expect(hostRequest).toHaveBeenCalledWith(
     'reportRuntimeError',
     expect.objectContaining({ source: 'host', code: 'UNEXPECTED_RUNTIME', at: expect.any(String) }),
+    undefined,
   );
   expect(JSON.stringify(hostRequest.mock.calls)).not.toContain('Never log this fixture string');
 });

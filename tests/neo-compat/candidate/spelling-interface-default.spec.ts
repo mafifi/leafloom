@@ -1,4 +1,5 @@
 import { test, expect } from './author-fixture';
+import { dictionaryFlags } from './spelling-observation';
 import { existingBook } from './book-fixture';
 import { persistedBook, persistedLibrary, privateStorageRoot } from './storage-probe';
 import { clickReferenceMenu } from '../reference/harness';
@@ -45,7 +46,7 @@ for (const explicit of [false, true]) {
               .highlights;
             return [...(registry?.get('neo-spell') ?? [])].map((range) => range.toString());
           })
-        : page.locator('[data-annotation-kind="spelling"]').allTextContents();
+        : dictionaryFlags(page);
     await expect.poll(flagged).toContain('qzxvplmno');
     if (explicit) await expect.poll(flagged).toContain('școală');
     else expect(await flagged()).not.toContain('școală');

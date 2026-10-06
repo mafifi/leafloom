@@ -20,6 +20,7 @@ const common = {
   'Iowan Old Style': '"Iowan Old Style", Georgia, serif',
   Cambria: 'Cambria, Georgia, serif',
   Constantia: 'Constantia, Georgia, serif',
+  'iA Writer Quattro': '"iA Writer Quattro", "Helvetica Neue", Arial, sans-serif',
   Jost: '"Jost", "Avenir Next", "Helvetica Neue", Arial, sans-serif',
 };
 const linux = {
@@ -29,14 +30,15 @@ const linux = {
   Alegreya: '"Alegreya", "Hoefler Text", Georgia, serif',
   'Source Serif Pro': '"Source Serif Pro", "Iowan Old Style", Georgia, serif',
   Jost: common.Jost,
+  'iA Writer Quattro': common['iA Writer Quattro'],
 };
 export function fontChoices(platform: FontPlatform): FontChoicesValue {
   const body =
     platform === 'linux'
       ? Object.keys(linux)
       : platform === 'macos'
-        ? ['Georgia', 'Palatino', 'Baskerville', 'Hoefler Text', 'Iowan Old Style', 'Jost']
-        : ['Georgia', 'Palatino', 'Baskerville', 'Cambria', 'Constantia', 'Jost'];
+        ? ['Georgia', 'Palatino', 'Baskerville', 'Hoefler Text', 'Iowan Old Style', 'Jost', 'iA Writer Quattro']
+        : ['Georgia', 'Palatino', 'Baskerville', 'Cambria', 'Constantia', 'Jost', 'iA Writer Quattro'];
   return {
     body: [...body, ...Object.keys(reading)],
     defaultBody: platform === 'linux' ? 'Gelasio' : 'Georgia',

@@ -20,14 +20,26 @@ export interface SearchContext {
 export class SearchViewModel {
   private timer: ReturnType<typeof setTimeout> | null = null;
   private computedQuery = '';
+  private home: EditorPort['caret'] = null;
+  private homeBook = '';
+  private returnToMotion = false;
   private computedPanel = '';
   input(query: string) {
     this.context.patch({ search: query });
     this.cancelPending();
-    this.timer = setTimeout(() => { this.timer = null; if (this.value.searchOpen) this.search(this.value.search); }, 250);
+    this.timer = setTimeout(() => {
+      this.timer = null;
+      if (this.value.searchOpen) this.search(this.value.search);
+    }, 250);
   }
-  private cancelPending() { if (this.timer) clearTimeout(this.timer); this.timer = null; }
-  private freshIfStale() { if (this.computedQuery !== this.value.search || this.computedPanel !== this.value.panel) this.search(this.value.search); }
+  private cancelPending() {
+    if (this.timer) clearTimeout(this.timer);
+    this.timer = null;
+  }
+  private freshIfStale() {
+    if (this.computedQuery !== this.value.search || this.computedPanel !== this.value.panel)
+      this.search(this.value.search);
+  }
   constructor(private context: SearchContext) {}
   private get value() {
     return this.context.snapshot();
@@ -43,6 +55,9 @@ export class SearchViewModel {
       this.context.patch({ hint: 'Open a book first' });
       return;
     }
+    this.home = this.editor.caret;
+    this.homeBook = this.editor.metadata.id;
+    this.returnToMotion = Boolean(this.surfaces?.vimState.navigation);
     const selected = this.editor?.copySelection().text.slice(0, 80).trim();
     this.context.patch({ searchOpen: true });
     this.search(selected || this.value.search);
@@ -71,10 +86,18 @@ export class SearchViewModel {
   }
   closeSearch() {
     this.cancelPending();
+    const visited = this.value.matches[this.value.matchIndex];
+    if (this.editor?.metadata.id === this.homeBook) {
+      if (visited && 'passageId' in visited)
+        this.editor.selectPassage(visited.passageId, visited.from);
+      else if (this.home) this.editor.selectPassage(this.home.passageId, this.home.offset);
+    }
     this.context.patch({ searchOpen: false, matches: [], matchIndex: -1 });
     this.clearHighlights();
     this.editor?.setAnnotations(this.editor.annotations.filter((a) => a.kind !== 'search'));
     if (this.value.panel === 'manuscript' || this.value.panel === 'notes') this.surfaces?.focus();
+    if (this.returnToMotion) this.surfaces?.restVim();
+    this.home = null;
   }
   search(query: string) {
     this.cancelPending();
@@ -122,6 +145,42 @@ export class SearchViewModel {
       const rect = range.getBoundingClientRect();
       scroll.scrollTop += rect.top - window.innerHeight * 0.45;
     } else this.matchElement(match)?.scrollIntoView({ block: 'center' });
+  }
+  repeat(direction: -1 | 1, times = 1, visual = false) {
+    const editor = this.editor,
+      caret = editor?.caret,
+      query = this.value.search;
+    if (!editor || !caret || !query || !['manuscript', 'notes'].includes(this.value.panel)) return;
+    const matches = editor.search(query, this.value.panel === 'notes' ? 'notes' : 'manuscript');
+    if (!matches.length) return;
+    const rows = editor.passageRows(this.value.panel === 'notes' ? 'notes' : undefined);
+    const order = new Map(rows.map((row, index) => [row.id, index]));
+    const here = order.get(caret.passageId) ?? -1;
+    let index =
+      direction > 0
+        ? matches.findIndex(
+            (m) =>
+              (order.get(m.passageId) ?? -1) > here ||
+              (m.passageId === caret.passageId && m.from > caret.offset),
+          )
+        : matches.findLastIndex(
+            (m) =>
+              (order.get(m.passageId) ?? -1) < here ||
+              (m.passageId === caret.passageId && m.from < caret.offset),
+          );
+    if (index < 0) index = direction > 0 ? 0 : matches.length - 1;
+    index =
+      (index + ((direction * (Math.max(1, times) - 1)) % matches.length) + matches.length) %
+      matches.length;
+    const target = matches[index];
+    editor.selectPassage(
+      target.passageId,
+      target.from,
+      target.from,
+      visual && target.chapterId === caret.chapterId,
+    );
+    this.surfaces?.focus({ preventScroll: true });
+    this.surfaces?.revealSelection({ viewportFraction: 1 / 3 });
   }
   private matchElement(match: FindMatch): HTMLElement | null {
     const selector =

@@ -2,6 +2,9 @@ import type { Application } from './application';
 import type { AppActions } from './application-types';
 export function applicationActions(vm: Application): AppActions {
   return {
+    bindScriptLayout: vm.bindScriptLayout.bind(vm),
+    editScriptTitle: vm.editScriptTitle.bind(vm),
+    finishScriptContact: vm.finishScriptContact.bind(vm),
     focusScreenplayScene: vm.focusScreenplayScene.bind(vm),
     removeFromShelf: vm.removeFromShelf.bind(vm),
     reshelveBook: vm.reshelveBook.bind(vm),
@@ -79,9 +82,12 @@ export function applicationActions(vm: Application): AppActions {
     moveBook: vm.moveBook.bind(vm),
     newAuthor: vm.newAuthor.bind(vm),
     newBook: vm.newBook.bind(vm),
+    newScript: vm.newScript.bind(vm),
     newShelf: vm.newShelf.bind(vm),
     nextMatch: vm.nextMatch.bind(vm),
     editOutline: vm.editOutline.bind(vm),
+    dismissWalkingOutlineNote: vm.dismissWalkingOutlineNote.bind(vm),
+    outlineBoard: vm.outlineBoard,
     outlineKey: vm.outlineKey.bind(vm),
     outlineContext: vm.outlineContext.bind(vm),
     renameTab: vm.renameTab.bind(vm),
@@ -122,6 +128,7 @@ export function applicationActions(vm: Application): AppActions {
     fileMenu: vm.fileMenu.bind(vm),
     viewMenu: vm.viewMenu.bind(vm),
     cycleWordCounter: vm.cycleWordCounter.bind(vm),
+    cyclePositionCounter: vm.cyclePositionCounter.bind(vm),
     trackVisibleChapter: vm.trackVisibleChapter.bind(vm),
     zoom: vm.zoom.bind(vm),
     pageZoomWheel: vm.pageZoomWheel.bind(vm),

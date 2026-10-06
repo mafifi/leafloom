@@ -1,3 +1,4 @@
+import {poetryShortcut} from './editing-helpers';
 import { test, expect } from './author-fixture';
 import type { Page } from '@playwright/test';
 import { existingBook } from './book-fixture';
@@ -68,7 +69,7 @@ test('[NEO-051-B] Leafloom: chapter-heading ShiftEnter prepends a focused italic
     metadata: { chapterTitles: { 'ch-1': 'Opening' } },
   });
   await page.locator('.ch-title').first().click();
-  await page.keyboard.press('Shift+Enter');
+  await page.keyboard.press(poetryShortcut);
   await c.driver.expectParagraphs([['', 'Alpha bold and italic.', 'Ending.'], ['Later.']]);
   await expect(page.locator('.chapter-body').first().locator('p').first()).toHaveClass(/poetry/);
   expect(await c.driver.caret()).toMatchObject({

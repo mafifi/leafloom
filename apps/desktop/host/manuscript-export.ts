@@ -1,4 +1,6 @@
 import { screenplayFromHTML, writeScreenplay } from './screenplay-formats.ts';
+import { screenplayPublication } from './screenplay-pdf.ts';
+import type {ScreenplayScriptValue} from '@leafloom/document-contracts';
 import {webpCoverPNG} from './webp-cover.ts';
 import {exportFonts,systemPDFVariants,type ExportTypography} from './export-fonts.ts';
 import {pdfGlyphFace,pdfGlyphRuns,type PDFGlyphFace} from './pdf-glyphs.ts';
@@ -14,25 +16,35 @@ import type { Opened } from '@leafloom/editor-contracts';
 import {translate,english,type LanguageCatalogValue} from '@leafloom/language-contracts';
 const localize=(catalog:LanguageCatalogValue=english)=>(key:string,args:Record<string,string|number>={})=>translate(catalog,key,args);
 const moduleURL = import.meta.url;
+function screenplayTitle(opened:Opened,options:{scriptContact?:string;catalog?:LanguageCatalogValue}):ScreenplayScriptValue['title'] {
+ const metadata=opened.book.metadata,nested=metadata.screenplayTitle&&typeof metadata.screenplayTitle==='object'&&!Array.isArray(metadata.screenplayTitle)?metadata.screenplayTitle as Record<string,unknown>:{};
+ const value=(key:'credit'|'draft')=>typeof metadata[key]==='string'?metadata[key] as string:typeof nested[key]==='string'?nested[key] as string:undefined;
+ const credit=value('credit')??localize(options.catalog)('Written by'),draft=value('draft'),contact=options.scriptContact??(typeof nested.contact==='string'?nested.contact:undefined);
+ return {title:metadata.title,author:metadata.author,...(credit?{credit}:{}),...(draft?{draft}:{}),...(contact?{contact}:{})};
+}
 export type ExportFormat = 'txt' | 'md' | 'html' | 'docx' | 'epub' | 'pdf' | 'fountain' | 'fdx';
-type Run = { text: string; bold: boolean; italic: boolean; break?: boolean;size?:number;caps?:boolean };
+type Run = { text: string; bold: boolean; italic: boolean; underline?:boolean;strike?:boolean; break?: boolean;size?:number;caps?:boolean };
 type Paragraph = {
   runs: Run[];
   text: string;
   kind: 'prose' | 'poetry' | 'scene-break';
   align: 'left' | 'center' | 'right' | 'justify';
   alignSpecified?:boolean;
+  flush?:boolean;
 };
 type ExportIdentity = { book: { metadata: Opened['book']['metadata'] } };
 type Section = { id: string; title: string; kind: string; paragraphs: Paragraph[]; navTitle?:string; level?: number;toc?:boolean;partLabel?:string;partTitle?:string };
 const markdownMetadata = (text: string) => text.replace(/([\\`*_\[\]#<>])/g, '\\$1');
 function markdownRun(run: Run) {
   if (run.break) return '  \n';
-  const text = run.text.replace(/([\\*_`])/g, '\\$1');
+  const text = run.text.replace(/([\\*_`~])/g, '\\$1');
   const marker = run.bold && run.italic ? '***' : run.bold ? '**' : run.italic ? '*' : '';
-  if (!marker || !text.trim()) return text;
+  if ((!marker&&!run.underline&&!run.strike) || !text.trim()) return text;
   const leading = text.match(/^\s*/)![0], trailing = text.match(/\s*$/)![0];
-  return leading + marker + text.slice(leading.length, text.length - trailing.length) + marker + trailing;
+  let core=text.slice(leading.length,text.length-trailing.length);
+  if(run.strike)core='~~'+core+'~~';
+  if(run.underline)core='<u>'+core+'</u>';
+  return leading+marker+core+marker+trailing;
 }
 const escape = (text: string) =>
   text
@@ -44,10 +56,12 @@ const escape = (text: string) =>
 const textRuns = (runs: Run[]) => runs.map((run) => (run.break ? '\n' : run.text)).join('');
 function paragraphHtml(paragraph: Paragraph, classes: string[] = [],defaultAlignment=true) {
   if (paragraph.kind === 'scene-break') return '<p class="scene-break">***</p>';
-  return `<p class="${[paragraph.kind,...classes].join(' ')}"${defaultAlignment||paragraph.alignSpecified||paragraph.align!=='left'?` style="text-align:${paragraph.align}"`:''}>${paragraph.runs
+  return `<p class="${[paragraph.kind,...(paragraph.flush?['flush']:[]),...classes].join(' ')}"${defaultAlignment||paragraph.alignSpecified||paragraph.align!=='left'?` style="text-align:${paragraph.align}"`:''}>${!paragraph.text?'<br/>':paragraph.runs
     .map((run) => {
       if (run.break) return '<br/>';
       let text = escape(run.text);
+      if(run.strike)text='<s>'+text+'</s>';
+      if(run.underline)text='<u>'+text+'</u>';
       if (run.italic) text = '<em>' + text + '</em>';
       if (run.bold) text = '<strong>' + text + '</strong>';
       return text;
@@ -65,10 +79,11 @@ function sectionParagraphs(section:Section,epub=false) {
     if(paragraph.kind==='scene-break'){afterBreak=storyKinds.has(section.kind);if(epub&&!frontPage)first=true;return epub?'<p class="scene-break">* * *</p>':paragraphHtml(paragraph);}
     const front=['dedication','epigraph','part','opener'].includes(section.kind),attr=front&&attribution.test(paragraph.text);
     const aligned=front&&!paragraph.alignSpecified?{...paragraph,align:'center' as const}:paragraph;
+    if(!paragraph.text)return paragraphHtml(aligned,[],!epub);
     if(paragraph.kind==='poetry'){afterBreak=false;return paragraphHtml(aligned,attr?['attr']:[],!epub);}
     const classes:string[]=[];
     if(attr)classes.push('attr');
-    if(first)classes.push('first');
+    if(first&&(!epub||!paragraph.flush))classes.push('first');
     if((first||afterBreak)&&openingDash.test(paragraph.text))classes.push('dialogue');
     first=false;afterBreak=false;
     return paragraphHtml(aligned,classes,!epub);
@@ -95,16 +110,16 @@ export function paragraphsFromHtml(html:string):Paragraph[]{
   const paragraphs: Paragraph[] = [];
   for (const element of document.querySelectorAll('p')) {
     const runs: Run[] = [];
-    const walk = (node: Node, bold: boolean, italic: boolean) => {
+    const walk = (node: Node, bold: boolean, italic: boolean,underline:boolean,strike:boolean) => {
       for (const child of Array.from(node.childNodes)) {
         if (child.nodeType === 3) {
-          runs.push({ text: (child.textContent ?? '').replace(/\u00a0/g, ' '), bold, italic });
+          runs.push({ text: (child.textContent ?? '').replace(/\u00a0/g, ' '), bold, italic,underline,strike });
           continue;
         }
         if (child.nodeType !== 1) continue;
         const el = child as HTMLElement;
         if (el.tagName === 'BR') {
-          runs.push({ text: '', bold, italic, break: true });
+          runs.push({ text: '', bold, italic,underline,strike, break: true });
           continue;
         }
         const style = el.style ?? {},
@@ -113,21 +128,22 @@ export function paragraphsFromHtml(html:string):Paragraph[]{
             style.fontWeight === 'bold' ||
             parseInt(style.fontWeight, 10) >= 600,
           isItalic = ['I', 'EM'].includes(el.tagName) || style.fontStyle === 'italic';
-        walk(el, bold || isBold, italic || isItalic);
+        const decoration=(style.textDecoration+' '+style.textDecorationLine).toLowerCase();
+        walk(el,bold||isBold,italic||isItalic,underline||['U','INS'].includes(el.tagName)||decoration.includes('underline'),strike||['S','STRIKE','DEL'].includes(el.tagName)||decoration.includes('line-through'));
       }
     };
-    walk(element, false, false);
+    walk(element,element.style.fontWeight==='bold'||parseInt(element.style.fontWeight,10)>=600,element.style.fontStyle==='italic',['U','INS'].includes(element.tagName)||element.style.textDecoration.includes('underline')||element.style.textDecorationLine.includes('underline'),['S','STRIKE','DEL'].includes(element.tagName)||element.style.textDecoration.includes('line-through')||element.style.textDecorationLine.includes('line-through'));
     const text = textRuns(runs).trim(),
       kind = element.classList.contains('scene-break')
         ? 'scene-break'
         : element.classList.contains('poetry')
           ? 'poetry'
           : 'prose';
-    if (text || kind === 'scene-break')
-      paragraphs.push({
+    paragraphs.push({
         runs,
         text,
         kind,
+        flush:kind==='prose'&&element.classList.contains('flush'),
         alignSpecified:!!element.style.textAlign,
         align: ['center', 'right', 'justify'].includes(element.style.textAlign)
           ? (element.style.textAlign as Paragraph['align'])
@@ -171,7 +187,7 @@ function manuscriptSections(opened:Opened,customTitles=false,catalog?:LanguageCa
  if(kind==='contents'){result.push({...section,kind,title:t('Contents'),paragraphs:[]});continue;}
  if(front.includes(kind)){if(section.paragraphs.length)result.push({...section,kind,title:'',level:0});continue;}
  if(['acknowledgments','about'].includes(kind)){if(section.paragraphs.length)result.push({...section,kind,title:t(kind==='about'?'About the Author':'Acknowledgments'),level:0});continue;}
- if(kind==='part'){parts++;if(meta.restartNumbering)count=0;const first=section.paragraphs[0];const titled=first&&first.kind!=='scene-break'&&!/^[-—–]/.test(first.text);result.push({...section,kind,partLabel:t('Part {n}',{n:roman(parts)}),partTitle:titled?first.text:undefined,title:t('Part {n}',{n:roman(parts)})+(titled?': '+first.text:''),paragraphs:titled?section.paragraphs.slice(1):section.paragraphs,level:0});continue;}
+ if(kind==='part'){parts++;if(meta.restartNumbering)count=0;const first=section.paragraphs[0];const titled=first&&!!first.text&&first.kind!=='scene-break'&&!/^[-—–]/.test(first.text);result.push({...section,kind,partLabel:t('Part {n}',{n:roman(parts)}),partTitle:titled?first.text:undefined,title:t('Part {n}',{n:roman(parts)})+(titled?': '+first.text:''),paragraphs:titled?section.paragraphs.slice(1):section.paragraphs,level:0});continue;}
  if(!['chapter','unnumbered','prologue','epilogue'].includes(kind))continue;
  if(kind==='chapter')count++;const supplied=typeof titles?.[section.id]==='string'?titles[section.id].trim():'';const name=kind==='chapter'?t('Chapter {n}',{n:count}):kind==='unnumbered'?'':t(kind==='prologue'?'Prologue':'Epilogue');
  const title=section.id===solo?'':kind==='unnumbered'?supplied:supplied?(customTitles?supplied:name+' — '+supplied):name;
@@ -212,7 +228,7 @@ function ncxNavigation(chapters:Section[]){
  return render(navigationEntries(chapters));
 }
 const stylesheet =
-  'body{font-family:Georgia,serif;max-width:620px;margin:40px auto;padding:0 2em;line-height:1.7;font-size:13pt;color:#1c1c1c}h1,h2,h3,h4,h5,h6,.title{text-align:center}section{break-before:page}p{margin:0;text-indent:2em}.first,.scene-break+p{ text-indent:0}.first.dialogue:not([style*="center"]):not([style*="right"]){text-indent:2em}.poetry{white-space:pre-line;margin:1em 3em;text-indent:0}.scene-break{text-align:center;margin:1em;text-indent:0}.title-page{min-height:80vh;padding-top:30vh;text-align:center}.title-page h1{font-size:30pt;margin:0}.title-page p{ text-indent:0}.title-page .author{margin-top:40px;letter-spacing:3px;text-transform:uppercase;font-size:11pt}.title-page .subtitle{font-style:italic}.copyright{min-height:98vh;display:flex;flex-direction:column;justify-content:flex-end;font-size:9pt;line-height:1.6}.copyright p{text-indent:0;margin-bottom:.9em}.dedication{padding-top:26vh}.epigraph{padding-top:24vh;margin-left:3em;margin-right:3em}.part{padding-top:28vh}.opener{padding-top:25vh}.dedication,.epigraph,.part,.opener{text-align:center}.dedication p,.epigraph p,.part p{font-style:italic;text-indent:0;margin-bottom:.5em}.dedication em,.epigraph em,.part p em{font-style:normal}.dedication .attr,.epigraph .attr,.part .attr,.opener .attr{font-style:normal;font-size:10pt;letter-spacing:1px;margin-top:1.2em}.part .part-label{display:block;font-size:15.5pt;letter-spacing:5px;font-variant-caps:all-small-caps}.part .part-title{display:block;font-size:24pt;margin-top:14px}.opener p{text-indent:0}';
+  'p.flush{ text-indent:0!important}p:empty{min-height:1.7em}body{font-family:Georgia,serif;max-width:620px;margin:40px auto;padding:0 2em;line-height:1.7;font-size:13pt;color:#1c1c1c}h1,h2,h3,h4,h5,h6,.title{text-align:center}section{break-before:page}p{margin:0;text-indent:2em}.first,.scene-break+p{ text-indent:0}.first.dialogue:not([style*="center"]):not([style*="right"]){text-indent:2em}.poetry{white-space:pre-line;margin:1em 3em;text-indent:0}.scene-break{text-align:center;margin:1em;text-indent:0}.title-page{min-height:80vh;padding-top:30vh;text-align:center}.title-page h1{font-size:30pt;margin:0}.title-page p{ text-indent:0}.title-page .author{margin-top:40px;letter-spacing:3px;text-transform:uppercase;font-size:11pt}.title-page .subtitle{font-style:italic}.copyright{min-height:98vh;display:flex;flex-direction:column;justify-content:flex-end;font-size:9pt;line-height:1.6}.copyright p{text-indent:0;margin-bottom:.9em}.dedication{padding-top:26vh}.epigraph{padding-top:24vh;margin-left:3em;margin-right:3em}.part{padding-top:28vh}.opener{padding-top:25vh}.dedication,.epigraph,.part,.opener{text-align:center}.dedication p,.epigraph p,.part p{font-style:italic;text-indent:0;margin-bottom:.5em}.dedication em,.epigraph em,.part p em{font-style:normal}.dedication .attr,.epigraph .attr,.part .attr,.opener .attr{font-style:normal;font-size:10pt;letter-spacing:1px;margin-top:1.2em}.part .part-label{display:block;font-size:15.5pt;letter-spacing:5px;font-variant-caps:all-small-caps}.part .part-title{display:block;font-size:24pt;margin-top:14px}.opener p{text-indent:0}';
 const sectionHeading=(chapter:Section,epub=false)=>{const heading=epub?1:Math.min(6,2+(chapter.level??0));if(!chapter.title)return '';const part=chapter.kind==='part'?(chapter.partLabel?[chapter.title,chapter.partLabel,chapter.partTitle]:chapter.title.match(/^(Part [IVXLCDM\d]+)(?:: (.*))?$/)):null;return `<h${heading}>${part?`<span class="part-label">${escape(part[1]!)}</span>${part[2]?`<span class="part-title">${escape(part[2])}</span>`:''}`:escape(chapter.title)}</h${heading}>`;};
 const contentsHtml=(chapters:Section[],epub=false)=>'<ol>'+chapters.flatMap((chapter,index)=>(chapter.title||chapter.navTitle)&&chapter.kind!=='contents'&&(epub||chapter.toc!==false)?[`<li style="margin-left:${(chapter.level??0)*1.5}em"><a href="${epub?'ch'+(index+1)+'.xhtml':'#'+escape(chapter.id)}">${escape(chapter.navTitle??chapter.title)}</a></li>`]:[]).join('')+'</ol>';
 function htmlDocument(opened: ExportIdentity, chapters: Section[], language: string, fontCSS='',cover?:{mime:string;data:string}|null) {
@@ -223,13 +239,13 @@ type DocxOptions={before?:number;after?:number;size?:number;pageBreak?:boolean;f
 function docxParagraph(paragraph: Paragraph, heading?: string,options:DocxOptions={}) {
   const properties=(heading?`<w:pStyle w:val="${heading}"/>`:'')+(options.pageBreak?'<w:pageBreakBefore/>':'')+
     (options.before||options.after?`<w:spacing w:before="${options.before??0}" w:after="${options.after??0}" w:line="360" w:lineRule="auto"/>`:'')+
-    (options.indentLeft?`<w:ind w:left="${options.indentLeft}"/>`:paragraph.kind==='poetry'?'<w:ind w:left="720" w:right="720"/>':!heading&&options.indent!==false&&paragraph.align==='left'&&paragraph.kind==='prose'?'<w:ind w:firstLine="480"/>':'')+
+    (options.indentLeft?`<w:ind w:left="${options.indentLeft}"/>`:paragraph.kind==='poetry'?'<w:ind w:left="720" w:right="720"/>':!heading&&options.indent!==false&&!paragraph.flush&&paragraph.align==='left'&&paragraph.kind==='prose'?'<w:ind w:firstLine="480"/>':'')+
     `<w:jc w:val="${heading||paragraph.kind==='scene-break'?'center':paragraph.align==='justify'?'both':paragraph.align}"/>`;
   const runs:Run[] =
     paragraph.kind === 'scene-break'
       ? [{ text: '***', bold: false, italic: false }]
       : paragraph.runs;
-  return `<w:p><w:pPr>${properties}</w:pPr>${runs.map((run) => (run.break ? '<w:r><w:br/></w:r>' : `<w:r><w:rPr>${run.bold ? '<w:b/>' : ''}${(options.flip?!run.italic:run.italic) ? '<w:i/>' : ''}${run.size||options.size?`<w:sz w:val="${run.size??options.size}"/>`:''}${run.caps===false?'<w:caps w:val="0"/>':run.caps||options.caps?'<w:caps/>':''}</w:rPr><w:t xml:space="preserve">${escape(run.text)}</w:t></w:r>`)).join('')}</w:p>`;
+  return `<w:p><w:pPr>${properties}</w:pPr>${runs.map((run) => (run.break ? '<w:r><w:br/></w:r>' : `<w:r><w:rPr>${run.bold ? '<w:b/>' : ''}${run.underline?'<w:u w:val="single"/>':''}${run.strike?'<w:strike/>':''}${(options.flip?!run.italic:run.italic) ? '<w:i/>' : ''}${run.size||options.size?`<w:sz w:val="${run.size??options.size}"/>`:''}${run.caps===false?'<w:caps w:val="0"/>':run.caps||options.caps?'<w:caps/>':''}</w:rPr><w:t xml:space="preserve">${escape(run.text)}</w:t></w:r>`)).join('')}</w:p>`;
 }
 const headingParagraph = (text: string): Paragraph => ({
   runs: [{ text, bold: false, italic: false }],
@@ -301,7 +317,7 @@ async function epub(
   );
   // Reader-controlled serif typography matches NEO EPUB, independently of the
   // selected writing font embedded in HTML/PDF.
-  zip.file('OEBPS/style.css', `body{font-family:serif;line-height:1.5;margin:1em}h1{text-align:center;font-weight:normal;letter-spacing:.2em;text-transform:uppercase;font-size:1.2em;margin:3em 0 2em}p{text-indent:1.2em;margin:0}p.first,.scene-break+p{ text-indent:0}.first.dialogue:not([style*="center"]):not([style*="right"]){text-indent:1.2em}.poetry{white-space:pre-line;text-indent:0;margin:0 2em}p:not(.poetry)+p.poetry,h1+p.poetry,.poetry+p:not(.poetry){margin-top:.9em}.scene-break{text-align:center;text-indent:0;margin:2.5em 0;letter-spacing:.5em}.copyright{margin-top:40%;font-size:.8em;line-height:1.5}.copyright p{text-indent:0;margin-bottom:.9em}.dedication,.epigraph,.part,.opener{text-align:center;margin-top:30%}.epigraph{margin-left:2em;margin-right:2em}.dedication p,.epigraph p,.part p{font-style:italic;text-indent:0;margin-bottom:.5em}.dedication em,.epigraph em,.part p em{font-style:normal}.attr{font-style:normal!important;font-size:.85em;letter-spacing:.05em;margin-top:1em!important}.part h1{margin:0 0 2em}.part-label{display:block}.part-title{display:block;margin-top:.8em;font-size:1.6em;letter-spacing:0;text-transform:none}.opener h1{margin:0;font-size:1.8em;letter-spacing:.02em;text-transform:none}.opener p{text-indent:0}.title-page{text-align:center;margin-top:30%}.title-page h1{font-size:2em;margin:0}.subtitle{font-style:italic}.author{text-indent:0;margin-top:4em;letter-spacing:.3em;text-transform:uppercase}`);
+  zip.file('OEBPS/style.css', `p.flush{ text-indent:0!important}p:empty{min-height:1.5em}body{font-family:serif;line-height:1.5;margin:1em}h1{text-align:center;font-weight:normal;letter-spacing:.2em;text-transform:uppercase;font-size:1.2em;margin:3em 0 2em}p{text-indent:1.2em;margin:0}p.first,.scene-break+p{ text-indent:0}.first.dialogue:not([style*="center"]):not([style*="right"]){text-indent:1.2em}.poetry{white-space:pre-line;text-indent:0;margin:0 2em}p:not(.poetry)+p.poetry,h1+p.poetry,.poetry+p:not(.poetry){margin-top:.9em}.scene-break{text-align:center;text-indent:0;margin:2.5em 0;letter-spacing:.5em}.copyright{margin-top:40%;font-size:.8em;line-height:1.5}.copyright p{text-indent:0;margin-bottom:.9em}.dedication,.epigraph,.part,.opener{text-align:center;margin-top:30%}.epigraph{margin-left:2em;margin-right:2em}.dedication p,.epigraph p,.part p{font-style:italic;text-indent:0;margin-bottom:.5em}.dedication em,.epigraph em,.part p em{font-style:normal}.attr{font-style:normal!important;font-size:.85em;letter-spacing:.05em;margin-top:1em!important}.part h1{margin:0 0 2em}.part-label{display:block}.part-title{display:block;margin-top:.8em;font-size:1.6em;letter-spacing:0;text-transform:none}.opener h1{margin:0;font-size:1.8em;letter-spacing:.02em;text-transform:none}.opener p{text-indent:0}.title-page{text-align:center;margin-top:30%}.title-page h1{font-size:2em;margin:0}.subtitle{font-style:italic}.author{text-indent:0;margin-top:4em;letter-spacing:.3em;text-transform:uppercase}`);
   if (cover) {
     zip.file(
       'OEBPS/cover.' +
@@ -446,11 +462,12 @@ async function pdf(opened:ExportIdentity,chapters:Section[],fonts?:string,typogr
    doc.y=Math.max(72,doc.page.height-72-height);
   }
   for(const paragraph of chapter.paragraphs){
+   if(!paragraph.text&&paragraph.kind!=='scene-break'){doc.y+=13*1.7;continue;}
    const initial=first&&paragraph.kind==='prose'&&storyKinds.has(chapter.kind)&&!openingDash.test(paragraph.text);
    const isFront=['copyright','dedication','epigraph','part','opener'].includes(chapter.kind);
    const alignment=paragraph.kind==='scene-break'?'center':isFront&&chapter.kind!=='copyright'&&!paragraph.alignSpecified?'center':paragraph.align;
    let indent=0;
-   if(paragraph.kind==='prose'&&!isFront){indent=first||afterBreak?0:26;if((first||afterBreak)&&openingDash.test(paragraph.text))indent=26;first=false;afterBreak=false;}
+   if(paragraph.kind==='prose'&&!isFront){indent=first||afterBreak?0:26;if((first||afterBreak)&&openingDash.test(paragraph.text))indent=26;if(paragraph.flush)indent=0;first=false;afterBreak=false;}
    if(paragraph.kind==='scene-break'){doc.moveDown(1);afterBreak=true;}
    const poetry=paragraph.kind==='poetry',inset=poetry||chapter.kind==='epigraph'||chapter.kind==='part'?32.5:0,left=72+inset,width=doc.page.width-144-inset*2;
    const attr=isFront&&chapter.kind!=='copyright'&&attribution.test(paragraph.text),frontItalic=['dedication','epigraph','part'].includes(chapter.kind);
@@ -460,14 +477,14 @@ async function pdf(opened:ExportIdentity,chapters:Section[],fonts?:string,typogr
     const runs=paragraph.runs.flatMap(run=>{
      const italic=frontItalic&&!attr?!run.italic:run.italic;
      const variant=run.bold&&italic?'BoldItalic':run.bold?'Bold':italic?'Italic':'Regular';
-     return pdfGlyphRuns(run.break?'\n':run.text,glyphFaces.get(variant)!);
+     return pdfGlyphRuns(run.break?'\n':run.text,glyphFaces.get(variant)!).map(glyph=>({...glyph,underline:run.underline,strike:run.strike}));
     });
     const size=chapter.kind==='copyright'?9:attr?10:13;
     if(initial&&selected.dropcap&&drawPDFDropCap(doc,runs,[...(capFace?[capFace]:[]),...glyphFaces.get('Regular')!],glyphFaces.get('Regular')![0]!,left,width,alignment,size))return;
     for(const [index,run]of runs.entries()){
      doc.font(run.face.name).fontSize(size*run.face.scale);
      const final=index===runs.length-1;
-     doc.text(run.text+(final?' ':''),left,doc.y,{width,align:alignment,continued:!final,oblique:run.face.oblique,indent,lineGap:size*(chapter.kind==='copyright'?1.6:1.7)-doc.currentLineHeight(true),paragraphGap:0});
+     doc.text(run.text+(final?' ':''),left,doc.y,{width,align:alignment,continued:!final,oblique:run.face.oblique,underline:run.underline,strike:run.strike,indent,lineGap:size*(chapter.kind==='copyright'?1.6:1.7)-doc.currentLineHeight(true),paragraphGap:0});
     }
     doc.fontSize(size);
    });
@@ -487,17 +504,21 @@ export async function renderManuscript(
   format: ExportFormat,
   options: {
     language?: string;paperCountry?:string;catalog?:LanguageCatalogValue;
+    scriptContact?:string;
     customChapterTitles?:boolean;
     bodyFont?:string;dropcap?:string;
     fonts?: string;
     cover?: { mime: string; data: string } | null;
   } = {},
 ): Promise<Buffer> {
-  if(format==='fountain'||format==='fdx')return Buffer.from(writeScreenplay(screenplayFromHTML(opened.book.chapters.map(ch=>ch.html),{...(opened.book.metadata.screenplayTitle as object || {}),title:opened.book.metadata.title,author:opened.book.metadata.author}),format));
+  if(format==='fountain'||format==='fdx'||(opened.book.metadata.format==='screenplay'||'mode' in opened.book&&opened.book.mode==='screenplay')&&(format==='pdf'||format==='html')){
+   const script=screenplayFromHTML(opened.book.chapters.map(ch=>ch.html),screenplayTitle(opened,options));
+   return format==='fountain'||format==='fdx'?Buffer.from(writeScreenplay(script,format)):screenplayPublication(script,format as 'pdf'|'html',options.language);
+  }
   return renderSections(opened, manuscriptSections(opened,options.customChapterTitles,options.catalog), format, options);
 }
-export async function renderChapter(opened:Opened,chapterId:string,format:ExportFormat,options:{language?:string;catalog?:LanguageCatalogValue;bodyFont?:string;dropcap?:string;customChapterTitles?:boolean;cover?:{mime:string;data:string}|null}={}):Promise<Buffer> {
- if(format==='fountain'||format==='fdx'){const chapter=opened.book.chapters.find(ch=>ch.id===chapterId);if(!chapter)throw Error('NOT_FOUND');return Buffer.from(writeScreenplay(screenplayFromHTML([chapter.html],{...(opened.book.metadata.screenplayTitle as object || {}),title:opened.book.metadata.title,author:opened.book.metadata.author}),format));}
+export async function renderChapter(opened:Opened,chapterId:string,format:ExportFormat,options:{language?:string;catalog?:LanguageCatalogValue;scriptContact?:string;bodyFont?:string;dropcap?:string;customChapterTitles?:boolean;cover?:{mime:string;data:string}|null}={}):Promise<Buffer> {
+ if(format==='fountain'||format==='fdx'||(opened.book.metadata.format==='screenplay'||'mode' in opened.book&&opened.book.mode==='screenplay')&&(format==='pdf'||format==='html')){const chapter=opened.book.chapters.find(ch=>ch.id===chapterId);if(!chapter)throw Error('NOT_FOUND');const script=screenplayFromHTML([chapter.html],screenplayTitle(opened,options));return format==='fountain'||format==='fdx'?Buffer.from(writeScreenplay(script,format)):screenplayPublication(script,format as 'pdf'|'html',options.language);}
  const chapter=manuscriptSections(opened,options.customChapterTitles,options.catalog).find(chapter=>chapter.id===chapterId);
  if(!chapter||!["chapter","unnumbered","prologue","epilogue"].includes(chapter.kind)||!chapter.paragraphs.some(p=>p.text.trim()))throw new Error('INVALID');
  return renderSections(opened,[{...chapter,level:0}],format,{...options,cover:format==='epub'?options.cover:null});

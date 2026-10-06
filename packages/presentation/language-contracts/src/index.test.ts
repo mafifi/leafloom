@@ -1,4 +1,4 @@
-import { it, expect } from 'vitest';
+import { it, expect, vi } from 'vitest';
 import { translate, LanguageCatalog } from './index';
 it('validates provider dictionaries and resolves translated, English and literal fallbacks', () => {
   const c = LanguageCatalog.parse({
@@ -71,4 +71,30 @@ it('derives the source dictionary from interface locale without choosing unsuppo
   expect(
     ['ro', 'fr-CA', 'pt', 'pt-PT', 'en', 'en-GB', 'it', 'zh'].map(defaultSpellLanguage),
   ).toEqual(['ro', 'fr', 'pt-BR', 'en-US', 'en-US', 'en-GB', 'en-US', 'en-US']);
+});
+
+it('does not construct number formatters for labels, authored strings or unused numbers', () => {
+  const constructor = vi.spyOn(Intl, 'NumberFormat');
+  try {
+    const catalog = LanguageCatalog.parse({ locale: 'en-NZ', dict: {}, base: {} });
+    expect(translate(catalog, 'Notes')).toBe('Notes');
+    expect(translate(catalog, '{title} {unknown}', { title: 'NEO $& <draft>', unused: 1234 })).toBe('NEO $& <draft> {unknown}');
+    expect(translate(catalog, '{year}', { year: '2026' })).toBe('2026');
+    expect(constructor).not.toHaveBeenCalled();
+  } finally { constructor.mockRestore(); }
+});
+it('reuses a native number formatter per explicit locale while keeping zero and localized separators', () => {
+  const constructor = vi.spyOn(Intl, 'NumberFormat');
+  try {
+    const catalog = LanguageCatalog.parse({ locale: 'de-DE', dict: {}, base: {} });
+    expect(translate(catalog, '{count} / {goal}', { count: 0, goal: 1234.5 })).toBe('0 / 1.234,5');
+    expect(translate(catalog, '{count}', { count: 20000 })).toBe('20.000');
+    expect(constructor).toHaveBeenCalledTimes(1);
+    expect(constructor).toHaveBeenCalledWith('de-DE');
+  } finally { constructor.mockRestore(); }
+});
+it('retains invalid locale numeric fallback and leaves unknown placeholders unchanged', () => {
+  const catalog = LanguageCatalog.parse({ locale: 'invalid_locale', dict: {}, base: {} });
+  expect(translate(catalog, '{count} {unknown}', { count: 1234.5 })).toBe('1234.5 {unknown}');
+  expect(translate(catalog, '{count}', { count: 0 })).toBe('0');
 });

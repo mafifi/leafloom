@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, copyFile, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, copyFile, writeFile, readFile, rm } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -29,8 +29,11 @@ test(
         join(app, 'Contents/MacOS/leafloom-desktop'),
         constants.COPYFILE_FICLONE,
       );
+      const releaseVersion = JSON.parse(
+        await readFile(new URL('../package.json', import.meta.url), 'utf8'),
+      ).version;
       const plist = (minimum) =>
-        `<?xml version="1.0"?><plist version="1.0"><dict><key>LSMinimumSystemVersion</key><string>${minimum}</string><key>CFBundleIdentifier</key><string>org.mafifi.leafloom</string><key>CFBundleShortVersionString</key><string>0.1.0</string></dict></plist>`;
+        `<?xml version="1.0"?><plist version="1.0"><dict><key>LSMinimumSystemVersion</key><string>${minimum}</string><key>CFBundleIdentifier</key><string>org.mafifi.leafloom</string><key>CFBundleShortVersionString</key><string>${releaseVersion}</string></dict></plist>`;
       await writeFile(join(app, 'Contents/Info.plist'), plist('14.0'));
       const result = await verifyReleasePlatform(app);
       assert.equal(result.architecture, 'arm64');

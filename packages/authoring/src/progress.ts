@@ -7,6 +7,14 @@ export function writingDay(date: Date, cutoff: number): string {
     String(day.getDate()).padStart(2, '0'),
   ].join('-');
 }
+
+export function dailyWordCount(
+  previous: { start: number; end: number } | undefined,
+  total: number,
+  baseline = total,
+): { start: number; end: number } {
+  return { start: Math.min(previous?.start ?? baseline, total), end: total };
+}
 export class ProgressTracker {
   counts: Record<string, number>;
   sprint: { target: number; progress: number; completed: boolean; started: number } | null = null;

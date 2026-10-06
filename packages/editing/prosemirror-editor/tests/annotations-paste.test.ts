@@ -187,7 +187,8 @@ it('styled clipboard block edges become prose and discard links, alignment, poet
     text: 'Heading Line Next',
     html: '<h2 style="text-align:right"><u>Heading</u></h2><p class="poetry"><a href="https://example.test"><i>Line</i></a><br>Next</p>',
   });
-  expect(core.html('a')).toBe('<p>Heading</p><p><i>Line</i></p><p>Next</p>');
+  // NEO 1.3.5 cleanPasteHtml retains all four inline marks while stripping block attributes.
+  expect(core.html('a')).toBe('<p><u>Heading</u></p><p><i>Line</i></p><p>Next</p>');
 });
 
 it('styled clipboard dialogue normalization preserves surrounding emphasis', () => {

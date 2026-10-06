@@ -137,12 +137,10 @@ it('retains screenplay title credit, contact and draft through both exchange for
     expect(readScreenplay(writeScreenplay(value, format), format).title).toEqual(title);
   }
 });
-it('rejects remaining ambiguous Fountain speech and empty paragraphs without losing their source', () => {
+it('rejects remaining ambiguous Fountain speech without losing their source', () => {
   for (const line of [
     { element: 'dialogue', runs: [{ text: '(Hello)', marks: [] }] },
-    { element: 'dialogue', runs: [{ text: '@home', marks: [] }] },
     { element: 'parenthetical', runs: [{ text: 'quietly', marks: [] }] },
-    { element: 'action', runs: [] },
   ]) {
     const value = { title: script.title, lines: [script.lines[2], line] };
     const before = structuredClone(value);
@@ -153,3 +151,7 @@ it('rejects remaining ambiguous Fountain speech and empty paragraphs without los
 it('reports unsupported exchange as a safe capability error instead of a disk failure',async()=>{
  const {hostErrorCode}=await import('./error-code.ts');const {ScreenplayCodecError}=await import('./screenplay-formats.ts');expect(hostErrorCode(new ScreenplayCodecError())).toBe('UNSUPPORTED_SCREENPLAY');
 });
+
+it('retains forced-looking dialogue inside a speech block',()=>{const value={title:script.title,lines:[script.lines[2],{element:'dialogue',runs:[{text:'@home',marks:[]}]}]};expect(readScreenplay(writeScreenplay(value,'fountain'),'fountain').lines).toEqual(value.lines);});
+
+it('projects neutral empty action for interchange without mutating authored lines',()=>{const value={title:script.title,lines:[{element:'action',runs:[]},script.lines[1],{element:'action',runs:[{text:' \n',marks:[]}]}]};const before=structuredClone(value);for(const format of ['fountain','fdx'] as const)expect(readScreenplay(writeScreenplay(value,format),format).lines).toEqual([script.lines[1]]);expect(value).toEqual(before);});

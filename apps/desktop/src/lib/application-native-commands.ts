@@ -1,3 +1,5 @@
+import type { BrowserReadAloud } from './browser-read-aloud';
+import { interfaceBrightness, auxiliaryBrightness } from './interface-brightness';
 import { type HostMethod, type HostPayload } from '@leafloom/desktop-host';
 import { type EditorPort } from '@leafloom/editor-contracts';
 import { LanguageCatalog } from '@leafloom/language-contracts';
@@ -10,6 +12,7 @@ import { PublicationPageViewModel } from './publication-page';
 
 
 export interface ApplicationNativeCommandsContext {
+  readAloud: BrowserReadAloud | null;
   overlayOpen: () => boolean;
   reshelveBook: () => Promise<void>;
   publicationPageViewModel: PublicationPageViewModel;
@@ -41,8 +44,9 @@ export interface ApplicationNativeCommandsContext {
   redo: () => void;
   openSearch: () => void;
   toggleSpelling: () => void;
-  format: (mark: 'bold' | 'italic') => void;
+  format: (mark: 'bold' | 'italic' | 'underline' | 'strike') => void;
   togglePoetry: () => void;
+  toggleFlush: () => void;
   writable: () => boolean;
   zoom: (delta: number) => void;
   platform: ApplicationPlatform | undefined;
@@ -156,7 +160,7 @@ export async function nativeCommand(
       await context.preference('markdownOff', !context.value.library.markdownOff);
       break;
     case 'ui-bright':
-      await context.preference('uiBright', !brighterInterface(context.value.library.uiBright));
+      await context.preference(auxiliaryBrightness(context.value.view, context.value.panel) ? 'uiBrightAside' : 'uiBright', !interfaceBrightness(context.value.library, context.value.view, context.value.panel, brighterInterface(undefined)));
       break;
     case 'focus-cycle':
       await context.cycleFocus();
@@ -218,6 +222,18 @@ export async function nativeCommand(
       break;
     case 'italic':
       context.format('italic');
+      break;
+    case 'underline':
+      context.format('underline');
+      break;
+    case 'strike':
+      context.format('strike');
+      break;
+    case 'read-aloud':
+      await context.readAloud?.toggle();
+      break;
+    case 'flush':
+      context.toggleFlush();
       break;
     case 'poetry':
       context.togglePoetry();

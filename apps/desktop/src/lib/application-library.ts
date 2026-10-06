@@ -115,7 +115,7 @@ export async function updateLibrary(
   context.pendingLibraryWrites++;
   context.patch({ library: next });
   keepReadingPlace(() => {
-    applyPresentation(next);
+    applyPresentation(next, context.value.view, context.value.panel);
     context.applyPlatformDropcap();
     document.documentElement.style.setProperty(
       '--body-font',
@@ -148,7 +148,13 @@ export async function onboard(
   library.penNames = pen ? [pen] : [];
   library.writingStyle = style;
   library.fonts = fonts;
-  await context.updateLibrary(library, false);
+  try {await context.updateLibrary(library, false);}
+  catch {
+    let destination:string|undefined;
+    try {const config=z.object({current:z.string()}).parse(await context.platform?.os?.request('getLibraryConfiguration',{}));destination=config.current;}catch {/* The retained first-run form remains the recovery path when the host is unavailable. */}
+    const message=destination?translate(context.value.language,"Leafloom can't save in {dir}. File → Library Folder… lets you choose a folder it can write to; then press Start writing again.",{dir:destination}):translate(context.value.language,"Leafloom can't save in your library folder");
+    context.patch({library:{...library,firstRunDone:false},hint:message+'\n'+translate(context.value.language,'Your words stay on the page until it can.')});
+  }
 }
 
 export function newShelf(

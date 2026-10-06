@@ -10,6 +10,17 @@ export const LanguageCatalog = z.strictObject({
 });
 export type LanguageCatalogValue = z.infer<typeof LanguageCatalog>;
 export const english: LanguageCatalogValue = { locale: 'en', dict: {}, base: {} };
+// Formatting objects depend only on the explicit interface locale. Keep this
+// small cache bounded even when a provider supplies unfamiliar locale tags.
+const numberFormats = new Map<string, Intl.NumberFormat | undefined>();
+function numberFormat(locale: string): Intl.NumberFormat | undefined {
+  if (numberFormats.has(locale)) return numberFormats.get(locale);
+  let formatter: Intl.NumberFormat | undefined;
+  try { formatter = new Intl.NumberFormat(locale); } catch {}
+  if (numberFormats.size >= 32) numberFormats.delete(numberFormats.keys().next().value!);
+  numberFormats.set(locale, formatter);
+  return formatter;
+}
 export function translate(
   catalog: LanguageCatalogValue,
   key: string,
@@ -26,18 +37,12 @@ export function translate(
     } catch {}
     value = value[form] ?? value.other ?? Object.values(value)[0] ?? upstream;
   }
-  let numbers: Intl.NumberFormat | undefined;
-  try {
-    numbers = new Intl.NumberFormat(catalog.locale);
-  } catch {}
   const template = value.replaceAll('NEO', 'Leafloom');
   return template.replace(/\{([\w]+)\}/g, (match, name) => {
     const argument = args[name];
-    return argument === undefined
-      ? match
-      : typeof argument === 'number' && numbers
-        ? numbers.format(argument)
-        : String(argument);
+    if (argument === undefined) return match;
+    if (typeof argument !== 'number') return String(argument);
+    return numberFormat(catalog.locale)?.format(argument) ?? String(argument);
   });
 }
 

@@ -102,12 +102,13 @@
 />
 
 {#snippet coverTile(book: ShelfBook, collection = false)}
-  {@const cover = covers[book.id]}
+  {@const script = book.format === 'screenplay' && !collection}
+  {@const cover = script ? undefined : covers[book.id]}
   {@const progress = coverGoalProgress(book, t)}
   <button
     class={(cover
       ? `book cv-${cover.template} ${cover.ink.light ? 'cv-light' : 'cv-dark'} ${cover.ink.scrim ? 'cv-scrim' : ''} ${cover.authorInk.light ? 'cv-au-light' : 'cv-au-dark'} ${cover.authorInk.scrim ? 'cv-au-scrim' : ''} ${cover.longAuthor ? 'cv-au-long' : ''}`
-      : 'book') + (collection ? ' bound-cover' : '')}
+      : 'book') + (collection ? ' bound-cover' : script ? ' script-tile' : '')}
     style={cover ? `background:#1d1d1d url("${cover.url}") center / cover no-repeat` : ''}
     title={progress.title}
     data-book-id={book.id}
@@ -122,7 +123,8 @@
     onclick={() => (collection ? actions.openCover(book) : actions.openBook(book))}
     oncontextmenu={(event) => actions.bookMenu(event, book)}
   >
-    <span class="b-text"
+    {#if script}<span class="st-text"><span class="st-title" class:long={book.title.length > 36}>{book.title === 'Untitled' ? t('Untitled') : book.title}</span><span class="st-author">{book.author}</span></span><span class="st-brad top"></span><span class="st-hole"></span><span class="st-brad bot"></span>
+    {:else}<span class="b-text"
       ><span class="b-title"
         >{#if cover}{#each cover.lines as line}<span
               class="b-line"
@@ -133,7 +135,9 @@
           >{/if}</span
       ><span class="b-author">{book.author}</span></span
     >
+    {/if}
     <span
+      hidden={script}
       class="b-refresh"
       title={t('New cover')}
       role="button"
@@ -258,7 +262,7 @@
           onclick={() => actions.addPage('part', tile.beforeId)}
           ><span class="ps-line"></span><span class="ps-plus">+</span></button
         >
-      {:else}<button class="book new-book" aria-label={t('New book')} onclick={actions.newBook}
+      {:else}<button class="book new-book" aria-label={t('New book')} onclick={actions.newBook} oncontextmenu={(event) => { if (!bound) actions.newBookMenu?.(event); }}
           ><span>＋</span></button
         >{/if}
     {/each}

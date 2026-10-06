@@ -62,6 +62,9 @@ export type AppState = {
   chapters: EditorPort['chapters'];
   protectedChapterIds: string[];
   outlineRows: EditorPort['outlineRows'];
+  outlineCards: EditorPort['outlineCards'];
+  looseOutlineCards: EditorPort['looseOutlineCards'];
+  walkingOutlineNote: EditorPort['walkingOutlineNote'];
   contentsRows: ReturnType<EditorPort['contentsRows']>;
   darlings: (EditorPort['darlings'][number] & { preview: string })[];
   stickies: EditorPort['stickies'];
@@ -77,6 +80,7 @@ export type AppState = {
   externalChange: DocumentChange | null;
   navOpen: boolean;
   sideOpen: boolean;
+  stickyAutoOpened: boolean;
   canUndo: boolean;
   canRedo: boolean;
   hint: string;
@@ -117,6 +121,9 @@ export interface ApplicationPlatform {
 export type AppActions = Pick<
   Application,
   | 'openPublicationPage'
+  | 'bindScriptLayout'
+  | 'editScriptTitle'
+  | 'finishScriptContact'
   | 'bindPublicationPage'
   | 'editPublicationTitle'
   | 'pastePublicationTitle'
@@ -174,9 +181,12 @@ export type AppActions = Pick<
   | 'moveBook'
   | 'newAuthor'
   | 'newBook'
+  | 'newScript'
   | 'newShelf'
   | 'nextMatch'
   | 'editOutline'
+  | 'dismissWalkingOutlineNote'
+  | 'outlineBoard'
   | 'outlineKey'
   | 'outlineContext'
   | 'renameTab'
@@ -217,6 +227,7 @@ export type AppActions = Pick<
   | 'fileMenu'
   | 'viewMenu'
   | 'cycleWordCounter'
+  | 'cyclePositionCounter'
   | 'trackVisibleChapter'
   | 'openCoverSettings'
   | 'editCoverSettings'

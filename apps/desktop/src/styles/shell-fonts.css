@@ -194,10 +194,6 @@ html[lang^='el'] .book.cv-cinzel .b-title {
   border-radius: 6px;
   padding: 5px 12px;
 }
-#nav-hotzone,
-#side-hotzone {
-  width: 24px;
-}
 #format-menu,
 #view-menu {
   background: none;
@@ -298,3 +294,9 @@ html[lang^='el'] .book.cv-cinzel .b-title {
   font-weight: 700;
   font-style: italic;
 }
+
+/* Unmodified iA Writer Quattro faces; reserved names and OFL notice retained. */
+@font-face { font-family: 'iA Writer Quattro'; src: url('/fonts/ia-writer-quattro-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'iA Writer Quattro'; src: url('/fonts/ia-writer-quattro-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'iA Writer Quattro'; src: url('/fonts/ia-writer-quattro-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'iA Writer Quattro'; src: url('/fonts/ia-writer-quattro-700-italic.woff2') format('woff2'); font-weight: 700; font-style: italic; }

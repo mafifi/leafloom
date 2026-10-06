@@ -48,16 +48,16 @@ it('scans only the active author section, excludes plans/acronyms and retains al
   const { editor, state, request, vm } = fixture();
   await vm.activate();
   expect(request.mock.calls[0][1].words).toEqual(['bad', 'well-known', 'well', 'known', 'what']);
-  expect(editor.annotations.map((item) => item.message)).toEqual(['bad']);
+  expect(editor.annotations.filter((item) => item.correction === undefined).map((item) => item.message)).toEqual(['bad']);
   state.active = 'b';
   await vm.activate();
-  expect(editor.annotations.map((item) => item.message)).toEqual(['bad', 'other']);
+  expect(editor.annotations.filter((item) => item.correction === undefined).map((item) => item.message)).toEqual(['bad', 'other']);
   state.active = 'a';
   await vm.activate();
   expect(request).toHaveBeenCalledTimes(2);
   state.active = 'notes';
   await vm.activate();
-  expect(editor.annotations.map((item) => item.message)).toEqual(['bad', 'other', 'note']);
+  expect(editor.annotations.filter((item) => item.correction === undefined).map((item) => item.message)).toEqual(['bad', 'other', 'note']);
   vm.destroy();
 });
 it('coalesces edits for 600ms, reuses word checks, and keeps actual inline text-run boundaries', async () => {
@@ -123,7 +123,8 @@ it('learning clears word and section caches and rechecks equivalent forms in eve
     Object.fromEntries(payload.words.map((word) => [word, true])),
   );
   await vm.learned('bad');
-  expect(editor.annotations).toEqual([]);
+  expect(editor.annotations.filter(item => item.correction === undefined)).toEqual([]);
+  expect(editor.annotations.map(item => item.correction)).toEqual(['B', 'O']);
   expect(request.mock.calls.slice(2).flatMap((call) => call[1].words)).toContain('other');
   expect(request.mock.calls.slice(2).flatMap((call) => call[1].words)).not.toContain('bad');
   vm.destroy();
@@ -154,7 +155,7 @@ it('invalid dictionary responses cannot publish flags or poison the word cache',
   expect(editor.annotations).toEqual([]);
   await vm.scan();
   expect(request).toHaveBeenCalledTimes(2);
-  expect(editor.annotations.map((item) => item.message)).toEqual(['bad']);
+  expect(editor.annotations.filter((item) => item.correction === undefined).map((item) => item.message)).toEqual(['bad']);
   vm.destroy();
 });
 it('a synchronous presentation subscriber cannot recursively rescan or duplicate published flags', async () => {
@@ -167,7 +168,8 @@ it('a synchronous presentation subscriber cannot recursively rescan or duplicate
   await Promise.all(refreshes);
   expect(request).toHaveBeenCalledTimes(1);
   expect(refreshes).toHaveLength(1);
-  expect(editor.annotations).toHaveLength(1);
+  expect(editor.annotations).toHaveLength(2);
+  expect(editor.annotations.find(item => item.correction)?.correction).toBe('B');
   stop();
   vm.destroy();
 });
@@ -187,7 +189,7 @@ it('retains a valid delayed chapter scan when unrelated author metadata changes'
   resolve({ bad: false, 'well-known': true, well: true, known: true, what: true });
   await pending;
   expect(editor.checkpoint().book.chapters[0].html).toBe(before);
-  expect(editor.annotations.map((item) => item.message)).toEqual(['bad']);
+  expect(editor.annotations.filter((item) => item.correction === undefined).map((item) => item.message)).toEqual(['bad']);
   vm.destroy();
 });
 
@@ -205,5 +207,21 @@ it('discards a delayed scan after the author deletes its chapter', async () => {
   resolve({ bad: false });
   await pending;
   expect(editor.annotations).toEqual([]);
+  vm.destroy();
+});
+
+it('capital suggestions coexist with spelling and never learn or change author history during scanning', async () => {
+  const {editor, vm} = fixture();
+  const before = editor.checkpoint();
+  await vm.activate();
+  expect(editor.annotations.filter(item => item.correction).map(item => [item.from,item.to,item.correction])).toEqual([[0,1,'B']]);
+  expect(editor.checkpoint()).toEqual(before);
+  expect(editor.canUndo).toBe(false);
+  const capital = editor.annotations.find(item => item.correction)!;
+  editor.replacePassageText(capital.passageId, capital.from, capital.to, capital.correction!);
+  await vm.scan();
+  expect(editor.annotations.some(item => item.correction)).toBe(false);
+  editor.undo();
+  expect(editor.checkpoint().book.chapters).toEqual(before.book.chapters);
   vm.destroy();
 });

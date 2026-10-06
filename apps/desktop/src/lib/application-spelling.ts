@@ -46,6 +46,15 @@ export async function spellingMenu(
         row.from === target.from &&
         row.to === target.to,
     );
+  if (target.correction !== undefined) {
+    const correction = target.correction;
+    context.patch({ menu: { allowShortcuts: true, x: target.x, y: target.y, items: [{
+      label: correction, localize: false, run: () => {
+        if (context.writable() && valid()) editor.replacePassageText(target.passageId, target.from, target.to, correction);
+      },
+    }] } });
+    return;
+  }
   const suggestions = z
     .array(z.string())
     .parse(

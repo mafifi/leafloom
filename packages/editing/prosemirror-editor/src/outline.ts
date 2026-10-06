@@ -13,9 +13,12 @@ import type { Section } from './model';
 import { roman, partTitle } from './chapter-labels';
 import { removeChapterMetadata } from './metadata';
 import { syncOutlineGhosts } from './outline-ghosts';
+import { hasClass, sectionId } from './outline-segments';
+import { joinOutlineChapter, moveOutlineSection } from './outline-moves';
 const uuid = () => crypto.randomUUID();
-interface OutlineContext {
+export interface OutlineContext {
   state(): EditorState;
+  supported?(id: string): boolean;
   chapters(): ChapterRow[];
   section(id: string): Section;
   createChapter(id: string): PMNode;
@@ -137,21 +140,9 @@ export class OutlineOperations {
     const row = this.outlineTarget(target),
       data = this.outlineMetadata(),
       tr = closeHistory(this.state.tr);
-    let result: OutlineTarget;
-    if (row.kind === 'chapter') {
-      const owner = this.section(row.chapterId),
-        id = uuid(),
-        node = this.context.createChapter(id);
-      tr.insert(owner.pos + (before ? 0 : owner.node.nodeSize), node);
-      result = { chapterId: id };
-    } else {
-      const list = data.sections[row.chapterId],
-        index = list.findIndex((section) => section.id === row.sectionId),
-        id = uuid();
-      list.splice(index + (before ? 0 : 1), 0, { id, text: '' });
-      syncOutlineGhosts(tr, row.chapterId, list);
-      result = { chapterId: row.chapterId, sectionId: id };
-    }
+    const owner = this.section(row.chapterId), id = uuid(), node = this.context.createChapter(id);
+    tr.insert(owner.pos + (before && row.kind === 'chapter' ? 0 : owner.node.nodeSize), node);
+    const result: OutlineTarget = { chapterId: id };
     this.setOutlineMetadata(tr, data);
     this.dispatch(tr, 'outline.enter');
     return result;
@@ -172,20 +163,7 @@ export class OutlineOperations {
           .reverse()
           .find((chapter) => storyKinds.some((kind) => kind === chapter.kind));
       if (!previous) return { target, notice: 'The first line has to be a chapter' };
-      if (this.wordCountFor(row.chapterId) > 0)
-        return {
-          target,
-          notice:
-            'This chapter already has words in it — only empty chapter lines can become sections',
-        };
-      const id = uuid();
-      (data.sections[previous.id] ??= []).push({ id, text: data.chapters[row.chapterId] ?? '' });
-      const section = this.section(row.chapterId);
-      tr.delete(section.pos, section.pos + section.node.nodeSize);
-      delete data.chapters[row.chapterId];
-      delete data.sections[row.chapterId];
-      removeChapterMetadata(data.metadata, row.chapterId);
-      syncOutlineGhosts(tr, previous.id, data.sections[previous.id]);
+      const id = joinOutlineChapter(tr, data, row.chapterId, previous.id);
       result = { chapterId: previous.id, sectionId: id };
     } else if (reverse && row.kind === 'section') {
       const list = data.sections[row.chapterId],
@@ -194,15 +172,45 @@ export class OutlineOperations {
         owner = this.section(row.chapterId),
         id = uuid(),
         node = this.context.createChapter(id);
-      list.splice(index, 1);
+      const after = list.splice(index).slice(1),
+        carry = after.length > 0 && !after.some((note) =>
+          Array.from(owner.node.content.content).some((node) => sectionId(node) === note.id && !hasClass(node, 'ghost')),
+        );
+      if (!carry) list.push(...after);
       tr.insert(owner.pos + owner.node.nodeSize, node);
       data.chapters[id] = note.text;
+      if (carry) data.sections[id] = after;
       syncOutlineGhosts(tr, row.chapterId, list);
+      if (carry) syncOutlineGhosts(tr, id, after);
       result = { chapterId: id };
+    } else if (!reverse && row.kind === 'section') {
+      const list = data.sections[row.chapterId], index = list.findIndex((note) => note.id === row.sectionId), id = uuid();
+      list.splice(index + 1, 0, { id, text: '' });
+      syncOutlineGhosts(tr, row.chapterId, list);
+      result = { chapterId: row.chapterId, sectionId: id };
     } else return { target };
     this.setOutlineMetadata(tr, data);
     this.dispatch(tr, 'outline.indent');
     return { target: result };
+  }
+  joinChapter(chapterId: string, intoChapterId: string): OutlineTarget | null {
+    if (chapterId === intoChapterId) return null;
+    const rows = this.chapters;
+    if (![chapterId, intoChapterId].every((id) => rows.some((row) => row.id === id && storyKinds.some((kind) => row.kind === kind)))) return null;
+    const data = this.outlineMetadata(), tr = closeHistory(this.state.tr),
+      sectionId = joinOutlineChapter(tr, data, chapterId, intoChapterId);
+    this.setOutlineMetadata(tr, data);
+    this.dispatch(tr, 'outline.join');
+    return { chapterId: intoChapterId, sectionId };
+  }
+  moveSection(fromChapterId: string, segmentIndex: number, to: { chapterId: string; before: number | null }) {
+    z.string().parse(fromChapterId);
+    z.number().int().nonnegative().parse(segmentIndex);
+    z.strictObject({ chapterId: z.string(), before: z.number().int().nonnegative().nullable() }).parse(to);
+    const data = this.outlineMetadata(), tr = closeHistory(this.state.tr);
+    if (!moveOutlineSection(tr, data, fromChapterId, segmentIndex, to)) return;
+    this.setOutlineMetadata(tr, data);
+    this.dispatch(tr, 'outline.move-section');
   }
   outlineDelete(target: OutlineTarget): OutlineTarget {
     const row = this.outlineTarget(target),

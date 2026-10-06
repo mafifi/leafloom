@@ -1,4 +1,8 @@
-import { Sticky } from '@leafloom/document-contracts';
+import {
+  Sticky,
+  readFountainScreenplay,
+  legacyScreenplayClasses,
+} from '@leafloom/document-contracts';
 import type { ClipboardValue } from '@leafloom/editor-contracts';
 import type { Context } from '@opentelemetry/api';
 import { closeHistory } from 'prosemirror-history';
@@ -6,7 +10,7 @@ import type { Mark } from 'prosemirror-model';
 import { Fragment, Slice, type Node as PMNode } from 'prosemirror-model';
 import { EditorState, TextSelection, type Transaction } from 'prosemirror-state';
 import { z } from 'zod';
-import { clipboardHTML } from './clipboard';
+import { clipboardHTML, clipboardText } from './clipboard';
 import { exportHTML, schema as htmlSchema, importHTML } from './codec';
 import { baseNode } from './fidelity';
 import { bookSchema } from './model';
@@ -68,7 +72,7 @@ export function copySelection(context: ClipboardOperationsContext): ClipboardVal
     slice.openStart ? content : htmlSchema.nodes.paragraph.create(null, content),
   );
   return {
-    text: slice.content.textBetween(0, slice.content.size, '\n', '⚑'),
+    text: clipboardText(slice.content),
     html: exportHTML(context.document, doc),
   };
 }
@@ -99,9 +103,35 @@ export function paste(context: ClipboardOperationsContext, value: ClipboardValue
   const owner = context.owner(context.state.selection.from);
   if (!owner) throw Error('UNSUPPORTED_CONTENT');
   context.requireEditableSelection();
+  const screenplay =
+    owner.node.attrs.role === 'chapter' && context.state.doc.attrs.metadata.format === 'screenplay';
+  const scriptHTML =
+    screenplay &&
+    !!value.html &&
+    /(?:class=["'][^"']*\bsp-|script-body|data-screenplay=)/.test(value.html);
+  const fountain = screenplay && !value.matchStyle && /\n/.test(value.text.trim()) && !scriptHTML;
+  const scriptBlocks = !value.matchStyle && (scriptHTML || fountain);
   let model: PMNode;
-  if (value.html && !value.matchStyle) {
-    model = clipboardHTML(context.document, value.html);
+  if (fountain) {
+    const lines = readFountainScreenplay(value.text, { projection: 'paste' }).lines;
+    model = htmlSchema.nodes.doc.create(
+      null,
+      lines.length
+        ? lines.map((line) =>
+            htmlSchema.nodes.paragraph.create(
+              { screenplay: line.element, class: legacyScreenplayClasses[line.element] },
+              line.runs.map((run) =>
+                htmlSchema.text(
+                  run.text,
+                  run.marks.map((mark) => htmlSchema.marks[mark].create()),
+                ),
+              ),
+            ),
+          )
+        : htmlSchema.nodes.paragraph.create(),
+    );
+  } else if (value.html && !value.matchStyle) {
+    model = clipboardHTML(context.document, value.html, scriptHTML);
   } else {
     const manuscript = owner.node.attrs.role === 'chapter',
       lines = manuscript
@@ -139,13 +169,20 @@ export function paste(context: ClipboardOperationsContext, value: ClipboardValue
       }),
     );
   }
-  if (owner.node.attrs.role === 'chapter' && !value.matchStyle) {
+  if (owner.node.attrs.role === 'chapter' && !value.matchStyle && !scriptBlocks) {
     const normalization = EditorState.create({ doc: model }).tr,
       edits: { from: number; to: number; text: string }[] = [];
     let index = 0;
     model.descendants((node, position) => {
       if (!node.isTextblock) return;
       const text = node.textContent;
+      if (
+        screenplay &&
+        ['scene-heading', 'character', 'transition', 'shot'].includes(node.attrs.screenplay)
+      ) {
+        index++;
+        return false;
+      }
       for (const edit of dialogueEdits(text, context.preferences.language ?? 'en'))
         if (edit.at !== 0 || index > 0 || context.state.selection.$from.parentOffset === 0)
           edits.push({
@@ -191,10 +228,26 @@ export function paste(context: ClipboardOperationsContext, value: ClipboardValue
     nodes.length === 1 && nodes[0].isTextblock
       ? new Slice(nodes[0].content, 0, 0)
       : new Slice(Fragment.fromArray(nodes), 1, 1);
+  const transaction = closeHistory(context.state.tr);
+  if (scriptBlocks && nodes.length > 60) transaction.deleteSelection();
+  const point = transaction.selection.$from;
+  if (scriptBlocks && point.parent.type.name === 'paragraph' &&
+      (nodes.length > 60 || transaction.selection.empty && !point.parent.content.size)) {
+    const from = point.before(), paragraph = point.parent;
+    const prefix = paragraph.content.cut(0, point.parentOffset), suffix = paragraph.content.cut(point.parentOffset);
+    let opaquePrefix = false;
+    prefix.forEach(node => { if (!node.isText && node.type.name !== 'hard_break') opaquePrefix = true; });
+    const keepPrefix = Boolean(prefix.textBetween(0, prefix.size).trim() || opaquePrefix);
+    const before = keepPrefix ? [paragraph.copy(prefix)] : [];
+    const data = { ...paragraph.attrs.data };
+    if (keepPrefix) delete data['data-scene-id'];
+    const after = suffix.size ? [paragraph.type.create({ ...paragraph.attrs, pid: keepPrefix ? null : paragraph.attrs.pid, data }, suffix)] : [];
+    transaction.replaceWith(from, from + paragraph.nodeSize, Fragment.fromArray([...before, ...nodes, ...after]));
+    transaction.setSelection(TextSelection.create(transaction.doc,
+      from + before.reduce((size, node) => size + node.nodeSize, 0) + nodes.reduce((size, node) => size + node.nodeSize, 0) - 1));
+  } else transaction.replaceSelection(slice);
   context.dispatch(
-    closeHistory(context.state.tr)
-      .replaceSelection(slice)
-      .setDocAttribute('metadata', { ...context.state.doc.attrs.metadata, stickies }),
+    transaction.setDocAttribute('metadata', { ...context.state.doc.attrs.metadata, stickies }),
     'paste',
   );
 }

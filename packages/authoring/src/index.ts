@@ -32,4 +32,4 @@ export class AuthoringSession {
     return this.running;
   }
 }
-export { ProgressTracker, writingDay, progressDays } from './progress';
+export { ProgressTracker, writingDay, progressDays, dailyWordCount } from './progress';

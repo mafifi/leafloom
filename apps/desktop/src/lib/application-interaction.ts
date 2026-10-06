@@ -6,8 +6,11 @@ import {
 } from '@leafloom/desktop-host';
 import { translate } from '@leafloom/language-contracts';
 import type { AppState, MenuItem } from './application';
+import type {ApplicationPlatform} from './application';
+import {refusedWriteHint} from './host-refusal';
 
 export interface ApplicationInteractionContext {
+  platform?:ApplicationPlatform;
   runtimeFailureNotified: boolean;
   patch: (patch: Partial<AppState>) => void;
   value: AppState;
@@ -39,6 +42,8 @@ export async function reportRuntimeFailure(
 }
 
 export function fail(context: ApplicationInteractionContext, error: unknown): void {
+  const refusal=refusedWriteHint(error,(key,args)=>translate(context.value.language,key,args),context.platform?.platformKind);
+  if(refusal){context.patch({hint:refusal});return;}
   const code=error instanceof Error ? error.message : '';
   context.patch({ hint: code==='UNSUPPORTED_SCREENPLAY' ? translate(context.value.language, 'This format cannot preserve all of this script. Your book is unchanged.') : code || 'Unable to complete operation' });
 }

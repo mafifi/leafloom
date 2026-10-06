@@ -1,0 +1,60 @@
+{
+  "source": "https://github.com/hughhowey/neo",
+  "conversion": "Lossless WOFF2 transport decoding to SFNT TrueType using fontTools 4.63.0",
+  "verification": "Glyph order, Unicode cmap, horizontal metrics, and every compiled glyph outline remain identical after decoding; original names and OFL notices retained.",
+  "license": "LICENSE-courier-prime.txt",
+  "faces": [
+    {
+      "source": "courier-prime-latin-400-italic.woff2",
+      "sourceSha256": "84f91615090e8b84f5adfb7e5826a8ad137c7a13e3687e4bfa85c275149df60f",
+      "pdfFile": "courier-prime-latin-400-italic.ttf",
+      "pdfSha256": "b385cbc55854cba8e9b83b7ced92b1af3f60d15673dccaa1b889507c9347333d"
+    },
+    {
+      "source": "courier-prime-latin-400-normal.woff2",
+      "sourceSha256": "f09844e1f4fe9e67df2cc77474519e68756d559b4648278b9dd4f03c8ac9c31f",
+      "pdfFile": "courier-prime-latin-400-normal.ttf",
+      "pdfSha256": "ba2276bb705d59f60cc2e8de3f219d8e1a0fd90246dc00cc4c7cdd3cbca52b7d"
+    },
+    {
+      "source": "courier-prime-latin-700-italic.woff2",
+      "sourceSha256": "8531294532e78dd2f7f5dd14b594633cafd1e5b2efadb83e024a5d56dd5343d1",
+      "pdfFile": "courier-prime-latin-700-italic.ttf",
+      "pdfSha256": "cb749b2e89e60cd69791c868da8bea703c416fcf5f474bc6d0fb63ee14bfcd15"
+    },
+    {
+      "source": "courier-prime-latin-700-normal.woff2",
+      "sourceSha256": "5c7ae1cc9aae183453565c836b74a1b988f5f2e52b65098decb909b3930957ec",
+      "pdfFile": "courier-prime-latin-700-normal.ttf",
+      "pdfSha256": "7f0ada7fdef4a772299ea67999700f3813ea96012cfc68b655a91dadfb541e34"
+    },
+    {
+      "source": "courier-prime-latin-ext-400-italic.woff2",
+      "sourceSha256": "a47dece624bf5d3567287a52b77ba0ae3d3b1a44dfad77c8b84aff34ffc1d9f1",
+      "pdfFile": "courier-prime-latin-ext-400-italic.ttf",
+      "pdfSha256": "d71093c16f958d12c3f792088604482d1342c079731cc8ce6b984fa3c9ab28a8"
+    },
+    {
+      "source": "courier-prime-latin-ext-400-normal.woff2",
+      "sourceSha256": "efbea074e3d87eecd5bcc05fc363853b68e703a45ecb896cd804c80c9918acd0",
+      "pdfFile": "courier-prime-latin-ext-400-normal.ttf",
+      "pdfSha256": "a5979295250c96d462b52845411ff7f5c98978ca1de41f127532732e6c232d85"
+    },
+    {
+      "source": "courier-prime-latin-ext-700-italic.woff2",
+      "sourceSha256": "d232930910d65787171011e9c5c649ea3ff49597f31288e8fa9e7919a9f7e396",
+      "pdfFile": "courier-prime-latin-ext-700-italic.ttf",
+      "pdfSha256": "2fbe75461b83df7d25ebe2face798ede5757c71d63dc1f9adf97b5a9ebf31e8c"
+    },
+    {
+      "source": "courier-prime-latin-ext-700-normal.woff2",
+      "sourceSha256": "b7ce6854b9082533919ab47566fc92e9dac95d9a9cc209f5ee1922faa6a19ea9",
+      "pdfFile": "courier-prime-latin-ext-700-normal.ttf",
+      "pdfSha256": "77e8bf2af2e23cc45c1e6e23434285866f96cd8674248536579511fa68a1e575"
+    }
+  ],
+  "commit": "b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0",
+  "directory": "fonts",
+  "sourceManifest": "provenance-screenplay.json",
+  "licenseSha256": "195bfcfb42f32343efc8475e902c3c4936cda7a9c435c39634e03c1e85fa862b"
+}

@@ -1,3 +1,5 @@
+import type { OutlineCard, OutlineCardInsertion, OutlineCardTarget, OutlineDropSide, OutlineSceneMeasurement, WalkingOutlineNote } from './outline-board';
+export type { OutlineCard, OutlineCardInsertion, OutlineCardTarget, OutlineDropSide, OutlineSceneMeasurement, WalkingOutlineNote } from './outline-board';
 import type { ManuscriptModeValue, ScreenplayElementValue } from '@leafloom/document-contracts';
 import { z } from 'zod';
 import {
@@ -171,6 +173,7 @@ export type Annotation = {
   from: number;
   to: number;
   message?: string;
+  correction?: string;
 };
 export type SurfaceContextTarget = Annotation & { text: string; x: number; y: number };
 export type VimState = { enabled: boolean; navigation: boolean; visual: boolean };
@@ -178,6 +181,7 @@ export type SurfaceHooks = {
   activate?(target: { kind: 'sticky' | 'review'; id: string }): void;
   copy?(value: ClipboardValue): void;
   search?(): void;
+  searchAgain?(direction: -1 | 1, times: number, visual: boolean): void;
   vimState?(state: VimState): void;
   contextMenu?(target: SurfaceContextTarget): void;
 };
@@ -188,7 +192,7 @@ export type RestoreOutcome = {
   restoredPassageId?: string;
 };
 export type ClipboardValue = { text: string; html?: string; matchStyle?: boolean };
-export type MetadataField = 'title' | 'subtitle' | 'author';
+export type MetadataField = 'title' | 'subtitle' | 'author' | 'credit' | 'draft';
 export type MetadataPatch = { title?: string; subtitle?: string; author?: string };
 export type DarlingSearchMatch = { darlingId: string; runIndex: number; from: number; to: number };
 export type DarlingRow = {
@@ -216,10 +220,12 @@ export type EditorSelection = { chapterId: string; passageId: string; from: numb
 export type SearchMatch = { chapterId: string; passageId: string; from: number; to: number };
 export type ActiveFormatting = {
   poetry: boolean;
+  flush: boolean;
   align: 'left' | 'center' | 'right' | 'justify';
 };
 export type ScreenplayScene = { chapterId: string; passageId: string; label: string };
 export interface EditorPort {
+  readonly historyVersion: string;
   readonly manuscriptMode: ManuscriptModeValue;
   readonly screenplayScenes: ScreenplayScene[];
   setManuscriptMode(mode: ManuscriptModeValue): boolean;
@@ -232,6 +238,16 @@ export interface EditorPort {
   contentsRows(customChapterTitles?: boolean): ContentsRow[];
   alignParagraph(value: 'left' | 'center' | 'right' | 'justify'): boolean;
   readonly outlineRows: OutlineRow[];
+  readonly outlineCards: OutlineCard[];
+  readonly looseOutlineCards: OutlineCard[];
+  readonly walkingOutlineNote: WalkingOutlineNote | null;
+  setOutlineSceneMeasurements(value: OutlineSceneMeasurement[]): void;
+  saveOutlineCard(target: OutlineCardTarget, text: string, slug?: string): void;
+  insertOutlineCard(location: OutlineCardInsertion, text?: string, slug?: string): OutlineCardTarget | null;
+  deleteOutlineCardNote(target: OutlineCardTarget): void;
+  dropOutlineCard(source: OutlineCardTarget, target: OutlineCardTarget | 'loose', side: OutlineDropSide): boolean;
+  promoteOutlineSection(target: OutlineCardTarget): OutlineCardTarget | null;
+  dismissWalkingOutlineNote(): void;
   editOutlineRow(target: OutlineTarget, text: string): void;
   outlineEnter(target: OutlineTarget, before?: boolean): OutlineTarget;
   outlineIndent(
@@ -239,6 +255,8 @@ export interface EditorPort {
     reverse?: boolean,
   ): { target: OutlineTarget; notice?: string };
   outlineDelete(target: OutlineTarget): OutlineTarget;
+  joinOutlineChapter(chapterId: string, intoChapterId: string): OutlineTarget | null;
+  moveOutlineSection(fromChapterId: string, segmentIndex: number, to: { chapterId: string; before: number | null }): void;
   readonly selection: EditorSelection | null;
   restoreSelection(value: unknown): boolean;
   readonly metadata: MetadataValue;
@@ -249,8 +267,10 @@ export interface EditorPort {
   readonly revision: number;
   readonly words: number;
   readonly selectedWords: number;
+  readonly caret: {chapterId:string; passageId:string; offset:number} | null;
   setCoverBookkeeping(patch: { coverArt?: JSONValue; coverMode?: 'painted' }): void;
   wordCountFor(sectionId: string): number;
+  wordsBeforeCaret(chapterId: string): number;
   readonly snapshots: number;
   readonly canUndo: boolean;
   readonly canRedo: boolean;
@@ -273,7 +293,7 @@ export interface EditorPort {
     interfaceLanguage?: string;
     markdown?: boolean;
   }): void;
-  insert(text: string, options?: { typography?: boolean }): void;
+  insert(text: string, options?: { typography?: boolean; capitalize?: boolean }): void;
   copySelection(): ClipboardValue;
   cutSelection(): ClipboardValue;
   selectAll(id?: string): void;
@@ -296,15 +316,17 @@ export interface EditorPort {
     options?: { copyrightStarter?: { notice: string; rights: string } },
   ): void;
   togglePoetry(): void;
+  toggleFlush(): void;
   insertOpeningPoetry(id: string): void;
-  selectPassage(id: string, from: number, to?: number): void;
+  selectPassage(id: string, from: number, to?: number, extend?: boolean): void;
   replaceMatches(matches: SearchMatch[], text: string): void;
   search(query: string, scope?: 'manuscript' | 'notes' | 'outline' | 'all'): SearchMatch[];
   enter(shift?: boolean): boolean;
+  flushEnter(plain?: boolean): boolean;
   backspace(): boolean;
   deleteForward(): boolean;
   resetEnter(): void;
-  format(mark: 'bold' | 'italic'): void;
+  format(mark: 'bold' | 'italic' | 'underline' | 'strike'): void;
   undo(): boolean;
   redo(): boolean;
   createChapter(
@@ -325,6 +347,7 @@ export interface EditorPort {
     sectionId?: string,
   ): { id: string; chapterId: string; kind: string; text: string; size: number }[];
   /** Stable section snapshot until its author content changes; excludes planned prose. */
+  capitalizationRanges(sectionId: string, language: string): { passageId: string; from: number; to: number; correction: string }[];
   spellingPassages(
     sectionId: string,
   ): readonly { id: string; runs: readonly { from: number; text: string }[] }[];
@@ -353,6 +376,7 @@ export interface SurfacePort<Host = unknown> {
   configurePresentation(preferences: PresentationPreferences): void;
   archiveDraggedSelection(): boolean;
   setVim(enabled: boolean): void;
+  restVim(): void;
   readonly vimState: VimState;
   setHooks(hooks: SurfaceHooks): void;
   renderBook(root: Host, auxiliary: Host, panel: string, enabled: boolean): void;
@@ -370,7 +394,7 @@ export type SurfaceActions = {
   undo(): void;
   redo(): void;
   save(): void;
-  format(mark: 'bold' | 'italic'): void;
+  format(mark: 'bold' | 'italic' | 'underline' | 'strike'): void;
   archive(): void;
 };
 

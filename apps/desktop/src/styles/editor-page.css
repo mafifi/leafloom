@@ -80,7 +80,7 @@ body.night #aux-editor * {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(calc(760px * var(--page-zoom, 1)), 94%);
+  width: min(calc((var(--page-w) + var(--page-gutter)) * var(--page-zoom, 1)), 94%);
   overflow-y: auto;
 }
 
@@ -95,7 +95,7 @@ body.night #aux-editor * {
 
 /* Each page of the book is its own sheet of paper */
 #paper {
-  width: calc(680px * var(--page-zoom, 1));
+  width: calc(var(--page-w, 680px) * var(--page-zoom, 1));
   max-width: 92%;
   margin: 40px auto 120px;
 }
@@ -132,7 +132,7 @@ body.focus-mode.night .sheet ::selection {
    itself so no other paragraph grows a ::first-letter */
 body.focus-mode:not(.no-dropcap)
   .chapter-body.focus-cap:not(.cap-off):not(.no-cap):not(.opens-dialogue)
-  p:not(.poetry):not(p:not(.poetry) ~ p)::first-letter {
+  p[data-first]::first-letter {
   color: var(--ink);
 }
 .sheet {
@@ -144,7 +144,7 @@ body.focus-mode:not(.no-dropcap)
   margin-bottom: 44px;
 }
 #aux-paper {
-  width: calc(680px * var(--page-zoom, 1));
+  width: calc(var(--page-w, 680px) * var(--page-zoom, 1));
   max-width: 92%;
   background: var(--paper);
   color: var(--ink);
@@ -295,7 +295,7 @@ body.focus-mode:not(.no-dropcap)
    makes the engine split the text internally, which corrupts deletes */
 body:not(.no-dropcap)
   .chapter-body:not(.cap-off):not(.no-cap):not(.opens-dialogue)
-  p:not(.poetry):not(p:not(.poetry) ~ p)::first-letter {
+  p[data-first]::first-letter {
   font-size: 3.4em;
   float: left;
   line-height: 0.8;
@@ -515,3 +515,6 @@ body.night .chapter-body.blank::before {
   color: #5f5b52;
 }
 
+.chapter-body p.flush {
+  text-indent: 0;
+}

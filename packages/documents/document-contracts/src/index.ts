@@ -3,6 +3,8 @@ import { Metadata } from './legacy.ts';
 export * from './legacy.ts';
 export * from './manuscript.ts';
 export * from './screenplay.ts';
+export * from './screenplay-layout.ts';
+export * from './fountain.ts';
 export const ChapterKind = z.enum([
   'copyright',
   'dedication',

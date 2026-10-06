@@ -1,3 +1,4 @@
+import { pagePosition } from './manuscript-position';
 import { AuthoringSession, writingDay } from '@leafloom/authoring';
 import {
   remotePositionEligibility,
@@ -12,6 +13,8 @@ import type { AppState } from './application';
 
 
 export interface ApplicationProjectionContext {
+  scriptCounterLabels: {wordLabel:string;positionLabel:string}|null;
+  refreshScriptLayout():void;
   telemetry: Telemetry | undefined;
   projectState: () => void;
   editor: EditorPort | null;
@@ -69,7 +72,10 @@ export function projectState(context: ApplicationProjectionContext): void {
   const stories = editor.chapters.filter((row) =>
     ['chapter', 'unnumbered', 'prologue', 'epilogue', 'interlude'].includes(row.kind),
   );
-  const positionLabel = !chapter
+  const pages = context.value.library.posMode === 'page' ? pagePosition(editor, current) : null;
+  const positionLabel = context.value.library.posMode === 'page'
+    ? current ? t('page {p} of {total}', {p:pages!.page,total:pages!.total}) : t('{n} pages',{n:pages!.total})
+    : !chapter
     ? numbered.length > 1
       ? t('{n} chapters', { n: numbered.length })
       : ''
@@ -82,7 +88,8 @@ export function projectState(context: ApplicationProjectionContext): void {
     currentChapter: current,
     wordLabel,
     positionLabel,
-    todayWords: today ? today.end - today.start : 0,
+    ...context.scriptCounterLabels,
+    todayWords: today ? Math.max(0, today.end - today.start) : 0,
     manuscriptMode: editor.manuscriptMode,
     screenplayScenes: editor.screenplayScenes,
     chapters: editor.chapters,
@@ -90,6 +97,9 @@ export function projectState(context: ApplicationProjectionContext): void {
       .filter((chapter) => !editor.supported(chapter.id))
       .map((chapter) => chapter.id),
     outlineRows: editor.outlineRows,
+    outlineCards: editor.outlineCards,
+    looseOutlineCards: editor.looseOutlineCards,
+    walkingOutlineNote: editor.walkingOutlineNote,
     contentsRows: editor.contentsRows(Boolean(context.value.library.customChapterTitles)),
     darlings: editor.darlings.map((darling) => {
       const html =
@@ -119,6 +129,7 @@ export function projectState(context: ApplicationProjectionContext): void {
   });
   context.scheduleMenu();
   void context.rendered().then(() => {
+    context.refreshScriptLayout();
     const root = document.querySelector<HTMLElement>('#chapters'),
       aux = document.querySelector<HTMLElement>('#aux-editor');
     if (root && aux) {

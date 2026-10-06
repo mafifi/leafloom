@@ -1,3 +1,4 @@
+import { interfaceBrightness, auxiliaryBrightness } from './interface-brightness';
 import { FullscreenChangedSchema } from '@leafloom/desktop-host';
 import { type EditorPort, type OutlineTarget, type SurfacePort } from '@leafloom/editor-contracts';
 import { Library } from '@leafloom/library';
@@ -44,8 +45,9 @@ export interface ApplicationMenusContext {
   reorderChapter: (id: string, index: number) => void;
   createChapter: (index?: number, kind?: string) => void;
   menu: (event: MouseEvent, items: MenuItem[]) => void;
-  format: (mark: 'bold' | 'italic') => void;
+  format: (mark: 'bold' | 'italic' | 'underline' | 'strike') => void;
   togglePoetry: () => void;
+  toggleFlush: () => void;
   alignParagraph: (value: 'left' | 'center' | 'right' | 'justify') => void;
   newSticky: () => Promise<void>;
   archive: () => void;
@@ -75,7 +77,7 @@ export async function showInformation(
       document.querySelector<HTMLElement>('.shortcuts-content')?.focus();
     return;
   }
-  let version = '0.1.0';
+  let version = '1.3.5';
   if (context.platform?.os) {
     if (kind === 'update') {
       if (!context.updates) await context.initializeUpdates(false);
@@ -133,9 +135,10 @@ export async function synchronizeMenu(context: ApplicationMenusContext): Promise
     typewriter: Boolean(prefs.typewriter),
     vim: Boolean(prefs.vimKeys),
     markdownEmphasis: !prefs.markdownOff,
-    uiBright: brighterInterface(prefs.uiBright),
+    uiBright: interfaceBrightness(prefs, context.value.view, context.value.panel, brighterInterface(undefined)),
     interfaceZoom: Number(prefs.uiZoom) || 1,
     poetry: context.editor?.activeFormatting.poetry ?? false,
+    flush: context.editor?.activeFormatting.flush ?? false,
     align: context.editor?.activeFormatting.align ?? 'left',
   };
   const signature = JSON.stringify(state);
@@ -189,7 +192,7 @@ export async function textSize(context: ApplicationMenusContext, delta: number):
   context.libraryGeneration++;
   context.patch({ library: next, ...(delta === 0 ? { zoom: 1 } : {}) });
   keepReadingPlace(() => {
-    applyPresentation(next);
+    applyPresentation(next, context.value.view, context.value.panel);
     context.applyPlatformDropcap();
     document.documentElement.style.setProperty(
       '--body-font',
@@ -386,7 +389,10 @@ export function formatMenu(context: ApplicationMenusContext, event: MouseEvent):
     },
     { label: 'Bold', run: () => context.format('bold') },
     { label: 'Italic', run: () => context.format('italic') },
-    { label: 'Poetry', run: () => context.togglePoetry() },
+    { label: 'Underline', run: () => context.format('underline') },
+    { label: 'Strikethrough', run: () => context.format('strike') },
+    { label: 'Flush Paragraph', checked: context.editor?.activeFormatting.flush ?? false, run: () => context.toggleFlush() },
+    { label: 'Poetry', checked: context.editor?.activeFormatting.poetry ?? false, run: () => context.togglePoetry() },
     ...(['left', 'center', 'right', 'justify'] as const).map((value) => ({
       label: value[0].toUpperCase() + value.slice(1),
       run: () => context.alignParagraph(value),
@@ -426,12 +432,14 @@ export function formatMenu(context: ApplicationMenusContext, event: MouseEvent):
 export function fileMenu(context: ApplicationMenusContext, event: MouseEvent): void {
   context.menu(event, [
     { label: 'Import', run: () => context.importBooks() },
+    { label: 'Brighter Interface', checked: interfaceBrightness(context.value.library, context.value.view, context.value.panel, brighterInterface(undefined)), run: () => context.preference(auxiliaryBrightness(context.value.view, context.value.panel) ? 'uiBrightAside' : 'uiBright', !document.body.classList.contains('bright')) },
     { label: 'Reshelve a Book…', run: () => context.reshelveBook() },
   ]);
 }
 
 export function viewMenu(context: ApplicationMenusContext, event: MouseEvent): void {
   context.menu(event, [
+    { label: 'Brighter Interface', checked: interfaceBrightness(context.value.library, context.value.view, context.value.panel, brighterInterface(undefined)), run: () => context.preference(auxiliaryBrightness(context.value.view, context.value.panel) ? 'uiBrightAside' : 'uiBright', !document.body.classList.contains('bright')) },
     { label: 'Reshelve a Book…', run: () => context.reshelveBook() },
     ...(['pantser', 'plotter'] as const).map((style) => ({
       label: style === 'pantser' ? 'Pantser' : 'Plotter',

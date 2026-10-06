@@ -44,6 +44,7 @@ export function setAnnotations(
       from: z.number().int().nonnegative(),
       to: z.number().int().nonnegative(),
       message: z.string().optional(),
+      correction: z.string().optional(),
     }),
   );
   const parsed = Array.from(

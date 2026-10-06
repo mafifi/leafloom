@@ -242,8 +242,9 @@ export function apply(
     }
     if (!tr.getMeta('bookkeeping')) tr.setDocAttribute('version', uuid());
   }
-  const relocation = tr.getMeta('relocate') as
-    { start: number; end: number; target: number; inline?: boolean } | undefined;
+  type Relocation = { start: number; end: number; target: number; inline?: boolean };
+  const relocation = tr.getMeta('relocate') as Relocation | Relocation[] | undefined;
+  const relocations = relocation ? Array.isArray(relocation) ? relocation : [relocation] : [];
   const mapped = new Map<string, Location>();
   for (const [id, loc] of context.locations) {
     if (loc.deleted || loc.unresolved) {
@@ -256,16 +257,14 @@ export function apply(
         const p = context.passage(s.passageId)!;
         return { from: p.pos + 1 + s.from, to: p.pos + 1 + s.to };
       })
-      .map((p) =>
-        relocation &&
-        p.from >= relocation.start + (relocation.inline ? 0 : 1) &&
-        p.to <= relocation.end - (relocation.inline ? 0 : 1)
-          ? {
-              from: relocation.target + p.from - relocation.start,
-              to: relocation.target + p.to - relocation.start,
-            }
-          : { from: tr.mapping.map(p.from, 1), to: tr.mapping.map(p.to, -1) },
-      )
+      .map((p) => {
+        const moved = relocations.find(range =>
+          p.from >= range.start + (range.inline ? 0 : 1) &&
+          p.to <= range.end - (range.inline ? 0 : 1));
+        return moved
+          ? { from: moved.target + p.from - moved.start, to: moved.target + p.to - moved.start }
+          : { from: tr.mapping.map(p.from, 1), to: tr.mapping.map(p.to, -1) };
+      })
       .filter((p) => p.to > p.from);
     const merged: Part[] = [];
     for (const p of parts) {

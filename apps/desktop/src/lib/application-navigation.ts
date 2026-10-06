@@ -1,3 +1,4 @@
+import { pagePosition } from './manuscript-position';
 import { type EditorPort, type SurfacePort } from '@leafloom/editor-contracts';
 import { translate } from '@leafloom/language-contracts';
 import type { AppState, ApplicationPlatform } from './application';
@@ -7,9 +8,12 @@ import type { InformationPresentation } from './information';
 import { KeyboardNavigation } from './keyboard-navigation';
 import { LibraryViewModel } from './library-view-model';
 import { PublicationPageViewModel } from './publication-page';
-
+import type { BrowserReadAloud } from './browser-read-aloud';
 
 export interface ApplicationNavigationContext {
+  scriptSceneMode:boolean;
+  scriptCounterLabels:{wordLabel:string;positionLabel:string}|null;
+  readAloud: BrowserReadAloud | null;
   patch: (patch: Partial<AppState>) => void;
   value: AppState;
   project: () => void;
@@ -28,6 +32,7 @@ export interface ApplicationNavigationContext {
     options?: { closeMenu?: boolean },
   ) => Promise<void>;
   save: () => Promise<void>;
+  updateLibrary: (value: AppState['library'], history?: boolean) => Promise<void>;
   keyboardNavigation: KeyboardNavigation;
   closeEmailSettings: () => void;
   closeCoverArt: () => void;
@@ -58,6 +63,18 @@ export interface ApplicationNavigationContext {
   openSearch: () => void;
 }
 
+export async function cyclePositionCounter(context: ApplicationNavigationContext): Promise<void> {
+  if(context.editor?.manuscriptMode === 'screenplay') {context.scriptSceneMode=!context.scriptSceneMode;context.project();return;}
+  await context.updateLibrary(
+    {
+      ...context.value.library,
+      posMode: context.value.library.posMode === 'page' ? 'chapter' : 'page',
+    },
+    false,
+  );
+  context.project();
+}
+
 export function cycleWordCounter(context: ApplicationNavigationContext): void {
   context.patch({ wordMode: context.value.wordMode === 'book' ? 'chapter' : 'book' });
   context.project();
@@ -82,14 +99,18 @@ export function projectCounters(context: ApplicationNavigationContext, id: strin
   const t = (key: string, args: Record<string, string | number> = {}) =>
     translate(context.value.language, key, args);
   const numbered = editor.chapters.filter((row) => row.kind === 'chapter');
+  const pages = context.value.library.posMode === 'page' ? pagePosition(editor, id) : null;
   context.patch({
     positionLabel:
-      chapter.kind === 'chapter' && numbered.length === 1
-        ? ''
-        : chapter.kind === 'chapter'
-          ? t('chapter {ch} of {total}', { ch: chapter.number ?? 0, total: numbered.length })
-          : t(chapter.label),
-    ...(context.value.wordMode === 'chapter'
+      context.value.library.posMode === 'page'
+        ? t('page {p} of {total}', { p: pages!.page, total: pages!.total })
+        : chapter.kind === 'chapter' && numbered.length === 1
+          ? ''
+          : chapter.kind === 'chapter'
+            ? t('chapter {ch} of {total}', { ch: chapter.number ?? 0, total: numbered.length })
+            : t(chapter.label),
+    ...context.scriptCounterLabels,
+    ...(context.editor?.manuscriptMode !== 'screenplay' && context.value.wordMode === 'chapter'
       ? {
           wordLabel:
             chapter.kind === 'chapter'
@@ -105,23 +126,34 @@ export function chapterNavigationKey(
   event: KeyboardEvent,
 ): void {
   const mod = context.platform?.isMac ? event.metaKey : event.ctrlKey;
+  const pageKey =
+    !context.platform?.isMac &&
+    event.ctrlKey &&
+    !event.metaKey &&
+    !event.altKey &&
+    !event.shiftKey &&
+    ['PageDown', 'PageUp'].includes(event.key);
   if (
     event.defaultPrevented ||
     event.isComposing ||
     event.keyCode === 229 ||
-    !mod ||
-    !event.altKey ||
-    event.shiftKey ||
-    !['ArrowUp', 'ArrowDown'].includes(event.key) ||
+    (!pageKey &&
+      (!mod || !event.altKey || event.shiftKey || !['ArrowUp', 'ArrowDown'].includes(event.key))) ||
     context.value.view !== 'editor' ||
     context.overlayOpen()
   )
     return;
   event.preventDefault();
   event.stopPropagation();
-  const direction = event.key === 'ArrowDown' ? 1 : -1;
+  const direction = event.key === 'ArrowDown' || event.key === 'PageDown' ? 1 : -1;
   const chapters = context.editor?.chapters ?? [];
-  let index = chapters.findIndex((row) => row.id === context.value.currentChapter);
+  // The visible-chapter counter follows scrolling; chapter keys follow the
+  // author caret even while several chapters share the viewport.
+  const current =
+    context.value.panel === 'manuscript'
+      ? (context.editor?.caret?.chapterId ?? context.value.currentChapter)
+      : context.value.currentChapter;
+  let index = chapters.findIndex((row) => row.id === current);
   if (index < 0) index = direction > 0 ? -1 : chapters.length;
   const next = Math.max(0, Math.min(chapters.length - 1, index + direction));
   if (next === index || !chapters[next]) return;
@@ -175,6 +207,15 @@ export function fieldTypographyKey(
 }
 
 export function key(context: ApplicationNavigationContext, event: KeyboardEvent): void {
+  if (
+    event.key === 'Alt' && !event.ctrlKey && !event.metaKey && !event.shiftKey &&
+    !event.repeat && !event.isComposing && event.keyCode !== 229 && context.fullscreen &&
+    (context.platform?.platformKind === 'windows' || context.platform?.platformKind === 'linux')
+  ) {
+    void context.execute(() => context.platform?.os?.request('revealNativeMenu', {}).then(() => {}));
+    return;
+  }
+  if (context.readAloud?.handleKey(event)) return;
   if (context.publicationPageViewModel.active) {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
       event.preventDefault();

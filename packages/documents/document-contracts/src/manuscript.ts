@@ -31,6 +31,12 @@ export type ManuscriptValue = z.infer<typeof Manuscript>;
 export const SourceBook = z.union([Book, IdentityBook, LegacyManuscript, ManuscriptV2]);
 export type SourceBookValue = z.infer<typeof SourceBook>;
 export type ManuscriptV2Value = z.infer<typeof ManuscriptV2>;
+/** Read compatibility metadata from a validated document without changing its envelope. */
+export function manuscriptMetadata(book: SourceBookValue): SourceBookValue['metadata'] {
+  return book.formatVersion === 'leafloom-manuscript/v2' && book.mode === 'screenplay'
+    ? { ...book.metadata, format: 'screenplay' }
+    : book.metadata;
+}
 /** Migration is a value transformation. The writer commits it through the existing save protocol. */
 export function migrateManuscript(
   raw: unknown,
@@ -58,10 +64,7 @@ export function legacyBook(raw: unknown): BookDocument {
   return Book.parse({
     formatVersion: 'neo-lifecycle/v1',
     revision: book.revision,
-    metadata:
-      book.formatVersion === 'leafloom-manuscript/v2' && book.mode === 'screenplay'
-        ? { ...book.metadata, format: 'screenplay' }
-        : book.metadata,
+    metadata: manuscriptMetadata(book),
     chapters: book.chapters.map(({ id, html }) => ({ id, html })),
     darlings: book.darlings,
   });

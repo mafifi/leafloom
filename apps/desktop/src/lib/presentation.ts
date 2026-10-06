@@ -1,3 +1,4 @@
+import { interfaceBrightness } from './interface-brightness';
 export function brighterInterface(value: unknown): boolean {
   return value === undefined
     ? Boolean(window.matchMedia?.('(prefers-contrast: more)').matches)
@@ -14,6 +15,7 @@ export const bodyFonts: Record<string, string> = {
   'Iowan Old Style': '"Iowan Old Style", Georgia, serif',
   Cambria: 'Cambria, Georgia, serif',
   Constantia: 'Constantia, Georgia, serif',
+  'iA Writer Quattro': '"iA Writer Quattro", "Helvetica Neue", Arial, sans-serif',
   Jost: 'Jost, "Avenir Next", Arial, sans-serif',
   Gelasio: 'Gelasio, Georgia, serif',
   'TeX Gyre Pagella': '"TeX Gyre Pagella", serif',
@@ -36,7 +38,8 @@ export function applyPresentation(preferences: {
   typewriter?: unknown;
   focusMode?: unknown;
   uiBright?: unknown;
-}) {
+  uiBrightAside?: unknown;
+}, view = 'library', panel = 'manuscript') {
   const root = document.documentElement,
     body = document.body;
   root.style.setProperty('--body-font', bodyFonts[preferences.fonts.body] ?? bodyFonts.Georgia);
@@ -47,7 +50,7 @@ export function applyPresentation(preferences: {
   body.classList.toggle('no-dropcap', preferences.fonts.dropcap === 'none');
   body.classList.toggle('night', preferences.pageTheme === 'night');
   body.classList.toggle('light', preferences.pageTheme === 'light');
-  body.classList.toggle('bright', brighterInterface(preferences.uiBright));
+  body.classList.toggle('bright', interfaceBrightness(preferences, view, panel, brighterInterface(undefined)));
   body.classList.toggle('typewriter', Boolean(preferences.typewriter));
   body.classList.toggle('focus-mode', Boolean(preferences.focusMode));
   root.style.setProperty(

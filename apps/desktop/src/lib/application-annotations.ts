@@ -1,9 +1,13 @@
+import type { BrowserReadAloud } from './browser-read-aloud';
 import { type EditorPort, type SurfacePort } from '@leafloom/editor-contracts';
 import type { AppState } from './application';
 import { SearchViewModel } from './search-view-model';
+import { nativeHistoryField } from './field-history';
 
 
 export interface ApplicationAnnotationsContext {
+  flushAuthorDrafts():void;
+  readAloud: BrowserReadAloud | null;
   writable: () => boolean;
   editor: EditorPort | null;
   surfaces: SurfacePort<HTMLElement> | null;
@@ -24,7 +28,15 @@ export interface ApplicationAnnotationsContext {
 
 export function togglePoetry(context: ApplicationAnnotationsContext): void {
   if (!context.writable()) return;
+  if (nativeHistoryField(document.activeElement)) return;
   context.editor?.togglePoetry();
+  context.surfaces?.focus();
+}
+
+export function toggleFlush(context: ApplicationAnnotationsContext): void {
+  if (!context.writable()) return;
+  if (nativeHistoryField(document.activeElement)) return;
+  context.editor?.toggleFlush();
   context.surfaces?.focus();
 }
 
@@ -48,7 +60,7 @@ export async function newSticky(context: ApplicationAnnotationsContext): Promise
     return;
   }
   const id = context.editor.createSticky('');
-  context.patch({ sideOpen: true });
+  context.patch({ stickyAutoOpened: !context.value.sideOpen, sideOpen: true });
   await context.rendered();
   document
     .querySelector<HTMLTextAreaElement>(`.sticky[data-sticky-id="${CSS.escape(id)}"] textarea`)
@@ -104,6 +116,7 @@ export function removeSticky(context: ApplicationAnnotationsContext, id: string)
 export async function selectSticky(
   context: ApplicationAnnotationsContext,
   id: string,
+  fromNote = false,
 ): Promise<void> {
   context.flushStickyEdits();
   if (context.value.panel !== 'manuscript') {
@@ -123,10 +136,16 @@ export async function selectSticky(
     if (rect.top < box.top + 40 || rect.bottom > box.bottom - 40)
       mark.scrollIntoView({ block: 'center' });
   }
-  if (!context.value.sidePinned) context.patch({ sideOpen: false });
+  if (fromNote) {
+    if (context.value.stickyAutoOpened && !context.value.sidePinned)
+      context.patch({ sideOpen: false });
+    context.patch({ stickyAutoOpened: false });
+  }
 }
 
 export function setPanel(context: ApplicationAnnotationsContext, panel: string): void {
+  if(panel !== context.value.panel) context.flushAuthorDrafts();
+  context.readAloud?.stop(false);
   const scroll = document.querySelector<HTMLElement>('#paper-scroll');
   if (panel !== context.value.panel)
     context.tabPlaces.set(context.value.panel, {
@@ -155,6 +174,7 @@ export function setPanel(context: ApplicationAnnotationsContext, panel: string):
       await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
       if (context.value.panel === panel) scroll.scrollTop = back.scroll;
     }
+    if (panel === 'manuscript' || panel === 'notes') context.surfaces?.restVim();
     if (context.value.searchOpen) context.searchViewModel.search(context.value.search);
   });
 }

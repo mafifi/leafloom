@@ -15,5 +15,7 @@ export function hostErrorCode(error: unknown): string {
     return error.code;
   if (error instanceof ZodError || (error instanceof Error && error.message === 'INVALID'))
     return 'INVALID';
-  return (error as NodeJS.ErrnoException | null)?.code === 'ENOSPC' ? 'DISK_FULL' : 'DISK_ERROR';
+  const code=(error as NodeJS.ErrnoException|null)?.code;
+  if(code&&['EPERM','EACCES','EROFS'].includes(code))return 'WRITE_REFUSED';
+  return code==='ENOSPC'?'DISK_FULL':'DISK_ERROR';
 }

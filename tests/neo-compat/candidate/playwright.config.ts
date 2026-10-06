@@ -4,6 +4,7 @@ import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {defineConfig} from '@playwright/test';
 import {evidenceMetadata,root} from '../evidence.mjs';
+process.env.LEAFLOOM_REFERENCE_VERSION ??= '1.3.5';
 const fixture=process.env.LEAFLOOM_TEST_ROOT??mkdtempSync(path.join(tmpdir(),'leafloom-candidate-'));
 const marker=path.join(fixture,'.leafloom-parity-fixture');
 if(process.env.LEAFLOOM_TEST_ROOT){if(readFileSync(marker,'utf8')!=='isolated-leafloom-candidate-v1')throw Error('Candidate fixture must be a marked private parity directory');}else writeFileSync(marker,'isolated-leafloom-candidate-v1');

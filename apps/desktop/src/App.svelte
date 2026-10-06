@@ -1,7 +1,13 @@
 <script lang="ts">
+  import {screenplaySceneNavigation} from './lib/screenplay-scene-navigation';
+  import ScreenplayTitleFields from './ScreenplayTitleFields.svelte';
+  import {screenplayTitlePresentation} from './lib/screenplay-title';
+  import WalkingOutlineNote from './WalkingOutlineNote.svelte';
+  import OutlineBoard from './OutlineBoard.svelte';
   import ApplicationOverlays from './ApplicationOverlays.svelte';
   import { overlayPresentation, overlayActions } from './lib/application-overlays';
   import LibraryShelf from './LibraryShelf.svelte';
+  import Onboarding from './Onboarding.svelte';
   import PublicationPage from './PublicationPage.svelte';
   import type { ShelfValue } from '@leafloom/library';
   import type { ShelfBook, LibraryShelfActions } from './lib/library-shelf';
@@ -12,15 +18,9 @@
   let { presentation, actions: vm }: { presentation: Readable<AppState>; actions: AppActions } =
     $props();
   const app = $derived(presentation);
-  let step = $state(1);
-  let pen = $state('');
-  let pickedBody = $state('');
-  let previewBody = $state('');
-  let previewCap = $state('');
-  const selectedBody = $derived(pickedBody || $app.onboardingFonts.defaultBody);
-  let pickedCap = $state('literary');
-  let name = $state('');
-  let style = $state<'pantser' | 'plotter'>('pantser');
+  const sceneNav = screenplaySceneNavigation((source,target,side)=>vm.outlineBoard.drop(source,target,side));
+  const board = $derived({ visible: $app.panel === 'outline', script: $app.manuscriptMode === 'screenplay', view: $app.library.outlineView === 'list' ? 'list' as const : 'cards' as const, zoom: Math.max(.55,Math.min(1.5,Number($app.library.cardZoom)||1)), cards: $app.outlineCards, looseCards: $app.looseOutlineCards });
+  const scriptTitle=$derived(screenplayTitlePresentation($app.book,$app.library,key=>translate($app.language,key)));
   let replace = $state('');
   let dragged = $state('');
   let draggedShelf = $state('');
@@ -127,6 +127,7 @@
       id: book.id,
       title: book.title,
       author: book.author,
+      ...(typeof book.format === 'string' ? { format: book.format } : {}),
       ...(typeof book.kind === 'string' ? { kind: book.kind } : {}),
       ...(typeof book.wordCount === 'number' && Number.isFinite(book.wordCount)
         ? { wordCount: book.wordCount }
@@ -174,6 +175,7 @@
     openCover: (book) => run(() => vm.openPublicationPage(book.id, undefined, shelf.id)),
     addPage: (kind, beforeId) => run(() => vm.addBoundPage(shelf.id, kind, beforeId)),
     newBook: () => run(() => vm.newBook(shelf.id)),
+    newBookMenu: event => vm.menu(event, [{label:'New Book',run:()=>vm.newBook(shelf.id)}, {label:'New Script',run:()=>vm.newScript(shelf.id)}]),
     pageMenu: (event, book, label) =>
       vm.menu(event, [
         { label: 'Open', run: () => vm.openPublicationPage(book.id, label, shelf.id) },
@@ -363,105 +365,13 @@
     </main>
   </div>
   {#if !$app.library.firstRunDone}
-    <div id="firstrun" class="modal-backdrop">
-      <div class="modal">
-        <div id="fr-step1" hidden={step !== 1}>
-          <h2>{t('Welcome to Leafloom')}</h2>
-          <p>{t('A few quick questions, then the page is yours.')}</p>
-          <label
-            >{t('Your name')}<input
-              id="fr-name"
-              placeholder={t('Anonymous')}
-              bind:value={name}
-            /></label
-          ><label
-            >{t('Pen name')}<span class="soft">(optional)</span><input
-              id="fr-pen"
-              bind:value={pen}
-            /></label
-          >
-          <div class="fr-style">
-            <p>{t('Are you a pantser or a plotter?')}</p>
-            <div class="fr-choices">
-              <button
-                class="fr-choice"
-                data-style="pantser"
-                onclick={() => {
-                  style = 'pantser';
-                  step = 2;
-                }}
-                ><strong>{t('Pantser')}</strong><span>{t('I discover the story as I write.')}</span
-                ></button
-              ><button
-                class="fr-choice"
-                data-style="plotter"
-                onclick={() => {
-                  style = 'plotter';
-                  step = 2;
-                }}><strong>{t('Plotter')}</strong><span>{t('I outline first.')}</span></button
-              >
-            </div>
-          </div>
-        </div>
-        <div id="fr-step2" hidden={step !== 2}>
-          <h2>{t('How should the page look?')}</h2>
-          <p>{t('Pick a typeface and a drop-cap style.')}</p>
-          <div
-            id="fr-sample"
-            style={`--body-font:${$app.onboardingFonts.bodyStacks[previewBody || selectedBody]};--dropcap-font:${$app.onboardingFonts.dropcaps[previewCap || pickedCap]}`}
-          >
-            <p id="fr-sample-text">
-              It was the best of times, it was the worst of times, it was the age of wisdom, it was
-              the age of foolishness…
-            </p>
-          </div>
-          <p>{t('Body typeface')}</p>
-          <div id="fr-bodyfonts" class="fr-fontrow">
-            {#each $app.onboardingFonts.body as font}<button
-                class="fr-font"
-                class:sel={font === selectedBody}
-                style={`font-family:${$app.onboardingFonts.bodyStacks[font]}`}
-                onmouseenter={() => (previewBody = font)}
-                onmouseleave={() => (previewBody = '')}
-                onclick={() => {
-                  pickedBody = font;
-                  previewBody = '';
-                }}>{font}</button
-              >{/each}
-          </div>
-          <p>{t('Drop cap')}</p>
-          <div id="fr-dropcaps" class="fr-fontrow">
-            {#each ['literary', 'fantasy', 'scifi'] as cap}<button
-                class="fr-font"
-                class:sel={cap === pickedCap}
-                onmouseenter={() => (previewCap = cap)}
-                onmouseleave={() => (previewCap = '')}
-                onclick={() => {
-                  pickedCap = cap;
-                  previewCap = '';
-                }}
-                ><span class="fr-cap" style={`font-family:${$app.onboardingFonts.dropcaps[cap]}`}
-                  >{t('A')}</span
-                >{cap === 'scifi' ? 'Sci-Fi' : cap[0].toUpperCase() + cap.slice(1)}</button
-              >{/each}
-          </div>
-          <div style="text-align:right;margin-top:20px">
-            <button
-              id="fr-done"
-              class="btn-gold"
-              onclick={() =>
-                run(() => vm.onboard(name, style, pen, { body: selectedBody, dropcap: pickedCap }))}
-              >{t('Start writing')}</button
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    <Onboarding fonts={$app.onboardingFonts} {t} complete={draft => run(() => vm.onboard(draft.name, draft.style, draft.pen, { body: draft.body, dropcap: draft.dropcap }))} />
   {/if}
 {:else}
   <div
     id="editor-view"
     class:script-mode={$app.manuscriptMode === 'screenplay'}
+    class:board-on={board.visible && (board.script || board.view === 'cards')}
     use:nonPassiveWheel={vm.pageZoomWheel}
     class:nav-pinned={$app.navPinned}
     class:side-pinned={$app.sidePinned}
@@ -511,7 +421,7 @@
       >
         {#if $app.manuscriptMode === 'screenplay'}
           {#each $app.screenplayScenes as scene (scene.passageId)}
-            <button class="sp-scene" onclick={() => vm.focusScreenplayScene(scene.passageId)}><span class="n-label">{scene.label}</span></button>
+            <button class="sp-scene" data-passage={scene.passageId} draggable={!$app.readOnly} ondragstart={event=>sceneNav.start(event,scene)} ondragover={event=>sceneNav.over(event)} ondrop={event=>sceneNav.drop(event,scene)} ondragend={()=>sceneNav.end()} onclick={() => vm.focusScreenplayScene(scene.passageId)}><span class="n-label">{scene.label}</span></button>
           {/each}
         {:else}
         {#each $app.chapters as chapter, index (chapter.id)}
@@ -628,7 +538,8 @@
       <button id="side-pin" aria-pressed={$app.sidePinned} onclick={() => vm.toggleSide()}
         >{t('Pin notes')}</button
       >
-      <div id="sticky-list">
+      <OutlineBoard presentation={board} actions={vm.outlineBoard} {t} aside />
+      <div id="sticky-list" hidden={$app.panel === 'outline'}>
         {#each $app.stickies.filter((sticky) => !sticky.resolved) as sticky (sticky.id)}<div
             class="sticky"
             class:unresolved={!sticky.resolved}
@@ -642,7 +553,7 @@
               onkeydown={(event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
                   event.preventDefault();
-                  run(() => vm.selectSticky(sticky.id));
+                  run(() => vm.selectSticky(sticky.id, true));
                 }
               }}
               aria-label="Margin note"></textarea>
@@ -753,8 +664,9 @@
               vm.editMetadataField('author', event.currentTarget.textContent ?? '')}
             onblur={() => vm.finishMetadataField('author')}
           ></div>
+          {#if $app.manuscriptMode === 'screenplay'}<ScreenplayTitleFields {...scriptTitle} readOnly={$app.readOnly} change={vm.editScriptTitle} finish={vm.finishMetadataField} finishContact={()=>run(()=>vm.finishScriptContact())} enter={vm.enterTitlePage} {t}/>{/if}
         </section>
-        <div id="chapters">
+        <div id="chapters" use:vm.bindScriptLayout>
           {#each $app.chapters as chapter, index (chapter.id)}<section
               class={`chapter sheet kind-${chapter.kind}`}
               class:bookpage={!storyKinds.includes(chapter.kind)}
@@ -781,11 +693,9 @@
                     onkeydown={(event) => {
                       if (event.key === 'Enter') {
                         event.preventDefault();
-                        if (event.shiftKey) vm.openingPoetry(chapter.id);
-                        else {
-                          event.currentTarget.blur();
-                          event.stopPropagation();
-                        }
+                        event.currentTarget.blur();
+                        if (event.shiftKey && (event.metaKey || event.ctrlKey)) vm.openingPoetry(chapter.id);
+                        event.stopPropagation();
                       }
                     }}
                   ></span>{/if}
@@ -803,6 +713,7 @@
                 data-chid={chapter.id}
                 hidden={chapter.kind === 'contents'}
               ></div>
+              <WalkingOutlineNote presentation={{visible:$app.panel === 'manuscript' && $app.walkingOutlineNote?.chapterId === chapter.id,note:$app.walkingOutlineNote}} actions={{dismiss:vm.dismissWalkingOutlineNote}} {t} />
               {#if chapter.kind === 'contents'}<ul class="toc-list">
                   {#each $app.contentsRows as row}<li
                       class={`t-${row.type}`}
@@ -818,7 +729,8 @@
       <div id="aux-paper" class="sheet" hidden={$app.panel === 'manuscript'}>
         <h1 id="aux-title">{tabLabel($app.panel)}</h1>
         <div id="aux-editor" hidden={$app.panel !== 'notes'}></div>
-        <div id="outline-list" hidden={$app.panel !== 'outline'}>
+        <OutlineBoard presentation={board} actions={vm.outlineBoard} {t} />
+        <div id="outline-list" hidden={$app.panel !== 'outline' || board.script || board.view === 'cards'}>
           {#each $app.outlineRows as row (`${row.chapterId}:${row.sectionId ?? ''}`)}
             <div
               class={`ol-line ol-${row.kind}`}
@@ -843,7 +755,7 @@
             </div>
           {/each}
           <div class="ol-hint">
-            Enter — new chapter or section · Tab — turn a fresh chapter into a section · Shift+Tab —
+            Enter — new chapter · Tab — new section or join a chapter · Shift+Tab —
             turn a section into a chapter · Backspace removes an empty line
           </div>
         </div>
@@ -921,7 +833,7 @@
           : Number($app.library.dailyGoal)
             ? t('{n} / {goal} today', { n: $app.todayWords, goal: Number($app.library.dailyGoal) })
             : t('{n} today', { n: $app.todayWords })}</span
-      ><span id="pos-counter">{$app.positionLabel}</span><button
+      ><button id="pos-counter" onmousedown={(event) => event.preventDefault()} onclick={() => run(() => vm.cyclePositionCounter())}>{$app.positionLabel}</button><button
         id="word-counter"
         onclick={() => vm.cycleWordCounter()}>{$app.wordLabel}</button
       ><span class="save-state"
@@ -931,7 +843,7 @@
         <button id="zoom-out" onclick={() => vm.zoom(-0.1)}>−</button><button
           id="zoom-level"
           aria-label={t('Reset zoom')}
-          onclick={() => vm.zoom(0)}>{Math.round($app.zoom * 100)}%</button
+          onclick={() => vm.zoom(0)}>{Math.round((board.visible && (board.script || board.view === 'cards') ? board.zoom : $app.zoom) * 100)}%</button
         ><button id="zoom-in" onclick={() => vm.zoom(0.1)}>＋</button>
       </div>
     </footer>

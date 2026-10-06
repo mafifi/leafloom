@@ -18,10 +18,12 @@ import { PublicationPageViewModel } from './publication-page';
 
 
 export interface ApplicationPersistenceContext {
+  flushAuthorDrafts():void;
   editor: EditorPort | null;
   publicationPageViewModel: PublicationPageViewModel;
   save: () => Promise<void>;
   flushAppearance: () => Promise<void>;
+  flushScriptContact: () => Promise<void>;
   fail: (error: unknown) => void;
   externalReconciliation: Promise<void> | null;
   hostRecoveryViewModel: HostRecoveryViewModel;
@@ -50,6 +52,8 @@ export async function flushForBackground(context: ApplicationPersistenceContext)
 }
 
 export async function save(context: ApplicationPersistenceContext): Promise<void> {
+  context.flushAuthorDrafts();
+  await context.flushScriptContact();
   try {
     await context.flushAppearance();
   } catch (error) {
@@ -75,7 +79,7 @@ export async function save(context: ApplicationPersistenceContext): Promise<void
     // host messages, file paths and author content never enter diagnostics.
     if (
       error instanceof Error &&
-      ['DISK_ERROR', 'DISK_FULL', 'SAVE_UNCERTAIN'].includes(error.message)
+      ['DISK_ERROR', 'DISK_FULL', 'WRITE_REFUSED', 'SAVE_UNCERTAIN'].includes(error.message)
     ) {
       try {
         await context.request('reportRuntimeError', {

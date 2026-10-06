@@ -1,3 +1,4 @@
+import {poetryShortcut} from './editing-helpers';
 import {test,expect} from './author-fixture';
 import {writing} from './editing-helpers';
 import {persistedBook} from './storage-probe';
@@ -17,7 +18,7 @@ test('Leafloom real author UI: library, prose and poetry review artifacts',async
  await driver.expectParagraphs([['The garden waited beyond the gate. Mara held the lantern close and listened.','Somewhere beneath the leaves, a small bell rang.']]);
  const folder=path.join(root,'.leafloom/evidence/screenshots');await mkdir(folder,{recursive:true});
  await page.screenshot({path:path.join(folder,'leafloom-prose.png'),fullPage:true,animations:'disabled'});
- await driver.select(0,1,0);await driver.key('Shift+Enter');
+ await driver.select(0,1,0);await driver.key(poetryShortcut);
  await expect(page.locator('.chapter-body p.poetry')).toHaveCount(1);
  await page.screenshot({path:path.join(folder,'leafloom-poetry.png'),fullPage:true,animations:'disabled'});
  await driver.shelf();

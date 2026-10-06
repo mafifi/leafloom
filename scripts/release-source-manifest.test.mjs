@@ -22,6 +22,10 @@ async function fixture(run) {
       'tests',
     ])
       await mkdir(join(root, path), { recursive: true });
+    await writeFile(
+      join(root, 'package.json'),
+      JSON.stringify({ name: 'fixture', version: '9.8.7' }),
+    );
     const source = 'apps/desktop/host/main.ts';
     await writeFile(join(root, source), 'export const value=1;');
     await writeFile(join(root, 'apps/desktop/dist/index.html'), '<p>Frozen UI</p>');
@@ -51,6 +55,11 @@ async function fixture(run) {
 test('source binding checks compiler bytes, frozen frontend, and unsigned executables', async () =>
   fixture(async ({ root, app, source }) => {
     const binding = await verifySourceManifest(root, app);
+    assert.equal(
+      JSON.parse(await readFile(join(app, 'Contents/Resources/source-manifest.json'), 'utf8'))
+        .version,
+      '9.8.7',
+    );
     assert.equal(binding.compilerInputs, 1);
     await writeFile(join(app, 'Contents/MacOS/leafloom-desktop'), 'signed shell');
     await assert.rejects(verifySourceManifest(root, app), /Unsigned executable changed/);
@@ -86,8 +95,14 @@ test('Tauri generated schemas are derived but capability source stays immutable'
     await writeFile(join(generated, 'desktop-schema.json'), '{"generated":"debug"}');
     await writeFile(join(capabilities, 'main.json'), '{"identifier":"main"}');
     const inputs = buildInputs(await snapshot(root, true));
-    assert.equal(inputs.some(item => item.path.includes('/gen/schemas/')), false);
-    assert.equal(inputs.some(item => item.path.endsWith('/capabilities/main.json')), true);
+    assert.equal(
+      inputs.some((item) => item.path.includes('/gen/schemas/')),
+      false,
+    );
+    assert.equal(
+      inputs.some((item) => item.path.endsWith('/capabilities/main.json')),
+      true,
+    );
     await writeSourceManifest(root, app, inputs, {});
     await writeFile(join(generated, 'desktop-schema.json'), '{"generated":"release"}');
     await writeFile(join(generated, 'acl-manifests.json'), '{"generated":true}');

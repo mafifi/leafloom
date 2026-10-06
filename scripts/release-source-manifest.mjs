@@ -119,7 +119,7 @@ export async function writeSourceManifest(root, app, inputs, build) {
   const manifest = {
     formatVersion: 1,
     product: 'Leafloom',
-    version: '0.1.0',
+    version: JSON.parse(await readFile(join(root, 'package.json'), 'utf8')).version,
     identifier: 'org.mafifi.leafloom',
     created: new Date().toISOString(),
     target: { architecture: 'arm64', minimumMacOS: '14.0' },

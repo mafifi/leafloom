@@ -25,6 +25,7 @@ export interface ShelfBook {
   wordCount?: number;
   wordGoal?: number;
   coverImage?: string;
+  format?: string;
 }
 export type ShelfTile =
   | { type: 'book' | 'cover' | 'page'; book: ShelfBook; label: string }
@@ -137,6 +138,7 @@ export interface LibraryShelfActions {
   openCover(book: ShelfBook): void;
   addPage(kind: string, beforeId?: string): void;
   newBook(): void;
+  newBookMenu?(event: MouseEvent): void;
 }
 export interface LibraryShelfProps {
   shelf: ShelfValue;

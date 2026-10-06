@@ -7,7 +7,7 @@
     "version": "1.3.5",
     "commit": "b742c5f92a5465fe8473e8d10aa05b3f0ea8a5a0"
   },
-  "status": "catch-up in progress",
+  "status": "desktop release accepted with documented performance tolerance and verified margin-note correction; native and Pocket gaps remain",
   "commits": [
     {
       "commit": "d35e0a9573971ce8ec56241667a3619eef89f905",
@@ -78,13 +78,13 @@
     {
       "commit": "3b53cf3db94b8916a923b60a7a307a06f175fe30",
       "title": "Windows: updates find their installer; a library Windows won't let NEO write is said plainly",
-      "details": "- The installer is now NEO-Setup-<version>.exe and the portable build\n  NEO-<version>-portable.exe. The old \"NEO Setup 1.2.4.exe\" was uploaded\n  as NEO.Setup.1.2.4.exe while latest.yml named NEO-Setup-1.2.4.exe, so\n  Windows updates always failed with a 404. The build now stops if\n  latest.yml names a file that isn't there.\n- Controlled folder access (Defender's ransomware protection) refuses\n  NEO's writes in Documents. NEO now tests the library folder at startup\n  (on Windows, and anywhere before a first library exists) and says what's\n  wrong, with Choose Folder\u2026 / Try Again / Continue, instead of failing at\n  \"Start writing\". A write refused later says so once.\n- Errors that can't be written to the library's log go to the log in\n  NEO's app folder, so they're never lost.\n- README: the Windows downloads, OneDrive, and Controlled folder access.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "- The installer is now NEO-Setup-<version>.exe and the portable build\n  NEO-<version>-portable.exe. The old \"NEO Setup 1.2.4.exe\" was uploaded\n  as NEO.Setup.1.2.4.exe while latest.yml named NEO-Setup-1.2.4.exe, so\n  Windows updates always failed with a 404. The build now stops if\n  latest.yml names a file that isn't there.\n- Controlled folder access (Defender's ransomware protection) refuses\n  NEO's writes in Documents. NEO now tests the library folder at startup\n  (on Windows, and anywhere before a first library exists) and says what's\n  wrong, with Choose Folder… / Try Again / Continue, instead of failing at\n  \"Start writing\". A write refused later says so once.\n- Errors that can't be written to the library's log go to the log in\n  NEO's app folder, so they're never lost.\n- README: the Windows downloads, OneDrive, and Controlled folder access.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
       "commit": "cadf1c085de88c8cb0e460e112f4e10a519c8cc9",
       "title": "Pocket keyboard follows the hardware; spellcheck sees capitals; today never below zero; Linux menu bar on Wayland",
-      "details": "- NEO Pocket on Android: the on-screen keyboard comes up as usual when no\n  physical keyboard is attached, and stays down while one is (Android\n  reports connects and disconnects). Long-press \u2630 still flips it until the\n  keyboard situation changes. The old always-off setting is dropped.\n- Spellcheck underlines a sentence that starts in lowercase (paragraph\n  starts, and after a full stop that isn't an ellipsis or an abbreviation)\n  and, in English, \"i\" for \"I\". Right-click offers the capital. Manuscript\n  prose only; poetry and notes are left alone, and \"Oh! how\", \"Wait!\" he\n  said and \"\u2014 Quanto falta? \u2014 perguntou ele\" aren't flagged.\n- Words cut below where the day began move the day's start down with\n  them: today reads 0, not -10, and what's written after counts in full.\n- Linux: the Mac's hiddenInset title bar is set on Macs only. On Linux it\n  made the window frameless, and on Wayland (KDE Plasma) that took the\n  menu bar with it, so Alt had nothing to show.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "- NEO Pocket on Android: the on-screen keyboard comes up as usual when no\n  physical keyboard is attached, and stays down while one is (Android\n  reports connects and disconnects). Long-press ☰ still flips it until the\n  keyboard situation changes. The old always-off setting is dropped.\n- Spellcheck underlines a sentence that starts in lowercase (paragraph\n  starts, and after a full stop that isn't an ellipsis or an abbreviation)\n  and, in English, \"i\" for \"I\". Right-click offers the capital. Manuscript\n  prose only; poetry and notes are left alone, and \"Oh! how\", \"Wait!\" he\n  said and \"— Quanto falta? — perguntou ele\" aren't flagged.\n- Words cut below where the day began move the day's start down with\n  them: today reads 0, not -10, and what's written after counts in full.\n- Linux: the Mac's hiddenInset title bar is set on Macs only. On Linux it\n  made the window frameless, and on Wayland (KDE Plasma) that took the\n  menu bar with it, so Alt had nothing to show.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -96,7 +96,7 @@
     {
       "commit": "92ea4a6a891c101248323bb238f6250f33ef548c",
       "title": "1.2.6: capitals as you type; Pocket undo/redo above the keyboard; Pocket's Chapters pane is for hopping",
-      "details": "- A sentence's first letter is capitalized as it's typed (a paragraph's\n  start, or after a full stop that isn't an ellipsis or an abbreviation),\n  and in English \"i\" on its own becomes \"I\". \u2318Z / Ctrl+Z right after keeps\n  the lowercase. Manuscript prose only; poetry, notes and outline are\n  left alone. Always on, no setting.\n- NEO Pocket: while the on-screen keyboard is up, a small undo/redo pill\n  sits above it at the right edge. Undo is \u2318Z, so a capital, a dash or a\n  section break comes back exactly as with the key.\n- NEO Pocket: the Chapters pane has no + seams and no long-press menu,\n  only chapters to tap (+ Chapter stays at the bottom).\n- \u2318Z right after a dialogue dash, a Markdown mark or a capital works with\n  a real keyboard: pressing \u2318 or Ctrl on its own no longer cleared what\n  \u2318Z was about to take back.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "- A sentence's first letter is capitalized as it's typed (a paragraph's\n  start, or after a full stop that isn't an ellipsis or an abbreviation),\n  and in English \"i\" on its own becomes \"I\". ⌘Z / Ctrl+Z right after keeps\n  the lowercase. Manuscript prose only; poetry, notes and outline are\n  left alone. Always on, no setting.\n- NEO Pocket: while the on-screen keyboard is up, a small undo/redo pill\n  sits above it at the right edge. Undo is ⌘Z, so a capital, a dash or a\n  section break comes back exactly as with the key.\n- NEO Pocket: the Chapters pane has no + seams and no long-press menu,\n  only chapters to tap (+ Chapter stays at the bottom).\n- ⌘Z right after a dialogue dash, a Markdown mark or a capital works with\n  a real keyboard: pressing ⌘ or Ctrl on its own no longer cleared what\n  ⌘Z was about to take back.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -107,8 +107,8 @@
     },
     {
       "commit": "ea65eb73c0c8a294beaf35141c5093c07c750102",
-      "title": "Flush Paragraphs on \u21e7Enter; Poetry Paragraphs move to \u2318\u21e7Enter (Ctrl+Shift+Enter)",
-      "details": "From #192: a report, a list, an email inside the story needs lines with\nno first-line indent.\n\n- \u21e7Enter makes a flush paragraph (no indent, no italics). \u21e7Enter again\n  gives another; Enter steps back into prose; Backspace at its start\n  makes it prose. At the start of a paragraph, \u21e7Enter un-indents it.\n- Format \u2192 Flush Paragraph (ticked when the caret is in one) toggles the\n  paragraphs the selection touches, for lines already written.\n- Poetry Paragraph is \u2318\u21e7Enter (Ctrl+Shift+Enter), from the page and from\n  a chapter title. Inside a poem \u21e7Enter still continues it. Existing poems\n  are unchanged. A paragraph is one or the other.\n- Word, EPUB, PDF and Web Page exports keep flush lines flush.\n- Pocket's \u22ef sheet, the Keyboard Shortcuts window and the tutorial say so.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "title": "Flush Paragraphs on ⇧Enter; Poetry Paragraphs move to ⌘⇧Enter (Ctrl+Shift+Enter)",
+      "details": "From #192: a report, a list, an email inside the story needs lines with\nno first-line indent.\n\n- ⇧Enter makes a flush paragraph (no indent, no italics). ⇧Enter again\n  gives another; Enter steps back into prose; Backspace at its start\n  makes it prose. At the start of a paragraph, ⇧Enter un-indents it.\n- Format → Flush Paragraph (ticked when the caret is in one) toggles the\n  paragraphs the selection touches, for lines already written.\n- Poetry Paragraph is ⌘⇧Enter (Ctrl+Shift+Enter), from the page and from\n  a chapter title. Inside a poem ⇧Enter still continues it. Existing poems\n  are unchanged. A paragraph is one or the other.\n- Word, EPUB, PDF and Web Page exports keep flush lines flush.\n- Pocket's ⋯ sheet, the Keyboard Shortcuts window and the tutorial say so.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -126,7 +126,7 @@
     {
       "commit": "c6a8606c1db391c89ddd7587e965613a2e178579",
       "title": "Vim keys work on every keyboard layout",
-      "details": "With View > Vim Keys on, a keyboard that types another alphabet left the\nwriter stuck after Esc. On a Russian, Ukrainian, Bulgarian or Greek\nlayout every letter key prints Cyrillic or Greek, which moving mode\nignored, so not even i or a went back to writing. Neither Esc nor a\nclick helped; only switching the system to an English layout, or turning\nVim Keys off, did. Moving keys now count by where they sit on the\nkeyboard, named as on a US one. The key under the right index finger is\nj on every layout, Shift+4 is $, and Ctrl+D and Ctrl+U work there too.\n\nMoving, nothing a keyboard types lands in the text any more. On layouts\nwith dead keys (German, French, Spanish, Portuguese, Dutch, US\nInternational, Greek), a dead key and then a letter put the accented\nletter into the chapter: ^ then e typed \u00ea. On Windows and a Mac, a\ncharacter typed with AltGr or Option did the same. A dead key now counts\nby its place like any other key, and what it composes is taken back\nout; AltGr and Option characters are refused.\n\nOne change for Latin layouts whose letters sit elsewhere. On French\nAZERTY or German QWERTZ, keys went by their printed label and now go by\ntheir place, as on every other layout. Word forward is the key where w\nsits on a US keyboard, which AZERTY labels Z, and digits for counts\nneed no Shift on AZERTY. Writing is unchanged.",
+      "details": "With View > Vim Keys on, a keyboard that types another alphabet left the\nwriter stuck after Esc. On a Russian, Ukrainian, Bulgarian or Greek\nlayout every letter key prints Cyrillic or Greek, which moving mode\nignored, so not even i or a went back to writing. Neither Esc nor a\nclick helped; only switching the system to an English layout, or turning\nVim Keys off, did. Moving keys now count by where they sit on the\nkeyboard, named as on a US one. The key under the right index finger is\nj on every layout, Shift+4 is $, and Ctrl+D and Ctrl+U work there too.\n\nMoving, nothing a keyboard types lands in the text any more. On layouts\nwith dead keys (German, French, Spanish, Portuguese, Dutch, US\nInternational, Greek), a dead key and then a letter put the accented\nletter into the chapter: ^ then e typed ê. On Windows and a Mac, a\ncharacter typed with AltGr or Option did the same. A dead key now counts\nby its place like any other key, and what it composes is taken back\nout; AltGr and Option characters are refused.\n\nOne change for Latin layouts whose letters sit elsewhere. On French\nAZERTY or German QWERTZ, keys went by their printed label and now go by\ntheir place, as on every other layout. Word forward is the key where w\nsits on a US keyboard, which AZERTY labels Z, and digits for counts\nneed no Shift on AZERTY. Writing is unchanged.",
       "kind": "change"
     },
     {
@@ -221,20 +221,20 @@
     },
     {
       "commit": "c9f592dee1c1e889227ec1bf2214e04ac41a7fef",
-      "title": "\u21e7Enter through an input method; clicks on the page's empty space place the caret",
-      "details": "- On GNOME (Wayland, IBus) Enter arrives marked as the input method's\n  (keyCode 229) even with nothing being composed, and NEO stood down, so\n  \u21e7Enter and \u2318\u21e7Enter never made a flush or poetry paragraph. Enter now gets\n  through unless a word is truly mid-composition, and a bare line break the\n  engine is about to make becomes the flush paragraph (or next poem line).\n- A click in a page's empty space puts the caret there: below the text, at\n  the end of that chapter (the gap after a page too); beside a line, in the\n  margin or the dark room around the page, on that line; above the first\n  line, at the start.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "title": "⇧Enter through an input method; clicks on the page's empty space place the caret",
+      "details": "- On GNOME (Wayland, IBus) Enter arrives marked as the input method's\n  (keyCode 229) even with nothing being composed, and NEO stood down, so\n  ⇧Enter and ⌘⇧Enter never made a flush or poetry paragraph. Enter now gets\n  through unless a word is truly mid-composition, and a bare line break the\n  engine is about to make becomes the flush paragraph (or next poem line).\n- A click in a page's empty space puts the caret there: below the text, at\n  the end of that chapter (the gap after a page too); beside a line, in the\n  margin or the dark room around the page, on that line; above the first\n  line, at the start.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
       "commit": "429ea7014fef74c11e510ad4428caf1de7fe47be",
       "title": "Save cover as image",
-      "details": "Right-click a book on the shelf and pick Save cover as image\u2026 to save its\ncover: the writer's own image as given, otherwise a full-size JPEG\n(1600x2560) with the title and author. A painted cover never leaves NEO,\nhere as in the exports, so a book showing one saves its abstract.\n\nFrom Kanav Sethi's NEO Enhanced fork.\n(cherry picked from commit 5a2f0395f023c97996a16cca8c014ab9d19b50c2)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "Right-click a book on the shelf and pick Save cover as image… to save its\ncover: the writer's own image as given, otherwise a full-size JPEG\n(1600x2560) with the title and author. A painted cover never leaves NEO,\nhere as in the exports, so a book showing one saves its abstract.\n\nFrom Kanav Sethi's NEO Enhanced fork.\n(cherry picked from commit 5a2f0395f023c97996a16cca8c014ab9d19b50c2)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
       "commit": "17f2feec680c50448eff1558143c178d3115852d",
-      "title": "Underline and strikethrough; Read Aloud (\u2318\u21e7U)",
-      "details": "Underline (\u2318U) and strikethrough (\u2318\u21e7S, or ~~\u2026~~ typed or pasted) join\nbold and italic: in the manuscript and Notes, kept when pasting from Google\nDocs, Word or a web page (tags or styles), and carried into every export\n(web page/PDF, EPUB, Word, Markdown as ~~\u2026~~ and <u>). From Kanav Sethi's\nNEO Enhanced; headings, lists and block quotes left out.\n\nRead Aloud: \u2318\u21e7U (Ctrl+Shift+U) reads from the caret in the computer's own\nvoice for the book's language, a sentence at a time, each lit as it's\nread, on into the chapters after. \u2318\u21e7U again, Esc or any key stops it, and\nthe caret is left at the sentence it reached. macOS and Windows voices;\nno keys, no cloud. In the Keyboard Shortcuts window, no menu item.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "title": "Underline and strikethrough; Read Aloud (⌘⇧U)",
+      "details": "Underline (⌘U) and strikethrough (⌘⇧S, or ~~…~~ typed or pasted) join\nbold and italic: in the manuscript and Notes, kept when pasting from Google\nDocs, Word or a web page (tags or styles), and carried into every export\n(web page/PDF, EPUB, Word, Markdown as ~~…~~ and <u>). From Kanav Sethi's\nNEO Enhanced; headings, lists and block quotes left out.\n\nRead Aloud: ⌘⇧U (Ctrl+Shift+U) reads from the caret in the computer's own\nvoice for the book's language, a sentence at a time, each lit as it's\nread, on into the chapters after. ⌘⇧U again, Esc or any key stops it, and\nthe caret is left at the sentence it reached. macOS and Windows voices;\nno keys, no cloud. In the Keyboard Shortcuts window, no menu item.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -252,13 +252,13 @@
     {
       "commit": "70afc443b0ef5303e02473569d2d5baba43d1f3b",
       "title": "A library Documents can't hold goes beside it; \"Start writing\" says why it can't save (#244)",
-      "details": "On Windows, a Documents folder redirected to a OneDrive path that isn't\nset up on the computer refuses every write (ENOENT). NEO's launch check\nblamed Windows Security, \"Continue\" led back to a first-run screen whose\n\"Start writing\" button did nothing, and nothing said why.\n\n- A first library (none in the default folder, no folder chosen by the\n  writer) that Documents can't hold goes in the home's Documents folder,\n  or the home itself. The choice is remembered, so a OneDrive that comes\n  back later doesn't swap libraries, and said once after the window is up.\n  An existing library, or a folder the writer picked, is never swapped:\n  they are asked, as before.\n- The warning no longer blames Controlled folder access when the folder\n  simply isn't there.\n- \"Start writing\" shows the folder and the way out (File \u2192 Library\n  Folder\u2026) when the save fails, and works on the next try.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
+      "details": "On Windows, a Documents folder redirected to a OneDrive path that isn't\nset up on the computer refuses every write (ENOENT). NEO's launch check\nblamed Windows Security, \"Continue\" led back to a first-run screen whose\n\"Start writing\" button did nothing, and nothing said why.\n\n- A first library (none in the default folder, no folder chosen by the\n  writer) that Documents can't hold goes in the home's Documents folder,\n  or the home itself. The choice is remembered, so a OneDrive that comes\n  back later doesn't swap libraries, and said once after the window is up.\n  An existing library, or a folder the writer picked, is never swapped:\n  they are asked, as before.\n- The warning no longer blames Controlled folder access when the folder\n  simply isn't there.\n- \"Start writing\" shows the folder and the way out (File → Library\n  Folder…) when the save fails, and works on the next try.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
       "kind": "change"
     },
     {
       "commit": "c2190c3ade297b3769fe946a66357b2eefee89b9",
-      "title": "Undo: outline changes come back with \u2318Z, hints stay hints, typing is taken back by the pause (#241)",
-      "details": "- \u2318Z in the outline undoes a line added, removed, or turned into a chapter\n  or a section (Enter, Tab, Shift+Tab, Backspace, Delete section). Typing in\n  a line is still undone first, by the engine; the caret returns to the line\n  the writer was on.\n- Shift+Tab on a section now takes the sections after it along, so the\n  plan keeps its order (B in A B C: B and C become the next chapter, A\n  stays). Sections the writer has already written over stay where their\n  prose is.\n- Undoing a deletion in the manuscript no longer turns the last gray outline\n  hint into real text: undo and redo don't count as writing over a hint, and\n  the hint returns with its words.\n- \u2318Z took back one letter at a time because the bottom-bar counters\n  replaced their text node on every keystroke, which ends the engine's undo\n  run. They now change the text in place, and a second's pause ends a run, so\n  an undo takes back a burst of typing, not a letter and not a page.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
+      "title": "Undo: outline changes come back with ⌘Z, hints stay hints, typing is taken back by the pause (#241)",
+      "details": "- ⌘Z in the outline undoes a line added, removed, or turned into a chapter\n  or a section (Enter, Tab, Shift+Tab, Backspace, Delete section). Typing in\n  a line is still undone first, by the engine; the caret returns to the line\n  the writer was on.\n- Shift+Tab on a section now takes the sections after it along, so the\n  plan keeps its order (B in A B C: B and C become the next chapter, A\n  stays). Sections the writer has already written over stay where their\n  prose is.\n- Undoing a deletion in the manuscript no longer turns the last gray outline\n  hint into real text: undo and redo don't count as writing over a hint, and\n  the hint returns with its words.\n- ⌘Z took back one letter at a time because the bottom-bar counters\n  replaced their text node on every keystroke, which ends the engine's undo\n  run. They now change the text in place, and a second's pause ends a run, so\n  an undo takes back a burst of typing, not a letter and not a page.\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_018WVhWXjKXBWTosdTsxGQxk",
       "kind": "change"
     },
     {
@@ -306,7 +306,7 @@
     {
       "commit": "e2a67eaff249a8716e79b858a784029150730baa",
       "title": "Scripts in and out: Fountain and Final Draft files",
-      "details": "- Drop a .fountain or .fdx file on a shelf (or pick one with Import) and\n  it becomes a new script on that shelf, title page included. The contact\n  block fills only if it's still empty.\n- File \u2192 Export \u2192 Final Draft (.fdx), beside PDF and Fountain; Pocket's\n  \u22ef sheet and its book menu offer both too.\n- Fountain read more like a writer means it: a block's lines run on into\n  one paragraph (so a script copied from a PDF comes in whole), page\n  numbers, (MORE) and CONTINUED stay out, a typed (CONT'D) comes off the\n  name, and *italic*, **bold** and _underline_ come in as styling.\n\nFinal Draft files are read and written as plain XML, the same shape the\nopen-source screenplain tool writes. Tests read one of its files and\ncheck it matches the Fountain it came from, and round-trip NEO's own.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01Lv7qNWKYEvd6ENsFSisdbT",
+      "details": "- Drop a .fountain or .fdx file on a shelf (or pick one with Import) and\n  it becomes a new script on that shelf, title page included. The contact\n  block fills only if it's still empty.\n- File → Export → Final Draft (.fdx), beside PDF and Fountain; Pocket's\n  ⋯ sheet and its book menu offer both too.\n- Fountain read more like a writer means it: a block's lines run on into\n  one paragraph (so a script copied from a PDF comes in whole), page\n  numbers, (MORE) and CONTINUED stay out, a typed (CONT'D) comes off the\n  name, and *italic*, **bold** and _underline_ come in as styling.\n\nFinal Draft files are read and written as plain XML, the same shape the\nopen-source screenplain tool writes. Tests read one of its files and\ncheck it matches the Fountain it came from, and round-trip NEO's own.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01Lv7qNWKYEvd6ENsFSisdbT",
       "kind": "change"
     },
     {
@@ -366,7 +366,7 @@
     {
       "commit": "a40bbef85821b2571e33a25cd25749d83df02573",
       "title": "Vim keys: the page rests in moving mode; Ctrl+Page Down/Up hop chapters",
-      "details": "With Vim Keys on, a book now opens in moving mode, as vim starts, and\nthe Manuscript and Notes tabs come back in it too; i, a or o to write.\nA click, a title's Enter, or the window coming back to the front leave\nthe mode as it was. Fixes #257.\n\nOn Windows and Linux, Ctrl+Page Down / Ctrl+Page Up go to the next and\nprevious chapter, beside Ctrl+Alt+\u2193/\u2191. GNOME keeps Ctrl+Alt+\u2191\u2193 for\nswitching workspaces, so NEO never heard them there, and some Windows\ngraphics drivers turn the screen with them. The Keyboard Shortcuts\nwindow lists both. The Mac keeps \u2325\u2318\u2193/\u2191 only. Fixes #254.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01R6yBdLt36W2NnezWjLERWN",
+      "details": "With Vim Keys on, a book now opens in moving mode, as vim starts, and\nthe Manuscript and Notes tabs come back in it too; i, a or o to write.\nA click, a title's Enter, or the window coming back to the front leave\nthe mode as it was. Fixes #257.\n\nOn Windows and Linux, Ctrl+Page Down / Ctrl+Page Up go to the next and\nprevious chapter, beside Ctrl+Alt+↓/↑. GNOME keeps Ctrl+Alt+↑↓ for\nswitching workspaces, so NEO never heard them there, and some Windows\ngraphics drivers turn the screen with them. The Keyboard Shortcuts\nwindow lists both. The Mac keeps ⌥⌘↓/↑ only. Fixes #254.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01R6yBdLt36W2NnezWjLERWN",
       "kind": "change"
     },
     {
@@ -384,7 +384,7 @@
     {
       "commit": "1fc0b304f8132b31b265490a8e6003d38562c49d",
       "title": "Pocket: spellcheck, with desktop NEO's Hunspell and dictionaries",
-      "details": "The \u22ef sheet gets a Spellcheck row (and, while it's on, the dictionary).\nA tap on an underlined word opens the same suggestions a right-click does\non the desktop. The checker runs in a web worker (pocket-spell.js), falling\nback to the page on an older web view. scripts/pocket-www.js now assembles\npocket/www for the robot build and for local builds alike.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "The ⋯ sheet gets a Spellcheck row (and, while it's on, the dictionary).\nA tap on an underlined word opens the same suggestions a right-click does\non the desktop. The checker runs in a web worker (pocket-spell.js), falling\nback to the page on an older web view. scripts/pocket-www.js now assembles\npocket/www for the robot build and for local builds alike.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -402,7 +402,7 @@
     {
       "commit": "aa1ac7ca88cea0204fca7712233fffefc8ced1b7",
       "title": "Outline cards: the outline as index cards, set like a page; the note walks ahead",
-      "details": "The Outline tab lays the book out as index cards that read left to right,\nline after line: a chapter starts at its numeral and its sections share a\nmat, rounded where the chapter starts and ends, cut square where it wraps.\nParts start a fresh line. Cards come from the manuscript itself, so every\n*** section is a card, outlined or not, showing its first line until it has\na note. Click a card to write on it; Enter makes the next card, and Enter on\nan empty one a new chapter. Dragging a card (mouse or a held finger) moves\nthe writing with it; \u2318Z puts it back. Right-click to make a section a\nchapter or go to it on the page. Loose cards wait in the right-hand pane\nwhile the Outline is up. \u2318\u2212 and \u2318+ size the cards, down to tiles. The list\nstays one click away; scripts keep it.\n\nWriting over a gray ghost no longer loses the note: it rides one line below\nthe paragraph being written, never saved, with a faint Dismiss.\n\nsyncGhosts now leaves a ghost where it stands instead of moving every ghost\nto the end of its chapter.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "The Outline tab lays the book out as index cards that read left to right,\nline after line: a chapter starts at its numeral and its sections share a\nmat, rounded where the chapter starts and ends, cut square where it wraps.\nParts start a fresh line. Cards come from the manuscript itself, so every\n*** section is a card, outlined or not, showing its first line until it has\na note. Click a card to write on it; Enter makes the next card, and Enter on\nan empty one a new chapter. Dragging a card (mouse or a held finger) moves\nthe writing with it; ⌘Z puts it back. Right-click to make a section a\nchapter or go to it on the page. Loose cards wait in the right-hand pane\nwhile the Outline is up. ⌘− and ⌘+ size the cards, down to tiles. The list\nstays one click away; scripts keep it.\n\nWriting over a gray ghost no longer loses the note: it rides one line below\nthe paragraph being written, never saved, with a faint Dismiss.\n\nsyncGhosts now leaves a ghost where it stands instead of moving every ghost\nto the end of its chapter.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -414,7 +414,7 @@
     {
       "commit": "0fbedc92ecf5e324a9cc9b0ff8bb0e4ba1fd8b3d",
       "title": "Outline cards: Enter finishes a card, Tab goes to the next; + makes new cards",
-      "details": "Enter used to start a new card, so a few stray presses made blank cards and\nchapters. Now Enter puts the card down; Tab and \u21e7Tab move through the cards\nthat are there; \u2325Enter (Alt+Enter) makes a new one. A + on the seam after\neach card (on hover) adds a card there, a New card button sits on an open\ncard, and a dashed + Chapter (+ Scene in a script) ends the board. An open\ncard keeps the section's first line in view above the note, so opening it\nnever looks like it wiped the card.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "Enter used to start a new card, so a few stray presses made blank cards and\nchapters. Now Enter puts the card down; Tab and ⇧Tab move through the cards\nthat are there; ⌥Enter (Alt+Enter) makes a new one. A + on the seam after\neach card (on hover) adds a card there, a New card button sits on an open\ncard, and a dashed + Chapter (+ Scene in a script) ends the board. An open\ncard keeps the section's first line in view above the note, so opening it\nnever looks like it wiped the card.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -432,7 +432,7 @@
     {
       "commit": "684208f620f687efb57b92ebaf3580ecde17bb55",
       "title": "Outline: Enter makes chapters, Tab makes sections; drop a chapter on a chapter; brighter outside the manuscript",
-      "details": "In the List, Enter always makes a new chapter (after the whole chapter,\nfrom a section's line) and Tab always makes a section: a section's line\nstarts a new one below; a chapter's line becomes a section of the chapter\nabove, writing and all. \u21e7Tab still makes a section a chapter again.\n\nOn the cards, a chapter dropped on the middle of another chapter's card\nbecomes its section (the card lights up and says so); a section dropped\nthere goes to that chapter's end. Both use joinChapter: the lines move,\nthe receiving chapter is saved, and only then is the empty one removed.\n\u2318Z puts it back.\n\nBrighter Interface is now remembered twice: while writing (faint unless\nchosen) and on the Outline, Notes and Darlings (bright unless turned\ndown). The View menu changes the one for the tab you're on.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
+      "details": "In the List, Enter always makes a new chapter (after the whole chapter,\nfrom a section's line) and Tab always makes a section: a section's line\nstarts a new one below; a chapter's line becomes a section of the chapter\nabove, writing and all. ⇧Tab still makes a section a chapter again.\n\nOn the cards, a chapter dropped on the middle of another chapter's card\nbecomes its section (the card lights up and says so); a section dropped\nthere goes to that chapter's end. Both use joinChapter: the lines move,\nthe receiving chapter is saved, and only then is the empty one removed.\n⌘Z puts it back.\n\nBrighter Interface is now remembered twice: while writing (faint unless\nchosen) and on the Outline, Notes and Darlings (bright unless turned\ndown). The View menu changes the one for the tab you're on.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_015CGKgVzUVPNrRbuwCeTA6A",
       "kind": "change"
     },
     {
@@ -467,8 +467,40 @@
         "Poetry, notes, abbreviations and quoted dialogue exclusions retain original spelling.",
         "Deleting below the day baseline clamps today to zero and counts subsequent writing."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-002-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-goals.spec.ts",
+          "title": "[NEO135-002-B] Cutting below the day baseline resets today and counts new writing in full after reopen",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-goals-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:12:28.682Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-002-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-spelling.spec.ts",
+          "title": "[NEO135-002-A] Capital slips offer one capital without Learn, preserve rich writing through Undo and respect sentence exclusions",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ]
     },
     {
       "id": "NEO135-003",
@@ -480,15 +512,31 @@
         "iA Writer Quattro is selectable on desktop and Pocket and survives reopen.",
         "Click the chapter locator to display 250-word manuscript pages at the caret and persist the choice."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-003-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-003-A] Position counter toggles manuscript pages and retains the preference after restart",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-003-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-fonts.spec.ts",
+          "title": "[NEO135-003-B] Quattro loads four real faces during onboarding and remains the manuscript font after restart",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         }
       ]
     },
@@ -503,15 +551,31 @@
         "Immediate Undo restores lowercase; poetry, notes, outline, abbreviations and ellipses are excluded.",
         "English standalone i becomes I at a following word boundary; Undo preserves the boundary character."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-004-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-004-A] Sentence capitalization is author-undoable immediately after the first native letter",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-004-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "title": "[NEO135-004-B] English standalone i correction keeps its boundary on immediate Undo while exclusions remain lowercase",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         }
       ]
     },
@@ -540,31 +604,61 @@
         "Cmd/Ctrl Shift Enter creates poetry in the manuscript and beneath a heading; poetry continues with Shift Enter.",
         "Format toggles selected paragraphs while preserving scene markers, inline marks, undo and actual export geometry."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-006-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-006-A] Shift Enter splits rich prose into a flush paragraph and retains undo and saved formatting",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         },
         {
           "id": "NEO135-006-B",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-006-B] Backspace at the start of a flush paragraph restores prose without losing the line",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         },
         {
           "id": "NEO135-006-C",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-006-C] Modified Shift Enter creates poetry with italic author input under the new shortcut",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-006-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "title": "[NEO135-006-D] Flush continuation and prose exit retain authored italics and Undo at paragraph start",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-006-E",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "title": "[NEO135-006-E] Heading Shift Enter commits the title; modified Shift Enter creates undoable opening poetry",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateReport": "/tmp/leafloom-catchup-title-poetry-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:13:51.354Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
         }
       ]
     },
@@ -577,8 +671,25 @@
       "acceptance": [
         "Escape in a text prompt dismisses that prompt and retains the open book and author caret."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-007-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-007-A] Escape cancels an actual tab-name prompt and retains the open book and manuscript author caret",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-008",
@@ -590,8 +701,73 @@
         "Enable Vim and verify movement and insertion on logical characters across keyboard layouts.",
         "The actual keyboard reference displays Vim commands only when enabled."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-008-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-008-A] Russian physical motions and native inserted characters preserve rich author history and save",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-008-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-008-A] Greek physical motions and native inserted characters preserve rich author history and save",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-008-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-008-B] Actual keyboard reference includes Vim motions and repeat search only when enabled",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-008-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-008-C] Shifted physical digits dead keys and reverse visual Escape move without inserting text",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-009",
@@ -602,15 +778,33 @@
       "acceptance": [
         "Separate single-word paragraphs count as separate words in the book, current chapter and persisted metadata."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-009-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-009-A] Word counting keeps words separated by actual paragraph boundaries",
           "sourceStatus": "passed",
-          "candidateStatus": "passed"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-009-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-009-B] Native single-word paragraphs count individually in book chapter and durable metadata",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
         }
       ]
     },
@@ -623,8 +817,25 @@
       "acceptance": [
         "A native double-click selects one word and displays 1 selected without counting trailing whitespace."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-010-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-010-A] Native word double-click keeps one selected count after deferred counters and preserves rich replacement history",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-011",
@@ -648,8 +859,25 @@
       "acceptance": [
         "Native double Enter after justified text creates a centered scene break, retaining rich neighbors and undo."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-012-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-012-A] Native double Enter in justified rich prose centers the scene break and Undo restores both rich neighbors",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-013",
@@ -662,8 +890,43 @@
         "Unreadable JSON restores a complete tmp or bak without losing author files.",
         "Missing unrecoverable book metadata rebuilds identity from chapters and catalog; missing library metadata recovers every book."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-013-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-recovery.spec.ts",
+          "title": "[NEO135-013-C] Startup recovers the shelf after complete temporary copy and retains author chapters and notes",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1,
+            2
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-recovery-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:09:14.754Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-013-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-recovery.spec.ts",
+          "title": "[NEO135-013-C] Startup recovers the shelf after missing library and spare copies and retains author chapters and notes",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1,
+            2
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-recovery-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:09:14.754Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-014",
@@ -674,8 +937,23 @@
       "acceptance": [
         "Leading empty paragraphs retain their spacing and the first paragraph with words receives the drop cap on screen and in PDF."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-014-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "title": "[NEO135-014-A] Leading blank paragraphs keep their spacing while the first written prose gets the screen-only opening marker",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ]
     },
     {
       "id": "NEO135-015",
@@ -686,8 +964,25 @@
       "acceptance": [
         "Backspace below an empty paragraph removes that paragraph without consuming the chapter boundary or neighboring prose."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-015-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-015-A] Backspace below the leading blank removes only that line and retains chapter identity rich prose and Undo",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-016",
@@ -699,8 +994,89 @@
         "Composed Shift Enter follows flush semantics without splitting a composing character.",
         "Trusted clicks on blank page space place a native caret without losing existing selection or writing."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-016-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-016-A] Trusted IME-marked Shift Enter makes a flush paragraph after one composed character with shared Undo and save",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-016-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-016-B] Trusted blank page above click places the native caret without rewriting rich prose",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-016-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-016-B] Trusted blank page below click places the native caret without rewriting rich prose",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-016-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-016-B] Trusted blank page margin click places the native caret without rewriting rich prose",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-016-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-016-C] Trusted composition-carried native line-break input uses flush semantics without splitting the composed word",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-017",
@@ -711,8 +1087,23 @@
       "acceptance": [
         "Save the actual cover artwork and lettering as an image through a native destination; cancellation preserves files."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-017-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-host.spec.ts",
+          "title": "[NEO135-017-A] actual full-size cover rendering writes a JPEG through the host destination and cancellation preserves that artifact",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ]
     },
     {
       "id": "NEO135-018",
@@ -725,23 +1116,38 @@
         "Typed or pasted double tildes become strikethrough without dropping surrounding prose.",
         "Word/web rich paste and every publication export preserve underline and strike styling."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-018-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-018-A] Native underline preserves selected words through undo redo and reopen",
           "sourceStatus": "passed",
-          "candidateStatus": "passed"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         },
         {
           "id": "NEO135-018-B",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-018-B] Native strikethrough preserves selected words through undo redo and reopen",
           "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "candidateStatus": "passed",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-018-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
+          "title": "[NEO135-018-C] Native typed and pasted strike retain nested emphasis, immediate Undo and durable continuation",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         }
       ]
     },
@@ -754,11 +1160,68 @@
       "acceptance": [
         "The local voice reads from the sentence containing the caret using the book language.",
         "Sentence highlights advance across paragraph and chapter boundaries without entering saved HTML.",
-        "Toggle, Escape or typing stops speech and leaves the caret at the reached sentence.",
+        "Toggle and Escape stop speech and return the caret to the sentence reached; typing stops speech and continues at the author's existing caret.",
         "No installed voice reports a nonblocking explanation without changing writing."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-019-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-host.spec.ts",
+          "title": "[NEO135-019-A] local voice follows the caret sentence across real rich chapters and Escape returns the reached caret without saved highlights",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1,
+            2
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "affectedRegressionEvidence": "/tmp/leafloom-speech-contact-final-green.json"
+        },
+        {
+          "id": "NEO135-019-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-host.spec.ts",
+          "title": "[NEO135-019-B] no installed local voice explains speech availability while preserving author prose and caret",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "affectedRegressionEvidence": "/tmp/leafloom-speech-contact-final-green.json"
+        },
+        {
+          "id": "NEO135-019-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-host.spec.ts",
+          "title": "[NEO135-019-C] native typing stops local speech without moving the author caret and preserves history",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "affectedRegressionEvidence": "/tmp/leafloom-speech-contact-final-green.json"
+        }
+      ],
+      "sourceClarifications": [
+        {
+          "initialClause": "Toggle, Escape or typing stops speech and leaves the caret at the reached sentence.",
+          "sourceAnchors": [
+            "tests/reference/neo-1.3.5/app.js:9998-10031"
+          ],
+          "reason": "Pinned source explicitly calls stopReadAloud(false) for ordinary keys, preserving the author caret; only Escape and toggling return the reached caret. Initial extraction conflated these."
+        }
+      ]
     },
     {
       "id": "NEO135-020",
@@ -785,8 +1248,61 @@
         "Undo and redo preserve ghosts as notes rather than authored text.",
         "A paused burst of typing is one author undo operation; counter updates do not split every letter."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-021",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-021] Leafloom: Shift Tab promotion carries following planned notes in order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1,
+            2
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-021",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-021] Leafloom: Shift Tab promotion retains all following notes when one is written",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1,
+            2
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-021-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-021-B] Native Shift Tab promotion Undo restores rich writing, original note ownership and outline focus before durable promotion",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1,
+            2
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ]
     },
     {
       "id": "NEO135-022",
@@ -798,8 +1314,57 @@
         "The desktop manuscript grows from 680px to at most 760px on large windows, with matching scroll and wake zones.",
         "Tablet Pocket pages remain centered at the desktop width and portrait phones retain full-width pages."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-022-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-022-A] Desktop1100 uses responsive page680 with matching scroll and wake zones",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-022-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-022-A] Desktop1600 uses responsive page704 with matching scroll and wake zones",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-022-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-editor-fidelity.spec.ts",
+          "title": "[NEO135-022-A] Desktop2000 uses responsive page760 with matching scroll and wake zones",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-editor-fidelity-results.json",
+          "candidateExecutedAt": "2026-10-06T06:52:26.563Z",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "mounted Chromium author actions and private durable files; no native platform qualification",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-023",
@@ -810,8 +1375,25 @@
       "acceptance": [
         "Tab on a section follows the latest 1.3.5 list semantics and creates a next section; historical behavior is explicitly superseded."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-023",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-023] Leafloom: Tab on a section creates the next section and persists its new note identity",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-024",
@@ -835,8 +1417,51 @@
         "Every supported language supplies the new 1.3 strings under the exact English keys.",
         "Fallback and regional overrides keep new menus and dialog controls reachable."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-025-fr_CA",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-fonts.spec.ts",
+          "title": "[NEO135-025-fr_CA] Regional language inheritance and English fallback render the new manuscript page control",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-025-pt_PT",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-fonts.spec.ts",
+          "title": "[NEO135-025-pt_PT] Regional language inheritance and English fallback render the new manuscript page control",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-025-zz-ZZ",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-fonts.spec.ts",
+          "title": "[NEO135-025-zz-ZZ] Regional language inheritance and English fallback render the new manuscript page control",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ]
     },
     {
       "id": "NEO135-026",
@@ -851,26 +1476,125 @@
         "Tab and Cmd/Ctrl 1-7 select elements; scene reordering preserves all words, undo and durable identity.",
         "Continuation marks, suggestions, page decorations and scene lengths never enter canonical author text."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
         {
           "id": "NEO135-026-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-026-A] Existing screenplay opens as a script with Courier typography and scene navigation",
           "sourceStatus": "passed",
           "candidateStatus": "passed",
-          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json"
+          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         },
         {
           "id": "NEO135-026-B",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
           "title": "[NEO135-026-B] Native screenplay Enter and element shortcuts preserve dialogue through undo redo and reopen",
           "sourceStatus": "passed",
           "candidateStatus": "passed",
           "sourceReport": "/tmp/leafloom-screenplay-reference-final.json",
-          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json"
+          "candidateReport": "/tmp/leafloom-screenplay-candidate-final.json",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-026-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-pagination.spec.ts",
+          "title": "[NEO135-026-C] Measured screenplay pages keep a heading with its next action and show printed page positions without saving layout marks",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-pagination-decorations-results.json",
+          "candidateExecutedAt": "2026-10-06T07:30:14.336Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-026-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-pagination.spec.ts",
+          "title": "[NEO135-026-D] Script credit draft and contact are real editable title fields with book and shared-library ownership",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "affectedRegressionEvidence": "/tmp/leafloom-speech-contact-final-green.json"
+        },
+        {
+          "id": "NEO135-026-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-026-B] Enter splits rich script dialogue semantically with native Undo and durable reopen",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-script-enter-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:27:55.061Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-026-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-026-B] Shift+Enter splits rich script dialogue semantically with native Undo and durable reopen",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-script-enter-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:27:55.061Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-026-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-lifecycle.spec.ts",
+          "title": "[NEO135-026-A] The real shelf New Script menu creates a script on its title page for a plotter and reopens the same authored file and card",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-new-script-tile-green.json",
+          "candidateExecutedAt": "2026-10-06T09:08:36.968Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-026-E",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-lifecycle.spec.ts",
+          "title": "[NEO135-026-E] Native scene navigation drag preserves rich scene identity and notes through Undo reopen and keyboard menu navigation",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-script-nav-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:15:43.287Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
         }
       ]
     },
@@ -885,8 +1609,64 @@
         "Multiline dialogue, parentheses and continuation/page artifacts follow the pinned source codecs.",
         "Independent screenplain fixtures validate interchange rather than only self-round-trip."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-027-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-pagination.spec.ts",
+          "title": "[NEO135-027-C] Narrow screenplay reflows for reading while printed measurements and page navigation stay stable",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateReport": "/tmp/leafloom-pagination-decorations-results.json",
+          "candidateExecutedAt": "2026-10-06T07:30:14.336Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-027-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-027-B] Character hint dismisses on Escape renews after native typing and accepts on Right with rich history",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateReport": "/tmp/leafloom-catchup-script-completion-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:22:04.481Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-027-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-027-C] Heading Tab completes known location separator and time before semantic Enter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateReport": "/tmp/leafloom-catchup-script-completion-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:22:04.481Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-027-F",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-lifecycle.spec.ts",
+          "title": "[NEO135-027-F] Trusted clipboard copy from real Notes pastes multiline Fountain roles and emphasis into a script with durable author Undo",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateReport": "/tmp/leafloom-script-clipboard-green.json",
+          "candidateExecutedAt": "2026-10-06T09:20:47.604Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-028",
@@ -897,8 +1677,73 @@
       "acceptance": [
         "Find Escape restores the page caret; Vim n and N continue the last search in the corresponding direction."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-028-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-028-A] Find Escape restores original caret and accepts native writing",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-028-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-028-A] Find Escape restores last visited match and accepts native writing",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-028-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-028-B] Slash Find returns to motion and n N wrap counted matches across rich chapters without author history loss",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-028-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-028-C] Vim repeats Notes matches with visual selection and wrap while manuscript and persisted rich Notes stay intact",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-029",
@@ -910,8 +1755,41 @@
         "With Vim enabled the page rests in motion mode; insertion commands and Escape change modes without losing selection.",
         "Ctrl Page Down/Up navigate chapters and preserve actual writing history."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-029-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-029-A] Book and author tabs rest in motion while click and repeated Escape preserve the native caret",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-029-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-vim.spec.ts",
+          "title": "[NEO135-029-B] Windows Ctrl Page Down Up navigate real chapter caret and retain shared rich writing Undo Redo",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "candidateReport": "/tmp/leafloom-vim-full-final.json",
+          "candidateExecutedAt": "2026-10-06T06:32:01.028Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ]
     },
     {
       "id": "NEO135-030",
@@ -925,8 +1803,60 @@
         "An opening parenthesis after dialogue creates a parenthetical; Enter returns to dialogue.",
         "Scene headings remain bold and have two blank lines above them on screen, page counts and PDF."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-027-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-027-B] Character hint dismisses on Escape renews after native typing and accepts on Right with rich history",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-script-completion-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:22:04.481Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-027-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-027-C] Heading Tab completes known location separator and time before semantic Enter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-script-completion-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:22:04.481Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-030-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-030-B] Native opening parenthesis after dialogue becomes a parenthetical and Enter resumes dialogue through Undo Redo save and reopen",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop native keys, caret, shared Undo/Redo, rich content, durable roles and reopening; no platform qualification",
+          "candidateLog": "/tmp/leafloom-catchup-single-smoke.log",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ],
+      "remainingAcceptance": [
+        "Pinned source completion execution and physical native publication qualification remain pending; mounted parenthetical and completion journeys passed in the complete desktop suite."
+      ]
     },
     {
       "id": "NEO135-031",
@@ -939,8 +1869,13 @@
         "The web worker and older-webview fallback retain equivalent author results.",
         "Greek remains available on desktop but is omitted from the Pocket download."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "Pocket runtime implementation absent; desktop tests do not satisfy mobile acceptance",
+      "integrationCases": [],
+      "remainingAcceptance": [
+        "Pocket toggles Hunspell dictionaries and tapping an underlined word opens suggestions.",
+        "The web worker and older-webview fallback retain equivalent author results.",
+        "Greek remains available on desktop but is omitted from the Pocket download."
+      ]
     },
     {
       "id": "NEO135-032",
@@ -954,18 +1889,232 @@
         "Dragging a card moves the complete rich passage and markers; Undo restores it.",
         "Loose cards remain in the aside; list/card preference and card sizing survive reopen.",
         "Writing over a ghost keeps its note one line below the author passage until explicit dismissal; decorations never persist as prose.",
-        "Ghost synchronization preserves position instead of moving all ghosts to a chapter end."
+        "Ghost synchronization preserves position instead of moving all ghosts to a chapter end.",
+        "Go to the page on a planned section selects the full ghost ready for replacement; a written section positions the caret at its first passage."
       ],
-      "coverage": "integration cases required",
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
       "integrationCases": [
+        {
+          "id": "NEO135-032-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-B] Real cards project actual sections and note editing retains the first line, rich writing and durable ownership",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-032-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-C] Walking notes follow real writing over a ghost and dismiss durably without becoming author prose",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            4
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "affectedRegressionEvidence": "/tmp/leafloom-outline-032-decoration-green.json"
+        },
+        {
+          "id": "NEO135-032-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-D] Loose cards stay in the aside, card size and view persist, and all Outline surfaces hide on other tabs",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: real chapter card drop preserves rich writing, section notes and durable order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: real section card drop preserves rich writing, section notes and durable order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-032-G",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-G] Real board pinch and zoom-control wheel share accumulated card steps and persist without changing manuscript zoom",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-032-E",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-drafts.spec.ts",
+          "title": "[NEO135-032-E] Candidate: open native card draft commits before immediate save without Enter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-032-E",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-drafts.spec.ts",
+          "title": "[NEO135-032-E] Candidate: open native card draft commits before immediate tab without Enter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-032-E",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-drafts.spec.ts",
+          "title": "[NEO135-032-E] Candidate: open native card draft commits before immediate close without Enter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            3
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
         {
           "id": "NEO135-032-A",
           "file": "tests/neo-compat/candidate/neo-1.3.5-editor.spec.ts",
-          "state": "targeted diagnostic; full feature acceptance pending",
           "title": "[NEO135-032-A] Outline cards come from manuscript sections and disappear when Notes or Darlings opens",
-          "sourceStatus": "passed",
-          "candidateStatus": "missing behavior"
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-032-H",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-H] Go to a planned section selects its complete ghost for native replacement and preserves note ownership through Undo and reopen",
+          "acceptanceClauseIndexes": [
+            4,
+            6
+          ],
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop author actions; platform qualifications separate",
+          "sourceAnchors": [
+            "tests/reference/neo-1.3.5/app.js:8081-8103"
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-ghost-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:06:12.351Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-D] Card Tab skips a full-line Part heading in both directions while retaining committed notes and rich writing",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop author actions; platform qualifications separate",
+          "candidateReport": "/tmp/leafloom-catchup-part-nav-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:11:59.010Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-032-I",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-I] Chapter cards wrap across rows on one shared mat and Parts begin a full new line",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions and real filesystem checkpoint/reopen",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-032-J",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-J] Editing an existing middle ghost synchronizes in place with rich neighbours, Undo and durable ownership",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions and real filesystem checkpoint/reopen",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "acceptanceClauseIndexes": [
+            5
+          ],
+          "finalHeadStatus": "passed complete desktop catch-up suite"
         }
+      ],
+      "remainingAcceptance": [
+        "Physical packaged-native background draft durability remains pending; mounted note spacing, wrapped shared mats and in-place existing ghost synchronization passed."
       ]
     },
     {
@@ -979,8 +2128,71 @@
         "Editing a card updates the actual scene heading or scene-id-owned note.",
         "Reordering cards reorders real scenes; dropping a loose card creates a scene with undo and persistence."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-033-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-033-A] Scene cards edit actual headings and owned notes while retaining cast, action and durable rich writing",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-033-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-033-B] Real scene-card and loose-card drops reorder rich scenes and create a note-owned scene with Undo and disk persistence",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            2
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-033-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-033-C] Scene card eighths follow actual measured screenplay lines across a page break and reopen without saved layout",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-033-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-screenplay-editing.spec.ts",
+          "title": "[NEO135-033-B] CONT D follows repeated speech after action and disappears when the intervening action becomes a transition without saving presentation marks",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ],
+      "remainingAcceptance": [
+        "Physical native screenplay layout/publication qualification remains separate; mounted033-C measured eighth-page lengths passed."
+      ]
     },
     {
       "id": "NEO135-034",
@@ -993,8 +2205,107 @@
         "Alt Enter, seam plus, open-card New card and board-end plus create the intended section or chapter.",
         "Opening a card keeps the first line visible above its note."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-034-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-A] Card Enter, Tab and Shift Tab commit notes and visit the next existing card with the first prose visible",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-B] seam insertion puts a planned card between the chapter opening and following real section",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-B] alt insertion puts a planned card between the chapter opening and following real section",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-B",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-B] tool insertion puts a planned card between the chapter opening and following real section",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-C",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-C] Alt Enter on an empty new card creates the next chapter and board-end plus creates another chapter",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-034-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-034-D] Card Tab skips a full-line Part heading in both directions while retaining committed notes and rich writing",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop author actions; platform qualifications separate",
+          "candidateReport": "/tmp/leafloom-catchup-part-nav-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:11:59.010Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ],
+      "remainingAcceptance": []
     },
     {
       "id": "NEO135-035",
@@ -1005,8 +2316,25 @@
       "acceptance": [
         "Leaving Outline hides its board, list/cards switch and hint on Notes and Darlings."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-032-D",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-board.spec.ts",
+          "title": "[NEO135-032-D] Loose cards stay in the aside, card size and view persist, and all Outline surfaces hide on other tabs",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        }
+      ],
+      "remainingAcceptance": []
     },
     {
       "id": "NEO135-036",
@@ -1020,8 +2348,132 @@
         "Dropping a chapter on another chapter joins it as a section; dropping a section moves it to that chapter end.",
         "The receiver is saved before deleting the emptied source; Undo restores full rich text and order."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: section Enter at 0 inserts a chapter after its owner and Undo returns its outline caret",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2,
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: section Enter at 4 inserts a chapter after its owner and Undo returns its outline caret",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2,
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: Tab joins an existing written chapter with rich prose, note ownership, Undo and disk persistence",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2,
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-021",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-021] Leafloom: Shift Tab promotion carries following planned notes in order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-021",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-021] Leafloom: Shift Tab promotion retains all following notes when one is written",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            1
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json",
+          "finalHeadStatus": "passed complete desktop catch-up suite"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: real chapter card drop preserves rich writing, section notes and durable order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2,
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        },
+        {
+          "id": "NEO135-036",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-outline.spec.ts",
+          "title": "[NEO135-036] Leafloom: real section card drop preserves rich writing, section notes and durable order",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "candidateReport": "/tmp/leafloom-catchup-outline-board-browser-green.json",
+          "sourceStatus": "pending hidden reference run",
+          "acceptanceClauseIndexes": [
+            0,
+            2,
+            3
+          ],
+          "evidenceScope": "real mounted Chromium keys/pointers and private durable files; no packaged-native foreground claim",
+          "candidateExecutedAt": "2026-10-06T07:08:19.714Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ],
+      "remainingAcceptance": [
+        "Receiver durable-save-before-source-delete interruption behavior passes real BookFiles provider tests; a mounted injected-fault/native ordering assertion remains pending."
+      ]
     },
     {
       "id": "NEO135-037",
@@ -1033,8 +2485,29 @@
         "Manuscript and shelf retain their uiBright setting; Outline, Notes and Darlings use uiBrightAside and default bright.",
         "View brightness changes the current tab group and both choices survive tab switches and restart."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "mapped desktop candidate integration passed; source and physical platform qualifications separate",
+      "integrationCases": [
+        {
+          "id": "NEO135-037-A",
+          "file": "tests/neo-compat/candidate/neo-1.3.5-brightness.spec.ts",
+          "title": "[NEO135-037-A] View brightness changes only its current tab group and both choices survive shelf and restart",
+          "state": "mounted candidate integration passed in complete92-case desktop run",
+          "candidateStatus": "passed",
+          "sourceStatus": "pending hidden reference run",
+          "evidenceScope": "mounted desktop Chromium author actions; native and Pocket qualifications separate",
+          "acceptanceClauseIndexes": [
+            0,
+            1
+          ],
+          "candidateReport": "/tmp/leafloom-catchup-brightness-smoke.json",
+          "candidateExecutedAt": "2026-10-06T09:25:50.269Z",
+          "finalHeadStatus": "passed complete desktop catch-up suite",
+          "candidateEvidence": "/tmp/leafloom-catchup-92-final-green.json"
+        }
+      ],
+      "remainingAcceptance": [
+        "Physical native View menu and packaged restart qualification remain pending; mounted brightness journey passed in the complete desktop suite."
+      ]
     },
     {
       "id": "NEO135-038",
@@ -1047,15 +2520,22 @@
         "Undo/redo controls stay above the software keyboard and preserve immediate typography and structural undo.",
         "The Chapters pane remains for navigation with a bottom Add Chapter."
       ],
-      "coverage": "integration cases required",
-      "integrationCases": []
+      "coverage": "Pocket runtime implementation absent; desktop tests do not satisfy mobile acceptance",
+      "integrationCases": [],
+      "remainingAcceptance": [
+        "Android hardware keyboard attachment controls software-keyboard visibility while long-press retains a temporary override.",
+        "Undo/redo controls stay above the software keyboard and preserve immediate typography and structural undo.",
+        "The Chapters pane remains for navigation with a bottom Add Chapter."
+      ]
     }
   ],
   "notes": [
     "The existing 1.2.4 oracle and 470-case regression suite remain historical baseline coverage.",
     "A declared acceptance clause is not a passing integration test. Unbound clauses remain gaps.",
     "Pocket and physical OS capabilities are retained in scope with separate execution duties.",
-    "Changed shortcuts and outline semantics supersede historical expectations only for the 1.3.5 target."
+    "Changed shortcuts and outline semantics supersede historical expectations only for the 1.3.5 target.",
+    "Candidate outline cases retain conditional 1.2.4 reference expectations: NEO-148 section Enter now inserts a chapter after its owner; NEO-150 written chapter Tab joins rich writing; NEO-151 carries following unwritten sections; NEO-156 promotion then joining retains a, promoted-note, c order. Both immutable source trees remain unchanged; source1.3.5 and candidate explicitly select List from the default card board.",
+    "A source-derived planned-section Go-to-page selection clause was added to032 after the initial91-clause inventory; its mounted journey passed in the complete90-case desktop run."
   ],
   "initialExecution": {
     "source": {
@@ -1077,5 +2557,52 @@
     "sourceReport": "/tmp/leafloom-neo135-reference-first10-final.json",
     "candidateReport": "/tmp/leafloom-neo135-candidate-first10-final.json",
     "scope": "Ten initial cases only; all unbound acceptance clauses remain open."
+  },
+  "desktopExecution": {
+    "report": "/tmp/leafloom-release-all-final-accepted.json",
+    "stats": {
+      "expected": 92,
+      "unexpected": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "boundCaseEntries": 100,
+    "scope": "All92 desktop catch-up cases in the complete562-case run. Browser and real managed filesystem host; physical native and Pocket remain separate."
+  },
+  "retainedBaselineExecution": {
+    "report": "/tmp/leafloom-release-all-final-accepted.json",
+    "stats": {
+      "expected": 468,
+      "unexpected": 2,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "remainingRequiredCases": 0,
+    "scope": "All470 retained cases executed. Raw run has two failures:100-chapter p95 50.2ms accepted by the owner, and already-open note pane corrected afterward with14/14 affected journeys. No missing, skipped or retried cases."
+  },
+  "releaseAcceptance": {
+    "fullRun": {
+      "startTime": "2026-10-06T13:00:44.255Z",
+      "duration": 1216790.057,
+      "expected": 560,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "report": "/tmp/leafloom-release-all-final-accepted.json",
+    "affectedCorrectionReport": "/tmp/leafloom-release-stickies-final-green.json",
+    "affectedCorrection": {
+      "expected": 14,
+      "unexpected": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "performance": {
+      "budgetMs": 50,
+      "measuredP95Ms": 50.20000000298023,
+      "ownerDecision": "2026-10-06: Don't care about the 0.2ms that's a pass",
+      "testThresholdChanged": false
+    },
+    "qualification": "Complete pre-correction run plus affected final-source verification. Raw report remains560 passed/2 failed; no claim of a562/562 automated green run."
   }
 }

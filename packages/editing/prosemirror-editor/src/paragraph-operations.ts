@@ -25,7 +25,12 @@ export interface ParagraphOperationsContext {
   supported: (id: string) => boolean;
 }
 
-export function enter(context: ParagraphOperationsContext, shift = false, plain = false): boolean {
+export function enter(
+  context: ParagraphOperationsContext,
+  shift = false,
+  plain = false,
+  requestedStyle: 'poetry' | 'flush' = 'poetry',
+): boolean {
   const { $from, $to, empty } = context.state.selection,
     owner = context.owner($from.pos);
   if (!owner || !context.canEditSelection()) return false;
@@ -133,14 +138,14 @@ export function enter(context: ParagraphOperationsContext, shift = false, plain 
   }
   context.resetEnter();
   if (
-    poetry &&
+    (poetry || classes.includes('flush')) &&
     !shift &&
     !node.textContent &&
     node.content.content.every((n) => n.type.name === 'hard_break')
   ) {
     const tr = closeHistory(context.state.tr).setNodeMarkup(start, undefined, {
       ...node.attrs,
-      class: classes.filter((c) => c !== 'poetry').join(' '),
+      class: classes.filter((c) => c !== 'poetry' && c !== 'flush').join(' '),
     });
     tr.removeMark(start + 1, start + 1 + node.content.size, bookSchema.marks.italic);
     tr.setStoredMarks([]);
@@ -148,20 +153,29 @@ export function enter(context: ParagraphOperationsContext, shift = false, plain 
     return true;
   }
   const tr = closeHistory(context.state.tr);
-  const makePoetry = shift;
+  const makePoetry = shift && (poetry || requestedStyle === 'poetry');
+  const makeFlush = shift && !makePoetry;
   if (shift && offset === 0 && !poetry && empty) {
     tr.setNodeMarkup(start, undefined, {
       ...node.attrs,
-      class: [...classes.filter(Boolean), 'poetry'].join(' '),
+      class: [
+        ...classes.filter((c) => c && c !== 'flush' && c !== 'poetry'),
+        makePoetry ? 'poetry' : 'flush',
+      ].join(' '),
     });
-    tr.addMark(start + 1, start + 1 + node.content.size, bookSchema.marks.italic.create());
-    tr.setStoredMarks([bookSchema.marks.italic.create()]);
+    if (makePoetry) {
+      tr.addMark(start + 1, start + 1 + node.content.size, bookSchema.marks.italic.create());
+      tr.setStoredMarks([bookSchema.marks.italic.create()]);
+    }
     context.dispatch(tr, 'author.poetry');
     return true;
   }
   const tailClass = makePoetry
-    ? [...classes.filter((c) => c && c !== 'poetry'), 'poetry'].join(' ')
-    : classes.filter((c) => c !== 'poetry').join(' ');
+    ? [...classes.filter((c) => c && c !== 'poetry' && c !== 'flush'), 'poetry'].join(' ')
+    : [
+        ...classes.filter((c) => c && c !== 'poetry' && c !== 'flush'),
+        ...(makeFlush ? ['flush'] : []),
+      ].join(' ');
   tr.deleteSelection();
   const splitAt = tr.selection.from;
   tr.split(splitAt, 1, [
@@ -229,23 +243,45 @@ export function backspace(context: ParagraphOperationsContext): boolean {
   }
   if (
     $from.parent.type.name === 'paragraph' &&
-    String($from.parent.attrs.class).split(/\s+/).includes('poetry')
+    String($from.parent.attrs.class)
+      .split(/\s+/)
+      .some((c) => c === 'poetry' || c === 'flush')
   ) {
     const start = $from.before(),
-      tr = closeHistory(context.state.tr)
-        .setNodeMarkup(start, undefined, {
-          ...$from.parent.attrs,
-          class: String($from.parent.attrs.class)
-            .split(/\s+/)
-            .filter((c) => c !== 'poetry')
-            .join(' '),
-        })
-        .removeMark(start + 1, start + 1 + $from.parent.content.size, bookSchema.marks.italic)
-        .setStoredMarks([]);
+      tr = closeHistory(context.state.tr).setNodeMarkup(start, undefined, {
+        ...$from.parent.attrs,
+        class: String($from.parent.attrs.class)
+          .split(/\s+/)
+          .filter((c) => c !== 'poetry' && c !== 'flush')
+          .join(' '),
+      });
+    if (hasBlockClass($from.parent, 'poetry'))
+      tr.removeMark(
+        start + 1,
+        start + 1 + $from.parent.content.size,
+        bookSchema.marks.italic,
+      ).setStoredMarks([]);
     context.dispatch(tr, 'author.poetry.exit');
     return true;
   }
   const owner = context.owner($from.pos);
+  const start = $from.before(),
+    above = context.state.doc.resolve(start).nodeBefore;
+  if (
+    owner &&
+    owner.node.attrs.role === 'chapter' &&
+    above?.type.name === 'paragraph' &&
+    !hasBlockClass(above, 'scene-break') &&
+    !hasBlockClass(above, 'ghost') &&
+    !context.state.doc.textBetween(owner.pos + 1, start, '', (node) =>
+      node.type.name === 'placeholder' ? '⚑' : '',
+    ).length
+  ) {
+    const tr = closeHistory(context.state.tr).delete(start - above.nodeSize, start);
+    tr.setSelection(TextSelection.create(tr.doc, tr.mapping.map(from)));
+    context.dispatch(tr, 'author.empty.line.delete');
+    return true;
+  }
   if (owner && $from.before() === owner.pos + 1) {
     if (owner.node.attrs.role !== 'chapter') return true;
     const chapters = context.sections.filter((section) => section.node.attrs.role === 'chapter'),

@@ -2,7 +2,7 @@ import {readFile} from 'node:fs/promises';
 import {z} from 'zod';
 import {installedPDFVariants} from './system-fonts.ts';
 const moduleURL=import.meta.url;
-const Face=z.object({family:z.string(),file:z.string().regex(/^[a-z0-9-]+\.(woff2|ttf|otf)$/),weight:z.number(),style:z.enum(['normal','italic']), 'unicode-range':z.string().optional(),'size-adjust':z.string().optional(),'ascent-override':z.string().optional(),'descent-override':z.string().optional(),'line-gap-override':z.string().optional()});
+const Face=z.object({family:z.string(),file:z.string().regex(/^[a-z0-9-]+\.(woff2|ttf|otf)$/),pdfFile:z.string().regex(/^[a-z0-9-]+\.ttf$/).optional(),weight:z.number(),style:z.enum(['normal','italic']), 'unicode-range':z.string().optional(),'size-adjust':z.string().optional(),'ascent-override':z.string().optional(),'descent-override':z.string().optional(),'line-gap-override':z.string().optional()});
 export type ExportTypography={bodyFont?:string;dropcap?:string};
 export function dropCapTypography(choice='literary',platform:NodeJS.Platform=process.platform){
  if(choice==='none')return null;
@@ -20,14 +20,14 @@ export async function exportFonts(options:ExportTypography={},platform:NodeJS.Pl
  const dropcap=dropCapTypography(options.dropcap,platform),cap=dropcap?.family;
  const faces=z.array(Face).parse(JSON.parse(await readFile(new URL('./fontfaces.json',moduleURL),'utf8')));
  const asset=async(file:string)=>{try{return await readFile(new URL('./font-assets/'+file,moduleURL));}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;return readFile(new URL('../public/fonts/'+file,moduleURL));}};
- const selected=faces.filter(face=>face.family===body||face.family===cap||face.family===dropcap?.fallback),loaded=await Promise.all(selected.map(async face=>({...face,bytes:await asset(face.file)})));
+ const selected=faces.filter(face=>face.family===body||face.family===cap||face.family===dropcap?.fallback),loaded=await Promise.all(selected.map(async face=>({...face,bytes:await asset(face.file),pdfBytes:face.pdfFile?await asset(face.pdfFile):undefined})));
  let css=loaded.map(face=>{const ext=face.file.split('.').at(-1);return `@font-face{font-family:'${face.family}';src:url(data:font/${ext};base64,${face.bytes.toString('base64')});font-weight:${face.weight};font-style:${face.style};${['unicode-range','size-adjust','ascent-override','descent-override','line-gap-override'].map(key=>key in face?key+':'+face[key as keyof typeof face]+';':'').join('')}}`;}).join('\n');
  css+=`\nbody{font-family:'${cssFamily(body)}',Georgia,serif}`;
  if(cap)css+=`\nsection.story p.first:not(.dialogue)::first-letter{initial-letter:2;-webkit-initial-letter:2;padding-right:4px;font-family:${dropcap!.stack}}`;
  const matches=(bold:boolean,italic:boolean)=>loaded.filter(face=>face.family===body&&face.style===(italic?'italic':'normal')&&(bold?face.weight>=600:face.weight<600));
  const variant=(bold:boolean,italic:boolean)=>matches(bold,italic).find(face=>!face['unicode-range']);
  const companion=(bold:boolean,italic:boolean)=>matches(bold,italic).filter(face=>face['unicode-range']);
- return {css,body,dropcap,capBytes:loaded.find(face=>face.family===cap&&face.style==='normal')?.bytes??loaded.find(face=>face.family===dropcap?.fallback&&face.style==='normal')?.bytes,variants:{Regular:variant(false,false)?.bytes,Bold:variant(true,false)?.bytes,Italic:variant(false,true)?.bytes,BoldItalic:variant(true,true)?.bytes},companions:{Regular:companion(false,false),Bold:companion(true,false),Italic:companion(false,true),BoldItalic:companion(true,true)}};
+ return {css,body,dropcap,capBytes:loaded.find(face=>face.family===cap&&face.style==='normal')?.bytes??loaded.find(face=>face.family===dropcap?.fallback&&face.style==='normal')?.bytes,variants:{Regular:variant(false,false)?.pdfBytes??variant(false,false)?.bytes,Bold:variant(true,false)?.pdfBytes??variant(true,false)?.bytes,Italic:variant(false,true)?.pdfBytes??variant(false,true)?.bytes,BoldItalic:variant(true,true)?.pdfBytes??variant(true,true)?.bytes},companions:{Regular:companion(false,false),Bold:companion(true,false),Italic:companion(false,true),BoldItalic:companion(true,true)}};
 }
 // System fonts are read only for PDF subsetting; HTML/EPUB retain the family name.
 export async function systemPDFVariants(body:string) {

@@ -22,16 +22,16 @@ const open = () =>
 it('active formatting projects the caret paragraph without changing history or serializing', () => {
   const core = open();
   core.selectPassage(core.passageRows('a')[2].id, 0);
-  expect(core.activeFormatting).toEqual({ poetry: false, align: 'left' });
+  expect(core.activeFormatting).toEqual({ flush: false, poetry: false, align: 'left' });
   core.alignParagraph('justify');
   core.togglePoetry();
   const revision = core.revision;
-  expect(core.activeFormatting).toEqual({ poetry: true, align: 'justify' });
+  expect(core.activeFormatting).toEqual({ flush: false, poetry: true, align: 'justify' });
   expect(core.revision).toBe(revision);
   core.select('notes', 1);
-  expect(core.activeFormatting).toEqual({ poetry: false, align: 'left' });
+  expect(core.activeFormatting).toEqual({ flush: false, poetry: false, align: 'left' });
   core.undo();
-  expect(core.activeFormatting).toEqual({ poetry: false, align: 'justify' });
+  expect(core.activeFormatting).toEqual({ flush: false, poetry: false, align: 'justify' });
 });
 it('paragraph alignment touches marked prose but skips scene breaks and shares native Undo', () => {
   const core = open();

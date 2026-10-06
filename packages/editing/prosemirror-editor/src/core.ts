@@ -1,3 +1,4 @@
+import { OutlineBoardOperations } from './outline-board-operations';
 import type { ManuscriptModeValue } from '@leafloom/document-contracts';
 import {
   ChapterKind,
@@ -75,6 +76,7 @@ export class BookCore implements EditorPort {
       get outlineRows() {
         return owner.outlineRows;
       },
+      get outlineBoardOps() { return owner.outlineBoardOps; },
       get outlineOps() {
         return owner.outlineOps;
       },
@@ -278,6 +280,15 @@ export class BookCore implements EditorPort {
   revision: number;
   words = 0;
   snapshots = 0;
+  private readonly outlineBoardOps = new OutlineBoardOperations({
+    state: () => this.state,
+    supported: (id) => this.supported(id),
+    chapters: () => this.chapters,
+    section: (id) => this.section(id),
+    createChapter: (id) => this.makeSection(id, 'chapter', '<p></p>', '', 'chapter'),
+    wordCount: (id) => this.wordCountFor(id),
+    dispatch: (transaction, command) => this.dispatch(transaction, command),
+  });
   private readonly outlineOps = new OutlineOperations({
     state: () => this.state,
     chapters: () => this.chapters,
@@ -486,11 +497,16 @@ export class BookCore implements EditorPort {
   private screenplayContext(): screenplay.ScreenplayContext {
     return {
       state: this.state,
+      session: this.screenplaySession,
       editable: () => this.canEditSelection(),
       mode: this.manuscriptMode,
       dispatch: (tr, command) => this.dispatch(tr, command),
     };
   }
+  private readonly screenplaySession = new screenplay.ScreenplaySession();
+  get screenplayCompletion() { return screenplay.completion(this.screenplayContext()); }
+  dismissScreenplayCompletion() { return screenplay.dismissCompletion(this.screenplayContext()); }
+  acceptScreenplayCompletion() { return screenplay.acceptCompletion(this.screenplayContext()); }
   setManuscriptMode = this.commands.setManuscriptMode;
   setScreenplayElement = this.commands.setScreenplayElement;
   screenplayTab = this.commands.screenplayTab;
@@ -508,6 +524,7 @@ export class BookCore implements EditorPort {
     const paragraph = this.state.selection.$from.parent,
       alignment = paragraph.attrs.align;
     return {
+      flush: paragraph.isTextblock && String(paragraph.attrs.class).split(/\s+/).includes('flush'),
       poetry:
         paragraph.isTextblock && String(paragraph.attrs.class).split(/\s+/).includes('poetry'),
       align:
@@ -519,6 +536,7 @@ export class BookCore implements EditorPort {
   get version(): string {
     return this.state.doc.attrs.version;
   }
+  get historyVersion() { return this.version; }
   setTraceParent = this.commands.setTraceParent;
   get activeSection() {
     const owner = this.owner(this.state.selection.from);
@@ -534,10 +552,27 @@ export class BookCore implements EditorPort {
   get outlineRows(): OutlineRow[] {
     return this.outlineOps.outlineRows;
   }
+  get outlineCards() { return this.outlineBoardOps.cards; }
+  get looseOutlineCards() { return this.outlineBoardOps.looseCards; }
+  get walkingOutlineNote() { return this.outlineBoardOps.walkingNote; }
+  screenplayMeasurement(id:string) { return this.outlineBoardOps.measurement(id); }
+  setOutlineSceneMeasurements = this.commands.setOutlineSceneMeasurements;
+  saveOutlineCard = this.commands.saveOutlineCard;
+  insertOutlineCard = this.commands.insertOutlineCard;
+  deleteOutlineCardNote = this.commands.deleteOutlineCardNote;
+  dropOutlineCard = this.commands.dropOutlineCard;
+  promoteOutlineSection = this.commands.promoteOutlineSection;
+  dismissWalkingOutlineNote = this.commands.dismissWalkingOutlineNote;
   editOutlineRow = this.commands.editOutlineRow;
   outlineEnter = this.commands.outlineEnter;
   outlineIndent = this.commands.outlineIndent;
   outlineDelete = this.commands.outlineDelete;
+  joinOutlineChapter = this.commands.joinOutlineChapter;
+  moveOutlineSection = this.commands.moveOutlineSection;
+  get caret() {
+    const head = this.state.selection.$head, owner = this.owner(head.pos);
+    return owner && head.parent.isTextblock && typeof head.parent.attrs.pid === 'string' ? {chapterId:String(owner.node.attrs.id),passageId:head.parent.attrs.pid,offset:head.parentOffset} : null;
+  }
   get selection(): EditorSelection | null {
     const { $from, $to } = this.state.selection,
       owner = this.owner($from.pos);
@@ -606,6 +641,7 @@ export class BookCore implements EditorPort {
   }
 
   wordCountFor = this.commands.wordCountFor;
+  wordsBeforeCaret = this.commands.wordsBeforeCaret;
   private wordCount(): number {
     return passageOperations.wordCount(this.operations);
   }
@@ -616,13 +652,15 @@ export class BookCore implements EditorPort {
   }
   dispatch(tr: Transaction, command = 'typing', historical = false, parent?: Context) {
     const op = () => {
+      if (command === 'typing' && tr.docChanged)
+        screenplay.normalizeTyping(this.screenplayContext(), tr);
       if (tr.docChanged && !tr.getMeta('bookkeeping')) this.finishMetadataField();
       if (command === 'typing' && this.breakTyping) {
         tr = closeHistory(tr);
         this.breakTyping = false;
       }
       const result = this.apply(tr, command, historical);
-      if (command.startsWith('outline.')) this.breakTyping = true;
+      if (command.startsWith('outline.') && tr.docChanged) this.breakTyping = true;
       return result;
     };
     return this.telemetry
@@ -690,6 +728,7 @@ export class BookCore implements EditorPort {
   updateMetadata = this.commands.updateMetadata;
   setMetadata = this.commands.setMetadata;
   togglePoetry = this.commands.togglePoetry;
+  toggleFlush = this.commands.toggleFlush;
   insertOpeningPoetry = this.commands.insertOpeningPoetry;
   setChapterKind = this.commands.setChapterKind;
   selectPassage = this.commands.selectPassage;
@@ -706,6 +745,7 @@ export class BookCore implements EditorPort {
   paste = this.commands.paste;
   /** NEO's paragraph / scene / chapter Enter sequence is a deliberate authoring gesture. */
   enter = this.commands.enter;
+  flushEnter = this.commands.flushEnter;
   backspace = this.commands.backspace;
   deleteForward = this.commands.deleteForward;
   html = this.commands.html;
@@ -725,6 +765,7 @@ export class BookCore implements EditorPort {
     Fragment,
     { id: string; runs: { from: number; text: string }[] }[]
   >();
+  capitalizationRanges = this.commands.capitalizationRanges;
   spellingPassages = this.commands.spellingPassages;
   passageRows = this.commands.passageRows;
   captureSelection = this.commands.captureSelection;

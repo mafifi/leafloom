@@ -1,7 +1,11 @@
+import { capitalSlips } from './capitalization';
+import { markdownMatch } from './typography';
+import type { OutlineBoardOperations } from './outline-board-operations';
+import type { OutlineCardTarget, OutlineCardInsertion, OutlineDropSide, OutlineSceneMeasurement } from '@leafloom/editor-contracts';
 import type { OutlineRow } from '@leafloom/editor-contracts';
 import type { OutlineOperations } from './outline';
 import type { Fragment } from 'prosemirror-model';
-import type { ManuscriptModeValue, ScreenplayElementValue } from '@leafloom/document-contracts';
+import { storyKinds, type ManuscriptModeValue, type ScreenplayElementValue } from '@leafloom/document-contracts';
 import { type JSONValue } from '@leafloom/document-contracts';
 import type {
   Annotation,
@@ -50,6 +54,7 @@ export interface EditorCommandQueries {
   screenplayContext(): screenplay.ScreenplayContext;
   outlineRows: OutlineRow[];
   outlineOps: OutlineOperations;
+  outlineBoardOps: OutlineBoardOperations;
   selectPassage(id: string, from: number, to?: number): void;
   spellingCache: WeakMap<Fragment, {id: string; runs: {from:number;text:string}[]}[]>;
 }
@@ -110,6 +115,15 @@ export function editorCommands(context: editorCommandsContext) {
     ): { target: OutlineTarget; notice?: string } => {
       return context.outlineOps.outlineIndent(target, reverse);
     },
+    setOutlineSceneMeasurements: (value: OutlineSceneMeasurement[]) => context.outlineBoardOps.measure(value),
+    saveOutlineCard: (target: OutlineCardTarget, text: string, slug?: string) => context.outlineBoardOps.save(target, text, slug),
+    insertOutlineCard: (location: OutlineCardInsertion, text?: string, slug?: string) => context.outlineBoardOps.insert(location, text, slug),
+    deleteOutlineCardNote: (target: OutlineCardTarget) => context.outlineBoardOps.removeNote(target),
+    dropOutlineCard: (source: OutlineCardTarget, target: OutlineCardTarget | 'loose', side: OutlineDropSide) => context.outlineBoardOps.drop(source, target, side),
+    promoteOutlineSection: (target: OutlineCardTarget) => context.outlineBoardOps.promote(target),
+    dismissWalkingOutlineNote: () => context.outlineBoardOps.dismissWalk(),
+    joinOutlineChapter: (chapterId: string, intoChapterId: string): OutlineTarget | null => context.outlineOps.joinChapter(chapterId, intoChapterId),
+    moveOutlineSection: (fromChapterId: string, segmentIndex: number, to: { chapterId: string; before: number | null }): void => context.outlineOps.moveSection(fromChapterId, segmentIndex, to),
     outlineDelete: (target: OutlineTarget): OutlineTarget => {
       return context.outlineOps.outlineDelete(target);
     },
@@ -174,6 +188,24 @@ export function editorCommands(context: editorCommandsContext) {
     passages: (sectionId?: string): PassageInfo[] => {
       return passageOperations.passages(context, sectionId);
     },
+    wordsBeforeCaret: (chapterId: string): number => {
+      let before = 0;
+      for (const chapter of context.chapters) {
+        if (chapter.id === chapterId) {
+          if (!storyKinds.some(kind => kind === chapter.kind)) break;
+          const caret = context.state.selection.from;
+          for (const passage of context.passages(chapterId)) {
+            if (caret <= passage.pos) break;
+            const offset = Math.min(passage.node.content.size, caret - passage.pos - 1);
+            before += countNodeWords(passage.node.copy(passage.node.content.cut(0, Math.max(0, offset))));
+            if (caret < passage.pos + passage.node.nodeSize) break;
+          }
+          break;
+        }
+        if (storyKinds.some(kind => kind === chapter.kind)) before += countNodeWords(context.section(chapter.id).node);
+      }
+      return before;
+    },
     wordCountFor: (sectionId: string) => {
       const section = context.section(sectionId);
       return countNodeWords(section.node);
@@ -190,7 +222,15 @@ export function editorCommands(context: editorCommandsContext) {
     redo: () => {
       context.finishMetadataField();
       context.resetEnter();
-      return redo(context.state, (tr) => context.dispatch(tr, 'redo', true));
+      const selection = context.state.selection;
+      const before = selection.empty ? selection.$from.parent.textBetween(0, selection.$from.parentOffset) : '';
+      const match = markdownMatch(before);
+      return redo(context.state, (tr) => {
+        // History restores document steps and selection, but not stored typing
+        // marks. A replayed delimiter conversion still ends in plain input.
+        if (match && tr.selection.empty && tr.selection.$from.parent.textBetween(0, tr.selection.$from.parentOffset) === before.slice(0, match.from) + before.slice(match.from + match.open, match.to - match.open)) tr.setStoredMarks([]);
+        context.dispatch(tr, 'redo', true);
+      });
     },
     resetEnter: () => {
       context.enterSequence = null;
@@ -228,7 +268,7 @@ export function editorCommands(context: editorCommandsContext) {
     },
     insert: (
       text: string,
-      options?: { typography?: boolean; previousTextNodePrefix?: string },
+      options?: { typography?: boolean; capitalize?: boolean; previousTextNodePrefix?: string },
     ) => {
       return textOperations.insert(context, text, options);
     },
@@ -254,6 +294,7 @@ export function editorCommands(context: editorCommandsContext) {
     setMetadata: (patch: MetadataPatch) => {
       return metadataOperations.setMetadata(context, patch);
     },
+    toggleFlush: () => textOperations.toggleFlush(context),
     togglePoetry: () => {
       return textOperations.togglePoetry(context);
     },
@@ -267,8 +308,8 @@ export function editorCommands(context: editorCommandsContext) {
     ) => {
       return chapterOperations.setChapterKind(context, id, kind, options);
     },
-    selectPassage: (id: string, from: number, to = from) => {
-      return textOperations.selectPassage(context, id, from, to);
+    selectPassage: (id: string, from: number, to = from, extend = false) => {
+      return textOperations.selectPassage(context, id, from, to, extend);
     },
     replaceMatches: (matches: SearchMatch[], text: string) => {
       return textOperations.replaceMatches(context, matches, text);
@@ -297,11 +338,16 @@ export function editorCommands(context: editorCommandsContext) {
     paste: (value: ClipboardValue) => {
       return clipboardOperations.paste(context, value);
     },
+    flushEnter: (plain = false): boolean => {
+      if (screenplay.enter(context.screenplayContext(), true)) return true;
+      return paragraphOperations.enter(context, true, plain, 'flush');
+    },
     enter: (shift = false, plain = false): boolean => {
       if (screenplay.enter(context.screenplayContext(), shift)) return true;
       return paragraphOperations.enter(context, shift, plain);
     },
     backspace: (): boolean => {
+      if (screenplay.backspace(context.screenplayContext())) return true;
       return paragraphOperations.backspace(context);
     },
     deleteForward: (): boolean => {
@@ -351,8 +397,27 @@ export function editorCommands(context: editorCommandsContext) {
     removeDarling: (id: string) => {
       return darlingOperations.removeDarling(context, id);
     },
-    format: (mark: 'bold' | 'italic') => {
+    format: (mark: 'bold' | 'italic' | 'underline' | 'strike') => {
       return textOperations.format(context, mark);
+    },
+    capitalizationRanges: (sectionId: string, language: string) => {
+      const section = context.section(sectionId).node;
+      if (section.attrs.role !== 'chapter') return [];
+      return entries(section).flatMap(({ node }) => {
+        if (node.type.name !== 'paragraph' || typeof node.attrs.pid !== 'string' ||
+          String(node.attrs.class).split(/\s+/).some(name => ['poetry', 'ghost', 'scene-break'].includes(name))) return [];
+        let text = '';
+        const offsets: number[] = [];
+        node.forEach((child, from) => {
+          if (!child.isText || !child.text) return;
+          for (let index = 0; index < child.text.length; index++) offsets.push(from + index);
+          text += child.text;
+        });
+        return capitalSlips(text, language).map(index => ({
+          passageId: node.attrs.pid as string, from: offsets[index], to: offsets[index] + 1,
+          correction: text[index].toLocaleUpperCase(language),
+        }));
+      });
     },
     spellingPassages: (sectionId: string) => {
       const section = context.section(sectionId).node;

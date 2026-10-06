@@ -270,7 +270,7 @@ export class PublicationPageViewModel {
   redo() {
     if (this.writable()) this.editor?.redo();
   }
-  format(mark: 'bold' | 'italic') {
+  format(mark: 'bold' | 'italic' | 'underline' | 'strike') {
     if (this.writable()) this.editor?.format(mark);
   }
   async save() {

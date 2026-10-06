@@ -27,7 +27,7 @@ const Art = z.object({
   at: z.string().optional(),
   words: z.number().optional(),
 });
-export type CoverChoice = 'image' | 'painted' | 'abstract' | 'reroll' | 'paint' | 'nope';
+export type CoverChoice = 'image' | 'painted' | 'abstract' | 'reroll' | 'paint' | 'nope' | 'save-image';
 export type CoverArtDraft = {
   auto: boolean;
   quality: 'low' | 'medium' | 'high';
@@ -65,6 +65,7 @@ export interface CoverArtContext {
   hint(message: string): void;
   t(key: string, args?: Record<string, string | number>): string;
   now?(): Date;
+  saveImage?(id:string):Promise<void>;
 }
 const settings = (library: LibraryValue) =>
   Settings.safeParse(library.coverArt).data ?? Settings.parse({});
@@ -273,6 +274,7 @@ export class CoverArtViewModel {
           : 'Once the story passes {n} words.',
         Number(meta.wordCount ?? 0) < PAINT_AT,
       );
+    if(this.context.saveImage&&meta.format!=='screenplay')add('save-image','Save cover as image…','Full size, with your title and author.');
     if (options.length === 1) {
       await this.choose(bookId, 'reroll');
       return;
@@ -283,6 +285,7 @@ export class CoverArtViewModel {
     const meta = this.book(bookId);
     if (!meta || choice === 'nope') return;
     this.cancel();
+    if(choice==='save-image'){await this.context.saveImage?.(bookId);return;}
     if (choice === 'paint') {
       await this.requestPaint(meta, true);
       return;

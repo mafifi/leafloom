@@ -8,6 +8,7 @@ Leafloom source additions use MIT. NEO-derived algorithms retain Hugh Howey's MI
 | `@farscrl/hunspell-wasm` 1.0.1 wrapper | Package MIT license; wrapper release commit and pinned Hunspell submodule recorded separately |
 | Romanian dictionary 3.0.0 | Full upstream attribution and selected MPL 1.1 text; unmodified `.aff`/`.dic` source files bundled |
 | Portuguese dictionary 4.0.0 | Full upstream attribution and selected MPL 2.0 text; unmodified `.aff`/`.dic` source files bundled |
+| iA Writer Quattro | Original WOFF2 and TTF files, both upstream OFL notices and exact source/hash receipts in `public/fonts/provenance-quattro.json`; TTFs from official `iaolo/iA-Fonts` commit `c6588670c71e9ac628acc27b72cde4bf12726b7f` |
 | NEO/Noto fonts | Original font notices, SIL OFL and font provenance accompany the actual font files |
 | Noto Serif CJK JP Regular/Bold 2.003 | Official `noto-cjk` commit `9b0f1436e455d902de067a2501422e5dc71ad16b`, SIL OFL, exact font hashes and retained attribution in `provenance-cjk.json` |
 | Node runtime | Aggregate Node license accompanies the pinned runtime |

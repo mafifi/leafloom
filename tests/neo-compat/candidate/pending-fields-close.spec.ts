@@ -14,6 +14,7 @@ for (const field of ['notes', 'outline', 'sticky'] as const) {
       metadata: { chapterNotes: { 'ch-1': 'Saved outline' } },
     });
     const reference = process.env.LEAFLOOM_PARITY_DRIVER === 'neo-reference';
+    const target135 = !reference || process.env.LEAFLOOM_REFERENCE_VERSION === '1.3.5';
     const tail = `Immediate ${field} tail`;
     if (field === 'notes') {
       await page.locator('.tab[data-tab="notes"]').click();
@@ -22,6 +23,7 @@ for (const field of ['notes', 'outline', 'sticky'] as const) {
       await page.keyboard.type(tail);
     } else if (field === 'outline') {
       await page.locator('.tab[data-tab="outline"]').click();
+      if (target135) await page.locator('#outline-views button[data-view="list"]').click();
       await page.locator('.ol-chapter[data-ch-id="ch-1"] .ol-text').fill(tail);
     } else {
       if (!(await page.locator('#side-pane').evaluate((el) => el.classList.contains('open'))))
@@ -46,6 +48,7 @@ for (const field of ['notes', 'outline', 'sticky'] as const) {
       await expect(page.locator('#aux-editor')).toContainText(tail);
     } else if (field === 'outline') {
       await page.locator('.tab[data-tab="outline"]').click();
+      if (target135) await page.locator('#outline-views button[data-view="list"]').click();
       await expect(page.locator('.ol-chapter[data-ch-id="ch-1"] .ol-text')).toHaveText(tail);
     } else {
       if (!(await page.locator('#side-pane').evaluate((el) => el.classList.contains('open'))))

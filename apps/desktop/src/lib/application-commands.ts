@@ -1,3 +1,4 @@
+import type { OutlineBoardContext } from './application-outline-board';
 import { type RuntimeErrorReportValue } from '@leafloom/desktop-host';
 import type { MetadataField } from '@leafloom/editor-contracts';
 import { type OutlineTarget } from '@leafloom/editor-contracts';
@@ -31,7 +32,7 @@ import { LibraryViewModel } from './library-view-model';
 import { type TitleField } from './publication-page';
 import { SearchViewModel } from './search-view-model';
 
-export type ApplicationCommandsContext = applicationWiring.ApplicationWiringContext &
+export type ApplicationCommandsContext = OutlineBoardContext & applicationWiring.ApplicationWiringContext &
   applicationNavigation.ApplicationNavigationContext &
   applicationAuthorCommands.ApplicationAuthorCommandsContext &
   applicationAnnotations.ApplicationAnnotationsContext &
@@ -216,6 +217,7 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     deleteAuthor: (...args: Parameters<LibraryViewModel['deleteAuthor']>): Promise<void> => {
       return applicationLibrary.deleteAuthor(context, ...args);
     },
+    newScript: (shelfId: string): Promise<void> => context.libraryViewModel.newScript(shelfId),
     newBook: (...args: Parameters<LibraryViewModel['newBook']>): Promise<void> => {
       return applicationLibrary.newBook(context, ...args);
     },
@@ -444,6 +446,8 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     toggleSpelling: (): void => {
       return applicationPreferences.toggleSpelling(context);
     },
+    dismissWalkingOutlineNote: (): void => { if(context.writable()) context.editor?.dismissWalkingOutlineNote(); },
+    toggleFlush: (): void => applicationAnnotations.toggleFlush(context),
     togglePoetry: (): void => {
       return applicationAnnotations.togglePoetry(context);
     },
@@ -462,8 +466,8 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     removeSticky: (id: string): void => {
       return applicationAnnotations.removeSticky(context, id);
     },
-    selectSticky: async (id: string): Promise<void> => {
-      return applicationAnnotations.selectSticky(context, id);
+    selectSticky: async (id: string, fromNote = false): Promise<void> => {
+      return applicationAnnotations.selectSticky(context, id, fromNote);
     },
     setPanel: (panel: string): void => {
       return applicationAnnotations.setPanel(context, panel);
@@ -503,8 +507,11 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     },
     focusScreenplayScene: (id: string): void => {
       context.setPanel('manuscript');
-      context.editor?.selectPassage(id, 0);
+      const scene=context.editor?.screenplayScenes.find(scene=>scene.passageId===id);
+      const passage=scene && context.editor?.passageRows(scene.chapterId).find(passage=>passage.id===id);
+      if(passage)context.editor?.selectPassage(id,passage.size);
       context.surfaces?.focus();
+      context.surfaces?.revealSelection({viewportFraction:1/4});
     },
     focusChapter: (id: string): void => {
       return applicationAuthorCommands.focusChapter(context, id);
@@ -518,7 +525,7 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     alignParagraph: (value: 'left' | 'center' | 'right' | 'justify'): void => {
       return applicationAuthorCommands.alignParagraph(context, value);
     },
-    format: (mark: 'bold' | 'italic'): void => {
+    format: (mark: 'bold' | 'italic' | 'underline' | 'strike'): void => {
       return applicationAuthorCommands.format(context, mark);
     },
     archive: (): void => {
@@ -551,6 +558,7 @@ export function applicationCommands(context: ApplicationCommandsContext) {
     replace: (...args: Parameters<SearchViewModel['replace']>): void => {
       return applicationAuthorCommands.replace(context, ...args);
     },
+    cyclePositionCounter: (): Promise<void> => applicationNavigation.cyclePositionCounter(context),
     cycleWordCounter: (): void => {
       return applicationNavigation.cycleWordCounter(context);
     },

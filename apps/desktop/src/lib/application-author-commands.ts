@@ -1,3 +1,4 @@
+import { executeNativeFieldFormat } from './field-history';
 import type { MetadataField } from '@leafloom/editor-contracts';
 import { type EditorPort, type SurfacePort } from '@leafloom/editor-contracts';
 import { translate } from '@leafloom/language-contracts';
@@ -269,12 +270,14 @@ export function alignParagraph(
   value: 'left' | 'center' | 'right' | 'justify',
 ): void {
   if (!context.writable()) return;
+  if (executeNativeFieldFormat(value === 'justify' ? 'justifyFull' : 'justify' + value[0].toUpperCase() + value.slice(1))) return;
   context.editor?.alignParagraph(value);
   context.surfaces?.focus();
 }
 
-export function format(context: ApplicationAuthorCommandsContext, mark: 'bold' | 'italic'): void {
+export function format(context: ApplicationAuthorCommandsContext, mark: 'bold' | 'italic' | 'underline' | 'strike'): void {
   if (!context.writable()) return;
+  if (executeNativeFieldFormat(mark === 'strike' ? 'strikeThrough' : mark)) return;
   context.editor?.format(mark);
   context.surfaces?.focus();
 }

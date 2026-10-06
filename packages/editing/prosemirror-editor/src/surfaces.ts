@@ -1,8 +1,11 @@
-import { ScreenplayElement } from '@leafloom/document-contracts';
+import { screenplayKey, screenplayDecorations, refreshScreenplayFocus } from './screenplay-surface';
+import { clipboardText } from './clipboard';
+import { SurfaceStateCache } from './surface-state-cache';
 import { DOMSerializer, type Node as PMNode } from 'prosemirror-model';
 import { openingPresentation } from './opening-presentation';
 import { ManuscriptPresentation } from './presentation';
 import { VimController } from './vim';
+import { blankPageCaret } from './blank-page-caret';
 import { EditorState, TextSelection, Plugin } from 'prosemirror-state';
 import { Mapping, StepMap } from 'prosemirror-transform';
 import { EditorView, Decoration, DecorationSet } from 'prosemirror-view';
@@ -42,7 +45,8 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
           node.type.name === 'placeholder' ? '⚑' : '',
         )
         .trim()
-    ) return false;
+    )
+      return false;
     this.core.dispatch(
       this.core.state.tr.setSelection(
         TextSelection.create(this.core.state.doc, origin.from, origin.to),
@@ -53,7 +57,9 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     return true;
   }
   private readonly presentation = new ManuscriptPresentation();
+  private readonly localStates = new SurfaceStateCache();
   configurePresentation(preferences: PresentationPreferences) {
+    this.localStates.clear();
     this.publicationPage = preferences.publicationPage;
     this.presentation.configure(preferences);
     this.presentation.room(this.core.document);
@@ -66,6 +72,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
   private chapterViews = new Map<string, { host: HTMLElement; view: EditorView }>();
   private hooks: SurfaceHooks = {};
   private decorationRanges = new Map<string, { annotation: Annotation; position: number }[]>();
+  private walkingNote: BookCore['walkingOutlineNote'] = null;
   private readonly vim: VimController;
   private bookRoot: HTMLElement | null = null;
   private enabled = true;
@@ -73,6 +80,16 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
   private pendingFocus: string | null = null;
   private current = '';
   private panel = 'notes';
+  private readonly blankPagePointer = (event: MouseEvent) => {
+    if (this.panel === 'manuscript' && this.enabled && this.bookRoot)
+      blankPageCaret(
+        event,
+        this.bookRoot,
+        this.chapterViews,
+        (id, position) => this.core.select(id, position),
+        () => this.focus({ preventScroll: true }),
+      );
+  };
   private readonly readNativeSelection = () => {
     if (this.panel === 'manuscript') this.presentation.paintDropcap(this.core.document);
     const candidates = [
@@ -105,12 +122,14 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     // deliberate first-paragraph caret as a browser reset and restore the old end.
     this.core.document.addEventListener('selectionchange', this.readNativeSelection, true);
     this.core.document.addEventListener('focusin', this.readFocus);
+    this.core.document.addEventListener('mousedown', this.blankPagePointer);
     this.core.document.defaultView?.addEventListener('resize', this.resizePresentation);
     this.vim = new VimController(
       core,
       () => this.hooks,
       () => this.focus(),
       (coords) => this.manuscriptPositionAt(coords),
+      (direction, times, visual) => this.hooks.searchAgain?.(direction, times, visual),
     );
     this.unsubscribe = core.subscribe((event) => {
       if (
@@ -149,6 +168,9 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
   setVim(enabled: boolean) {
     this.vim.setEnabled(enabled);
   }
+  restVim() {
+    this.vim.rest();
+  }
   get vimState() {
     return this.vim.state;
   }
@@ -159,22 +181,31 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     return this.panel === 'outline' ? 'outline' : 'notes';
   }
   private localState(id: string, composing = false) {
-    const section = this.core.section(id),
-      doc = bookSchema.nodes.surface.create(null, section.node.content);
+    const section = this.core.section(id), size = section.node.content.size;
     const selection = this.core.state.selection,
       base = section.pos + 1;
-    const from = Math.max(1, Math.min(doc.content.size - 1, selection.from - base));
-    const to = Math.max(1, Math.min(doc.content.size - 1, selection.to - base));
+    const from = Math.max(1, Math.min(size - 1, selection.from - base));
+    const to = Math.max(1, Math.min(size - 1, selection.to - base));
+    const marks = composing ? null : this.core.inputMarks;
+    return this.localStates.project(id, {section: section.node, from, to, marks, base,
+      ranges: this.decorationRanges.get(id) ?? [],
+      pageKind: this.pageFor(id)?.kind ?? section.node.attrs.kind,
+      walkingPassage: this.walkingNote?.chapterId === id ? this.walkingNote.passageId : null,
+    }, () => {
+    const doc = bookSchema.nodes.surface.create(null, section.node.content);
     // The fallback map only implements ordinary deletion/navigation after the authoring commands.
     return EditorState.create({
       doc,
       selection: TextSelection.between(doc.resolve(from), doc.resolve(to)),
-      storedMarks: composing ? null : this.core.inputMarks,
+      storedMarks: marks,
       plugins: [
         this.annotationPlugin(id, doc),
         keymap({ ...baseKeymap, 'Mod-Enter': () => false }),
       ],
     });
+    }, !composing && this.core.manuscriptMode === 'prose' && section.node.attrs.role === 'chapter' &&
+      this.core.activeSection?.id !== id &&
+      this.core.document.activeElement?.closest('.chapter-body')?.getAttribute('data-chid') !== id);
   }
   private pageFor(id: string) {
     return this.publicationPage && this.core.section(id).node.attrs.role === 'chapter'
@@ -193,12 +224,26 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
             class: 'leafloom-annotation annotation-' + annotation.kind,
             'data-leafloom-annotation': annotation.id,
             'data-annotation-kind': annotation.kind,
+            ...(annotation.kind === 'spelling'
+              ? {[annotation.id.startsWith('capital-') ? 'data-capitalization-id' : 'data-spelling-id']: annotation.id}
+              : {}),
             ...(annotation.message ? { title: annotation.message } : {}),
           },
         ),
       );
     }
     const presentation = openingPresentation(doc);
+    if (this.core.section(id).node.attrs.role === 'chapter' && presentation.first)
+      decorations.push(
+        Decoration.node(presentation.first.from, presentation.first.to, { 'data-first': '' }),
+      );
+    if (this.walkingNote?.chapterId === id) {
+      const pid = this.walkingNote.passageId;
+      doc.forEach((node, pos) => {
+        if (node.attrs.pid === pid)
+          decorations.push(Decoration.node(pos, pos + node.nodeSize, { 'data-walk': '' }));
+      });
+    }
     const pageKind = this.pageFor(id)?.kind ?? this.core.section(id).node.attrs.kind;
     if (['dedication', 'epigraph', 'part'].includes(pageKind))
       for (const attribution of presentation.attributions)
@@ -208,10 +253,13 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         decorations.push(Decoration.node(speech.from, speech.to, { 'data-speech': '' }));
     // This plugin belongs to one immutable projected state. PM queries its
     // decorations repeatedly while updating a view; construct the tree once.
+    decorations.push(...screenplayDecorations(this.core, id, doc));
     const decorationSet = DecorationSet.create(doc, decorations);
     return new Plugin({ props: { decorations: () => decorationSet } });
   }
   private projectAnnotations() {
+    // Compute the live note once for all chapter views, outside their DOM.
+    this.walkingNote = this.panel === 'manuscript' ? this.core.walkingOutlineNote : null;
     const annotations = this.core.annotations;
     this.decorationRanges = new Map();
     if (!annotations.length) return;
@@ -225,12 +273,6 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     }
   }
   private syncDOMSelection(view: EditorView, id: string) {
-    if (
-      this.pendingFocus &&
-      this.core.activeSection?.id === this.pendingFocus &&
-      id !== this.pendingFocus
-    )
-      return;
     const selection = view.dom.ownerDocument.getSelection();
     if (
       !selection?.anchorNode ||
@@ -289,6 +331,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     const view = new EditorView(host, {
       state: this.localState(id()),
       editable: () => this.enabled && this.core.canEdit(id()),
+      clipboardTextSerializer: slice => clipboardText(slice.content),
       nodeViews: {
         paragraph: (node) => this.passageView(node),
         heading: (node) => this.passageView(node),
@@ -325,10 +368,12 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         // Own focus presentation synchronously through the public DOM hooks.
         focus: (view) => {
           view.dom.classList.add('ProseMirror-focused');
+          refreshScreenplayFocus(this.core, view);
           return true;
         },
         blur: (view) => {
           view.dom.classList.remove('ProseMirror-focused');
+          refreshScreenplayFocus(this.core, view);
           return true;
         },
         copy: (view) => {
@@ -395,7 +440,27 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
           this.dragOrigin = null;
           return false;
         },
-        beforeinput: () => {
+        beforeinput: (_view, event) => {
+          if (this.vim.state.navigation && (event as InputEvent).inputType.startsWith('insert')) {
+            event.preventDefault();
+            return true;
+          }
+          if ((event as InputEvent).inputType === 'insertLineBreak' && !event.defaultPrevented) {
+            event.preventDefault();
+            if (
+              this.core.manuscriptMode === 'screenplay' &&
+              this.core.section(id()).node.attrs.role === 'chapter'
+            )
+              return true;
+            // The native line-break has left the input method's word. Commit
+            // that composer before moving its DOM range to another paragraph.
+            if (_view.composing) {
+              _view.dom.blur();
+              _view.focus();
+            }
+            this.syncDOMSelection(_view, id());
+            return this.core.flushEnter(Boolean(this.pageFor(id())));
+          }
           this.core.resetEnter();
           this.input();
           return false;
@@ -453,6 +518,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         },
       },
       handleTextInput: (_view, from, to, text) => {
+        if (this.vim.state.navigation) return true;
         if (_view.composing || this.literalInputs.has(_view)) return false;
         // The SDK can call this after the browser has inserted raw text. Use
         // the endpoint captured at keydown, before its observer normalizes the
@@ -478,13 +544,18 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         if (this.enabled && this.core.canEdit(id()))
           this.core.insert(text, {
             typography: !this.literalInputs.has(_view),
+            capitalize: !this.literalInputs.has(_view),
             previousTextNodePrefix,
           });
         this.literalInputs.delete(_view);
         return true;
       },
       handleKeyDown: (view, event) => {
-        if (event.isComposing || event.keyCode === 229) {
+        if (
+          view.composing ||
+          event.isComposing ||
+          (event.keyCode === 229 && event.key !== 'Enter')
+        ) {
           this.literalInputs.add(view);
           return false;
         }
@@ -496,14 +567,17 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         const mod = event.metaKey || event.ctrlKey,
           key = event.key.toLowerCase();
         if (!this.enabled || !this.core.canEdit(id())) return true;
+        const scriptKey = screenplayKey(this.core, event);
+        if (scriptKey !== false) return scriptKey === true;
         if (event.key === 'Enter' && mod && !event.shiftKey && !event.altKey) {
           this.core.resetEnter();
           return false;
         }
-        if (event.key === 'Enter' && event.shiftKey && (mod || event.altKey)) {
-          this.core.resetEnter();
-          return false;
-        }
+        if (event.key === 'Enter' && event.shiftKey && mod && !event.altKey)
+          return this.core.enter(true);
+        if (event.key === 'Enter' && event.shiftKey && event.altKey) return false;
+        if (event.key === 'Enter' && event.shiftKey)
+          return this.core.flushEnter(Boolean(this.pageFor(id())));
         if (event.key === 'Enter')
           return this.core.enter(event.shiftKey, Boolean(this.pageFor(id())));
         if (!mod && !event.altKey && event.key === 'Backspace' && this.core.backspace())
@@ -516,7 +590,6 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
           return true;
         }
         this.core.resetEnter();
-        if (mod && !event.shiftKey && /^[1-7]$/.test(key) && this.core.manuscriptMode === 'screenplay') return this.core.setScreenplayElement(ScreenplayElement.options[Number(key)-1]);
         if (mod && key === 'z') {
           event.stopPropagation();
           event.shiftKey ? this.actions.redo() : this.actions.undo();
@@ -525,6 +598,16 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         if (mod && key === 'y') {
           event.stopPropagation();
           this.actions.redo();
+          return true;
+        }
+        if (mod && event.shiftKey && key === 's') {
+          event.stopPropagation();
+          this.actions.format('strike');
+          return true;
+        }
+        if (mod && key === 'u' && !event.shiftKey) {
+          event.stopPropagation();
+          this.actions.format('underline');
           return true;
         }
         if (mod && key === 's') {
@@ -581,6 +664,10 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
         return true;
       },
       dispatchTransaction: (local) => {
+        if (local.docChanged && this.vim.state.navigation) {
+          view.updateState(this.localState(id(), view.composing));
+          return;
+        }
         if (
           !local.docChanged &&
           !local.storedMarksSet &&
@@ -645,6 +732,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
     this.resizePresentation();
   }
   private clearViews() {
+    this.localStates.clear();
     this.roomObserver?.disconnect();
     this.roomObserver = null;
     this.destroyView(this.mainView);
@@ -697,6 +785,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
       if (hosts.get(id) !== entry.host) {
         this.destroyView(entry.view);
         this.chapterViews.delete(id);
+        this.localStates.delete(id);
       }
     for (const [id, host] of hosts)
       if (!this.chapterViews.has(id))
@@ -896,6 +985,7 @@ export class ProseMirrorSurfaces implements SurfacePort<HTMLElement> {
   destroy() {
     this.core.document.removeEventListener('selectionchange', this.readNativeSelection, true);
     this.core.document.removeEventListener('focusin', this.readFocus);
+    this.core.document.removeEventListener('mousedown', this.blankPagePointer);
     this.core.document.defaultView?.removeEventListener('resize', this.resizePresentation);
     this.presentation.clear(this.core.document);
     this.core.document.body?.classList.remove('vim-nav');

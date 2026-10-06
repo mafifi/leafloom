@@ -1,4 +1,5 @@
 import { test, expect } from './author-fixture';
+import { dictionaryFlags, dictionaryWord } from './spelling-observation';
 import type { Page } from '@playwright/test';
 import { existingBook } from './book-fixture';
 import { persistedBook, persistedLibrary, privateStorageRoot } from './storage-probe';
@@ -9,13 +10,7 @@ const source = process.env.LEAFLOOM_PARITY_DRIVER === 'neo-reference';
 const mod = process.platform === 'darwin' ? 'Meta' : 'Control';
 const invented = 'qzxvplmnospellclosure';
 async function flags(page: Page) {
-  if (source)
-    return page.evaluate(() =>
-      Array.from(CSS.highlights.get('neo-spell') || [])
-        .map((r) => r.toString())
-        .sort(),
-    );
-  return (await page.locator('[data-annotation-kind="spelling"]').allTextContents()).sort();
+  return (await dictionaryFlags(page)).sort();
 }
 async function pass(page: Page) {
   if (source) await clickReferenceMenu(page, ['Edit', 'Spellcheck Pass']);
@@ -29,6 +24,7 @@ async function off(page: Page) {
   else {
     await page.locator('#format-menu').click();
     await page.getByRole('menuitem', { name: 'Spellcheck off', exact: true }).click();
+    await expect(page.locator('[data-annotation-kind="spelling"]')).toHaveCount(0);
   }
 }
 async function language(page: Page, code: 'ro' | 'pt' | 'fr') {
@@ -59,11 +55,7 @@ async function wordMenu(page: Page, word: string) {
     await page.mouse.click(point.x, point.y, { button: 'right' });
     await expect(page.locator('.spell-menu')).toBeVisible();
   } else {
-    await page
-      .locator('[data-annotation-kind="spelling"]')
-      .filter({ hasText: new RegExp('^' + word + '$') })
-      .first()
-      .click({ button: 'right' });
+    await (await dictionaryWord(page, word)).click({ button: 'right' });
     await expect(page.getByRole('menu')).toBeVisible();
   }
 }

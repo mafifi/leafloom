@@ -1,5 +1,6 @@
+import type { BrowserReadAloud } from './browser-read-aloud';
 import type { DocumentSnapshotValue } from '@leafloom/editor-contracts';
-import { AuthoringSession, ProgressTracker, writingDay } from '@leafloom/authoring';
+import { AuthoringSession, ProgressTracker, writingDay, dailyWordCount } from '@leafloom/authoring';
 import { type HostMethod, type HostPayload } from '@leafloom/desktop-host';
 import {
   OpenReply,
@@ -19,6 +20,7 @@ import { SpellingViewModel } from './spelling-view-model';
 
 
 export interface ApplicationBookSessionContext {
+  readAloud: BrowserReadAloud | null;
   bookTransitions: Promise<void>;
   transitionBook: (command: () => Promise<void>) => Promise<void>;
   openBookNow: (id: string) => Promise<void>;
@@ -26,6 +28,7 @@ export interface ApplicationBookSessionContext {
   closePublicationPage: () => Promise<void>;
   value: AppState;
   closeBookNow: (save?: boolean) => Promise<void>;
+  flushScriptContact: () => Promise<void>;
   request: <M extends HostMethod>(method: M, payload: HostPayload<M>) => Promise<unknown>;
   lease: string | null;
   documentVersions: Record<'reviews' | 'notes' | 'outline' | 'manuscript', string> | null;
@@ -38,7 +41,7 @@ export interface ApplicationBookSessionContext {
     options?: { closeMenu?: boolean },
   ) => Promise<void>;
   save: () => Promise<void>;
-  format: (mark: 'bold' | 'italic') => void;
+  format: (mark: 'bold' | 'italic' | 'underline' | 'strike') => void;
   archive: () => void;
   project: () => void;
   editor: EditorPort | null;
@@ -164,6 +167,7 @@ export async function openBookNow(
     },
     contextMenu: (target) => void context.execute(() => context.spellingMenu(target)),
     search: () => context.openSearch(),
+    searchAgain: (direction,times,visual) => context.searchViewModel.repeat(direction,times,visual),
     copy: (value) => void context.execute(() => context.platform?.writeClipboard?.(value)),
   });
   context.progress = new ProgressTracker(
@@ -216,7 +220,7 @@ export async function openBookNow(
     view: 'editor',
     book: opened.book.metadata,
     panel:
-      context.value.library.writingStyle === 'plotter' && opened.book.chapters.length === 0
+      context.value.library.writingStyle === 'plotter' && editor.manuscriptMode !== 'screenplay' && opened.book.chapters.length === 0
         ? 'outline'
         : 'manuscript',
     readOnly: opened.readOnly,
@@ -240,13 +244,13 @@ export async function openBookNow(
         .record(z.string(), z.object({ start: z.number(), end: z.number() }))
         .catch({})
         .parse(editor.metadata.dailyCounts);
-    if (!counts[day]) counts[day] = { start: editor.words, end: editor.words };
+    counts[day] = dailyWordCount(counts[day], editor.words);
     editor.setBookkeeping({ wordCount: editor.words, dailyCounts: counts });
   }
   context.project();
   await context.rendered();
   if (context.value.panel === 'outline') context.focusOutline(editor.outlineRows[0]);
-  else if (!editor.chapters.length) document.querySelector<HTMLElement>('#tp-title')?.focus();
+  else if (!editor.chapters.length || editor.manuscriptMode === 'screenplay' && !editor.words && ['', 'Untitled'].includes(String(editor.metadata.title))) document.querySelector<HTMLElement>('#tp-title')?.focus();
   else {
     const saved = opened.book.metadata.lastPosition;
     if (
@@ -270,6 +274,7 @@ export async function openBookNow(
       if (scroller) scroller.scrollTop = saved.scroll;
     }
   }
+  context.surfaces?.restVim();
   context.activateSpellingSection();
 }
 
@@ -281,8 +286,10 @@ export async function closeBookNow(
   context: ApplicationBookSessionContext,
   save = true,
 ): Promise<void> {
+  context.readAloud?.stop(false);
   if (context.externalReconciliation) await context.externalReconciliation;
   context.editor?.finishMetadataField();
+  await context.flushScriptContact();
   if (context.publicationPageViewModel.active) await context.closePublicationPage();
   if (save) await context.save();
   await context.libraryWrites;

@@ -116,7 +116,9 @@ export function dialogueEdits(text: string, language: string): TextEdit[] {
 }
 export function markdownMatch(
   text: string,
-): { from: number; to: number; open: number; bold: boolean; italic: boolean } | null {
+): { from: number; to: number; open: number; bold: boolean; italic: boolean; strike?: boolean } | null {
+  const struck = text.match(/(^|[^~\\])~~(?![\s~])(.+?)(?<![\s\\~])~~$/u);
+  if (struck) return { from: text.length - struck[0].length + struck[1].length, to: text.length, open: 2, bold: false, italic: false, strike: true };
   for (const count of [3, 2, 1])
     for (const delimiter of ['*', '_']) {
       const mark = delimiter === '*' ? '\\*' : '_',
@@ -159,5 +161,6 @@ export function markdownHTML(line: string): string | null {
     new RegExp(`${edge}(\\*|_)(?![\\s*_])(.+?)(?<![\\s\\\\*_])\\2${tail}`, 'gu'),
     '$1<i>$3</i>',
   );
+  html = html.replace(/(^|[^~\\])~~(?![\s~])(.+?)(?<![\s\\~])~~(?!~)/gu, '$1<s>$2</s>');
   return html === before ? null : html;
 }

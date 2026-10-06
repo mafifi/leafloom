@@ -18,6 +18,7 @@ test('[NEO-247-A] Leafloom: actual denied checkpoint stays Unsaved with original
     await fixture.driver.select(0, 0, 11);
     await page.keyboard.type(' Retry preserves these words.');
     await expect(page.locator('.save-state')).toHaveText('Unsaved');
+    const checkpointStarted = Date.now();
     await page.keyboard.press(process.platform === 'darwin' ? 'Meta+s' : 'Control+s');
     await expect(page.locator('#hint')).not.toHaveText('');
     expect(await readFile(manuscript)).toEqual(before);
@@ -27,7 +28,8 @@ test('[NEO-247-A] Leafloom: actual denied checkpoint stays Unsaved with original
       .trim()
       .split('\n')
       .map((line) => JSON.parse(line));
-    expect(records).toContainEqual({
+    const checkpointReports = records.filter((record) => Date.parse(record.at) >= checkpointStarted);
+    expect(checkpointReports).toContainEqual({
       source: 'host',
       code: 'UNEXPECTED_RUNTIME',
       at: expect.any(String),

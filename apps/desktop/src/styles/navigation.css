@@ -10,7 +10,13 @@
 /* the panes wake from well inside the margins, never over the page itself */
 #nav-hotzone,
 #side-hotzone {
-  width: clamp(18px, calc((100vw - min(760px * var(--page-zoom, 1), 94vw)) / 2 - 24px), 96px);
+  width: clamp(
+    18px,
+    calc(
+      (100vw - min((var(--page-w) + var(--page-gutter)) * var(--page-zoom, 1), 94vw)) / 2 - 24px
+    ),
+    96px
+  );
 }
 #nav-pane {
   position: fixed;
@@ -313,4 +319,3 @@
   margin: 4px 6px;
   flex: none;
 }
-

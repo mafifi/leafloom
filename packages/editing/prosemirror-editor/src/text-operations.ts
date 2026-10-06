@@ -1,3 +1,4 @@
+import { capitalCorrection } from './capitalization';
 import type { SearchMatch } from '@leafloom/editor-contracts';
 import type { Context } from '@opentelemetry/api';
 import { toggleMark } from 'prosemirror-commands';
@@ -34,7 +35,7 @@ export interface TextOperationsContext {
   canEditSelection: () => boolean;
   insert: (
     text: string,
-    options?: { typography?: boolean; previousTextNodePrefix?: string },
+    options?: { typography?: boolean; capitalize?: boolean; previousTextNodePrefix?: string },
   ) => void;
 }
 
@@ -42,6 +43,7 @@ export function alignParagraph(
   context: TextOperationsContext,
   value: 'left' | 'center' | 'right' | 'justify',
 ): boolean {
+  if (context.state.doc.attrs.metadata.format === 'screenplay') return false;
   const alignment = z.enum(['left', 'center', 'right', 'justify']).parse(value),
     owner = context.owner(context.state.selection.from);
   if (!owner || owner.node.attrs.role !== 'chapter' || !context.canEdit(owner.node.attrs.id))
@@ -73,7 +75,7 @@ export function configureTypography(
 export function insert(
   context: TextOperationsContext,
   text: string,
-  options?: { typography?: boolean; previousTextNodePrefix?: string },
+  options?: { typography?: boolean; capitalize?: boolean; previousTextNodePrefix?: string },
 ): void {
   const escalation = context.enterSequence;
   context.resetEnter();
@@ -122,6 +124,13 @@ export function insert(
       transaction.setStoredMarks(context.state.doc.resolve(from - replace).marks());
     transaction.insertText(value, from - replace, context.state.selection.to);
     context.dispatch(transaction, 'typing');
+    const classes = String($from.parent.attrs.class).split(/\s+/);
+    const correction = options?.capitalize && empty && owner.node.attrs.role === 'chapter' && $from.parent.type.name === 'paragraph' && !classes.some(c => ['poetry','scene-break','sp-paren'].includes(c)) ? capitalCorrection(before, character, language) : null;
+    if (correction) {
+      const at = from - correction.replaceBefore;
+      context.dispatch(closeHistory(context.state.tr).insertText(correction.text, at, from + value.length), 'typography.capital');
+      context.breakTyping = true;
+    }
     const selection = context.state.selection,
       paragraph = selection.$from.parent,
       paragraphStart = selection.$from.start();
@@ -129,7 +138,7 @@ export function insert(
     if (
       context.preferences.markdown !== false &&
       (owner.node.attrs.role === 'chapter' || owner.node.attrs.role === 'notes') &&
-      (character === '*' || character === '_')
+      (character === '*' || character === '_' || character === '~')
     ) {
       const match = markdownMatch(prefix);
       if (match) {
@@ -140,13 +149,17 @@ export function insert(
         const end = finish - match.open * 2;
         if (match.bold) tr.addMark(begin, end, bookSchema.marks.bold.create());
         if (match.italic) tr.addMark(begin, end, bookSchema.marks.italic.create());
+        if (match.strike) tr.addMark(begin, end, bookSchema.marks.strike.create());
         tr.setSelection(TextSelection.create(tr.doc, end)).setStoredMarks([]);
         context.dispatch(tr, 'typography.markdown');
         context.breakTyping = true;
         continue;
       }
     }
-    if (owner.node.attrs.role === 'chapter') {
+    if (owner.node.attrs.role === 'chapter' && !(
+      context.state.doc.attrs.metadata.format === 'screenplay' &&
+      ['scene-heading', 'character', 'transition', 'shot'].includes(paragraph.attrs.screenplay)
+    )) {
       const edits = dialogueEdits(prefix, language);
       if (edits.length) {
         const tr = closeHistory(context.state.tr);
@@ -163,38 +176,26 @@ export function insert(
   }
 }
 
-export function togglePoetry(context: TextOperationsContext): void {
+export function togglePoetry(context: TextOperationsContext): void { toggleParagraphKind(context, 'poetry'); }
+export function toggleFlush(context: TextOperationsContext): void { toggleParagraphKind(context, 'flush'); }
+function toggleParagraphKind(context: TextOperationsContext, kind: 'poetry' | 'flush'): void {
+  if (context.state.doc.attrs.metadata.format === 'screenplay') return;
   context.resetEnter();
-  const { from, to } = context.state.selection,
-    owner = context.owner(from);
-  if (!owner || owner.node.attrs.role !== 'chapter' || !context.canEdit(owner.node.attrs.id))
-    return;
-  const passages = context
-    .passages()
-    .filter(
-      (p) =>
-        p.node.type.name === 'paragraph' &&
-        p.pos < to &&
-        p.pos + p.node.nodeSize > from &&
-        !String(p.node.attrs.class).split(/\s+/).includes('scene-break'),
-    );
+  const { from, to } = context.state.selection, owner = context.owner(from);
+  if (!owner || owner.node.attrs.role !== 'chapter' || !context.canEditSelection()) return;
+  const passages = context.passages(owner.node.attrs.id).filter(p => p.node.type.name === 'paragraph' && p.pos < to && p.pos + p.node.nodeSize > from && !String(p.node.attrs.class).split(/\s+/).includes('scene-break'));
   if (!passages.length) return;
-  const remove = passages.every((p) => String(p.node.attrs.class).split(/\s+/).includes('poetry')),
-    tr = closeHistory(context.state.tr);
+  const on = !passages.every(p => String(p.node.attrs.class).split(/\s+/).includes(kind)), tr = closeHistory(context.state.tr);
   for (const passage of passages) {
-    const classes = String(passage.node.attrs.class)
-      .split(/\s+/)
-      .filter((c) => c && c !== 'poetry');
-    if (!remove) classes.push('poetry');
+    const original = String(passage.node.attrs.class).split(/\s+/), classes = original.filter(c => c && c !== 'poetry' && c !== 'flush');
+    if (on) classes.push(kind);
     tr.setNodeMarkup(passage.pos, undefined, { ...passage.node.attrs, class: classes.join(' ') });
-    if (remove)
-      tr.removeMark(passage.pos + 1, passage.pos + 1 + passage.size, bookSchema.marks.italic);
-    else
-      tr.addMark(passage.pos + 1, passage.pos + 1 + passage.size, bookSchema.marks.italic.create());
+    if (on && kind === 'poetry') tr.addMark(passage.pos + 1, passage.pos + 1 + passage.size, bookSchema.marks.italic.create());
+    else if (original.includes('poetry')) tr.removeMark(passage.pos + 1, passage.pos + 1 + passage.size, bookSchema.marks.italic);
   }
   tr.setSelection(TextSelection.create(tr.doc, passages[0].pos + 1));
-  tr.setStoredMarks(remove ? [] : [bookSchema.marks.italic.create()]);
-  context.dispatch(tr, 'author.poetry.toggle');
+  tr.setStoredMarks(on && kind === 'poetry' ? [bookSchema.marks.italic.create()] : []);
+  context.dispatch(tr, 'author.' + kind + '.toggle');
 }
 
 export function insertOpeningPoetry(context: TextOperationsContext, id: string): void {
@@ -213,6 +214,7 @@ export function selectPassage(
   id: string,
   from: number,
   to = from,
+  extend = false,
 ): void {
   const passage = context.passage(id);
   if (
@@ -227,7 +229,7 @@ export function selectPassage(
   context.resetEnter();
   context.dispatch(
     context.state.tr.setSelection(
-      TextSelection.create(context.state.doc, passage.pos + 1 + from, passage.pos + 1 + to),
+      TextSelection.create(context.state.doc, extend ? context.state.selection.anchor : passage.pos + 1 + from, passage.pos + 1 + to),
     ),
     'select',
   );
@@ -305,7 +307,7 @@ export function indent(context: TextOperationsContext, reverse = false): void {
   } else context.insert('\u2003\u2003');
 }
 
-export function format(context: TextOperationsContext, mark: 'bold' | 'italic'): void {
+export function format(context: TextOperationsContext, mark: 'bold' | 'italic' | 'underline' | 'strike'): void {
   if (!context.canEditSelection()) return;
   if (context.state.storedMarks === null && context.inputMarks !== null)
     context.state = context.state.apply(context.state.tr.setStoredMarks(context.inputMarks));

@@ -1,4 +1,5 @@
 import { test, expect } from './author-fixture';
+import { dictionaryFlags, dictionaryWord } from './spelling-observation';
 import { existingBook } from './book-fixture';
 import { persistedBook, persistedLibrary, privateStorageRoot } from './storage-probe';
 import type { Page } from '@playwright/test';
@@ -27,7 +28,7 @@ async function flags(page: Page, chapter?: number) {
     chapter === undefined
       ? page.locator('#paper-scroll')
       : page.locator('.chapter-body').nth(chapter);
-  return root.locator(flagSelector).allTextContents();
+  return dictionaryFlags(page, root);
 }
 async function toggle(page: Page, enabled: boolean) {
   await page.locator('#format-menu').click();
@@ -69,11 +70,7 @@ function observeChecks(page: Page) {
   return calls;
 }
 async function rightClickFlag(page: Page, word: string) {
-  await page
-    .locator(flagSelector)
-    .filter({ hasText: new RegExp('^' + word + '$') })
-    .first()
-    .click({ button: 'right' });
+  await (await dictionaryWord(page, word)).click({ button: 'right' });
   await expect(page.getByRole('menu')).toBeVisible();
 }
 
@@ -86,6 +83,7 @@ test('[NEO-169-A] Leafloom: spellcheck starts off and native typing remains unfl
   await page.keyboard.type(' qzxvplmno');
   await page.waitForTimeout(750); // The clause observes the complete real 600ms debounce window.
   expect(await flags(page)).toEqual([]);
+  await expect(page.locator(flagSelector)).toHaveCount(0);
   expect(calls).toEqual([]);
   await expect(page.locator('.ProseMirror').first()).toHaveAttribute('spellcheck', 'false');
   await expect(page.getByRole('menu')).toHaveCount(0);
@@ -104,6 +102,7 @@ test('[NEO-170-A] Leafloom: deliberate Format pass toggles highlights and dismis
   await page.keyboard.press('Escape');
   await toggle(page, false);
   await expect.poll(() => flags(page)).toEqual([]);
+  await expect(page.locator(flagSelector)).toHaveCount(0);
   await expect(page.getByRole('menu')).toHaveCount(0);
 });
 for (const [gesture, key, code, shift] of [
@@ -124,6 +123,7 @@ for (const [gesture, key, code, shift] of [
     };
     await press(true);
     expect(await flags(page)).toEqual([]);
+    await expect(page.locator(flagSelector)).toHaveCount(0);
     await press();
     await expect.poll(() => flags(page)).toEqual(['tekst']);
     await press(true);
@@ -131,6 +131,7 @@ for (const [gesture, key, code, shift] of [
     await rightClickFlag(page, 'tekst');
     await press();
     await expect.poll(() => flags(page)).toEqual([]);
+    await expect(page.locator(flagSelector)).toHaveCount(0);
     await expect(page.getByRole('menu')).toHaveCount(0);
     await session.detach();
   });

@@ -5,9 +5,11 @@ mod system_languages;
 mod external_drop;
 mod updater;
 mod native_menu;
+mod fullscreen_menu;
 #[cfg(target_os="macos")]mod edit_menu;
 mod preferences;
 mod startup_diagnostics;
+mod startup_library;
 static STARTUP_PROFILE: std::sync::OnceLock<Option<PathBuf>> = std::sync::OnceLock::new();
 mod secrets;
 mod library_lock;
@@ -96,6 +98,7 @@ struct State {
     root: PathBuf,
     languages: Vec<(String, String)>,
     default_root: PathBuf,
+    library_fallback: Mutex<Option<PathBuf>>,
     profile_path: PathBuf,
     profile: Mutex<Value>,
     window_bounds: Mutex<Value>,
@@ -354,12 +357,13 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
     let resources = app.path().resource_dir()?;
     let default_root = app.path().document_dir()?.join("Leafloom");
     let profile_path = startup_diagnostics::profile_path(&app.config().identifier)?;
-    let profile = preferences::read(&profile_path)?;
-    let root = profile
-        .get("libraryDir")
-        .and_then(Value::as_str)
-        .map(PathBuf::from)
-        .unwrap_or_else(|| default_root.clone());
+    let mut profile = preferences::read(&profile_path)?;
+    let configured=profile.get("libraryDir").and_then(Value::as_str).map(PathBuf::from);
+    let fixture=cfg!(debug_assertions)&&std::env::var_os("LEAFLOOM_FIXTURE_ROOT").is_some();
+    let selected=if fixture {startup_library::Selection{root:configured.clone().unwrap_or_else(||default_root.clone()),fallback_from:None}} else {startup_library::select(&default_root,&app.path().home_dir()?,configured.as_deref())};
+    if selected.fallback_from.is_some(){profile["libraryDir"]=json!(selected.root);preferences::write(&profile_path,&profile)?;}
+    let library_fallback=selected.fallback_from;
+    let root=selected.root;
     #[cfg(debug_assertions)]
     let root = match std::env::var_os("LEAFLOOM_FIXTURE_ROOT") {
         Some(path) => {
@@ -417,6 +421,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
         root,
         languages,
         default_root,
+        library_fallback:Mutex::new(library_fallback),
         profile_path,
         profile: Mutex::new(profile.clone()),
         window_bounds: Mutex::new(
@@ -452,6 +457,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
             return Err(e.into());
         }
     };
+    fullscreen_menu::synchronize(app.handle(),false,false).map_err(std::io::Error::other)?;
     if let (Some(x), Some(y)) = (
         profile.pointer("/window/x").and_then(Value::as_f64),
         profile.pointer("/window/y").and_then(Value::as_f64),
@@ -558,7 +564,7 @@ fn main() {
             }
             if let Some(state) = window.app_handle().try_state::<State>() {
                 let fullscreen = window.is_fullscreen().unwrap_or(false);
-                if state.fullscreen.swap(fullscreen, Ordering::SeqCst) != fullscreen { let _ = window.emit("leafloom:fullscreen-changed", json!({"fullscreen":fullscreen})); }
+                if state.fullscreen.swap(fullscreen, Ordering::SeqCst) != fullscreen { let _ = fullscreen_menu::synchronize(window.app_handle(),fullscreen,false);let _ = window.emit("leafloom:fullscreen-changed", json!({"fullscreen":fullscreen})); }
                 if matches!(event, tauri::WindowEvent::Moved(_) | tauri::WindowEvent::Resized(_)) && !fullscreen && !window.is_maximized().unwrap_or(false) {
                     if let (Ok(size), Ok(position), Ok(scale), Ok(mut bounds)) = (window.inner_size(), window.outer_position(), window.scale_factor(), state.window_bounds.lock()) {
                         let size = size.to_logical::<f64>(scale); let position = position.to_logical::<f64>(scale);

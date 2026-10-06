@@ -61,7 +61,7 @@ pub(crate) async fn os_request(
         }
         "setMenuState" => {
             if payload.as_object().is_none_or(|values|values.iter().any(|(key,value)|{
-                if ["typewriter","vim","markdownEmphasis","uiBright","poetry"].contains(&key.as_str()){return !value.is_boolean();}
+                if ["typewriter","vim","markdownEmphasis","uiBright","poetry","flush"].contains(&key.as_str()){return !value.is_boolean();}
                 if key=="interfaceZoom"{return !value.as_f64().is_some_and(|n|(1.0..=3.0).contains(&n));}
                 if key=="writingStyle"{return !value.as_str().is_some_and(|v|["pantser","plotter"].contains(&v));}
                 !["bodyFont","dropcap","align","language","spellLanguage","pageTheme","focus"].contains(&key.as_str())||!value.is_string()
@@ -92,6 +92,7 @@ pub(crate) async fn os_request(
                     "Hoefler Text",
                     "Iowan Old Style",
                     "Jost",
+                    "iA Writer Quattro",
                     "Libron",
                     "Readerly",
                     "Newsreader",
@@ -104,6 +105,7 @@ pub(crate) async fn os_request(
                     "Cambria",
                     "Constantia",
                     "Jost",
+                    "iA Writer Quattro",
                     "Libron",
                     "Readerly",
                     "Newsreader",
@@ -116,6 +118,7 @@ pub(crate) async fn os_request(
                     "Alegreya",
                     "Source Serif Pro",
                     "Jost",
+                    "iA Writer Quattro",
                     "Libron",
                     "Readerly",
                     "Newsreader",
@@ -570,7 +573,7 @@ pub(crate) async fn os_request(
             }
         }
         "getLibraryConfiguration" => Ok(
-            json!({"current": state.root, "default": state.default_root, "custom": state.root != state.default_root}),
+            json!({"current": state.root, "default": state.default_root, "custom": state.root != state.default_root,"fallbackFrom":state.library_fallback.lock().map_err(|_|"HOST_UNAVAILABLE")?.take()}),
         ),
         "selectLibraryFolder" => {
             let selected = rfd::AsyncFileDialog::new()
@@ -643,7 +646,14 @@ pub(crate) async fn os_request(
             if was_fullscreen {
                 window.set_fullscreen(false).map_err(|_| "OS_ERROR")?;
             }
+            fullscreen_menu::synchronize(window.app_handle(),false,false)?;
             Ok(json!(was_fullscreen))
+        }
+        "revealNativeMenu" => {
+            if payload.as_object().is_none_or(|value|!value.is_empty()){return Err("INVALID".into());}
+            let full=window.is_fullscreen().map_err(|_|"OS_ERROR")?;
+            fullscreen_menu::synchronize(window.app_handle(),full,true)?;
+            Ok(json!(true))
         }
         "showBookFolder" => {
             let id = payload
@@ -685,10 +695,10 @@ pub(crate) async fn os_request(
         "toggleFullscreen" => {
             let full = window.is_fullscreen().map_err(|_| "OS_ERROR")?;
             window.set_fullscreen(!full).map_err(|_| "OS_ERROR")?;
+            fullscreen_menu::synchronize(window.app_handle(),!full,false)?;
             Ok(json!(!full))
         }
         "version" => Ok(json!(env!("CARGO_PKG_VERSION"))),
         _ => Err("INVALID".into()),
     }
 }
-

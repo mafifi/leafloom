@@ -2,6 +2,9 @@
 import { JSDOM } from 'jsdom';
 import {
   ScreenplayScript,
+  ScreenplayCodecError,
+  readFountainScreenplay,
+  normalizeScreenplayRuns as normalizeRuns,
   ScreenplayElement,
   inferScreenplayElement,
   legacyScreenplayClasses,
@@ -11,10 +14,7 @@ import {
   type ScreenplayLineValue,
   type ScreenplayElementValue,
 } from '@leafloom/document-contracts';
-export class ScreenplayCodecError extends Error {
-  readonly code = 'UNSUPPORTED_SCREENPLAY';
-  constructor() { super('UNSUPPORTED_SCREENPLAY'); }
-}
+export {ScreenplayCodecError,readFountainScreenplay} from '@leafloom/document-contracts';
 const names: Record<ScreenplayElementValue, string> = {
   'scene-heading': 'Scene Heading',
   action: 'Action',
@@ -33,19 +33,6 @@ const styles = {
 const escape = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const plain = (line: ScreenplayLineValue) => line.runs.map((r) => r.text).join('');
-function normalizeRuns(runs: ScreenplayRunValue[]): ScreenplayRunValue[] {
-  const result: ScreenplayRunValue[] = [];
-  for (const run of runs) {
-    if (!run.text) continue;
-    const marks = Object.keys(styles).filter((mark) =>
-      run.marks.includes(mark as keyof typeof styles),
-    ) as ScreenplayRunValue['marks'];
-    const last = result.at(-1);
-    if (last && JSON.stringify(last.marks) === JSON.stringify(marks)) last.text += run.text;
-    else result.push({ text: run.text, marks });
-  }
-  return result;
-}
 export function screenplayHTML(lines: ScreenplayLineValue[]): string {
   return lines
     .map(
@@ -112,25 +99,6 @@ export function screenplayFromHTML(
   }
   return ScreenplayScript.parse({ title, lines });
 }
-function fountainRuns(text: string): ScreenplayRunValue[] {
-  const runs: ScreenplayRunValue[] = [],
-    active = new Set<ScreenplayRunValue['marks'][number]>();
-  const tokens = text.split(/(\*\*\*|\*\*|\*|_)/);
-  const markers: Record<string, ScreenplayRunValue['marks']> = {
-    '***': ['italic', 'bold'],
-    '**': ['bold'],
-    '*': ['italic'],
-    _: ['underline'],
-  };
-  for (const token of tokens) {
-    const toggles = markers[token];
-    if (toggles) {
-      for (const mark of toggles) active.has(mark) ? active.delete(mark) : active.add(mark);
-    } else if (token) runs.push({ text: token, marks: [...active] });
-  }
-  if (active.size) throw new ScreenplayCodecError();
-  return normalizeRuns(runs);
-}
 export function readScreenplay(source: string, format: 'fdx' | 'fountain'): ScreenplayScriptValue {
   if (format === 'fdx') {
     if (/<!DOCTYPE|<!ENTITY/i.test(source)) throw Error('INVALID');
@@ -195,70 +163,32 @@ export function readScreenplay(source: string, format: 'fdx' | 'fountain'): Scre
     if (draft) title.draft = draft;
     return ScreenplayScript.parse({ title, lines });
   }
-  if (/\[\[|\/\*|^\s*(?:#|=|~|===)/m.test(source)) throw new ScreenplayCodecError();
-  const rows = source.replace(/\r\n?/g, '\n').split('\n'),
-    title: ScreenplayScriptValue['title'] = { title: '', author: '' };
-  let cursor = 0;
-  while (cursor < rows.length) {
-    const match = /^(Title|Author|Credit|Draft date|Contact):\s*(.*)$/i.exec(rows[cursor]);
-    if (!match) break;
-    const key = (
-      {
-        title: 'title',
-        author: 'author',
-        credit: 'credit',
-        'draft date': 'draft',
-        contact: 'contact',
-      } as const
-    )[match[1].toLowerCase() as 'title'];
-    title[key] = match[2];
-    cursor++;
-  }
-  const lines: ScreenplayLineValue[] = [];
-  let speech = false;
-  for (const row of rows.slice(cursor)) {
-    const text = row.trim();
-    if (!text) {
-      speech = false;
-      continue;
-    }
-    let element: ScreenplayElementValue,
-      body = text;
-    if (text.startsWith('.')) {
-      element = 'scene-heading';
-      body = text.slice(1);
-    } else if (text.startsWith('@')) {
-      element = 'character';
-      body = text.slice(1);
-    } else if (text.startsWith('>')) {
-      element = 'transition';
-      body = text.slice(1);
-    } else if (text.startsWith('!')) {
-      element = 'action';
-      body = text.slice(1);
-    } else if (speech) {
-      element = text.startsWith('(') ? 'parenthetical' : 'dialogue';
-    } else element = inferScreenplayElement(text);
-    lines.push({ element, runs: fountainRuns(body) });
-    speech = element === 'character' || element === 'parenthetical' || element === 'dialogue';
-  }
-  return ScreenplayScript.parse({ title, lines });
+  return readFountainScreenplay(source);
 }
 function verifiedExchange(
   script: ScreenplayScriptValue,
   source: string,
   format: 'fdx' | 'fountain',
 ): string {
-  const decoded = readScreenplay(source, format);
+  // Standard FDX title rows have alignment, not semantic roles. NEO's reader
+  // mistakes arbitrary credit text for the author. Verify the script body in
+  // that case while retaining every authored title row in the output XML.
+  const ambiguousTitle=format==='fdx'&&Boolean(script.title.credit&&!/^(?:written by|screenplay by|teleplay by|story by|by)$/i.test(script.title.credit));
+  let readable=source;
+  if(ambiguousTitle){const document=new JSDOM(source,{contentType:'application/xml'}).window.document;document.querySelector('TitlePage')?.remove();readable=document.documentElement.outerHTML;}
+  const decoded = readScreenplay(readable, format);
   const original = {
     ...script,
+    ...(ambiguousTitle?{title:{title:'',author:''}}:{}),
     lines: script.lines.map((line) => ({ ...line, runs: normalizeRuns(line.runs) })),
   };
   if (JSON.stringify(decoded) !== JSON.stringify(original)) throw new ScreenplayCodecError();
   return source;
 }
 export function writeScreenplay(raw: unknown, format: 'fdx' | 'fountain'): string {
-  const script = ScreenplayScript.parse(raw);
+  const authored = ScreenplayScript.parse(raw);
+  // NEO spToFountain/spToFdx omit neutral empty actions. Publication never mutates the editor's blank Enter passages.
+  const script = {...authored,lines:authored.lines.filter(line=>line.element!=='action'||line.runs.some(run=>run.text.trim()))};
   if (format === 'fdx') {
     const paragraphs = script.lines
       .map(
@@ -266,19 +196,17 @@ export function writeScreenplay(raw: unknown, format: 'fdx' | 'fountain'): strin
           `<Paragraph Type="${names[line.element]}">${line.runs.map((run) => `<Text${run.marks.length ? ` Style="${run.marks.map((mark) => styles[mark]).join('+')}"` : ''}>${escape(run.text)}</Text>`).join('')}</Paragraph>`,
       )
       .join('\n');
-    if (
-      script.title.credit &&
-      !/^(?:written by|screenplay by|teleplay by|story by|by)$/i.test(script.title.credit)
-    )
-      throw new ScreenplayCodecError();
     const titleParagraph = (text: string, align: string) =>
       `<Paragraph Alignment="${align}"><Text>${escape(text)}</Text></Paragraph>`;
+    const gap=(count:number)=>titleParagraph('','Center').repeat(count);
+    const block=(text:string,alignment:string)=>text.split('\n').filter(Boolean).map(row=>titleParagraph(row,alignment)).join('');
     const titlePage =
-      titleParagraph(script.title.title, 'Center') +
-      (script.title.credit ? titleParagraph(script.title.credit, 'Center') : '') +
-      titleParagraph(script.title.author, 'Center') +
-      (script.title.contact ? titleParagraph(script.title.contact, 'Left') : '') +
-      (script.title.draft ? titleParagraph(script.title.draft, 'Right') : '');
+      (script.title.title?gap(18)+titleParagraph(script.title.title,'Center'):'')+
+      (script.title.credit ? gap(1)+titleParagraph(script.title.credit, 'Center') : '') +
+      (script.title.author?gap(1)+titleParagraph(script.title.author,'Center'):'')+
+      (script.title.contact||script.title.draft?gap(16):'')+
+      (script.title.draft ? block(script.title.draft, 'Right') : '')+
+      (script.title.contact ? block(script.title.contact, 'Left') : '');
     return verifiedExchange(
       script,
       `<?xml version="1.0" encoding="UTF-8"?><FinalDraft DocumentType="Script" Version="1"><Content>${paragraphs}</Content><TitlePage><Content>${titlePage}</Content></TitlePage></FinalDraft>\n`,
@@ -294,7 +222,11 @@ export function writeScreenplay(raw: unknown, format: 'fdx' | 'fountain'): strin
   } as const;
   const rows = Object.entries(script.title).flatMap(([key, value]) => {
     if (typeof value !== 'string') return [];
-    if (value.includes('\n') || value.trim() !== value) throw new ScreenplayCodecError();
+    if(value.includes('\n')){
+      if(value.split('\n').some(row=>!row||row.trim()!==row))throw new ScreenplayCodecError();
+      return [`${labels[key as keyof typeof labels]}:\n${value.split('\n').map(row=>'    '+row).join('\n')}`];
+    }
+    if(value.trim()!==value)throw new ScreenplayCodecError();
     return [`${labels[key as keyof typeof labels]}: ${value}`];
   });
   rows.push('');

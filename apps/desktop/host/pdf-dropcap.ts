@@ -1,11 +1,11 @@
 import type PDFDocument from 'pdfkit';
 import {type PDFGlyphFace} from './pdf-glyphs.ts';
-type GlyphRun={text:string;face:PDFGlyphFace};
-type Cluster={text:string;face:PDFGlyphFace};
-const clusters=(runs:GlyphRun[])=>runs.flatMap(run=>Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(run.text),value=>({text:value.segment,face:run.face})));
+type GlyphRun={text:string;face:PDFGlyphFace;underline?:boolean;strike?:boolean};
+type Cluster={text:string;face:PDFGlyphFace;underline?:boolean;strike?:boolean};
+const clusters=(runs:GlyphRun[])=>runs.flatMap(run=>Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(run.text),value=>({text:value.segment,face:run.face,underline:run.underline,strike:run.strike})));
 function groups(values:Cluster[]):GlyphRun[]{
  const result:GlyphRun[]=[];
- for(const value of values){const previous=result.at(-1);if(previous?.face===value.face)previous.text+=value.text;else result.push({...value});}
+ for(const value of values){const previous=result.at(-1);if(previous?.face===value.face&&previous.underline===value.underline&&previous.strike===value.strike)previous.text+=value.text;else result.push({...value});}
  return result;
 }
 
@@ -56,7 +56,7 @@ export function drawPDFDropCap(doc:InstanceType<typeof PDFDocument>,runs:GlyphRu
  doc.markContent('Span',{actual:initial+firstLine.slice(0,firstWordLength).map(value=>value.text).join('')});
  doc.restore();
  // The initial remains a selectable font glyph, aligned to the second baseline.
- doc.font(cap.name).fontSize(capSize).text(initial,left-bounds.minX/cap.metrics.units*capSize,baseline+lineHeight+bounds.minY/cap.metrics.units*capSize,{lineBreak:false,baseline:'alphabetic'});
+ doc.font(cap.name).fontSize(capSize).text(initial,left-bounds.minX/cap.metrics.units*capSize,baseline+lineHeight+bounds.minY/cap.metrics.units*capSize,{lineBreak:false,baseline:'alphabetic',underline:values[start]!.underline,strike:values[start]!.strike});
  for(const [index,line] of lines.entries()){
   const lineWidth=measure(line),gap=alignment==='right'?width-reserve-lineWidth:alignment==='center'?(width-reserve-lineWidth)/2:0;
   let x=left+reserve+gap;
@@ -66,7 +66,7 @@ export function drawPDFDropCap(doc:InstanceType<typeof PDFDocument>,runs:GlyphRu
   for(const [segmentIndex,segment]of segments.entries()){
    if(index===0&&segmentIndex===1){doc.save().transform(1,0,0,-1,0,doc.page.height);doc.endMarkedContent();doc.restore();}
    for(const run of groups(segment)){
-   doc.font(run.face.name).fontSize(size*run.face.scale).text(run.text,x,baseline+index*lineHeight,{lineBreak:false,baseline:'alphabetic',wordSpacing:extra,oblique:run.face.oblique});
+   doc.font(run.face.name).fontSize(size*run.face.scale).text(run.text,x,baseline+index*lineHeight,{lineBreak:false,baseline:'alphabetic',wordSpacing:extra,oblique:run.face.oblique,underline:run.underline,strike:run.strike});
    x+=doc.widthOfString(run.text)+extra*(run.text.match(/\s/g)?.length??0);
    }
   }
@@ -76,7 +76,7 @@ export function drawPDFDropCap(doc:InstanceType<typeof PDFDocument>,runs:GlyphRu
  for(const [index,run] of remaining.entries()){
   doc.font(run.face.name).fontSize(size*run.face.scale);
   const gap=lineHeight-doc.currentLineHeight(true);
-  doc.text(run.text+(index===remaining.length-1?' ':''),left,doc.y,{width,align:alignment,continued:index!==remaining.length-1,oblique:run.face.oblique,lineGap:gap,indent:0,paragraphGap:0});
+  doc.text(run.text+(index===remaining.length-1?' ':''),left,doc.y,{width,align:alignment,continued:index!==remaining.length-1,oblique:run.face.oblique,underline:run.underline,strike:run.strike,lineGap:gap,indent:0,paragraphGap:0});
  }
  doc.font(bodyFace.name).fontSize(size);return true;
 }

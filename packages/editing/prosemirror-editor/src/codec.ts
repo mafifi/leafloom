@@ -18,7 +18,7 @@ import {
 /** NEO's readable HTML is the boundary format; the editor owns native PM nodes. */
 type DataAttributes = Record<string, string>;
 const baseAttrs = { class: { default: '' }, align: { default: null }, data: { default: {} } };
-const ephemeral = new Set(['data-attr', 'data-speech']);
+const ephemeral = new Set(['data-attr', 'data-speech', 'data-first', 'data-walk', 'data-pg', 'data-fill', 'data-contd', 'data-ghost', 'data-ghost-empty']);
 const alignments = new Set(['left', 'center', 'right', 'justify']);
 
 function element(value: HTMLElement | string): HTMLElement {

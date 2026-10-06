@@ -9,6 +9,8 @@ import { Library, type LibraryValue } from '@leafloom/library';
 import { z } from 'zod';
 import type { AppState, ApplicationPlatform, EditorFactory } from './application-types';
 import { CoverArtViewModel } from './cover-art';
+import { saveCoverImage } from './cover-image';
+import { BrowserReadAloud } from './browser-read-aloud';
 import { CoverGoalsViewModel } from './cover-goals';
 import { DocumentOutputViewModel } from './document-output';
 import { EmailDraftViewModel } from './email-draft';
@@ -98,6 +100,7 @@ export interface ApplicationWiringContext {
   previewBodyFont: (font: string) => void;
   preference: (key: string, value: unknown) => Promise<void>;
   keyboardNavigation: KeyboardNavigation;
+  readAloud: BrowserReadAloud | null;
   surfaces: SurfacePort<HTMLElement> | null;
   librarySettingsViewModel: LibrarySettingsViewModel;
   closeBook: (save?: boolean) => Promise<void>;
@@ -119,6 +122,15 @@ export interface ApplicationWiringContext {
 
 export function wire(context: ApplicationWiringContext, typography?: TextTypographyPort): void {
   context.state.subscribe((value) => (context.value = value));
+  context.readAloud =
+    typeof window !== 'undefined' && typeof document !== 'undefined'
+      ? new BrowserReadAloud({
+          language: () => context.writingLanguage(),
+          active: () => context.value.view === 'editor' && Boolean(context.value.book),
+          hint: (hint) => context.patch({ hint }),
+          t: (key) => translate(context.value.language, key),
+        })
+      : null;
   context.patch({
     nativeMenus: Boolean(context.platform?.os),
     onboardingFonts: fontChoices(
@@ -268,6 +280,21 @@ export function wire(context: ApplicationWiringContext, typography?: TextTypogra
     t: (key, args) => translate(context.value.language, key, args),
   });
   context.coverArtViewModel = new CoverArtViewModel({
+    saveImage: async (id) => {
+      if (context.value.book?.id === id) await context.save();
+      await saveCoverImage(
+        {
+          metadata: async (bookId) =>
+            Metadata.parse(await context.request('readBookMeta', { bookId })),
+          generated: (bookId) => context.generatedCover(bookId),
+          destination: async (name) => (await context.platform?.selectExportFile(name)) ?? null,
+          request: (method, payload) => context.request(method, payload),
+          hint: (hint) => context.patch({ hint }),
+          t: (key, args) => translate(context.value.language, key, args),
+        },
+        id,
+      );
+    },
     snapshot: () => context.value,
     requestOS: (method, payload) => {
       if (!context.platform?.os) throw Error('OS_UNAVAILABLE');

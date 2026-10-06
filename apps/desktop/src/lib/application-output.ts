@@ -1,6 +1,7 @@
 import { screenplayOutputFormats } from './document-output';
 import { FilesDroppedSchema, type HostMethod, type HostPayload } from '@leafloom/desktop-host';
-import { Metadata, type JSONValue } from '@leafloom/document-contracts';
+import { Metadata, type MetadataValue, type JSONValue } from '@leafloom/document-contracts';
+import type { LibraryValue } from '@leafloom/library';
 import { type EditorPort } from '@leafloom/editor-contracts';
 import { translate } from '@leafloom/language-contracts';
 import type { AppState, ApplicationPlatform, MenuItem } from './application';
@@ -10,6 +11,8 @@ export interface ApplicationOutputContext {
   platform: ApplicationPlatform | undefined;
   value: AppState;
   writable: () => boolean;
+  hasPendingScriptContact: () => boolean;
+  updateLibrary: (library: LibraryValue, history?: boolean) => Promise<void>;
   request: <M extends HostMethod>(method: M, payload: HostPayload<M>) => Promise<unknown>;
   updateCoverMetadata: (
     id: string,
@@ -24,6 +27,16 @@ export interface ApplicationOutputContext {
   menu: (event: MouseEvent, items: MenuItem[]) => void;
   exportBook: (format: OutputFormat) => Promise<void>;
   closeBook: (save?: boolean) => Promise<void>;
+}
+
+/** Imported title contact becomes shared library text without replacing an author draft. */
+async function adoptImportedContact(context: ApplicationOutputContext, metadata: MetadataValue) {
+  if (context.value.library.scriptContact || context.hasPendingScriptContact()) return;
+  const title = metadata.screenplayTitle;
+  if (!title || typeof title !== 'object' || Array.isArray(title) || typeof title.contact !== 'string' || !title.contact) return;
+  // Shelf placement also writes the library. Adopt into live state first, so
+  // that write cannot erase the contact just saved by the import provider.
+  await context.updateLibrary({ ...context.value.library, scriptContact: title.contact }, false);
 }
 
 export async function showBookFolder(context: ApplicationOutputContext, id: string): Promise<void> {
@@ -82,6 +95,8 @@ export async function filesDropped(context: ApplicationOutputContext, raw: unkno
       // Never move the imported book into a different author or destination
       // if the library changed while the import was being decoded.
       if (targetShelf()?.id !== shelf.id) throw Error('DROP_TARGET_UNAVAILABLE');
+      await adoptImportedContact(context, metadata);
+      if (targetShelf()?.id !== shelf.id) throw Error('DROP_TARGET_UNAVAILABLE');
       await context.moveBook(metadata.id, shelf.id);
       imported++;
     } catch {
@@ -108,6 +123,7 @@ export async function importBooks(context: ApplicationOutputContext): Promise<vo
       const shelf = context.value.library.shelves.find(
         (s) => s.authorId === context.value.library.currentAuthorId,
       );
+      await adoptImportedContact(context, metadata);
       if (shelf) await context.moveBook(metadata.id, shelf.id);
       imported++;
     } catch {

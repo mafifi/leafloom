@@ -412,7 +412,8 @@ it('native start caret immediately after focus survives PM recent-focus recovery
     new KeyboardEvent('keydown', { key: 'Enter', shiftKey: true, bubbles: true }),
   );
   expect(core.passageRows('a').map((passage) => passage.text)).toEqual(['Alpha beta.']);
-  expect(core.html('a')).toBe('<p class="poetry"><i>Alpha beta.</i></p>');
+  // NEO1.3.5 assigns bare Shift Enter to flush; poetry requires Mod Shift.
+  expect(core.html('a')).toBe('<p class="flush">Alpha beta.</p>');
   surfaces.destroy();
 });
 it('a book refresh projects annotations once for all native chapter views', () => {
@@ -829,7 +830,7 @@ it('publication pages without a source placeholder omit data-ph while retaining 
   surfaces.destroy();
 });
 it.each(['ctrlKey', 'altKey', 'metaKey'] as const)(
-  'Shift Enter with %s is left to native editing rather than the poetry gesture',
+  'Shift Enter with %s follows 1.3.5 poetry modifiers while Tab and fullscreen retain ownership',
   (modifier) => {
     document.body.innerHTML = '<main></main><aside></aside>';
     const core = open('<p>Alpha beta.</p><pre>Code</pre>'),
@@ -859,7 +860,12 @@ it.each(['ctrlKey', 'altKey', 'metaKey'] as const)(
         cancelable: true,
       });
     document.querySelector('main .ProseMirror')!.dispatchEvent(key);
-    expect(key.defaultPrevented).toBe(false);
+    expect(key.defaultPrevented).toBe(modifier !== 'altKey');
+    if (modifier !== 'altKey') {
+      expect(core.html('a')).toBe('<p class="poetry"><i>Alpha beta.</i></p><pre>Code</pre>');
+      expect(core.canUndo).toBe(true);
+      core.undo();
+    }
     expect(core.html('a')).toBe(before);
     expect(core.canUndo).toBe(false);
     for (const shiftKey of [false, true]) {
@@ -901,7 +907,7 @@ it.each(['ctrlKey', 'altKey', 'metaKey'] as const)(
     });
     document.querySelector('main .ProseMirror')!.dispatchEvent(normal);
     expect(normal.defaultPrevented).toBe(true);
-    expect(core.html('a')).toContain('class="poetry"');
+    expect(core.html('a')).toContain('class="flush"');
     surfaces.destroy();
   },
 );
@@ -962,19 +968,17 @@ it('saved-caret reveal places the exact letter a third down the scroller without
   const scroller = document.querySelector<HTMLElement>('#paper-scroll')!;
   Object.defineProperty(scroller, 'clientHeight', { value: 720 });
   scroller.scrollTop = 300;
-  const box = vi
-    .spyOn(scroller, 'getBoundingClientRect')
-    .mockReturnValue({
-      x: 0,
-      y: 20,
-      top: 20,
-      left: 0,
-      right: 800,
-      bottom: 740,
-      width: 800,
-      height: 720,
-      toJSON: () => ({}),
-    });
+  const box = vi.spyOn(scroller, 'getBoundingClientRect').mockReturnValue({
+    x: 0,
+    y: 20,
+    top: 20,
+    left: 0,
+    right: 800,
+    bottom: 740,
+    width: 800,
+    height: 720,
+    toJSON: () => ({}),
+  });
   const coords = vi
     .spyOn(EditorView.prototype, 'coordsAtPos')
     .mockReturnValue({ top: 560, bottom: 580, left: 100, right: 100 });

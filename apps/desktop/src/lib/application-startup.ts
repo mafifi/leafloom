@@ -1,6 +1,6 @@
 import { type HostMethod, type HostPayload } from '@leafloom/desktop-host';
 import { Metadata } from '@leafloom/document-contracts';
-import { LanguageCatalog, defaultSpellLanguage } from '@leafloom/language-contracts';
+import {translate, LanguageCatalog, defaultSpellLanguage } from '@leafloom/language-contracts';
 import { Library, createLibrary } from '@leafloom/library';
 import { z } from 'zod';
 import type { AppState, ApplicationPlatform } from './application';
@@ -56,12 +56,16 @@ export async function initialize(context: ApplicationStartupContext): Promise<vo
       navPinned: context.platform?.panePreferences?.read().nav ?? context.value.navPinned,
       sidePinned: context.platform?.panePreferences?.read().side ?? context.value.sidePinned,
     });
-    applyPresentation(library);
+    applyPresentation(library,context.value.view,context.value.panel);
     context.applyPlatformDropcap();
     context.previewBodyFont(library.fonts.body);
     await context.synchronizeMenu();
     if (context.platform?.os)
       context.fullscreenChanged(await context.platform.os.request('getWindowState', {}));
+    if(context.platform?.os){
+      const config=z.object({current:z.string(),fallbackFrom:z.string().nullable().optional()}).safeParse(await context.platform.os.request('getLibraryConfiguration',{}));
+      if(config.success&&config.data.fallbackFrom)context.patch({hint:translate(context.value.language,'Leafloom is keeping your books in another folder')+'\n'+translate(context.value.language,"Your Documents folder can't be written to, so your books will live in:\n{dir}\n\nFile → Library Folder… changes it.",{dir:config.data.current})});
+    }
     void context.background(() => context.prepareCovers());
     if (context.platform?.os && !context.hostRecoveryViewModel.blocked)
       void context.background(async () => {
@@ -167,11 +171,15 @@ export async function refreshLibraryFromDisk(context: ApplicationStartupContext)
     const shelf = document.getElementById('bookshelf-view');
     const scroll = shelf?.scrollTop;
     context.patch({ library });
-    applyPresentation(library);
+    applyPresentation(library,context.value.view,context.value.panel);
     context.applyPlatformDropcap();
     await context.rendered();
     if (shelf && scroll !== undefined) shelf.scrollTop = scroll;
     await context.synchronizeMenu();
+    if(context.platform?.os){
+      const config=z.object({current:z.string(),fallbackFrom:z.string().nullable().optional()}).safeParse(await context.platform.os.request('getLibraryConfiguration',{}));
+      if(config.success&&config.data.fallbackFrom)context.patch({hint:translate(context.value.language,'Leafloom is keeping your books in another folder')+'\n'+translate(context.value.language,"Your Documents folder can't be written to, so your books will live in:\n{dir}\n\nFile → Library Folder… changes it.",{dir:config.data.current})});
+    }
     void context.background(() => context.prepareCovers());
   } finally {
     context.refreshingLibrary = false;

@@ -25,10 +25,10 @@ const reader = new PeriodicExportingMetricReader({
   exportIntervalMillis: 60000,
 });
 const meters = new MeterProvider({ readers: [reader] });
-const meter = meters.getMeter('@leafloom/host-runtime', '0.1.0');
+const meter = meters.getMeter('@leafloom/host-runtime', '1.3.5');
 const requests = meter.createCounter('leafloom.host.requests'),
   latency = meter.createHistogram('leafloom.host.duration', { unit: 'ms' });
-const tracer = provider.getTracer('@leafloom/host-runtime', '0.1.0');
+const tracer = provider.getTracer('@leafloom/host-runtime', '1.3.5');
 export const TraceParent = /^00-(?!0{32}-)[0-9a-f]{32}-(?!0{16}-)[0-9a-f]{16}-0[01]$/;
 function parent(value?: string): Context | undefined {
   if (!value || !TraceParent.test(value)) return;

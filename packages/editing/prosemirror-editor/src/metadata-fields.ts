@@ -4,7 +4,7 @@ import type { MetadataField } from '@leafloom/editor-contracts';
 import type { Node, Schema } from 'prosemirror-model';
 import { Step, StepResult, type Mappable } from 'prosemirror-transform';
 
-export const metadataField = z.enum(['title', 'subtitle', 'author']);
+export const metadataField = z.enum(['title', 'subtitle', 'author', 'credit', 'draft']);
 const slot = z.discriminatedUnion('present', [
   z.strictObject({ present: z.literal(false) }),
   z.strictObject({ present: z.literal(true), value: z.json() }),

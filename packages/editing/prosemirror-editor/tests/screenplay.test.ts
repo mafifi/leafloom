@@ -112,6 +112,32 @@ it('adopts an authoritative v2 mode even when legacy format metadata is absent',
   expect(result.changed).toBe(true);
   expect(local.manuscriptMode).toBe('screenplay');
 });
+
+it('refuses a persisted prose mode that contradicts its screenplay metadata', () => {
+  const source = open().checkpoint();
+  if (source.book.formatVersion !== 'leafloom-manuscript/v2') throw Error('fixture');
+  source.book.mode = 'prose';
+  expect(() => new BookCore(document, source.book, source.reviews, source.notes, source.outline))
+    .toThrow('Screenplay metadata and manuscript mode must agree');
+});
+
+it('refuses contradictory external mode metadata without changing the live manuscript or history', () => {
+  const local = open();
+  local.select('chapter', 1);
+  local.setScreenplayElement('action');
+  const baseline = local.checkpoint();
+  const incoming = structuredClone(baseline);
+  if (incoming.book.formatVersion !== 'leafloom-manuscript/v2') throw Error('fixture');
+  incoming.book.mode = 'prose';
+  incoming.book.revision++;
+  expect(() => local.reconcileExternal(baseline, incoming, {
+    date: '2026-10-06T12:00:00Z', conflictSuffix: 'Conflict', chapterLabels: {},
+  })).toThrow('Screenplay metadata and manuscript mode must agree');
+  expect(local.checkpoint()).toEqual(baseline);
+  expect(local.manuscriptMode).toBe('screenplay');
+  expect(local.undo()).toBe(true);
+  expect(local.screenplayScenes.map((scene) => scene.label)).toEqual(['INT. ROOM - DAY']);
+});
 it('opens historical screenplay attributes with their valid prior passage identities', async () => {
   const { createHash } = await import('node:crypto');
   const { importHTML } = await import('../src/codec');

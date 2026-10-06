@@ -1,3 +1,4 @@
+import {readLegacyMetadata} from './legacy-metadata.ts';
 import {
   readFile,
   writeFile,
@@ -44,15 +45,7 @@ export async function importNeo(source: string, destination: string, importedId?
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
   }
-  const raw = z
-    .object({
-      id: z.string(),
-      title: z.string(),
-      author: z.string(),
-      chapterOrder: z.array(z.string()),
-    })
-    .catchall(z.json())
-    .parse(JSON.parse(await text(join(source, 'book.json'))));
+  const recovered=await readLegacyMetadata(source),raw=recovered.metadata;
   const { chapterOrder, ...metadata } = raw;
   await checked(join(source, 'chapters'));
   const chapters = await Promise.all(
@@ -83,6 +76,7 @@ export async function importNeo(source: string, destination: string, importedId?
   const staging = destination + '.import-' + randomUUID();
   try {
     await mkdir(staging, { recursive: true });
+    for(const artifact of recovered.damaged)await writeFile(join(staging,'neo-recovered-'+artifact.name+'-'+randomUUID()+'.bin'),artifact.bytes,{flag:'wx'});
     for (const name of await readdir(source)) {
       if (['book.json', 'chapters', 'darlings.json'].includes(name)) continue;
       const file = await checked(join(source, safe(name)));

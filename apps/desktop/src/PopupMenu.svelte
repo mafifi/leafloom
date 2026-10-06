@@ -6,7 +6,7 @@
   {#if value.title}<div class="pm-title">{value.title}</div>{/if}
   {#each value.items as item}
     {#if item.separator}<div class="pm-sep" role="separator"></div>{:else}
-      <button role={item.checked === undefined ? 'menuitem' : 'menuitemradio'} aria-checked={item.checked} class:on={item.checked} class:danger={item.danger} disabled={item.disabled} tabindex="-1" onmouseenter={(event) => { if (!item.disabled) event.currentTarget.focus({ preventScroll: true }); }} onclick={() => execute(item.run)}>{item.localize === false ? item.label : t(item.label)}</button>
+      <button role={item.checked === undefined ? 'menuitem' : 'menuitemradio'} aria-checked={item.checked} aria-label={item.localize === false ? item.label : t(item.label)} class:on={item.checked} class:danger={item.danger} disabled={item.disabled} tabindex="-1" onmouseenter={(event) => { if (!item.disabled) event.currentTarget.focus({ preventScroll: true }); }} onclick={() => execute(item.run)}>{item.localize === false ? item.label : t(item.label)}</button>
     {/if}
   {/each}
 </div>

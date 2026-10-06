@@ -1,6 +1,12 @@
+import {translate} from '@leafloom/language-contracts';
+import { ScreenplayContact } from './screenplay-contact';
+import { ScreenplayLayoutViewModel, scriptCounters, type ScriptLayout } from './screenplay-layout-view-model';
+import { outlineBoardActions } from './application-outline-board';
+import type { BrowserReadAloud } from './browser-read-aloud';
+import { interfaceBrightness } from './interface-brightness';
 import { AuthoringSession, ProgressTracker } from '@leafloom/authoring';
 import type { CoverProvider } from '@leafloom/cover-contracts';
-import { type DesktopHost, type HostMethod, type HostPayload } from '@leafloom/desktop-host';
+import { HostOperationError, type DesktopHost, type HostMethod, type HostPayload } from '@leafloom/desktop-host';
 import { type JSONValue } from '@leafloom/document-contracts';
 import type { TextTypographyPort } from '@leafloom/editor-contracts';
 import {
@@ -11,13 +17,13 @@ import {
   type RemotePosition,
   type SurfacePort,
 } from '@leafloom/editor-contracts';
-import { type LibraryValue } from '@leafloom/library';
+import { Library, type LibraryValue } from '@leafloom/library';
 import type { Telemetry } from '@leafloom/telemetry-contracts';
 import { z } from 'zod';
 import * as applicationAnnotations from './application-annotations';
 import * as applicationAuthorCommands from './application-author-commands';
 import * as applicationBookSession from './application-book-session';
-import { applicationCommands } from './application-commands';
+import { applicationCommands, type ApplicationCommandsContext } from './application-commands';
 import * as applicationCovers from './application-covers';
 import * as applicationGoals from './application-goals';
 import * as applicationInteraction from './application-interaction';
@@ -63,27 +69,13 @@ export type {
 } from './application-types';
 
 export class Application {
-  private readonly operations: applicationWiring.ApplicationWiringContext &
-    applicationNavigation.ApplicationNavigationContext &
-    applicationAuthorCommands.ApplicationAuthorCommandsContext &
-    applicationAnnotations.ApplicationAnnotationsContext &
-    applicationSpelling.ApplicationSpellingContext &
-    applicationPreferences.ApplicationPreferencesContext &
-    applicationOutline.ApplicationOutlineContext &
-    applicationMenus.ApplicationMenusContext &
-    applicationNativeCommands.ApplicationNativeCommandsContext &
-    applicationOutput.ApplicationOutputContext &
-    applicationGoals.ApplicationGoalsContext &
-    applicationPersistence.ApplicationPersistenceContext &
-    applicationProjection.ApplicationProjectionContext &
-    applicationBookSession.ApplicationBookSessionContext &
-    applicationLibrary.ApplicationLibraryContext &
-    applicationInteraction.ApplicationInteractionContext &
-    applicationCovers.ApplicationCoversContext &
-    applicationStartup.ApplicationStartupContext &
-    applicationUpdates.ApplicationUpdatesContext = (() => {
+  private readonly operations: ApplicationCommandsContext = (() => {
     const owner = this;
     return {
+      get scriptCounterLabels() { return owner.scriptCounterLabels; },
+      get scriptSceneMode() { return owner.scriptSceneMode; },
+      set scriptSceneMode(value) { owner.scriptSceneMode = value; },
+      refreshScriptLayout: () => owner.scriptLayout.refresh(),
       get state() {
         return owner.state;
       },
@@ -207,6 +199,10 @@ export class Application {
         owner.librarySettingsViewModel = value;
       },
       closeBook: (...args) => owner.closeBook(...args),
+      bindAuthorDraft: (...args) => owner.bindAuthorDraft(...args),
+      flushAuthorDrafts: () => owner.flushAuthorDrafts(),
+      get readAloud() { return owner.readAloud; },
+      set readAloud(value) { owner.readAloud = value; },
       get searchViewModel() {
         return owner.searchViewModel;
       },
@@ -364,7 +360,9 @@ export class Application {
       reorderChapter: (...args) => owner.reorderChapter(...args),
       menu: (...args) => owner.menu(...args),
       format: (...args) => owner.format(...args),
+      chapterContext: (...args) => owner.chapterContext(...args),
       togglePoetry: (...args) => owner.togglePoetry(...args),
+      toggleFlush: (...args) => owner.toggleFlush(...args),
       bookGoal: (...args) => owner.bookGoal(...args),
       dailyGoal: (...args) => owner.dailyGoal(...args),
       startSprint: (...args) => owner.startSprint(...args),
@@ -379,6 +377,7 @@ export class Application {
       zoom: (...args) => owner.zoom(...args),
       pasteMatchStyle: (...args) => owner.pasteMatchStyle(...args),
       moveBook: (...args) => owner.moveBook(...args),
+      hasPendingScriptContact: () => owner.scriptContact.hasPending,
       set progress(value) {
         owner.progress = value;
       },
@@ -456,6 +455,7 @@ export class Application {
       openBookNow: (...args) => owner.openBookNow(...args),
       closePublicationPage: (...args) => owner.closePublicationPage(...args),
       closeBookNow: (...args) => owner.closeBookNow(...args),
+      flushScriptContact: () => owner.scriptContact.flush(),
       set surfaces(value) {
         owner.surfaces = value;
       },
@@ -519,6 +519,18 @@ export class Application {
   })();
   private readonly commands = applicationCommands(this.operations);
 
+  private scriptSceneMode = false;
+  private scriptLayoutState: ScriptLayout | null = null;
+  private readonly scriptLayout = new ScreenplayLayoutViewModel({editor:()=>this.editor,telemetry:()=>this.telemetry,changed:layout=>{this.scriptLayoutState=layout;this.project();}});
+  private get scriptCounterLabels() { return this.editor?.manuscriptMode === 'screenplay' && this.scriptLayoutState ? scriptCounters(this.scriptLayoutState,this.editor,this.scriptSceneMode,this.value.wordMode,(key,args)=>translate(this.value.language,key,args)) : null; }
+  bindScriptLayout(node:HTMLElement) { return this.scriptLayout.mount(node); }
+  private readonly scriptContact = new ScreenplayContact({
+    stage: text => { this.libraryGeneration++; this.patch({library: Library.parse({...this.value.library, scriptContact: text})}); },
+    persist: () => this.updateLibrary(this.value.library, false),
+    fail: error => this.fail(error),
+  });
+  editScriptTitle(field:'credit'|'draft'|'contact',text:string) { if(!this.writable())return; if(field==='contact')this.scriptContact.edit(text); else this.editor?.editMetadataField(field,field==='credit'?text.trim():text); }
+  finishScriptContact() { return this.scriptContact.flush(); }
   readonly state = createApplicationState();
   private value!: AppState;
   private publicationPageViewModel!: PublicationPageViewModel;
@@ -556,6 +568,12 @@ export class Application {
   private lease: string | null = null;
   private documentVersions: z.infer<typeof OpenReply>['versions'] | null = null;
   private committedDocument: DocumentSnapshotValue | null = null;
+  get outlineBoard() { return outlineBoardActions(this.operations); }
+  private readonly authorDrafts = new Set<() => void>();
+  bindAuthorDraft(flush: () => void) { this.authorDrafts.add(flush); return () => { this.authorDrafts.delete(flush); }; }
+  private flushAuthorDrafts() { for (const flush of this.authorDrafts) flush(); }
+  private readAloud: BrowserReadAloud | null = null;
+  disposeReadAloud() { this.readAloud?.dispose(); this.readAloud = null; this.scriptLayout.dispose(); }
   private readingActivity = 0;
   private pendingRemotePosition: { bookId: string; position: RemotePosition } | null = null;
   private externalReconciliation: Promise<void> | null = null;
@@ -592,16 +610,16 @@ export class Application {
     return applicationWiring.wire(this.operations, typography);
   }
   private patch(patch: Partial<AppState>) {
-    this.state.update((s) => ({ ...s, ...patch }));
+    this.state.update((s) => {
+      const next = { ...s, ...patch };
+      if ('library' in patch || 'view' in patch || 'panel' in patch)
+        document.body.classList.toggle('bright', interfaceBrightness(next.library, next.view, next.panel, Boolean(window.matchMedia?.('(prefers-contrast: more)').matches)));
+      return next;
+    });
   }
   async request<M extends HostMethod>(method: M, payload: HostPayload<M>): Promise<unknown> {
-    const result = this.telemetry
-      ? await this.telemetry.async('ui.host.' + method.toLowerCase(), (carrier) =>
-          this.host.request(method, payload, carrier),
-        )
-      : await this.host.request(method, payload);
-    if (!result.ok) throw Error(result.code);
-    return result.value;
+    const request=async(carrier?:string)=>{const result=await this.host.request(method,payload,carrier);if(!result.ok)throw new HostOperationError(method,result.code);return result.value;};
+    return this.telemetry?this.telemetry.async('ui.host.'+method.toLowerCase(),request):request();
   }
   initialize = this.commands.initialize;
   private writingLanguage(preferences = this.value.library): string {
@@ -689,6 +707,7 @@ export class Application {
   renameAuthor = this.commands.renameAuthor;
   deleteAuthor = this.commands.deleteAuthor;
   newBook = this.commands.newBook;
+  newScript = this.commands.newScript;
   moveBook = this.commands.moveBook;
   moveToAuthor = this.commands.moveToAuthor;
   undoAuthorMove = this.commands.undoAuthorMove;
@@ -815,6 +834,8 @@ export class Application {
     return applicationSpelling.spellingMenu(this.operations, target);
   }
   togglePoetry = this.commands.togglePoetry;
+  toggleFlush = this.commands.toggleFlush;
+  dismissWalkingOutlineNote = this.commands.dismissWalkingOutlineNote;
   openingPoetry = this.commands.openingPoetry;
   newSticky = this.commands.newSticky;
   updateSticky = this.commands.updateSticky;
@@ -863,6 +884,7 @@ export class Application {
   replace = this.commands.replace;
 
   cycleWordCounter = this.commands.cycleWordCounter;
+  cyclePositionCounter = this.commands.cyclePositionCounter;
   trackVisibleChapter = this.commands.trackVisibleChapter;
   private projectCounters(id: string): void {
     return applicationNavigation.projectCounters(this.operations, id);

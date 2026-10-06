@@ -7,7 +7,7 @@ export interface UpdateBoundary {
 }
 export class UpdateViewModel {
   value: UpdateStatusValue = {
-    version: '0.1.0',
+    version: '1.3.5',
     channel: 'manual',
     status: 'disabled',
     reason: 'release-channel-unconfigured',

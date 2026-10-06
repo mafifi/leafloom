@@ -2,6 +2,8 @@
 /* Dark surround, white page. The writing is the interface.        */
 
 :root {
+  --page-w: clamp(680px, 44vw, 760px);
+  --page-gutter: 80px;
   --bg: #191919;
   --bg-soft: #222;
   --paper: #fbfaf7;
@@ -51,4 +53,3 @@ button {
   color: var(--muted);
   font-size: 12px;
 }
-

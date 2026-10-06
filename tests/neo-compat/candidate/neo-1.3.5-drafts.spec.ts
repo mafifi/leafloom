@@ -1,0 +1,20 @@
+import { test, expect } from './author-fixture';
+import { existingBook } from './book-fixture';
+import { persistedBook } from './storage-probe';
+const tab = async (page: import('@playwright/test').Page, name: string) => page.locator(`.tab[data-tab="${name}"]`).click();
+const boardFixture = { library: { outlineView: 'cards' }, chapters: ['<p><i>Opening prose.</i></p><p class="scene-break">***</p><p><b>Second section.</b></p>'] };
+for (const boundary of ['save', 'tab', 'close'] as const) test(`[NEO135-032-E] Candidate: open native card draft commits before immediate ${boundary} without Enter`, async ({ page }) => {
+  test.info().annotations.push({ type: 'source-gap', description: 'NEO 1.3.5 saveCard is reached by closeCardEditor, but flushAllSaves saves only book metadata and does not commit the active native card field. Candidate explicitly flushes author field drafts into the one editor command/history before durable boundaries.' });
+  const ctx = await existingBook(page, boardFixture); await tab(page, 'outline');
+  const card = page.locator('#outline-board .ob-cell[data-kind="section"]').first();
+  await card.click(); await card.locator('.ob-text').fill('Immediate durable plan');
+  if (boundary === 'save') await page.keyboard.press(process.platform === 'darwin' ? 'Meta+s' : 'Control+s');
+  else if (boundary === 'tab') await tab(page, 'notes');
+  else await ctx.driver.shelf();
+  await expect.poll(async () => (await persistedBook(page, ctx.title)).metadata.sectionNotes?.['ch-1']?.[0]?.text).toBe('Immediate durable plan');
+  if (boundary === 'close') await ctx.driver.selectBook(ctx.title); else await ctx.driver.reopen();
+  await tab(page, 'outline'); await expect(page.locator('#outline-board .ob-cell[data-kind="section"] .ob-text').first()).toHaveText('Immediate durable plan');
+  const saved = await persistedBook(page, ctx.title);
+  expect(saved.chapters[0].html).toMatch(/<(?:b|strong)>Second section\.<\/(?:b|strong)>/);
+  expect(saved.chapters[0].html).not.toContain('Immediate durable plan');
+});

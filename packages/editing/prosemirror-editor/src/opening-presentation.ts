@@ -2,6 +2,7 @@ import type { Fragment, Node } from 'prosemirror-model';
 const OPENING_DASH = /^\s*[-‐‑‒–—―]/;
 interface OpeningPresentation {
   opensDialogue: boolean;
+  first: { from: number; to: number } | null;
   attributions: { from: number; to: number }[];
   speech: { from: number; to: number }[];
 }
@@ -12,17 +13,21 @@ export function openingPresentation(doc: Node): OpeningPresentation {
   if (cached) return cached;
   const result: OpeningPresentation = {
     opensDialogue: false,
+    first: null,
     attributions: [],
     speech: [],
   };
-  let first = true;
+  let fallback: {from:number;to:number} | null = null;
   doc.descendants((node, position, parent, index) => {
     if (node.type.name !== 'paragraph') return;
     if (/^(?:[—–]|--?\s)/.test(node.textContent))
       result.attributions.push({ from: position, to: position + node.nodeSize });
-    if (first && !String(node.attrs.class).split(/\s+/).includes('poetry')) {
-      result.opensDialogue = OPENING_DASH.test(node.textContent);
-      first = false;
+    if (!String(node.attrs.class).split(/\s+/).some(c => ['poetry','scene-break','ghost'].includes(c))) {
+      fallback ??= {from:position,to:position+node.nodeSize};
+      if (!result.first && node.textContent.trim()) {
+        result.first={from:position,to:position+node.nodeSize};
+        result.opensDialogue=OPENING_DASH.test(node.textContent);
+      }
     }
     const previous = index > 0 ? parent?.child(index - 1) : undefined;
     if (
@@ -33,6 +38,7 @@ export function openingPresentation(doc: Node): OpeningPresentation {
       result.speech.push({ from: position, to: position + node.nodeSize });
     return false;
   });
+  result.first ??= fallback;
   cache.set(doc.content, result);
   return result;
 }
